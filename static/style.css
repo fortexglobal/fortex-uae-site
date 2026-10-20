@@ -266,3 +266,26 @@ main,.form-sec,.foot{position:relative;z-index:1}
   .burger{margin-left:auto}
   .mnav a.mnav-cta{display:flex}
 }
+
+/* кнопки первого экрана: шире и с воздухом, равномерно по ширине */
+.hero .row,.page-hero .row{margin-top:40px;gap:16px}
+.hero .lead,.page-hero .lead{margin-bottom:0}
+.hero .row .btn,.page-hero .row .btn{min-width:260px;padding:18px 28px;font-size:17px}
+.page-hero .wrap{min-height:calc(78svh - 64px);display:flex;flex-direction:column;justify-content:center}
+.page-hero .row{max-width:620px}
+.page-hero .row .btn{flex:1}
+@media (max-width:700px){
+  .hero .row,.page-hero .row{flex-direction:column;margin-top:36px;gap:12px}
+  .hero .row .btn,.page-hero .row .btn{width:100%;min-width:0}
+  .hero .row .btn-ghost{display:inline-flex}
+  .page-hero .wrap{min-height:calc(100svh - 64px);padding-top:24px;padding-bottom:40px}
+  .page-hero .h1{font-size:clamp(28px,8vw,34px)}
+  .page-hero .lead{font-size:18px;color:#121C28}
+}
+.page-hero{position:relative}
+.page-hero .wrap.narrow{max-width:1180px}
+.page-hero .wrap>*{max-width:680px}
+.has-video .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 25% 50%,rgba(242,245,248,.75),rgba(242,245,248,0) 70%);pointer-events:none}
+.page-hero .wrap{position:relative}
+.has-video .page-hero .h1,.has-video .page-hero .lead{text-shadow:0 0 14px rgba(242,245,248,.95),0 0 3px rgba(242,245,248,.9)}
+@media (max-width:700px){.has-video .page-hero::before{background:linear-gradient(180deg,rgba(242,245,248,.55) 0%,rgba(242,245,248,.72) 50%,rgba(242,245,248,.45) 100%)}}
