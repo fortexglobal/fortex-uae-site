@@ -11,6 +11,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 SITE = "https://fortex-uae.com"
 TG = "https://t.me/FortexGlobal"
+CHANNEL = "https://t.me/fortex_uae"
 CAL = "https://calendly.com/fortex-uae/30min"
 EMAIL = "alexey@fortex-uae.com"
 MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
@@ -145,6 +146,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
     </div>
     <div class="foot-links">
       <a href="{TG}">Telegram @FortexGlobal</a>
+      <a href="{CHANNEL}">Канал Fortex UAE</a>
       <a href="{CAL}">Записаться на звонок</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <a href="/articles/">Статьи</a>
@@ -200,7 +202,7 @@ def build():
            "logo": SITE + "/img/mark.png", "image": SITE + "/img/og.jpg", "areaServed": "AE",
            "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
            "description": "Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. Работаем в Дубае с 2022 года.",
-           "sameAs": [TG], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
+           "sameAs": [TG, CHANNEL], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
            "slogan": "С 2022 года в Дубае: ВНЖ, банки, компании и финансовые вопросы",
            "makesOffer": [
                {"@type": "Offer", "name": "Корпоративный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "5000", "description": "от 5 000 USD"},
@@ -258,6 +260,7 @@ def build():
 <div class="prose">{a['html']}</div>
 <div class="cta-box"><h3>Разберём вашу ситуацию за 5 минут</h3><p>Напишите, какой у вас паспорт, есть ли компания в ОАЭ и были ли отказы банков. Скажем, какой банк сейчас реально откроет счёт.</p>
 <div class="row"><a class="btn" href="{TG}">Написать в Telegram</a><a class="btn btn-ghost" href="{CAL}">Записаться на звонок</a></div></div>
+<p class="small" style="margin-top:18px">Новые разборы по банкам и визам ОАЭ выходят в нашем канале <a href="{CHANNEL}" style="color:var(--red2)">t.me/fortex_uae</a></p>
 </div></article>
 {('<section class="sec alt"><div class="wrap"><h2 class="h2">Ещё статьи</h2><div class="grid3">' + more + '</div></div></section>') if more else ''}
 </main>"""
