@@ -215,5 +215,5 @@ a.card:hover{border-color:var(--accent)}
 .mark g{transform-box:fill-box;transform-origin:center}
 
 /* фон-банк: canvas под всем содержимым */
-.bank-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bank-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7;filter:blur(1.5px)}
 main,.form-sec,.foot{position:relative;z-index:1}
