@@ -186,6 +186,7 @@ FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
     <label>Telegram<input name="telegram" required placeholder="@username или телефон"></label>
     <label><span>Задача <span class="opt">необязательно</span></span><textarea name="task" rows="3" placeholder="Например: нужен корпоративный счёт, компания во фризоне, был отказ в банке"></textarea></label>
     <input type="hidden" name="page">
+    <input type="hidden" name="src">
     <button class="btn" type="submit">Отправить заявку</button>
     <p class="form-msg" role="status"></p>
     <p class="small">Нажимая кнопку, вы соглашаетесь, что мы свяжемся с вами по указанным контактам.</p>

@@ -1,3 +1,17 @@
+// откуда пришёл человек: utm-метка или сайт-источник, запоминаем при первом заходе
+(function () {
+  try {
+    if (!sessionStorage.getItem("src")) {
+      var q = new URLSearchParams(location.search), ref = document.referrer, src = "";
+      if (q.get("utm_source")) src = q.get("utm_source") + (q.get("utm_campaign") ? " / " + q.get("utm_campaign") : "");
+      else if (ref && ref.indexOf(location.host) < 0) src = new URL(ref).hostname;
+      else src = "прямой заход";
+      sessionStorage.setItem("src", src);
+      sessionStorage.setItem("land", location.pathname);
+    }
+  } catch (e) {}
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
   // мобильное меню
   var bt = document.querySelector(".burger"), mn = document.getElementById("mnav");
@@ -9,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   document.querySelectorAll("form.lead-form").forEach(function (f) {
     f.page.value = location.pathname;
+    try { if (f.src) f.src.value = (sessionStorage.getItem("src") || "") + " → " + (sessionStorage.getItem("land") || ""); } catch (e) {}
     f.addEventListener("submit", async function (e) {
       e.preventDefault();
       var msg = f.querySelector(".form-msg"), btn = f.querySelector("button");
