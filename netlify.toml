@@ -1,6 +1,7 @@
 [build]
   command = "python3 build.py"
   publish = "public"
+  functions = "netlify/functions"
 
 [build.environment]
   PYTHON_VERSION = "3.11"

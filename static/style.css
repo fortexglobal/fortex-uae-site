@@ -121,3 +121,19 @@ a.card:hover{border-color:#5a1418;transform:translateY(-2px)}
   .link{margin:-14px 0 20px}
   .top .btn-sm{padding:9px 12px;font-size:13px}
 }
+
+/* lead form */
+.form-sec{background:radial-gradient(700px 320px at 15% 0%,rgba(225,20,30,.2),transparent 70%);border-top:1px solid var(--line)}
+.form-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.form-in .lead a{color:var(--red2)}
+.lead-form{background:var(--card);border:1px solid #3a1418;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(225,20,30,.12)}
+.lead-form label{display:flex;flex-direction:column;gap:7px;font-weight:700;font-size:14.5px}
+.lead-form input,.lead-form textarea{font:inherit;font-weight:500;color:var(--text);background:#0c0c10;border:1px solid #33333d;border-radius:12px;padding:13px 14px;outline:none;transition:border-color .15s}
+.lead-form input:focus,.lead-form textarea:focus{border-color:var(--red2)}
+.lead-form .opt{font-weight:500;color:var(--muted);font-size:12.5px;margin-left:6px}
+.lead-form button{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:16px}
+.lead-form button:disabled{opacity:.6;cursor:wait}
+.form-msg{margin:0;color:var(--red2);font-size:14px}
+.hp{position:absolute;left:-9999px}
+.page-hero{background:radial-gradient(800px 360px at 80% 0%,rgba(225,20,30,.22),transparent 65%);border-bottom:1px solid var(--line)}
+@media (max-width:960px){.form-in{grid-template-columns:1fr;gap:24px}}

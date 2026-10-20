@@ -9,7 +9,7 @@ HOME = """<main>
       <h1 class="display">Счёт в банке ОАЭ для владельцев российского паспорта</h1>
       <p class="lead">Корпоративные и личные счета, компании на mainland и во фризонах, Virtual Work и рабочие визы с Emirates ID. Подбираем банк под вашу задачу и готовим подачу так, чтобы открыть с первого раза.</p>
       <div class="row">
-        <a class="btn" href="{{TG}}">Разобрать мою ситуацию</a>
+        <a class="btn" href="#form">Разобрать мою ситуацию</a>
         <a class="btn btn-ghost" href="{{CAL}}">Записаться на звонок</a>
       </div>
       <ul class="facts">
@@ -93,13 +93,6 @@ HOME = """<main>
   </div>
 </section>
 
-<section class="sec cta">
-  <div class="wrap cta-in">
-    <h2 class="h2">Напишите, что нужно. За 5 минут скажем, какой банк сейчас откроет</h2>
-    <p class="lead">Паспорт, есть ли компания в ОАЭ, нужный банк или задача. Остальное уточним сами.</p>
-    <div class="row"><a class="btn" href="{{TG}}">Написать в Telegram</a><a class="btn btn-ghost" href="{{CAL}}">Записаться на звонок</a></div>
-  </div>
-</section>
 </main>"""
 
 FAQ = [

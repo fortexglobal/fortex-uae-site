@@ -122,6 +122,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script src="/form.js" defer></script>
 {ld}
 </head>
 <body>
@@ -129,12 +130,13 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
   <div class="wrap top-in">
     <a class="brand" href="/"><img src="/img/mark.png" alt="" width="34" height="34"><span>FORTEX <b>UAE</b></span></a>
     <nav class="nav">
-      <a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#how">Как работаем</a><a href="/#faq">Вопросы</a><a href="/articles/">Статьи</a>
+      <a href="/schet-v-banke-oae/">Счета</a><a href="/rezidentstvo-oae/">Резидентство</a><a href="/kompaniya-v-dubae/">Компании</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a>
     </nav>
-    <a class="btn btn-sm" href="{TG}">Написать в Telegram</a>
+    <a class="btn btn-sm" href="#form">Оставить заявку</a>
   </div>
 </header>
 {body}
+{FORM}
 <footer class="foot">
   <div class="wrap foot-in">
     <div>
@@ -152,6 +154,26 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 </footer>
 </body>
 </html>"""
+
+
+FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
+  <div>
+    <p class="eyebrow">Заявка</p>
+    <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
+    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. Или сразу напишите нам: <a href="{TG}">@FortexGlobal</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+  </div>
+  <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
+    <input type="hidden" name="form-name" value="lead">
+    <p class="hp"><label>Не заполняйте <input name="company_site"></label></p>
+    <label>Имя<input name="name" required autocomplete="name" placeholder="Как к вам обращаться"></label>
+    <label>Telegram<input name="telegram" required placeholder="@username или телефон"></label>
+    <label>Задача <span class="opt">необязательно</span><textarea name="task" rows="3" placeholder="Например: нужен корпоративный счёт, компания во фризоне, был отказ в банке"></textarea></label>
+    <input type="hidden" name="page">
+    <button class="btn" type="submit">Отправить заявку</button>
+    <p class="form-msg" role="status"></p>
+    <p class="small">Нажимая кнопку, вы соглашаетесь, что мы свяжемся с вами по указанным контактам.</p>
+  </form>
+</div></section>"""
 
 
 def article_card(a):
@@ -191,6 +213,30 @@ def build():
              "Открываем корпоративные и личные счета в банках ОАЭ владельцам российского паспорта, компании на mainland и во фризонах, Virtual Work и рабочие визы. Под ключ, со всеми банками ОАЭ.",
              body, "/", [org, faq_ld]))
 
+    # ---- service pages ----
+    from content.pages import PAGES
+    for pg in PAGES:
+        faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in pg["faq"])
+        rel = "".join(article_card(a) for a in arts[:3])
+        body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
+<p class="eyebrow">Fortex UAE · Дубай</p><h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>
+<div class="row"><a class="btn" href="#form">Оставить заявку</a><a class="btn btn-ghost" href="{TG}">Написать в Telegram</a></div></div></section>
+<section class="sec alt"><div class="wrap narrow"><div class="prose">{md(pg['body'])}</div></div></section>
+<section class="sec"><div class="wrap narrow"><h2 class="h2">Частые вопросы</h2><div class="faq">{faq_html}</div></div></section>
+<section class="sec alt"><div class="wrap"><div class="head-row"><h2 class="h2">Статьи по теме</h2><a class="link" href="/articles/">Все статьи →</a></div><div class="grid3">{rel}</div></div></section></main>"""
+        svc = {"@context": "https://schema.org", "@type": "Service", "name": pg["service"], "serviceType": pg["service"],
+               "provider": {"@type": "Organization", "name": "Fortex UAE", "url": SITE}, "areaServed": "AE", "audience": {"@type": "Audience", "audienceType": "Владельцы российского паспорта"},
+               "offers": {"@type": "Offer", "priceCurrency": pg.get("currency", "USD"), "price": pg["price"]}}
+        fq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in pg["faq"]]}
+        bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": SITE + "/"}, {"@type": "ListItem", "position": 2, "name": pg["h1"], "item": f"{SITE}/{pg['slug']}/"}]}
+        os.makedirs(os.path.join(OUT, pg["slug"]), exist_ok=True)
+        open(os.path.join(OUT, pg["slug"], "index.html"), "w", encoding="utf-8").write(page(pg["title"], pg["description"], body, f"/{pg['slug']}/", [svc, fq, bc]))
+
+    # ---- thank you ----
+    os.makedirs(os.path.join(OUT, "spasibo"), exist_ok=True)
+    open(os.path.join(OUT, "spasibo", "index.html"), "w", encoding="utf-8").write(page("Заявка отправлена | Fortex UAE", "Спасибо, мы свяжемся с вами в Telegram.",
+        f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Спасибо, заявка отправлена</h1><p class='lead'>Свяжемся с вами в Telegram в ближайшее время. Если срочно, напишите сами: <a href='{TG}'>@FortexGlobal</a></p><a class='btn' href='/'>На главную</a></div></section></main>", "/spasibo/"))
+
     # ---- articles ----
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
     cards = "".join(article_card(a) for a in arts) or "<p class='muted'>Скоро здесь появятся статьи.</p>"
@@ -224,13 +270,13 @@ def build():
             page(a["title"] + " | Fortex UAE", a.get("description", ""), body, p, [ld], "article"))
 
     # ---- sitemap, robots, llms.txt ----
-    urls = [("/", datetime.date.today()), ("/articles/", arts[0]["date_obj"] if arts else datetime.date.today())] + [(f"/articles/{a['slug']}/", a["date_obj"]) for a in arts]
+    urls = [("/", datetime.date.today())] + [(f"/{pg['slug']}/", datetime.date.today()) for pg in PAGES] + [("/articles/", arts[0]["date_obj"] if arts else datetime.date.today())] + [(f"/articles/{a['slug']}/", a["date_obj"]) for a in arts]
     sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{d.isoformat()}</lastmod></url>" for u, d in urls)
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, Virtual Work и рабочие визы, Emirates ID. Дубай. Связь: Telegram @FortexGlobal.", "",
             "## Услуги и цены", "- Корпоративный счёт: от 5 000 USD", "- Личный счёт (в т.ч. удалённо): от 1 500 USD", "- Virtual Work виза на 1 год + Emirates ID + счёт: от 2 000 USD", "- Рабочая виза + Emirates ID: от 5 500 USD", "- Компания во фризоне: от 14 000 AED; на mainland: от 22 000 AED", "",
-            "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
+            "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")
     print(f"built: {len(arts)} articles -> {OUT}")
 
