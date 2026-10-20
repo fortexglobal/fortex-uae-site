@@ -1,6 +1,7 @@
 // Фон: прогулка по светлому банку. Объёмная сцена на canvas (заливки, свет, отражения в полу),
 // камера идёт вперёд вместе со скроллом. Вход → кассы → переговорные → хранилище. Без картинок, ~10 КБ.
 (function () {
+  if (document.documentElement.classList.contains("has-video")) return; // есть видео-фон, рисованный зал не нужен
   var cv = document.createElement("canvas");
   cv.className = "bank-bg"; cv.setAttribute("aria-hidden", "true");
   var ctx = cv.getContext("2d");

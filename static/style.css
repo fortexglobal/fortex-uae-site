@@ -217,3 +217,8 @@ a.card:hover{border-color:var(--accent)}
 /* фон-банк: canvas под всем содержимым */
 .bank-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7;filter:blur(1.5px)}
 main,.form-sec,.foot{position:relative;z-index:1}
+.bank-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;
+  opacity:.5;filter:blur(2px) saturate(.85) brightness(1.1);transform-origin:50% 45%;will-change:transform}
+/* лёгкая светлая подложка под текстом первого экрана, чтобы видео не спорило с текстом */
+.has-video .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 25% 50%,rgba(242,245,248,.75),rgba(242,245,248,0) 70%);pointer-events:none}
+@media (max-width:700px){.has-video .hero::before{background:linear-gradient(180deg,rgba(242,245,248,.7) 0%,rgba(242,245,248,.35) 55%,rgba(242,245,248,0) 75%)}}
