@@ -121,9 +121,11 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script src="/form.js" defer></script>
+<script src="/motion.js" defer></script>
+<meta name="theme-color" content="#F2F5F8">
 {ld}
 </head>
 <body>
@@ -160,7 +162,6 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
-    <p class="eyebrow">Заявка</p>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
     <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. Или сразу напишите нам: <a href="{TG}">@FortexGlobal</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
   </div>
@@ -169,7 +170,7 @@ FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
     <p class="hp"><label>Не заполняйте <input name="company_site"></label></p>
     <label>Имя<input name="name" required autocomplete="name" placeholder="Как к вам обращаться"></label>
     <label>Telegram<input name="telegram" required placeholder="@username или телефон"></label>
-    <label>Задача <span class="opt">необязательно</span><textarea name="task" rows="3" placeholder="Например: нужен корпоративный счёт, компания во фризоне, был отказ в банке"></textarea></label>
+    <label><span>Задача <span class="opt">необязательно</span></span><textarea name="task" rows="3" placeholder="Например: нужен корпоративный счёт, компания во фризоне, был отказ в банке"></textarea></label>
     <input type="hidden" name="page">
     <button class="btn" type="submit">Отправить заявку</button>
     <p class="form-msg" role="status"></p>
@@ -222,11 +223,11 @@ def build():
         faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in pg["faq"])
         rel = "".join(article_card(a) for a in arts[:3])
         body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
-<p class="eyebrow">Fortex UAE · Дубай</p><h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>
+<h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>
 <div class="row"><a class="btn" href="#form">Оставить заявку</a><a class="btn btn-ghost" href="{TG}">Написать в Telegram</a></div></div></section>
 <section class="sec alt"><div class="wrap narrow"><div class="prose">{md(pg['body'])}</div></div></section>
 <section class="sec"><div class="wrap narrow"><h2 class="h2">Частые вопросы</h2><div class="faq">{faq_html}</div></div></section>
-<section class="sec alt"><div class="wrap"><div class="head-row"><h2 class="h2">Статьи по теме</h2><a class="link" href="/articles/">Все статьи →</a></div><div class="grid3">{rel}</div></div></section></main>"""
+<section class="sec alt"><div class="wrap"><div class="head-row"><h2 class="h2">Статьи по теме</h2><a class="link" href="/articles/">Все статьи</a></div><div class="grid3">{rel}</div></div></section></main>"""
         svc = {"@context": "https://schema.org", "@type": "Service", "name": pg["service"], "serviceType": pg["service"],
                "provider": {"@type": "Organization", "name": "Fortex UAE", "url": SITE}, "areaServed": "AE", "audience": {"@type": "Audience", "audienceType": "Владельцы российского паспорта"},
                "offers": {"@type": "Offer", "priceCurrency": pg.get("currency", "USD"), "price": pg["price"]}}
@@ -244,7 +245,7 @@ def build():
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
     cards = "".join(article_card(a) for a in arts) or "<p class='muted'>Скоро здесь появятся статьи.</p>"
     idx = f"""<main><section class="sec"><div class="wrap">
-<p class="eyebrow">Статьи</p><h1 class="h1">Банки, визы и компании в ОАЭ: разбираем по делу</h1>
+<h1 class="h1">Банки, визы и компании в ОАЭ: разбираем по делу</h1>
 <p class="lead">Как сейчас открывают счета владельцам российского паспорта, чем Virtual Work отличается от рабочей визы, почему банки отказывают и что с этим делать.</p>
 <div class="grid3">{cards}</div></div></section></main>"""
     open(os.path.join(OUT, "articles", "index.html"), "w", encoding="utf-8").write(
@@ -254,7 +255,7 @@ def build():
         more = "".join(article_card(x) for x in [x for x in arts if x is not a][:3])
         body = f"""<main><article class="sec"><div class="wrap narrow">
 <a class="back" href="/articles/">← Все статьи</a>
-<p class="eyebrow">{esc(a.get('topic', 'Статья'))} · {ru_date(a['date_obj'])}</p>
+<p class="eyebrow">{esc(a.get('topic', 'Статья'))}, {ru_date(a['date_obj'])}</p>
 <h1 class="h1">{esc(a['title'])}</h1>
 <p class="lead">{esc(a.get('description', ''))}</p>
 <div class="prose">{a['html']}</div>
