@@ -218,7 +218,13 @@ a.card:hover{border-color:var(--accent)}
 .bank-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7;filter:blur(1.5px)}
 main,.form-sec,.foot{position:relative;z-index:1}
 .bank-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;
-  opacity:.5;filter:blur(2px) saturate(.85) brightness(1.1);transform-origin:50% 45%;will-change:transform}
+  opacity:.5;filter:blur(2px) saturate(.85) brightness(1.1);transform-origin:50% 40%;object-position:50% 30%;will-change:transform}
 /* лёгкая светлая подложка под текстом первого экрана, чтобы видео не спорило с текстом */
 .has-video .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 25% 50%,rgba(242,245,248,.75),rgba(242,245,248,0) 70%);pointer-events:none}
 @media (max-width:700px){.has-video .hero::before{background:linear-gradient(180deg,rgba(242,245,248,.7) 0%,rgba(242,245,248,.35) 55%,rgba(242,245,248,0) 75%)}}
+/* на компьютере вертикальное видео не растягиваем на весь экран: ставим справа, край плавно растворяется */
+@media (min-width:701px){
+  .bank-video{left:auto;right:0;width:min(62vh,52vw);height:100vh;object-fit:cover;opacity:.55;filter:blur(1px) saturate(.9) brightness(1.06);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%);transform-origin:70% 40%}
+}
+@media (min-width:701px){.has-video .hero-mark{visibility:hidden}}

@@ -10,7 +10,7 @@
   v.className = "bank-video";
   v.muted = true; v.loop = true; v.playsInline = true; v.preload = "none";
   v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true");
-  v.poster = "/video/hall-poster.jpg";
+  v.poster = "/video/bg-poster.jpg";
 
   var ticking = false;
   function zoom() {
@@ -27,7 +27,7 @@
   });
   addEventListener("load", function () {
     if (reduce || save) return;
-    v.src = innerWidth <= 700 ? "/video/hall-360.mp4" : "/video/hall-720.mp4";
+    v.src = "/video/bg-720.mp4";
     v.addEventListener("playing", function () { v.classList.add("on"); }, { once: true });
     var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
   });
