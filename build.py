@@ -71,6 +71,9 @@ def md(text):
     return "\n".join(out)
 
 
+DRAFTS = []
+
+
 def read_articles():
     arts = []
     d = os.path.join(ROOT, "content", "articles")
@@ -87,10 +90,13 @@ def read_articles():
             body = m.group(2)
         meta.setdefault("slug", fn[:-3])
         meta["date_obj"] = datetime.date.fromisoformat(meta.get("date", "2026-10-20"))
-        if meta["date_obj"] > datetime.date.today():
-            continue  # запланированная статья, ещё не публикуем
         meta["html"] = md(body)
         meta["words"] = len(re.findall(r"\w+", body))
+        if meta.get("status") == "draft":
+            DRAFTS.append(meta)  # черновик: только по скрытой ссылке /draft/slug/, без индексации
+            continue
+        if meta["date_obj"] > datetime.date.today():
+            continue  # запланированная статья, ещё не публикуем
         arts.append(meta)
     arts.sort(key=lambda a: a["date_obj"], reverse=True)
     return arts
@@ -100,7 +106,7 @@ def read_articles():
 CSS = open(os.path.join(ROOT, "static", "style.css"), encoding="utf-8").read() if os.path.exists(os.path.join(ROOT, "static", "style.css")) else ""
 
 
-def page(title, desc, body, path="/", jsonld=None, og_type="website"):
+def page(title, desc, body, path="/", jsonld=None, og_type="website", noindex=False):
     url = SITE + path
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
     return f"""<!doctype html>
@@ -110,7 +116,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{'<meta name="robots" content="noindex,nofollow">' if noindex else ''}
 <link rel="icon" href="/favicon.png">
 <meta name="yandex-verification" content="e4cd2d5e594471fc">
 <meta name="google-site-verification" content="mKwCr9eRkWvZ4j-IzNC5kxXeoQB-ydTXVXMPlgVBLmg">
@@ -269,7 +275,7 @@ def build():
 <div class="prose">{a['html']}</div>
 <div class="cta-box"><h3>Разберём вашу ситуацию за 5 минут</h3><p>Напишите, какой у вас паспорт, есть ли компания в ОАЭ и были ли отказы банков. Скажем, какой банк сейчас реально откроет счёт.</p>
 <div class="row"><a class="btn" href="{TG}">Написать в Telegram</a><a class="btn btn-ghost" href="{CAL}">Записаться на звонок</a></div></div>
-<p class="small" style="margin-top:18px">Новые разборы по банкам и визам ОАЭ выходят в нашем канале <a href="{CHANNEL}" style="color:var(--red2)">t.me/fortex_uae</a></p>
+<p class="small" style="margin-top:18px">Новые разборы по банкам и визам ОАЭ выходят в нашем канале <a href="{CHANNEL}" style="color:var(--accent)">t.me/fortex_uae</a></p>
 </div></article>
 {('<section class="sec alt"><div class="wrap"><h2 class="h2">Ещё статьи</h2><div class="grid3">' + more + '</div></div></section>') if more else ''}
 </main>"""
@@ -282,11 +288,24 @@ def build():
         open(os.path.join(OUT, "articles", a["slug"], "index.html"), "w", encoding="utf-8").write(
             page(a["title"] + " | Fortex UAE", a.get("description", ""), body, p, [ld], "article"))
 
+    # ---- черновики на одобрение ----
+    for a in DRAFTS:
+        p = f"/draft/{a['slug']}/"
+        body = f"""<main><article class="sec"><div class="wrap narrow">
+<p class="note" style="background:#FFF4D6;padding:12px 16px;border-radius:12px;color:#5A4500">Черновик на одобрение. Страница скрыта от поисковиков и не видна в списке статей.</p>
+<p class="eyebrow">{esc(a.get('topic', 'Статья'))}</p>
+<h1 class="h1">{esc(a['title'])}</h1>
+<p class="lead">{esc(a.get('description', ''))}</p>
+<div class="prose">{a['html']}</div>
+</div></article></main>"""
+        os.makedirs(os.path.join(OUT, "draft", a["slug"]), exist_ok=True)
+        open(os.path.join(OUT, "draft", a["slug"], "index.html"), "w", encoding="utf-8").write(page("Черновик: " + a["title"], a.get("description", ""), body, p, None, "article", noindex=True))
+
     # ---- sitemap, robots, llms.txt ----
     urls = [("/", datetime.date.today())] + [(f"/{pg['slug']}/", datetime.date.today()) for pg in PAGES] + [("/articles/", arts[0]["date_obj"] if arts else datetime.date.today())] + [(f"/articles/{a['slug']}/", a["date_obj"]) for a in arts]
     sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{d.isoformat()}</lastmod></url>" for u, d in urls)
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
-    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
+    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /draft/\nSitemap: {SITE}/sitemap.xml\n")
     llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. В Дубае с 2022 года. Связь: Telegram @FortexGlobal.", "",
             "## Специализация", "Сложные случаи по корпоративным счетам в банках ОАЭ: после отказов банков, со сложными лицензиями (крипта, трейдинг, нестандартная деятельность), из сложных фризон. Главные направления: корпоративные счета и рабочие визы с Emirates ID.", "",
             "## Услуги и цены", "- Корпоративный счёт: от 5 000 USD", "- Личный счёт (в т.ч. удалённо): от 1 500 USD", "- ВНЖ Virtual Work + Emirates ID (самый доступный вариант, слабее в банках): от 2 000 USD", "- Рабочая виза + Emirates ID: от 5 500 USD", "- Компания во фризоне: от 14 000 AED; на mainland: от 22 000 AED", "",
