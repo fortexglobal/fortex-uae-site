@@ -4,7 +4,7 @@
   --surface:#FFFFFF;
   --sand:#EFE7D8;      /* песок, одна полоса на странице */
   --ink:#0E1B2C;       /* ночной синий для текста */
-  --muted:#566475;
+  --muted:#3B4756;
   --line:#DCE3EA;
   --accent:#0E7A82;    /* залив */
   --accent-2:#0A6168;
@@ -28,7 +28,7 @@ img,svg{max-width:100%;height:auto;display:block}
 .display{font-size:clamp(26px,4.2vw,50px);line-height:1.08;margin:0 0 20px}
 .h1{font-size:clamp(26px,3.6vw,42px);line-height:1.12;margin:0 0 18px}
 .h2{font-size:clamp(23px,2.8vw,34px);line-height:1.16;margin:0 0 26px}
-.lead{font-size:clamp(17px,1.5vw,19px);color:#2E3D50;max-width:620px;margin:0 0 28px}
+.lead{font-size:clamp(17px,1.5vw,19px);color:#1C2836;max-width:620px;margin:0 0 28px}
 .small{font-size:14px;color:var(--muted);margin:4px 0 0}
 .row{display:flex;flex-wrap:wrap;gap:12px}
 
@@ -72,7 +72,7 @@ img,svg{max-width:100%;height:auto;display:block}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .card,.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px}
 .card h3,.case h3{margin:0 0 10px;font-size:19px;line-height:1.3}
-.card p,.case p{margin:0;color:#3A4859;font-size:15.5px}
+.card p,.case p{margin:0;color:#25313F;font-size:15.5px}
 .tag{display:inline-block;font-size:13.5px;font-weight:600;color:var(--accent);margin-bottom:10px}
 a.card{text-decoration:none;display:flex;flex-direction:column;transition:border-color .2s}
 a.card:hover{border-color:var(--accent)}
@@ -111,7 +111,7 @@ a.card:hover{border-color:var(--accent)}
 .pz:last-child::after{display:none}
 .pz em{font-style:normal;display:block;font-family:var(--head);font-weight:600;color:var(--accent);font-size:15px;margin-bottom:14px}
 .pz b{display:block;font-size:18px;margin-bottom:8px}
-.pz span{color:#3A4859;font-size:15px}
+.pz span{color:#25313F;font-size:15px}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line);padding:18px 0}
@@ -119,11 +119,11 @@ a.card:hover{border-color:var(--accent)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:4px;top:-3px;color:var(--accent);font-size:24px;transition:transform .25s}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{color:#3A4859;margin:10px 0 0}
+.faq p{color:#25313F;margin:10px 0 0}
 
 /* article / pages */
 .back{display:inline-block;color:var(--muted);text-decoration:none;font-size:14.5px;margin-bottom:24px}
-.prose{font-size:17.5px;color:#243346}
+.prose{font-size:17.5px;color:#162230}
 .prose h2{font-family:var(--head);font-weight:600;font-size:24px;letter-spacing:-.015em;margin:44px 0 12px;color:var(--ink);line-height:1.25}
 .prose h3{font-size:20px;margin:28px 0 8px;color:var(--ink)}
 .prose p{margin:0 0 16px}
@@ -228,3 +228,20 @@ main,.form-sec,.foot{position:relative;z-index:1}
     -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%);transform-origin:70% 40%}
 }
 @media (min-width:701px){.has-video .hero-mark{visibility:hidden}}
+
+/* контраст текста поверх видео: светлый ореол у текста вне карточек */
+.has-video .sec .h2,.has-video .sec .lead,.has-video .prose,.has-video .note,.has-video .faq,.has-video .hero-copy,.has-video .head-row{text-shadow:0 0 14px rgba(242,245,248,.95),0 0 3px rgba(242,245,248,.9)}
+.has-video .faq details{background:rgba(255,255,255,.72);border-bottom:0;margin-bottom:8px;padding:16px 18px;border-radius:14px}
+.has-video .facts span{color:#25313F}
+
+@media (max-width:700px){
+  /* телефон: без большой буквы F, заголовок, текст и кнопка распределены по экрану */
+  .hero-mark{display:none}
+  .hero-in{display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 64px);padding-top:24px;padding-bottom:40px}
+  .hero .display{font-size:clamp(30px,8.6vw,36px);line-height:1.12;margin-bottom:22px}
+  .hero .lead{font-size:18px;line-height:1.55;color:#121C28;margin-bottom:34px}
+  .hero .btn{padding:18px 24px;font-size:17px}
+  .bank-video{opacity:.34}
+  .has-video .hero::before{background:linear-gradient(180deg,rgba(242,245,248,.55) 0%,rgba(242,245,248,.7) 50%,rgba(242,245,248,.4) 100%)}
+}
+.btn{text-shadow:none!important}
