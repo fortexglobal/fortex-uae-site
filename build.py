@@ -119,6 +119,14 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website", noindex=Fa
 <link rel="canonical" href="{url}">{'<meta name="robots" content="noindex,nofollow">' if noindex else ''}
 <link rel="icon" href="/favicon.png">
 <meta name="yandex-verification" content="e4cd2d5e594471fc">
+<script>
+(function(m,e,t,r,i,k,a){{m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};m[i].l=1*new Date();
+for(var j=0;j<document.scripts.length;j++){{if(document.scripts[j].src===r){{return;}}}}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}})
+(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=113701535','ym');
+ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true}});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113701535" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <meta name="google-site-verification" content="mKwCr9eRkWvZ4j-IzNC5kxXeoQB-ydTXVXMPlgVBLmg">
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{esc(title)}">

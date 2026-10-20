@@ -13,6 +13,14 @@
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
+  // цели Метрики: клики в Telegram и запись на звонок
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a"); if (!a) return;
+    try {
+      if (/t\.me\/FortexGlobal/i.test(a.href)) ym(113701535, "reachGoal", "tg_click");
+      else if (/calendly\.com/i.test(a.href)) ym(113701535, "reachGoal", "call_click");
+    } catch (err) {}
+  });
   // мобильное меню
   var bt = document.querySelector(".burger"), mn = document.getElementById("mnav");
   if (bt && mn) {
@@ -39,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var r2 = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: data.toString() });
         ok = ok || r2.ok;
       } catch (err) {}
-      if (ok) { location.href = "/spasibo/"; return; }
+      if (ok) { try { ym(113701535, "reachGoal", "lead_form"); } catch (e) {} setTimeout(function () { location.href = "/spasibo/"; }, 300); return; }
       btn.disabled = false; btn.textContent = "Отправить заявку";
       msg.textContent = "Не получилось отправить. Напишите нам в Telegram: @FortexGlobal";
     });
