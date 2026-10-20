@@ -9,6 +9,12 @@
   var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
 
   function setup() {
+    // больше въездов: вопросы по очереди слева и справа, карточки статей и форма
+    Array.prototype.forEach.call(document.querySelectorAll(".faq details"), function (el, i) { if (!el.hasAttribute("data-slide")) el.setAttribute("data-slide", i % 2 ? "right" : "left"); });
+    Array.prototype.forEach.call(document.querySelectorAll(".grid3 > .card"), function (el, i) { if (!el.hasAttribute("data-slide")) { el.setAttribute("data-slide", ["left", "up", "right"][i % 3]); el.setAttribute("data-rot", ["-2", "0", "2"][i % 3]); } });
+    Array.prototype.forEach.call(document.querySelectorAll(".form-in > div, .prose > h2"), function (el, i) { if (!el.hasAttribute("data-slide") && !el.closest("[data-slide]")) el.setAttribute("data-slide", i % 2 ? "right" : "left"); });
+    Array.prototype.forEach.call(document.querySelectorAll(".prose > p, .prose > ul, .prose > ol"), function (el) { if (!el.closest("[data-slide]")) el.setAttribute("data-slide", "up"); });
+    var lf = document.querySelector(".lead-form"); if (lf && !lf.hasAttribute("data-slide")) lf.setAttribute("data-slide", "right");
     slides = Array.prototype.map.call(document.querySelectorAll("[data-slide]"), function (el) {
       var d = el.getAttribute("data-slide");
       return { el: el, dir: d === "left" ? -1 : d === "right" ? 1 : 0, rot: parseFloat(el.getAttribute("data-rot") || "0") };
@@ -33,7 +39,7 @@
   function frame() {
     ticking = false;
     var vh = window.innerHeight, vw = window.innerWidth;
-    var shift = Math.min(160, vw * 0.22);
+    var shift = Math.min(240, vw * 0.32);
 
     slides.forEach(function (s) {
       var r = s.el.getBoundingClientRect();

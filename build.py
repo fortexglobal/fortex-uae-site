@@ -125,6 +125,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 <link rel="stylesheet" href="/style.css">
 <script src="/form.js" defer></script>
 <script src="/motion.js" defer></script>
+<script src="/bank.js" defer></script>
 <meta name="theme-color" content="#F2F5F8">
 {ld}
 </head>

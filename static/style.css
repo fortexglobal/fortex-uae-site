@@ -16,7 +16,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,246,228,.95),rgba(255,246,228,0) 70%) fixed,linear-gradient(180deg,#E4EEF5 0%,#F3F5F7 60%,#EEF1F4 100%) fixed;background-color:var(--bg);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:inherit}
 img,svg{max-width:100%;height:auto;display:block}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
@@ -51,7 +51,7 @@ img,svg{max-width:100%;height:auto;display:block}
 .btn-sm{padding:10px 16px;font-size:14.5px;border-radius:11px}
 
 /* hero */
-.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#E6EFF5 0%,var(--bg) 70%)}
+.hero{position:relative;overflow:hidden}
 .hero-in{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;min-height:calc(100svh - 64px);max-height:860px;padding-top:40px;padding-bottom:56px}
 .hero-copy{position:relative;z-index:2}
 .hero-mark{position:relative;z-index:1;justify-self:center;width:min(420px,100%)}
@@ -65,7 +65,7 @@ img,svg{max-width:100%;height:auto;display:block}
 
 /* sections */
 .sec{padding:96px 0}
-.alt{background:var(--surface)}
+.alt{background:transparent}
 .sand{background:var(--sand)}
 .split{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -135,10 +135,10 @@ a.card:hover{border-color:var(--accent)}
 .cta-box{margin-top:44px;padding:30px;border-radius:var(--r);background:var(--accent-soft)}
 .cta-box h3{margin:0 0 8px;font-size:21px}
 .cta-box p{color:#2E3D50;margin:0 0 18px}
-.page-hero{background:linear-gradient(180deg,#E6EFF5 0%,var(--bg) 100%)}
+.page-hero{background:none}
 
 /* lead form */
-.form-sec{background:var(--sand)}
+.form-sec{background:rgba(239,231,216,.85)}
 .form-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .form-in .lead a{color:var(--accent);font-weight:600}
 .lead-form{background:var(--surface);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 60px -30px rgba(14,27,44,.35)}
@@ -213,3 +213,7 @@ a.card:hover{border-color:var(--accent)}
 .js .mark .g2{transform:translate(-120px,60px) rotate(-8deg);opacity:0;transition:transform 1.2s .18s cubic-bezier(.2,.8,.2,1),opacity .9s .18s}
 .js .mark.on .g1,.js .mark.on .g2{transform:none;opacity:1}
 .mark g{transform-box:fill-box;transform-origin:center}
+
+/* фон-банк: canvas под всем содержимым */
+.bank-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,.form-sec,.foot{position:relative;z-index:1}
