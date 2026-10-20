@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // мобильное меню
+  var bt = document.querySelector(".burger"), mn = document.getElementById("mnav");
+  if (bt && mn) {
+    var set = function (open) { bt.setAttribute("aria-expanded", open); mn.hidden = !open; document.documentElement.classList.toggle("menu-open", open); };
+    bt.addEventListener("click", function () { set(bt.getAttribute("aria-expanded") !== "true"); });
+    mn.addEventListener("click", function (e) { if (e.target.tagName === "A") set(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+  }
   document.querySelectorAll("form.lead-form").forEach(function (f) {
     f.page.value = location.pathname;
     f.addEventListener("submit", async function (e) {

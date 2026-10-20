@@ -138,7 +138,11 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
       <a href="/schet-v-banke-oae/">Счета</a><a href="/rezidentstvo-oae/">Резидентство</a><a href="/kompaniya-v-dubae/">Компании</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a>
     </nav>
     <a class="btn btn-sm" href="#form">Оставить заявку</a>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
   </div>
+  <nav class="mnav" id="mnav" hidden>
+    <a class="btn mnav-cta" href="#form">Оставить заявку</a><a href="/schet-v-banke-oae/">Счёт в банке ОАЭ</a><a href="/rezidentstvo-oae/">Резидентство и ВНЖ</a><a href="/kompaniya-v-dubae/">Компания в Дубае</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a><a href="{TG}">Написать в Telegram</a>
+  </nav>
 </header>
 {body}
 {FORM}
