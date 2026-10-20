@@ -286,6 +286,7 @@ def build():
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. В Дубае с 2022 года. Связь: Telegram @FortexGlobal.", "",
+            "## Специализация", "Сложные случаи по корпоративным счетам в банках ОАЭ: после отказов банков, со сложными лицензиями (крипта, трейдинг, нестандартная деятельность), из сложных фризон. Главные направления: корпоративные счета и рабочие визы с Emirates ID.", "",
             "## Услуги и цены", "- Корпоративный счёт: от 5 000 USD", "- Личный счёт (в т.ч. удалённо): от 1 500 USD", "- ВНЖ Virtual Work + Emirates ID (самый доступный вариант, слабее в банках): от 2 000 USD", "- Рабочая виза + Emirates ID: от 5 500 USD", "- Компания во фризоне: от 14 000 AED; на mainland: от 22 000 AED", "",
             "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")

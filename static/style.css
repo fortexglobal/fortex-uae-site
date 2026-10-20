@@ -289,3 +289,13 @@ main,.form-sec,.foot{position:relative;z-index:1}
 .page-hero .wrap{position:relative}
 .has-video .page-hero .h1,.has-video .page-hero .lead{text-shadow:0 0 14px rgba(242,245,248,.95),0 0 3px rgba(242,245,248,.9)}
 @media (max-width:700px){.has-video .page-hero::before{background:linear-gradient(180deg,rgba(242,245,248,.55) 0%,rgba(242,245,248,.72) 50%,rgba(242,245,248,.45) 100%)}}
+
+/* выделенные услуги */
+.svc-tag{display:inline-block;align-self:flex-start;font-size:13px;font-weight:600;background:rgba(255,255,255,.18);color:#fff;padding:5px 10px;border-radius:8px;margin-bottom:14px}
+.svc.hl2{background:#1B5E86;border-color:#1B5E86}
+.svc.hl2 p,.svc.hl2 .when{color:#E1EDF5}
+/* сложные случаи */
+.hard-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hard-list li{background:#fff;border-radius:16px;padding:20px 22px;border-left:4px solid var(--accent)}
+.hard-list b{display:block;font-size:18px;margin-bottom:4px}
+.hard-list span{color:#25313F;font-size:15.5px}
