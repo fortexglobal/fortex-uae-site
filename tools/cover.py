@@ -1,6 +1,6 @@
 """Обложка для статьи и поста в Telegram: 1280x720 PNG в фирменном стиле.
 python3 tools/cover.py <slug> "<заголовок>" "<рубрика>" [light|dark|photo]
-Результат: static/covers/<slug>.png
+Результат: static/covers/<slug>.jpg
 """
 import base64, html, os, sys
 from playwright.sync_api import sync_playwright
@@ -36,11 +36,11 @@ h1{{font-weight:800;font-size:{ '64' if len(title) < 60 else '54' }px;line-heigh
 <div class="top">{MARK}<span>FORTEX UAE</span></div>
 <div><span class="tag">{html.escape(topic)}</span><h1>{html.escape(title)}</h1></div>
 <div class="foot">fortex-uae.com · Дубай</div></div></body></html>"""
-    out = os.path.join(ROOT, "static", "covers", f"{slug}.png")
+    out = os.path.join(ROOT, "static", "covers", f"{slug}.jpg")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1280, "height": 720})
-        pg.set_content(doc); pg.wait_for_timeout(300); pg.screenshot(path=out); b.close()
+        pg.set_content(doc); pg.wait_for_timeout(300); pg.screenshot(path=out, type="jpeg", quality=86); b.close()
     return out
 
 

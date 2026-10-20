@@ -106,7 +106,7 @@ def read_articles():
 CSS = open(os.path.join(ROOT, "static", "style.css"), encoding="utf-8").read() if os.path.exists(os.path.join(ROOT, "static", "style.css")) else ""
 
 
-def page(title, desc, body, path="/", jsonld=None, og_type="website", noindex=False):
+def page(title, desc, body, path="/", jsonld=None, og_type="website", noindex=False, image=None):
     url = SITE + path
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
     return f"""<!doctype html>
@@ -124,7 +124,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website", noindex=Fa
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/img/og.jpg">
+<meta property="og:image" content="{SITE}{image or '/img/og.jpg'}">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -272,6 +272,7 @@ def build():
 <p class="eyebrow">{esc(a.get('topic', 'Статья'))}, {ru_date(a['date_obj'])}</p>
 <h1 class="h1">{esc(a['title'])}</h1>
 <p class="lead">{esc(a.get('description', ''))}</p>
+{('<img class="cover" src="' + a["cover"] + '" alt="" width="1280" height="720">') if a.get("cover") else ""}
 <div class="prose">{a['html']}</div>
 <div class="cta-box"><h3>Разберём вашу ситуацию за 5 минут</h3><p>Напишите, какой у вас паспорт, есть ли компания в ОАЭ и были ли отказы банков. Скажем, какой банк сейчас реально откроет счёт.</p>
 <div class="row"><a class="btn" href="{TG}">Написать в Telegram</a><a class="btn btn-ghost" href="{CAL}">Записаться на звонок</a></div></div>
@@ -281,12 +282,12 @@ def build():
 </main>"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a.get("description", ""),
               "datePublished": a["date_obj"].isoformat(), "dateModified": a.get("updated", a["date_obj"].isoformat()),
-              "inLanguage": "ru", "mainEntityOfPage": SITE + p, "image": SITE + "/img/og.jpg",
+              "inLanguage": "ru", "mainEntityOfPage": SITE + p, "image": SITE + a.get("cover", "/img/og.jpg"),
               "author": {"@type": "Organization", "name": "Fortex UAE", "url": SITE},
               "publisher": {"@type": "Organization", "name": "Fortex UAE", "logo": {"@type": "ImageObject", "url": SITE + "/img/mark.png"}}}
         os.makedirs(os.path.join(OUT, "articles", a["slug"]), exist_ok=True)
         open(os.path.join(OUT, "articles", a["slug"], "index.html"), "w", encoding="utf-8").write(
-            page(a["title"] + " | Fortex UAE", a.get("description", ""), body, p, [ld], "article"))
+            page(a["title"] + " | Fortex UAE", a.get("description", ""), body, p, [ld], "article", image=a.get("cover")))
 
     # ---- черновики на одобрение ----
     for a in DRAFTS:

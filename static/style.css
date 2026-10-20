@@ -299,3 +299,4 @@ main,.form-sec,.foot{position:relative;z-index:1}
 .hard-list li{background:#fff;border-radius:16px;padding:20px 22px;border-left:4px solid var(--accent)}
 .hard-list b{display:block;font-size:18px;margin-bottom:4px}
 .hard-list span{color:#25313F;font-size:15.5px}
+.cover{width:100%;height:auto;border-radius:16px;margin:0 0 28px}
