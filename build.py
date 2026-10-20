@@ -112,6 +112,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">
 <link rel="icon" href="/favicon.png">
+<meta name="yandex-verification" content="e4cd2d5e594471fc">
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
