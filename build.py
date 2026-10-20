@@ -169,7 +169,7 @@ def page(title, desc, body, path="/", jsonld=None, og_type="website"):
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
-    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. Или сразу напишите нам: <a href="{TG}">@FortexGlobal</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@FortexGlobal</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
     <input type="hidden" name="form-name" value="lead">
