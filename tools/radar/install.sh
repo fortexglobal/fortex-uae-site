@@ -5,9 +5,10 @@ R=https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/main/tools/rada
 if [ ! -s /opt/radar/github_token ]; then
   echo "Вставь токен GitHub (начинается с github_pat_) и нажми Enter:"
   read -r T < /dev/tty
-  echo "$T" > /opt/radar/github_token && chmod 600 /opt/radar/github_token
+  echo "$T" > /opt/radar/github_token && chown radar:radar /opt/radar/github_token && chmod 600 /opt/radar/github_token
 fi
 curl -fsSL "$R/content.py?$(date +%s)" -o /opt/radar/content.py
+chown radar:radar /opt/radar/github_token 2>/dev/null || true
 curl -fsSL "$R/fix7.py?$(date +%s)" -o /tmp/fix7.py
 cp /opt/radar/radar.py /opt/radar/radar.bak7
 python3 /tmp/fix7.py
