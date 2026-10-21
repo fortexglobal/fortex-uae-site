@@ -1,6 +1,71 @@
 {
- "error": "HTTP Error 400: Bad Request",
- "body": "{\"errors\":[{\"error_type\":\"invalid_parameter\",\"message\":\"No data sorting parameter specified for any metric or dimension, value: -ym:s:visits, error code: 4012\"}],\"code\":400,\"message\":\"No data sorting parameter specified for any metric or dimension, value: -ym:s:visits, error code: 4012\"}",
- "token_len": 55,
- "generated": "2026-10-21T21:17Z"
+ "generated": "2026-10-21T21:17Z",
+ "period": "последние 7 дней",
+ "totals": {
+  "визиты": 16.0,
+  "посетители": 13.0,
+  "отказы_%": 50.0,
+  "время_на_сайте_сек": 202.8125
+ },
+ "goals": {
+  "Заявка с сайта": 0.0,
+  "Клик в Telegram": 0.0,
+  "Запись на звонок": 0.0
+ },
+ "sources": [
+  {
+   "name": "Internal traffic",
+   "values": [
+    8.0,
+    6.0
+   ]
+  },
+  {
+   "name": "Direct traffic",
+   "values": [
+    8.0,
+    8.0
+   ]
+  }
+ ],
+ "source_details": [
+  {
+   "name": "fortex-uae.com",
+   "values": [
+    8.0,
+    6.0
+   ]
+  }
+ ],
+ "utm": [
+  {
+   "name": "telegram / channel",
+   "values": [
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "pages": [
+  {
+   "name": "/",
+   "values": [
+    15.0,
+    12.0
+   ]
+  },
+  {
+   "name": "/draft/mexc-ushla-iz-rossii/",
+   "values": [
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "goals_by_source": [],
+ "goal_names": [
+  "Заявка с сайта",
+  "Клик в Telegram",
+  "Запись на звонок"
+ ]
 }
