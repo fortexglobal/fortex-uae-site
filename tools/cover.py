@@ -16,6 +16,10 @@ import argparse, base64, html, os, random
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FONTS = "".join(
+    f'@font-face{{font-family:"Inter Display";font-weight:{w};src:url(data:font/otf;base64,'
+    + base64.b64encode(open(os.path.join(ROOT, "tools", "fonts", f"InterDisplay-{n}.otf"), "rb").read()).decode()
+    + ')}' for w, n in ((600, "SemiBold"), (700, "Bold"), (800, "ExtraBold")))
 MARK = '<svg viewBox="0 0 256 256"><path fill="var(--m1)" d="M52 12H228C226 44 204 68 168 68H30C30 36 38 12 52 12Z"/><path fill="var(--m2)" d="M104 90H194C192 122 172 148 136 148H88V244H30V164C30 120 62 90 104 90Z"/></svg>'
 
 
@@ -73,6 +77,7 @@ def page(w, h, title, topic, style, bg_url, scene, tg):
     real = bool(bg_url) and not scene  # настоящая картинка (нейросеть): меньше размытия и затемнения
     grad = ("180deg,rgba(14,27,44,.15) 0%,rgba(14,27,44,.25) 35%,rgba(14,27,44,.85) 100%" if real else "180deg,rgba(14,27,44,.35) 0%,rgba(14,27,44,.55) 40%,rgba(14,27,44,.92) 100%") if big else "90deg,rgba(14,27,44,.92) 0%,rgba(14,27,44,.62) 55%,rgba(14,27,44,.25) 100%"
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
+{FONTS}
 *{{box-sizing:border-box;margin:0}}
 body{{width:{w}px;height:{h}px;overflow:hidden;font-family:"Inter Display","Inter",sans-serif}}
 .c{{position:relative;width:{w}px;height:{h}px;padding:{90 if big else 72}px {80 if big else 80}px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}}

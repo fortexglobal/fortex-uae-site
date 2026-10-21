@@ -1,22 +1,27 @@
-name: AI cover background
+name: Post covers
 on:
   push:
     paths: ["covers/requests/**"]
   workflow_dispatch:
 permissions:
   contents: write
+concurrency: covers
 jobs:
-  gen:
+  covers:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate backgrounds
+      - name: Install renderer
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Generate backgrounds and render covers
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python3 tools/ai_bg.py
+        run: python3 tools/cover_job.py
       - name: Commit
         run: |
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
-          git add covers/bg || true
-          git diff --cached --quiet || (git commit -m "AI cover background [skip netlify]" && git pull --rebase && git push)
+          git add covers static/covers || true
+          git diff --cached --quiet || (git commit -m "Post covers" && git pull --rebase && git push)
