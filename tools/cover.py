@@ -70,7 +70,8 @@ def page(w, h, title, topic, style, bg_url, scene, tg):
     if style == "photo":
         inner = scene_html(scene, w, h) if (scene and not bg_url) else f'<div style="position:absolute;inset:0;background:url({bg_url}) center 35%/cover"></div>'
         bg_layer = f'<div class="bgwrap">{inner}</div>'
-    grad = "180deg,rgba(14,27,44,.35) 0%,rgba(14,27,44,.55) 40%,rgba(14,27,44,.92) 100%" if big else "90deg,rgba(14,27,44,.92) 0%,rgba(14,27,44,.62) 55%,rgba(14,27,44,.25) 100%"
+    real = bool(bg_url) and not scene  # настоящая картинка (нейросеть): меньше размытия и затемнения
+    grad = ("180deg,rgba(14,27,44,.15) 0%,rgba(14,27,44,.25) 35%,rgba(14,27,44,.85) 100%" if real else "180deg,rgba(14,27,44,.35) 0%,rgba(14,27,44,.55) 40%,rgba(14,27,44,.92) 100%") if big else "90deg,rgba(14,27,44,.92) 0%,rgba(14,27,44,.62) 55%,rgba(14,27,44,.25) 100%"
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 *{{box-sizing:border-box;margin:0}}
 body{{width:{w}px;height:{h}px;overflow:hidden;font-family:"Inter Display","Inter",sans-serif}}
@@ -78,7 +79,7 @@ body{{width:{w}px;height:{h}px;overflow:hidden;font-family:"Inter Display","Inte
 .light{{background:linear-gradient(135deg,#EAF2F7 0%,#F6F4EE 100%);color:#0E1B2C;--m1:#0E1B2C;--m2:#0E7A82}}
 .dark{{background:radial-gradient({w*.8:.0f}px {h*.8:.0f}px at 85% 30%,#123A48 0%,#0E1B2C 60%);color:#fff;--m1:#E8EEF4;--m2:#4FC3CA}}
 .photo{{color:#fff;--m1:#fff;--m2:#5CC6CC;background:#0E1B2C}}
-.bgwrap{{position:absolute;inset:-30px;filter:blur({5 if big else 4}px) brightness(1) saturate(1.1);z-index:0}}
+.bgwrap{{position:absolute;inset:-30px;filter:blur({(2 if real else 5) if big else (2 if real else 4)}px) brightness({1.25 if real else 1}) saturate(1.1);z-index:0}}
 .photo::after{{content:"";position:absolute;inset:0;background:linear-gradient({grad});z-index:1}}
 .c>.top,.c>div:not(.bgwrap):not(.mark),.c>.foot{{position:relative;z-index:2}}
 .c>.bgwrap{{position:absolute}} .c>.mark{{position:absolute}}
