@@ -14,7 +14,7 @@ def get(path, **params):
 
 
 def table(dim, metrics="ym:s:visits,ym:s:users", limit=15, d1="7daysAgo", d2="yesterday"):
-    r = get("/stat/v1/data", ids=C, metrics=metrics, dimensions=dim, date1=d1, date2=d2, limit=limit, sort="-ym:s:visits")
+    r = get("/stat/v1/data", ids=C, metrics=metrics, dimensions=dim, date1=d1, date2=d2, limit=limit, sort="-" + metrics.split(",")[0])
     return [{"name": " / ".join(str(x.get("name")) for x in row["dimensions"]), "values": row["metrics"]} for row in r.get("data", [])]
 
 
