@@ -310,6 +310,10 @@ def build():
 </div></article></main>"""
         os.makedirs(os.path.join(OUT, "draft", a["slug"]), exist_ok=True)
         open(os.path.join(OUT, "draft", a["slug"], "index.html"), "w", encoding="utf-8").write(page("Черновик: " + a["title"], a.get("description", ""), body, p, None, "article", noindex=True))
+        # будущий адрес статьи до публикации ведёт на черновик (чтобы ссылка из превью поста не давала 404)
+        os.makedirs(os.path.join(OUT, "articles", a["slug"]), exist_ok=True)
+        open(os.path.join(OUT, "articles", a["slug"], "index.html"), "w", encoding="utf-8").write(
+            f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={p}"><link rel="canonical" href="{SITE}{p}"><title>Скоро</title></head><body><a href="{p}">Статья скоро выйдет</a><script>location.replace("{p}"+location.search)</script></body></html>')
 
     # ---- sitemap, robots, llms.txt ----
     urls = [("/", datetime.date.today())] + [(f"/{pg['slug']}/", datetime.date.today()) for pg in PAGES] + [("/articles/", arts[0]["date_obj"] if arts else datetime.date.today())] + [(f"/articles/{a['slug']}/", a["date_obj"]) for a in arts]
