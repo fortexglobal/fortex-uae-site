@@ -42,4 +42,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        body = getattr(e, "read", lambda: b"")()[:500]
+        os.makedirs("stats", exist_ok=True)
+        json.dump({"error": str(e), "body": body.decode("utf-8", "replace"), "token_len": len(TOKEN),
+                   "generated": datetime.datetime.utcnow().isoformat(timespec="minutes") + "Z"},
+                  open("stats/metrika.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        print("ERROR", e)
