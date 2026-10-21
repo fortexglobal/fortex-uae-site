@@ -44,15 +44,16 @@ def status():
     return f"Реакции: {'включены' if s.get('on', True) else 'выключены'}. Сегодня {s['total']} из {DAILY}"
 
 
+ALLOWED = ("👍", "🔥", "💯", "😁")
+
+
 def pick(text):
-    if SAD_RE.search(text):
-        return ["🙏", "🤝", "👍"]
     if WIN_RE.search(text):
-        return ["🔥", "👍", "🤝"]
-    return ["👍", "🤝", "🔥"]
+        return ["🔥", "💯", "👍"]
+    return ["👍", "🔥"]
 
 
-async def maybe_react(user, chat_id, msg_id, author_id, text):
+async def maybe_react(user, chat_id, msg_id, author_id, text, emoji=None):
     s = _load()
     if not s.get("on", True) or s["total"] >= DAILY or s["chats"].get(str(chat_id), 0) >= PER_CHAT or author_id in s["users"]:
         return
@@ -62,7 +63,8 @@ async def maybe_react(user, chat_id, msg_id, author_id, text):
     h = datetime.now(DUBAI).hour
     if QUIET[0] <= h < QUIET[1]:
         await asyncio.sleep(((QUIET[1] - h) * 3600) + random.randint(300, 2400))
-    for emo in pick(text):
+    order = [emoji, "👍"] if emoji else pick(text)
+    for emo in dict.fromkeys(order):
         try:
             await user(SendReactionRequest(peer=chat_id, msg_id=msg_id, reaction=[ReactionEmoji(emoticon=emo)]))
             s = _load(); s["log"].append([int(time.time()), chat_id, msg_id, emo]); _save(s)
