@@ -1,0 +1,22 @@
+name: AI cover background
+on:
+  push:
+    paths: ["covers/requests/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate backgrounds
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python3 tools/ai_bg.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add static/covers/bg || true
+          git diff --cached --quiet || (git commit -m "AI cover background" && git pull --rebase && git push)
