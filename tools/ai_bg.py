@@ -1,5 +1,5 @@
 """Фон для обложки от нейросети через OpenRouter (запускается в GitHub Actions).
-Берёт covers/requests/<slug>.json ({"prompt": "..."}), для которых ещё нет static/covers/bg/<slug>.jpg,
+Берёт covers/requests/<slug>.json ({"prompt": "..."}), для которых ещё нет covers/bg/<slug>.jpg,
 и сохраняет картинку. Ключ: переменная окружения OPENROUTER_API_KEY.
 """
 import base64, glob, json, os, sys, urllib.request
@@ -37,7 +37,7 @@ def main():
     done = 0
     for f in sorted(glob.glob(os.path.join(ROOT, "covers", "requests", "*.json"))):
         slug = os.path.basename(f)[:-5]
-        out = os.path.join(ROOT, "static", "covers", "bg", slug + ".jpg")
+        out = os.path.join(ROOT, "covers", "bg", slug + ".jpg")
         if os.path.exists(out):
             continue
         data = gen(json.load(open(f, encoding="utf-8"))["prompt"])

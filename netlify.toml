@@ -1,4 +1,6 @@
 [build]
+  # собираем только если поменялся сам сайт (экономим кредиты Netlify)
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- build.py content static netlify netlify.toml"
   command = "python3 build.py"
   publish = "public"
   functions = "netlify/functions"
