@@ -1,0 +1,6 @@
+{
+ "error": "HTTP Error 400: Bad Request",
+ "body": "{\"errors\":[{\"error_type\":\"invalid_parameter\",\"message\":\"No data sorting parameter specified for any metric or dimension, value: -ym:s:visits, error code: 4012\"}],\"code\":400,\"message\":\"No data sorting parameter specified for any metric or dimension, value: -ym:s:visits, error code: 4012\"}",
+ "token_len": 55,
+ "generated": "2026-10-21T21:17Z"
+}
