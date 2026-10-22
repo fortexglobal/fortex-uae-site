@@ -377,7 +377,9 @@ async def mc_inbound(data):
     text = (data.get("last_input_text") or data.get("text") or "").strip()
     if not sid or not text:
         return
-    username = data.get("ig_username") or data.get("username") or data.get("name") or sid
+    uname = next((str(v) for k, v in data.items() if "username" in k.lower() and v), "")
+    username = (uname or data.get("name") or sid).lstrip("@")
+    S["mc_last_keys"] = sorted(data.keys())[:60]
     cid = "mc:" + sid
     cv = S["convs"].setdefault(cid, {"history": [], "seen": [], "uid": cid, "username": username})
     cv["uid"], cv["username"] = cid, username
@@ -387,11 +389,11 @@ async def mc_inbound(data):
     cv["history"] = cv["history"][-60:]
     if not S["enabled"] or cv.get("human"):
         save(); return
-    allowed = S["mode"] == "live" or username.lower() in [u.lower() for u in S["test_users"]]
+    allowed = S["mode"] == "live" or bool({username.lower(), sid} & {u.lower() for u in S["test_users"]})
     if not allowed:
         if cid not in S["seen_other"]:
             S["seen_other"].append(cid)
-            await CTX["notify"](f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»")
+            await CTX["notify"](f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {username}")
         save(); return
     if not cv.get("next_at"):
         cv["next_at"] = time.time() + random.randint(*DELAY)
