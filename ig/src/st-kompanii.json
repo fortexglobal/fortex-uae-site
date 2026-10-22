@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Компании",
- "status": "wait",
+ "status": "approved",
  "publish_at": "2026-10-25T19:00+04:00",
  "bg_prompt": "modern glass office towers in Dubai business district at golden hour, premium, no people, no text, no logos",
  "caption": "Серия сторис для Актуального «Компании»",
@@ -37,5 +37,6 @@
    "title": "Расскажите про бизнес",
    "body": "Чем занимаетесь и где клиенты.\n\nПодскажем зону и лицензию."
   }
- ]
+ ],
+ "approved_at": "2026-10-22T23:36+04:00"
 }
