@@ -1,0 +1,2 @@
+google/gemini-2.5-flash-image bad response: {'id': 'gen-1792692190-Pii30dJFkenctWHx5yCQ', 'error': {'message': 'Gemini blocked the request: SAFETY', 'code': 403, 'metadata': {'error_type': 'content_policy_violation', 'provider_code': 'SAFETY'}}}
+google/gemini-2.5-flash-image bad response: {'id': 'gen-1792692213-elbrI4FEJ91aNjFAuhox', 'error': {'message': 'Gemini blocked the request: SAFETY', 'code': 403, 'metadata': {'error_type': 'content_policy_violation', 'provider_code': 'SAFETY'}}}
