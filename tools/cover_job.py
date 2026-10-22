@@ -25,6 +25,9 @@ def main():
             req.pop("new_bg"); json.dump(req, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         if not os.path.exists(bg) and req.get("prompt"):
             data = ai_bg.gen(req["prompt"])
+            if not data:  # модель отказала (например, из-за документов в описании): берём нейтральную сцену
+                data = ai_bg.gen(req.get("fallback_prompt") or "modern Dubai business district at golden hour, glass towers, "
+                                 "a laptop and coffee on a desk in the foreground, calm premium mood")
             if data:
                 os.makedirs(os.path.dirname(bg), exist_ok=True)
                 open(bg, "wb").write(data)
