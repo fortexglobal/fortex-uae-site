@@ -111,7 +111,7 @@ def slide_html(s, i, n, bg_url):
         inner = f'{head}<h2>{E(s["title"])}</h2><div class="cols">{cols}</div>'
     else:  # cta
         inner = f'<div class="bar"></div><h2 style="font-size:84px">{E(s["title"])}</h2><div class="body">{md(s.get("body", ""))}</div>' \
-                f'<div class="btn">Telegram @Fortex_private</div><div class="save">{"Или ответьте на эту сторис" if STORY["on"] else "Сохраните, чтобы не потерять"}</div>'
+                f'<div class="btn">Telegram @Fortex_Dubai</div><div class="save">{"Или ответьте на эту сторис" if STORY["on"] else "Сохраните, чтобы не потерять"}</div>'
     return f'<div class="s {theme}"><div class="wm">{MARK}</div>{top}<div class="mid">{inner}</div>{foot}</div>'
 
 

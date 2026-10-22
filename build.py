@@ -10,7 +10,7 @@ import html, json, os, re, shutil, datetime
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 SITE = "https://fortex-uae.com"
-TG = "https://t.me/Fortex_private"
+TG = "https://t.me/Fortex_Dubai"
 CHANNEL = "https://t.me/fortex_uae"
 INSTAGRAM = "https://www.instagram.com/fortex__uae/"
 _TG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6l19.2-7.4c.9-.3 1.7.2 1.4 1.4z"/></svg>'
@@ -177,7 +177,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
       <p class="muted">Банковские счета и финансовая инфраструктура в ОАЭ. Направление компании Fortex Global, Дубай.</p>
     </div>
     <div class="foot-links">
-      <a href="{TG}">Telegram @Fortex_private</a>
+      <a href="{TG}">Telegram @Fortex_Dubai</a>
       <a href="{CHANNEL}">Канал Fortex UAE</a>
       <a href="{CAL}">Записаться на звонок</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
@@ -195,7 +195,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
-    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@Fortex_private</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
     {SOCIAL}
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
@@ -274,7 +274,7 @@ def build():
     os.makedirs(os.path.join(OUT, "privacy"), exist_ok=True)
     priv = f"""<main><section class="sec"><div class="wrap narrow"><div class="prose">
 <h1 class="h1">Политика конфиденциальности</h1>
-<p>Fortex UAE (направление компании Fortex Global, Дубай, ОАЭ). Связь: {EMAIL}, Telegram @Fortex_private.</p>
+<p>Fortex UAE (направление компании Fortex Global, Дубай, ОАЭ). Связь: {EMAIL}, Telegram @Fortex_Dubai.</p>
 <h2>Какие данные мы получаем</h2>
 <p>Имя, контакт в Telegram или телефон и описание задачи, которые вы оставляете в форме на сайте или пишете нам в Telegram и Instagram. Переписку в директе Instagram @fortex__uae мы получаем через официальный API Instagram.</p>
 <h2>Зачем</h2>
@@ -282,7 +282,7 @@ def build():
 <h2>Передача третьим лицам</h2>
 <p>Мы не продаём и не передаём ваши данные третьим лицам, кроме сервисов, без которых работа невозможна (хостинг сайта, Telegram, Instagram, сервис нейросети для подготовки ответа), и банков или госорганов ОАЭ только с вашего согласия в рамках услуги.</p>
 <h2>Хранение и удаление</h2>
-<p>Храним данные, пока это нужно для общения и оказания услуги. Чтобы удалить свои данные, напишите на {EMAIL} или в Telegram @Fortex_private. Удалим в течение 30 дней.</p>
+<p>Храним данные, пока это нужно для общения и оказания услуги. Чтобы удалить свои данные, напишите на {EMAIL} или в Telegram @Fortex_Dubai. Удалим в течение 30 дней.</p>
 <h2 id="en">Privacy Policy (English)</h2>
 <p>Fortex UAE (a business line of Fortex Global, Dubai, UAE). Contact: {EMAIL}.</p>
 <p><b>Data we receive:</b> your name, contact (Telegram or phone) and request details that you submit via the website form or send us in Telegram or Instagram Direct (@fortex__uae). Instagram messages are received via the official Instagram API.</p>
@@ -296,7 +296,7 @@ def build():
     # ---- thank you ----
     os.makedirs(os.path.join(OUT, "spasibo"), exist_ok=True)
     open(os.path.join(OUT, "spasibo", "index.html"), "w", encoding="utf-8").write(page("Заявка отправлена | Fortex UAE", "Спасибо, мы свяжемся с вами в Telegram.",
-        f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Спасибо, заявка отправлена</h1><p class='lead'>Свяжемся с вами в Telegram в ближайшее время. Если срочно, напишите сами: <a href='{TG}'>@Fortex_private</a></p><a class='btn' href='/'>На главную</a></div></section></main>", "/spasibo/"))
+        f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Спасибо, заявка отправлена</h1><p class='lead'>Свяжемся с вами в Telegram в ближайшее время. Если срочно, напишите сами: <a href='{TG}'>@Fortex_Dubai</a></p><a class='btn' href='/'>На главную</a></div></section></main>", "/spasibo/"))
 
     # ---- articles ----
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
@@ -354,7 +354,7 @@ def build():
     sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{d.isoformat()}</lastmod></url>" for u, d in urls)
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /draft/\nSitemap: {SITE}/sitemap.xml\n")
-    llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. В Дубае с 2022 года. Связь: Telegram @Fortex_private.", "",
+    llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. В Дубае с 2022 года. Связь: Telegram @Fortex_Dubai.", "",
             "## Специализация", "Сложные случаи по корпоративным счетам в банках ОАЭ: после отказов банков, со сложными лицензиями (крипта, трейдинг, нестандартная деятельность), из сложных фризон. Главные направления: корпоративные счета и рабочие визы с Emirates ID.", "",
             "## Услуги и цены", "- Корпоративный счёт: от 5 000 USD", "- Личный счёт (в т.ч. удалённо): от 1 500 USD", "- ВНЖ Virtual Work + Emirates ID (самый доступный вариант, слабее в банках): от 2 000 USD", "- Рабочая виза + Emirates ID: от 5 500 USD", "- Компания во фризоне: от 14 000 AED; на mainland: от 22 000 AED", "",
             "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
