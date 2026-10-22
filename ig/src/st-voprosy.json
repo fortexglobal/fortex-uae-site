@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Вопросы",
- "status": "wait",
+ "status": "approved",
  "publish_at": "2026-10-28T19:00+04:00",
  "bg_prompt": "calm premium Dubai cafe terrace with city view in the evening, warm lights, no people, no text",
  "caption": "Серия сторис для Актуального «Вопросы»",
@@ -42,5 +42,6 @@
    "title": "Остался вопрос?",
    "body": "Напишите. Ответим за 5 минут."
   }
- ]
+ ],
+ "approved_at": "2026-10-22T23:37+04:00"
 }
