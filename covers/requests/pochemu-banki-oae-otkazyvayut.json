@@ -2,5 +2,6 @@
  "prompt": "a quiet modern bank interior in Dubai at dusk, marble floor, empty reception desk, warm soft lights, calm serious mood",
  "title": "Почему банки ОАЭ отказывают",
  "topic": "Банки",
- "new_bg": true
+ "new_bg": true,
+ "retry": 2
 }

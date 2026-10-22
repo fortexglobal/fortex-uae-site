@@ -12,6 +12,13 @@ STYLE = ("Photorealistic editorial photo, cinematic soft light, shallow depth of
          "no recognizable people or faces, vertical composition with empty space for a headline. Subject: ")
 
 
+def _log(msg):
+    print(msg)
+    os.makedirs(os.path.join(ROOT, "covers"), exist_ok=True)
+    with open(os.path.join(ROOT, "covers", "last_errors.txt"), "a", encoding="utf-8") as f:
+        f.write(msg + "\n")
+
+
 def gen(prompt):
     for m in MODELS:
         body = json.dumps({"model": m, "modalities": ["image", "text"],
@@ -25,9 +32,9 @@ def gen(prompt):
             if imgs:
                 url = imgs[0]["image_url"]["url"]
                 return base64.b64decode(url.split(",", 1)[1])
-            print(m, "no image:", str(r)[:300])
+            _log(f"{m} no image: {str(r)[:400]}")
         except Exception as e:
-            print(m, "error:", getattr(e, "read", lambda: b"")()[:300] or e)
+            _log(f"{m} error: {getattr(e, 'read', lambda: b'')()[:400] or e}")
     return None
 
 
