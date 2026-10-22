@@ -1,0 +1,54 @@
+{
+ "format": "stories",
+ "highlight": "Визы",
+ "status": "wait",
+ "publish_at": "2026-10-24T19:00+04:00",
+ "bg_prompt": "Dubai skyline at sunrise from a premium apartment balcony, warm golden light, calm, no people, no text",
+ "caption": "Серия сторис для Актуального «Визы»",
+ "slides": [
+  {
+   "type": "cover",
+   "tag": "Визы",
+   "title": "Резидентство ОАЭ и Emirates ID",
+   "accent": "Emirates ID"
+  },
+  {
+   "type": "list",
+   "title": "Что даёт Emirates ID",
+   "items": [
+    "Верификация на биржах",
+    "Местные права",
+    "Аренда жилья на год",
+    "Въезд и выезд без визаранов"
+   ]
+  },
+  {
+   "type": "text",
+   "title": "Virtual Work",
+   "body": "Живёте в Дубае, работаете удалённо на компанию в другой стране.\n\n**7–10 дней. От 2 000 USD.**"
+  },
+  {
+   "type": "text",
+   "title": "Рабочая виза",
+   "body": "Официальная работа в компании ОАЭ. **Понятная история для банков.**\n\nОт 5 500 USD."
+  },
+  {
+   "type": "text",
+   "title": "Плюс к рабочей визе",
+   "body": "Счёт **Emirates NBD с кредитной картой** без депозита.\n\nБанк знает наши компании."
+  },
+  {
+   "type": "list",
+   "title": "Как выбрать",
+   "items": [
+    "Нужен статус: **Virtual Work**",
+    "Нужен сильный банк: **рабочая виза**"
+   ]
+  },
+  {
+   "type": "cta",
+   "title": "Подберём визу под вас",
+   "body": "Напишите, где живёте и зачем нужен ВНЖ."
+  }
+ ]
+}

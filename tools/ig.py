@@ -31,8 +31,25 @@ def wait_ready(cid):
     return False
 
 
+def publish_stories(imgs):
+    ids = []
+    for u in imgs:
+        c = call("POST", "me/media", image_url=u, media_type="STORIES")
+        if "id" not in c:
+            return {"error": c, "done": ids}
+        wait_ready(c["id"])
+        p = call("POST", "me/media_publish", creation_id=c["id"])
+        if "id" not in p:
+            return {"error": p, "done": ids}
+        ids.append(p["id"])
+        time.sleep(3)
+    return {"id": ids[0] if ids else "", "ids": ids, "permalink": "https://www.instagram.com/stories/fortex__uae/"}
+
+
 def publish(item):
     imgs = item["images"]
+    if item.get("format") == "stories":
+        return publish_stories(imgs)
     if len(imgs) == 1:
         c = call("POST", "me/media", image_url=imgs[0], caption=item["caption"])
     else:
@@ -70,7 +87,7 @@ def main():
                 from datetime import datetime, timezone
                 if datetime.fromisoformat(item["publish_at"]) > datetime.now(timezone.utc):
                     continue
-                if any(x.get("scheduled") for x in out["published"]):
+                if any(x.get("scheduled") == item.get("format", "carousel") for x in out["published"]):
                     continue
             item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]][:10]
             res = publish(item)
@@ -78,7 +95,7 @@ def main():
             item.update(status="published" if "id" in res else "error", result=res,
                         published_at=time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
             json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-            out["published"].append({"slug": slug, "scheduled": bool(item.get("publish_at")), **res})
+            out["published"].append({"slug": slug, "scheduled": item.get("format", "carousel") if item.get("publish_at") else "", **res})
     json.dump(out, open(os.path.join(ROOT, "ig", "status.json"), "w"), ensure_ascii=False, indent=1)
     print(json.dumps(out, ensure_ascii=False)[:800])
 

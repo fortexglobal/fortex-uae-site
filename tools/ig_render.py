@@ -18,6 +18,9 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from cover import FONTS, MARK  # noqa: E402
 
 W, H = 1080, 1350
+STORY = {"on": False}
+# сторис 1080x1920: сверху и снизу безопасные поля под интерфейс Instagram
+STORY_CSS = """body{height:1920px}.s{height:1920px;padding:250px 88px 330px}.cover h1{font-size:112px}h2{font-size:92px}.body{font-size:52px}li{font-size:46px}.stat{font-size:170px}"""
 E = html.escape
 
 CSS = FONTS + """
@@ -78,7 +81,7 @@ def slide_html(s, i, n, bg_url):
     if kind == "case":
         theme = "navy"
     dots = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
-    swipe = "Листайте →" if i < n - 1 else "@fortex__uae"
+    swipe = ("Дальше →" if STORY["on"] else "Листайте →") if i < n - 1 else "@fortex__uae"
     top = f'<div class="top">{MARK}<span>FORTEX UAE</span><span class="pg">{i + 1}/{n}</span></div>'
     foot = f'<div class="foot"><div class="dots">{dots}</div><span class="sw">{swipe}</span></div>'
     if kind == "cover":
@@ -104,7 +107,7 @@ def slide_html(s, i, n, bg_url):
         inner = f'{head}<h2>{E(s["title"])}</h2><div class="cols">{cols}</div>'
     else:  # cta
         inner = f'<div class="bar"></div><h2 style="font-size:84px">{E(s["title"])}</h2><div class="body">{md(s.get("body", ""))}</div>' \
-                f'<div class="btn">Telegram @FortexGlobal</div><div class="save">Сохраните, чтобы не потерять</div>'
+                f'<div class="btn">Telegram @FortexGlobal</div><div class="save">{"Или ответьте на эту сторис" if STORY["on"] else "Сохраните, чтобы не потерять"}</div>'
     return f'<div class="s {theme}"><div class="wm">{MARK}</div>{top}<div class="mid">{inner}</div>{foot}</div>'
 
 
@@ -126,7 +129,7 @@ def render_one(slug, src, browser):
             open(bgp, "wb").write(data)
             Image.open(bgp).convert("RGB").save(bgp, "JPEG", quality=90)
     bg_url = ("data:image/jpeg;base64," + base64.b64encode(open(bgp, "rb").read()).decode()) if os.path.exists(bgp) else ""
-    h = hashlib.md5((json.dumps(src["slides"], sort_keys=True, ensure_ascii=False) +
+    h = hashlib.md5((src.get("format", "") + json.dumps(src["slides"], sort_keys=True, ensure_ascii=False) +
                      str(os.path.exists(bgp) and os.path.getsize(bgp)) + CSS[-3000:]).encode()).hexdigest()[:10]
     out_dir = os.path.join(ROOT, "ig", slug)
     meta_p = os.path.join(out_dir, "render.json")
@@ -136,9 +139,12 @@ def render_one(slug, src, browser):
     for old in glob.glob(os.path.join(out_dir, "*.jpg")):
         os.remove(old)
     files, n = [], len(src["slides"])
+    story = src.get("format") == "stories"
+    STORY["on"] = story
+    css = CSS + (STORY_CSS if story else "")
     for i, s in enumerate(src["slides"]):
-        pg = browser.new_page(viewport={"width": W, "height": H})
-        pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{slide_html(s, i, n, bg_url)}</body></html>')
+        pg = browser.new_page(viewport={"width": W, "height": 1920 if story else H})
+        pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{slide_html(s, i, n, bg_url)}</body></html>')
         pg.wait_for_timeout(250)
         f = f"{h}-{i + 1}.jpg"
         pg.screenshot(path=os.path.join(out_dir, f), type="jpeg", quality=90)
