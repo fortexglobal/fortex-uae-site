@@ -109,6 +109,8 @@ def next_publish_text():
 
 async def on_button(ev):
     action, slug = ev.data.decode().split(":", 1)
+    if action in ("cigok", "cigfix"):
+        return await ig_button(ev, action, slug)
     if action == "cok":
         p, sha = await load_post(slug)
         if not p:
@@ -219,6 +221,8 @@ async def maybe_handle(ev, text):
         PENDING[ev.sender_id] = slug
         return True
     try:
+        if slug.startswith("ig:"):
+            return await ig_revise(ev, slug[3:], text) or True
         await revise(ev, slug, text)
     except Exception as e:
         log.exception("revise")
@@ -293,3 +297,117 @@ async def scheduler():
         except Exception:
             log.exception("scheduler")
         await asyncio.sleep(60)
+
+
+
+# ===== Instagram: карусели на утверждение =====
+# ig/src/<slug>.json {"caption","slides":[...],"status": wait|approved|published, "bg_prompt"}
+# ig/<slug>/render.json {"hash","files"}; рисует и публикует GitHub Actions (workflow instagram.yml)
+
+def ig_kb(slug):
+    return json.dumps({"inline_keyboard": [[{"text": "✅ Утверждаю", "callback_data": f"cigok:{slug}"[:64]},
+                                            {"text": "✏️ Доработать", "callback_data": f"cigfix:{slug}"[:64]}]]})
+
+
+async def send_ig_preview(slug, note=None):
+    oid = CTX["owner_id"]()
+    raw, _ = await gh_get(f"ig/src/{slug}.json")
+    meta, _ = await gh_get(f"ig/{slug}/render.json")
+    if not raw or not meta:
+        return await tg("sendMessage", {"chat_id": oid, "text": f"Карусель {slug} ещё не готова"})
+    src, files = json.loads(raw), json.loads(meta)["files"]
+    if note:
+        await tg("sendMessage", {"chat_id": oid, "text": note})
+    media, up = [], {}
+    for i, f in enumerate(files[:10]):
+        img, _ = await gh_get(f"ig/{slug}/{f}")
+        up[f"p{i}"] = (f, img, "image/jpeg")
+        media.append({"type": "photo", "media": f"attach://p{i}"})
+    await tg("sendMediaGroup", {"chat_id": oid, "media": json.dumps(media)}, up)
+    await tg("sendMessage", {"chat_id": oid, "text": "Подпись в Instagram:\n\n" + src.get("caption", ""), "reply_markup": ig_kb(slug)})
+
+
+async def ig_wait_published(slug, minutes=15):
+    for _ in range(minutes * 2):
+        await asyncio.sleep(30)
+        raw, _ = await gh_get(f"ig/src/{slug}.json")
+        src = json.loads(raw) if raw else {}
+        if src.get("status") == "published":
+            link = (src.get("result") or {}).get("permalink", "")
+            return await tg("sendMessage", {"chat_id": CTX["owner_id"](), "text": f"Вышло в Instagram ✅\n{link}"})
+        if src.get("status") == "error":
+            return await tg("sendMessage", {"chat_id": CTX["owner_id"](), "text": f"Instagram не принял карусель {slug}: {str(src.get('result'))[:300]}"})
+    await tg("sendMessage", {"chat_id": CTX["owner_id"](), "text": f"Карусель {slug} пока не вышла, проверю позже"})
+
+
+async def ig_button(ev, action, slug):
+    if action == "cigok":
+        raw, sha = await gh_get(f"ig/src/{slug}.json")
+        if not raw:
+            return await ev.answer("Карусель не найдена", alert=True)
+        src = json.loads(raw)
+        if src.get("status") == "published":
+            return await ev.answer("Уже опубликована")
+        src["status"] = "approved"; src["approved_at"] = datetime.now(DUBAI).isoformat(timespec="minutes")
+        await gh_put(f"ig/src/{slug}.json", json.dumps(src, ensure_ascii=False, indent=1), sha, f"IG approved: {slug}")
+        await tg("editMessageReplyMarkup", {"chat_id": ev.chat_id, "message_id": ev.message_id,
+                                            "reply_markup": json.dumps({"inline_keyboard": []})})
+        await ev.answer("Утверждено ✅")
+        await ev.respond("✅ Утверждено. Публикую в Instagram, это пара минут")
+        asyncio.get_event_loop().create_task(ig_wait_published(slug))
+    else:
+        PENDING[ev.sender_id] = "ig:" + slug
+        await ev.answer()
+        await ev.respond("Надиктуй голосовым или напиши, что поправить в карусели. Можно про слайды, подпись или фото на обложке")
+
+
+SYSTEM_IG = """Ты редактор Instagram Fortex UAE (Дубай: счета в банках ОАЭ для владельцев российского паспорта, сложные случаи, рабочие визы, ВНЖ, компании).
+Тебе дают карусель в JSON (caption и slides) и правки владельца (часто расшифровка голосового). Внеси ровно эти правки, остальное не трогай.
+Не выдумывай факты, цены и кейсы. Без длинных тире (— и –), без слова «профиль». Текст на слайде короткий: заголовок до 35 знаков, body до 160 знаков. **жирное** выделяет золотом.
+Типы слайдов: cover {tag,title,accent}, text {title,body}, list {title,items}, case {title,stat,body}, compare {title,cols:[{h,items}]}, cta {title,body}. Первый слайд cover, последний cta, всего до 10.
+Ответь строго JSON: {"caption": "...", "slides": [...], "new_picture": false, "picture_prompt": "<если нужна новая фотография на обложку: английское описание сцены без текста, логотипов и лиц, иначе пусто>", "summary": "<что поменял, коротко>"}"""
+
+
+async def llm_json(system, user):
+    async with httpx.AsyncClient(timeout=240) as c:
+        for m in EDIT_MODELS:
+            try:
+                r = await c.post("https://openrouter.ai/api/v1/chat/completions",
+                                 headers={"Authorization": f"Bearer {CTX['openrouter_key']}", "Content-Type": "application/json",
+                                          "HTTP-Referer": SITE, "X-Title": "Fortex Content"},
+                                 json={"model": m, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                                       "temperature": 0.2, "max_tokens": 8000, "response_format": {"type": "json_object"}})
+                if r.status_code != 200:
+                    continue
+                mm = re.search(r"\{.*\}", r.json()["choices"][0]["message"]["content"], re.S)
+                if mm:
+                    return json.loads(mm.group(0))
+            except Exception as e:
+                log.warning("llm_json %s: %s", m, e)
+    return None
+
+
+async def ig_revise(ev, slug, instruction):
+    await ev.respond("Принял, правлю…")
+    raw, sha = await gh_get(f"ig/src/{slug}.json")
+    src = json.loads(raw)
+    res = await llm_json(SYSTEM_IG, "КАРУСЕЛЬ:\n" + json.dumps({"caption": src["caption"], "slides": src["slides"]}, ensure_ascii=False, indent=1)
+                         + "\n\nПРАВКИ:\n" + instruction)
+    if not res or not res.get("slides"):
+        PENDING[ev.sender_id] = "ig:" + slug
+        return await ev.respond("Не получилось внести правки, сформулируй ещё раз")
+    _, meta_sha = await gh_get(f"ig/{slug}/render.json")
+    src.update(caption=res.get("caption") or src["caption"], slides=res["slides"], status="wait")
+    if res.get("new_picture"):
+        src["new_bg"] = True
+        if res.get("picture_prompt"):
+            src["bg_prompt"] = res["picture_prompt"]
+    src.setdefault("edits", []).append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "what": instruction[:500]})
+    await gh_put(f"ig/src/{slug}.json", json.dumps(src, ensure_ascii=False, indent=1), sha, f"IG edit: {slug}")
+    await ev.respond("Перерисовываю слайды, пара минут…")
+    for _ in range(40):
+        await asyncio.sleep(15)
+        _, s2 = await gh_get(f"ig/{slug}/render.json")
+        if s2 and s2 != meta_sha:
+            break
+    await send_ig_preview(slug, "Поправил: " + (res.get("summary") or "готово"))

@@ -1,10 +1,11 @@
-"""Instagram: проверка токена и публикация каруселей/постов из ig/queue/*.json (в GitHub Actions).
-Файл очереди: {"caption": "...", "images": ["https://fortex-uae.com/ig/<slug>/1.jpg", ...], "status": "approved"}
+"""Instagram: проверка токена и публикация утверждённых каруселей ig/src/*.json (в GitHub Actions).
+Картинки берутся из ig/<slug>/render.json и отдаются Instagram по ссылкам raw.githubusercontent.com.
 После публикации: status=published, permalink. Токен: секрет IG_TOKEN."""
 import glob, json, os, sys, time, urllib.parse, urllib.request
 
 T = os.environ.get("IG_TOKEN", "")
 API = "https://graph.instagram.com/v21.0"
+RAW = "https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/main"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -58,15 +59,19 @@ def main():
     me = call("GET", "me", fields="user_id,username,account_type,media_count")
     out = {"checked": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "me": me, "published": []}
     if "error" not in me:
-        for f in sorted(glob.glob(os.path.join(ROOT, "ig", "queue", "*.json"))):
+        for f in sorted(glob.glob(os.path.join(ROOT, "ig", "src", "*.json"))):
+            slug = os.path.basename(f)[:-5]
             item = json.load(open(f, encoding="utf-8"))
-            if item.get("status") != "approved":
+            meta = os.path.join(ROOT, "ig", slug, "render.json")
+            if item.get("status") != "approved" or not os.path.exists(meta):
                 continue
+            item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]][:10]
             res = publish(item)
+            item.pop("images")
             item.update(status="published" if "id" in res else "error", result=res,
                         published_at=time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
             json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-            out["published"].append({"file": os.path.basename(f), **res})
+            out["published"].append({"slug": slug, **res})
     json.dump(out, open(os.path.join(ROOT, "ig", "status.json"), "w"), ensure_ascii=False, indent=1)
     print(json.dumps(out, ensure_ascii=False)[:800])
 

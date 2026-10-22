@@ -1,7 +1,7 @@
-name: Instagram publish
+name: Instagram
 on:
   push:
-    paths: ["ig/queue/**"]
+    paths: ["ig/src/**"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,13 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install renderer
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Render slides
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python3 tools/ig_render.py
+      - name: Commit slides
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add ig
+          git diff --cached --quiet || (git commit -m "Instagram slides" && git pull --rebase && git push)
       - name: Publish approved
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: python3 tools/ig.py
-      - name: Commit
+      - name: Commit status
         run: |
-          git config user.name "Claude"
-          git config user.email "noreply@anthropic.com"
           git add ig
           git diff --cached --quiet || (git commit -m "Instagram status" && git pull --rebase && git push)
