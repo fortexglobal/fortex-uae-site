@@ -3,6 +3,8 @@ on:
   push:
     paths: ["ig/src/**"]
   workflow_dispatch:
+  schedule:
+    - cron: "7 15 * * *"
 permissions:
   contents: write
 concurrency: instagram

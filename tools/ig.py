@@ -65,13 +65,20 @@ def main():
             meta = os.path.join(ROOT, "ig", slug, "render.json")
             if item.get("status") != "approved" or not os.path.exists(meta):
                 continue
+            # publish_at (ISO с часовым поясом, напр. 2026-10-26T19:07+04:00): не раньше этого времени, по одному за запуск
+            if item.get("publish_at"):
+                from datetime import datetime, timezone
+                if datetime.fromisoformat(item["publish_at"]) > datetime.now(timezone.utc):
+                    continue
+                if any(x.get("scheduled") for x in out["published"]):
+                    continue
             item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]][:10]
             res = publish(item)
             item.pop("images")
             item.update(status="published" if "id" in res else "error", result=res,
                         published_at=time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
             json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-            out["published"].append({"slug": slug, **res})
+            out["published"].append({"slug": slug, "scheduled": bool(item.get("publish_at")), **res})
     json.dump(out, open(os.path.join(ROOT, "ig", "status.json"), "w"), ensure_ascii=False, indent=1)
     print(json.dumps(out, ensure_ascii=False)[:800])
 
