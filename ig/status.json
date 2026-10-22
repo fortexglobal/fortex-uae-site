@@ -1,17 +1,24 @@
 {
- "checked": "2026-10-22T19:13Z",
+ "checked": "2026-10-22T19:28Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 0,
+  "media_count": 4,
   "id": "28276626788683589"
  },
  "published": [
   {
-   "slug": "ig-kak-rabotaem",
-   "id": "18139441540724206",
-   "permalink": "https://www.instagram.com/p/DeztXN-Gqpc/"
+   "slug": "ig-schet-posle-otkaza",
+   "scheduled": "",
+   "id": "17952692406289535",
+   "permalink": "https://www.instagram.com/p/DezvGj4CRZw/"
+  },
+  {
+   "slug": "ig-viza-ili-virtual-work",
+   "scheduled": "",
+   "id": "18180558328436527",
+   "permalink": "https://www.instagram.com/p/DezvLA0Cct6/"
   }
  ]
 }

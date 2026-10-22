@@ -50,6 +50,11 @@
    "body": "Не тратьте попытки впустую.\n\nОпишите ситуацию, подскажем, какой банк реален."
   }
  ],
- "status": "approved",
- "approved_at": "2026-10-22T23:03+04:00"
+ "status": "published",
+ "approved_at": "2026-10-22T23:03+04:00",
+ "result": {
+  "id": "17952692406289535",
+  "permalink": "https://www.instagram.com/p/DezvGj4CRZw/"
+ },
+ "published_at": "2026-10-22T19:29Z"
 }

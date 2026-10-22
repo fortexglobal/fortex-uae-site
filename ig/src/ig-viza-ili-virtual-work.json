@@ -60,6 +60,11 @@
    "body": "Напишите, где живёте и зачем нужен ВНЖ.\n\nПодскажем, что выгоднее."
   }
  ],
- "status": "approved",
- "approved_at": "2026-10-22T23:03+04:00"
+ "status": "published",
+ "approved_at": "2026-10-22T23:03+04:00",
+ "result": {
+  "id": "18180558328436527",
+  "permalink": "https://www.instagram.com/p/DezvLA0Cct6/"
+ },
+ "published_at": "2026-10-22T19:30Z"
 }
