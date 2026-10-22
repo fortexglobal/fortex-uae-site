@@ -6,7 +6,7 @@ import base64, glob, json, os, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEY = os.environ.get("OPENROUTER_API_KEY", "")
-MODELS = ["google/gemini-2.5-flash-image", "google/gemini-2.5-flash-image-preview"]
+MODELS = ["google/gemini-2.5-flash-image", "google/gemini-3-pro-image-preview", "google/gemini-2.5-flash-image"]
 STYLE = ("Photorealistic editorial photo, cinematic soft light, shallow depth of field, calm premium mood, "
          "muted teal and navy tones with warm highlights, no text, no letters, no logos, no watermarks, "
          "no recognizable people or faces, vertical composition with empty space for a headline. Subject: ")
@@ -28,6 +28,9 @@ def gen(prompt):
             "HTTP-Referer": "https://fortex-uae.com", "X-Title": "Fortex covers"})
         try:
             r = json.load(urllib.request.urlopen(req, timeout=180))
+            if "choices" not in r:
+                _log(f"{m} bad response: {str(r)[:400]}")
+                continue
             imgs = r["choices"][0]["message"].get("images") or []
             if imgs:
                 url = imgs[0]["image_url"]["url"]

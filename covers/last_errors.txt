@@ -1,8 +1,0 @@
-google/gemini-2.5-flash-image error: 'choices'
-google/gemini-2.5-flash-image-preview error: b'{"error":{"message":"google/gemini-2.5-flash-image-preview is no longer available on OpenRouter: no provider serves this model anymore. See available models at https://openrouter.ai/models","code":404},"user_id":"user_3KvYtlEcV37G4mZWebxzXeks8aP"}'
-google/gemini-2.5-flash-image error: 'choices'
-google/gemini-2.5-flash-image-preview error: b'{"error":{"message":"google/gemini-2.5-flash-image-preview is no longer available on OpenRouter: no provider serves this model anymore. See available models at https://openrouter.ai/models","code":404},"user_id":"user_3KvYtlEcV37G4mZWebxzXeks8aP"}'
-google/gemini-2.5-flash-image error: 'choices'
-google/gemini-2.5-flash-image-preview error: b'{"error":{"message":"google/gemini-2.5-flash-image-preview is no longer available on OpenRouter: no provider serves this model anymore. See available models at https://openrouter.ai/models","code":404},"user_id":"user_3KvYtlEcV37G4mZWebxzXeks8aP"}'
-google/gemini-2.5-flash-image error: 'choices'
-google/gemini-2.5-flash-image-preview error: b'{"error":{"message":"google/gemini-2.5-flash-image-preview is no longer available on OpenRouter: no provider serves this model anymore. See available models at https://openrouter.ai/models","code":404},"user_id":"user_3KvYtlEcV37G4mZWebxzXeks8aP"}'
