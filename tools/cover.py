@@ -50,7 +50,7 @@ def scene_html(name, w, h):
 <div style="position:absolute;left:50px;bottom:60px;font:600 38px Inter;letter-spacing:.12em;color:#1b1b1b">4532 •••• •••• 7781</div></div>
 <div style="position:absolute;right:8%;top:30%;width:520px;height:600px;border-radius:30px;background:#F4F7FA;transform:rotate(8deg);padding:40px;font:600 26px Inter;color:#0E1B2C">
 <div style="font-size:22px;color:#6a7685">Balance</div><div style="font-size:60px;margin:10px 0 30px">AED 248,500</div>
-<div style="height:14px;background:#0E7A82;border-radius:7px;width:70%;margin:18px 0"></div><div style="height:14px;background:#cfd8e0;border-radius:7px;width:90%;margin:18px 0"></div><div style="height:14px;background:#cfd8e0;border-radius:7px;width:55%;margin:18px 0"></div></div></div>'''
+<div style="height:14px;background:#C9A24B;border-radius:7px;width:70%;margin:18px 0"></div><div style="height:14px;background:#cfd8e0;border-radius:7px;width:90%;margin:18px 0"></div><div style="height:14px;background:#cfd8e0;border-radius:7px;width:55%;margin:18px 0"></div></div></div>'''
     if name == "city":
         bld = "".join(f'<div style="position:absolute;bottom:0;left:{x}%;width:{wd}%;height:{ht}%;background:linear-gradient(#2c4a63,#14283a);border-radius:{6 if x!=46 else 200}px {6 if x!=46 else 200}px 0 0"></div>'
                       for x, wd, ht in [(2,7,38),(10,5,52),(16,8,44),(25,6,61),(32,9,48),(42,4,70),(46,3,92),(50,4,66),(56,8,55),(65,6,47),(72,9,58),(82,7,41),(90,9,50)])
@@ -63,7 +63,7 @@ def scene_html(name, w, h):
 <div>RESIDENT IDENTITY CARD</div><div style="display:flex;gap:30px;margin-top:40px"><div style="width:170px;height:210px;border-radius:14px;background:#9fb9b0"></div>
 <div style="flex:1"><div style="height:16px;background:#7fa598;margin:14px 0"></div><div style="height:16px;background:#7fa598;margin:24px 0;width:70%"></div><div style="height:16px;background:#7fa598;margin:24px 0;width:85%"></div></div></div></div></div>'''
     # chart
-    bars = "".join(f'<rect x="{60+i*70}" y="{h-80-v}" width="44" height="{v}" fill="{"#4FC3CA" if i%3 else "#0E7A82"}"/>' for i, v in enumerate(r.randint(80, int(h*.7)) for _ in range(int((w-120)/70))))
+    bars = "".join(f'<rect x="{60+i*70}" y="{h-80-v}" width="44" height="{v}" fill="{"#C9A24B" if i%3 else "#8F6C22"}"/>' for i, v in enumerate(r.randint(80, int(h*.7)) for _ in range(int((w-120)/70))))
     return f'<div style="position:absolute;inset:0;background:#0E1B2C"><svg width="{w}" height="{h}">{bars}</svg></div>'
 
 
@@ -81,9 +81,9 @@ def page(w, h, title, topic, style, bg_url, scene, tg):
 *{{box-sizing:border-box;margin:0}}
 body{{width:{w}px;height:{h}px;overflow:hidden;font-family:"Inter Display","Inter",sans-serif}}
 .c{{position:relative;width:{w}px;height:{h}px;padding:{90 if big else 72}px {80 if big else 80}px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}}
-.light{{background:linear-gradient(135deg,#EAF2F7 0%,#F6F4EE 100%);color:#0E1B2C;--m1:#0E1B2C;--m2:#0E7A82}}
-.dark{{background:radial-gradient({w*.8:.0f}px {h*.8:.0f}px at 85% 30%,#123A48 0%,#0E1B2C 60%);color:#fff;--m1:#E8EEF4;--m2:#4FC3CA}}
-.photo{{color:#fff;--m1:#fff;--m2:#5CC6CC;background:#0E1B2C}}
+.light{{background:linear-gradient(135deg,#EAF2F7 0%,#F6F4EE 100%);color:#0E1B2C;--m1:#0E1B2C;--m2:#B8913F}}
+.dark{{background:radial-gradient({w*.8:.0f}px {h*.8:.0f}px at 85% 30%,#1b2a3a 0%,#0b1220 60%);color:#fff;--m1:#F3E6C4;--m2:#C9A24B}}
+.photo{{color:#fff;--m1:#F3E6C4;--m2:#C9A24B;background:#0E1B2C}}
 .bgwrap{{position:absolute;inset:-30px;filter:blur({(2 if real else 5) if big else (2 if real else 4)}px) brightness({1.25 if real else 1}) saturate(1.1);z-index:0}}
 .photo::after{{content:"";position:absolute;inset:0;background:linear-gradient({grad});z-index:1}}
 .c>.top,.c>div:not(.bgwrap):not(.mark),.c>.foot{{position:relative;z-index:2}}
@@ -92,7 +92,7 @@ body{{width:{w}px;height:{h}px;overflow:hidden;font-family:"Inter Display","Inte
 .dark .mark{{opacity:.14}} .photo .mark{{opacity:.08}}
 .top{{display:flex;align-items:center;gap:18px;font-weight:700;letter-spacing:.06em;font-size:{30 if big else 24}px}}
 .top svg{{width:{54 if big else 44}px;height:{54 if big else 44}px}}
-.tag{{display:inline-block;font-weight:700;font-size:{30 if big else 22}px;padding:{10 if big else 8}px {22 if big else 18}px;border-radius:14px;background:#0E7A82;color:#fff;margin-bottom:{34 if big else 26}px}}
+.tag{{display:inline-block;font-weight:700;font-size:{30 if big else 22}px;padding:{10 if big else 8}px {22 if big else 18}px;border-radius:14px;background:linear-gradient(135deg,#D4B061,#B8913F);color:#0B1626;margin-bottom:{34 if big else 26}px}}
 h1{{font-weight:800;font-size:{fs}px;line-height:1.06;letter-spacing:-.02em;max-width:{w-160}px;text-wrap:balance}}
 .photo h1{{text-shadow:0 4px 30px rgba(0,0,0,.35)}}
 .foot{{font-size:{30 if big else 24}px;font-weight:600;opacity:.85}}

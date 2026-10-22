@@ -144,7 +144,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
 <script src="/motion.js" defer></script>
 <script src="/video.js"></script>
 <script src="/bank.js" defer></script>
-<meta name="theme-color" content="#F2F5F8">
+<meta name="theme-color" content="#F6F2EA">
 {ld}
 </head>
 <body>

@@ -300,3 +300,25 @@ main,.form-sec,.foot{position:relative;z-index:1}
 .hard-list b{display:block;font-size:18px;margin-bottom:4px}
 .hard-list span{color:#25313F;font-size:15.5px}
 .cover{width:100%;height:auto;border-radius:16px;margin:0 0 28px}
+
+/* ===== Палитра бренда: тёмно-синий и золото (с 22.10.2026, как логотип) ===== */
+:root{--bg:#F6F2EA;--surface:#FFFFFF;--sand:#EFE5CF;--ink:#0B1626;--muted:#4A4F5A;--line:#E4DCCB;
+--accent:#A8822F;--accent-2:#8F6C22;--accent-soft:#F3EAD3;--gold:#C9A24B}
+body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),rgba(255,240,205,0) 70%) fixed,linear-gradient(180deg,#F1EADB 0%,#F7F3EA 60%,#F3EEE3 100%) fixed;background-color:var(--bg)}
+.top{background:rgba(246,242,234,.95)}
+.btn{background:linear-gradient(135deg,#D4B061 0%,#B8913F 100%);color:#0B1626}
+.btn:hover{background:linear-gradient(135deg,#C9A24B 0%,#A8822F 100%)}
+.btn-ghost{background:#fff;color:#0B1626;box-shadow:inset 0 0 0 1.5px #D9CDB3}
+.btn-ghost:hover{background:#fff;box-shadow:inset 0 0 0 1.5px #0B1626}
+.mark .p1{fill:#0B1626}.mark .p2{fill:#C9A24B}
+.hs{background:#0B1220}
+.hs .hs-sub{color:#C9C2B0}
+.hs-bar{background:#22304A}.hs-bar i{background:#C9A24B}
+.svc.hl{background:linear-gradient(135deg,#D4B061 0%,#B8913F 100%);border-color:#C9A24B;color:#0B1626}
+.svc.hl h3,.svc.hl .svc-tag{color:#0B1626}.svc.hl p,.svc.hl .when{color:#2A2416}
+.svc.hl2{background:#16233A;border-color:#16233A}
+.svc.hl2 p,.svc.hl2 .when{color:#D8D2C2}
+.foot .brand b{color:#C9A24B}
+.facts li{border-left-color:#C9A24B}
+.hard-list li{border-left-color:#C9A24B}
+.prose blockquote{border-left-color:#C9A24B;background:#F3EAD3}
