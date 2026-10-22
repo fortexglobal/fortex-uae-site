@@ -9,7 +9,7 @@
 Вопрос, на который нет ответа в базе: клиенту «уточню и вернусь», владельцу вопрос в бот.
 Владелец отвечает реплаем на это сообщение (голосом или текстом), ассистент пересылает ответ клиенту своими словами.
 """
-import asyncio, json, logging, os, random, re, time
+import asyncio, html, json, logging, os, random, re, time
 from datetime import datetime
 
 import httpx
@@ -163,9 +163,22 @@ def transcript(cv, n=HISTORY):
     return "\n".join(f"{who.get(h['role'], h['role'])}: {h['text']}" for h in cv["history"][-n:])
 
 
-async def tell(cid, text):
+def transcript_html(cv, n=14, limit=3000):
+    """Переписка для владельца: подписи жирным, реплики разделены пустой строкой."""
+    who = {"user": "👤 <b>Клиент:</b>", "bot": "🤖 <b>Мы:</b>", "owner": "🧑‍💼 <b>Ты:</b>"}
+    out = []
+    for h in cv["history"][-n:]:
+        out.append(f"{who.get(h['role'], '<b>' + h['role'] + ':</b>')} {html.escape(h['text'])}")
+    t = "\n\n".join(out)
+    while len(t) > limit and out:
+        out.pop(0); t = "\n\n".join(out)
+    return t
+
+
+async def tell(cid, text, is_html=False):
     """Сообщение владельцу про диалог. Реплай на него уйдёт клиенту этого диалога."""
-    m = await CTX["notify"](text + "\n\n↩️ Ответь реплаем (голосом или текстом), перешлю клиенту.")
+    body = text if is_html else html.escape(text)
+    m = await CTX["notify"](body + "\n\n<i>↩️ Ответь реплаем (голосом или текстом), перешлю клиенту.</i>", parse_mode="html")
     if m:
         S["ask"][str(m.id)] = cid
         S["ask"] = dict(list(S["ask"].items())[-300:])
@@ -250,15 +263,20 @@ async def reply_to(cid):
     act = res.get("action")
     if act == "ask_owner" and res.get("owner_question"):
         cv["pending_q"] = res["owner_question"]
-        await tell(cid, f"❓ Вопрос из директа Instagram (@{cv.get('username')}):\n\n{res['owner_question']}")
+        await tell(cid, f"❓ <b>Вопрос из директа</b> @{html.escape(str(cv.get('username')))}\n\n"
+                        f"<b>{html.escape(res['owner_question'])}</b>\n\n"
+                        f"<b>━━━ Последние сообщения ━━━</b>\n\n{transcript_html(cv, 6, 1500)}", is_html=True)
     elif act == "handoff" and not cv.get("lead_sent"):
         cv["lead_sent"] = True
         cv["human"] = True
         await tell(cid,
-            f"🔥 Лид из Instagram: @{cv.get('username')}\n"
-            f"Имя: {cv.get('name') or '?'}\nКонтакт: {cv.get('contact') or 'не дал, пиши в директ'}\n"
-            f"Интерес: {cv.get('services') or '?'}\n\n{cv.get('summary') or ''}\n\n"
-            f"Переписка:\n{transcript(cv, 14)[:2500]}\n\nДальше ведёшь ты. Ассистент в этом диалоге замолчал.")
+            f"🔥 <b>Лид из Instagram:</b> @{html.escape(str(cv.get('username')))}\n\n"
+            f"<b>Имя:</b> {html.escape(str(cv.get('name') or '?'))}\n"
+            f"<b>Контакт:</b> {html.escape(str(cv.get('contact') or 'не дал, пиши в директ'))}\n"
+            f"<b>Интерес:</b> {html.escape(str(cv.get('services') or '?'))}\n\n"
+            f"<b>Кратко:</b> {html.escape(str(cv.get('summary') or ''))}\n\n"
+            f"<b>━━━ Переписка ━━━</b>\n\n{transcript_html(cv)}\n\n"
+            f"<b>Дальше ведёшь ты.</b> Ассистент в этом диалоге замолчал.", is_html=True)
     save()
 
 
