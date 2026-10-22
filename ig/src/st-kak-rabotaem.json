@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Как работаем",
- "status": "wait",
+ "status": "approved",
  "publish_at": "2026-10-27T19:00+04:00",
  "bg_prompt": "Dubai Marina apartment workspace at golden hour, laptop with video call, coffee, skyline view, no people, no text",
  "caption": "Серия сторис для Актуального «Как работаем»",
@@ -42,5 +42,6 @@
    "title": "Начнём с разбора",
    "body": "Опишите задачу в Telegram."
   }
- ]
+ ],
+ "approved_at": "2026-10-22T23:37+04:00"
 }
