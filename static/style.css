@@ -322,3 +322,14 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 .facts li{border-left-color:#C9A24B}
 .hard-list li{border-left-color:#C9A24B}
 .prose blockquote{border-left-color:#C9A24B;background:#F3EAD3}
+
+/* ===== Соцсети: крупные иконки (22.10.2026) ===== */
+.social{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+.social a{display:flex;align-items:center;gap:14px;padding:12px 20px 12px 12px;border-radius:18px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.social a:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(11,22,38,.10)}
+.social .si{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#D4B061,#B8913F);color:#0B1626;flex:none}
+.social .si svg{width:28px;height:28px}
+.social b{display:block;font-size:16px}
+.social small{display:block;font-size:14px;opacity:.65}
+.foot .social a{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#F6F2EA}
+.foot-in{flex-wrap:wrap}

@@ -12,6 +12,13 @@ OUT = os.path.join(ROOT, "public")
 SITE = "https://fortex-uae.com"
 TG = "https://t.me/FortexGlobal"
 CHANNEL = "https://t.me/fortex_uae"
+INSTAGRAM = "https://www.instagram.com/fortex__uae/"
+_TG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6l19.2-7.4c.9-.3 1.7.2 1.4 1.4z"/></svg>'
+_IG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>'
+SOCIAL = (f'<div class="social">'
+          f'<a href="{CHANNEL}" target="_blank" rel="noopener"><span class="si">{_TG_SVG}</span><span><b>Telegram-канал</b><small>@fortex_uae</small></span></a>'
+          f'<a href="{INSTAGRAM}" target="_blank" rel="noopener"><span class="si">{_IG_SVG}</span><span><b>Instagram</b><small>@fortex__uae</small></span></a>'
+          f'</div>')
 CAL = "https://calendly.com/fortex-uae/30min"
 EMAIL = "alexey@fortex-uae.com"
 MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
@@ -176,6 +183,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <a href="/articles/">Статьи</a>
     </div>
+    {SOCIAL}
   </div>
   <div class="wrap fine">Fortex UAE не является банком и не принимает депозиты. Решение об открытии счёта принимает банк. Цены указаны как минимальные и уточняются после разбора ситуации.</div>
 </footer>
@@ -187,6 +195,7 @@ FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
     <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@FortexGlobal</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    {SOCIAL}
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
     <input type="hidden" name="form-name" value="lead">
@@ -227,7 +236,7 @@ def build():
            "logo": SITE + "/img/mark.png", "image": SITE + "/img/og.jpg", "areaServed": "AE",
            "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
            "description": "Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. Работаем в Дубае с 2022 года.",
-           "sameAs": [TG, CHANNEL], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
+           "sameAs": [TG, CHANNEL, INSTAGRAM], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
            "slogan": "С 2022 года в Дубае: ВНЖ, банки, компании и финансовые вопросы",
            "makesOffer": [
                {"@type": "Offer", "name": "Корпоративный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "5000", "description": "от 5 000 USD"},
