@@ -34,6 +34,10 @@ S = {}
 
 def setup(**kw):
     CTX.update(kw)
+    if kw.get("user"):
+        from telethon import events
+        kw["user"].add_event_handler(tg_inbound, events.NewMessage(incoming=True, func=lambda e: e.is_private))
+        kw["user"].add_event_handler(tg_outgoing, events.NewMessage(outgoing=True, func=lambda e: e.is_private))
 
 
 def token():
@@ -89,6 +93,8 @@ def secret(name):
 async def send(uid, text):
     if str(uid).startswith("mc:"):
         return await mc_send(uid[3:], text)
+    if str(uid).startswith("tg:"):
+        return await tg_send(int(uid[3:]), text)
     r = await api("POST", "me/messages", body={"recipient": {"id": uid}, "message": {"text": text}})
     mid = r.get("message_id")
     if mid:
@@ -202,13 +208,21 @@ def on_user_message(cv):
 FU_PLAN = [(12 * 60, 18 * 60), (3 * 3600, 4 * 3600), None]
 
 
+# в Telegram нет окна 24 часа: через ~15 минут, на следующий день и через 3 дня
+FU_PLAN_TG = [(12 * 60, 18 * 60), (20 * 3600, 26 * 3600), (70 * 3600, 76 * 3600)]
+
+
 def schedule_followup(cv, stage):
     cv["fu"] = stage
     cv["fu_at"] = 0
-    if stage >= len(FU_PLAN) or cv.get("human") or cv.get("lead_sent"):
+    tg = str(cv.get("uid", "")).startswith("tg:")
+    plan = FU_PLAN_TG if tg else FU_PLAN
+    if stage >= len(plan) or cv.get("human") or cv.get("lead_sent"):
         return
     base = cv.get("last_user_ts") or time.time()
-    if FU_PLAN[stage] is None:
+    if tg:
+        at = time.time() + random.randint(*plan[stage])
+    elif FU_PLAN[stage] is None:
         at = base + 22 * 3600 + random.randint(0, 3600)
     else:
         at = time.time() + random.randint(*FU_PLAN[stage])
@@ -216,13 +230,13 @@ def schedule_followup(cv, stage):
     if h >= QUIET[0] or h < QUIET[1]:
         shift = ((QUIET[1] - h) % 24) * 3600 + random.randint(0, 1800)
         at += shift
-    if at - base > WINDOW:
+    if not tg and at - base > WINDOW:
         return  # вышли бы за 24 часа, Instagram не пропустит
     cv["fu_at"] = at
 
 
-FOLLOWUP = """Ты сотрудник Fortex UAE в директе Instagram. Клиент перестал отвечать. Напиши одно короткое ненавязчивое догоняющее сообщение (1–2 предложения, на «вы»), чтобы мягко вернуть его к разговору: напомни, на чём остановились, или задай простой вопрос, который легко ответить. Без давления, без «срочно», без длинных тире, без слова «профиль».
-Номер догоняющего: {n} из 3. Первое лёгкое и короткое, второе с пользой (короткий факт или вопрос по его задаче), третье последнее и спокойное («если вопрос актуален, пишите, будем рады помочь»).
+FOLLOWUP = """Ты сотрудник Fortex UAE в личных сообщениях (Instagram или Telegram). Клиент перестал отвечать. Напиши одно короткое ненавязчивое догоняющее сообщение (1–2 предложения, на «вы»), чтобы мягко вернуть его к разговору: напомни, на чём остановились, или задай простой вопрос, который легко ответить. Без давления, без «срочно», без длинных тире, без слова «профиль».
+Номер догоняющего: {n} из 3. Первое лёгкое и короткое (через 15 минут), второе с пользой (короткий факт или вопрос по его задаче), третье последнее и спокойное («если вопрос актуален, пишите, будем рады помочь»).
 Если по переписке видно, что клиент закончил разговор, отказался, сказал «спасибо, не надо» или ему уже всё ответили и он попрощался, не пиши: верни skip true.
 Ответь JSON: {{"skip": false, "reply": "<текст>"}}"""
 
@@ -231,7 +245,8 @@ async def followup(cid):
     cv = S["convs"][cid]
     stage = cv.get("fu", 0)
     cv["fu_at"] = 0
-    if cv.get("human") or cv.get("lead_sent") or cv.get("pending_q") or time.time() - (cv.get("last_user_ts") or 0) > WINDOW:
+    tg = str(cv.get("uid", "")).startswith("tg:")
+    if cv.get("human") or cv.get("lead_sent") or cv.get("pending_q") or (not tg and time.time() - (cv.get("last_user_ts") or 0) > WINDOW):
         save(); return
     res = await llm(FOLLOWUP.format(n=stage + 1) + "\n\nБАЗА ЗНАНИЙ:\n" + kb(), f"Переписка:\n{transcript(cv)}\n\nНапиши догоняющее сообщение.")
     if not res or res.get("skip") or not res.get("reply"):
@@ -265,6 +280,9 @@ async def reply_to(cid):
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
     size = pick_length(cv)
+    if str(cv.get("uid", "")).startswith("tg:"):
+        uname = cv.get("username")
+        extra += ("\n\nКанал: Telegram (личные сообщения)." + (f" Контакт клиента уже есть: @{uname}. Контакт НЕ проси: когда клиент готов, сразу action handoff." if uname and not uname.isdigit() else ""))
     res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
@@ -431,6 +449,8 @@ async def command(ev):
             S["test_users"] = [p.lstrip("@") for p in parts[2:]]
     elif a == "live":
         S["mode"] = "live"
+    elif a == "tg" and len(parts) > 2:
+        S["tg_enabled"] = parts[2].lower() == "on"
     elif a == "manychat":
         S["transport"] = "manychat"
     elif a == "graph":
@@ -449,12 +469,20 @@ async def command(ev):
                 cv["lead_sent"] = False
     save()
     active = sum(1 for c in S["convs"].values() if not c.get("human"))
+    tg_name = ""
+    try:
+        if CTX.get("user"):
+            me = await CTX["user"].get_me()
+            tg_name = f" @{me.username}" if me and me.username else ""
+    except Exception:
+        pass
     await ev.reply(f"Директ Instagram: {'включён' if S['enabled'] else 'выключен'}\n"
                    f"Режим: {'тест, отвечаю только ' + ', '.join('@' + u for u in S['test_users']) if S['mode'] == 'test' else 'все клиенты'}\n"
                    f"Канал: {'ManyChat' if S.get('transport') == 'manychat' else 'Instagram API'}\n"
+                   f"Telegram (аккаунт радара{tg_name}): {'включён' if S.get('tg_enabled') else 'выключен'}\n"
                    f"Токен Instagram: {'есть' if token() else 'нет'}, ключ ManyChat: {'есть' if secret('manychat_key') else 'нет'}\n"
                    f"Диалогов: {len(S['convs'])}, ведёт ассистент: {active}\n\n"
-                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm pause @аккаунт (ассистент молчит в диалоге)\n/igdm resume @аккаунт (вернуть ассистента)\n/igdm manychat | graph (откуда берём сообщения)")
+                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm pause @аккаунт (ассистент молчит в диалоге)\n/igdm resume @аккаунт (вернуть ассистента)\n/igdm manychat | graph (откуда берём сообщения)\n/igdm tg on | off (отвечать в личке аккаунта радара)")
 
 
 def load_if_needed():
@@ -562,3 +590,76 @@ async def http_server():
             await srv.serve_forever()
     except Exception as e:
         log.warning("http server: %s", e)
+
+
+
+# ===== Telegram: аккаунт радара отвечает тем, кто написал ему в личку =====
+async def tg_send(peer, text):
+    u = CTX.get("user")
+    if not u:
+        return None
+    try:
+        await u.send_read_acknowledge(peer)
+        async with u.action(peer, "typing"):
+            await asyncio.sleep(min(2 + len(text) / 25, 8) + random.uniform(0, 1.5))
+        m = await u.send_message(peer, text)
+        S["sent"].append(f"tg:{m.id}")
+        return m.id
+    except Exception as e:
+        log.warning("tg send: %s", e)
+        return None
+
+
+async def tg_inbound(ev):
+    try:
+        load_if_needed()
+        if not S.get("tg_enabled"):
+            return
+        snd = await ev.get_sender()
+        if not snd or getattr(snd, "bot", False) or getattr(snd, "id", 0) == 777000:
+            return
+        text = (ev.raw_text or "").strip()
+        if not text:
+            text = "[голосовое или вложение]" if ev.media else ""
+        if not text:
+            return
+        cid = f"tg:{snd.id}"
+        cv = S["convs"].setdefault(cid, {"history": [], "seen": [], "uid": cid, "username": None})
+        cv["username"] = snd.username or str(snd.id)
+        cv.setdefault("name", " ".join(x for x in (snd.first_name, snd.last_name) if x) or None)
+        cv["history"].append({"role": "user", "text": text, "ts": time.time()})
+        cv["history"] = cv["history"][-60:]
+        if cv.get("human"):
+            save(); return
+        allowed = S["mode"] == "live" or bool({(snd.username or "").lower(), str(snd.id)} & {u.lower() for u in S["test_users"]})
+        if not allowed:
+            if cid not in S["seen_other"]:
+                S["seen_other"].append(cid)
+                await tell(cid, f"Новое сообщение в Telegram (аккаунт радара) от @{cv['username']}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {cv['username']}")
+            save(); return
+        on_user_message(cv)
+        save()
+    except Exception:
+        log.exception("tg inbound")
+
+
+async def tg_outgoing(ev):
+    """Кто-то вручную написал с аккаунта радара: ассистент в этом диалоге замолкает."""
+    try:
+        load_if_needed()
+        if f"tg:{ev.id}" in S["sent"]:
+            return
+        await asyncio.sleep(2)
+        if f"tg:{ev.id}" in S["sent"]:
+            return
+        cid = f"tg:{ev.chat_id}"
+        cv = S["convs"].get(cid)
+        if not cv:
+            return
+        cv["history"].append({"role": "owner", "text": ev.raw_text or "", "ts": time.time()})
+        if not cv.get("human"):
+            cv["human"], cv["next_at"], cv["fu_at"] = True, 0, 0
+            await tell(cid, f"С аккаунта радара вручную ответили @{cv.get('username')}. Ассистент в этом диалоге замолчал.\nВернуть: /igdm resume {cv.get('username')}")
+        save()
+    except Exception:
+        log.exception("tg outgoing")
