@@ -481,6 +481,26 @@ async def mc_send(sub_id, text):
     return "mc-" + str(time.time())
 
 
+# первое сообщение в директ после комментария шлёт сам ManyChat; текст должен совпадать с тем, что в ManyChat
+OPENER = ("Здравствуйте! Спасибо за комментарий 🙌 Расскажите коротко о задаче: "
+          "нужен счёт, виза или компания? И какой у вас паспорт?")
+
+
+def mc_comment(data):
+    """Клиент оставил комментарий, ManyChat уже написал ему OPENER. Запоминаем контекст, сами не отвечаем."""
+    sid = str(data.get("id") or data.get("subscriber_id") or "")
+    if not sid:
+        return
+    uname = next((str(v) for k, v in data.items() if "username" in k.lower() and v), "")
+    cid = "mc:" + sid
+    cv = S["convs"].setdefault(cid, {"history": [], "seen": [], "uid": cid, "username": uname or sid})
+    comment = (data.get("last_input_text") or "").strip()
+    cv["history"].append({"role": "note", "text": f"Клиент оставил комментарий под постом: «{comment}»", "ts": time.time()})
+    cv["history"].append({"role": "bot", "text": OPENER, "ts": time.time()})
+    cv["source"] = "comment"
+    save()
+
+
 async def mc_inbound(data):
     sid = str(data.get("id") or data.get("subscriber_id") or "")
     text = (data.get("last_input_text") or data.get("text") or "").strip()
@@ -518,7 +538,11 @@ async def http_server():
             hdr = {l.split(":", 1)[0].strip().lower(): l.split(":", 1)[1].strip() for l in lines[1:] if ":" in l}
             body = await asyncio.wait_for(reader.readexactly(int(hdr.get("content-length", "0") or 0)), 15)
             sec = secret("mc_secret")
-            if method == "POST" and sec and path.split("?")[0] == f"/mc/{sec}":
+            if method == "POST" and sec and path.split("?")[0] == f"/mc/{sec}/comment":
+                load_if_needed()
+                mc_comment(json.loads(body or b"{}"))
+                status, out = "200 OK", b'{"version":"v2","content":{"messages":[]}}'
+            elif method == "POST" and sec and path.split("?")[0] == f"/mc/{sec}":
                 load_if_needed()
                 await mc_inbound(json.loads(body or b"{}"))
                 status, out = "200 OK", b'{"version":"v2","content":{"messages":[]}}'
