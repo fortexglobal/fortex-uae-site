@@ -20,7 +20,11 @@ API = "https://graph.instagram.com/v21.0"
 STATE_F = os.path.join(BASE, "igdm.json")
 KB_F = os.path.join(BASE, "kb.md")
 POLL = 45
-DELAY = (60, 170)          # пауза перед ответом, сек
+DELAY = (60, 170)          # первая реплика после паузы, сек
+FAST = (12, 35)            # клиент в активной переписке, сек
+ACTIVE_WIN = 10 * 60       # переписка «активна», если мы писали меньше 10 минут назад
+WINDOW = 23.5 * 3600       # Instagram разрешает писать только 24 часа после сообщения клиента
+QUIET = (23, 9)            # ночью по Дубаю догоняющие не шлём
 HISTORY = 30
 MODELS = ["anthropic/claude-sonnet-4.5", "openai/gpt-4.1", "google/gemini-2.5-pro"]
 
@@ -159,6 +163,64 @@ def transcript(cv, n=HISTORY):
     return "\n".join(f"{who.get(h['role'], h['role'])}: {h['text']}" for h in cv["history"][-n:])
 
 
+def last_ts(cv, role):
+    return max([h.get("ts", 0) for h in cv["history"] if h["role"] == role] or [0])
+
+
+def on_user_message(cv):
+    """Новое сообщение клиента: отвечаем быстро, если переписка идёт, и через 1–3 минуты, если была пауза."""
+    cv["last_user_ts"] = time.time()
+    cv["fu"], cv["fu_at"] = 0, 0
+    if not cv.get("next_at"):
+        active = time.time() - last_ts(cv, "bot") < ACTIVE_WIN
+        cv["next_at"] = time.time() + random.randint(*(FAST if active else DELAY))
+
+
+# догоняющие: через ~15 минут, через 3–4 часа, под конец 24-часового окна Instagram
+FU_PLAN = [(12 * 60, 18 * 60), (3 * 3600, 4 * 3600), None]
+
+
+def schedule_followup(cv, stage):
+    cv["fu"] = stage
+    cv["fu_at"] = 0
+    if stage >= len(FU_PLAN) or cv.get("human") or cv.get("lead_sent"):
+        return
+    base = cv.get("last_user_ts") or time.time()
+    if FU_PLAN[stage] is None:
+        at = base + 22 * 3600 + random.randint(0, 3600)
+    else:
+        at = time.time() + random.randint(*FU_PLAN[stage])
+    h = time.gmtime(at + 4 * 3600).tm_hour  # час в Дубае
+    if h >= QUIET[0] or h < QUIET[1]:
+        shift = ((QUIET[1] - h) % 24) * 3600 + random.randint(0, 1800)
+        at += shift
+    if at - base > WINDOW:
+        return  # вышли бы за 24 часа, Instagram не пропустит
+    cv["fu_at"] = at
+
+
+FOLLOWUP = """Ты сотрудник Fortex UAE в директе Instagram. Клиент перестал отвечать. Напиши одно короткое ненавязчивое догоняющее сообщение (1–2 предложения, на «вы»), чтобы мягко вернуть его к разговору: напомни, на чём остановились, или задай простой вопрос, который легко ответить. Без давления, без «срочно», без длинных тире, без слова «профиль».
+Номер догоняющего: {n} из 3. Первое лёгкое и короткое, второе с пользой (короткий факт или вопрос по его задаче), третье последнее и спокойное («если вопрос актуален, пишите, будем рады помочь»).
+Если по переписке видно, что клиент закончил разговор, отказался, сказал «спасибо, не надо» или ему уже всё ответили и он попрощался, не пиши: верни skip true.
+Ответь JSON: {{"skip": false, "reply": "<текст>"}}"""
+
+
+async def followup(cid):
+    cv = S["convs"][cid]
+    stage = cv.get("fu", 0)
+    cv["fu_at"] = 0
+    if cv.get("human") or cv.get("lead_sent") or cv.get("pending_q") or time.time() - (cv.get("last_user_ts") or 0) > WINDOW:
+        save(); return
+    res = await llm(FOLLOWUP.format(n=stage + 1) + "\n\nБАЗА ЗНАНИЙ:\n" + kb(), f"Переписка:\n{transcript(cv)}\n\nНапиши догоняющее сообщение.")
+    if not res or res.get("skip") or not res.get("reply"):
+        save(); return
+    text = clean(res["reply"])
+    if await send(cv["uid"], text):
+        cv["history"].append({"role": "bot", "text": text, "ts": time.time(), "fu": stage + 1})
+        schedule_followup(cv, stage + 1)
+    save()
+
+
 async def reply_to(cid):
     cv = S["convs"][cid]
     cv["next_at"] = 0
@@ -172,6 +234,7 @@ async def reply_to(cid):
     if not await send(cv["uid"], text):
         return
     cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
+    schedule_followup(cv, 0)
     for k in ("name", "contact", "summary", "services"):
         if res.get(k):
             cv[k] = res[k]
@@ -251,8 +314,7 @@ async def poll():
                     await CTX["notify"](f"Новое сообщение в директе от @{cv.get('username')}. Ассистент в тестовом режиме и не отвечает.\n\n"
                                         f"«{cv['history'][-1]['text'][:300]}»")
                 continue
-            if not cv.get("next_at"):
-                cv["next_at"] = time.time() + random.randint(*DELAY)
+            on_user_message(cv)
     save()
 
 
@@ -269,6 +331,8 @@ async def loop():
                 for cid, cv in list(S["convs"].items()):
                     if cv.get("next_at") and cv["next_at"] <= now and not cv.get("human"):
                         await reply_to(cid)
+                    elif cv.get("fu_at") and cv["fu_at"] <= now and not cv.get("next_at"):
+                        await followup(cid)
                 if not S.get("booted"):
                     S["booted"] = True
                     save()
@@ -303,6 +367,7 @@ async def maybe_handle(ev, text):
         await ev.reply("Instagram не принял сообщение. Возможно, прошло больше 24 часов с последнего сообщения клиента.")
         return True
     cv["history"].append({"role": "bot", "text": out, "ts": time.time()})
+    schedule_followup(cv, 0)
     cv["pending_q"] = None
     S["ask"].pop(str(rid), None)
     save()
@@ -395,8 +460,7 @@ async def mc_inbound(data):
             S["seen_other"].append(cid)
             await CTX["notify"](f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {username}")
         save(); return
-    if not cv.get("next_at"):
-        cv["next_at"] = time.time() + random.randint(*DELAY)
+    on_user_message(cv)
     save()
 
 
