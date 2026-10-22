@@ -89,7 +89,9 @@ def main():
                     continue
                 if any(x.get("scheduled") == item.get("format", "carousel") for x in out["published"]):
                     continue
-            item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]][:10]
+            item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]]
+            if item.get("format") != "stories":
+                item["images"] = item["images"][:10]
             res = publish(item)
             item.pop("images")
             item.update(status="published" if "id" in res else "error", result=res,

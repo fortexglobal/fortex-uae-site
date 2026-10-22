@@ -318,12 +318,13 @@ async def send_ig_preview(slug, note=None):
     src, files = json.loads(raw), json.loads(meta)["files"]
     if note:
         await tg("sendMessage", {"chat_id": oid, "text": note})
-    media, up = [], {}
-    for i, f in enumerate(files[:10]):
-        img, _ = await gh_get(f"ig/{slug}/{f}")
-        up[f"p{i}"] = (f, img, "image/jpeg")
-        media.append({"type": "photo", "media": f"attach://p{i}"})
-    await tg("sendMediaGroup", {"chat_id": oid, "media": json.dumps(media)}, up)
+    for k in range(0, len(files), 10):
+        media, up = [], {}
+        for i, f in enumerate(files[k:k + 10]):
+            img, _ = await gh_get(f"ig/{slug}/{f}")
+            up[f"p{i}"] = (f, img, "image/jpeg")
+            media.append({"type": "photo", "media": f"attach://p{i}"})
+        await tg("sendMediaGroup", {"chat_id": oid, "media": json.dumps(media)}, up)
     await tg("sendMessage", {"chat_id": oid, "text": "Подпись в Instagram:\n\n" + src.get("caption", ""), "reply_markup": ig_kb(slug)})
 
 
