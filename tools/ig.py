@@ -72,9 +72,24 @@ def publish(item):
     return {"id": p["id"], "permalink": link}
 
 
+def lock(path, slug):
+    import subprocess
+    run = lambda *c: subprocess.run(["git", "-C", ROOT, *c], capture_output=True).returncode == 0
+    if not (run("add", path) and run("commit", "-m", f"IG publishing: {slug}")):
+        return False
+    if run("push"):
+        return True
+    # чужие коммиты: подтягиваем; если тот же файл менял другой запуск, rebase упадёт
+    if not run("pull", "--rebase", "--autostash"):
+        run("rebase", "--abort")
+        return False
+    return run("push")
+
+
 def main():
     me = call("GET", "me", fields="user_id,username,account_type,media_count")
     out = {"checked": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "me": me, "published": []}
+    recent = call("GET", "me/media", fields="id,caption,permalink", limit="50").get("data", []) if "error" not in me else []
     if "error" not in me:
         for f in sorted(glob.glob(os.path.join(ROOT, "ig", "src", "*.json"))):
             slug = os.path.basename(f)[:-5]
@@ -89,6 +104,19 @@ def main():
                     continue
                 if any(x.get("scheduled") == item.get("format", "carousel") for x in out["published"]):
                     continue
+            # защита от дублей: такой пост уже есть в Instagram
+            if item.get("format") != "stories" and item.get("caption"):
+                same = [m for m in recent if (m.get("caption") or "")[:120] == item["caption"][:120]]
+                if same:
+                    item.update(status="published", result={"id": same[0]["id"], "permalink": same[0].get("permalink", ""), "dedup": True})
+                    json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+                    continue
+            # блокировка: отмечаем «publishing» и пушим, если другой запуск успел раньше, push не пройдёт
+            item["status"] = "publishing"
+            json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            if not lock(f, slug):
+                print("lock failed, другой запуск уже публикует", slug)
+                break
             item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]]
             if item.get("format") != "stories":
                 item["images"] = item["images"][:10]
