@@ -30,7 +30,7 @@ if old_r in s and 'res.get("tier") in' not in s:
     s = s.replace(old_r, new_r, 1)
 
 # ключевые слова бизнеса в фильтр до нейросети
-if 'ндс|vat' not in s:
+if 'холдинг|контрагент' not in s:
     s = s.replace('STRONG_RE = re.compile(r"', 'STRONG_RE = re.compile(r"\\bндс\\b|\\bvat\\b|холдинг|контрагент|оборот\\w* компан|наша компани|моя компани|зарплатн\\w* проект|private banking|золот\\w* виз|', 1)
 open(p, 'w', encoding='utf-8').write(s)
 print('OK9')
