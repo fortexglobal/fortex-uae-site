@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Кейсы",
- "status": "wait",
+ "status": "approved",
  "publish_at": "2026-10-26T19:00+04:00",
  "bg_prompt": "elegant executive desk in a Dubai office with city view at dusk, documents and pen, warm light, no people, no text",
  "caption": "Серия сторис для Актуального «Кейсы»",
@@ -41,5 +41,6 @@
    "title": "Ваш случай следующий",
    "body": "Опишите задачу. Скажем, что реально."
   }
- ]
+ ],
+ "approved_at": "2026-10-22T23:37+04:00"
 }
