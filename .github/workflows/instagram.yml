@@ -1,0 +1,23 @@
+name: Instagram publish
+on:
+  push:
+    paths: ["ig/queue/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: instagram
+jobs:
+  ig:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish approved
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/ig.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add ig
+          git diff --cached --quiet || (git commit -m "Instagram status" && git pull --rebase && git push)
