@@ -182,6 +182,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
       <a href="{CAL}">Записаться на звонок</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <a href="/articles/">Статьи</a>
+      <a href="/privacy/">Политика конфиденциальности</a>
     </div>
     {SOCIAL}
   </div>
@@ -268,6 +269,29 @@ def build():
         bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": SITE + "/"}, {"@type": "ListItem", "position": 2, "name": pg["h1"], "item": f"{SITE}/{pg['slug']}/"}]}
         os.makedirs(os.path.join(OUT, pg["slug"]), exist_ok=True)
         open(os.path.join(OUT, pg["slug"], "index.html"), "w", encoding="utf-8").write(page(pg["title"], pg["description"], body, f"/{pg['slug']}/", [svc, fq, bc]))
+
+    # ---- privacy policy (нужна для Meta App Review) ----
+    os.makedirs(os.path.join(OUT, "privacy"), exist_ok=True)
+    priv = f"""<main><section class="sec"><div class="wrap narrow"><div class="prose">
+<h1 class="h1">Политика конфиденциальности</h1>
+<p>Fortex UAE (направление компании Fortex Global, Дубай, ОАЭ). Связь: {EMAIL}, Telegram @FortexGlobal.</p>
+<h2>Какие данные мы получаем</h2>
+<p>Имя, контакт в Telegram или телефон и описание задачи, которые вы оставляете в форме на сайте или пишете нам в Telegram и Instagram. Переписку в директе Instagram @fortex__uae мы получаем через официальный API Instagram.</p>
+<h2>Зачем</h2>
+<p>Только чтобы ответить на ваш вопрос, подобрать услугу и связаться с вами. Ответы в директе Instagram может готовить наш ассистент на основе нейросети, сложные вопросы и дальнейшую работу ведёт менеджер.</p>
+<h2>Передача третьим лицам</h2>
+<p>Мы не продаём и не передаём ваши данные третьим лицам, кроме сервисов, без которых работа невозможна (хостинг сайта, Telegram, Instagram, сервис нейросети для подготовки ответа), и банков или госорганов ОАЭ только с вашего согласия в рамках услуги.</p>
+<h2>Хранение и удаление</h2>
+<p>Храним данные, пока это нужно для общения и оказания услуги. Чтобы удалить свои данные, напишите на {EMAIL} или в Telegram @FortexGlobal. Удалим в течение 30 дней.</p>
+<h2 id="en">Privacy Policy (English)</h2>
+<p>Fortex UAE (a business line of Fortex Global, Dubai, UAE). Contact: {EMAIL}.</p>
+<p><b>Data we receive:</b> your name, contact (Telegram or phone) and request details that you submit via the website form or send us in Telegram or Instagram Direct (@fortex__uae). Instagram messages are received via the official Instagram API.</p>
+<p><b>Purpose:</b> only to answer your question, offer a relevant service and contact you. Replies in Instagram Direct may be drafted by our AI assistant based on our knowledge base; complex questions and further work are handled by a human manager.</p>
+<p><b>Sharing:</b> we do not sell your data. We only use service providers required to operate (website hosting, Telegram, Instagram, an AI model provider to draft replies), and share data with UAE banks or authorities only with your consent as part of the service.</p>
+<p><b>Retention and deletion:</b> we keep data only as long as needed. To delete your data, email {EMAIL}; we will delete it within 30 days.</p>
+<p>Updated: 22 October 2026.</p>
+</div></div></section></main>"""
+    open(os.path.join(OUT, "privacy", "index.html"), "w", encoding="utf-8").write(page("Политика конфиденциальности | Fortex UAE", "Как Fortex UAE обрабатывает данные клиентов. Privacy policy.", priv, "/privacy/"))
 
     # ---- thank you ----
     os.makedirs(os.path.join(OUT, "spasibo"), exist_ok=True)
