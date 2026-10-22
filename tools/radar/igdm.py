@@ -75,7 +75,16 @@ async def api(method, path, params=None, body=None):
     return j
 
 
+def secret(name):
+    try:
+        return open(os.path.join(BASE, name)).read().strip()
+    except Exception:
+        return ""
+
+
 async def send(uid, text):
+    if str(uid).startswith("mc:"):
+        return await mc_send(uid[3:], text)
     r = await api("POST", "me/messages", body={"recipient": {"id": uid}, "message": {"text": text}})
     mid = r.get("message_id")
     if mid:
@@ -249,11 +258,13 @@ async def poll():
 
 async def loop():
     load()
+    asyncio.get_event_loop().create_task(http_server())
     await asyncio.sleep(20)
     while True:
         try:
-            if S["enabled"] and token():
-                await poll()
+            if S["enabled"] and (token() or secret("manychat_key")):
+                if S.get("transport", "graph") == "graph" and token():
+                    await poll()
                 now = time.time()
                 for cid, cv in list(S["convs"].items()):
                     if cv.get("next_at") and cv["next_at"] <= now and not cv.get("human"):
@@ -311,6 +322,16 @@ async def command(ev):
             S["test_users"] = [p.lstrip("@") for p in parts[2:]]
     elif a == "live":
         S["mode"] = "live"
+    elif a == "manychat":
+        S["transport"] = "manychat"
+    elif a == "graph":
+        S["transport"] = "graph"
+    elif a == "pause" and len(parts) > 2:
+        u = parts[2].lstrip("@").lower()
+        for cv in S["convs"].values():
+            if (cv.get("username") or "").lower() == u:
+                cv["human"] = True
+                cv["next_at"] = 0
     elif a == "resume" and len(parts) > 2:
         u = parts[2].lstrip("@").lower()
         for cv in S["convs"].values():
@@ -321,11 +342,89 @@ async def command(ev):
     active = sum(1 for c in S["convs"].values() if not c.get("human"))
     await ev.reply(f"Директ Instagram: {'включён' if S['enabled'] else 'выключен'}\n"
                    f"Режим: {'тест, отвечаю только ' + ', '.join('@' + u for u in S['test_users']) if S['mode'] == 'test' else 'все клиенты'}\n"
-                   f"Токен: {'есть' if token() else 'НЕТ, нужен файл /opt/radar/ig_token'}\n"
+                   f"Канал: {'ManyChat' if S.get('transport') == 'manychat' else 'Instagram API'}\n"
+                   f"Токен Instagram: {'есть' if token() else 'нет'}, ключ ManyChat: {'есть' if secret('manychat_key') else 'нет'}\n"
                    f"Диалогов: {len(S['convs'])}, ведёт ассистент: {active}\n\n"
-                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm resume @аккаунт (вернуть ассистента в диалог)")
+                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm pause @аккаунт (ассистент молчит в диалоге)\n/igdm resume @аккаунт (вернуть ассистента)\n/igdm manychat | graph (откуда берём сообщения)")
 
 
 def load_if_needed():
     if not S:
         load()
+
+
+
+# ===== ManyChat: входящие через External Request, исходящие через API =====
+# ManyChat -> POST https://<сервер>/mc/<mc_secret> (Body: Add Full Contact Data) -> отвечаем 200 сразу,
+# ассистент пишет позже через https://api.manychat.com/fb/sending/sendContent.
+MC_PORT = 8088
+
+
+async def mc_send(sub_id, text):
+    body = {"subscriber_id": int(sub_id) if str(sub_id).isdigit() else sub_id,
+            "data": {"version": "v2", "content": {"type": "instagram", "messages": [{"type": "text", "text": text}]}}}
+    async with httpx.AsyncClient(timeout=60) as c:
+        r = await c.post("https://api.manychat.com/fb/sending/sendContent", json=body,
+                         headers={"Authorization": f"Bearer {secret('manychat_key')}"})
+    if r.status_code != 200 or '"success"' not in r.text:
+        log.warning("manychat send -> %s %s", r.status_code, r.text[:300])
+        return None
+    return "mc-" + str(time.time())
+
+
+async def mc_inbound(data):
+    sid = str(data.get("id") or data.get("subscriber_id") or "")
+    text = (data.get("last_input_text") or data.get("text") or "").strip()
+    if not sid or not text:
+        return
+    username = data.get("ig_username") or data.get("username") or data.get("name") or sid
+    cid = "mc:" + sid
+    cv = S["convs"].setdefault(cid, {"history": [], "seen": [], "uid": cid, "username": username})
+    cv["uid"], cv["username"] = cid, username
+    if data.get("first_name") or data.get("name"):
+        cv.setdefault("name", data.get("first_name") or data.get("name"))
+    cv["history"].append({"role": "user", "text": text, "ts": time.time()})
+    cv["history"] = cv["history"][-60:]
+    if not S["enabled"] or cv.get("human"):
+        save(); return
+    allowed = S["mode"] == "live" or username.lower() in [u.lower() for u in S["test_users"]]
+    if not allowed:
+        if cid not in S["seen_other"]:
+            S["seen_other"].append(cid)
+            await CTX["notify"](f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»")
+        save(); return
+    if not cv.get("next_at"):
+        cv["next_at"] = time.time() + random.randint(*DELAY)
+    save()
+
+
+async def http_server():
+    async def handle(reader, writer):
+        status, out = "404 Not Found", b"{}"
+        try:
+            head = await asyncio.wait_for(reader.readuntil(b"\r\n\r\n"), 15)
+            lines = head.decode("latin-1").split("\r\n")
+            method, path = lines[0].split(" ")[:2]
+            hdr = {l.split(":", 1)[0].strip().lower(): l.split(":", 1)[1].strip() for l in lines[1:] if ":" in l}
+            body = await asyncio.wait_for(reader.readexactly(int(hdr.get("content-length", "0") or 0)), 15)
+            sec = secret("mc_secret")
+            if method == "POST" and sec and path.split("?")[0] == f"/mc/{sec}":
+                load_if_needed()
+                await mc_inbound(json.loads(body or b"{}"))
+                status, out = "200 OK", b'{"version":"v2","content":{"messages":[]}}'
+            elif method == "GET" and path == "/health":
+                status, out = "200 OK", b'{"ok":true}'
+        except Exception as e:
+            log.warning("http: %s", e)
+            status = "400 Bad Request"
+        writer.write(f"HTTP/1.1 {status}\r\nContent-Type: application/json\r\nContent-Length: {len(out)}\r\nConnection: close\r\n\r\n".encode() + out)
+        try:
+            await writer.drain()
+        finally:
+            writer.close()
+    try:
+        srv = await asyncio.start_server(handle, "127.0.0.1", MC_PORT)
+        async with srv:
+            await srv.serve_forever()
+    except Exception as e:
+        log.warning("http server: %s", e)
