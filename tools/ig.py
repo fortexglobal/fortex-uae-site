@@ -98,6 +98,10 @@ def main():
                         published_at=time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
             json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
             out["published"].append({"slug": slug, "scheduled": item.get("format", "carousel") if item.get("publish_at") else "", **res})
+    if "error" not in me:
+        out["media"] = call("GET", "me/media", fields="id,timestamp,permalink,media_type,caption", limit="25").get("data", [])
+        for m in out["media"]:
+            m["caption"] = (m.get("caption") or "")[:60]
     json.dump(out, open(os.path.join(ROOT, "ig", "status.json"), "w"), ensure_ascii=False, indent=1)
     print(json.dumps(out, ensure_ascii=False)[:800])
 
