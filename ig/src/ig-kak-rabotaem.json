@@ -40,6 +40,11 @@
    "body": "Паспорт, есть ли компания, какой банк нужен.\n\nЗа 5 минут скажем, что реально."
   }
  ],
- "status": "approved",
- "approved_at": "2026-10-22T23:03+04:00"
+ "status": "published",
+ "approved_at": "2026-10-22T23:03+04:00",
+ "result": {
+  "id": "18139441540724206",
+  "permalink": "https://www.instagram.com/p/DeztXN-Gqpc/"
+ },
+ "published_at": "2026-10-22T19:14Z"
 }
