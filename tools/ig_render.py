@@ -63,6 +63,7 @@ li:before{content:"";position:absolute;left:32px;top:44px;width:22px;height:22px
 .cover .foot{color:rgba(255,255,255,.85)}
 .cover .foot .sw{color:#E6C877}
 .btn{align-self:flex-start;margin-top:50px;font-weight:800;font-size:44px;padding:30px 44px;border-radius:24px;background:linear-gradient(135deg,#E6C877,#B8913F);color:#0B1626;box-shadow:0 20px 50px rgba(201,162,75,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:40px}.chips span{padding:16px 28px;border-radius:44px;border:2px solid var(--ln);background:var(--card);font-weight:700;font-size:40px}
 .save{margin-top:40px;font-weight:600;font-size:32px;color:var(--mut)}
 """
 
@@ -98,6 +99,9 @@ def slide_html(s, i, n, bg_url):
     elif kind == "list":
         lis = "".join(f"<li>{md(x)}</li>" for x in s["items"])
         inner = f'{head}<h2>{E(s["title"])}</h2><ul>{lis}</ul>'
+    elif kind == "chips":
+        ch = "".join(f"<span>{E(x)}</span>" for x in s["items"])
+        inner = f'{head}<h2>{E(s["title"])}</h2><div class="chips">{ch}</div><div class="body">{md(s.get("body", ""))}</div>'
     elif kind == "case":
         inner = f'<div class="bar"></div><h2 style="font-size:56px;margin-bottom:24px;color:#E6C877">{E(s["title"])}</h2>' \
                 f'<div class="stat">{E(s["stat"])}</div><div class="body">{md(s["body"])}</div>'
