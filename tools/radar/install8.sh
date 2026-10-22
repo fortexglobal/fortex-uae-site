@@ -8,7 +8,8 @@ curl -fsSL "$R/fix9.py?$(date +%s)" -o /tmp/fix9.py
 curl -fsSL "$R/fix10.py?$(date +%s)" -o /tmp/fix10.py
 curl -fsSL "$R/fix11.py?$(date +%s)" -o /tmp/fix11.py
 curl -fsSL "$R/content.py?$(date +%s)" -o /opt/radar/content.py
-curl -fsSL "$R/autoreply.py?$(date +%s)" -o /opt/radar/autoreply.py /opt/radar/content.py
+curl -fsSL "$R/autoreply.py?$(date +%s)" -o /opt/radar/autoreply.py
+curl -fsSL "$R/content.py?$(date +%s)" -o /opt/radar/content.py
 cp /opt/radar/radar.py /opt/radar/radar.bak8
 python3 /tmp/fix8.py
 python3 /tmp/fix9.py

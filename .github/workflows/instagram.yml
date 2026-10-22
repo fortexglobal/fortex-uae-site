@@ -24,7 +24,7 @@ jobs:
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
           git add ig
-          git diff --cached --quiet || (git commit -m "Instagram slides" && git pull --rebase && git push)
+          git diff --cached --quiet || (git commit -m "Instagram slides" && git pull --rebase --autostash && git push)
       - name: Publish approved
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
@@ -32,4 +32,4 @@ jobs:
       - name: Commit status
         run: |
           git add ig
-          git diff --cached --quiet || (git commit -m "Instagram status" && git pull --rebase && git push)
+          git diff --cached --quiet || (git commit -m "Instagram status" && git pull --rebase --autostash && git push)
