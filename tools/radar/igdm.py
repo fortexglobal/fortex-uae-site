@@ -21,7 +21,7 @@ STATE_F = os.path.join(BASE, "igdm.json")
 KB_F = os.path.join(BASE, "kb.md")
 POLL = 45
 DELAY = (60, 170)          # первая реплика после паузы, сек
-FAST = (12, 35)            # клиент в активной переписке, сек
+FAST = (7, 15)             # клиент в активной переписке, сек
 ACTIVE_WIN = 10 * 60       # переписка «активна», если мы писали меньше 10 минут назад
 WINDOW = 23.5 * 3600       # Instagram разрешает писать только 24 часа после сообщения клиента
 QUIET = (23, 9)            # ночью по Дубаю догоняющие не шлём
@@ -163,6 +163,15 @@ def transcript(cv, n=HISTORY):
     return "\n".join(f"{who.get(h['role'], h['role'])}: {h['text']}" for h in cv["history"][-n:])
 
 
+async def tell(cid, text):
+    """Сообщение владельцу про диалог. Реплай на него уйдёт клиенту этого диалога."""
+    m = await CTX["notify"](text + "\n\n↩️ Ответь реплаем (голосом или текстом), перешлю клиенту.")
+    if m:
+        S["ask"][str(m.id)] = cid
+        S["ask"] = dict(list(S["ask"].items())[-300:])
+    return m
+
+
 def last_ts(cv, role):
     return max([h.get("ts", 0) for h in cv["history"] if h["role"] == role] or [0])
 
@@ -241,14 +250,11 @@ async def reply_to(cid):
     act = res.get("action")
     if act == "ask_owner" and res.get("owner_question"):
         cv["pending_q"] = res["owner_question"]
-        m = await CTX["notify"](f"❓ Вопрос из директа Instagram (@{cv.get('username')}):\n\n{res['owner_question']}\n\n"
-                                f"Ответь реплаем на это сообщение, голосом или текстом. Я перешлю клиенту своими словами.")
-        if m:
-            S["ask"][str(m.id)] = cid
+        await tell(cid, f"❓ Вопрос из директа Instagram (@{cv.get('username')}):\n\n{res['owner_question']}")
     elif act == "handoff" and not cv.get("lead_sent"):
         cv["lead_sent"] = True
         cv["human"] = True
-        await CTX["notify"](
+        await tell(cid,
             f"🔥 Лид из Instagram: @{cv.get('username')}\n"
             f"Имя: {cv.get('name') or '?'}\nКонтакт: {cv.get('contact') or 'не дал, пиши в директ'}\n"
             f"Интерес: {cv.get('services') or '?'}\n\n{cv.get('summary') or ''}\n\n"
@@ -288,7 +294,7 @@ async def poll():
                     cv["history"].append({"role": "owner", "text": text, "ts": time.time()})
                     if not cv.get("human"):
                         cv["human"] = True
-                        await CTX["notify"](f"Ты ответил вручную в директе @{cv.get('username')}. Ассистент в этом диалоге замолчал.\n"
+                        await tell(cid, f"Ты ответил вручную в директе @{cv.get('username')}. Ассистент в этом диалоге замолчал.\n"
                                             f"Вернуть его: /igdm resume {cv.get('username')}")
                 elif first_time:
                     cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
@@ -311,7 +317,7 @@ async def poll():
             if not allowed:
                 if cid not in S["seen_other"]:
                     S["seen_other"].append(cid)
-                    await CTX["notify"](f"Новое сообщение в директе от @{cv.get('username')}. Ассистент в тестовом режиме и не отвечает.\n\n"
+                    await tell(cid, f"Новое сообщение в директе от @{cv.get('username')}. Ассистент в тестовом режиме и не отвечает.\n\n"
                                         f"«{cv['history'][-1]['text'][:300]}»")
                 continue
             on_user_message(cv)
@@ -361,7 +367,9 @@ async def maybe_handle(ev, text):
         if not text:
             await ev.reply("Не расшифровалось, ответь ещё раз реплаем или текстом")
             return True
-    res = await llm(REWRITE, f"Вопрос клиента: {cv.get('pending_q')}\nПереписка:\n{transcript(cv, 10)}\n\nОтвет коллеги: {text}")
+    log.info("owner reply for %s", cid)
+    last_q = cv.get("pending_q") or next((h["text"] for h in reversed(cv["history"]) if h["role"] == "user"), "")
+    res = await llm(REWRITE, f"Вопрос клиента: {last_q}\nПереписка:\n{transcript(cv, 10)}\n\nОтвет коллеги: {text}")
     out = clean((res or {}).get("reply") or text)
     if not await send(cv["uid"], out):
         await ev.reply("Instagram не принял сообщение. Возможно, прошло больше 24 часов с последнего сообщения клиента.")
@@ -458,7 +466,7 @@ async def mc_inbound(data):
     if not allowed:
         if cid not in S["seen_other"]:
             S["seen_other"].append(cid)
-            await CTX["notify"](f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {username}")
+            await tell(cid, f"Новое сообщение в директе от @{username}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {username}")
         save(); return
     on_user_message(cv)
     save()
