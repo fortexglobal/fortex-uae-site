@@ -243,13 +243,31 @@ async def followup(cid):
     save()
 
 
+# длина ответа чередуется, чтобы сообщения не были одинаковыми
+LENGTHS = {"short": "очень коротко, 2–8 слов, одна фраза (например «Да, откроем.» или «А паспорт какой?»)",
+           "medium": "одно-два коротких предложения, до 140 знаков",
+           "long": "два-три предложения, до 260 знаков, только если правда нужно объяснить"}
+
+
+def pick_length(cv):
+    prev = cv.get("last_len")
+    opts = [k for k in ("short", "medium", "long") if k != prev] if prev in ("short", "long") else ["short", "medium", "long"]
+    weights = {"short": 4, "medium": 4, "long": 2}
+    size = random.choices(opts, [weights[k] for k in opts])[0]
+    cv["last_len"] = size
+    return size
+
+
 async def reply_to(cid):
     cv = S["convs"][cid]
     cv["next_at"] = 0
     extra = ""
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
-    res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\nНапиши следующее сообщение клиенту.")
+    size = pick_length(cv)
+    res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
+                                   f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
+                                   f"Напиши следующее сообщение клиенту.")
     if not res or not res.get("reply"):
         return
     text = clean(res["reply"])
