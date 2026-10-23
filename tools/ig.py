@@ -13,7 +13,8 @@ def call(method, path, **params):
     params["access_token"] = T
     data = urllib.parse.urlencode(params).encode()
     url = f"{API}/{path}"
-    req = urllib.request.Request(url + ("?" + data.decode() if method == "GET" else ""), None if method == "GET" else data, method=method)
+    q = method in ("GET", "DELETE")
+    req = urllib.request.Request(url + ("?" + data.decode() if q else ""), None if q else data, method=method)
     try:
         return json.load(urllib.request.urlopen(req, timeout=120))
     except urllib.error.HTTPError as e:
@@ -89,6 +90,18 @@ def lock(path, slug):
 def main():
     me = call("GET", "me", fields="user_id,username,account_type,media_count")
     out = {"checked": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "me": me, "published": []}
+    # удаление постов по списку ig/delete.json {"ids": [...]}
+    dp = os.path.join(ROOT, "ig", "delete.json")
+    if "error" not in me and os.path.exists(dp):
+        dj = json.load(open(dp))
+        dj.setdefault("done", {})
+        for mid in dj.get("ids", []):
+            if mid in dj["done"] and dj["done"][mid] == "deleted":
+                continue
+            r = call("DELETE", mid)
+            dj["done"][mid] = "deleted" if r.get("success") else str(r)[:300]
+        json.dump(dj, open(dp, "w"), ensure_ascii=False, indent=1)
+        out["deleted"] = dj["done"]
     recent = call("GET", "me/media", fields="id,caption,permalink", limit="50").get("data", []) if "error" not in me else []
     if "error" not in me:
         for f in sorted(glob.glob(os.path.join(ROOT, "ig", "src", "*.json"))):
