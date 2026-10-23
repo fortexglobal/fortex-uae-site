@@ -144,7 +144,7 @@ def main(only=None):
             if only and slug != only:
                 continue
             src = json.load(open(f, encoding="utf-8"))
-            if src.get("status") == "published":
+            if src.get("status") == "published" or src.get("v") == 2:
                 continue
             try:
                 render_one(slug, src, b)

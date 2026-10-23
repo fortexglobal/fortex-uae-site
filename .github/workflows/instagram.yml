@@ -11,6 +11,7 @@ concurrency: instagram
 jobs:
   ig:
     runs-on: ubuntu-latest
+    timeout-minutes: 80
     steps:
       - uses: actions/checkout@v4
       - name: Install renderer
@@ -24,6 +25,12 @@ jobs:
           python3 tools/ig_render.py
           sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
           python3 tools/reel_render.py
+      - name: Render reels v2
+        timeout-minutes: 45
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python3 tools/reel_v2.py
       - name: Commit slides
         run: |
           git config user.name "Claude"
