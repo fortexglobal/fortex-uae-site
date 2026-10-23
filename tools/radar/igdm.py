@@ -329,6 +329,10 @@ async def _reply_to(cid):
     extra = ""
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
+    if cv.get("lead_sent"):
+        extra += ("\n\nКлиент уже передан менеджеру. Не проси контакт снова и не делай action handoff. "
+                  "Отвечай коротко на его вопросы по базе знаний, а если вопрос про следующий шаг, скажи, что менеджер уже в курсе и скоро напишет. "
+                  "Если он просто благодарит или прощается, ответь одной короткой фразой.")
     size = pick_length(cv)
     if str(cv.get("uid", "")).startswith("tg:"):
         uname = cv.get("username")
@@ -375,9 +379,12 @@ async def _reply_to(cid):
         await tell(cid, f"❓ <b>Вопрос из {'Telegram' if is_tg else 'директа'}</b> @{html.escape(str(cv.get('username')))}\n\n"
                         f"<b>{html.escape(res['owner_question'])}</b>\n\n"
                         f"<b>━━━ Последние сообщения ━━━</b>\n\n{transcript_html(cv, 6, 1500)}", is_html=True)
-    elif act == "handoff" and not cv.get("lead_sent"):
+    elif cv.get("lead_sent"):
+        # клиент уже передан: ассистент отвечает дальше, а тебе показываем, что он написал
+        await tell(cid, f"💬 <b>Клиент уже у тебя</b> @{html.escape(str(cv.get('username')))} написал снова\n\n"
+                        f"{transcript_html(cv, 2, 1200)}", is_html=True)
+    elif act == "handoff":
         cv["lead_sent"] = True
-        cv["human"] = True
         await tell(cid,
             f"🔥 <b>Лид из {'Telegram' if is_tg else 'Instagram'}:</b> @{html.escape(str(cv.get('username')))}\n\n"
             f"<b>Имя:</b> {html.escape(str(cv.get('name') or '?'))}\n"
@@ -385,7 +392,7 @@ async def _reply_to(cid):
             f"<b>Интерес:</b> {html.escape(str(cv.get('services') or '?'))}\n\n"
             f"<b>Кратко:</b> {html.escape(str(cv.get('summary') or ''))}\n\n"
             f"<b>━━━ Переписка ━━━</b>\n\n{transcript_html(cv)}\n\n"
-            f"<b>Дальше ведёшь ты.</b> Ассистент в этом диалоге замолчал.", is_html=True)
+            f"<b>Дальше ведёшь ты.</b> Пока ты не написал клиенту сам, ассистент вежливо отвечает на его вопросы и говорит, что менеджер скоро свяжется.", is_html=True)
     save()
 
 
