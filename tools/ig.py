@@ -119,7 +119,7 @@ def main():
                     continue
             # защита от дублей: такой пост уже есть в Instagram
             if item.get("format") != "stories" and item.get("caption"):
-                same = [m for m in recent if (m.get("caption") or "")[:120] == item["caption"][:120]]
+                same = [m for m in recent if (m.get("caption") or "").strip() == item["caption"].strip()]
                 if same:
                     item.update(status="published", result={"id": same[0]["id"], "permalink": same[0].get("permalink", ""), "dedup": True})
                     json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
