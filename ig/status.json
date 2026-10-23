@@ -1,34 +1,7 @@
 {
- "checked": "2026-10-23T10:17Z",
+ "checked": "2026-10-23T15:39Z",
  "me": {
-  "user_id": "17841434625185251",
-  "username": "fortex__uae",
-  "account_type": "BUSINESS",
-  "media_count": 3,
-  "id": "28276626788683589"
+  "error": "{\"error\":{\"message\":\"API access blocked.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ALc5ZFokpo3TNhQZxuhfreo\"}}"
  },
- "published": [],
- "media": [
-  {
-   "id": "18110229629581283",
-   "timestamp": "2026-10-23T09:24:56+0000",
-   "permalink": "https://www.instagram.com/p/De1OtiNFsEM/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Рабочая виза или Virtual Work: что выбрать?\n\nОбе дают резиде"
-  },
-  {
-   "id": "18146568127608471",
-   "timestamp": "2026-10-23T09:24:17+0000",
-   "permalink": "https://www.instagram.com/p/De1OpQWlvRp/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Банк в ОАЭ отказал. Что дальше?\n\nГлавное: не подавайтесь сам"
-  },
-  {
-   "id": "18083292146352525",
-   "timestamp": "2026-10-23T09:23:42+0000",
-   "permalink": "https://www.instagram.com/p/De1OkWkFkm9/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Нас часто спрашивают, почему у нас нет офиса.\n\nКлиенты по вс"
-  }
- ]
+ "published": []
 }
