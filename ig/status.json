@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-23T18:14Z",
+ "checked": "2026-10-23T18:15Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -11,10 +11,21 @@
   {
    "slug": "st-scheta",
    "scheduled": "stories",
-   "error": {
-    "error": "{\"error\":{\"message\":\"The requested resource does not exist\",\"type\":\"OAuthException\",\"code\":24,\"error_subcode\":2207006,\"is_transient\":false,\"error_user_title\":\"Media Not Found\",\"error_user_msg\":\"The media with 18,111,667,163,154,173 cannot be found.\",\"fbtrace_id\":\"Auxhxp3tvkYjm6Net-vsdnp\"}}"
-   },
-   "done": []
+   "id": "18118179170332608",
+   "ids": [
+    "18118179170332608",
+    "18002783384805766",
+    "17870168133661431",
+    "18198712678389715",
+    "18131854952510049",
+    "18270070285307107",
+    "18114818348584364",
+    "18111926834605559",
+    "18646335907037990",
+    "18146148094584060",
+    "17972956041168882"
+   ],
+   "permalink": "https://www.instagram.com/stories/fortex__uae/"
   }
  ],
  "media": [
