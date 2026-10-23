@@ -21,7 +21,14 @@ STATE_F = os.path.join(BASE, "igdm.json")
 KB_F = os.path.join(BASE, "kb.md")
 POLL = 45
 DELAY = (60, 170)          # первая реплика после паузы, сек
-FAST = (7, 15)             # клиент в активной переписке, сек
+FAST = (1, 1)              # клиент в активной переписке: старт почти сразу (1 сек на случай нескольких сообщений подряд)
+RUNNING = set()            # диалоги, где ответ уже готовится
+
+
+def target_secs(text):
+    """Сколько секунд «печатаем» в активной переписке: коротко 3, средне 5, длинно 7."""
+    n = len(text)
+    return 3 if n <= 60 else 5 if n <= 160 else 7
 ACTIVE_WIN = 10 * 60       # переписка «активна», если мы писали меньше 10 минут назад
 WINDOW = 23.5 * 3600       # Instagram разрешает писать только 24 часа после сообщения клиента
 QUIET = (23, 9)            # ночью по Дубаю догоняющие не шлём
@@ -201,9 +208,23 @@ def on_user_message(cv):
     """Новое сообщение клиента: отвечаем быстро, если переписка идёт, и через 1–3 минуты, если была пауза."""
     cv["last_user_ts"] = time.time()
     cv["fu"], cv["fu_at"] = 0, 0
-    if not cv.get("next_at"):
-        active = time.time() - last_ts(cv, "bot") < ACTIVE_WIN
-        cv["next_at"] = time.time() + random.randint(*(FAST if active else DELAY))
+    active = time.time() - last_ts(cv, "bot") < ACTIVE_WIN
+    if active:
+        cv["next_at"] = time.time() + 0.4
+        cv["fast"] = True
+        cid = cv.get("uid")
+        if cid in S["convs"]:
+            asyncio.get_event_loop().create_task(kick(cid, 0.5))
+    elif not cv.get("next_at"):
+        cv["next_at"] = time.time() + random.randint(*DELAY)
+        cv["fast"] = False
+
+
+async def kick(cid, delay):
+    await asyncio.sleep(delay)
+    cv = S["convs"].get(cid)
+    if cv and cv.get("next_at") and cv["next_at"] <= time.time() and not cv.get("human"):
+        await reply_to(cid)
 
 
 # догоняющие: через ~15 минут, через 3–4 часа, под конец 24-часового окна Instagram
@@ -276,8 +297,31 @@ def pick_length(cv):
 
 
 async def reply_to(cid):
+    if cid in RUNNING:
+        return
+    RUNNING.add(cid)
+    try:
+        await _reply_to(cid)
+    finally:
+        RUNNING.discard(cid)
+
+
+async def _reply_to(cid):
     cv = S["convs"][cid]
     cv["next_at"] = 0
+    # в живой переписке время считаем от сообщения клиента, иначе от начала ответа
+    t0 = cv.get("last_user_ts", time.time()) if cv.get("fast") else time.time()
+    is_tg = str(cv.get("uid", "")).startswith("tg:")
+    u = CTX.get("user")
+    typing = None
+    if is_tg and u:
+        try:
+            peer = int(cv["uid"][3:])
+            await u.send_read_acknowledge(peer)
+            typing = u.action(peer, "typing")
+            await typing.__aenter__()
+        except Exception as e:
+            log.warning("tg typing: %s", e); typing = None
     extra = ""
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
@@ -289,9 +333,23 @@ async def reply_to(cid):
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
     if not res or not res.get("reply"):
+        if typing:
+            await typing.__aexit__(None, None, None)
         return
     text = clean(res["reply"])
-    if not await send(cv["uid"], text):
+    # «печатаем» так, чтобы от начала до ответа прошло 3/5/7 секунд (если нейросеть думала дольше, отвечаем сразу)
+    await asyncio.sleep(max(0, target_secs(text) - (time.time() - t0)))
+    if typing:
+        await typing.__aexit__(None, None, None)
+        try:
+            m = await u.send_message(int(cv["uid"][3:]), text)
+            S["sent"].append(f"tg:{m.id}")
+            ok = m.id
+        except Exception as e:
+            log.warning("tg send: %s", e); ok = None
+    else:
+        ok = await send(cv["uid"], text)
+    if not ok:
         return
     cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
     schedule_followup(cv, 0)
@@ -301,14 +359,14 @@ async def reply_to(cid):
     act = res.get("action")
     if act == "ask_owner" and res.get("owner_question"):
         cv["pending_q"] = res["owner_question"]
-        await tell(cid, f"❓ <b>Вопрос из директа</b> @{html.escape(str(cv.get('username')))}\n\n"
+        await tell(cid, f"❓ <b>Вопрос из {'Telegram' if is_tg else 'директа'}</b> @{html.escape(str(cv.get('username')))}\n\n"
                         f"<b>{html.escape(res['owner_question'])}</b>\n\n"
                         f"<b>━━━ Последние сообщения ━━━</b>\n\n{transcript_html(cv, 6, 1500)}", is_html=True)
     elif act == "handoff" and not cv.get("lead_sent"):
         cv["lead_sent"] = True
         cv["human"] = True
         await tell(cid,
-            f"🔥 <b>Лид из Instagram:</b> @{html.escape(str(cv.get('username')))}\n\n"
+            f"🔥 <b>Лид из {'Telegram' if is_tg else 'Instagram'}:</b> @{html.escape(str(cv.get('username')))}\n\n"
             f"<b>Имя:</b> {html.escape(str(cv.get('name') or '?'))}\n"
             f"<b>Контакт:</b> {html.escape(str(cv.get('contact') or 'не дал, пиши в директ'))}\n"
             f"<b>Интерес:</b> {html.escape(str(cv.get('services') or '?'))}\n\n"
@@ -386,13 +444,14 @@ async def loop():
     await asyncio.sleep(20)
     while True:
         try:
-            if S["enabled"] and (token() or secret("manychat_key")):
-                if S.get("transport", "graph") == "graph" and token():
+            if S["enabled"]:
+                if S.get("transport", "graph") == "graph" and token() and time.time() - S.get("_polled", 0) >= POLL:
+                    S["_polled"] = time.time()
                     await poll()
                 now = time.time()
                 for cid, cv in list(S["convs"].items()):
                     if cv.get("next_at") and cv["next_at"] <= now and not cv.get("human"):
-                        await reply_to(cid)
+                        asyncio.get_event_loop().create_task(reply_to(cid))
                     elif cv.get("fu_at") and cv["fu_at"] <= now and not cv.get("next_at"):
                         await followup(cid)
                 if not S.get("booted"):
@@ -400,7 +459,7 @@ async def loop():
                     save()
         except Exception:
             log.exception("igdm loop")
-        await asyncio.sleep(POLL)
+        await asyncio.sleep(2)
 
 
 REWRITE = """Ты сотрудник Fortex UAE в директе Instagram. Коллега (владелец) дал ответ на вопрос клиента, часто это расшифровка голосового.
