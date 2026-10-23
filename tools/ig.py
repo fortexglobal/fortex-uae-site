@@ -1,7 +1,7 @@
 """Instagram: проверка токена и публикация утверждённых каруселей ig/src/*.json (в GitHub Actions).
 Картинки берутся из ig/<slug>/render.json и отдаются Instagram по ссылкам raw.githubusercontent.com.
 После публикации: status=published, permalink. Токен: секрет IG_TOKEN."""
-import glob, json, os, sys, time, urllib.parse, urllib.request
+import glob, json, os, subprocess, sys, time, urllib.parse, urllib.request
 
 T = os.environ.get("IG_TOKEN", "")
 API = "https://graph.instagram.com/v21.0"
@@ -57,6 +57,26 @@ def publish_stories(imgs):
         ids.append(p["id"])
         time.sleep(3)
     return {"id": ids[0] if ids else "", "ids": ids, "permalink": "https://www.instagram.com/stories/fortex__uae/"}
+
+
+def publish_reel(video_url, cover_url, caption):
+    c = call("POST", "me/media", media_type="REELS", video_url=video_url, cover_url=cover_url, caption=caption, share_to_feed="true")
+    if "id" not in c:
+        return {"error": c}
+    ok = False
+    for i in range(60):  # видео обрабатывается до нескольких минут
+        st = call("GET", c["id"], fields="status_code,status").get("status_code")
+        if st == "FINISHED":
+            ok = True; break
+        if st == "ERROR":
+            return {"error": call("GET", c["id"], fields="status")}
+        time.sleep(6)
+    if not ok:
+        return {"error": "video processing timeout"}
+    p = publish_container(c["id"])
+    if "id" not in p:
+        return {"error": p}
+    return {"id": p["id"], "permalink": call("GET", p["id"], fields="permalink").get("permalink", "")}
 
 
 def publish(item):
@@ -116,10 +136,14 @@ def main():
         out["deleted"] = dj["done"]
     recent = call("GET", "me/media", fields="id,caption,permalink", limit="50").get("data", []) if "error" not in me else []
     if "error" not in me:
-        for f in sorted(glob.glob(os.path.join(ROOT, "ig", "src", "*.json"))):
+        srcs = [(f, False) for f in sorted(glob.glob(os.path.join(ROOT, "ig", "src", "*.json")))] + \
+               [(f, True) for f in sorted(glob.glob(os.path.join(ROOT, "ig", "reels", "src", "*.json")))]
+        for f, is_reel in srcs:
             slug = os.path.basename(f)[:-5]
             item = json.load(open(f, encoding="utf-8"))
-            meta = os.path.join(ROOT, "ig", slug, "render.json")
+            if is_reel:
+                item["format"] = "reel"
+            meta = os.path.join(ROOT, "ig", "reels", slug, "render.json") if is_reel else os.path.join(ROOT, "ig", slug, "render.json")
             if item.get("status") != "approved" or not os.path.exists(meta):
                 continue
             # publish_at (ISO с часовым поясом, напр. 2026-10-26T19:07+04:00): не раньше этого времени, по одному за запуск
@@ -142,11 +166,18 @@ def main():
             if not lock(f, slug):
                 print("lock failed, другой запуск уже публикует", slug)
                 break
-            item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]]
-            if item.get("format") != "stories":
-                item["images"] = item["images"][:10]
-            res = publish(item)
-            item.pop("images")
+            if is_reel:
+                m = json.load(open(meta))
+                sha = subprocess.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
+                cdn = f"https://cdn.jsdelivr.net/gh/fortexglobal/fortex-uae-site@{sha}/ig/reels/{slug}"
+                res = publish_reel(f"{cdn}/{m['video']}", f"{cdn}/{m['cover']}", item.get("caption", ""))
+                item.pop("format", None)
+            else:
+                item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]]
+                if item.get("format") != "stories":
+                    item["images"] = item["images"][:10]
+                res = publish(item)
+                item.pop("images")
             item.update(status="published" if "id" in res else "error", result=res,
                         published_at=time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
             json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

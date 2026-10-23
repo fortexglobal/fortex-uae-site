@@ -1,7 +1,7 @@
 name: Instagram
 on:
   push:
-    paths: ["ig/src/**"]
+    paths: ["ig/src/**", "ig/reels/src/**"]
   workflow_dispatch:
   schedule:
     - cron: "7 15 * * *"
@@ -20,7 +20,10 @@ jobs:
       - name: Render slides
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python3 tools/ig_render.py
+        run: |
+          python3 tools/ig_render.py
+          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
+          python3 tools/reel_render.py
       - name: Commit slides
         run: |
           git config user.name "Claude"
