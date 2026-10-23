@@ -22,14 +22,26 @@ def call(method, path, **params):
 
 
 def wait_ready(cid):
-    for _ in range(30):
+    """Ждём, пока Instagram обработает контейнер (status_code FINISHED)."""
+    for i in range(40):
         st = call("GET", cid, fields="status_code").get("status_code")
-        if st in ("FINISHED", None):
+        if st == "FINISHED":
             return True
         if st == "ERROR":
             return False
-        time.sleep(5)
+        time.sleep(4)
     return False
+
+
+def publish_container(cid):
+    """media_publish с повторами: сразу после создания контейнер бывает ещё «не найден»."""
+    p = {}
+    for i in range(6):
+        p = call("POST", "me/media_publish", creation_id=cid)
+        if "id" in p:
+            return p
+        time.sleep(6)
+    return p
 
 
 def publish_stories(imgs):
@@ -39,7 +51,7 @@ def publish_stories(imgs):
         if "id" not in c:
             return {"error": c, "done": ids}
         wait_ready(c["id"])
-        p = call("POST", "me/media_publish", creation_id=c["id"])
+        p = publish_container(c["id"])
         if "id" not in p:
             return {"error": p, "done": ids}
         ids.append(p["id"])
@@ -66,7 +78,7 @@ def publish(item):
     if "id" not in c:
         return {"error": c}
     wait_ready(c["id"])
-    p = call("POST", "me/media_publish", creation_id=c["id"])
+    p = publish_container(c["id"])
     if "id" not in p:
         return {"error": p}
     link = call("GET", p["id"], fields="permalink").get("permalink", "")

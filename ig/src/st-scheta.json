@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Счета",
- "status": "error",
+ "status": "approved",
  "publish_at": "2026-10-23T19:00+04:00",
  "bg_prompt": "luxury Dubai bank lobby with marble, gold accents and soft warm light, premium atmosphere, no people, no text, no logos",
  "caption": "Серия сторис для Актуального «Счета»",
@@ -155,12 +155,5 @@
   "close-up of a premium black metal credit card on a marble table with soft golden light, Dubai luxury interior blurred in background, no text, no logos, no faces",
   "modern bank interior in Dubai with marble and glass, warm evening light, empty, premium, no text, no logos, no people",
   "Dubai Marina skyline at blue hour seen from a luxury apartment window, laptop on a desk in the foreground, no text, no people"
- ],
- "result": {
-  "error": {
-   "error": "{\"error\":{\"message\":\"The requested resource does not exist\",\"type\":\"OAuthException\",\"code\":24,\"error_subcode\":2207006,\"is_transient\":false,\"error_user_title\":\"Media Not Found\",\"error_user_msg\":\"The media with 18,111,667,163,154,173 cannot be found.\",\"fbtrace_id\":\"Auxhxp3tvkYjm6Net-vsdnp\"}}"
-  },
-  "done": []
- },
- "published_at": "2026-10-23T18:14Z"
+ ]
 }
