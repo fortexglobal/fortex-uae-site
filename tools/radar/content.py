@@ -109,6 +109,9 @@ def next_publish_text():
 
 async def on_button(ev):
     action, slug = ev.data.decode().split(":", 1)
+    if action.startswith("cst"):
+        import starters
+        return await starters.on_button(ev, action, slug)
     if action in ("cigok", "cigfix"):
         return await ig_button(ev, action, slug)
     if action == "cok":

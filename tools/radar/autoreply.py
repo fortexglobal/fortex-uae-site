@@ -153,6 +153,33 @@ def _suspicious(sender, text):
     return bool(SCAMMY_RE.search(text))
 
 
+_STYLE_CACHE = {}
+
+
+async def chat_style(user, chat_id):
+    """Как пишут в чате: медианная длина последних сообщений. Возвращает (limit, подсказка для нейросети)."""
+    c = _STYLE_CACHE.get(chat_id)
+    if c and c[0] > time.time() - 6 * 3600:
+        return c[1], c[2]
+    lens = []
+    try:
+        async for m in user.iter_messages(chat_id, limit=60):
+            if m.raw_text and not m.out:
+                lens.append(len(m.raw_text))
+    except Exception as e:
+        log.warning("chat style: %s", e)
+    lens.sort()
+    med = lens[len(lens) // 2] if lens else 80
+    if med < 50:
+        lim, hint = 70, "В этом чате пишут очень коротко, одной строкой. Пиши так же: одна короткая фраза."
+    elif med < 130:
+        lim, hint = 160, "В этом чате пишут коротко, 1–2 предложения. Пиши так же."
+    else:
+        lim, hint = 320, "В этом чате принято писать развёрнуто. Можно 2–4 предложения, но без воды."
+    _STYLE_CACHE[chat_id] = (time.time(), lim, hint)
+    return lim, hint
+
+
 def _quiet():
     return QUIET[0] <= _now().hour < QUIET[1]
 
@@ -178,7 +205,8 @@ async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
         if not s["on"] or (st and st[0] != "new") or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
             s["total"] = max(0, s["total"] - 1); _save(s)
             return
-        draft = _clean(res.get("reply", ""), len(text))
+        lim, _hint = await chat_style(user, ev.chat_id)
+        draft = _clean(res.get("reply", ""), min(len(text), lim) if lim < 300 else len(text))
         if not draft:
             return
         m = await user.send_message(ev.chat_id, draft, reply_to=ev.id)
@@ -223,14 +251,23 @@ async def on_reply_to_us(user, ev, rm, text):
         if not s["on"] or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
             return
         depth = th["depth"] + 1
-        task = ("Это наше третье и последнее сообщение в ветке: коротко ответь по сути и вскользь, без давления, "
+        lim, hint = await chat_style(user, ev.chat_id)
+        if th.get("starter"):
+            task = ("Это обсуждение начали мы своим вопросом, человек ответил. Отреагируй по-человечески: коротко поблагодари или согласись, "
+                    "можешь задать один уточняющий вопрос по сути. Мы разбираемся в теме, но говорим скромно. Если в разговоре прозвучала задача, которую мы решаем "
+                    "(счёт, виза, компания, переводы через ОАЭ), и это звучит уместно, можно вскользь одной фразой сказать, что в Дубае такое решаемо и мы этим занимаемся, "
+                    "без цен и без «пишите в личку», если человек сам не интересуется. Не продавай. Не придумывай личных историй." + (
+                    " Это наше последнее сообщение в ветке: если человеку это актуально, можно спокойно сказать «если что, пишите в личку»." if depth >= MAX_DEPTH else ""))
+        else:
+          task = ("Это наше третье и последнее сообщение в ветке: коротко ответь по сути и вскользь, без давления, "
                 "предложи написать в личку, если нужна консультация (например «Если что, пишите в личку. Подскажу.»)."
                 if depth == MAX_DEPTH else "Коротко ответь по сути. Вопрос только если без него никак.")
+        task += "\n" + hint
         msgs = [{"role": "system", "content": STYLE},
                 {"role": "user", "content": f"Исходное сообщение человека:\n{th['root']}\n\nНаши ответы:\n" +
                  "\n".join(th["history"]) + f"\n\nНовое сообщение в ветке:\n{text[:800]}\n\n{task}\n"
                  "Если отвечать не нужно (просто «спасибо», «ок»), верни пустую строку. Верни только текст ответа."}]
-        reply = _clean(await _llm(msgs), len(text) if depth < MAX_DEPTH else max(len(text), 90))
+        reply = _clean(await _llm(msgs), max(len(text), lim) if th.get("starter") else (len(text) if depth < MAX_DEPTH else max(len(text), 90)))
         if not reply:
             return
         m = await user.send_message(ev.chat_id, reply, reply_to=ev.id)
