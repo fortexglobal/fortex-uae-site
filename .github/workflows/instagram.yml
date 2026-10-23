@@ -7,7 +7,9 @@ on:
     - cron: "7 15 * * *"
 permissions:
   contents: write
-concurrency: instagram
+concurrency:
+  group: instagram
+  cancel-in-progress: true
 jobs:
   ig:
     runs-on: ubuntu-latest
@@ -18,15 +20,18 @@ jobs:
         run: |
           pip install playwright pillow
           python -m playwright install --with-deps chromium
+          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
       - name: Render slides
+        timeout-minutes: 20
+        continue-on-error: true
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           python3 tools/ig_render.py
-          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
           python3 tools/reel_render.py
       - name: Render reels v2
         timeout-minutes: 45
+        continue-on-error: true
         env:
           FAL_KEY: ${{ secrets.FAL_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}

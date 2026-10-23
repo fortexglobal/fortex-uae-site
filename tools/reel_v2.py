@@ -33,12 +33,18 @@ STYLE = (", vertical 9:16 framing, photorealistic, cinematic, natural skin, real
 NEG = "text, letters, subtitles, watermark, logo, blurry, distorted face, extra fingers, cartoon, low quality"
 FONTDIR = os.path.join(ROOT, "tools", "fonts")
 LOG = []
+LOG_PATH = [None]
 
 
 def log(*a):
     s = " ".join(str(x) for x in a)
     print(s, flush=True)
     LOG.append(time.strftime("%H:%M:%S ") + s)
+    if LOG_PATH[0]:
+        try:
+            open(LOG_PATH[0], "w").write("\n".join(LOG) + "\n")
+        except Exception:
+            pass
 
 
 def http(url, data=None, headers=None, method=None, raw=False, timeout=180):
@@ -122,6 +128,8 @@ def fal_run(model, payload, max_wait=900):
         st = http(st_url, headers=hd)
         if st.get("status") == "COMPLETED":
             return http(res_url, headers=hd)
+        if int(time.time() - t0) % 120 < 6:
+            log(f"  {model.split('/')[-2]}: {st.get('status')} {int(time.time() - t0)}s")
         if st.get("status") in ("FAILED", "ERROR"):
             raise RuntimeError(f"fal failed: {st}")
     raise TimeoutError(model)
@@ -378,15 +386,15 @@ def main(only=None):
         b = p.chromium.launch()
         for slug, src in todo:
             LOG.clear()
+            d = os.path.join(ROOT, "ig", "reels", slug)
+            os.makedirs(d, exist_ok=True)
+            LOG_PATH[0] = os.path.join(d, "log.txt")
+            log("start", slug)
             try:
                 render_one(slug, src, b)
             except Exception as e:
                 import traceback
                 log("reel v2 error", slug, repr(e), traceback.format_exc()[-1500:])
-            if LOG:
-                d = os.path.join(ROOT, "ig", "reels", slug)
-                os.makedirs(d, exist_ok=True)
-                open(os.path.join(d, "log.txt"), "w").write("\n".join(LOG) + "\n")
         b.close()
 
 

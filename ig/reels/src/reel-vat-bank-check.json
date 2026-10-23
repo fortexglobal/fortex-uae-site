@@ -6,12 +6,32 @@
  "accent": "тихо поменяли",
  "music": "dark minimal modern trap beat, deep sub bass, ticking clock hi-hats, tense breaking-news mood, 95 bpm, cinematic",
  "shots": [
-  {"prompt": "medium close-up of a confident businessman in his 40s in a crisp white shirt in a glass office high above Dubai Marina at golden hour, he looks at his smartphone and raises his eyebrows in surprise, slow dolly-in camera, warm sunlight flare", "say": "С первого октября в ОАЭ тихо поменяли правила для бизнеса."},
-  {"prompt": "over-the-shoulder shot of a female accountant in a modern Dubai office checking invoices on a laptop, she highlights a line on a printed invoice, colleagues blurred in background, soft daylight, handheld camera with subtle motion", "say": "Теперь компании обязаны проверять каждого поставщика. Иначе им могут не вернуть НДС."},
-  {"prompt": "two business partners shake hands across a glass table in a premium meeting room in DIFC Dubai, skyline behind the window, then one of them slides a document across the table, slow orbit camera move, cinematic lighting", "say": "Продаёте одному клиенту больше чем на 375 тысяч дирхамов в год? У вас попросят письмо из банка ОАЭ, что здесь есть счёт."},
-  {"prompt": "close-up of a hand pushing a stack of UAE dirham banknotes away on a dark marble desk, then the hand taps a black credit card on a payment terminal, shallow depth of field, moody premium lighting, slow motion", "say": "А платить наличными теперь можно только с понятной причиной."},
-  {"prompt": "tracking shot following a young entrepreneur in a navy suit walking confidently across Dubai Downtown boulevard at sunset with Burj Khalifa in the background, he puts on sunglasses, cinematic slow motion, golden hour", "say": "Нет счёта в ОАЭ, и крупный клиент просто выберет другого."}
+  {
+   "prompt": "medium close-up of a confident businessman in his 40s in a crisp white shirt in a glass office high above Dubai Marina at golden hour, he looks at his smartphone and raises his eyebrows in surprise, slow dolly-in camera, warm sunlight flare",
+   "say": "С первого октября в ОАЭ тихо поменяли правила для бизнеса."
+  },
+  {
+   "prompt": "over-the-shoulder shot of a female accountant in a modern Dubai office checking invoices on a laptop, she highlights a line on a printed invoice, colleagues blurred in background, soft daylight, handheld camera with subtle motion",
+   "say": "Теперь компании обязаны проверять каждого поставщика. Иначе им могут не вернуть НДС."
+  },
+  {
+   "prompt": "two business partners shake hands across a glass table in a premium meeting room in DIFC Dubai, skyline behind the window, then one of them slides a document across the table, slow orbit camera move, cinematic lighting",
+   "say": "Продаёте одному клиенту больше чем на 375 тысяч дирхамов в год? У вас попросят письмо из банка ОАЭ, что здесь есть счёт."
+  },
+  {
+   "prompt": "close-up of a hand pushing a stack of UAE dirham banknotes away on a dark marble desk, then the hand taps a black credit card on a payment terminal, shallow depth of field, moody premium lighting, slow motion",
+   "say": "А платить наличными теперь можно только с понятной причиной."
+  },
+  {
+   "prompt": "tracking shot following a young entrepreneur in a navy suit walking confidently across Dubai Downtown boulevard at sunset with Burj Khalifa in the background, he puts on sunglasses, cinematic slow motion, golden hour",
+   "say": "Нет счёта в ОАЭ, и крупный клиент просто выберет другого."
+  }
  ],
- "cta": {"title": "Подпишись", "text": "Главное про бизнес и деньги в Дубае. Каждый день.", "say": "Подписывайся. Каждый день главное про бизнес в Дубае."},
- "caption": "С 1 октября в ОАЭ действуют новые правила проверки поставщиков (решение FTA № 13 от 2026 года).\n\nЧто это значит для вас:\n• компании проверяют поставщиков, иначе рискуют не вернуть входящий НДС\n• если вы продаёте одному клиенту больше 375 000 AED в год, он запросит письменное подтверждение из банка ОАЭ, что у вас есть здесь счёт\n• оплата только безналом, наличные требуют документального обоснования\n\nНет корпоративного счёта в ОАЭ? Напишите СЧЁТ в комментариях, расскажем, как открыть.\n\nИли в Telegram @Fortex_Dubai\n\nВидео создано с помощью ИИ.\n\n#бизнесвдубае #оаэ #дубай #ндс #счетвоаэ #новостидубая"
+ "cta": {
+  "title": "Подпишись",
+  "text": "Главное про бизнес и деньги в Дубае. Каждый день.",
+  "say": "Подписывайся. Каждый день главное про бизнес в Дубае."
+ },
+ "caption": "С 1 октября в ОАЭ действуют новые правила проверки поставщиков (решение FTA № 13 от 2026 года).\n\nЧто это значит для вас:\n• компании проверяют поставщиков, иначе рискуют не вернуть входящий НДС\n• если вы продаёте одному клиенту больше 375 000 AED в год, он запросит письменное подтверждение из банка ОАЭ, что у вас есть здесь счёт\n• оплата только безналом, наличные требуют документального обоснования\n\nНет корпоративного счёта в ОАЭ? Напишите СЧЁТ в комментариях, расскажем, как открыть.\n\nИли в Telegram @Fortex_Dubai\n\nВидео создано с помощью ИИ.\n\n#бизнесвдубае #оаэ #дубай #ндс #счетвоаэ #новостидубая",
+ "rev": 2
 }
