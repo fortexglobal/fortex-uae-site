@@ -71,3 +71,9 @@
 
 ## Как начать
 - Написать в Telegram @Fortex_Dubai или оставить контакт: менеджер свяжется. Звонок 30 минут в Zoom: https://calendly.com/fortex-uae/30min
+
+## Подпись в письмах
+Алексей Ронин
+Fortex UAE · Дубай
+Telegram: @Fortex_Dubai · канал: t.me/fortex_uae
+Instagram: @fortex__uae · fortex-uae.com
