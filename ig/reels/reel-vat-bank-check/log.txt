@@ -1,0 +1,15 @@
+21:29:38 start reel-vat-bank-check
+21:29:44 reel-vat-bank-check: voice 33.0s, shots [4.3, 5.6, 9.6, 3.9, 10.6]
+21:31:47   pro: IN_PROGRESS 123s
+21:31:47   pro: IN_PROGRESS 123s
+21:31:48   pro: IN_PROGRESS 123s
+21:31:48   pro: IN_PROGRESS 123s
+21:32:01 clip 1: v2.5-turbo 5s ok
+21:32:01 clip 0: v2.5-turbo 5s ok
+21:32:26 clip 3: v2.5-turbo 5s ok
+21:33:21 clip 2: v2.5-turbo 10s ok
+21:34:04   pro: IN_PROGRESS 123s
+21:36:06   pro: IN_PROGRESS 245s
+21:36:21 clip 4: v2.5-turbo 10s ok
+21:36:28 music: elevenlabs ok
+21:37:38 rendered reel v2 reel-vat-bank-check: 33.9s, 16.0 MB, music=True
