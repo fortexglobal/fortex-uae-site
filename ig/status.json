@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-22T19:50Z",
+ "checked": "2026-10-23T09:22Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -8,6 +8,14 @@
   "id": "28276626788683589"
  },
  "published": [],
+ "deleted": {
+  "18180558328436527": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'18180558328436527\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"A8viMFvEWdYJFzt290MB9Fl\"}}'}",
+  "17952692406289535": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'17952692406289535\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"AV7kGSx3SAhonXW6nJEmQrk\"}}'}",
+  "18112856288464055": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'18112856288464055\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"AXVziauEToJEyMSVXaYMDsH\"}}'}",
+  "18049107737817941": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'18049107737817941\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"A5mzlo1mTr4sZuQnDkYPRAc\"}}'}",
+  "18113883032034345": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'18113883032034345\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"A52SptgLtKBrgG0JIehqSOL\"}}'}",
+  "18139441540724206": "{'error': '{\"error\":{\"message\":\"Unsupported delete request. Object with ID \\'18139441540724206\\' does not exist, cannot be loaded due to missing permissions, or does not support this operation\",\"type\":\"IGApiException\",\"code\":100,\"error_subcode\":33,\"fbtrace_id\":\"A4gIu77uBg3KJEmdaCd2d_C\"}}'}"
+ },
  "media": [
   {
    "id": "18180558328436527",
