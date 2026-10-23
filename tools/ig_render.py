@@ -20,16 +20,21 @@ from cover import FONTS, MARK  # noqa: E402
 W, H = 1080, 1350
 STORY = {"on": False}
 # сторис 1080x1920: сверху и снизу безопасные поля под интерфейс Instagram
-STORY_CSS = """body{height:1920px}.s{height:1920px;padding:250px 84px 330px}.cover h1{font-size:112px}
-h2{font-size:74px;margin-bottom:34px}.body{font-size:40px;line-height:1.42}.body b{font-weight:800}
-li{font-size:37px;padding:24px 28px 24px 78px}li:before{top:36px}ul{gap:16px}.stat{font-size:150px}
-.num{font-size:96px;margin-bottom:18px}.chips span{font-size:36px}.col p{font-size:33px}
-.pts{display:flex;flex-direction:column;gap:22px;margin-top:6px}
-.pt{display:grid;grid-template-columns:14px 1fr;gap:24px;align-items:start}
-.pt i{width:14px;height:14px;border-radius:7px;margin-top:16px;background:linear-gradient(135deg,#E6C877,#B8913F)}
-.pt b{display:block;font-size:40px;font-weight:800;margin-bottom:6px}
-.pt span{display:block;font-size:34px;line-height:1.38;color:var(--mut);font-weight:600}
-.lead{font-size:40px;line-height:1.42;color:var(--mut);font-weight:600;margin-bottom:30px}"""
+STORY_CSS = """body{height:1920px}.s{height:1920px;padding:250px 76px 330px}.cover h1{font-size:118px}
+h2{font-size:84px;margin-bottom:34px;line-height:1.04}.body{font-size:46px;line-height:1.38}.body b{font-weight:800}
+li{font-size:42px;padding:26px 30px 26px 80px}li:before{top:40px}ul{gap:16px}.stat{font-size:160px}
+.num{font-size:96px;margin-bottom:18px}.chips span{font-size:40px}.col p{font-size:36px}.col h3{font-size:46px}
+.pts{display:flex;flex-direction:column;gap:26px;margin-top:6px}
+.pt{display:grid;grid-template-columns:16px 1fr;gap:26px;align-items:start}
+.pt i{width:16px;height:16px;border-radius:8px;margin-top:18px;background:linear-gradient(135deg,#E6C877,#B8913F)}
+.pt b{display:block;font-size:46px;font-weight:800;margin-bottom:6px;line-height:1.15}
+.pt span{display:block;font-size:38px;line-height:1.34;color:var(--mut);font-weight:600}
+.lead{font-size:44px;line-height:1.38;color:var(--mut);font-weight:600;margin-bottom:30px}
+.photo{color:#F6F2EA;background:#0B1626;--m1:#F3E6C4;--m2:#C9A24B;--acc:#E6C877;--mut:rgba(246,242,234,.86);--card:rgba(255,255,255,.08);--ln:rgba(212,176,97,.45)}
+.photo .pbg{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(1.5px) brightness(.95) saturate(1.05);z-index:0}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,38,.35) 0%,rgba(11,22,38,.15) 35%,rgba(11,22,38,.55) 100%);z-index:1}
+.photo .card{background:rgba(11,22,38,.62);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:2px solid rgba(212,176,97,.45);border-radius:40px;padding:60px 56px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.photo .body b,.photo h2 b{color:#E6C877}.photo li{background:rgba(255,255,255,.06)}"""
 E = html.escape
 
 CSS = FONTS + """
@@ -85,11 +90,13 @@ def md(t):
     return t.replace("\n", "<br>")
 
 
-def slide_html(s, i, n, bg_url):
+def slide_html(s, i, n, bg_url, photo_url=""):
     kind = s.get("type", "text")
     theme = "cover" if kind == "cover" else ("navy" if kind == "cta" or i % 2 == 0 else "cream")
     if kind == "case":
         theme = "navy"
+    if photo_url and kind != "cover":
+        theme = "photo"
     dots = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
     swipe = ("Дальше →" if STORY["on"] else "Листайте →") if i < n - 1 else "@fortex__uae"
     top = f'<div class="top">{MARK}<span>FORTEX UAE</span><span class="pg">{i + 1}/{n}</span></div>'
@@ -125,6 +132,9 @@ def slide_html(s, i, n, bg_url):
     else:  # cta
         inner = f'<div class="bar"></div><h2 style="font-size:84px">{E(s["title"])}</h2><div class="body">{md(s.get("body", ""))}</div>' \
                 f'<div class="btn">Telegram @Fortex_Dubai</div><div class="save">{"Или ответьте на эту сторис" if STORY["on"] else "Сохраните, чтобы не потерять"}</div>'
+    if theme == "photo":
+        return (f'<div class="s photo"><div class="pbg" style="background-image:url({photo_url})"></div>{top}'
+                f'<div class="mid"><div class="card">{inner}</div></div>{foot}</div>')
     return f'<div class="s {theme}"><div class="wm">{MARK}</div>{top}<div class="mid">{inner}</div>{foot}</div>'
 
 
@@ -146,8 +156,24 @@ def render_one(slug, src, browser):
             open(bgp, "wb").write(data)
             Image.open(bgp).convert("RGB").save(bgp, "JPEG", quality=90)
     bg_url = ("data:image/jpeg;base64," + base64.b64encode(open(bgp, "rb").read()).decode()) if os.path.exists(bgp) else ""
+    # дополнительные фото для кадров сторис: src["bgs"] = [промпты], файлы ig/bg/<slug>-<k>.jpg
+    photos = []
+    for k, prompt in enumerate(src.get("bgs", [])):
+        pp = os.path.join(ROOT, "ig", "bg", f"{slug}-{k}.jpg")
+        if not os.path.exists(pp) and os.environ.get("OPENROUTER_API_KEY"):
+            import ai_bg
+            from PIL import Image
+            ai_bg.KEY = os.environ["OPENROUTER_API_KEY"]
+            data = ai_bg.gen(prompt)
+            if data:
+                os.makedirs(os.path.dirname(pp), exist_ok=True)
+                open(pp, "wb").write(data)
+                Image.open(pp).convert("RGB").save(pp, "JPEG", quality=88)
+        if os.path.exists(pp):
+            photos.append(pp)
+    photo_urls = ["data:image/jpeg;base64," + base64.b64encode(open(x, "rb").read()).decode() for x in photos]
     h = hashlib.md5((src.get("format", "") + json.dumps(src["slides"], sort_keys=True, ensure_ascii=False) +
-                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + CSS[-3000:]).encode()).hexdigest()[:10]
+                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + str([os.path.getsize(x) for x in photos]) + CSS[-3000:] + STORY_CSS + "v3").encode()).hexdigest()[:10]
     out_dir = os.path.join(ROOT, "ig", slug)
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
@@ -160,8 +186,10 @@ def render_one(slug, src, browser):
     STORY["on"] = story
     css = CSS + (STORY_CSS if story else "")
     for i, s in enumerate(src["slides"]):
+        # фото на каждом втором кадре (кроме обложки и последнего), по кругу
+        photo_url = photo_urls[(i // 2) % len(photo_urls)] if (story and photo_urls and i % 2 == 1 and i < n - 1) else ""
         pg = browser.new_page(viewport={"width": W, "height": 1920 if story else H})
-        pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{slide_html(s, i, n, bg_url)}</body></html>')
+        pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{slide_html(s, i, n, bg_url, photo_url)}</body></html>')
         pg.wait_for_timeout(250)
         f = f"{h}-{i + 1}.jpg"
         pg.screenshot(path=os.path.join(out_dir, f), type="jpeg", quality=90)
