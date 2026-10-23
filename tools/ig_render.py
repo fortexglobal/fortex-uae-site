@@ -20,7 +20,16 @@ from cover import FONTS, MARK  # noqa: E402
 W, H = 1080, 1350
 STORY = {"on": False}
 # сторис 1080x1920: сверху и снизу безопасные поля под интерфейс Instagram
-STORY_CSS = """body{height:1920px}.s{height:1920px;padding:250px 88px 330px}.cover h1{font-size:112px}h2{font-size:92px}.body{font-size:52px}li{font-size:46px}.stat{font-size:170px}"""
+STORY_CSS = """body{height:1920px}.s{height:1920px;padding:250px 84px 330px}.cover h1{font-size:112px}
+h2{font-size:74px;margin-bottom:34px}.body{font-size:40px;line-height:1.42}.body b{font-weight:800}
+li{font-size:37px;padding:24px 28px 24px 78px}li:before{top:36px}ul{gap:16px}.stat{font-size:150px}
+.num{font-size:96px;margin-bottom:18px}.chips span{font-size:36px}.col p{font-size:33px}
+.pts{display:flex;flex-direction:column;gap:22px;margin-top:6px}
+.pt{display:grid;grid-template-columns:14px 1fr;gap:24px;align-items:start}
+.pt i{width:14px;height:14px;border-radius:7px;margin-top:16px;background:linear-gradient(135deg,#E6C877,#B8913F)}
+.pt b{display:block;font-size:40px;font-weight:800;margin-bottom:6px}
+.pt span{display:block;font-size:34px;line-height:1.38;color:var(--mut);font-weight:600}
+.lead{font-size:40px;line-height:1.42;color:var(--mut);font-weight:600;margin-bottom:30px}"""
 E = html.escape
 
 CSS = FONTS + """
@@ -93,12 +102,16 @@ def slide_html(s, i, n, bg_url):
             '<div class="bg" style="background:radial-gradient(900px 900px at 70% 25%,#2A456A,#0B1626 65%)"></div>'
         mid = f'<div class="mid"><span class="tag">{E(s.get("tag", "Fortex UAE"))}</span><h1>{title}</h1></div>'
         return f'<div class="s cover">{bg}{top}{mid}{foot}</div>'
-    head = f'<div class="num">{i:02d}</div>' if kind == "text" else '<div class="bar"></div>'
+    head = f'<div class="num">{i:02d}</div>' if kind == "text" and not STORY["on"] else '<div class="bar"></div>'
     if kind == "text":
         inner = f'{head}<h2>{E(s["title"])}</h2><div class="body">{md(s["body"])}</div>'
     elif kind == "list":
         lis = "".join(f"<li>{md(x)}</li>" for x in s["items"])
         inner = f'{head}<h2>{E(s["title"])}</h2><ul>{lis}</ul>'
+    elif kind == "points":
+        pts = "".join(f'<div class="pt"><i></i><div><b>{md(x["h"])}</b><span>{md(x.get("t", ""))}</span></div></div>' for x in s["items"])
+        lead = f'<div class="lead">{md(s["lead"])}</div>' if s.get("lead") else ""
+        inner = f'{head}<h2>{E(s["title"])}</h2>{lead}<div class="pts">{pts}</div>'
     elif kind == "chips":
         ch = "".join(f"<span>{E(x)}</span>" for x in s["items"])
         inner = f'{head}<h2>{E(s["title"])}</h2><div class="chips">{ch}</div><div class="body">{md(s.get("body", ""))}</div>'
