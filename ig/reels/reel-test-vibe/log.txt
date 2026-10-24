@@ -1,1 +1,19 @@
-15:31:37 start reel-test-vibe
+17:32:46 start reel-test-vibe
+17:32:51 music: elevenlabs ok
+17:32:51 reel-test-vibe: vibe, 117 bpm, 10 клипов, 10.4s
+17:32:51 pixabay dubai fountain night HTTP Error 403: Forbidden
+17:32:51 pixabay dubai city HTTP Error 403: Forbidden
+17:32:51 reel v2 error reel-test-vibe RuntimeError('нет клипа для «dubai fountain night»') Traceback (most recent call last):
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 527, in main
+    render_one(slug, src, b)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 326, in render_one
+    return reel_fmt.render(slug, src, out_dir, h)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 267, in render
+    s, author = get_clip(it, p, used, d + 1.0, i)
+                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 116, in get_clip
+    raise RuntimeError(f"нет клипа для «{q}»")
+RuntimeError: нет клипа для «dubai fountain night»
+
