@@ -312,6 +312,18 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 def render_one(slug, src, browser):
     out_dir = os.path.join(ROOT, "ig", "reels", slug)
     os.makedirs(out_dir, exist_ok=True)
+    if src.get("format") in ("vibe", "event", "pov"):
+        import reel_fmt
+        reel_fmt.R = sys.modules[__name__]
+        body = {k: v for k, v in src.items() if k not in ("status", "publish_at", "caption")}
+        h = key(body, "f1", DRY)[:10]
+        meta_p = os.path.join(out_dir, "render.json")
+        if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
+            return False
+        if not DRY and not (EL_KEY and os.environ.get("PEXELS_API_KEY")):
+            print("no ELEVENLABS_API_KEY / PEXELS_API_KEY yet, skip", slug)
+            return False
+        return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
     h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.7", DRY)[:10]
@@ -479,7 +491,13 @@ def render_one(slug, src, browser):
     ff(inputs + ["-filter_complex", vf + ";" + af, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
                  "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-maxrate", "4.5M", "-bufsize", "9M", "-pix_fmt", "yuv420p",
                  "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-movflags", "+faststart", os.path.join(out_dir, video)])
-    ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
+    try:
+        import reel_fmt
+        reel_fmt.R = sys.modules[__name__]
+        reel_fmt.best_cover(os.path.join(out_dir, video), 0.4, max(1.2, hook_end), os.path.join(out_dir, "cover.jpg"))
+    except Exception as e:
+        log("cover fallback", e)
+        ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
     json.dump({"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1)}, open(meta_p, "w"), indent=1)
     size = os.path.getsize(os.path.join(out_dir, video)) / 1e6
     log(f"rendered reel v2 {slug}: {total:.1f}s, {size:.1f} MB, music={has_music}")

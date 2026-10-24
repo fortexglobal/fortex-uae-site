@@ -35,7 +35,10 @@ jobs:
         env:
           FAL_KEY: ${{ secrets.FAL_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-        run: python3 tools/reel_v2.py
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          pip install numpy >/dev/null 2>&1 || true
+          python3 tools/reel_v2.py
       - name: Commit slides
         run: |
           git config user.name "Claude"
