@@ -16,13 +16,19 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Check token
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
+        run: python3 tools/threads.py check 2>&1 | tee threads/check.log
       - name: Publish
+        continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
         run: python3 tools/threads.py publish
       - name: Search
-        if: github.event.schedule == '33 3 * * *' || github.event_name == 'workflow_dispatch'
+        if: github.event.schedule == '33 3 * * *' || github.event_name != 'schedule'
+        continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
-        run: python3 tools/threads.py search
+        run: python3 tools/threads.py search 2>&1 | tee threads/search.log
       - name: Refresh token
         if: github.event.schedule == '11 2 1 * *'
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }

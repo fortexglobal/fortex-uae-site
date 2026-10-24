@@ -98,6 +98,13 @@ def search():
     print("leads", len(out))
 
 
+def check():
+    me = call("GET", "me", fields="id,username,threads_profile_picture_url")
+    json.dump({"username": me.get("username"), "id": me.get("id"), "checked": datetime.now(DUBAI).isoformat(timespec="minutes")},
+              open(os.path.join(D, "me.json"), "w"), ensure_ascii=False, indent=1)
+    print("token ok:", me.get("username"))
+
+
 def refresh():
     r = urllib.request.urlopen(f"https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token={TOKEN}", timeout=60)
     print("refreshed, expires_in", json.loads(r.read()).get("expires_in"))
@@ -107,4 +114,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "search": search, "refresh": refresh}[sys.argv[1]]()
+    {"publish": publish, "search": search, "refresh": refresh, "check": check}[sys.argv[1]]()
