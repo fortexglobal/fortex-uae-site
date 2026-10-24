@@ -93,7 +93,7 @@ body{width:1080px;height:1350px;overflow:hidden;font-family:Inter,"Inter Display
 .ecover .in{position:absolute;left:70px;right:70px;top:92px;text-align:center;z-index:2}
 .wm2{font-weight:700;font-size:46px;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.18)}
 .wm2 span{font-weight:300;opacity:.9}
-.ecover h1{margin-top:74px;font-weight:300;font-size:50px;line-height:1.22;letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 22px rgba(0,0,0,.22);text-wrap:balance}
+.ecover h1{margin-top:74px;font-family:Inter,sans-serif;font-weight:300;font-size:50px;line-height:1.22;letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 22px rgba(0,0,0,.22);text-wrap:balance}
 .ecover h1 b{font-weight:700}
 .box{display:inline-block;margin-top:44px;border:2px solid rgba(255,255,255,.92);padding:16px 28px;font-weight:400;font-size:27px;letter-spacing:.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
 .epage{background:#FAFAF7;color:#2A2A2A;padding:66px 74px}
