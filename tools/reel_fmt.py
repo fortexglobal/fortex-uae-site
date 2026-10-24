@@ -25,6 +25,7 @@ import reel_v2 as R
 W, H, FPS = R.W, R.H, R.FPS
 PEXELS_KEY = os.environ.get("PEXELS_API_KEY", "")
 PIXABAY_KEY = os.environ.get("PIXABAY_API_KEY", "")
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"}
 USED_P = os.path.join(R.ROOT, "ig", "reels", "stock_used.json")
 
 
@@ -59,7 +60,7 @@ def pexels_pick(query, used, min_secs):
 def pixabay_pick(query, used, min_secs):
     q = urllib.parse.quote(query)
     try:
-        res = R.http(f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={q}&per_page=50&safesearch=true", timeout=60)
+        res = R.http(f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={q}&per_page=50&safesearch=true", headers=UA, timeout=60)
     except Exception as e:
         R.log("pixabay", query, e)
         return None
@@ -106,7 +107,7 @@ def get_clip(item, path, used, min_secs, idx):
             got = pixabay_pick(attempt, used, min_secs)
             if got:
                 vid, link, author = got
-                open(path, "wb").write(R.http(link, raw=True, timeout=300))
+                open(path, "wb").write(R.http(link, headers=UA, raw=True, timeout=300))
                 used[vid] = 1
                 R.log(f"clip {idx}: pixabay {vid} ({author}) «{attempt}»")
                 return f"pixabay:{vid}", author

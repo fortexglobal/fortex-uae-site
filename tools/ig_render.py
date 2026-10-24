@@ -240,7 +240,7 @@ def render_one(slug, src, browser):
             if sl.get("photo") is not None and photo_urls:
                 pu = photo_urls[int(sl["photo"]) % len(photo_urls)]
             pg = browser.new_page(viewport={"width": W, "height": H})
-            pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}{ED_CSS}</style></head><body>{ed_slide(sl, i, n, bg_url, pu)}</body></html>')
+            pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{ED_CSS}{FONTS}</style></head><body>{ed_slide(sl, i, n, bg_url, pu)}</body></html>')
             try:
                 pg.wait_for_load_state("networkidle", timeout=8000)
             except Exception:
