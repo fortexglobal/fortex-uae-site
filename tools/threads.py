@@ -110,6 +110,17 @@ def code_to_id(code):
 
 def probe():
     out = {}
+    pr = json.load(open(os.path.join(D, "probe.json")))
+    if isinstance(pr, dict) and pr.get("reply_test"):
+        pid = code_to_id(pr["reply_test"])
+        try:
+            c = call("POST", "me/threads", media_type="TEXT", text="test", reply_to_id=pid)
+            out["reply_container"] = c  # контейнер не публикуем, он истечёт сам
+        except Exception as e:
+            out["reply_container_error"] = str(e)[:400]
+        json.dump(out, open(os.path.join(D, "probe_out.json"), "w"), ensure_ascii=False, indent=1)
+        print(out)
+        return
     for code in json.load(open(os.path.join(D, "probe.json"))):
         pid = code_to_id(code)
         try:
