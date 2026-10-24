@@ -1,7 +1,4 @@
-09:19:59 start reel-vat-bank-check
-09:19:59 reel-vat-bank-check: voice 33.6s, shots [4.7, 6.9, 10.3, 3.5, 9.2]
-09:20:30 sfx generated: click
-09:20:31 sfx generated: whoosh2
-09:20:33 sfx generated: whoosh1
-09:20:34 sfx generated: pop
-09:21:03 rendered reel v2 reel-vat-bank-check: 34.5s, 16.2 MB, music=True
+09:24:36 start reel-vat-bank-check
+09:24:42 reel-vat-bank-check: voice 27.4s, shots [4.0, 5.4, 7.9, 2.9, 8.1]
+09:24:48 music: elevenlabs ok
+09:26:03 rendered reel v2 reel-vat-bank-check: 28.3s, 13.9 MB, music=True
