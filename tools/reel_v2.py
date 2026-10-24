@@ -158,21 +158,54 @@ def gen_clip(prompt, secs, out_mp4, idx):
 
 
 # ---------- субтитры ----------
-def words_from(al):
+ALT_RE = re.compile(r"\{([^{}|]+)\|([^{}]+)\}")
+
+
+def parse_say(say):
+    """«{375 тысяч|триста семьдесят пять тысяч}»: в субтитрах цифры, диктор читает словами."""
+    spoken, alts, pos = "", [], 0
+    for m in ALT_RE.finditer(say):
+        spoken += say[pos:m.start()]
+        a = len(spoken)
+        spoken += m.group(2).strip()
+        alts.append((a, len(spoken), m.group(1).strip()))
+        pos = m.end()
+    spoken += say[pos:]
+    return spoken, alts
+
+
+def words_from(al, alts=()):
     chars, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
     out, cur = [], None
-    for c, s, e in zip(chars, st, en):
+    for idx, (c, s, e) in enumerate(zip(chars, st, en)):
         if c.isspace():
             if cur:
                 out.append(cur); cur = None
             continue
         if cur is None:
-            cur = {"w": c, "s": s, "e": e}
+            cur = {"w": c, "s": s, "e": e, "i": idx}
         else:
             cur["w"] += c; cur["e"] = e
     if cur:
         out.append(cur)
-    return out
+    if not alts:
+        return out
+    merged, k = [], 0
+    for w in out:
+        hit = next(((a, b, d) for a, b, d in alts if a <= w["i"] < b), None)
+        if hit:
+            tail = ""
+            m = re.search(r"[.,!?:;…]+$", w["w"])
+            if m and w["i"] + len(w["w"]) >= hit[1]:
+                tail = m.group(0)
+            if merged and merged[-1].get("alt") == hit:
+                merged[-1]["e"] = w["e"]
+                merged[-1]["w"] = hit[2] + tail
+            else:
+                merged.append({"w": hit[2] + tail, "s": w["s"], "e": w["e"], "i": w["i"], "alt": hit})
+        else:
+            merged.append(w)
+    return merged
 
 
 def chunks_of(words):
@@ -206,7 +239,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Inter Display ExtraBold,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,7,3,5,80,80,0,1
+Style: Cap,Inter Display ExtraBold,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,6,0,5,80,80,0,1
 Style: Hook,Inter Display ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00261610,&H00000000,0,0,0,0,100,100,-1,0,3,26,0,8,90,90,330,1
 Style: Brand,Inter Display ExtraBold,34,&H3061A2C9,&H3061A2C9,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,2,0,7,76,76,250,1
 
@@ -220,10 +253,12 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             ht = ht.replace(esc(accent), "{\\c&H77C8E6&}" + esc(accent) + "{\\c&HFFFFFF&}", 1)
         ev.append(f"Dialogue: 2,{t_ass(0)},{t_ass(hook_end)},Hook,,0,0,0,,{{\\fad(0,180)\\t(0,160,\\fscx104\\fscy104)\\t(160,320,\\fscx100\\fscy100)}}{ht}")
     gold = "&H77C8E6&"
-    for ch in chunks_of([w for w in words if w["s"] < cap_end]):
+    chs = chunks_of([w for w in words if w["s"] < cap_end])
+    for ci, ch in enumerate(chs):
+        nxt = chs[ci + 1][0]["s"] if ci + 1 < len(chs) else cap_end
         for i, w in enumerate(ch):
             s = w["s"] if i else ch[0]["s"]
-            e = ch[i + 1]["s"] if i + 1 < len(ch) else ch[-1]["e"] + 0.12
+            e = ch[i + 1]["s"] if i + 1 < len(ch) else min(ch[-1]["e"] + 0.12, nxt)
             if s >= cap_end:
                 break
             e = min(e, cap_end)
@@ -242,7 +277,7 @@ def render_one(slug, src, browser):
     os.makedirs(out_dir, exist_ok=True)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.3", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.4", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -254,8 +289,14 @@ def render_one(slug, src, browser):
     tmp = tempfile.mkdtemp()
 
     # 1. голос
-    lines = [s["say"].strip() for s in shots] + [cta.get("say", "").strip()]
-    lines = [l for l in lines if l]
+    raw = [s["say"].strip() for s in shots] + [cta.get("say", "").strip()]
+    raw = [l for l in raw if l]
+    lines, alts, off = [], [], 0
+    for r_ in raw:
+        sp, al_ = parse_say(r_)
+        lines.append(sp)
+        alts += [(a + off, b + off, d) for a, b, d in al_]
+        off += len(sp) + 1
     text = " ".join(lines)
     vid = src.get("voice_id") or DEFAULT_VOICE
     vk = key(text, vid, DRY)
@@ -344,7 +385,7 @@ def render_one(slug, src, browser):
     pg.screenshot(path=ov, omit_background=True); pg.close()
     hook_end = min(2.8, shot_seg[1][0] if n_shot > 1 else 2.8)
     ass = os.path.join(tmp, "subs.ass")
-    open(ass, "w", encoding="utf-8").write(build_ass(words_from(al), src.get("hook"), src.get("accent"), hook_end, cta_start, total))
+    open(ass, "w", encoding="utf-8").write(build_ass(words_from(al, alts), src.get("hook"), src.get("accent"), hook_end, cta_start, total))
 
     for old in glob.glob(os.path.join(out_dir, "*.mp4")):
         os.remove(old)
