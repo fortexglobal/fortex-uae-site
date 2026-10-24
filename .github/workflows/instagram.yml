@@ -36,6 +36,7 @@ jobs:
           FAL_KEY: ${{ secrets.FAL_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: |
           pip install numpy >/dev/null 2>&1 || true
           python3 tools/reel_v2.py

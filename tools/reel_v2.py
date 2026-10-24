@@ -320,7 +320,7 @@ def render_one(slug, src, browser):
         meta_p = os.path.join(out_dir, "render.json")
         if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
             return False
-        if not DRY and not (EL_KEY and os.environ.get("PEXELS_API_KEY")):
+        if not DRY and not (EL_KEY and (os.environ.get("PEXELS_API_KEY") or os.environ.get("PIXABAY_API_KEY"))):
             print("no ELEVENLABS_API_KEY / PEXELS_API_KEY yet, skip", slug)
             return False
         return reel_fmt.render(slug, src, out_dir, h)

@@ -14,7 +14,7 @@ pov    — диалог-мем из двух частей, смена текст
    "clips_setup": [...], "clips_punch": [...], "music": "...", "caption": "..."}
 
 Клип: строка (поисковый запрос Pexels, по-английски) или {"q": "...", "prompt": "<англ. сцена для Kling, если на Pexels ничего нет>"}.
-Ключи: PEXELS_API_KEY (видео), ELEVENLABS_API_KEY (музыка), FAL_KEY (запасной AI-клип).
+Ключи: PEXELS_API_KEY или PIXABAY_API_KEY (видео), ELEVENLABS_API_KEY (музыка), FAL_KEY (запасной AI-клип).
 """
 import json, os, random, subprocess, tempfile, urllib.parse
 
@@ -24,6 +24,7 @@ import reel_v2 as R
 
 W, H, FPS = R.W, R.H, R.FPS
 PEXELS_KEY = os.environ.get("PEXELS_API_KEY", "")
+PIXABAY_KEY = os.environ.get("PIXABAY_API_KEY", "")
 USED_P = os.path.join(R.ROOT, "ig", "reels", "stock_used.json")
 
 
@@ -55,6 +56,34 @@ def pexels_pick(query, used, min_secs):
     return None
 
 
+def pixabay_pick(query, used, min_secs):
+    q = urllib.parse.quote(query)
+    try:
+        res = R.http(f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={q}&per_page=50&safesearch=true", timeout=60)
+    except Exception as e:
+        R.log("pixabay", query, e)
+        return None
+    cands = []
+    for v in res.get("hits", []):
+        if f"px{v['id']}" in used or v.get("duration", 0) < min_secs:
+            continue
+        files = [f for f in (v.get("videos") or {}).values() if f and f.get("url") and f.get("height")]
+        if not files:
+            continue
+        port = [f for f in files if f["height"] >= f["width"] and f["height"] >= 1280]
+        land = [f for f in files if f["height"] >= 1080]
+        pool = port or land
+        if not pool:
+            continue
+        f = sorted(pool, key=lambda f: -f["height"])[0]
+        cands.append((0 if port else 1, -v.get("downloads", 0), f"px{v['id']}", f["url"], v.get("user", "")))
+    if not cands:
+        return None
+    cands.sort()
+    _, _, vid, link, user = cands[0]
+    return vid, link, user
+
+
 def get_clip(item, path, used, min_secs, idx):
     q = item if isinstance(item, str) else item.get("q", "")
     prompt = None if isinstance(item, str) else item.get("prompt")
@@ -72,6 +101,15 @@ def get_clip(item, path, used, min_secs, idx):
                 used[vid] = 1
                 R.log(f"clip {idx}: pexels {vid} ({author}) «{attempt}»")
                 return f"pexels:{vid}", author
+    if PIXABAY_KEY and q:
+        for attempt in (q, q.split(",")[0] + " dubai" if "dubai" not in q.lower() else "dubai city"):
+            got = pixabay_pick(attempt, used, min_secs)
+            if got:
+                vid, link, author = got
+                open(path, "wb").write(R.http(link, raw=True, timeout=300))
+                used[vid] = 1
+                R.log(f"clip {idx}: pixabay {vid} ({author}) «{attempt}»")
+                return f"pixabay:{vid}", author
     if prompt and R.FAL_KEY:
         url = R.gen_clip(prompt, 5, path, idx)
         return url, "ai"
