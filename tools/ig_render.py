@@ -83,55 +83,77 @@ li:before{content:"";position:absolute;left:32px;top:44px;width:22px;height:22px
 
 
 # ---------- редакционный стиль (светлый, журнальный) ----------
-ED_CSS = """@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=block');
+ED_CSS = """@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block');
 *{box-sizing:border-box;margin:0;padding:0}
 body{width:1080px;height:1350px;overflow:hidden;font-family:Inter,"Inter Display",sans-serif}
 .e{position:relative;width:1080px;height:1350px;overflow:hidden}
-.ecover{color:#fff;background:#3d6f9c}
+.mk{display:flex;align-items:center;gap:14px;font-weight:600;font-size:24px;letter-spacing:.22em;--m1:#F3E6C4;--m2:#C9A24B}
+.mk svg{width:40px;height:40px}
+/* обложка: тёплое фото, заголовок внизу слева, золотая плашка */
+.ecover{color:#fff;background:#0B1626}
 .ecover .ph{position:absolute;inset:0;background-size:cover;background-position:center}
-.ecover:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,30,55,.32) 0%,rgba(10,30,55,.10) 34%,rgba(10,30,55,0) 55%);z-index:1}
-.ecover .in{position:absolute;left:70px;right:70px;top:92px;text-align:center;z-index:2}
-.wm2{font-weight:700;font-size:46px;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.18)}
-.wm2 span{font-weight:300;opacity:.9}
-.ecover h1{margin-top:74px;font-family:Inter,sans-serif;font-weight:300;font-size:50px;line-height:1.22;letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 22px rgba(0,0,0,.22);text-wrap:balance}
-.ecover h1 b{font-weight:700}
-.box{display:inline-block;margin-top:44px;border:2px solid rgba(255,255,255,.92);padding:16px 28px;font-weight:400;font-size:27px;letter-spacing:.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
-.epage{background:#FAFAF7;color:#2A2A2A;padding:66px 74px}
-.ehead{display:flex;justify-content:space-between;font-weight:400;font-size:25px;color:#3a3a3a;margin-bottom:30px}
-.epic{width:100%;height:520px;border-radius:6px;background-size:cover;background-position:center;margin-bottom:46px}
-.etext{font-weight:400;font-size:37px;line-height:1.52;color:#333}
-.etext p{margin-bottom:30px}
+.ecover:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,38,.35) 0%,rgba(11,22,38,0) 22%,rgba(11,22,38,0) 42%,rgba(11,22,38,.82) 78%,rgba(11,22,38,.94) 100%);z-index:1}
+.ecover .mk{position:absolute;left:72px;top:70px;z-index:2;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+.ecover .in{position:absolute;left:72px;right:72px;bottom:92px;z-index:2}
+.ecover h1{font-weight:600;font-size:76px;line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
+.ecover h1 b{font-weight:700;color:#E6C877}
+.pill{display:inline-block;margin-top:38px;background:#E6C877;color:#0B1626;font-weight:600;font-size:28px;padding:14px 26px;border-radius:40px}
+/* цифра на обложке */
+.estat{background:#F6F1E7;color:#0B1626;padding:72px}
+.estat .mk{color:#0B1626}
+.estat .big{position:absolute;left:72px;right:72px;top:360px;font-weight:700;font-size:150px;line-height:.95;letter-spacing:-.04em;color:#B8913F}
+.estat .small{position:absolute;left:72px;right:72px;top:560px;font-weight:500;font-size:58px;line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
+.estat .rule{position:absolute;left:72px;top:320px;width:120px;height:6px;background:#0B1626}
+.estat .pill{position:absolute;left:72px;bottom:96px;background:#0B1626;color:#F3E6C4}
+/* страницы */
+.epage{background:#F6F1E7;color:#13202F}
+.epic{height:600px;background-size:cover;background-position:center}
+.ebody{padding:52px 72px 0}
+.ehead{display:flex;align-items:baseline;gap:22px;margin-bottom:28px}
+.ehead .no{font-weight:700;font-size:30px;color:#B8913F}
+.ehead .t{font-weight:600;font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:#13202F}
+.etext{font-weight:400;font-size:37px;line-height:1.5;color:#22303F}
+.etext p{margin-bottom:28px}
 .etext b{font-weight:600;color:#9A7433}
-.eh{font-weight:700;font-size:68px;line-height:1.08;text-transform:uppercase;letter-spacing:-.01em;color:#C9A24B;margin:26px 0 8px}
-.eh2{font-weight:300;font-size:58px;line-height:1.12;text-transform:uppercase;color:#2A2A2A;margin-bottom:40px}
-.eline{position:absolute;right:74px;top:130px;width:2px;height:420px;background:linear-gradient(#C9A24B,rgba(201,162,75,0))}
-.ebtn{display:inline-block;margin-top:20px;border:2px solid #C9A24B;color:#9A7433;font-weight:600;font-size:34px;padding:22px 34px}
-.ecount{position:absolute;left:74px;bottom:54px;font-size:24px;color:#9a9a9a;font-weight:400}
-.eswipe{position:absolute;right:74px;bottom:54px;font-size:24px;color:#9A7433;font-weight:600}
+.eh{font-weight:600;font-size:72px;line-height:1.05;letter-spacing:-.025em;color:#0B1626;margin:120px 0 14px}
+.eh2{font-weight:300;font-size:48px;line-height:1.15;color:#9A7433;margin-bottom:46px}
+.ebtn{display:inline-block;margin-top:24px;background:#E6C877;color:#0B1626;font-weight:600;font-size:34px;padding:22px 34px;border-radius:50px}
+.efoot{position:absolute;left:72px;right:72px;bottom:52px;display:flex;justify-content:space-between;font-size:24px;color:#8a8478}
+.efoot b{color:#9A7433;font-weight:600}
+.ecta{background:#0B1626;color:#F6F1E7}
+.ecta .eh{color:#F6F1E7}.ecta .eh2{color:#E6C877}.ecta .etext{color:rgba(246,241,231,.86)}.ecta .etext b{color:#E6C877}
+.ecta .ehead .t{color:#F6F1E7}.ecta .efoot{color:rgba(246,241,231,.6)}
 """
 
 
 def ed_slide(s, i, n, cover_url, photo_url):
+    import re as _re
+    nb = lambda t: _re.sub(r"(\d) (\d{3})", "\\1\u00a0\\2", _re.sub(r"(\d) (USD|AED|EUR|дн|нед|мес)", "\\1\u00a0\\2", t))
     kind = s.get("type", "page")
+    mark = f'<div class="mk">{MARK}<span>FORTEX UAE</span></div>'
     if kind == "cover":
         title = E(s["title"])
         if s.get("bold"):
             title = title.replace(E(s["bold"]), f"<b>{E(s['bold'])}</b>", 1)
-        box = f'<div class="box">{E(s["note"])}</div>' if s.get("note") else ""
-        return (f'<div class="e ecover"><div class="ph" style="background-image:url({cover_url})"></div>'
-                f'<div class="in"><div class="wm2">fortex<span> uae</span></div><h1>{title}</h1>{box}</div></div>')
-    head = f'<div class="ehead"><span>{E(s.get("head", ""))}</span><span>@fortex__uae</span></div>'
+        pill = f'<div class="pill">{E(s["note"])}</div>' if s.get("note") else ""
+        return (f'<div class="e ecover"><div class="ph" style="background-image:url({cover_url})"></div>{mark}'
+                f'<div class="in"><h1>{title}</h1>{pill}</div></div>')
+    if kind == "stat":
+        pill = f'<div class="pill">{E(s["note"])}</div>' if s.get("note") else ""
+        return (f'<div class="e estat">{mark}<div class="rule"></div><div class="big">{E(nb(s["big"]))}</div>'
+                f'<div class="small">{E(s.get("small", ""))}</div>{pill}</div>')
     pic = f'<div class="epic" style="background-image:url({photo_url})"></div>' if photo_url else ""
+    head = f'<div class="ehead"><span class="no">{i:02d}</span><span class="t">{E(s.get("head", ""))}</span></div>'
     big = ""
     if s.get("h"):
         big = f'<div class="eh">{E(s["h"])}</div>' + (f'<div class="eh2">{E(s["h2"])}</div>' if s.get("h2") else "")
-    import re as _re
-    nb = lambda t: _re.sub(r"(\d) (\d{3})", "\\1\u00a0\\2", _re.sub(r"(\d) (USD|AED|EUR|дн|нед|мес)", "\\1\u00a0\\2", t))
+        if pic:
+            big = big.replace('class="eh"', 'class="eh" style="margin-top:0"', 1)
     paras = "".join(f"<p>{md(nb(x))}</p>" for x in s.get("body", "").split("\n\n") if x.strip())
     btn = '<div class="ebtn">Telegram @Fortex_Dubai</div>' if kind == "cta" else ""
-    foot = f'<div class="ecount">{i + 1} / {n}</div>' + ('<div class="eswipe">Листайте →</div>' if i < n - 1 else "")
-    line = '<div class="eline"></div>' if big and not pic else ""
-    return f'<div class="e epage">{line}{head}{big}{pic}<div class="etext">{paras}</div>{btn}{foot}</div>'
+    foot = f'<div class="efoot"><span>@fortex__uae</span>' + ('<b>Листайте →</b>' if i < n - 1 else f'<span>{i + 1}/{n}</span>') + '</div>'
+    cls = "e epage ecta" if kind == "cta" else "e epage"
+    return f'<div class="{cls}">{pic}<div class="ebody">{head}{big}<div class="etext">{paras}</div>{btn}</div>{foot}</div>'
 
 
 def md(t):
