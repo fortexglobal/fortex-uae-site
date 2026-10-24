@@ -82,6 +82,58 @@ li:before{content:"";position:absolute;left:32px;top:44px;width:22px;height:22px
 """
 
 
+# ---------- редакционный стиль (светлый, журнальный) ----------
+ED_CSS = """@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=block');
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;overflow:hidden;font-family:Inter,"Inter Display",sans-serif}
+.e{position:relative;width:1080px;height:1350px;overflow:hidden}
+.ecover{color:#fff;background:#3d6f9c}
+.ecover .ph{position:absolute;inset:0;background-size:cover;background-position:center}
+.ecover:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,30,55,.32) 0%,rgba(10,30,55,.10) 34%,rgba(10,30,55,0) 55%);z-index:1}
+.ecover .in{position:absolute;left:70px;right:70px;top:92px;text-align:center;z-index:2}
+.wm2{font-weight:700;font-size:46px;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.18)}
+.wm2 span{font-weight:300;opacity:.9}
+.ecover h1{margin-top:74px;font-weight:300;font-size:50px;line-height:1.22;letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 22px rgba(0,0,0,.22);text-wrap:balance}
+.ecover h1 b{font-weight:700}
+.box{display:inline-block;margin-top:44px;border:2px solid rgba(255,255,255,.92);padding:16px 28px;font-weight:400;font-size:27px;letter-spacing:.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+.epage{background:#FAFAF7;color:#2A2A2A;padding:66px 74px}
+.ehead{display:flex;justify-content:space-between;font-weight:400;font-size:25px;color:#3a3a3a;margin-bottom:30px}
+.epic{width:100%;height:520px;border-radius:6px;background-size:cover;background-position:center;margin-bottom:46px}
+.etext{font-weight:400;font-size:37px;line-height:1.52;color:#333}
+.etext p{margin-bottom:30px}
+.etext b{font-weight:600;color:#9A7433}
+.eh{font-weight:700;font-size:68px;line-height:1.08;text-transform:uppercase;letter-spacing:-.01em;color:#C9A24B;margin:26px 0 8px}
+.eh2{font-weight:300;font-size:58px;line-height:1.12;text-transform:uppercase;color:#2A2A2A;margin-bottom:40px}
+.eline{position:absolute;right:74px;top:130px;width:2px;height:420px;background:linear-gradient(#C9A24B,rgba(201,162,75,0))}
+.ebtn{display:inline-block;margin-top:20px;border:2px solid #C9A24B;color:#9A7433;font-weight:600;font-size:34px;padding:22px 34px}
+.ecount{position:absolute;left:74px;bottom:54px;font-size:24px;color:#9a9a9a;font-weight:400}
+.eswipe{position:absolute;right:74px;bottom:54px;font-size:24px;color:#9A7433;font-weight:600}
+"""
+
+
+def ed_slide(s, i, n, cover_url, photo_url):
+    kind = s.get("type", "page")
+    if kind == "cover":
+        title = E(s["title"])
+        if s.get("bold"):
+            title = title.replace(E(s["bold"]), f"<b>{E(s['bold'])}</b>", 1)
+        box = f'<div class="box">{E(s["note"])}</div>' if s.get("note") else ""
+        return (f'<div class="e ecover"><div class="ph" style="background-image:url({cover_url})"></div>'
+                f'<div class="in"><div class="wm2">fortex<span> uae</span></div><h1>{title}</h1>{box}</div></div>')
+    head = f'<div class="ehead"><span>{E(s.get("head", ""))}</span><span>@fortex__uae</span></div>'
+    pic = f'<div class="epic" style="background-image:url({photo_url})"></div>' if photo_url else ""
+    big = ""
+    if s.get("h"):
+        big = f'<div class="eh">{E(s["h"])}</div>' + (f'<div class="eh2">{E(s["h2"])}</div>' if s.get("h2") else "")
+    import re as _re
+    nb = lambda t: _re.sub(r"(\d) (\d{3})", "\\1\u00a0\\2", _re.sub(r"(\d) (USD|AED|EUR|дн|нед|мес)", "\\1\u00a0\\2", t))
+    paras = "".join(f"<p>{md(nb(x))}</p>" for x in s.get("body", "").split("\n\n") if x.strip())
+    btn = '<div class="ebtn">Telegram @Fortex_Dubai</div>' if kind == "cta" else ""
+    foot = f'<div class="ecount">{i + 1} / {n}</div>' + ('<div class="eswipe">Листайте →</div>' if i < n - 1 else "")
+    line = '<div class="eline"></div>' if big and not pic else ""
+    return f'<div class="e epage">{line}{head}{big}{pic}<div class="etext">{paras}</div>{btn}{foot}</div>'
+
+
 def md(t):
     """**жирный** -> <b>, переносы строк -> <br>"""
     t = E(t)
@@ -158,7 +210,7 @@ def render_one(slug, src, browser):
     bg_url = ("data:image/jpeg;base64," + base64.b64encode(open(bgp, "rb").read()).decode()) if os.path.exists(bgp) else ""
     # дополнительные фото для кадров сторис: src["bgs"] = [промпты], файлы ig/bg/<slug>-<k>.jpg
     photos = []
-    for k, prompt in enumerate(src.get("bgs", [])):
+    for k, prompt in enumerate(src.get("bgs", []) or src.get("photos", [])):
         pp = os.path.join(ROOT, "ig", "bg", f"{slug}-{k}.jpg")
         if not os.path.exists(pp) and os.environ.get("OPENROUTER_API_KEY"):
             import ai_bg
@@ -173,7 +225,7 @@ def render_one(slug, src, browser):
             photos.append(pp)
     photo_urls = ["data:image/jpeg;base64," + base64.b64encode(open(x, "rb").read()).decode() for x in photos]
     h = hashlib.md5((src.get("format", "") + json.dumps(src["slides"], sort_keys=True, ensure_ascii=False) +
-                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + str([os.path.getsize(x) for x in photos]) + CSS[-3000:] + STORY_CSS + "v3").encode()).hexdigest()[:10]
+                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + str([os.path.getsize(x) for x in photos]) + CSS[-3000:] + STORY_CSS + ED_CSS + src.get("style", "") + "v3").encode()).hexdigest()[:10]
     out_dir = os.path.join(ROOT, "ig", slug)
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
@@ -182,6 +234,25 @@ def render_one(slug, src, browser):
     for old in glob.glob(os.path.join(out_dir, "*.jpg")):
         os.remove(old)
     files, n = [], len(src["slides"])
+    if src.get("style") == "editorial":
+        for i, sl in enumerate(src["slides"]):
+            pu = ""
+            if sl.get("photo") is not None and photo_urls:
+                pu = photo_urls[int(sl["photo"]) % len(photo_urls)]
+            pg = browser.new_page(viewport={"width": W, "height": H})
+            pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}{ED_CSS}</style></head><body>{ed_slide(sl, i, n, bg_url, pu)}</body></html>')
+            try:
+                pg.wait_for_load_state("networkidle", timeout=8000)
+            except Exception:
+                pass
+            pg.wait_for_timeout(400)
+            f = f"{h}-{i + 1}.jpg"
+            pg.screenshot(path=os.path.join(out_dir, f), type="jpeg", quality=92)
+            pg.close()
+            files.append(f)
+        json.dump({"hash": h, "files": files}, open(meta_p, "w"), indent=1)
+        print("rendered editorial", slug, n)
+        return True
     story = src.get("format") == "stories"
     STORY["on"] = story
     css = CSS + (STORY_CSS if story else "")

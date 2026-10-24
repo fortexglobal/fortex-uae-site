@@ -1,0 +1,52 @@
+{
+ "style": "editorial",
+ "status": "wait",
+ "publish_at": "2026-10-27T19:07+04:00",
+ "bg_prompt": "bright sunny daytime view of Dubai Marina skyline from the sea, clear deep blue sky filling the upper half of the frame, turquoise water, white yacht, editorial travel photography, high detail, no text, no logos",
+ "photos": [
+  "elegant modern bank lobby in Dubai with white marble floor and tall windows, bright natural daylight, editorial architecture photography, no people, no text, no logos",
+  "laptop and closed passport on a white marble desk by a window overlooking the Dubai skyline, bright morning light, editorial lifestyle photo, no readable text",
+  "businessman in a light suit walking across a bright modern plaza in Dubai financial district, daylight, editorial photography, face not visible, no text, no logos"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "title": "Счёт в банке ОАЭ с паспортом РФ: где это реально в 2026",
+   "bold": "где это реально в 2026",
+   "note": "Личные и корпоративные счета. Удалённо и с прилётом."
+  },
+  {
+   "type": "page",
+   "head": "Счёт с паспортом РФ",
+   "photo": 0,
+   "body": "Владельцам паспорта РФ счёт в ОАЭ открыть **можно**. Банк подбирают под задачу: расходы, переводы в USD и EUR, кредитные продукты.\n\nС Emirates ID выбор шире: **Emirates NBD, ADCB, ADIB, DIB, Mashreq, Wio** и другие."
+  },
+  {
+   "type": "page",
+   "head": "Без Emirates ID",
+   "photo": 1,
+   "body": "Нерезидентам личный счёт открывают **Emirates NBD, UBL, ADCB и FAB**.\n\nУдалённо, без прилёта в Дубай: **Emirates NBD, UBL и FAB**. Срок около **2 недель**."
+  },
+  {
+   "type": "page",
+   "head": "Для бизнеса",
+   "h": "Корпоративный счёт",
+   "h2": "для компании с российскими владельцами",
+   "body": "Работаем с **Emirates NBD, UBL, Emirates Islamic, Mbank, DIB, Invest Bank и FAB**, в том числе с рублёвым счётом.\n\nВ наших кейсах срок **2-3 недели**. Стоимость **от 5 000 USD**.\n\nСписки банков меняются, поэтому сначала короткий разбор."
+  },
+  {
+   "type": "page",
+   "head": "Главная ошибка",
+   "photo": 2,
+   "body": "Подаваться самому **во все банки подряд**. Каждый отказ видят следующие банки.\n\nМы разбираем ситуацию, подбираем банк и готовим документы и ответы к проверке **с первой подачи**."
+  },
+  {
+   "type": "cta",
+   "head": "Как начать",
+   "h": "Разберём ваш случай",
+   "h2": "за 30 минут",
+   "body": "Опишите задачу в Telegram, подскажем, какой банк реален именно для вас.\n\nОплата по этапам: **всю сумму вперёд не берём**."
+  }
+ ],
+ "caption": "Счёт в банке ОАЭ с паспортом РФ в 2026 году открыть можно. Вопрос в том, какой банк и под какую задачу.\n\nС Emirates ID выбор банков шире. Без него личный счёт открывают Emirates NBD, UBL, ADCB и FAB, а удалённо, без прилёта, Emirates NBD, UBL и FAB.\n\nДля компаний с российскими владельцами работаем с Emirates NBD, UBL, Emirates Islamic, Mbank, DIB, Invest Bank и FAB, в том числе с рублёвым счётом. Корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите СЧЁТ в комментариях, подскажем, какой банк подойдёт вам.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#счетвоаэ #банкиоаэ #дубай #бизнесвдубае #оаэ"
+}
