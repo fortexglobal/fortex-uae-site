@@ -98,6 +98,28 @@ def search():
     print("leads", len(out))
 
 
+ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
+
+
+def code_to_id(code):
+    n = 0
+    for ch in code[:11]:
+        n = n * 64 + ALPHA.index(ch)
+    return str(n)
+
+
+def probe():
+    out = {}
+    for code in json.load(open(os.path.join(D, "probe.json"))):
+        pid = code_to_id(code)
+        try:
+            out[code] = {"id": pid, "ok": call("GET", pid, fields="id,text,username,permalink")}
+        except Exception as e:
+            out[code] = {"id": pid, "error": str(e)[:300]}
+    json.dump(out, open(os.path.join(D, "probe_out.json"), "w"), ensure_ascii=False, indent=1)
+    print(out)
+
+
 def check():
     me = call("GET", "me", fields="id,username,threads_profile_picture_url")
     json.dump({"username": me.get("username"), "id": me.get("id"), "checked": datetime.now(DUBAI).isoformat(timespec="minutes")},
@@ -114,4 +136,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "search": search, "refresh": refresh, "check": check}[sys.argv[1]]()
+    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe}[sys.argv[1]]()

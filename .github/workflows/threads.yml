@@ -20,6 +20,11 @@ jobs:
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
         run: python3 tools/threads.py check 2>&1 | tee threads/check.log
+      - name: Probe
+        if: hashFiles('threads/probe.json') != ''
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
+        run: python3 tools/threads.py probe && rm threads/probe.json
       - name: Publish
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
