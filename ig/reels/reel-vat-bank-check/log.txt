@@ -1,4 +1,4 @@
-09:24:36 start reel-vat-bank-check
-09:24:42 reel-vat-bank-check: voice 27.4s, shots [4.0, 5.4, 7.9, 2.9, 8.1]
-09:24:48 music: elevenlabs ok
-09:26:03 rendered reel v2 reel-vat-bank-check: 28.3s, 13.9 MB, music=True
+09:31:07 start reel-vat-bank-check
+09:31:08 reel-vat-bank-check: voice 30.8s, shots [4.3, 6.3, 9.4, 3.2, 8.5]
+09:31:15 music: elevenlabs ok
+09:32:12 rendered reel v2 reel-vat-bank-check: 31.7s, 15.2 MB, music=True
