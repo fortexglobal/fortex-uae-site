@@ -1,12 +1,1 @@
-17:39:54 start reel-test-pov
-17:39:59 music: elevenlabs ok
-17:40:00 reel-test-pov: pov, 117 bpm, 8 клипов, 8.5s
-17:40:00 clip 0: pixabay px283431 (Kanenori) «man talking on phone»
-17:40:01 clip 1: pixabay px215472 (Vacampbe) «man reading text message smiling»
-17:40:01 clip 2: pixabay px1360 (Activedia) «office worker looking at phone»
-17:40:01 clip 3: pixabay px134548 (isaaxxx) «dubai infinity pool»
-17:40:02 clip 4: pixabay px221334 (xBriantcx) «dubai marina yacht party»
-17:40:03 clip 5: pixabay px176533 (u_hy97sitse3) «luxury car dubai»
-17:40:03 clip 6: pixabay px70796 (daniloriba) «dubai beach club»
-17:40:05 clip 7: pixabay px299162 (engrahmad2653) «burj khalifa view balcony»
-17:40:28 rendered pov reel-test-pov: 8.5s, 7.1 MB, cover at 7.6s
+17:54:28 start reel-test-pov
