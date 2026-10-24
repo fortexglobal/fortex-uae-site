@@ -57,32 +57,53 @@ def pexels_pick(query, used, min_secs):
     return None
 
 
+STOP = {"in", "of", "the", "a", "at", "and", "with", "on", "view", "night", "day", "shot", "video"}
+DUBAI_TAGS = ("dubai", "uae", "emirates", "burj", "abu dhabi", "arab")
+
+
+def relevant(tags, query):
+    t = tags.lower()
+    words = [w for w in query.lower().replace(",", " ").split() if w not in STOP and len(w) > 2]
+    need_dubai = "dubai" in query.lower() or "uae" in query.lower()
+    if need_dubai and not any(d in t for d in DUBAI_TAGS):
+        return -1
+    other = [w for w in words if w not in ("dubai", "uae")]
+    hits = sum(1 for w in other if w.rstrip("s") in t)
+    if other and hits == 0 and not need_dubai:
+        return -1
+    return hits
+
+
 def pixabay_pick(query, used, min_secs):
     q = urllib.parse.quote(query)
     try:
-        res = R.http(f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={q}&per_page=50&safesearch=true", headers=UA, timeout=60)
+        res = R.http(f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={q}&per_page=80&safesearch=true", headers=UA, timeout=60)
     except Exception as e:
         R.log("pixabay", query, e)
         return None
     cands = []
-    for v in res.get("hits", []):
+    for rank, v in enumerate(res.get("hits", [])):
         if f"px{v['id']}" in used or v.get("duration", 0) < min_secs:
             continue
-        files = [f for f in (v.get("videos") or {}).values() if f and f.get("url") and f.get("height")]
-        if not files:
+        rel = relevant(v.get("tags", ""), query)
+        if rel < 0:
             continue
+        files = [f for f in (v.get("videos") or {}).values() if f and f.get("url") and f.get("height")]
         port = [f for f in files if f["height"] >= f["width"] and f["height"] >= 1280]
         land = [f for f in files if f["height"] >= 1080]
         pool = port or land
         if not pool:
             continue
         f = sorted(pool, key=lambda f: -f["height"])[0]
-        cands.append((0 if port else 1, -v.get("downloads", 0), f"px{v['id']}", f["url"], v.get("user", "")))
+        cands.append((-rel, 0 if port else 1, rank, f"px{v['id']}", f["url"], v.get("user", ""), v.get("tags", "")))
     if not cands:
         return None
     cands.sort()
-    _, _, vid, link, user = cands[0]
-    return vid, link, user
+    c = cands[0]
+    return c[3], c[4], f"{c[5]} [{c[6][:40]}]"
+
+
+AI_BUDGET = {"left": 4}
 
 
 def get_clip(item, path, used, min_secs, idx):
@@ -103,7 +124,7 @@ def get_clip(item, path, used, min_secs, idx):
                 R.log(f"clip {idx}: pexels {vid} ({author}) «{attempt}»")
                 return f"pexels:{vid}", author
     if PIXABAY_KEY and q:
-        for attempt in (q, q.split(",")[0] + " dubai" if "dubai" not in q.lower() else "dubai city"):
+        for attempt in (q,):
             got = pixabay_pick(attempt, used, min_secs)
             if got:
                 vid, link, author = got
@@ -111,8 +132,10 @@ def get_clip(item, path, used, min_secs, idx):
                 used[vid] = 1
                 R.log(f"clip {idx}: pixabay {vid} ({author}) «{attempt}»")
                 return f"pixabay:{vid}", author
-    if prompt and R.FAL_KEY:
-        url = R.gen_clip(prompt, 5, path, idx)
+    if R.FAL_KEY and AI_BUDGET["left"] > 0:
+        AI_BUDGET["left"] -= 1
+        p = prompt or f"{q}, in Dubai UAE, cinematic vertical video, realistic, premium lifestyle, natural motion"
+        url = R.gen_clip(p, 5, path, idx)
         return url, "ai"
     raise RuntimeError(f"нет клипа для «{q}»")
 
@@ -265,8 +288,15 @@ def render(slug, src, out_dir, h):
             except Exception as e:
                 R.log("clip cache miss", i, e)
         if not ok:
-            s, author = get_clip(it, p, used, d + 1.0, i)
-            src_cache[str(i)] = {"key": ck, "src": s, "author": author}
+            try:
+                s, author = get_clip(it, p, used, d + 1.0, i)
+                src_cache[str(i)] = {"key": ck, "src": s, "author": author}
+            except RuntimeError as e:
+                if not paths:
+                    raise
+                R.log(f"clip {i}: {e}, повторяю кадр")
+                import shutil
+                shutil.copy(paths[-1 - (i % min(3, len(paths)))], p)
         paths.append(p)
     json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
     if not R.DRY:
