@@ -157,6 +157,41 @@ def gen_clip(prompt, secs, out_mp4, idx):
     raise RuntimeError(last)
 
 
+# ---------- звуковые эффекты ----------
+SFX = {
+    "whoosh1": ("fast cinematic whoosh swipe transition, short airy swoosh, clean, no music", 0.6),
+    "whoosh2": ("quick swipe whoosh, smartphone screen swipe sound, crisp, no music", 0.5),
+    "click": ("single crisp computer mouse click, close up, clean, no reverb", 0.5),
+    "pop": ("soft modern UI pop notification sound, bright, short, clean", 0.6),
+}
+
+
+def sfx_path(name):
+    d = os.path.join(ROOT, "ig", "sfx")
+    os.makedirs(d, exist_ok=True)
+    p = os.path.join(d, name + ".mp3")
+    if os.path.exists(p):
+        return p
+    prompt, dur = SFX[name]
+    if DRY:
+        ff(["-f", "lavfi", "-i", f"anoisesrc=d={dur}:c=pink:a=0.4", "-af", f"afade=t=out:st=0:d={dur}", p])
+        return p
+    if not EL_KEY:
+        return None
+    try:
+        b = http("https://api.elevenlabs.io/v1/sound-generation?output_format=mp3_44100_128",
+                 {"text": prompt, "duration_seconds": dur, "prompt_influence": 0.7}, {"xi-api-key": EL_KEY}, raw=True, timeout=120)
+        if len(b) > 2000:
+            open(p, "wb").write(b)
+            log("sfx generated:", name)
+            return p
+    except urllib.error.HTTPError as e:
+        log("sfx", name, e.code, e.read()[:200])
+    except Exception as e:
+        log("sfx", name, e)
+    return None
+
+
 # ---------- субтитры ----------
 ALT_RE = re.compile(r"\{([^{}|]+)\|([^{}]+)\}")
 
@@ -277,7 +312,7 @@ def render_one(slug, src, browser):
     os.makedirs(out_dir, exist_ok=True)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.4", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.5", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -358,9 +393,11 @@ def render_one(slug, src, browser):
     json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
 
     # 4. нарезка кадров под фразы
+    XF = 0.28
+    TRANS = ["smoothleft", "zoomin", "smoothup", "slideleft", "smoothright", "circleopen"]
     parts = []
     for i, (a, b) in enumerate(shot_seg):
-        d = b - a
+        d = b - a + (XF if i + 1 < len(shot_seg) else 0)
         cl = probe_dur(paths[i]) or 5
         slow = min(max(d / cl, 1.0), 1.5)
         part = os.path.join(tmp, f"p{i}.mp4")
@@ -372,10 +409,19 @@ def render_one(slug, src, browser):
             f"eq=contrast=1.06:saturation=1.08,format=yuv420p",
             "-t", f"{d:.3f}", "-an", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", part])
         parts.append(part)
-    lst = os.path.join(tmp, "list.txt")
-    open(lst, "w").write("".join(f"file '{p}'\n" for p in parts))
     base = os.path.join(tmp, "base.mp4")
-    ff(["-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", base])
+    if len(parts) == 1:
+        base = parts[0]
+    else:
+        args, chain, prev = [], [], "[0]"
+        for p_ in parts:
+            args += ["-i", p_]
+        for k in range(1, len(parts)):
+            outl = f"[x{k}]" if k + 1 < len(parts) else "[vout]"
+            chain.append(f"{prev}[{k}]xfade=transition={TRANS[(k - 1) % len(TRANS)]}:duration={XF}:offset={shot_seg[k][0]:.3f}{outl}")
+            prev = outl
+        ff(args + ["-filter_complex", ";".join(chain), "-map", "[vout]", "-an", "-r", str(FPS),
+                   "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p", base])
 
     # 5. CTA-карточка и субтитры
     import reel_render
@@ -392,16 +438,37 @@ def render_one(slug, src, browser):
     video = f"{h}.mp4"
     inputs = ["-i", base, "-loop", "1", "-t", f"{total:.2f}", "-i", ov, "-i", voice_mp3]
     vf = (f"[0]drawbox=x=0:y=0:w=iw:h=ih:color=black@0.38:t=fill:enable='gte(t,{cta_start:.2f})'[bd];"
-          f"[bd][1]overlay=0:0:enable='gte(t,{cta_start:.2f})',"
+          f"[1]format=rgba,fade=t=in:st={cta_start:.2f}:d=0.25:alpha=1[cta];"
+          f"[bd][cta]overlay=0:0:enable='gte(t,{cta_start:.2f})',"
           f"subtitles={ass}:fontsdir={FONTDIR},format=yuv420p[v]")
+    # эффекты: клик на хуке, свайп на каждой смене кадра, «поп» на CTA
+    events = [("click", 0.05)] + [(f"whoosh{1 + k % 2}", max(0, shot_seg[k][0] - 0.12)) for k in range(1, n_shot)] + [("pop", cta_start)]
+    sfx_in, sfx_f = [], []
+    nxt = 4 if has_music else 3
+    for name, t in events:
+        sp = sfx_path(name)
+        if not sp:
+            continue
+        sfx_in += ["-i", sp]
+        vol = 0.9 if name == "click" else 0.55
+        sfx_f.append(f"[{nxt}]aresample=44100,volume={vol},adelay={int(t * 1000)}:all=1[s{nxt}]")
+        nxt += 1
+    labels = "".join(f"[s{k}]" for k in range(4 if has_music else 3, nxt))
+    sfx_mix = (";".join(sfx_f) + f";{labels}amix=inputs={len(sfx_f)}:duration=longest:normalize=0[fx]") if sfx_f else ""
     if has_music:
         inputs += ["-stream_loop", "-1", "-i", music_mp3]
         af = (f"[2]aresample=44100,apad,asplit=2[vo][sc];"
               f"[3]aresample=44100,volume=0.30,afade=t=in:d=0.3,afade=t=out:st={total - 1.2:.2f}:d=1.2[mu];"
-              f"[mu][sc]sidechaincompress=threshold=0.02:ratio=9:attack=15:release=350[duck];"
-              f"[vo][duck]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]")
+              f"[mu][sc]sidechaincompress=threshold=0.02:ratio=9:attack=15:release=350[duck];")
+        mix_in = "[vo][duck]"; n_in = 2
     else:
-        af = "[2]aresample=44100,apad,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+        af = "[2]aresample=44100,apad[vo];"
+        mix_in = "[vo]"; n_in = 1
+    if sfx_mix:
+        af += sfx_mix + ";"
+        mix_in += "[fx]"; n_in += 1
+    af += f"{mix_in}amix=inputs={n_in}:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+    inputs += sfx_in
     ff(inputs + ["-filter_complex", vf + ";" + af, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
                  "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-maxrate", "4.5M", "-bufsize", "9M", "-pix_fmt", "yuv420p",
                  "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-movflags", "+faststart", os.path.join(out_dir, video)])
