@@ -27,6 +27,7 @@ FAL_KEY = os.environ.get("FAL_KEY", "")
 EL_KEY = os.environ.get("ELEVENLABS_API_KEY", "")
 DRY = os.environ.get("REEL_DRY") == "1"
 FAL_MODELS = ["fal-ai/kling-video/v2.5-turbo/pro/text-to-video", "fal-ai/kling-video/v1.6/standard/text-to-video"]
+VOICE_SPEED = 1.18  # +10% к прошлой скорости (максимум ElevenLabs 1.2)
 DEFAULT_VOICE = os.environ.get("REEL_VOICE_ID", "pNInz6obpgDQGcFmaJgB")  # Adam: глубокий мужской, хорошо читает по-русски на multilingual_v2
 STYLE = (", vertical 9:16 framing, photorealistic, cinematic, natural skin, realistic people, dynamic camera movement, "
          "shallow depth of field, premium Dubai atmosphere, no text, no captions, no logos, no watermarks")
@@ -82,7 +83,7 @@ def tts(text, voice_id, out_mp3):
                 "character_end_times_seconds": [(i + 1) * dur / n for i in range(n)]}
     r = http(f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps?output_format=mp3_44100_128",
              {"text": text, "model_id": "eleven_multilingual_v2",
-              "voice_settings": {"stability": 0.38, "similarity_boost": 0.8, "style": 0.35, "use_speaker_boost": True, "speed": 1.08}},
+              "voice_settings": {"stability": 0.38, "similarity_boost": 0.8, "style": 0.35, "use_speaker_boost": True, "speed": VOICE_SPEED}},
              {"xi-api-key": EL_KEY}, timeout=300)
     open(out_mp3, "wb").write(base64.b64decode(r["audio_base64"]))
     return r.get("alignment") or r.get("normalized_alignment")
@@ -312,7 +313,7 @@ def render_one(slug, src, browser):
     os.makedirs(out_dir, exist_ok=True)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.5", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.6", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -334,7 +335,7 @@ def render_one(slug, src, browser):
         off += len(sp) + 1
     text = " ".join(lines)
     vid = src.get("voice_id") or DEFAULT_VOICE
-    vk = key(text, vid, DRY)
+    vk = key(text, vid, VOICE_SPEED, DRY)
     voice_mp3 = os.path.join(out_dir, "voice.mp3")
     if cache.get("voice") == vk and os.path.exists(voice_mp3) and cache.get("align"):
         al = cache["align"]
