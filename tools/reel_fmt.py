@@ -61,15 +61,20 @@ STOP = {"in", "of", "the", "a", "at", "and", "with", "on", "view", "night", "day
 DUBAI_TAGS = ("dubai", "uae", "emirates", "burj", "abu dhabi", "arab")
 
 
+DUBAI_ONLY = {"on": False}
+LANDMARKS = ("palm", "jumeirah", "marina", "burj", "khalifa", "jbr", "difc", "creek", "frame")
+
+
 def relevant(tags, query):
     t = tags.lower()
     words = [w for w in query.lower().replace(",", " ").split() if w not in STOP and len(w) > 2]
-    need_dubai = "dubai" in query.lower() or "uae" in query.lower()
+    need_dubai = DUBAI_ONLY["on"] or "dubai" in query.lower() or "uae" in query.lower() or any(l in query.lower() for l in LANDMARKS)
     if need_dubai and not any(d in t for d in DUBAI_TAGS):
         return -1
     other = [w for w in words if w not in ("dubai", "uae")]
     hits = sum(1 for w in other if w.rstrip("s") in t)
-    if other and hits == 0 and not need_dubai:
+    need_hits = 2 if len(other) >= 3 else (1 if other else 0)
+    if hits < need_hits and not (need_dubai and hits >= 1):
         return -1
     return hits
 
@@ -241,6 +246,7 @@ def build_text(fmt, src, cuts, total):
 # ---------- сборка ----------
 def render(slug, src, out_dir, h):
     fmt = src["format"]
+    DUBAI_ONLY["on"] = bool(src.get("dubai_only", fmt == "vibe"))
     clips = src["clips"] if fmt != "pov" else src["clips_setup"] + src["clips_punch"]
     clips = clips[:14]
     tmp = tempfile.mkdtemp()
