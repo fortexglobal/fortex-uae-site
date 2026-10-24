@@ -1,19 +1,12 @@
-17:32:41 start reel-test-pov
-17:32:45 music: elevenlabs ok
-17:32:45 reel-test-pov: pov, 117 bpm, 8 клипов, 8.4s
-17:32:46 pixabay man talking on phone HTTP Error 403: Forbidden
-17:32:46 pixabay man talking on phone dubai HTTP Error 403: Forbidden
-17:32:46 reel v2 error reel-test-pov RuntimeError('нет клипа для «man talking on phone»') Traceback (most recent call last):
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 527, in main
-    render_one(slug, src, b)
-    ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 326, in render_one
-    return reel_fmt.render(slug, src, out_dir, h)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 267, in render
-    s, author = get_clip(it, p, used, d + 1.0, i)
-                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 116, in get_clip
-    raise RuntimeError(f"нет клипа для «{q}»")
-RuntimeError: нет клипа для «man talking on phone»
-
+17:39:54 start reel-test-pov
+17:39:59 music: elevenlabs ok
+17:40:00 reel-test-pov: pov, 117 bpm, 8 клипов, 8.5s
+17:40:00 clip 0: pixabay px283431 (Kanenori) «man talking on phone»
+17:40:01 clip 1: pixabay px215472 (Vacampbe) «man reading text message smiling»
+17:40:01 clip 2: pixabay px1360 (Activedia) «office worker looking at phone»
+17:40:01 clip 3: pixabay px134548 (isaaxxx) «dubai infinity pool»
+17:40:02 clip 4: pixabay px221334 (xBriantcx) «dubai marina yacht party»
+17:40:03 clip 5: pixabay px176533 (u_hy97sitse3) «luxury car dubai»
+17:40:03 clip 6: pixabay px70796 (daniloriba) «dubai beach club»
+17:40:05 clip 7: pixabay px299162 (engrahmad2653) «burj khalifa view balcony»
+17:40:28 rendered pov reel-test-pov: 8.5s, 7.1 MB, cover at 7.6s

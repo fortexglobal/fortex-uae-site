@@ -1,19 +1,14 @@
-17:32:46 start reel-test-vibe
-17:32:51 music: elevenlabs ok
-17:32:51 reel-test-vibe: vibe, 117 bpm, 10 клипов, 10.4s
-17:32:51 pixabay dubai fountain night HTTP Error 403: Forbidden
-17:32:51 pixabay dubai city HTTP Error 403: Forbidden
-17:32:51 reel v2 error reel-test-vibe RuntimeError('нет клипа для «dubai fountain night»') Traceback (most recent call last):
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 527, in main
-    render_one(slug, src, b)
-    ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 326, in render_one
-    return reel_fmt.render(slug, src, out_dir, h)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 267, in render
-    s, author = get_clip(it, p, used, d + 1.0, i)
-                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 116, in get_clip
-    raise RuntimeError(f"нет клипа для «{q}»")
-RuntimeError: нет клипа для «dubai fountain night»
-
+17:40:28 start reel-test-vibe
+17:40:32 music: elevenlabs ok
+17:40:32 reel-test-vibe: vibe, 123 bpm, 10 клипов, 10.0s
+17:40:33 clip 0: pixabay px250395 (Kanenori) «dubai fountain night»
+17:40:34 clip 1: pixabay px11722 (Iconikmg) «burj khalifa night»
+17:40:35 clip 2: pixabay px153914 (Engin_Akyurt) «dubai marina yacht»
+17:40:35 clip 3: pixabay px2119 (bellergy) «dubai skyline sunset aerial»
+17:40:36 clip 4: pixabay px24216 (javlemus) «palm jumeirah aerial»
+17:40:36 clip 5: pixabay px187831 (redzy) «dubai night drive car»
+17:40:37 clip 6: pixabay px216199 (suniljoseph) «dubai beach sunset»
+17:40:37 clip 7: pixabay px145582 (Nick_the_Photographer) «dubai marina night walk»
+17:40:37 clip 8: pixabay px284568 (antonlukin) «dubai desert dunes sunset»
+17:40:40 clip 9: pixabay px217457 (Im_kamma) «dubai rooftop pool»
+17:41:10 rendered vibe reel-test-vibe: 10.0s, 8.3 MB, cover at 7.3s

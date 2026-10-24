@@ -1,19 +1,14 @@
-17:32:35 start reel-test-event
-17:32:40 music: elevenlabs ok
-17:32:40 reel-test-event: event, 129 bpm, 10 клипов, 9.3s
-17:32:40 pixabay dubai running sunrise HTTP Error 403: Forbidden
-17:32:41 pixabay dubai city HTTP Error 403: Forbidden
-17:32:41 reel v2 error reel-test-event RuntimeError('нет клипа для «dubai running sunrise»') Traceback (most recent call last):
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 527, in main
-    render_one(slug, src, b)
-    ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 326, in render_one
-    return reel_fmt.render(slug, src, out_dir, h)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 267, in render
-    s, author = get_clip(it, p, used, d + 1.0, i)
-                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 116, in get_clip
-    raise RuntimeError(f"нет клипа для «{q}»")
-RuntimeError: нет клипа для «dubai running sunrise»
-
+17:39:16 start reel-test-event
+17:39:22 music: elevenlabs ok
+17:39:22 reel-test-event: event, 129 bpm, 10 клипов, 9.3s
+17:39:22 clip 0: pixabay px206294 (Shravan1991) «dubai running sunrise»
+17:39:23 clip 1: pixabay px296958 (engrahmad2653) «dubai marathon runners»
+17:39:23 clip 2: pixabay px190666 (SkyScapeDrone) «outdoor fitness class beach»
+17:39:24 clip 3: pixabay px266987 (46031972) «cycling dubai road»
+17:39:24 clip 4: pixabay px173530 (Yasir_Javaid) «yoga beach sunset»
+17:39:24 clip 5: pixabay px258799 (Matthias_Groeneveld) «dubai skyline morning»
+17:39:25 clip 6: pixabay px3627 (Coverr-Free-Footage) «people running city»
+17:39:25 clip 7: pixabay px285443 (farhanhans) «boxing workout outdoor»
+17:39:25 clip 8: pixabay px140111 (Natures_Embrace) «dubai kite beach»
+17:39:25 clip 9: pixabay px214780 (Peter_Hanzo) «group workout park»
+17:39:54 rendered event reel-test-event: 9.3s, 7.5 MB, cover at 3.8s
