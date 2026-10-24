@@ -1,6 +1,6 @@
 {
  "caption": "Банк в ОАЭ отказал? Не спешите подаваться в следующий.\n\nКаждый отказ видят другие банки. Сначала разберитесь, почему отказали, и подайтесь туда, где реально откроют.\n\nНапишите БАНК в комментариях, подскажем, что делать в вашем случае.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#счетвоаэ #банкиоаэ #дубай #бизнесвдубае",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-24T19:00+04:00",
  "bg_prompts": [
   "modern bank branch interior in Dubai, marble and glass, warm evening light, no people, no text",
@@ -35,5 +35,9 @@
    "text": "Даже если уже были отказы."
   }
  ],
- "format": "reel"
+ "result": {
+  "id": "17999237060825094",
+  "permalink": "https://www.instagram.com/reel/De4duN2kxC2/"
+ },
+ "published_at": "2026-10-24T15:34Z"
 }

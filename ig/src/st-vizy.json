@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Визы",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-24T19:00+04:00",
  "bg_prompt": "modern Dubai office reception with marble and floor to ceiling windows, city skyline at sunrise, warm golden light, premium, no people, no text, no logos",
  "caption": "Серия сторис для Актуального «Визы»",
@@ -129,5 +129,21 @@
   "Dubai International Airport premium terminal interior, soft light, travel mood, empty, no text, no logos, no people",
   "Burj Khalifa and Downtown Dubai at sunset from a high terrace, warm golden light, no text, no people",
   "elegant modern office in Dubai with floor to ceiling windows and city view, morning light, empty, no text, no people"
- ]
+ ],
+ "result": {
+  "id": "17872158633646190",
+  "ids": [
+   "17872158633646190",
+   "18042417671645226",
+   "17967059948982158",
+   "18117826715094104",
+   "17899225095395301",
+   "18245698219315276",
+   "17885806560511605",
+   "18114624947107673",
+   "18098958701556419"
+  ],
+  "permalink": "https://www.instagram.com/stories/fortex__uae/"
+ },
+ "published_at": "2026-10-24T15:33Z"
 }

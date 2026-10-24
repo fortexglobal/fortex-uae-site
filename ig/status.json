@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-24T10:18Z",
+ "checked": "2026-10-24T15:31Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,39 @@
   "media_count": 3,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "st-vizy",
+   "scheduled": "stories",
+   "id": "17872158633646190",
+   "ids": [
+    "17872158633646190",
+    "18042417671645226",
+    "17967059948982158",
+    "18117826715094104",
+    "17899225095395301",
+    "18245698219315276",
+    "17885806560511605",
+    "18114624947107673",
+    "18098958701556419"
+   ],
+   "permalink": "https://www.instagram.com/stories/fortex__uae/"
+  },
+  {
+   "slug": "reel-bank-otkazal",
+   "scheduled": "carousel",
+   "id": "17999237060825094",
+   "permalink": "https://www.instagram.com/reel/De4duN2kxC2/"
+  }
+ ],
  "media": [
+  {
+   "id": "17999237060825094",
+   "timestamp": "2026-10-24T15:34:09+0000",
+   "permalink": "https://www.instagram.com/reel/De4duN2kxC2/",
+   "media_type": "VIDEO",
+   "caption": "Банк в ОАЭ отказал? Не спешите подаваться в следующий.\n\nКажд"
+  },
   {
    "id": "18110229629581283",
    "timestamp": "2026-10-23T09:24:56+0000",
