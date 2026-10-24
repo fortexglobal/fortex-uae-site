@@ -131,6 +131,68 @@ def probe():
     print(out)
 
 
+REPLY_PROMPT = """Ты ведёшь Threads @fortex__uae (Fortex UAE, Дубай: счета в банках ОАЭ, Emirates ID, рабочие визы, компании). Тон: живой, с лёгкой иронией, коротко, на «вы» или как пишет собеседник.
+Наш пост: «{post}»
+Комментарий @{user}: «{text}»
+Ответь одним-двумя короткими предложениями (до 200 знаков): поддержи разговор, ответь по сути, можно с юмором, можно короткий встречный вопрос. Если человек спрашивает про счёт, визу или компанию, ответь по делу и предложи написать в Telegram @Fortex_Dubai. Без длинных тире, без хэштегов, без обещаний «100%», без цен кроме «от X».
+Если комментарий спам, реклама, оскорбление, политика или ответ не нужен (одно эмодзи, «+»), верни ровно SKIP."""
+
+
+def llm(prompt):
+    key = os.environ.get("OPENROUTER_API_KEY", "")
+    for m in ("anthropic/claude-sonnet-4.5", "openai/gpt-4.1"):
+        try:
+            req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions",
+                                         data=json.dumps({"model": m, "max_tokens": 200, "messages": [{"role": "user", "content": prompt}]}).encode(),
+                                         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+            return json.loads(urllib.request.urlopen(req, timeout=60).read())["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            print("llm", m, e)
+    return ""
+
+
+def replies():
+    """Отвечаем на комментарии под НАШИМИ постами за последние 7 дней."""
+    st = json.load(open(os.path.join(D, "status.json"))) if os.path.exists(os.path.join(D, "status.json")) else {}
+    rp = os.path.join(D, "replied.json")
+    done = json.load(open(rp)) if os.path.exists(rp) else {}
+    srcs = {os.path.basename(f)[:-5]: json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(D, "src", "*.json"))}
+    me = call("GET", "me", fields="username").get("username", "fortex__uae")
+    sent = 0
+    for slug, info in st.items():
+        if not info.get("id") or sent >= 10:
+            continue
+        if datetime.now(DUBAI) - datetime.fromisoformat(info["at"]) > timedelta(days=7):
+            continue
+        try:
+            conv = call("GET", f"{info['id']}/replies", fields="id,text,username,timestamp,hide_status", reverse="false")
+        except Exception as e:
+            print("replies", slug, e)
+            continue
+        for c in conv.get("data", []):
+            if c["id"] in done or c.get("username") == me or not c.get("text") or c.get("hide_status", "NOT_HUSHED") != "NOT_HUSHED":
+                continue
+            ans = llm(REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], user=c.get("username", ""), text=c["text"][:500]))
+            ans = ans.replace("—", ",").replace("–", ",").strip().strip("«»\"")
+            if not ans or ans.upper().startswith("SKIP"):
+                done[c["id"]] = "skip"
+                continue
+            try:
+                cont = call("POST", "me/threads", media_type="TEXT", text=ans[:480], reply_to_id=c["id"])
+                time.sleep(3)
+                r = call("POST", "me/threads_publish", creation_id=cont["id"])
+                done[c["id"]] = r["id"]
+                sent += 1
+                print("replied", c.get("username"), ans)
+            except Exception as e:
+                done[c["id"]] = "error " + str(e)[:200]
+                print("reply error", e)
+            json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
+            time.sleep(20)
+    json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
+    print("replies sent", sent)
+
+
 def check():
     me = call("GET", "me", fields="id,username,threads_profile_picture_url")
     json.dump({"username": me.get("username"), "id": me.get("id"), "checked": datetime.now(DUBAI).isoformat(timespec="minutes")},
@@ -147,4 +209,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe}[sys.argv[1]]()
+    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies}[sys.argv[1]]()

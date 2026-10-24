@@ -29,6 +29,12 @@ jobs:
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
         run: python3 tools/threads.py publish
+      - name: Reply to comments
+        continue-on-error: true
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python3 tools/threads.py replies
       - name: Search
         if: github.event.schedule == '33 3 * * *' || github.event_name != 'schedule'
         continue-on-error: true
