@@ -1,0 +1,33 @@
+name: Reference reels
+on:
+  push:
+    paths: ["refs/urls.json"]
+permissions:
+  contents: write
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
+      - name: Contact sheets
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, urllib.request, os
+          os.makedirs("refs/out", exist_ok=True)
+          for code, url in json.load(open("refs/urls.json")).items():
+              p = f"/tmp/{code}.mp4"
+              try:
+                  urllib.request.urlretrieve(url, p)
+                  d = float(subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",p],capture_output=True,text=True).stdout or 10)
+                  n = 12
+                  fps = n / d
+                  subprocess.run(["ffmpeg","-y","-loglevel","error","-i",p,"-vf",f"fps={fps:.4f},scale=240:-2,tile=6x2","-frames:v","1",f"refs/out/{code}.jpg"],check=True)
+                  subprocess.run(["ffmpeg","-y","-loglevel","error","-i",p,"-vn","-ac","1","-ar","16000","-t","70",f"refs/out/{code}.mp3"],check=True)
+                  print("ok", code, d)
+              except Exception as e:
+                  print("fail", code, e)
+          PY
+      - run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add refs/out; git diff --cached --quiet || (git commit -m "Reference reel frames" && git pull --rebase --autostash && git push)
