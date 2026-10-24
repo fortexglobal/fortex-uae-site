@@ -1,13 +1,16 @@
-18:13:32 start reel-test-vibe
-18:13:32 reel-test-vibe: vibe, 123 bpm, 10 клипов, 10.0s
-18:13:32 clip 0: pixabay px163160 (livesmart [fountain, show, lake, shopping mall, dep]) «dubai fountain night»
-18:13:33 clip 1: pixabay px213422 (TungArt7 [burj khalifa, dubai, night, city, citysc]) «burj khalifa night»
-18:13:34 clip 2: pixabay px46950 (masterbert0427 [fireworks, skyline, buildings, uae, duba]) «dubai marina yacht»
-18:15:07 clip 3: v2.5-turbo 5s ok
-18:15:07 clip 4: pixabay px191354 (fifthplanett [volcano, mountain, jungle, aerial, drone]) «palm jumeirah aerial»
-18:15:09 clip 5: pixabay px264535 (conghuynh8 [city, cityscape, buildings, dubai]) «dubai night drive car»
-18:15:09 clip 6: pixabay px133672 (dapictures_team [sand, desert, dunes, beach, uae, dubai, ]) «dubai beach sunset»
-18:15:10 clip 7: pixabay px265261 (conghuynh8 [dubai, skyscraper, burj, khalifa]) «dubai marina night walk»
-18:15:10 clip 8: pixabay px16138 (AcornStudioSpain [dunes, desert, sand, heaven, sahara, gob]) «dubai desert dunes sunset»
-18:15:11 clip 9: pixabay px48504 (winzerep [high way, travel, dubai, adventure, city]) «dubai rooftop pool»
-18:15:36 rendered vibe reel-test-vibe: 10.0s, 7.9 MB, cover at 4.2s
+18:23:54 start reel-test-vibe
+18:23:54 reel-test-vibe: vibe, 123 bpm, 10 клипов, 10.0s
+18:23:54 reel v2 error reel-test-vibe RuntimeError('нет клипа для «dubai fountain night»') Traceback (most recent call last):
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 527, in main
+    render_one(slug, src, b)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_v2.py", line 326, in render_one
+    return reel_fmt.render(slug, src, out_dir, h)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 298, in render
+    s, author = get_clip(it, p, used, d + 1.0, i)
+                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/fortex-uae-site/fortex-uae-site/tools/reel_fmt.py", line 145, in get_clip
+    raise RuntimeError(f"нет клипа для «{q}»")
+RuntimeError: нет клипа для «dubai fountain night»
+
