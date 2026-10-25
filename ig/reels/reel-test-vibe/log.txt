@@ -1,13 +1,1 @@
-07:08:12 start reel-test-vibe
-07:08:12 reel-test-vibe: vibe, 123 bpm, 10 клипов, 10.0s
-07:10:18 clip 0: v2.5-turbo 5s ok
-07:10:19 clip 1: pixabay px203952 (maksoy [building, tower, burj khalifa, dubai, ar]) «burj khalifa night»
-07:11:59 clip 2: v2.5-turbo 5s ok
-07:13:26 clip 3: v2.5-turbo 5s ok
-07:15:05 clip 4: v2.5-turbo 5s ok
-07:15:05 clip 5: нет клипа для «dubai night drive car», повторяю кадр
-07:15:07 clip 6: pixabay px117430 (puhoff [beach, sea, sunset, vacation, dubai, uae]) «dubai beach sunset»
-07:15:07 clip 7: нет клипа для «dubai marina night walk», повторяю кадр
-07:15:07 clip 8: pixabay px241694 (Engin_Akyurt [camel, desert, nature, animal, mammal, v]) «dubai desert dunes sunset»
-07:15:07 clip 9: нет клипа для «dubai rooftop pool», повторяю кадр
-07:15:45 rendered vibe reel-test-vibe: 10.0s, 8.1 MB, cover at 2.0s
+07:19:14 start reel-test-vibe
