@@ -43,6 +43,7 @@ QI = {k: i for i, (k, _, _) in enumerate(Q)}
 LABEL = {k: {c: l for c, l, _ in opts} for k, _, opts in Q}
 PTS = {k: {c: p for c, _, p in opts} for k, _, opts in Q}
 
+SRC = {"ig": "Instagram", "threads": "Threads", "site": "Сайт", "reels": "Reels", "tg": "Telegram-канал", "direct": "без метки"}
 S = {}  # user_id -> {"src","ans":{}, "step", "name", "username"}
 
 
@@ -92,13 +93,16 @@ def next_key(uid):
 
 async def ask(c, uid, key, msg_id=None):
     _, text, opts = Q[QI[key]]
-    if S[uid]["ans"].get("type") == "pers":
-        text = text.replace("/6", "/5")
+    total = 5 if S[uid]["ans"].get("type") == "pers" else 6
+    num, q = text.split(". ", 1)
+    n = num.split("/")[0]
+    bar = "●" * int(n) + "○" * (total - int(n))
+    text = f"<b>Вопрос {n} из {total}</b>  {bar}\n\n{q}"
     rows = [[{"text": l, "callback_data": f"a:{key}:{code}"}] for code, l, _ in opts]
     if msg_id:
-        await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, reply_markup=kb(rows))
+        await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, parse_mode="HTML", reply_markup=kb(rows))
     else:
-        await call(c, "sendMessage", chat_id=uid, text=text, reply_markup=kb(rows))
+        await call(c, "sendMessage", chat_id=uid, text=text, parse_mode="HTML", reply_markup=kb(rows))
 
 
 def score(a):
@@ -115,7 +119,7 @@ def verdict(a):
         sub = "Открыть реально, но выбор банка решает. Подача «во все подряд» здесь может навредить."
     elif s <= 5:
         head = "🟠 Сложный случай, но решаемый"
-        sub = "Такие счета открываются, но нужен банк, который берёт ваш профиль риска, и аккуратная подготовка к комплаенсу."
+        sub = "Такие счета открываются, но нужен банк, который берёт такие случаи, и аккуратная подготовка к комплаенсу."
     else:
         head = "🔴 Сложный случай: нужен разбор до подачи"
         sub = "Самому подаваться сейчас рискованно: новый отказ закроет ещё часть банков. Сначала разбор, потом подача."
@@ -141,7 +145,7 @@ def verdict(a):
 
 def summary(a):
     names = {"type": "счёт", "pass": "паспорт", "ref": "отказы", "act": "деятельность", "res": "резидентство", "comp": "компания в ОАЭ"}
-    return "; ".join(f"{names[k]}: {LABEL[k][v].lower()}" for k, v in a.items() if k in LABEL)
+    return "; ".join(f"{names[k]}: {LABEL[k][v]}" for k, v in a.items() if k in LABEL)
 
 
 async def is_member(c, uid):
@@ -150,23 +154,27 @@ async def is_member(c, uid):
 
 
 async def gate(c, uid, msg_id=None):
-    text = ("Результат готов ✅\n\nЧтобы его получить, подпишитесь на наш канал. Там разборы банков ОАЭ, "
-            "кейсы и новости для владельцев российского паспорта.\n\nПотом нажмите «Я подписался».")
+    text = ("<b>✅ Ваш результат готов</b>\n\n"
+            "Чтобы его открыть, подпишитесь на наш канал <b>Fortex UAE</b>.\n\n"
+            "Там разборы банков ОАЭ, реальные кейсы и новости для владельцев российского паспорта.\n\n"
+            "<i>Подпишитесь и нажмите «Я подписался».</i>")
     rows = [[{"text": "📢 Подписаться на канал", "url": f"https://t.me/{CHANNEL[1:]}"}],
             [{"text": "✅ Я подписался", "callback_data": "chk"}]]
     if msg_id:
-        await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, reply_markup=kb(rows))
+        await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, parse_mode="HTML", reply_markup=kb(rows))
     else:
-        await call(c, "sendMessage", chat_id=uid, text=text, reply_markup=kb(rows))
+        await call(c, "sendMessage", chat_id=uid, text=text, parse_mode="HTML", reply_markup=kb(rows))
 
 
 async def result(c, uid):
     st = S[uid]
     a = st["ans"]
     head, sub, tips = verdict(a)
-    body = f"<b>{head}</b>\n\n{sub}\n\n<b>Что важно в вашем случае:</b>\n" + "\n".join(f"• {t}" for t in tips)
-    body += ("\n\n<b>Бесплатный разбор за 5 минут</b>\nСкажем, какие банки реально откроют именно вам, "
-             "что подготовить и сколько это займёт. Оплата по этапам, если банк откажет, вернём деньги.")
+    body = (f"<b>📋 Ваш результат</b>\n\n<b>{head}</b>\n{sub}\n\n"
+            f"<b>Что важно в вашем случае</b>\n" + "\n\n".join(f"▪️ {t}" for t in tips))
+    body += ("\n\n<b>🎁 Бесплатный разбор за 5 минут</b>\n"
+             "Скажем, какие банки откроют именно вам, что подготовить и сколько это займёт.\n\n"
+             "<i>Оплата по этапам. Если банк откажет, вернём деньги.</i>")
     pre = f"Здравствуйте! Прошёл проверку шансов в боте: {summary(a)}. Хочу бесплатный разбор."
     url = f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)
     await call(c, "sendMessage", chat_id=uid, text=body, parse_mode="HTML",
@@ -179,7 +187,7 @@ async def result(c, uid):
         open(LOG, "a").write(json.dumps(rec, ensure_ascii=False) + "\n")
         who = f"@{st['username']}" if st.get("username") else f'<a href="tg://user?id={uid}">{st.get("name") or uid}</a>'
         await call(c, "sendMessage", chat_id=OWNER_ID, parse_mode="HTML",
-                   text=f"🧲 <b>Лид из бота-проверки</b>\n{who}\nИсточник: {st.get('src') or '—'}\n"
+                   text=f"🧲 <b>Лид из бота-проверки</b>\n{who}\nИсточник: {SRC.get(st.get('src'), st.get('src') or '—')}\n"
                         f"{summary(a)}\nОценка: {head}\n\nПодписан на канал ✅")
     save_state()
 
@@ -198,9 +206,11 @@ async def on_message(c, m):
         if uid == OWNER_ID and src == "direct":
             await call(c, "sendMessage", chat_id=uid, text="Бот работает. Сюда будут приходить лиды. Команда /stats: сколько прошли проверку.")
         await call(c, "sendMessage", chat_id=uid,
-                   text="Проверим шансы открыть счёт в банке ОАЭ 🇦🇪\n\n6 вопросов, около минуты. "
-                        "В конце: оценка вашего случая и что сделать, чтобы банк не отказал.\n\nОт Fortex UAE, Дубай, с 2022 года.",
-                   reply_markup=kb([[{"text": "▶️ Начать проверку", "callback_data": "go"}]]))
+                   text="<b>🇦🇪 Откроют ли вам счёт в банке ОАЭ?</b>\n\n"
+                        "Проверим за минуту: <b>6 коротких вопросов</b> кнопками.\n\n"
+                        "В конце вы получите:\n▪️ оценку шансов по вашему случаю\n▪️ что сделать, чтобы банк не отказал\n"
+                        "▪️ бесплатный разбор от специалиста\n\n<i>Fortex UAE, Дубай</i>",
+                   parse_mode="HTML", reply_markup=kb([[{"text": "▶️ Начать проверку", "callback_data": "go"}]]))
     elif text.startswith("/stats") and uid == OWNER_ID:
         rows = [json.loads(l) for l in open(LOG)] if os.path.exists(LOG) else []
         by = {}
@@ -232,14 +242,14 @@ async def on_callback(c, q):
         if nk:
             await ask(c, uid, nk, msg_id)
         elif await is_member(c, uid):
-            await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text="Готово, считаем результат ✅")
+            await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text="<b>Готово ✅</b> Считаем результат…", parse_mode="HTML")
             await result(c, uid)
         else:
             await gate(c, uid, msg_id)
     elif data == "chk":
         if await is_member(c, uid):
             await call(c, "answerCallbackQuery", callback_query_id=q["id"])
-            await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text="Спасибо за подписку ✅")
+            await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text="<b>Спасибо за подписку ✅</b>", parse_mode="HTML")
             await result(c, uid)
         else:
             await call(c, "answerCallbackQuery", callback_query_id=q["id"], show_alert="true",
