@@ -1,0 +1,24 @@
+name: Instagram weekly stats
+on:
+  schedule:
+    - cron: "11 4 * * 1"   # понедельник 08:11 по Дубаю
+  workflow_dispatch:
+  push:
+    paths: ["stats/ig/refresh"]
+permissions:
+  contents: write
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch Instagram stats (read only)
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/ig_stats.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add stats/ig
+          git diff --cached --quiet || (git commit -m "Instagram weekly stats" && git pull --rebase && git push)
