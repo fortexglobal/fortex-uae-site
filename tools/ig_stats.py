@@ -52,7 +52,7 @@ def src_map():
         link = (res or {}).get("permalink") or d.get("permalink") or ""
         slug = os.path.basename(f)[:-5]
         info = {"slug": slug, "style": d.get("style") or ("story" if slug.startswith("st-") else ""),
-                "format": d.get("format") or ("news" if "reels" in f and d.get("v") == 2 else ""), "test": d.get("test", "")}
+                "format": d.get("format") or ("news" if "reels" in f and d.get("v") == 2 else ""), "test": d.get("test", ""), "ring": d.get("ring", "")}
         if link:
             m[link.rstrip("/")] = info
     return m
