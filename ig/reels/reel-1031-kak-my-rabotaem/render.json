@@ -1,24 +1,24 @@
 {
- "hash": "e5d8c7f58f",
- "video": "e5d8c7f58f.mp4",
+ "hash": "037a114214",
+ "video": "037a114214.mp4",
  "cover": "cover.jpg",
  "v": 2,
- "duration": 18.0,
- "music": true,
+ "duration": 15.7,
+ "music": false,
  "qa": {
-  "duration": 18.1,
+  "duration": 15.75,
   "sheets": [
    "qa/sheet-1.jpg",
    "qa/sheet-2.jpg"
   ],
-  "lufs": -13.55,
-  "true_peak": -1.54,
-  "lra": 3.7,
+  "lufs": -14.8,
+  "true_peak": -1.85,
+  "lra": 1.3,
   "silence_mid": [
-   16.51
+   10.97
   ],
   "warnings": [
-   "тишина посреди ролика: [16.51]"
+   "тишина посреди ролика: [10.97]"
   ]
  }
 }

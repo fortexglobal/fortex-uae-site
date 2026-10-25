@@ -379,11 +379,11 @@ def render_motion(slug, src, out_dir):
     """{"v": 2, "format": "motion", "video": "ig/motion/how-9x16.mp4", "music": "...", "cover_at": 2.0}
     Анимация уже собрана (tools/motion_how.py): добавляем музыку ElevenLabs под её звуки, громкость -14 LUFS, обложку."""
     vid = os.path.join(ROOT, src["video"])
-    h = key(src["video"], os.path.getsize(vid), src.get("music"), "m1", DRY)[:10]
+    h = key(src["video"], os.path.getsize(vid), src.get("music"), src.get("premixed"), "m1", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
-    if not DRY and not EL_KEY:
+    if not DRY and not EL_KEY and not src.get("premixed"):
         log("no ELEVENLABS_API_KEY, skip", slug)
         return False
     total = probe_dur(vid)
@@ -392,7 +392,9 @@ def render_motion(slug, src, out_dir):
     music_mp3 = os.path.join(out_dir, "music.mp3")
     mk = key(src.get("music"), round(total))
     has_music = cache.get("music") == mk and os.path.exists(music_mp3)
-    if not has_music:
+    if src.get("premixed"):  # видео уже с голосом и музыкой: только перекодируем
+        has_music = False
+    elif not has_music:
         has_music = music(src.get("music"), total, music_mp3)
         if has_music:
             cache["music"] = mk
@@ -524,7 +526,9 @@ def render_one(slug, src, browser):
     music_mp3 = os.path.join(out_dir, "music.mp3")
     mk = key(src.get("music"), round(total))
     has_music = cache.get("music") == mk and os.path.exists(music_mp3)
-    if not has_music:
+    if src.get("premixed"):  # видео уже с голосом и музыкой: только перекодируем
+        has_music = False
+    elif not has_music:
         has_music = music(src.get("music"), total, music_mp3)
         if has_music:
             cache["music"] = mk

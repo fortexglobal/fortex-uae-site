@@ -356,7 +356,10 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 @media (max-width:640px){.bot-cta .btn{margin-left:0;width:100%}}
 
 /* видео «Как мы работаем»: 16:9 на компьютере, 9:16 на телефоне */
-.how-vid{max-width:960px;margin:8px auto 40px;text-align:center}
+.how-vid{position:relative;max-width:960px;margin:8px auto 40px;text-align:center}
+.how-vid .snd{position:absolute;top:14px;right:14px;z-index:2;padding:9px 16px;border:1px solid rgba(217,184,102,.6);border-radius:999px;background:rgba(11,22,38,.72);color:#F3E6C4;font-family:inherit;font-weight:600;font-size:14px;line-height:1;cursor:pointer;backdrop-filter:blur(6px)}
+.how-vid .snd:hover{background:rgba(11,22,38,.9)}
+@media (max-width:700px){.how-vid .snd{top:auto;right:50%;transform:translateX(50%);bottom:94px}}
 .how-vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:22px;background:#0B1626;box-shadow:0 24px 60px rgba(11,22,38,.22)}
 .how-vid .btn{margin-top:20px}
 @media (max-width:700px){.how-vid video{aspect-ratio:9/16;max-width:380px;margin:0 auto}.how-vid .btn{width:100%;max-width:380px}}

@@ -33,7 +33,7 @@
   });
 })();
 
-// Видео «Как мы работаем»: грузится, только когда блок виден, играет без звука по кругу, на телефоне вертикальная версия
+// Видео «Как мы работаем»: грузится, только когда блок виден, играет без звука по кругу, кнопка включает голос и запускает с начала, на телефоне вертикальная версия
 (function () {
   document.addEventListener("DOMContentLoaded", function () {
     var v = document.querySelector(".how-vid video");
@@ -42,6 +42,17 @@
     var base = v.getAttribute(mob ? "data-m" : "data-d");
     v.poster = base + ".jpg";
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var b = document.querySelector(".how-vid .snd");
+    if (b) b.addEventListener("click", function () {
+      if (!v.src) v.src = base + ".mp4";
+      var on = v.muted;
+      v.muted = !on;
+      if (on) { v.currentTime = 0; v.loop = false; } else { v.loop = true; }
+      b.textContent = on ? "Выключить звук" : "Включить звук";
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+    });
+    v.addEventListener("ended", function () { v.muted = true; v.loop = true; if (b) { b.textContent = "Включить звук"; b.setAttribute("aria-pressed", "false"); } v.play(); });
     if (reduce || !("IntersectionObserver" in window)) { v.controls = true; v.src = base + ".mp4"; return; }
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {

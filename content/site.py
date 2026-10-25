@@ -87,6 +87,7 @@ HOME = """<main>
     <h2 class="h2" data-slide="right">Четыре шага до рабочего счёта</h2>
     <div class="how-vid" data-slide="up">
       <video class="hv" muted loop playsinline preload="none" poster="/video/how-16x9.jpg" data-d="/video/how-16x9" data-m="/video/how-9x16" aria-label="Как мы открываем счёт: разбор, подбор банка, подготовка подачи, счёт открыт"></video>
+      <button class="snd" type="button" aria-pressed="false">Включить звук</button>
       <a class="btn" href="https://t.me/FortexCheck_Bot?start=video">Проверить шансы за минуту</a>
     </div>
     <ol class="puzzle">
