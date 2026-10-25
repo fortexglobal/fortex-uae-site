@@ -295,6 +295,9 @@ def build():
     open(os.path.join(OUT, "privacy", "index.html"), "w", encoding="utf-8").write(page("Политика конфиденциальности | Fortex UAE", "Как Fortex UAE обрабатывает данные клиентов. Privacy policy.", priv, "/privacy/"))
 
     # ---- thank you ----
+    # ---- 404 ----
+    open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(page("Страница не найдена | Fortex UAE", "Такой страницы нет.",
+        f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Такой страницы нет</h1><p class='lead'>Возможно, ссылка устарела. Начните с главной или напишите нам: <a href='{TG}'>@Fortex_Dubai</a></p><div class='row'><a class='btn' href='/'>На главную</a> <a class='btn btn-ghost' href='/articles/'>Статьи</a></div></div></section></main>", "/404.html", noindex=True))
     os.makedirs(os.path.join(OUT, "spasibo"), exist_ok=True)
     open(os.path.join(OUT, "spasibo", "index.html"), "w", encoding="utf-8").write(page("Заявка отправлена | Fortex UAE", "Спасибо, мы свяжемся с вами в Telegram.",
         f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Спасибо, заявка отправлена</h1><p class='lead'>Свяжемся с вами в Telegram в ближайшее время. Если срочно, напишите сами: <a href='{TG}'>@Fortex_Dubai</a></p><a class='btn' href='/'>На главную</a></div></section></main>", "/spasibo/"))

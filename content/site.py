@@ -4,11 +4,11 @@ HOME = """<main>
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <h1 class="display">Счёт в банке ОАЭ для владельцев российского паспорта</h1>
-      <p class="lead">Корпоративные счета, в том числе сложные случаи после отказов. Рабочие визы, компании и ВНЖ в Дубае. Подбираем банк под задачу и готовим подачу так, чтобы открыть с первого раза.</p>
+      <h1 class="display">Откроем счёт в банке ОАЭ с паспортом РФ за 2–3 недели, даже после отказов</h1>
+      <p class="lead">Подбираем банк под вашу задачу и готовим подачу, чтобы открыть с первого раза.</p>
       <div class="row">
         <a class="btn" href="{{TG}}">Написать в Telegram</a>
-        <a class="btn btn-ghost" href="#form">Разобрать мою ситуацию</a>
+        <a class="btn btn-ghost" href="#form">Бесплатный разбор за 5 минут</a>
       </div>
       <p class="proof"><b>Кейс:</b> крипто-трейдинговая компания, отказы во всех банках. Открыли счёт за 3 недели, паспорт РФ.</p>
       <p class="trust">Оплата по этапам, всю сумму вперёд не берём. Если банк откажет, предложим другой или вернём деньги.</p>
@@ -33,10 +33,10 @@ HOME = """<main>
   </div>
 </section>
 
-<section class="hs" id="services">
-  <div class="hs-sticky">
-    <div class="hs-wrap wrap"><h2 class="h2">Всё для жизни и бизнеса в ОАЭ в одном окне</h2><p class="hs-sub">Листайте вниз, услуги проедут сами</p></div>
-    <div class="hs-track">
+<section class="svc-sec" id="services">
+  <div class="wrap">
+    <h2 class="h2">Всё для жизни и бизнеса в ОАЭ в одном окне</h2>
+    <div class="svc-grid">
       <div class="svc hl"><span class="svc-tag">Главное направление</span><h3>Корпоративный счёт</h3><p>Для владельца с российским паспортом, в том числе после отказов, со сложной лицензией или фризоной. Подбор банка, подготовка к комплаенсу, сопровождение до выдачи доступа.</p><p class="price">от 5 000 USD</p><p class="when">В наших кейсах 2–3 недели</p></div>
       <div class="svc hl hl2"><span class="svc-tag">Лучший вариант для банков</span><h3>Рабочая виза + Emirates ID</h3><p>Через нашу компанию: официальная зарплата и понятная для банков история. С ней открываем Emirates NBD с дебетовой и кредитной картой без депозита (1 200 USD).</p><p class="price">от 5 500 USD</p></div>
       <div class="svc"><h3>Личный счёт</h3><p>В том числе удалённо, без приезда в Дубай. Например, Emirates NBD с полноценным личным кабинетом.</p><p class="price">от 1 500 USD</p><p class="when">Около 2 недель</p></div>
@@ -44,7 +44,6 @@ HOME = """<main>
       <div class="svc"><h3>Компания на mainland</h3><p>Для торговли внутри ОАЭ и работы с местными клиентами и госзаказчиками.</p><p class="price">от 22 000 AED</p></div>
       <div class="svc"><h3>ВНЖ Virtual Work + Emirates ID</h3><p>Самый доступный ВНЖ: для криптобирж без российского паспорта, прав, аренды жилья. Для банков слабее рабочей визы.</p><p class="price">от 2 000 USD</p><p class="when">7–10 дней</p></div>
     </div>
-    <div class="hs-wrap"><div class="hs-bar"><i></i></div></div>
   </div>
 </section>
 
@@ -79,7 +78,7 @@ HOME = """<main>
   <div class="wrap">
     <h2 class="h2" data-slide="right">Четыре шага до рабочего счёта</h2>
     <ol class="puzzle">
-      <li class="pz" data-slide="left"><div class="pz-b"><em>1</em><b>Разбор за 5 минут</b><span>Паспорт, компания, деятельность, были ли отказы. Сразу говорим, что реально.</span></div></li>
+      <li class="pz" data-slide="left"><div class="pz-b"><em>1</em><b>Бесплатный разбор за 5 минут</b><span>Паспорт, компания, деятельность, были ли отказы. Сразу говорим, что реально.</span></div></li>
       <li class="pz" data-slide="right"><div class="pz-b"><em>2</em><b>Подбор банка</b><span>Под ваши валюты, страны контрагентов, обороты и нужные продукты.</span></div></li>
       <li class="pz" data-slide="left"><div class="pz-b"><em>3</em><b>Подготовка подачи</b><span>Документы, описание деятельности и источника средств. Честно и понятно для комплаенса.</span></div></li>
       <li class="pz" data-slide="right"><div class="pz-b"><em>4</em><b>Открытие и доступ</b><span>Сопровождаем до реквизитов и личного кабинета. Если банк откажет, предложим замену.</span></div></li>
