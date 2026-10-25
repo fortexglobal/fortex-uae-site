@@ -1,0 +1,16 @@
+{
+ "duration": 18.1,
+ "sheets": [
+  "qa/sheet-1.jpg",
+  "qa/sheet-2.jpg"
+ ],
+ "lufs": -13.55,
+ "true_peak": -1.54,
+ "lra": 3.7,
+ "silence_mid": [
+  16.51
+ ],
+ "warnings": [
+  "тишина посреди ролика: [16.51]"
+ ]
+}
