@@ -1,0 +1,22 @@
+name: Voice test
+on:
+  push:
+    paths: ["voice/src/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: voice-test
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Voice
+        env: { ELEVENLABS_API_KEY: "${{ secrets.ELEVENLABS_API_KEY }}" }
+        run: python3 tools/voice_test.py 2>&1 | tee voice/log.txt
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add voice
+          git diff --cached --quiet || (git commit -m "Voice test" && git pull --rebase --autostash && git push)
