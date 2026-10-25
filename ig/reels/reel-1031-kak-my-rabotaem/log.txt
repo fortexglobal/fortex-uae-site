@@ -1,3 +1,1 @@
-15:56:31 start reel-1031-kak-my-rabotaem
-15:56:37 music: elevenlabs ok
-15:57:08 rendered motion reel-1031-kak-my-rabotaem: 18.0s, music=True
+18:30:19 start reel-1031-kak-my-rabotaem
