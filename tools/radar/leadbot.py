@@ -185,13 +185,16 @@ async def result(c, uid):
     head, sub, tips = verdict(a)
     body = (f"<b>📋 Ваш результат</b>\n\n<b>{head}</b>\n{sub}\n\n"
             f"<b>Что важно в вашем случае</b>\n" + "\n\n".join(f"▪️ {t}" for t in tips))
-    body += ("\n\n<b>🎁 Бесплатный разбор за 5 минут</b>\n"
-             "Скажем, какие банки откроют именно вам, что подготовить и сколько это займёт.\n\n"
+    body += ("\n\n<b>⚡ Сколько это займёт с нами</b>\n"
+             "Самому с паспортом РФ это часто месяцы. Мы открываем простые случаи примерно за неделю, "
+             "обычные около двух недель, самые сложные до месяца.\n\n"
+             "<b>🎁 Бесплатный разбор с менеджером</b>\n"
+             "Зададим пару вопросов и скажем, какие банки откроют именно вам и что для этого нужно.\n\n"
              "<i>Оплата по этапам. Если банк откажет, вернём деньги.</i>")
     pre = f"Здравствуйте! Прошёл проверку шансов в боте: {summary(a)}. Хочу бесплатный разбор."
     url = f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)
     await call(c, "sendMessage", chat_id=uid, text=body, parse_mode="HTML",
-               reply_markup=kb([[{"text": "💬 Получить разбор", "url": url}]]
+               reply_markup=kb([[{"text": "💬 Записаться на разбор", "url": url}]]
                                + ([[{"text": "📖 Почему банк отказал: разбор", "url": ARTICLE}]] if a.get("ref") in ("one", "many", "closed") else [])
                                + [[{"text": "🔄 Пройти заново", "callback_data": "restart"}]]))
     st.setdefault("done", time.time())
@@ -302,7 +305,7 @@ def case_for(a):
 def fu_kb(uid):
     a = S[uid].get("ans", {})
     pre = f"Здравствуйте! Прошёл проверку шансов в боте: {summary(a)}. Хочу бесплатный разбор." if a else "Здравствуйте! Хочу разбор по счёту в ОАЭ."
-    return kb([[{"text": "💬 Получить разбор", "url": f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)}],
+    return kb([[{"text": "💬 Записаться на разбор", "url": f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)}],
                [{"text": "Больше не присылать", "callback_data": "stop"}]])
 
 
