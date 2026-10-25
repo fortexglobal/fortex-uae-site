@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (err) {}
       if (ok) { try { ym(113701535, "reachGoal", "lead_form"); } catch (e) {} setTimeout(function () { location.href = "/spasibo/"; }, 300); return; }
       btn.disabled = false; btn.textContent = "Отправить заявку";
-      msg.textContent = "Не получилось отправить. Напишите нам в Telegram: @FortexGlobal";
+      msg.textContent = "Не получилось отправить. Напишите нам в Telegram: @Fortex_Dubai";
     });
   });
 });
