@@ -53,3 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+(function () {
+  var b = document.querySelector(".float-tg");
+  if (!b) return;
+  var f = function () { b.classList.toggle("on", window.scrollY > 600); };
+  window.addEventListener("scroll", f, { passive: true }); f();
+})();
