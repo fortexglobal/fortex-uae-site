@@ -21,7 +21,16 @@ fi
 $D/venv/bin/pip install -q --upgrade telethon httpx
 $D/venv/bin/python -m py_compile $D/assistant.py
 
-if [ ! -s $D/co.session ]; then
+systemctl stop cryptooffice 2>/dev/null || true
+if ! (cd $D && $D/venv/bin/python -c "
+import asyncio, assistant
+async def ok():
+    await assistant.client.connect()
+    r = await assistant.client.is_user_authorized()
+    await assistant.client.disconnect()
+    return r
+raise SystemExit(0 if asyncio.get_event_loop().run_until_complete(ok()) else 1)" 2>/dev/null); then
+  rm -f $D/co.session
   echo
   echo "Сейчас вход в Telegram. Введи номер аккаунта-ассистента с плюсом, потом код, который придёт в Telegram."
   echo "Если на аккаунте стоит облачный пароль, программа спросит и его."

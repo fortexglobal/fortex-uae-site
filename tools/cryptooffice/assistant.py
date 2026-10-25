@@ -464,7 +464,11 @@ async def on_outgoing(ev):
 
 async def main():
     load()
-    await client.start()
+    await client.connect()
+    if not await client.is_user_authorized():
+        log.error("нет входа в аккаунт: запусти python assistant.py --login")
+        await asyncio.sleep(300)
+        return
     me = await client.get_me()
     ME["id"] = me.id
     log.info("started as %s", me.username or me.id)
