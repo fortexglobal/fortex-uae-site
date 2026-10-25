@@ -43,6 +43,8 @@ QI = {k: i for i, (k, _, _) in enumerate(Q)}
 LABEL = {k: {c: l for c, l, _ in opts} for k, _, opts in Q}
 PTS = {k: {c: p for c, _, p in opts} for k, _, opts in Q}
 
+ARTICLE = "https://fortex-uae.com/articles/bank-oae-otkazal-nastoyashchaya-prichina/"
+GH_REPO = "fortexglobal/fortex-uae-site"
 SRC = {"ig": "Instagram", "threads": "Threads", "site": "Сайт", "reels": "Reels", "tg": "Telegram-канал", "direct": "без метки"}
 S = {}  # user_id -> {"src","ans":{}, "step", "name", "username"}
 
@@ -178,8 +180,10 @@ async def result(c, uid):
     pre = f"Здравствуйте! Прошёл проверку шансов в боте: {summary(a)}. Хочу бесплатный разбор."
     url = f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)
     await call(c, "sendMessage", chat_id=uid, text=body, parse_mode="HTML",
-               reply_markup=kb([[{"text": "💬 Получить разбор", "url": url}],
-                                [{"text": "🔄 Пройти заново", "callback_data": "restart"}]]))
+               reply_markup=kb([[{"text": "💬 Получить разбор", "url": url}]]
+                               + ([[{"text": "📖 Почему банк отказал: разбор", "url": ARTICLE}]] if a.get("ref") in ("one", "many", "closed") else [])
+                               + [[{"text": "🔄 Пройти заново", "callback_data": "restart"}]]))
+    st.setdefault("done", time.time())
     if not st.get("sent"):
         st["sent"] = True
         rec = {"at": time.strftime("%Y-%m-%d %H:%M"), "uid": uid, "username": st.get("username"), "name": st.get("name"),
@@ -200,7 +204,7 @@ async def on_message(c, m):
     u = m.get("from", {})
     if text.startswith("/start"):
         src = text.split(" ", 1)[1].strip()[:30] if " " in text else "direct"
-        S[uid] = {"src": src, "ans": {}, "name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x),
+        S[uid] = {"src": src, "ans": {}, "t0": time.time(), "name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x),
                   "username": u.get("username")}
         save_state()
         if uid == OWNER_ID and src == "direct":
@@ -246,6 +250,10 @@ async def on_callback(c, q):
             await result(c, uid)
         else:
             await gate(c, uid, msg_id)
+    elif data == "stop":
+        S[uid]["stop"] = True
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        await call(c, "sendMessage", chat_id=uid, text="Хорошо, больше не пишу. Если появится вопрос, @" + CONTACT)
     elif data == "chk":
         if await is_member(c, uid):
             await call(c, "answerCallbackQuery", callback_query_id=q["id"])
@@ -257,6 +265,107 @@ async def on_callback(c, q):
     save_state()
 
 
+FU1 = ("<b>Как ваш вопрос со счётом в ОАЭ?</b>\n\n"
+       "Вчера вы проверяли шансы. Если ещё не разобрались, вот что обычно решает дело:\n\n"
+       "▪️ правильный банк под ваш случай\n▪️ понятное описание бизнеса и источника денег\n▪️ одна подача вместо пяти\n\n"
+       "{case}\n\nРазбор бесплатный и занимает 5 минут.")
+FU2 = ("<b>«А если банк всё равно откажет?»</b>\n\n"
+       "Самый частый вопрос перед стартом. Поэтому у нас так:\n\n"
+       "▪️ оплата по этапам, всю сумму вперёд не берём\n"
+       "▪️ откажет банк, предложим другой под вашу задачу\n"
+       "▪️ замена не подойдёт, вернём деньги\n\n"
+       "Напишите, разберём ваш случай.")
+NF = ("<b>Вы не закончили проверку</b>\n\nОсталось пару вопросов, и вы увидите оценку своих шансов на счёт в ОАЭ.")
+
+
+def case_for(a):
+    if a.get("act") == "crypto":
+        return "<i>Кейс: крипто-трейдинговая компания, отказы во всех банках. Открыли счёт за 3 недели, паспорт РФ.</i>"
+    if a.get("act") == "trade":
+        return "<i>Кейс: торговля электроникой с Гонконгом, платежи зависали до 5 дней. Открыли счёт с юанями за 2,5 недели.</i>"
+    if a.get("type") == "pers":
+        return "<i>Кейс: личный счёт Emirates NBD удалённо, без приезда в Дубай, за 2 недели.</i>"
+    return "<i>Кейс: клиенту отказали несколько банков. Подготовили подачу заново и открыли счёт за 3 недели.</i>"
+
+
+def fu_kb(uid):
+    a = S[uid].get("ans", {})
+    pre = f"Здравствуйте! Прошёл проверку шансов в боте: {summary(a)}. Хочу бесплатный разбор." if a else "Здравствуйте! Хочу разбор по счёту в ОАЭ."
+    return kb([[{"text": "💬 Получить разбор", "url": f"https://t.me/{CONTACT}?text=" + urllib.parse.quote(pre)}],
+               [{"text": "Больше не присылать", "callback_data": "stop"}]])
+
+
+async def followups(c):
+    now = time.time()
+    for uid, st in list(S.items()):
+        if st.get("stop") or uid == OWNER_ID:
+            continue
+        done = st.get("done")
+        try:
+            if done and st.get("fu", 0) == 0 and now - done > 24 * 3600:
+                st["fu"] = 1
+                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=FU1.format(case=case_for(st["ans"])), reply_markup=fu_kb(uid))
+            elif done and st.get("fu", 0) == 1 and now - done > 72 * 3600:
+                st["fu"] = 2
+                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=FU2, reply_markup=fu_kb(uid))
+            elif not done and st.get("t0") and not st.get("nf") and now - st["t0"] > 3 * 3600 and now - st["t0"] < 72 * 3600:
+                st["nf"] = 1
+                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=NF,
+                           reply_markup=kb([[{"text": "▶️ Продолжить проверку", "callback_data": "go"}],
+                                            [{"text": "Больше не присылать", "callback_data": "stop"}]]))
+        except Exception:
+            log.exception("followup")
+    save_state()
+
+
+async def push_stats(c):
+    """Обезличенная статистика в репозиторий (без имён, ников и id): stats/leadbot.json."""
+    try:
+        tok = open(os.path.join(BASE, "github_token")).read().strip()
+    except Exception:
+        return
+    rows = [json.loads(l) for l in open(LOG)] if os.path.exists(LOG) else []
+    started, finished, verdicts, ans = {}, {}, {}, {}
+    for st in S.values():
+        k = SRC.get(st.get("src"), st.get("src") or "—")
+        started[k] = started.get(k, 0) + 1
+    for r in rows:
+        k = SRC.get(r.get("src"), r.get("src") or "—")
+        finished[k] = finished.get(k, 0) + 1
+        verdicts[r["verdict"]] = verdicts.get(r["verdict"], 0) + 1
+        for q, v in r.get("ans", {}).items():
+            key = f"{q}:{LABEL.get(q, {}).get(v, v)}"
+            ans[key] = ans.get(key, 0) + 1
+    out = {"updated": time.strftime("%Y-%m-%d %H:%M"), "started_by_source": started, "finished_by_source": finished,
+           "verdicts": verdicts, "answers": ans, "followups_sent": sum(st.get("fu", 0) for st in S.values()),
+           "stopped": sum(1 for st in S.values() if st.get("stop"))}
+    body = json.dumps(out, ensure_ascii=False, indent=1).encode()
+    h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json", "User-Agent": "fortex-leadbot"}
+    url = f"https://api.github.com/repos/{GH_REPO}/contents/stats/leadbot.json"
+    r = await c.get(url, headers=h, params={"ref": "main"})
+    sha = r.json().get("sha") if r.status_code == 200 else None
+    import base64
+    data = {"message": "Lead bot stats", "content": base64.b64encode(body).decode(), "branch": "main"}
+    if sha:
+        data["sha"] = sha
+    r = await c.put(url, headers=h, json=data)
+    if r.status_code not in (200, 201):
+        log.warning("stats push %s %s", r.status_code, r.text[:200])
+
+
+async def background(c):
+    last_push = 0
+    while True:
+        await asyncio.sleep(600)
+        await followups(c)
+        if time.time() - last_push > 6 * 3600:
+            last_push = time.time()
+            try:
+                await push_stats(c)
+            except Exception:
+                log.exception("stats")
+
+
 async def main():
     load_state()
     off = 0
@@ -265,6 +374,7 @@ async def main():
         await call(c, "setMyDescription",
                    description="Проверка шансов открыть счёт в банке ОАЭ для владельцев российского паспорта. 6 вопросов, результат за минуту. Fortex UAE, Дубай.")
         await call(c, "setMyShortDescription", short_description="Проверьте шансы открыть счёт в банке ОАЭ за минуту")
+        asyncio.get_event_loop().create_task(background(c))
         while True:
             try:
                 r = await c.get(API + "getUpdates", params={"offset": off, "timeout": 50,
