@@ -1,0 +1,52 @@
+{
+ "style": "editorial",
+ "status": "wait",
+ "publish_at": "2026-10-30T19:07+04:00",
+ "bg_prompt": "bright sunny daytime view of Abu Dhabi corniche with modern towers and turquoise water, clear deep blue sky filling the upper half of the frame, light architecture, editorial travel photography, high detail, no text, no logos",
+ "photos": [
+  "bright modern accounting office in Dubai, light wooden desk with a laptop, calculator and neat stack of blank papers, large window with city view, daylight, editorial interior photography, no people, no readable text, no logos",
+  "businesswoman in a light blazer working on a laptop at a bright cafe table by the window in Dubai, daylight, editorial lifestyle photography, face not visible, no readable text, no logos",
+  "minimalist white meeting room with a round table, two chairs and documents, panoramic window overlooking a sunny Dubai skyline, editorial interior photography, no people, no text, no logos"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "title": "Электронные счета в ОАЭ с 2027 года: что изменилось в октябре",
+   "bold": "что изменилось в октябре",
+   "note": "Решение Минфина ОАЭ № 197 от 2026 года"
+  },
+  {
+   "type": "page",
+   "head": "Новость",
+   "h": "Решение № 197",
+   "h2": "Минфин ОАЭ смягчил правила e-invoicing",
+   "body": "Поправки действуют с **1 октября 2026**. Об этом сообщили агентство **WAM** и **Gulf News**.\n\nСистема электронных счетов стартует **1 января 2027**: данные сделок будут уходить в налоговую FTA почти в реальном времени."
+  },
+  {
+   "type": "page",
+   "head": "Кого касается первым",
+   "photo": 0,
+   "body": "Компании с выручкой **50 млн AED** в год и больше переходят на e-invoicing с **1 января 2027**. Провайдера (ASP) им нужно выбрать до **30 октября 2026**.\n\nМалый и средний бизнес: с **1 июля 2027**. Госструктуры: с **1 октября 2027**."
+  },
+  {
+   "type": "page",
+   "head": "Что смягчили",
+   "photo": 1,
+   "body": "Сделки внутри одной **налоговой группы** освобождены на **24 месяца**, до конца 2028 года.\n\nДанные e-invoice больше **не обязательно хранить в ОАЭ**. Отменено требование сообщать в FTA о сбое системы в течение **2 рабочих дней**."
+  },
+  {
+   "type": "page",
+   "head": "Что делать владельцу",
+   "photo": 2,
+   "body": "Проверьте, в какую фазу попадает ваша компания, и заранее обсудите переход с бухгалтером.\n\nЧем понятнее документы и деятельность компании, тем проще проверка **комплаенса банка** при открытии счёта."
+  },
+  {
+   "type": "cta",
+   "head": "Как начать",
+   "h": "Разберём ваш случай",
+   "h2": "за 30 минут",
+   "body": "Открываете компанию в ОАЭ или нужен счёт для действующей? Подберём **mainland или фризону** и банк под задачу.\n\nКомпания во фризоне **от 14 000 AED**, на mainland **от 22 000 AED**."
+  }
+ ],
+ "caption": "Минфин ОАЭ смягчил правила электронных счетов (e-invoicing). Решение № 197 от 2026 года действует с 1 октября, сообщают агентство WAM и Gulf News.\n\nСистема стартует 1 января 2027. Первыми переходят компании с выручкой 50 млн AED в год и больше, провайдера (ASP) им нужно выбрать до 30 октября 2026. Малый и средний бизнес с 1 июля 2027.\n\nЧто смягчили: сделки внутри одной налоговой группы освобождены на 24 месяца, до конца 2028 года. Данные можно хранить за пределами ОАЭ. Отменено уведомление FTA о сбое системы в течение 2 рабочих дней.\n\nЕсли у вас компания в ОАЭ, уточните у бухгалтера, в какую фазу она попадает.\n\nСохраните, чтобы не потерять.\n\nНапишите БАНК в комментариях, подскажем, какой банк подойдёт вашей компании.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#бизнесвдубае #налогиоаэ #компаниявоаэ #оаэ #дубай"
+}

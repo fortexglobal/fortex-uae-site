@@ -1,0 +1,59 @@
+{
+ "style": "editorial",
+ "status": "wait",
+ "publish_at": "2026-10-26T19:07+04:00",
+ "bg_prompt": "bright sunny daytime view of Dubai Creek Harbour and modern towers across turquoise water, clear deep blue sky filling the upper half of the frame, white architecture, editorial travel photography, high detail, no text, no logos",
+ "photos": [
+  "bright minimalist modern office in Dubai with white walls and large windows, a closed laptop and neat folder of documents on a light oak desk, soft natural daylight, editorial interior photography, no people, no text, no logos",
+  "hand holding a smartphone with an abstract blurred finance chart, sitting at a white marble table near a window with Dubai skyline in daylight, editorial lifestyle photo, face not visible, no readable text, no logos",
+  "modern bright glass atrium of a financial building in Dubai, white marble and tall columns, sunlight, editorial architecture photography, no people, no text, no logos"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "title": "Счёт для крипто-компании в ОАЭ: как открыть после отказов",
+   "bold": "как открыть после отказов",
+   "note": "Корпоративный счёт и crypto account у брокера"
+  },
+  {
+   "type": "page",
+   "head": "Почему отказывают",
+   "photo": 0,
+   "body": "Крипто-деятельность банки проверяют строже всего. Отказывают, когда **непонятна деятельность** компании и нет документов на **источник средств**.\n\nКаждый новый отказ видят следующие банки. Поэтому подаваться во все подряд опасно."
+  },
+  {
+   "type": "page",
+   "head": "Кейс",
+   "h": "3 недели",
+   "h2": "счёт крипто-трейдинговой компании",
+   "body": "Компания во фризоне, нужны переводы на **Binance** и обратно. Отказы во всех банках, куда клиент подавался сам.\n\nОткрыли корпоративный счёт за **3 недели**, владелец с **паспортом РФ**."
+  },
+  {
+   "type": "page",
+   "head": "Crypto account",
+   "photo": 1,
+   "body": "Кроме банка, открываем **корпоративный crypto account** у лицензированного брокера в ОАЭ.\n\nФиат с корпоративного счёта, покупка и продажа **USDT** и других активов по **рыночному курсу**."
+  },
+  {
+   "type": "page",
+   "head": "Если брокер уже отказал",
+   "photo": 2,
+   "body": "Клиенту с крипто-деятельностью отказал брокер. Мы заново подготовили подачу и открыли счёт **у того же брокера** примерно за **2 недели**.\n\nСначала разбираем причину отказа, потом подаём."
+  },
+  {
+   "type": "page",
+   "head": "Сроки и стоимость",
+   "h": "от 5 000 USD",
+   "h2": "корпоративный счёт под ключ",
+   "body": "В наших кейсах срок **2-3 недели**. Crypto account по запросу.\n\nЕсли были отказы или закрытия, заранее ничего не обещаем: сначала смотрим ситуацию. Оплата **по этапам**."
+  },
+  {
+   "type": "cta",
+   "head": "Как начать",
+   "h": "Разберём ваш случай",
+   "h2": "за 30 минут",
+   "body": "Опишите в Telegram лицензию, деятельность и прошлые подачи. Скажем, какой банк или брокер реален.\n\nЕсли банк откажет и замена не подойдёт, **вернём деньги**."
+  }
+ ],
+ "caption": "Счёт для крипто-компании в ОАЭ открыть можно, даже после отказов. Это сложный, но рабочий случай.\n\nБанки отказывают, когда непонятна деятельность и нет документов на источник средств. Каждый отказ видят следующие банки, поэтому сначала разбор, потом подача.\n\nКейс: крипто-трейдинговая компания во фризоне, отказы во всех банках. Открыли корпоративный счёт за 3 недели, владелец с паспортом РФ.\n\nПлюс корпоративный crypto account у лицензированного брокера в ОАЭ: фиат с корпоративного счёта, USDT по рыночному курсу. Корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите СЧЁТ в комментариях, подскажем, с чего начать вашей компании.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#криптокомпания #счетвоаэ #бизнесвдубае #банкиоаэ #дубай"
+}
