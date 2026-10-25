@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Компании",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-25T19:00+04:00",
  "bg_prompt": "modern glass office towers in Dubai business district at golden hour, premium, no people, no text, no logos",
  "caption": "Серия сторис для Актуального «Компании»",
@@ -90,5 +90,19 @@
   "glass skyscrapers of Dubai business district DIFC at golden hour looking up, premium, no text, no logos",
   "modern meeting room in Dubai with long table and city skyline view, evening light, empty, no text, no people",
   "aerial view of Dubai Business Bay and canal at dusk, city lights, no text"
- ]
+ ],
+ "result": {
+  "id": "18169289476485076",
+  "ids": [
+   "18169289476485076",
+   "18466430161136329",
+   "18119535139964499",
+   "18348412549250183",
+   "18127659695484771",
+   "18120518699086514",
+   "17944522707403409"
+  ],
+  "permalink": "https://www.instagram.com/stories/fortex__uae/"
+ },
+ "published_at": "2026-10-25T15:36Z"
 }
