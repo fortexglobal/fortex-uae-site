@@ -1,13 +1,1 @@
-18:17:02 start reel-test-event
-18:17:02 reel-test-event: event, 129 bpm, 10 клипов, 9.3s
-18:18:43 clip 0: v2.5-turbo 5s ok
-18:20:16 clip 1: v2.5-turbo 5s ok
-18:20:17 clip 2: pixabay px190666 (SkyScapeDrone [beach, waves, sea, ocean, nature, outdoo]) «outdoor fitness class beach»
-18:20:18 clip 3: pixabay px111203 (MUHAMMADSAQIB107 [buildings, road, city, dubai]) «cycling dubai road»
-18:20:24 clip 4: pixabay px215493 (TonyDias7 [sunset, sea, beach, ocean, dusk, sky, tw]) «yoga beach sunset»
-18:21:56 clip 5: v2.5-turbo 5s ok
-18:21:58 clip 6: pixabay px163784 (Javaistan [buildings, patung selamat datang, city, ]) «people running city»
-18:21:59 clip 7: pixabay px32934 (Stuck1 [exercise, running, fitness, lifestyle, w]) «boxing workout outdoor»
-18:23:31 clip 8: v2.5-turbo 5s ok
-18:23:33 clip 9: pixabay px90661 (NickyPe [wild boar, cub, group, cute, animal, pig]) «group workout park»
-18:23:54 rendered event reel-test-event: 9.3s, 7.5 MB, cover at 3.5s
+07:08:12 start reel-test-event

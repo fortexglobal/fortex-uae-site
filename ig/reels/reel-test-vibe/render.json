@@ -1,21 +1,15 @@
 {
- "hash": "77fab8039f",
- "video": "77fab8039f.mp4",
+ "hash": "37f7a51fa2",
+ "video": "37f7a51fa2.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "format": "vibe",
  "duration": 10.0,
- "cover_t": 4.15,
+ "cover_t": 2.05,
  "bpm": 123,
  "stock_authors": [
-  "AcornStudioSpain [dunes, desert, sand, heaven, sahara, gob]",
-  "TungArt7 [burj khalifa, dubai, night, city, citysc]",
-  "conghuynh8 [city, cityscape, buildings, dubai]",
-  "conghuynh8 [dubai, skyscraper, burj, khalifa]",
-  "dapictures_team [sand, desert, dunes, beach, uae, dubai, ]",
-  "fifthplanett [volcano, mountain, jungle, aerial, drone]",
-  "livesmart [fountain, show, lake, shopping mall, dep]",
-  "masterbert0427 [fireworks, skyline, buildings, uae, duba]",
-  "winzerep [high way, travel, dubai, adventure, city]"
+  "Engin_Akyurt [camel, desert, nature, animal, mammal, v]",
+  "maksoy [building, tower, burj khalifa, dubai, ar]",
+  "puhoff [beach, sea, sunset, vacation, dubai, uae]"
  ]
 }
