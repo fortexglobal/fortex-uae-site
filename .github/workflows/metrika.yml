@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "17 3 * * 1"
   workflow_dispatch:
+  push:
+    paths: ["stats/refresh"]
 permissions:
   contents: write
 jobs:
