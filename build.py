@@ -188,6 +188,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
   </div>
   <div class="wrap fine">Fortex UAE не является банком и не принимает депозиты. Решение об открытии счёта принимает банк. Цены указаны как минимальные и уточняются после разбора ситуации.</div>
 </footer>
+<a class="float-tg" href="{TG}" aria-label="Написать в Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 15.3l-.4 5.4c.6 0 .8-.3 1.1-.5l2.7-2.5 5.5 4c1 .6 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.4 0 11.3 1.2 11.6l5.4 1.7L19.1 5.4c.6-.4 1.1-.2.7.2"/></svg><span>Написать в Telegram</span></a>
 </body>
 </html>"""
 
