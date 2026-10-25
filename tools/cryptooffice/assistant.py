@@ -476,8 +476,37 @@ async def main():
     await client.run_until_disconnected()
 
 
+async def qr_login():
+    """Вход по QR, если код из Telegram не приходит: Настройки → Устройства → Подключить устройство."""
+    import getpass
+    import qrcode
+    from telethon.errors import SessionPasswordNeededError
+    await client.connect()
+    if not await client.is_user_authorized():
+        qr = await client.qr_login()
+        while True:
+            q = qrcode.QRCode(border=1)
+            q.add_data(qr.url)
+            print("\nНа телефоне в аккаунте-ассистенте: Настройки → Устройства → Подключить устройство, и наведи камеру на QR:\n")
+            q.print_ascii(invert=True)
+            try:
+                await qr.wait(timeout=60)
+                break
+            except asyncio.TimeoutError:
+                print("QR устарел, показываю новый...")
+                await qr.recreate()
+            except SessionPasswordNeededError:
+                await client.sign_in(password=getpass.getpass("Облачный пароль аккаунта: "))
+                break
+    me = await client.get_me()
+    print(f"Вход выполнен: {me.first_name} @{me.username or ''}")
+    await client.disconnect()
+
+
 if __name__ == "__main__":
-    if "--login" in sys.argv:
+    if "--qr" in sys.argv:
+        client.loop.run_until_complete(qr_login())
+    elif "--login" in sys.argv:
         async def login():
             await client.start()
             me = await client.get_me()

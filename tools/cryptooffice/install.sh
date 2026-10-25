@@ -19,7 +19,7 @@ fi
 if [ ! -x $D/venv/bin/python ]; then
   python3 -m venv $D/venv 2>/dev/null || { apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3-venv && python3 -m venv $D/venv; }
 fi
-$D/venv/bin/pip install -q --upgrade telethon httpx
+$D/venv/bin/pip install -q --upgrade telethon httpx qrcode
 $D/venv/bin/python -m py_compile $D/assistant.py
 
 systemctl stop cryptooffice 2>/dev/null || true
@@ -33,9 +33,8 @@ async def ok():
 raise SystemExit(0 if asyncio.get_event_loop().run_until_complete(ok()) else 1)" 2>/dev/null); then
   rm -f $D/co.session
   echo
-  echo "Сейчас вход в Telegram. Введи номер аккаунта-ассистента с плюсом, потом код, который придёт в Telegram."
-  echo "Если на аккаунте стоит облачный пароль, программа спросит и его."
-  cd $D && $D/venv/bin/python assistant.py --login < /dev/tty
+  echo "Сейчас вход в Telegram по QR-коду. Если на аккаунте стоит облачный пароль, программа спросит и его."
+  cd $D && $D/venv/bin/python assistant.py --qr < /dev/tty
 fi
 chown -R $U:$U $D
 
