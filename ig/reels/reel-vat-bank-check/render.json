@@ -1,7 +1,34 @@
 {
- "hash": "a2a9ce4330",
- "video": "a2a9ce4330.mp4",
+ "hash": "bba011a464",
+ "video": "bba011a464.mp4",
  "cover": "cover.jpg",
  "v": 2,
- "duration": 31.7
+ "duration": 31.7,
+ "safe_zone": {
+  "cap_widest_px": 757,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 31.7,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg",
+   "qa/sheet-3.jpg",
+   "qa/sheet-4.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.71,
+  "true_peak": -1.53,
+  "lra": 1.6,
+  "silence_mid": [],
+  "warnings": []
+ }
 }

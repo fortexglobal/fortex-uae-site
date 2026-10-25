@@ -1,1 +1,3 @@
-07:27:26 start reel-vat-bank-check
+15:32:17 start reel-vat-bank-check
+15:32:17 reel-vat-bank-check: voice 30.8s, shots [4.3, 6.3, 9.4, 3.2, 8.5]
+15:35:05 rendered reel v2 reel-vat-bank-check: 31.7s, 15.3 MB, music=True
