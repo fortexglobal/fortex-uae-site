@@ -196,7 +196,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
-    <p class="lead">Обычно отвечаем в течение 30 минут в рабочее время. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    <p class="lead">Ответим в Telegram в течение 20 минут. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
     {SOCIAL}
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
