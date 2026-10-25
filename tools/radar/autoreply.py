@@ -76,7 +76,7 @@ def set_on(on):
 
 def status():
     s = _load()
-    return (f"Автоответы: {'включены' if s['on'] else 'выключены'}. Сегодня {s['total']} из {DAILY}. "
+    return (f"Автоответы: {'включены' if s['on'] else 'выключены'}. Сегодня {s['total']} из {DAILY}, видимость {s.get('vis', 0)} из {VIS_DAILY}. "
             f"Негатив за сутки: {len(s['neg'])}")
 
 
@@ -292,3 +292,62 @@ async def delete_message(user, chat_id, msg_id):
         return "Удалил"
     except Exception as e:
         return f"Не получилось удалить: {e}"
+
+
+# ---------- «видимость»: короткий экспертный ответ на вопросы по нашим темам от любого человека ----------
+VIS_DAILY = int(os.environ.get("VIS_DAILY", "3"))
+VIS_TOPICS = ("ВНЖ", "счёт", "компания", "ВЭД")
+QUESTION_RE = re.compile(r"\?|подскажите|подскажи|кто знает|кто-нибудь|как (сделать|получить|открыть|продлить)|почему|зачем|можно ли|нужно ли|сколько", re.I)
+
+
+def _kb():
+    try:
+        return open(os.path.join(BASE, "kb.md"), encoding="utf-8").read()[:9000]
+    except Exception:
+        return ""
+
+
+async def maybe_visibility(user, ev, sender, text, res):
+    """Вопрос по визе, Emirates ID, счёту или компании от человека не из «целевых»: даём свои 5 копеек и ставим 👍.
+    Целевые (бизнес, состоятельные) идут обычным путём через карточку лида."""
+    try:
+        if not res or not res.get("relevant") or res.get("topic") not in VIS_TOPICS:
+            return
+        if res.get("tier") in ("бизнес", "состоятельный частный") and int(res.get("score", 0)) >= 3:
+            return
+        if not QUESTION_RE.search(text) or len(text) < 25:
+            return
+        s = _load()
+        s.setdefault("vis", 0)
+        if not s["on"] or _quiet() or s["vis"] >= VIS_DAILY or s["chats"].get(str(ev.chat_id)) or sender.id in s["authors"]:
+            return
+        if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
+            return
+        s["vis"] += 1; s["chats"][str(ev.chat_id)] = 1; s["authors"].append(sender.id); _save(s)
+        try:
+            import reactions
+            asyncio.get_event_loop().create_task(reactions.maybe_react(user, ev.chat_id, ev.id, sender.id, text, "👍"))
+        except Exception as e:
+            log.warning("vis reaction: %s", e)
+        lim, hint = await chat_style(user, ev.chat_id)
+        sysmsg = (STYLE + "\n\nЭто вопрос обычного человека по нашей теме. Дай один короткий полезный факт по сути вопроса, "
+                  "как знающий человек в чате. Без продажи, без вопросов про его бизнес. Если точного ответа нет в справке, "
+                  "скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "") + "\n\nСПРАВКА:\n" + _kb())
+        draft = _clean(await _llm([{"role": "system", "content": sysmsg}, {"role": "user", "content": text}]),
+                       min(max(len(text), 40), lim) if lim < 300 else len(text))
+        if not draft:
+            return
+        delay = random.randint(*DELAY)
+        await CTX["notify"](f"👁 Вопрос по теме ({res.get('topic')}), не целевой лид. Отвечу через {delay // 60} мин:\n«{text[:300]}»\n\nЧерновик: «{draft}»")
+        await asyncio.sleep(delay)
+        s = _load()
+        if not s["on"] or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
+            return
+        m = await user.send_message(ev.chat_id, draft, reply_to=ev.id)
+        s = _load()
+        s["ours"].append([ev.chat_id, m.id])
+        s["threads"][f"{ev.chat_id}:{m.id}"] = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": None}
+        _save(s)
+        await CTX["notify"](f"👁 Ответил:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
+    except Exception as e:
+        log.exception("visibility: %s", e)
