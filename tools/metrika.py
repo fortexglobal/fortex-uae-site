@@ -36,6 +36,15 @@ def main():
         "goals_by_source": table("ym:s:lastTrafficSource", metrics=gm) if goals else [],
         "goal_names": [g["name"] for g in goals],
     }
+    td = get("/stat/v1/data", ids=C, metrics="ym:s:visits,ym:s:users,ym:s:bounceRate,ym:s:avgVisitDurationSeconds", date1="today", date2="today")
+    out["today"] = {
+        "totals": dict(zip(["визиты", "посетители", "отказы_%", "время_на_сайте_сек"], td.get("totals", []))),
+        "goals": {g["name"]: v for g, v in zip(goals, get("/stat/v1/data", ids=C, metrics=gm, date1="today", date2="today").get("totals", []))},
+        "sources": table("ym:s:lastTrafficSource", d1="today", d2="today"),
+        "source_details": table("ym:s:lastSourceEngine", d1="today", d2="today"),
+        "utm": table("ym:s:lastUTMSource,ym:s:lastUTMCampaign", d1="today", d2="today"),
+        "pages": table("ym:s:startURLPath", d1="today", d2="today"),
+    }
     os.makedirs("stats", exist_ok=True)
     json.dump(out, open("stats/metrika.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(out["totals"], ensure_ascii=False), out["goals"])
