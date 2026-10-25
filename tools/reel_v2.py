@@ -374,10 +374,63 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     return head + "\n".join(ev) + "\n"
 
 
+# ---------- готовое видео + музыка ----------
+def render_motion(slug, src, out_dir):
+    """{"v": 2, "format": "motion", "video": "ig/motion/how-9x16.mp4", "music": "...", "cover_at": 2.0}
+    Анимация уже собрана (tools/motion_how.py): добавляем музыку ElevenLabs под её звуки, громкость -14 LUFS, обложку."""
+    vid = os.path.join(ROOT, src["video"])
+    h = key(src["video"], os.path.getsize(vid), src.get("music"), "m1", DRY)[:10]
+    meta_p = os.path.join(out_dir, "render.json")
+    if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
+        return False
+    if not DRY and not EL_KEY:
+        log("no ELEVENLABS_API_KEY, skip", slug)
+        return False
+    total = probe_dur(vid)
+    cache_p = os.path.join(out_dir, "assets.json")
+    cache = json.load(open(cache_p)) if os.path.exists(cache_p) else {}
+    music_mp3 = os.path.join(out_dir, "music.mp3")
+    mk = key(src.get("music"), round(total))
+    has_music = cache.get("music") == mk and os.path.exists(music_mp3)
+    if not has_music:
+        has_music = music(src.get("music"), total, music_mp3)
+        if has_music:
+            cache["music"] = mk
+            json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
+    for old in glob.glob(os.path.join(out_dir, "*.mp4")):
+        os.remove(old)
+    video = f"{h}.mp4"
+    out = os.path.join(out_dir, video)
+    if has_music:
+        af = (f"[1]aresample=44100,volume=0.8,afade=t=in:d=0.2,afade=t=out:st={total - 1.5:.2f}:d=1.5[mu];"
+              f"[0:a]aresample=44100,volume=1.4[fx];[mu][fx]amix=inputs=2:duration=first:normalize=0,"
+              f"atrim=0:{total:.2f},loudnorm=I=-14:TP=-1.5:LRA=11[a]")
+        ff(["-i", vid, "-stream_loop", "-1", "-i", music_mp3, "-filter_complex", af, "-map", "0:v", "-map", "[a]",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "6M", "-bufsize", "12M", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-t", f"{total:.2f}", out])
+    else:
+        ff(["-i", vid, "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
+            "-movflags", "+faststart", out])
+    ff(["-ss", str(src.get("cover_at", 2.0)), "-i", out, "-frames:v", "1", "-q:v", "2", os.path.join(out_dir, "cover.jpg")])
+    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "music": has_music}
+    try:
+        import reel_qa
+        if not DRY:
+            reel_qa.normalize(out)
+        meta["qa"] = reel_qa.run(out, os.path.join(out_dir, "qa"))
+    except Exception as e:
+        log("qa error", e)
+    json.dump(meta, open(meta_p, "w"), indent=1, ensure_ascii=False)
+    log(f"rendered motion {slug}: {total:.1f}s, music={has_music}")
+    return True
+
+
 # ---------- сборка ----------
 def render_one(slug, src, browser):
     out_dir = os.path.join(ROOT, "ig", "reels", slug)
     os.makedirs(out_dir, exist_ok=True)
+    if src.get("format") == "motion":
+        return render_motion(slug, src, out_dir)
     if src.get("format") in ("vibe", "event", "pov"):
         import reel_fmt
         reel_fmt.R = sys.modules[__name__]

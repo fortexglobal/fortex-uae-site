@@ -96,7 +96,7 @@ def normalize(video, target=-13.4, tp=-1.6):
     tmp = video + ".norm.mp4"
     af = (f"loudnorm=I={target}:TP={tp}:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:"
           f"measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true,"
-          f"alimiter=limit=0.83:attack=2:release=60:level=disabled")
+          f"alimiter=limit=0.79:attack=2:release=60:level=disabled")
     ff(["-i", video, "-map", "0:v", "-map", "0:a", "-c:v", "copy", "-af", af, "-ar", "44100",
         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", tmp])
     os.replace(tmp, video)

@@ -32,3 +32,24 @@
     var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
   });
 })();
+
+// Видео «Как мы работаем»: грузится, только когда блок виден, играет без звука по кругу, на телефоне вертикальная версия
+(function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    var v = document.querySelector(".how-vid video");
+    if (!v) return;
+    var mob = window.matchMedia && matchMedia("(max-width:700px)").matches;
+    var base = v.getAttribute(mob ? "data-m" : "data-d");
+    v.poster = base + ".jpg";
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) { v.controls = true; v.src = base + ".mp4"; return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          if (!v.src) v.src = base + ".mp4";
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        } else if (v.src) v.pause();
+      });
+    }, { threshold: .35 }).observe(v);
+  });
+})();

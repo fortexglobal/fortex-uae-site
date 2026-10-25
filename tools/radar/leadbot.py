@@ -45,7 +45,7 @@ PTS = {k: {c: p for c, _, p in opts} for k, _, opts in Q}
 
 ARTICLE = "https://fortex-uae.com/articles/bank-oae-otkazal-nastoyashchaya-prichina/"
 GH_REPO = "fortexglobal/fortex-uae-site"
-SRC = {"ig": "Instagram", "threads": "Threads", "site": "Сайт", "reels": "Reels", "tg": "Telegram-канал", "direct": "без метки"}
+SRC = {"ig": "Instagram", "threads": "Threads", "site": "Сайт", "reels": "Reels", "tg": "Telegram-канал", "video": "Видео на сайте", "direct": "без метки"}
 S = {}  # user_id -> {"src","ans":{}, "step", "name", "username"}
 
 

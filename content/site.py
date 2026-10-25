@@ -85,6 +85,10 @@ HOME = """<main>
 <section class="sec alt" id="how">
   <div class="wrap">
     <h2 class="h2" data-slide="right">Четыре шага до рабочего счёта</h2>
+    <div class="how-vid" data-slide="up">
+      <video class="hv" muted loop playsinline preload="none" poster="/video/how-16x9.jpg" data-d="/video/how-16x9" data-m="/video/how-9x16" aria-label="Как мы открываем счёт: разбор, подбор банка, подготовка подачи, счёт открыт"></video>
+      <a class="btn" href="https://t.me/FortexCheck_Bot?start=video">Проверить шансы за минуту</a>
+    </div>
     <ol class="puzzle">
       <li class="pz" data-slide="left"><div class="pz-b"><em>1</em><b>Бесплатный разбор за 5 минут</b><span>Паспорт, компания, деятельность, были ли отказы. Сразу говорим, что реально.</span></div></li>
       <li class="pz" data-slide="right"><div class="pz-b"><em>2</em><b>Подбор банка</b><span>Под ваши валюты, страны контрагентов, обороты и нужные продукты.</span></div></li>
