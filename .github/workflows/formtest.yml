@@ -1,0 +1,16 @@
+name: Form test
+on:
+  push:
+    paths: ["stats/formtest"]
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          R=$(curl -s -w " HTTP%{http_code}" -X POST --data-urlencode "name=Проверка формы (Claude)" --data-urlencode "telegram=@Fortex_Dubai" --data-urlencode "task=Тест: заявка с сайта доходит до бота?" --data-urlencode "page=/test" https://fortex-uae.com/.netlify/functions/lead)
+          echo "$R" > stats/formtest.out; cat stats/formtest.out
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add stats/formtest.out; git commit -m "Form test result" && git pull --rebase && git push
