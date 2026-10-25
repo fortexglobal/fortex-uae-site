@@ -162,8 +162,12 @@ ME = {}
 
 
 async def notify(text):
+    """Уведомления AR: на его основной аккаунт (задаётся командой /owner @username в Избранном), иначе в Избранное."""
     try:
-        await client.send_message("me", "🤖 " + text[:3900])
+        m = await client.send_message(S.get("owner") or "me", "🤖 " + text[:3900])
+        if S.get("owner"):
+            S["ours"].append([S["owner"], m.id]); save()
+        return m
     except Exception as e:
         log.warning("notify: %s", e)
 
@@ -256,7 +260,9 @@ async def deliver(chat_id, reply_to, text, thread, label):
         n = S["next_draft"]; S["next_draft"] += 1
         S["drafts"][str(n)] = {"chat": chat_id, "reply_to": reply_to, "text": text, "thread": thread, "ts": time.time()}
         save()
-        await notify(f"{label}\nЧерновик #{n}:\n«{text}»\n\n/ok {n} отправить · /skip {n} отменить")
+        m = await notify(f"{label}\nЧерновик #{n}:\n«{text}»\n\nОтветь на это сообщение «+», чтобы отправить, или «-», чтобы отменить.")
+        if m:
+            S.setdefault("draft_msgs", {})[str(m.id)] = str(n); save()
         return
     await asyncio.sleep(random.randint(*(REPLY_DELAY if thread["depth"] == 1 else FOLLOW_DELAY)))
     if not S["auto"] or quiet() or await owner_wrote(chat_id, reply_to):
@@ -409,6 +415,9 @@ async def on_incoming(ev):
         return
     try:
         if ev.is_private:
+            if S.get("owner") and ev.chat_id == S["owner"]:
+                await owner_command(ev, text.strip())
+                return
             asyncio.create_task(on_dm(ev, text))
             return
         if not ev.is_group:
@@ -428,14 +437,36 @@ async def on_incoming(ev):
 @client.on(events.NewMessage(outgoing=True))
 async def on_outgoing(ev):
     # AR сам написал кому-то в личку с этого аккаунта: в этом диалоге ассистент замолкает
-    if ev.is_private and ev.chat_id != ME.get("id") and [ev.chat_id, ev.id] not in S["ours"]:
+    if ev.is_private and ev.chat_id not in (ME.get("id"), S.get("owner")) and [ev.chat_id, ev.id] not in S["ours"]:
         await asyncio.sleep(2)
         if [ev.chat_id, ev.id] not in S["ours"] and ev.chat_id not in S["muted"]:
             S["muted"].append(ev.chat_id); save()
         return
     if ev.chat_id != ME.get("id"):
         return
-    t = (ev.raw_text or "").strip()
+    await command((ev.raw_text or "").strip())
+
+
+async def owner_command(ev, t):
+    """Сообщение с основного аккаунта AR: «+» / «-» ответом на черновик или команда."""
+    if ev.is_reply and t in ("+", "-", "ок", "ok", "да", "нет"):
+        n = S.get("draft_msgs", {}).get(str(ev.reply_to_msg_id))
+        if n:
+            await command(("/ok " if t in ("+", "ок", "ok", "да") else "/skip ") + n)
+            return
+    await command(t)
+
+
+async def command(t):
+    if t.lower().startswith("/owner"):
+        name = t.split()[1] if len(t.split()) > 1 else ""
+        try:
+            u = await client.get_entity(name)
+            S["owner"] = u.id; save()
+            await notify("Теперь уведомления и черновики приходят сюда. Ответь на черновик «+», чтобы отправить. /status — что сделано.")
+        except Exception as e:
+            await client.send_message("me", f"🤖 Не нашёл {name}: {e}. Сначала напиши этому аккаунту что-нибудь со своего основного.")
+        return
     if not t.startswith("/"):
         return
     parts = t.split()
