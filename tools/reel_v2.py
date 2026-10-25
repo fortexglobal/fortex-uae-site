@@ -91,10 +91,25 @@ def tts(text, voice_id, out_mp3):
 
 
 # ---------- музыка ----------
+BANNED_MUSIC = ["corporate", "upbeat", "inspiring", "motivational", "uplifting", "happy", "background music",
+                "positive", "epic cinematic", "commercial", "luxury"]
+
+
+def clean_music_prompt(prompt):
+    """Слова, которые дают стоковый звук, убираем; просим разреженную середину под голос."""
+    p = prompt
+    for w in BANNED_MUSIC:
+        p = re.sub(r"\b" + re.escape(w) + r"\b", "", p, flags=re.I)
+    p = re.sub(r"\s*,\s*(,\s*)+", ", ", re.sub(r"\s{2,}", " ", p)).strip(" ,.")
+    return (p + ". Instrumental only, no vocals. Sparse arrangement under a spoken voice: keep the 1-4 kHz midrange open, "
+            "weight on sub bass, kick, snare and crisp high percussion, short melodic hits only in the gaps. "
+            "Distinct signature sound, not generic stock music. Punchy start in the first second")
+
+
 def music(prompt, secs, out_mp3):
     if DRY or not prompt:
         return False
-    p = prompt + ". Instrumental only, no vocals, punchy intro in the first second, modern, for a short vertical video"
+    p = clean_music_prompt(prompt)
     ms = int(min(max(secs + 1.5, 10), 90) * 1000)
     if EL_KEY:
         try:
@@ -245,9 +260,43 @@ def words_from(al, alts=()):
     return merged
 
 
+# Сейф-зона Instagram 1080x1920: низ (рядом кнопки) x 70-910, y 1065-1485. Субтитры по центру этой полосы.
+CAP_X, CAP_Y = 490, 1170
+CAP_MAX_W = 760          # 840 ширина полосы минус обводка и запас
+NUM_SCALE = 1.22         # цифры и суммы в активный момент крупнее
+_FONT = {}
+
+
+def text_w(t, size=80):
+    try:
+        from PIL import ImageFont
+        if size not in _FONT:
+            _FONT[size] = ImageFont.truetype(os.path.join(FONTDIR, "InterDisplay-ExtraBold.otf"), size)
+        return _FONT[size].getlength(t)
+    except Exception:
+        return len(t) * size * 0.62
+
+
+def is_num(w):
+    return bool(w.get("alt")) and bool(re.search(r"\d", w["w"]))
+
+
+def chunk_w(ch):
+    """Ширина строки в худший момент: активное слово увеличено."""
+    base = [text_w(x["w"]) for x in ch]
+    sp = text_w(" ") * (len(ch) - 1)
+    worst = 0
+    for i, x in enumerate(ch):
+        k = NUM_SCALE if is_num(x) else 1.08
+        worst = max(worst, sum(base) + sp + base[i] * (k - 1))
+    return worst
+
+
 def chunks_of(words):
     res, cur = [], []
     for w in words:
+        if cur and chunk_w(cur + [w]) > CAP_MAX_W:
+            res.append(cur); cur = []
         cur.append(w)
         text_len = sum(len(x["w"]) + 1 for x in cur)
         if len(cur) >= 3 or text_len >= 17 or re.search(r"[.,!?:;…]$", w["w"]):
@@ -255,6 +304,15 @@ def chunks_of(words):
     if cur:
         res.append(cur)
     return res
+
+
+def safe_report(words, cap_end):
+    """Проверка сейф-зоны для отчёта: самая широкая строка субтитров и запас до края."""
+    chs = chunks_of([w for w in words if w["s"] < cap_end])
+    widest = max((chunk_w(c) for c in chs), default=0)
+    bad = [" ".join(x["w"] for x in c) for c in chs if chunk_w(c) > 840 - 2 * 6]
+    return {"cap_widest_px": round(widest), "cap_limit_px": 828, "cap_box": [CAP_X - 420, CAP_Y - 60, CAP_X + 420, CAP_Y + 60],
+            "overflow": bad, "ok": not bad}
 
 
 def t_ass(t):
@@ -276,8 +334,8 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Inter Display ExtraBold,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,6,0,5,80,80,0,1
-Style: Hook,Inter Display ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00261610,&H00000000,0,0,0,0,100,100,-1,0,3,26,0,8,90,90,330,1
+Style: Cap,Inter Display ExtraBold,80,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,6,0,5,80,80,0,1
+Style: Hook,Inter Display ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00261610,&H00000000,0,0,0,0,100,100,-1,0,3,26,0,8,124,124,330,1
 Style: Brand,Inter Display ExtraBold,34,&H3061A2C9,&H3061A2C9,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,2,0,7,76,76,250,1
 
 [Events]
@@ -302,8 +360,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             parts = []
             for j, x in enumerate(ch):
                 t = esc(x["w"])
-                parts.append("{\\c" + gold + "\\fscx108\\fscy108}" + t + "{\\c&HFFFFFF&\\fscx100\\fscy100}" if j == i else t)
-            pop = "{\\pos(540,1150)" + ("\\fscx88\\fscy88\\t(0,90,\\fscx100\\fscy100)" if i == 0 else "") + "}"
+                if j == i and is_num(x):  # цифра: крупнее, золотом, с «прыжком»
+                    sc = int(NUM_SCALE * 100)
+                    parts.append("{\\c" + gold + f"\\fscx{sc - 14}\\fscy{sc - 14}\\t(0,110,\\fscx{sc}\\fscy{sc})" + "}" + t + "{\\c&HFFFFFF&\\fscx100\\fscy100}")
+                elif j == i:
+                    parts.append("{\\c" + gold + "\\fscx108\\fscy108}" + t + "{\\c&HFFFFFF&\\fscx100\\fscy100}")
+                elif is_num(x):
+                    parts.append("{\\c" + gold + "}" + t + "{\\c&HFFFFFF&}")
+                else:
+                    parts.append(t)
+            pop = f"{{\\pos({CAP_X},{CAP_Y})" + ("\\fscx88\\fscy88\\t(0,90,\\fscx100\\fscy100)" if i == 0 else "") + "}"
             ev.append(f"Dialogue: 1,{t_ass(s)},{t_ass(e)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
     return head + "\n".join(ev) + "\n"
 
@@ -326,7 +392,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.7", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.8", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -469,7 +535,7 @@ def render_one(slug, src, browser):
         if not sp:
             continue
         sfx_in += ["-i", sp]
-        vol = 0.9 if name == "click" else 0.55
+        vol = 0.45 if name == "click" else 0.28  # эффекты минимум на 12 дБ ниже голоса
         sfx_f.append(f"[{nxt}]aresample=44100,volume={vol},adelay={int(t * 1000)}:all=1[s{nxt}]")
         nxt += 1
     labels = "".join(f"[s{k}]" for k in range(4 if has_music else 3, nxt))
@@ -477,7 +543,7 @@ def render_one(slug, src, browser):
     if has_music:
         inputs += ["-stream_loop", "-1", "-i", music_mp3]
         af = (f"[2]aresample=44100,apad,asplit=2[vo][sc];"
-              f"[3]aresample=44100,volume=0.30,afade=t=in:d=0.3,afade=t=out:st={total - 1.2:.2f}:d=1.2[mu];"
+              f"[3]aresample=44100,volume=0.30,equalizer=f=2400:t=o:w=1.6:g=-7,afade=t=in:d=0.3,afade=t=out:st={total - 1.2:.2f}:d=1.2[mu];"
               f"[mu][sc]sidechaincompress=threshold=0.02:ratio=9:attack=15:release=350[duck];")
         mix_in = "[vo][duck]"; n_in = 2
     else:
@@ -486,7 +552,7 @@ def render_one(slug, src, browser):
     if sfx_mix:
         af += sfx_mix + ";"
         mix_in += "[fx]"; n_in += 1
-    af += f"{mix_in}amix=inputs={n_in}:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+    af += f"{mix_in}amix=inputs={n_in}:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"  # итог -14 LUFS, пик не выше -1 dBTP
     inputs += sfx_in
     ff(inputs + ["-filter_complex", vf + ";" + af, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
                  "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-maxrate", "4.5M", "-bufsize", "9M", "-pix_fmt", "yuv420p",
@@ -498,7 +564,17 @@ def render_one(slug, src, browser):
     except Exception as e:
         log("cover fallback", e)
         ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
-    json.dump({"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1)}, open(meta_p, "w"), indent=1)
+    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1),
+            "safe_zone": safe_report(words_from(al, alts), cta_start)}
+    try:
+        import reel_qa
+        if not DRY:
+            reel_qa.normalize(os.path.join(out_dir, video))  # второй проход: -14 LUFS, пик ниже -1 dBTP
+        cuts = [shot_seg[k][0] for k in range(1, n_shot)] + [cta_start]
+        meta["qa"] = reel_qa.run(os.path.join(out_dir, video), os.path.join(out_dir, "qa"), cuts)
+    except Exception as e:
+        log("qa error", e)
+    json.dump(meta, open(meta_p, "w"), indent=1, ensure_ascii=False)
     size = os.path.getsize(os.path.join(out_dir, video)) / 1e6
     log(f"rendered reel v2 {slug}: {total:.1f}s, {size:.1f} MB, music={has_music}")
     return True

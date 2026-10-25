@@ -54,8 +54,9 @@ def scene_html(sc):
             t = t.replace(E(sc["accent"]), f"<em>{E(sc['accent'])}</em>", 1)
         body = '<div class="shade"></div>' + f'<div class="wrap hookwrap"><div class="bar"></div><h1>{t}</h1>' + (f'<div class="sub">{md(sc.get("sub"))}</div>' if sc.get("sub") else "") + "</div>"
     elif kind == "cta":
-        body = f'<div class="wrap"><div class="card"><div class="bar"></div><h2>{E(sc["title"])}</h2><div class="txt">{md(sc.get("text", ""))}</div>' \
-               f'<div class="btn">Telegram @Fortex_Dubai</div></div></div>'
+        # сейф-зона Instagram: справа внизу кнопки, карточку держим в x 90-900
+        body = f'<div class="wrap" style="left:90px;right:180px"><div class="card"><div class="bar"></div><h2>{E(sc["title"])}</h2><div class="txt">{md(sc.get("text", ""))}</div>' \
+               f'<div class="btn" style="font-size:44px;padding:26px 36px">Telegram @Fortex_Dubai</div></div></div>'
     else:
         body = f'<div class="wrap"><div class="card"><div class="bar"></div><h2>{E(sc["title"])}</h2><div class="txt">{md(sc.get("text", ""))}</div></div></div>'
     return f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{top}{body}</body></html>'
