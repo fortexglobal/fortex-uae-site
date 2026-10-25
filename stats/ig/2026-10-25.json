@@ -1,0 +1,146 @@
+{
+ "generated": "2026-10-25T18:13+04:00",
+ "period": "последние 7 дней",
+ "account": {
+  "username": "fortex__uae",
+  "followers_count": 0,
+  "follows_count": 2,
+  "media_count": 4,
+  "id": "28276626788683589"
+ },
+ "account_7d": {
+  "reach": 52,
+  "views": 64,
+  "accounts_engaged": 1,
+  "total_interactions": 1,
+  "profile_links_taps": 0,
+  "follows_and_unfollows": {
+   "error": ""
+  }
+ },
+ "followers_history": [
+  {
+   "date": "2026-10-25",
+   "followers": 0,
+   "media": 4
+  }
+ ],
+ "media": [
+  {
+   "id": "17999237060825094",
+   "at": "2026-10-24T15:34:09+0000",
+   "kind": "REELS",
+   "type": "VIDEO",
+   "link": "https://www.instagram.com/reel/De4duN2kxC2/",
+   "caption": "Банк в ОАЭ отказал? Не спешите подаваться в следующий.\n\nКаждый отказ видят другие банки. Сначала разберитесь, почему отказали, и подайтесь т",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 50,
+    "views": 52,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 3009,
+    "ig_reels_video_view_total_time": 153467
+   },
+   "unavailable": [
+    "profile_visits",
+    "follows"
+   ],
+   "ours": {
+    "slug": "reel-bank-otkazal",
+    "style": "",
+    "format": "",
+    "test": ""
+   }
+  },
+  {
+   "id": "18110229629581283",
+   "at": "2026-10-23T09:24:56+0000",
+   "kind": "FEED",
+   "type": "CAROUSEL_ALBUM",
+   "link": "https://www.instagram.com/p/De1OtiNFsEM/",
+   "caption": "Рабочая виза или Virtual Work: что выбрать?\n\nОбе дают резидентство ОАЭ и Emirates ID.\n\nVirtual Work быстрее и доступнее: от 2 000 USD, 7–10 ",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 0,
+    "views": 0,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "profile_visits": 0,
+    "follows": 0
+   },
+   "unavailable": [],
+   "ours": {
+    "slug": "ig-viza-ili-virtual-work",
+    "style": "",
+    "format": "",
+    "test": ""
+   }
+  },
+  {
+   "id": "18146568127608471",
+   "at": "2026-10-23T09:24:17+0000",
+   "kind": "FEED",
+   "type": "CAROUSEL_ALBUM",
+   "link": "https://www.instagram.com/p/De1OpQWlvRp/",
+   "caption": "Банк в ОАЭ отказал. Что дальше?\n\nГлавное: не подавайтесь сами во все банки подряд. Каждый отказ остаётся в истории, и следующий банк это вид",
+   "likes": 1,
+   "comments": 0,
+   "ins": {
+    "reach": 1,
+    "views": 1,
+    "saved": 0,
+    "shares": 0,
+    "likes": 1,
+    "comments": 0,
+    "total_interactions": 1,
+    "profile_visits": 0,
+    "follows": 0
+   },
+   "unavailable": [],
+   "ours": {
+    "slug": "ig-schet-posle-otkaza",
+    "style": "",
+    "format": "",
+    "test": ""
+   }
+  },
+  {
+   "id": "18083292146352525",
+   "at": "2026-10-23T09:23:42+0000",
+   "kind": "FEED",
+   "type": "CAROUSEL_ALBUM",
+   "link": "https://www.instagram.com/p/De1OkWkFkm9/",
+   "caption": "Нас часто спрашивают, почему у нас нет офиса.\n\nКлиенты по всему миру, поэтому работаем в Telegram и Zoom. Так быстрее, а все договорённости ",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 1,
+    "views": 1,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "profile_visits": 0,
+    "follows": 0
+   },
+   "unavailable": [],
+   "ours": {
+    "slug": "ig-kak-rabotaem",
+    "style": "",
+    "format": "",
+    "test": ""
+   }
+  }
+ ],
+ "media_error": null
+}
