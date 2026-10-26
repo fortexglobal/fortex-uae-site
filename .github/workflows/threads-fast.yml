@@ -1,0 +1,31 @@
+name: Threads fast
+# Быстрый прогон без статистики и поиска: публикация постов и ответы на комментарии.
+# Запускает смотритель на сервере (tools/radar/keeper.py): в момент публикации и каждые 5 минут днём.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: threads
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
+        run: python3 tools/threads.py publish
+      - name: Reply to comments
+        continue-on-error: true
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python3 tools/threads.py replies
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add threads
+          git diff --cached --quiet || (git commit -m "Threads status" && git pull --rebase --autostash && git push)
