@@ -4,10 +4,8 @@ HOME = """<main>
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <div class="hero-mid">
-        <h1 class="display">Открытие компаний<br>и&nbsp;счетов в&nbsp;ОАЭ</h1>
-        <p class="lead">С паспортом РФ за 1–3 недели,<br>даже после отказов</p>
-      </div>
+      <h1 class="display">Откроем счёт в банке ОАЭ с паспортом РФ за 2–3 недели, даже после отказов</h1>
+      <p class="lead">Подбираем банк под вашу задачу и готовим подачу, чтобы открыть с первого раза.</p>
       <div class="row">
         <a class="btn" href="{{TG}}">Написать в Telegram</a>
         <a class="btn btn-ghost" href="#form">Бесплатный разбор за 5 минут</a>
