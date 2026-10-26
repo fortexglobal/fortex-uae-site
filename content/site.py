@@ -4,8 +4,10 @@ ACCOUNTS = """<main>
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <h1 class="display">Откроем счёт в банке ОАЭ с паспортом РФ за 1–3 недели, даже после отказов</h1>
-      <p class="lead">Подбираем банк под вашу задачу и готовим подачу, чтобы открыть с первого раза.</p>
+      <div class="hero-mid">
+        <h1 class="display">Откроем счёт в банке ОАЭ с паспортом РФ за 1–3 недели, даже после отказов</h1>
+        <p class="lead">Подбираем банк под вашу задачу и готовим подачу, чтобы открыть с первого раза.</p>
+      </div>
       <div class="row">
         <a class="btn" href="{{TG}}">Написать в Telegram</a>
         <a class="btn btn-ghost" href="#form">Бесплатный разбор за 5 минут</a>
@@ -272,8 +274,10 @@ def _hero(h1, lead):
     return f'''<section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <h1 class="display">{h1}</h1>
-      <p class="lead">{lead}</p>
+      <div class="hero-mid">
+        <h1 class="display">{h1}</h1>
+        <p class="lead">{lead}</p>
+      </div>
       {_BTNS}
     </div>
   </div>
@@ -330,11 +334,12 @@ RESIDENCY = "<main>\n" + _hero("Рабочая виза и Emirates ID в&nbsp;�
 
 <section class="svc-sec" id="options">
   <div class="wrap">
-    <h2 class="h2">Какой вариант выбрать</h2>
-    <div class="svc-grid">
+    <h2 class="h2">Какие визы делаем</h2>
+    <div class="svc-grid svc-grid-2">
       <div class="svc hl"><span class="svc-tag">Лучший вариант для банков</span><h3>Рабочая виза + Emirates ID</h3><p>Трудоустройство через нашу компанию, официальная зарплата. Подходит, если главное банк, кредитки и ипотека.</p><p class="price">от 5 500 USD</p><p class="when">5–7 дней</p></div>
-      <div class="svc"><h3>Пакет Emirates NBD</h3><p>Зарплатный счёт и кредитная карта без депозита, дебетовая карта в подарок. Для клиентов с Emirates ID через нашу компанию.</p><p class="price">5 000 AED</p><p class="when">около 3 рабочих дней</p></div>
       <div class="svc"><h3>Virtual Work + Emirates ID</h3><p>Резидентство на год для тех, кто работает удалённо на компанию в другой стране. Дешевле, но для банков слабее рабочей визы.</p><p class="price">от 2 000 USD</p><p class="when">7–10 дней</p></div>
+      <div class="svc"><h3>Золотая виза</h3><p>Долгосрочное резидентство на 10 лет. Через недвижимость, бизнес или другие основания. Подберём, какое подходит вам.</p><p class="price">под задачу</p><p class="when">разбор бесплатно</p></div>
+      <div class="svc"><h3>Семейная виза</h3><p>Визы для супруги или супруга, детей и родителей под вашу резидентскую визу. Оформляем вместе с основной.</p><p class="price">под задачу</p><p class="when">вместе с вашей визой</p></div>
     </div>
   </div>
 </section>
@@ -352,8 +357,8 @@ RESIDENCY = "<main>\n" + _hero("Рабочая виза и Emirates ID в&nbsp;�
 </section>
 ''' + _TAIL
 
-COMPANY = "<main>\n" + _hero("Компания в&nbsp;ОАЭ, которой откроют счёт",
-                            "Фризона или mainland. Сразу с визой, Emirates ID и банком.") + "\n\n" + _strip(
+COMPANY = "<main>\n" + _hero("Открытие компании в&nbsp;ОАЭ",
+                            "Фризона или mainland. <span class='nw'>Сразу с визой, Emirates ID и банком.</span>") + "\n\n" + _strip(
     [("Около 2 недель", "лицензия и документы"), ("Удалённо", "регистрация без приезда"), ("Под ключ", "компания, виза и счёт в связке")], _PAY) + '''
 
 <section class="sec" id="zones">
