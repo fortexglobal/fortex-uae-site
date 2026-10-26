@@ -150,7 +150,7 @@ HOME = """<main>
   <div class="wrap ph-in">
     <div class="ph-mid">
       <h1 class="ph-title">Банки, компании и&nbsp;визы&nbsp;в&nbsp;ОАЭ <span>для владельцев паспорта РФ</span></h1>
-      <p class="ph-lead">Под ключ, в одном окне. <span>Даже после отказов.</span></p>
+      <p class="ph-lead">Инфраструктура для бизнеса в Эмиратах под ключ.</p>
     </div>
     <div class="row">
       <a class="btn btn-gold" href="#directions">Выбрать направление</a>
