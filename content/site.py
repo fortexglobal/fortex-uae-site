@@ -1,6 +1,6 @@
 # Тексты главной страницы. {{TG}}, {{CAL}}, {{FAQ}}, {{LATEST}} подставляет build.py
 
-HOME = """<main>
+ACCOUNTS = """<main>
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
@@ -141,6 +141,103 @@ HOME = """<main>
 </section>
 
 </main>"""
+
+import re
+
+# Главная-портал: широкое позиционирование, вход во все направления
+HOME = """<main>
+<section class="portal-hero">
+  <div class="wrap ph-in">
+    <p class="ph-eyebrow">Fortex UAE · Дубай · с 2022 года</p>
+    <h1 class="ph-title">Банки, компании и&nbsp;визы&nbsp;в&nbsp;ОАЭ <span>для владельцев паспорта РФ</span></h1>
+    <p class="ph-lead">Корпоративные и личные счета, рабочие визы с Emirates ID, компании во фризонах и на mainland, расчёты с Китаем. Под ключ, в одном окне.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="#directions">Выбрать направление</a>
+      <a class="btn btn-line" href="{{TG}}">Написать в Telegram</a>
+    </div>
+    <ul class="ph-facts">
+      <li><b>С 2022</b><span>работаем в Дубае</span></li>
+      <li><b>Все банки ОАЭ</b><span>подбираем под задачу</span></li>
+      <li><b>1–3 недели</b><span>счёт в наших кейсах</span></li>
+      <li><b>5–7 дней</b><span>рабочая виза</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="directions">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Направления</p><h2 class="h2">Чем мы занимаемся</h2></div>
+    <div class="dir-grid">
+      <a class="dir dir-main" href="/schet-v-banke-oae/"><span class="dir-n">01</span><h3>Корпоративный счёт</h3><p>Для компании на mainland или во фризоне. В том числе после отказов, со сложной лицензией и деятельностью.</p><div class="dir-meta"><b>от 5 000 USD</b><span>2–3 недели</span></div><span class="dir-go">Подробнее</span></a>
+      <a class="dir" href="/rezidentstvo-oae/"><span class="dir-n">02</span><h3>Рабочая виза и Emirates ID</h3><p>Официальная зарплата и понятная для банков история. С ней открываем Emirates NBD с кредитной картой без депозита.</p><div class="dir-meta"><b>от 5 500 USD</b><span>5–7 дней</span></div><span class="dir-go">Подробнее</span></a>
+      <a class="dir" href="/kompaniya-v-dubae/"><span class="dir-n">03</span><h3>Компания в ОАЭ</h3><p>Фризона или mainland. Подбираем юрисдикцию и вид деятельности так, чтобы потом без проблем открыть счёт.</p><div class="dir-meta"><b>под задачу</b><span>около 2 недель</span></div><span class="dir-go">Подробнее</span></a>
+      <a class="dir" href="/schet-v-banke-oae/"><span class="dir-n">04</span><h3>Личный счёт</h3><p>Emirates NBD, Mashreq и другие банки. В том числе удалённо, без приезда в Дубай.</p><div class="dir-meta"><b>от 1 500 USD</b><span>около 2 недель</span></div><span class="dir-go">Подробнее</span></a>
+      <a class="dir" href="{{TG}}"><span class="dir-n">05</span><h3>Платежи и ВЭД</h3><p>Счета с юанями, расчёты с Китаем и Гонконгом, быстрые платежи поставщикам через ОАЭ.</p><div class="dir-meta"><b>под задачу</b><span>разбор бесплатно</span></div><span class="dir-go">Обсудить</span></a>
+      <a class="dir" href="/schet-v-banke-oae/"><span class="dir-n">06</span><h3>Сложные случаи</h3><p>Отказы и закрытия счетов, крипта и трейдинг, фризоны, с которыми многие банки не работают.</p><div class="dir-meta"><b>наша специализация</b><span>честно о шансах</span></div><span class="dir-go">Подробнее</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="who">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Клиенты</p><h2 class="h2">С кем мы работаем</h2></div>
+    <div class="who-grid">
+      <div class="who"><h3>Собственники бизнеса</h3><p>Компания в ОАЭ, счёт, виза для себя и сотрудников. Инфраструктура, на которой бизнес работает годами.</p></div>
+      <div class="who"><h3>ВЭД и импорт</h3><p>Расчёты с Китаем, Гонконгом и Турцией, валютные счета, платежи поставщикам без недельных проверок.</p></div>
+      <div class="who"><h3>Крипта и трейдинг</h3><p>Счета под сложную деятельность, где банки обычно отказывают. Честное описание бизнеса и подбор банка.</p></div>
+      <div class="who"><h3>Переезд с семьёй и капиталом</h3><p>Резидентство, личные счета, кредитные карты и ипотека. Нормальный банк для жизни в Дубае.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cases">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Кейсы</p><h2 class="h2">Открывали там, где другие не брались</h2></div>
+    {{CASES}}
+  </div>
+</section>
+
+<section class="sec alt" id="process">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Процесс</p><h2 class="h2">Как мы работаем</h2></div>
+    <ol class="steps4">
+      <li><em>1</em><b>Разбор</b><span>Бесплатно, 5 минут. Паспорт, бизнес, задача, были ли отказы.</span></li>
+      <li><em>2</em><b>План и цена</b><span>Что делаем, в каком порядке и сколько стоит. Без скрытых платежей.</span></li>
+      <li><em>3</em><b>Подготовка</b><span>Документы, описание деятельности, подача. Готовим к вопросам банка.</span></li>
+      <li><em>4</em><b>Результат</b><span>Счёт, виза или компания. Оплата по этапам, всю сумму вперёд не берём.</span></li>
+    </ol>
+  </div>
+</section>
+
+{{TRUST}}
+
+<section class="sec alt" id="faq">
+  <div class="wrap narrow">
+    <h2 class="h2">Частые вопросы</h2>
+    <div class="faq">{{FAQ}}</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head-row"><h2 class="h2">База знаний</h2><a class="link" href="/articles/">Все статьи</a></div>
+    <div class="grid3">{{LATEST}}</div>
+  </div>
+</section>
+
+</main>"""
+
+
+def _cut(src, start, end):
+    i = src.index(start); j = src.index(end, i)
+    return src[i:j]
+
+
+CASES = _cut(ACCOUNTS, '<div class="grid2">', '\n  </div>\n</section>\n\n<section class="sec alt" id="how">')
+TRUST = _cut(ACCOUNTS, '<section class="sec" id="trust">', '<section class="sec" id="about">')
+HOME = HOME.replace("{{CASES}}", CASES).replace("{{TRUST}}", TRUST)
+# на главной без «летающих» карточек: спокойно и солидно
+HOME = re.sub(r' data-(slide|rot)="[^"]*"', "", HOME)
 
 FAQ = [
     ("Можно ли открыть счёт в ОАЭ с российским паспортом?", "Да. 2–3 года назад это было почти невозможно, сейчас банки снова открывают счета, но список банков постоянно меняется. Мы работаем со всеми банками ОАЭ и подбираем тот, который откроет под вашу задачу."),

@@ -254,10 +254,14 @@ def build():
 
     # ---- service pages ----
     from content.pages import PAGES
+    from content.site import ACCOUNTS
     for pg in PAGES:
         faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in pg["faq"])
         rel = "".join(article_card(a) for a in arts[:3])
-        body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
+        if pg["slug"] == "schet-v-banke-oae":
+            body = ACCOUNTS.replace("{{FAQ}}", faq_html).replace("{{LATEST}}", rel).replace("{{TG}}", TG).replace("{{CAL}}", CAL)
+        else:
+          body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
 <h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>
 <div class="row"><a class="btn" href="#form">Оставить заявку</a><a class="btn btn-ghost" href="{TG}">Написать в Telegram</a></div></div></section>
 <section class="sec alt"><div class="wrap narrow"><div class="prose">{md(pg['body'])}</div></div></section>
