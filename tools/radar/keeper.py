@@ -83,6 +83,16 @@ def dispatch(wf):
     return code == 204
 
 
+def selfupdate():
+    """Новая версия смотрителя в репозитории: копируем и перезапускаемся (systemd поднимет)."""
+    new = os.path.join(SITE, "tools", "radar", "keeper.py")
+    if os.path.exists(new) and open(new).read() != open(__file__).read():
+        subprocess.run(["python3", "-m", "py_compile", new], check=True)
+        open(__file__, "w").write(open(new).read())
+        print("keeper updated, restart", flush=True)
+        os._exit(0)
+
+
 def pull():
     if not os.path.isdir(os.path.join(SITE, ".git")):
         subprocess.run(["git", "clone", "-q", "--depth", "1", f"https://github.com/{REPO}", SITE], check=True)
@@ -201,7 +211,9 @@ def health():
                     tg(f"⚠️ GitHub: упал запуск «{run['name']}». {run['html_url']}")
     # OpenRouter молчит у автоответа (файл пишет tools/threads.py при сбое модели)
     e = load(os.path.join(SITE, "threads", "llm_error.json"))
-    if e.get("at") and datetime.now(DUBAI) - datetime.fromisoformat(e["at"]) < timedelta(minutes=30):
+    # разовые сбои (500) не тревожим, только когда кончились деньги или сломан ключ
+    if e.get("at") and any(c in str(e.get("err")) for c in ("402", "401", "403")) and \
+            datetime.now(DUBAI) - datetime.fromisoformat(e["at"]) < timedelta(minutes=30):
         alert("llm", "Автоответ в Threads не получил текст от нейросети: " + str(e.get("err", ""))[:200], 6)
 
 
@@ -212,6 +224,7 @@ def main():
         try:
             if every("pull", 1):
                 pull()
+                selfupdate()
             publications()
             replies()
             balances()
