@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T16:16+04:00",
+ "generated": "2026-10-26T17:16+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -20,9 +20,9 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 592,
-   "likes": 10,
-   "replies": 3,
+   "views": 667,
+   "likes": 12,
+   "replies": 5,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -30,17 +30,17 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1091,
-  "likes": 9,
-  "replies": 2,
+  "views": 1161,
+  "likes": 12,
+  "replies": 5,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
  },
  "account_7d": {
-  "views": 1269,
-  "likes": 14,
-  "replies": 8,
+  "views": 1339,
+  "likes": 17,
+  "replies": 11,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
@@ -56,11 +56,11 @@
   },
   "стёб": {
    "posts": 1,
-   "views": 592,
-   "replies": 3,
-   "likes": 10,
-   "avg_views": 592.0,
-   "avg_replies": 3.0
+   "views": 667,
+   "replies": 5,
+   "likes": 12,
+   "avg_views": 667.0,
+   "avg_replies": 5.0
   }
  }
 }
