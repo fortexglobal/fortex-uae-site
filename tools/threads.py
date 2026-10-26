@@ -254,6 +254,18 @@ def insights():
             out[label] = acc
         except Exception as e:
             out["errors"].append(f"{label}: {str(e)[:200]}")
+    # просмотры страницы (профиля) по дням за 7 дней и клики по ссылкам в шапке
+    try:
+        r = call("GET", "me/threads_insights", metric="views", since=now - 7 * 86400, until=now)
+        for m in r.get("data", []):
+            out["profile_views_by_day"] = [{"date": v.get("end_time", "")[:10], "views": v.get("value")} for v in m.get("values", [])]
+    except Exception as e:
+        out["errors"].append(f"profile_views: {str(e)[:200]}")
+    try:
+        r = call("GET", "me/threads_insights", metric="clicks", since=now - 7 * 86400, until=now)
+        out["link_clicks_7d"] = r.get("data", [])
+    except Exception as e:
+        out["errors"].append(f"clicks: {str(e)[:200]}")
     kinds = {}
     for p in out["posts"]:
         k = p.get("kind") or "—"
