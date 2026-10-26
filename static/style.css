@@ -441,3 +441,11 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
   .dir-grid,.who-grid,.steps4{grid-template-columns:1fr}
   .dir{padding:24px 22px}
 }
+/* телефон: на первом экране только заголовок, подзаголовок и две кнопки, по центру */
+.ph-facts-m{display:none}
+@media (max-width:700px){
+  .portal-hero .ph-eyebrow,.portal-hero .ph-facts{display:none}
+  .ph-in{justify-content:center;padding-top:0;padding-bottom:0}
+  .ph-facts-m{display:block;background:linear-gradient(180deg,#0B1626,#08111D)}
+  .ph-facts-m .ph-facts{display:grid;margin:0;padding:26px 0 30px;border-top:1px solid rgba(243,230,196,.14)}
+}

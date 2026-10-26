@@ -164,6 +164,17 @@ HOME = """<main>
   </div>
 </section>
 
+<section class="ph-facts-m">
+  <div class="wrap">
+    <ul class="ph-facts">
+      <li><b>С 2022</b><span>работаем в Дубае</span></li>
+      <li><b>Все банки ОАЭ</b><span>подбираем под задачу</span></li>
+      <li><b>1–3 недели</b><span>счёт в наших кейсах</span></li>
+      <li><b>5–7 дней</b><span>рабочая виза</span></li>
+    </ul>
+  </div>
+</section>
+
 <section class="sec" id="directions">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Направления</p><h2 class="h2">Чем мы занимаемся</h2></div>
