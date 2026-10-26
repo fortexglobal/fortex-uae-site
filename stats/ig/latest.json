@@ -1,16 +1,16 @@
 {
- "generated": "2026-10-25T18:13+04:00",
+ "generated": "2026-10-26T08:38+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "fortex__uae",
   "followers_count": 0,
-  "follows_count": 2,
+  "follows_count": 3,
   "media_count": 4,
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 52,
-  "views": 64,
+  "reach": 54,
+  "views": 77,
   "accounts_engaged": 1,
   "total_interactions": 1,
   "profile_links_taps": 0,
@@ -21,6 +21,11 @@
  "followers_history": [
   {
    "date": "2026-10-25",
+   "followers": 0,
+   "media": 4
+  },
+  {
+   "date": "2026-10-26",
    "followers": 0,
    "media": 4
   }
@@ -43,8 +48,8 @@
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 3009,
-    "ig_reels_video_view_total_time": 153467
+    "ig_reels_avg_watch_time": 3037,
+    "ig_reels_video_view_total_time": 157955
    },
    "unavailable": [
     "profile_visits",
@@ -54,7 +59,8 @@
     "slug": "reel-bank-otkazal",
     "style": "",
     "format": "",
-    "test": ""
+    "test": "",
+    "ring": ""
    }
   },
   {
@@ -67,8 +73,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 0,
-    "views": 0,
+    "reach": 1,
+    "views": 1,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -82,7 +88,8 @@
     "slug": "ig-viza-ili-virtual-work",
     "style": "",
     "format": "",
-    "test": ""
+    "test": "",
+    "ring": ""
    }
   },
   {
@@ -95,8 +102,8 @@
    "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 1,
+    "reach": 2,
+    "views": 5,
     "saved": 0,
     "shares": 0,
     "likes": 1,
@@ -110,7 +117,8 @@
     "slug": "ig-schet-posle-otkaza",
     "style": "",
     "format": "",
-    "test": ""
+    "test": "",
+    "ring": ""
    }
   },
   {
@@ -124,7 +132,7 @@
    "comments": 0,
    "ins": {
     "reach": 1,
-    "views": 1,
+    "views": 2,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -138,7 +146,8 @@
     "slug": "ig-kak-rabotaem",
     "style": "",
     "format": "",
-    "test": ""
+    "test": "",
+    "ring": ""
    }
   }
  ],
