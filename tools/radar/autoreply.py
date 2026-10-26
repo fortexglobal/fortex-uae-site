@@ -20,7 +20,6 @@ log = logging.getLogger("autoreply")
 BASE = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(BASE, "autoreply.json")
 DUBAI = timezone(timedelta(hours=4))
-DAILY = int(os.environ.get("AUTO_DAILY", "5"))
 DELAY = (180, 900)
 FOLLOW_DELAY = (90, 420)
 QUIET = (0, 8)
@@ -76,7 +75,7 @@ def set_on(on):
 
 def status():
     s = _load()
-    return (f"Автоответы: {'включены' if s['on'] else 'выключены'}. Сегодня {s['total']} из {DAILY}, видимость {s.get('vis', 0)} из {VIS_DAILY}. "
+    return (f"Автоответы: {'включены' if s['on'] else 'выключены'}. Сегодня {s['total']} из {DAILY}, лимит в одном чате {PER_CHAT_DAY}. "
             f"Негатив за сутки: {len(s['neg'])}")
 
 
@@ -190,18 +189,15 @@ def _quiet():
 
 
 async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
-    """Первый ответ на целевое сообщение."""
+    """Первый ответ на сообщение, по которому создана карточка лида. Только при прямом попадании."""
     try:
         s = _load()
-        if not s["on"] or _quiet():
-            return
-        if int(res.get("score", 0)) < MIN_SCORE or res.get("tier") not in ("бизнес", "состоятельный частный"):
-            return
-        if s["total"] >= DAILY or s["chats"].get(str(ev.chat_id)) or sender.id in s["authors"]:
+        s.setdefault("lead_keys", []).append(f"{ev.chat_id}:{ev.id}"); s["lead_keys"] = s["lead_keys"][-300:]; _save(s)
+        if classify(text, await _title(ev), res) != "direct" or not _can_reply(s, ev.chat_id, sender.id):
             return
         if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
             return
-        s["total"] += 1; s["chats"][str(ev.chat_id)] = 1; s["authors"].append(sender.id); _save(s)
+        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); _save(s)
         delay = random.randint(*DELAY)
         await CTX["notify"](f"🤖 Лид #{lid}: если ничего не нажмёшь, отвечу сам примерно через {delay // 60} мин. «Пропустить» в карточке отменит")
         await asyncio.sleep(delay)
@@ -249,6 +245,8 @@ async def on_reply_to_us(user, ev, rm, text):
             return
         if th.get("stopped") or th["depth"] >= MAX_DEPTH or _quiet():
             return
+        if not th.get("starter") and not (TOPIC_RE.search(text) or "?" in text):
+            return  # ушли от нашей темы: молчим
         if await _is_admin(user, ev.chat_id, ev.sender_id) and ev.sender_id != th["author"]:
             return
         await asyncio.sleep(random.randint(*FOLLOW_DELAY))
@@ -294,10 +292,41 @@ async def delete_message(user, chat_id, msg_id):
         return f"Не получилось удалить: {e}"
 
 
-# ---------- «видимость»: короткий экспертный ответ на вопросы по нашим темам от любого человека ----------
-VIS_DAILY = int(os.environ.get("VIS_DAILY", "3"))
-VIS_TOPICS = ("ВНЖ", "счёт", "компания", "ВЭД")
-QUESTION_RE = re.compile(r"\?|подскажите|подскажи|кто знает|кто-нибудь|как (сделать|получить|открыть|продлить)|почему|зачем|можно ли|нужно ли|сколько", re.I)
+# ---------- маршрутизация: прямое попадание -> ответ (+👍), косвенное -> только реакция, мимо -> ничего ----------
+DAILY = int(os.environ.get("AUTO_DAILY", "15"))
+PER_CHAT_DAY = 2
+GEO_RE = re.compile(r"дуба[йеяю]|\bоаэ\b|эмират|\buae\b|dubai|абу[- ]?даби|abu ?dhabi|шардж|sharjah|аджман|ajman|рас[- ]?аль|ras al", re.I)
+EID_RE = re.compile(r"emirates ?id|эмирейтс ?(ай ?ди|id)|\bэмирейтс\b", re.I)
+TOPIC_RE = re.compile(r"сч[её]т|банк|\bвнж\b|виз[аыуе]|резидент|ресидент|резиденц|emirates ?id|эмирейтс|компани|лиценз|фри ?зон|free ?zone|freezone|mainland|мейнленд|golden|золот\w* виз|virtual work|отказал|заблокир|заморозил", re.I)
+INDIRECT_RE = re.compile(r"платёжн\w* агент|платежн\w* агент|оплатить|оплат[аиу]|перевод|перевест|swift|свифт|инвойс|контрагент|\bвэд\b|импорт|экспорт|кита[йяе]|юан|alipay|wechat|карт[аыуе]\b|карточк|обнал|\busdt\b|крипт\w* в фиат", re.I)
+QUESTION_RE = re.compile(r"\?|подскажите|подскажи|кто знает|кто-нибудь|кто открывал|кто делал|посоветуйте|как (сделать|получить|открыть|продлить|оформить)|почему|зачем|можно ли|нужно ли|сколько|ищу|нужен|нужна|нужно|не могу|не получается|отказ", re.I)
+
+
+async def _title(ev):
+    try:
+        ch = await ev.get_chat()
+        return getattr(ch, "title", "") or ""
+    except Exception:
+        return ""
+
+
+def classify(text, title, res):
+    """'direct' | 'indirect' | 'none'. Прямое: тема наша (счёт, банк, ВНЖ, виза, Emirates ID, компания) и речь про ОАЭ
+    (в тексте или это дубайский чат), и это вопрос, просьба или проблема. Нейросеть может только понизить до «мимо»."""
+    hit = (res or {}).get("hit", "")
+    geo = GEO_RE.search(text) or GEO_RE.search(title) or EID_RE.search(text)
+    if TOPIC_RE.search(text) and geo and QUESTION_RE.search(text) and hit != "нет":
+        return "direct"
+    if hit == "прямое" and TOPIC_RE.search(text) and geo:
+        return "direct"
+    rich = (res or {}).get("tier") in ("бизнес", "состоятельный частный")
+    if rich or hit == "косвенное" or (INDIRECT_RE.search(text) and (res or {}).get("relevant") and hit != "нет"):
+        return "indirect"
+    return "none"
+
+
+def _can_reply(s, chat_id, author):
+    return s["on"] and not _quiet() and s["total"] < DAILY and s["chats"].get(str(chat_id), 0) < PER_CHAT_DAY and author not in s["authors"]
 
 
 def _kb():
@@ -307,38 +336,44 @@ def _kb():
         return ""
 
 
-async def maybe_visibility(user, ev, sender, text, res):
-    """Вопрос по визе, Emirates ID, счёту или компании от человека не из «целевых»: даём свои 5 копеек и ставим 👍.
-    Целевые (бизнес, состоятельные) идут обычным путём через карточку лида."""
+async def _react(user, ev, sender, text, emo="👍"):
     try:
-        if not res or not res.get("relevant") or res.get("topic") not in VIS_TOPICS:
+        import reactions
+        emo = emo if emo in reactions.ALLOWED else "👍"
+        asyncio.get_event_loop().create_task(reactions.maybe_react(user, ev.chat_id, ev.id, sender.id, text, emo))
+    except Exception as e:
+        log.warning("react: %s", e)
+
+
+async def maybe_visibility(user, ev, sender, text, res):
+    """Вызывается на каждое сообщение после оценки нейросетью. Прямое попадание: ответ + 👍 (любому человеку).
+    Если по сообщению создана карточка лида, отвечает ветка лида (там работает «Пропустить»)."""
+    try:
+        if not res or len(text) < 15:
             return
-        if res.get("tier") in ("бизнес", "состоятельный частный") and int(res.get("score", 0)) >= 3:
-            return
-        if not QUESTION_RE.search(text) or len(text) < 25:
-            return
-        s = _load()
-        s.setdefault("vis", 0)
-        if not s["on"] or _quiet() or s["vis"] >= VIS_DAILY or s["chats"].get(str(ev.chat_id)) or sender.id in s["authors"]:
+        kind = classify(text, await _title(ev), res)
+        if kind == "none":
             return
         if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
             return
-        s["vis"] += 1; s["chats"][str(ev.chat_id)] = 1; s["authors"].append(sender.id); _save(s)
-        try:
-            import reactions
-            asyncio.get_event_loop().create_task(reactions.maybe_react(user, ev.chat_id, ev.id, sender.id, text, "👍"))
-        except Exception as e:
-            log.warning("vis reaction: %s", e)
+        await _react(user, ev, sender, text, res.get("reaction") or "👍")
+        if kind != "direct":
+            return  # косвенное: только реакция
+        await asyncio.sleep(20)  # даём ветке лида забрать сообщение
+        s = _load()
+        if f"{ev.chat_id}:{ev.id}" in s.get("lead_keys", []) or not _can_reply(s, ev.chat_id, sender.id):
+            return
+        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); _save(s)
         lim, hint = await chat_style(user, ev.chat_id)
-        sysmsg = (STYLE + "\n\nЭто вопрос обычного человека по нашей теме. Дай один короткий полезный факт по сути вопроса, "
-                  "как знающий человек в чате. Без продажи, без вопросов про его бизнес. Если точного ответа нет в справке, "
-                  "скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "") + "\n\nСПРАВКА:\n" + _kb())
+        sysmsg = (STYLE + "\n\nЭто прямой вопрос по нашей теме. Ответь строго по сути вопроса одним-двумя короткими фактами, "
+                  "как знающий человек в чате. Не уходи в сторону и не отвечай на то, о чём не спрашивали. Без продажи. "
+                  "Если точного ответа нет в справке, скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "") + "\n\nСПРАВКА:\n" + _kb())
         draft = _clean(await _llm([{"role": "system", "content": sysmsg}, {"role": "user", "content": text}]),
-                       min(max(len(text), 40), lim) if lim < 300 else len(text))
+                       min(max(len(text), 60), lim) if lim < 300 else len(text))
         if not draft:
             return
         delay = random.randint(*DELAY)
-        await CTX["notify"](f"👁 Вопрос по теме ({res.get('topic')}), не целевой лид. Отвечу через {delay // 60} мин:\n«{text[:300]}»\n\nЧерновик: «{draft}»")
+        await CTX["notify"](f"🎯 Прямое попадание ({res.get('topic', '')}). Отвечу через {delay // 60} мин. Ответишь сам, промолчу.\n«{text[:300]}»\n\nЧерновик: «{draft}»")
         await asyncio.sleep(delay)
         s = _load()
         if not s["on"] or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
@@ -348,6 +383,6 @@ async def maybe_visibility(user, ev, sender, text, res):
         s["ours"].append([ev.chat_id, m.id])
         s["threads"][f"{ev.chat_id}:{m.id}"] = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": None}
         _save(s)
-        await CTX["notify"](f"👁 Ответил:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
+        await CTX["notify"](f"🤖 Ответил:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
-        log.exception("visibility: %s", e)
+        log.exception("route: %s", e)
