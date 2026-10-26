@@ -153,8 +153,13 @@ def llm(prompt):
                                          headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
             return json.loads(urllib.request.urlopen(req, timeout=60).read())["choices"][0]["message"]["content"].strip()
         except Exception as e:
-            print("llm", m, e)
+            body = e.read().decode()[:200] if hasattr(e, "read") else ""
+            print("llm", m, e, body)
+            LLM_ERR.append(f"{m}: {e} {body}")
     return ""
+
+
+LLM_ERR = []
 
 
 def replies():
@@ -205,8 +210,12 @@ def replies():
                 ans = " ".join(keep) if keep else ans.replace("?", ".")
             if any(w in c["text"].lower() for w in HOT_WORDS):
                 hot.append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "user": user, "text": c["text"][:300], "post": info.get("url", ""), "sent": False})
-            if not ans or ans.upper().startswith("SKIP"):
-                done[c["id"]] = "skip"
+            if not ans:
+                print("llm empty, retry later", LLM_ERR[-1:] )
+                json.dump({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "err": LLM_ERR[-2:]}, open(os.path.join(D, "llm_error.json"), "w"), ensure_ascii=False)
+                continue  # не помечаем, попробуем в следующий прогон
+            if ans.upper().startswith("SKIP"):
+                done[c["id"]] = {"skip": c["text"][:120], "user": user}
                 continue
             try:
                 cont = call("POST", "me/threads", media_type="TEXT", text=ans[:480], reply_to_id=c["id"])
