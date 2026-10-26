@@ -15,7 +15,7 @@ jobs:
       - name: Fetch stats
         env:
           METRIKA_TOKEN: ${{ secrets.METRIKA_TOKEN }}
-        run: python3 tools/metrika.py
+        run: python3 tools/metrika.py && python3 tools/metrika_sources.py
       - name: Commit
         run: |
           git config user.name "Claude"
