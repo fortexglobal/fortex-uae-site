@@ -385,3 +385,12 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
   .strip .facts{display:grid;grid-template-columns:1fr;gap:16px}
   .strip .trust{font-size:14.5px}
 }
+/* заголовок и подзаголовок вместе по центру экрана, кнопки внизу */
+.hero-copy{justify-content:flex-end}
+.hero-mid{margin:auto 0}
+.hero .display{font-size:clamp(40px,4.4vw,64px);line-height:1.06;max-width:none}
+.hero-mid .lead{margin-top:22px;font-size:clamp(20px,2vw,26px);font-weight:500;color:#13202F}
+@media (max-width:700px){
+  .hero .display{font-size:clamp(36px,10.4vw,44px)}
+  .hero-mid .lead{margin-top:16px;font-size:20px}
+}
