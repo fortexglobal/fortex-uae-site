@@ -48,7 +48,7 @@ REACT_DELAY = (60, 600)
 REPLY_DAILY = int(ENV.get("REPLY_DAILY", "2"))
 REPLY_DELAY = (180, 900)
 FOLLOW_DELAY = (90, 420)
-SCAN_DAILY = 150            # проверок нейросетью в сутки
+SCAN_DAILY = int(ENV.get("SCAN_DAILY", "250"))  # проверок нейросетью в сутки
 MAX_DEPTH = 3
 QUIET = (0, 8)              # ночью по Дубаю в чатах не пишем и не реагируем
 DM_DELAY = (60, 170)        # первая реплика в личке
@@ -148,7 +148,7 @@ def load():
 def roll():
     today = now().date().isoformat()
     if S.get("day") != today:
-        S.update(day=today, reacts=0, react_chats={}, replies=0, reply_chats=[], authors=[], scans=0)
+        S.update(day=today, reacts=0, react_chats={}, replies=0, reply_chats=[], authors=[], scans=0, seen=0, topical=0)
 
 
 def save():
@@ -285,12 +285,16 @@ async def chat_title(chat_id):
         return str(chat_id)
 
 
-async def on_group(ev, text):
+async def on_group(ev, text, post=False):
     roll()
-    if S["scans"] >= SCAN_DAILY or not TOPIC_RE.search(text):
+    S["seen"] = S.get("seen", 0) + 1
+    if not TOPIC_RE.search(text):
+        return
+    S["topical"] = S.get("topical", 0) + 1
+    if S["scans"] >= SCAN_DAILY:
         return
     sender = await ev.get_sender()
-    if suspicious(sender, text):
+    if not post and suspicious(sender, text):
         return
     S["scans"] += 1; save()
     hist = []
@@ -312,6 +316,8 @@ async def on_group(ev, text):
     score = int(res.get("score", 0) or 0)
     if res.get("react") and score >= 3:
         asyncio.create_task(react(ev.chat_id, ev.id))
+    if post:  # пост канала: только лайк, комментарии идут в группе обсуждения
+        return
     if score < 4 or not S["auto"] or quiet():
         return
     if S["replies"] >= REPLY_DAILY or ev.chat_id in S["reply_chats"] or sender.id in S["authors"]:
@@ -421,6 +427,8 @@ async def on_incoming(ev):
             asyncio.create_task(on_dm(ev, text))
             return
         if not ev.is_group:
+            if ev.is_channel:
+                asyncio.create_task(on_group(ev, text, post=True))
             return
         if ev.is_reply:
             rm = await ev.get_reply_message()
@@ -473,9 +481,17 @@ async def command(t):
     cmd, arg = parts[0].lower(), (parts[1].lower() if len(parts) > 1 else "")
     roll()
     if cmd == "/status":
-        await notify(f"Режим: {S['mode']}. Реакции: {'вкл' if S['react'] else 'выкл'} ({S['reacts']}/{REACT_DAILY}). "
+        groups = channels = 0
+        async for d in client.iter_dialogs():
+            if d.is_group:
+                groups += 1
+            elif d.is_channel:
+                channels += 1
+        await notify(f"Чатов: {groups}, каналов: {channels}. Сегодня увидел сообщений: {S.get('seen', 0)}, по нашей теме: {S.get('topical', 0)}, "
+                     f"проверено нейросетью: {S['scans']}/{SCAN_DAILY}.\n"
+                     f"Режим: {S['mode']}. Реакции: {'вкл' if S['react'] else 'выкл'} ({S['reacts']}/{REACT_DAILY}). "
                      f"Ответы в чатах: {'вкл' if S['auto'] else 'выкл'} ({S['replies']}/{REPLY_DAILY}). "
-                     f"Личка: {'вкл' if S['dm'] else 'выкл'}. Проверено сообщений: {S['scans']}. Черновиков ждут: {len(S['drafts'])}.")
+                     f"Личка: {'вкл' if S['dm'] else 'выкл'}. Черновиков ждут: {len(S['drafts'])}.")
     elif cmd == "/mode" and arg in ("draft", "live"):
         S["mode"] = arg; save(); await notify(f"Режим: {arg}")
     elif cmd in ("/react", "/auto", "/dm") and arg in ("on", "off"):
