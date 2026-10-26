@@ -48,6 +48,17 @@ GH_REPO = "fortexglobal/fortex-uae-site"
 SRC = {"ig": "Instagram", "threads": "Threads", "site": "Сайт", "reels": "Reels", "tg": "Telegram-канал", "video": "Видео на сайте", "direct": "без метки"}
 S = {}  # user_id -> {"src","ans":{}, "step", "name", "username"}
 
+WELCOME_PIC = "https://fortex-uae.com/bot/welcome.jpg"
+WELCOME = ("<b>🇦🇪 Откроют ли вам счёт в банке ОАЭ?</b>\n\n"
+           "Банки ОАЭ часто отказывают владельцам паспорта РФ. Почти всегда причина в подаче, а не в паспорте.\n\n"
+           "Проверьте свой случай: <b>6 вопросов кнопками, 1 минута</b>. Без номера телефона.\n\n"
+           "В конце получите:\n▪️ оценку шансов по вашему случаю\n▪️ что подготовить, чтобы банк не отказал\n"
+           "▪️ бесплатный разбор от специалиста\n\n<i>Fortex UAE, Дубай. Работаем с 2022 года.</i>")
+DESCRIPTION = ("🇦🇪 Откроют ли вам счёт в банке ОАЭ?\n\n"
+               "Бесплатная проверка для владельцев паспорта РФ: 6 вопросов кнопками, результат за 1 минуту.\n\n"
+               "Вы узнаете:\n▪️ шансы по вашему случаю\n▪️ почему банки отказывают и как этого избежать\n▪️ что подготовить к подаче\n\n"
+               "Fortex UAE, Дубай. Счета, визы и компании в ОАЭ с 2022 года.\n\nНажмите «Старт» 👇")
+
 
 def save_state():
     try:
@@ -223,12 +234,11 @@ async def on_message(c, m):
         save_state()
         if uid == OWNER_ID and src == "direct":
             await call(c, "sendMessage", chat_id=uid, text="Бот работает. Сюда будут приходить лиды. Команда /stats: сколько прошли проверку.")
-        await call(c, "sendMessage", chat_id=uid,
-                   text="<b>🇦🇪 Откроют ли вам счёт в банке ОАЭ?</b>\n\n"
-                        "Проверим за минуту: <b>6 коротких вопросов</b> кнопками.\n\n"
-                        "В конце вы получите:\n▪️ оценку шансов по вашему случаю\n▪️ что сделать, чтобы банк не отказал\n"
-                        "▪️ бесплатный разбор от специалиста\n\n<i>Fortex UAE, Дубай</i>",
-                   parse_mode="HTML", reply_markup=kb([[{"text": "▶️ Начать проверку", "callback_data": "go"}]]))
+        j = await call(c, "sendPhoto", chat_id=uid, photo=WELCOME_PIC, caption=WELCOME, parse_mode="HTML",
+                       reply_markup=kb([[{"text": "▶️ Начать проверку", "callback_data": "go"}]]))
+        if not j.get("ok"):
+            await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML",
+                       reply_markup=kb([[{"text": "▶️ Начать проверку", "callback_data": "go"}]]))
     elif text.startswith("/stats") and uid == OWNER_ID:
         rows = [json.loads(l) for l in open(LOG)] if os.path.exists(LOG) else []
         by = {}
@@ -251,7 +261,12 @@ async def on_callback(c, q):
         S[uid] = {"src": "direct", "ans": {}, "username": q["from"].get("username"), "name": q["from"].get("first_name")}
     if data in ("go", "restart"):
         S[uid]["ans"] = {}
-        await ask(c, uid, Q[0][0], msg_id if data == "go" else None)
+        S[uid].setdefault("t0", time.time())
+        if data == "go" and q["message"].get("photo"):
+            await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+            await ask(c, uid, Q[0][0])
+        else:
+            await ask(c, uid, Q[0][0], msg_id if data == "go" else None)
     elif data.startswith("a:"):
         _, key, code = data.split(":", 2)
         if key in PTS and code in PTS[key]:
@@ -290,6 +305,8 @@ FU2 = ("<b>«А если банк всё равно откажет?»</b>\n\n"
        "▪️ замена не подойдёт, вернём деньги\n\n"
        "Напишите, разберём ваш случай.")
 NF = ("<b>Вы не закончили проверку</b>\n\nОсталось пару вопросов, и вы увидите оценку своих шансов на счёт в ОАЭ.")
+NS = ("<b>Проверка шансов ждёт вас</b>\n\nЭто 6 вопросов кнопками, займёт минуту. "
+      "В конце увидите оценку своего случая и что подготовить, чтобы банк ОАЭ не отказал.")
 
 
 def case_for(a):
@@ -322,9 +339,9 @@ async def followups(c):
             elif done and st.get("fu", 0) == 1 and now - done > 72 * 3600:
                 st["fu"] = 2
                 await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=FU2, reply_markup=fu_kb(uid))
-            elif not done and st.get("t0") and not st.get("nf") and now - st["t0"] > 3 * 3600 and now - st["t0"] < 72 * 3600:
+            elif not done and st.get("t0") and not st.get("nf") and now - st["t0"] > 3600 and now - st["t0"] < 72 * 3600:
                 st["nf"] = 1
-                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=NF,
+                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=NF if st.get("ans") else NS,
                            reply_markup=kb([[{"text": "▶️ Продолжить проверку", "callback_data": "go"}],
                                             [{"text": "Больше не присылать", "callback_data": "stop"}]]))
         except Exception:
@@ -385,9 +402,8 @@ async def main():
     off = 0
     async with httpx.AsyncClient(timeout=70) as c:
         await call(c, "setMyCommands", commands=[{"command": "start", "description": "Проверить шансы на счёт в ОАЭ"}])
-        await call(c, "setMyDescription",
-                   description="Проверка шансов открыть счёт в банке ОАЭ для владельцев российского паспорта. 6 вопросов, результат за минуту. Fortex UAE, Дубай.")
-        await call(c, "setMyShortDescription", short_description="Проверьте шансы открыть счёт в банке ОАЭ за минуту")
+        await call(c, "setMyDescription", description=DESCRIPTION)
+        await call(c, "setMyShortDescription", short_description="Проверка за 1 минуту: откроют ли вам счёт в банке ОАЭ. Для владельцев паспорта РФ.")
         asyncio.get_event_loop().create_task(background(c))
         while True:
             try:
