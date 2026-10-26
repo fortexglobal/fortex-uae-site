@@ -85,6 +85,10 @@ def dispatch(wf):
 
 def selfupdate():
     """Новая версия смотрителя в репозитории: копируем и перезапускаемся (systemd поднимет)."""
+    for helper in ("replies_dump.py",):  # вспомогательные скрипты для радара
+        src, dst = os.path.join(SITE, "tools", "radar", helper), os.path.join("/opt/radar", helper)
+        if os.path.exists(src) and (not os.path.exists(dst) or open(src).read() != open(dst).read()):
+            open(dst, "w").write(open(src).read())
     new = os.path.join(SITE, "tools", "radar", "keeper.py")
     if os.path.exists(new) and open(new).read() != open(__file__).read():
         subprocess.run(["python3", "-m", "py_compile", new], check=True)
