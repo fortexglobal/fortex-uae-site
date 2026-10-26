@@ -1,6 +1,6 @@
 {
  "style": "editorial",
- "status": "error",
+ "status": "approved",
  "publish_at": "2026-10-26T19:07+04:00",
  "bg_prompt": "bright sunny midday view of Dubai Marina towers and turquoise water with a white yacht, perfectly clear light blue cloudless sky filling the entire upper half of the frame, white and glass architecture, editorial travel photography, high detail, no text, no logos",
  "photos": [
@@ -56,11 +56,5 @@
   }
  ],
  "caption": "Счёт для крипто-компании в ОАЭ открыть можно, даже после отказов. Это сложный, но рабочий случай.\n\nБанки отказывают, когда непонятна деятельность и нет документов на источник средств. Каждый отказ видят следующие банки, поэтому сначала разбор, потом подача.\n\nКейс: крипто-трейдинговая компания во фризоне, отказы во всех банках. Открыли корпоративный счёт за 3 недели, владелец с паспортом РФ.\n\nПлюс корпоративный crypto account у лицензированного брокера в ОАЭ: фиат с корпоративного счёта, USDT по рыночному курсу. Корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите СЧЁТ в комментариях, подскажем, с чего начать вашей компании.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#криптокомпания #счетвоаэ #бизнесвдубае #банкиоаэ #дубай",
- "approved_at": "2026-10-25T11:24+04:00",
- "result": {
-  "error": {
-   "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"Ag7luAp31n12jl5JlpDFqrV\"}}"
-  }
- },
- "published_at": "2026-10-26T15:52Z"
+ "approved_at": "2026-10-25T11:24+04:00"
 }
