@@ -254,12 +254,13 @@ def build():
 
     # ---- service pages ----
     from content.pages import PAGES
-    from content.site import ACCOUNTS
+    from content.site import ACCOUNTS, RESIDENCY, COMPANY
+    LANDINGS = {"schet-v-banke-oae": ACCOUNTS, "rezidentstvo-oae": RESIDENCY, "kompaniya-v-dubae": COMPANY}
     for pg in PAGES:
         faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in pg["faq"])
         rel = "".join(article_card(a) for a in arts[:3])
-        if pg["slug"] == "schet-v-banke-oae":
-            body = ACCOUNTS.replace("{{FAQ}}", faq_html).replace("{{LATEST}}", rel).replace("{{TG}}", TG).replace("{{CAL}}", CAL)
+        if pg["slug"] in LANDINGS:
+            body = LANDINGS[pg["slug"]].replace("{{FAQ}}", faq_html).replace("{{LATEST}}", rel).replace("{{TG}}", TG).replace("{{CAL}}", CAL)
         else:
           body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
 <h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>

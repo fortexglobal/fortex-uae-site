@@ -464,3 +464,4 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
   .ph-facts-m .ph-facts{padding:26px 0 30px}
 }
 @media (max-width:700px){.ph-lead span{display:block}}
+.nw{white-space:nowrap}
