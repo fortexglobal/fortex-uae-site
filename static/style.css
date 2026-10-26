@@ -449,3 +449,18 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
   .ph-facts-m{display:block;background:linear-gradient(180deg,#0B1626,#08111D)}
   .ph-facts-m .ph-facts{display:grid;margin:0;padding:26px 0 30px;border-top:1px solid rgba(243,230,196,.14)}
 }
+/* первый экран портала: заголовок чуть выше середины, короткий подзаголовок, большой отступ, кнопки внизу */
+.ph-in{justify-content:flex-start;padding-top:0;padding-bottom:7vh}
+.ph-mid{margin-top:auto;margin-bottom:auto;transform:translateY(-4vh)}
+.ph-lead{margin-top:22px;font-size:clamp(19px,1.8vw,24px);color:#D8D1BF;max-width:none}
+.portal-hero .row{margin-top:0;gap:20px}
+.ph-facts-m{display:block;background:linear-gradient(180deg,#0B1626,#08111D)}
+.ph-facts-m .ph-facts{display:grid;margin:0;padding:34px 0 40px;border-top:1px solid rgba(243,230,196,.14)}
+@media (max-width:700px){
+  .ph-in{justify-content:flex-start;padding-bottom:6vh}
+  .ph-mid{transform:translateY(-3vh)}
+  .ph-lead{font-size:18px;margin-top:16px}
+  .portal-hero .row{gap:16px}
+  .ph-facts-m .ph-facts{padding:26px 0 30px}
+}
+@media (max-width:700px){.ph-lead span{display:block}}

@@ -148,19 +148,14 @@ import re
 HOME = """<main>
 <section class="portal-hero">
   <div class="wrap ph-in">
-    <p class="ph-eyebrow">Fortex UAE · Дубай · с 2022 года</p>
-    <h1 class="ph-title">Банки, компании и&nbsp;визы&nbsp;в&nbsp;ОАЭ <span>для владельцев паспорта РФ</span></h1>
-    <p class="ph-lead">Корпоративные и личные счета, рабочие визы с Emirates ID, компании во фризонах и на mainland, расчёты с Китаем. Под ключ, в одном окне.</p>
+    <div class="ph-mid">
+      <h1 class="ph-title">Банки, компании и&nbsp;визы&nbsp;в&nbsp;ОАЭ <span>для владельцев паспорта РФ</span></h1>
+      <p class="ph-lead">Под ключ, в одном окне. <span>Даже после отказов.</span></p>
+    </div>
     <div class="row">
       <a class="btn btn-gold" href="#directions">Выбрать направление</a>
       <a class="btn btn-line" href="{{TG}}">Написать в Telegram</a>
     </div>
-    <ul class="ph-facts">
-      <li><b>С 2022</b><span>работаем в Дубае</span></li>
-      <li><b>Все банки ОАЭ</b><span>подбираем под задачу</span></li>
-      <li><b>1–3 недели</b><span>счёт в наших кейсах</span></li>
-      <li><b>5–7 дней</b><span>рабочая виза</span></li>
-    </ul>
   </div>
 </section>
 
@@ -179,7 +174,7 @@ HOME = """<main>
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Направления</p><h2 class="h2">Чем мы занимаемся</h2></div>
     <div class="dir-grid">
-      <a class="dir dir-main" href="/schet-v-banke-oae/"><span class="dir-n">01</span><h3>Корпоративный счёт</h3><p>Для компании на mainland или во фризоне. В том числе после отказов, со сложной лицензией и деятельностью.</p><div class="dir-meta"><b>от 5 000 USD</b><span>2–3 недели</span></div><span class="dir-go">Подробнее</span></a>
+      <a class="dir dir-main" href="/schet-v-banke-oae/"><span class="dir-n">01</span><h3>Корпоративный счёт</h3><p>Для компании на mainland или во фризоне. В том числе после отказов, со сложной лицензией и деятельностью.</p><div class="dir-meta"><b>от 5 000 USD</b><span>1–3 недели</span></div><span class="dir-go">Подробнее</span></a>
       <a class="dir" href="/rezidentstvo-oae/"><span class="dir-n">02</span><h3>Рабочая виза и Emirates ID</h3><p>Официальная зарплата и понятная для банков история. С ней открываем Emirates NBD с кредитной картой без депозита.</p><div class="dir-meta"><b>от 5 500 USD</b><span>5–7 дней</span></div><span class="dir-go">Подробнее</span></a>
       <a class="dir" href="/kompaniya-v-dubae/"><span class="dir-n">03</span><h3>Компания в ОАЭ</h3><p>Фризона или mainland. Подбираем юрисдикцию и вид деятельности так, чтобы потом без проблем открыть счёт.</p><div class="dir-meta"><b>под задачу</b><span>около 2 недель</span></div><span class="dir-go">Подробнее</span></a>
       <a class="dir" href="/schet-v-banke-oae/"><span class="dir-n">04</span><h3>Личный счёт</h3><p>Emirates NBD, Mashreq и другие банки. В том числе удалённо, без приезда в Дубай.</p><div class="dir-meta"><b>от 1 500 USD</b><span>около 2 недель</span></div><span class="dir-go">Подробнее</span></a>
