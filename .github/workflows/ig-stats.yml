@@ -1,7 +1,7 @@
 name: Instagram weekly stats
 on:
   schedule:
-    - cron: "11 4 * * 1"   # понедельник 08:11 по Дубаю
+    - cron: "11 3 * * *"   # каждый день 07:11 по Дубаю (утренняя сводка и отчёт по понедельникам)
   workflow_dispatch:
   push:
     paths: ["stats/ig/refresh"]

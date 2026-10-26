@@ -1,7 +1,7 @@
 name: Metrika weekly stats
 on:
   schedule:
-    - cron: "17 3 * * 1"
+    - cron: "17 3 * * *"   # каждый день 07:17 по Дубаю (утренняя сводка)
   workflow_dispatch:
   push:
     paths: ["stats/refresh"]

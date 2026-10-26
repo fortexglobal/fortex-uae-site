@@ -36,6 +36,19 @@ def main():
         "goals_by_source": table("ym:s:lastTrafficSource", metrics=gm) if goals else [],
         "goal_names": [g["name"] for g in goals],
     }
+    def day(d):
+        t = get("/stat/v1/data", ids=C, metrics="ym:s:visits,ym:s:users,ym:s:bounceRate,ym:s:avgVisitDurationSeconds", date1=d, date2=d)
+        return {
+            "totals": dict(zip(["визиты", "посетители", "отказы_%", "время_на_сайте_сек"], t.get("totals", []))),
+            "goals": {g["name"]: v for g, v in zip(goals, get("/stat/v1/data", ids=C, metrics=gm, date1=d, date2=d).get("totals", []))},
+            "sources": table("ym:s:lastTrafficSource", d1=d, d2=d),
+            "source_details": table("ym:s:lastSourceEngine", d1=d, d2=d),
+            "utm": table("ym:s:lastUTMSource,ym:s:lastUTMCampaign", d1=d, d2=d),
+            "pages": table("ym:s:startURLPath", d1=d, d2=d),
+        }
+    out["yesterday"] = day("yesterday")
+    out["day_before"] = day("2daysAgo")
+    out["date_yesterday"] = (datetime.datetime.utcnow() + datetime.timedelta(hours=4) - datetime.timedelta(days=1)).date().isoformat()
     td = get("/stat/v1/data", ids=C, metrics="ym:s:visits,ym:s:users,ym:s:bounceRate,ym:s:avgVisitDurationSeconds", date1="today", date2="today")
     out["today"] = {
         "totals": dict(zip(["визиты", "посетители", "отказы_%", "время_на_сайте_сек"], td.get("totals", []))),
