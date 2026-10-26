@@ -1,7 +1,7 @@
 name: Threads
 on:
   push:
-    paths: ["threads/src/**"]
+    paths: ["threads/src/**", "threads/stats/refresh"]
   workflow_dispatch:
   schedule:
     - cron: "2,17,32,47 * * * *"     # публикация: каждые 15 минут проверяем, что пора выпускать
@@ -35,6 +35,11 @@ jobs:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python3 tools/threads.py replies
+      - name: Insights
+        if: github.event.schedule == '33 3 * * *' || github.event_name != 'schedule'
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
+        run: python3 tools/threads.py insights
       - name: Search
         if: github.event.schedule == '33 3 * * *' || github.event_name != 'schedule'
         continue-on-error: true

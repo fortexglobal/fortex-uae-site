@@ -9,6 +9,8 @@
 python3 tools/threads.py publish   — опубликовать всё, у чего наступило время
 python3 tools/threads.py search    — собрать свежие посты по запросам
 python3 tools/threads.py refresh   — продлить токен (раз в месяц)
+python3 tools/threads.py replies   — диалоги в комментариях под нашими постами
+python3 tools/threads.py insights  — статистика постов и аккаунта → threads/stats/
 """
 import glob, json, os, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
@@ -131,11 +133,15 @@ def probe():
     print(out)
 
 
-REPLY_PROMPT = """Ты ведёшь Threads @fortex__uae (Fortex UAE, Дубай: счета в банках ОАЭ, Emirates ID, рабочие визы, компании). Тон: живой, с лёгкой иронией, коротко, на «вы» или как пишет собеседник.
+REPLY_PROMPT = """Ты ведёшь Threads @fortex__uae (Fortex UAE, Дубай: счета в банках ОАЭ, Emirates ID, рабочие визы, компании). Задача: завязать живой диалог, чтобы человек ответил ещё раз. Тон: живой, тёплый, с лёгкой иронией, как пишет собеседник (на «ты» или «вы»).
 Наш пост: «{post}»
-Комментарий @{user}: «{text}»
-Ответь одним-двумя короткими предложениями (до 200 знаков): поддержи разговор, ответь по сути, можно с юмором, можно короткий встречный вопрос. Если человек спрашивает про счёт, визу или компанию, ответь по делу и предложи написать в Telegram @Fortex_Dubai. Без длинных тире, без хэштегов, без обещаний «100%», без цен кроме «от X».
-Если комментарий спам, реклама, оскорбление, политика или ответ не нужен (одно эмодзи, «+»), верни ровно SKIP."""
+Ветка до этого:
+{thread}
+Новый комментарий @{user}: «{text}»
+Ответь 1–2 короткими предложениями (до 200 знаков). Сначала отреагируй на то, что человек сказал (согласись, пошути, добавь факт), потом почти всегда задай короткий встречный вопрос про его опыт или ситуацию, чтобы он ответил. Если спрашивает про счёт, визу или компанию: ответь по сути одной фразой и предложи написать в Telegram @Fortex_Dubai, там разберём. Без длинных тире, без хэштегов, без ссылок, без обещаний «100%», без цен кроме «от X». Не продавай, если не спрашивают.
+Если это спам, реклама, оскорбление, политика или просто одно эмодзи без слов, верни ровно SKIP."""
+
+HOT_WORDS = ("счёт", "счет", "банк", "виз", "emirates", "эмирейтс", "компани", "лиценз", "сколько стоит", "цена", "стоимость", "помогите", "подскажите", "как открыть", "отказ")
 
 
 def llm(prompt):
@@ -152,28 +158,49 @@ def llm(prompt):
 
 
 def replies():
-    """Отвечаем на комментарии под НАШИМИ постами за последние 7 дней."""
+    """Ведём диалоги под НАШИМИ постами за последние 10 дней: отвечаем на комментарии и на ответы нам (до 3 наших ответов одному человеку в ветке)."""
     st = json.load(open(os.path.join(D, "status.json"))) if os.path.exists(os.path.join(D, "status.json")) else {}
     rp = os.path.join(D, "replied.json")
     done = json.load(open(rp)) if os.path.exists(rp) else {}
+    hp = os.path.join(D, "hot.json")
+    hot = json.load(open(hp)) if os.path.exists(hp) else []
     srcs = {os.path.basename(f)[:-5]: json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(D, "src", "*.json"))}
     me = call("GET", "me", fields="username").get("username", "fortex__uae")
     sent = 0
     for slug, info in st.items():
-        if not info.get("id") or sent >= 10:
+        if not info.get("id") or sent >= 8:
             continue
-        if datetime.now(DUBAI) - datetime.fromisoformat(info["at"]) > timedelta(days=7):
+        if datetime.now(DUBAI) - datetime.fromisoformat(info["at"]) > timedelta(days=10):
             continue
         try:
-            conv = call("GET", f"{info['id']}/replies", fields="id,text,username,timestamp,hide_status", reverse="false")
+            conv = call("GET", f"{info['id']}/conversation", fields="id,text,username,timestamp,hide_status,replied_to", reverse="false")
         except Exception as e:
-            print("replies", slug, e)
+            print("conversation", slug, e)
             continue
-        for c in conv.get("data", []):
+        items = conv.get("data", [])
+        by_id = {c["id"]: c for c in items}
+        ours = {c["id"] for c in items if c.get("username") == me}
+        for c in items:
             if c["id"] in done or c.get("username") == me or not c.get("text") or c.get("hide_status", "NOT_HUSHED") != "NOT_HUSHED":
                 continue
-            ans = llm(REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], user=c.get("username", ""), text=c["text"][:500]))
+            parent = (c.get("replied_to") or {}).get("id")
+            if parent and parent != info["id"] and parent not in ours:
+                done[c["id"]] = "not-to-us"  # люди спорят между собой, не встреваем
+                continue
+            user = c.get("username", "")
+            n_ours = sum(1 for k, v in done.items() if isinstance(v, dict) and v.get("user") == user and v.get("post") == slug)
+            if n_ours >= 3:
+                done[c["id"]] = "limit"
+                continue
+            chain, p = [], parent
+            while p and p in by_id and len(chain) < 6:
+                chain.insert(0, f"@{by_id[p].get('username')}: {by_id[p].get('text', '')[:200]}")
+                p = (by_id[p].get("replied_to") or {}).get("id")
+            ans = llm(REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",
+                                          user=user, text=c["text"][:500]))
             ans = ans.replace("—", ",").replace("–", ",").strip().strip("«»\"")
+            if any(w in c["text"].lower() for w in HOT_WORDS):
+                hot.append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "user": user, "text": c["text"][:300], "post": info.get("url", ""), "sent": False})
             if not ans or ans.upper().startswith("SKIP"):
                 done[c["id"]] = "skip"
                 continue
@@ -181,16 +208,60 @@ def replies():
                 cont = call("POST", "me/threads", media_type="TEXT", text=ans[:480], reply_to_id=c["id"])
                 time.sleep(3)
                 r = call("POST", "me/threads_publish", creation_id=cont["id"])
-                done[c["id"]] = r["id"]
+                done[c["id"]] = {"id": r["id"], "user": user, "post": slug, "text": ans}
                 sent += 1
-                print("replied", c.get("username"), ans)
+                print("replied", user, ans)
             except Exception as e:
                 done[c["id"]] = "error " + str(e)[:200]
                 print("reply error", e)
             json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
-            time.sleep(20)
+            time.sleep(15)
     json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
+    json.dump(hot[-200:], open(hp, "w"), ensure_ascii=False, indent=1)
     print("replies sent", sent)
+
+
+def insights():
+    """Статистика: просмотры, лайки, ответы, репосты по каждому посту за 14 дней и по аккаунту. threads/stats/latest.json и <дата>.json."""
+    st = json.load(open(os.path.join(D, "status.json"))) if os.path.exists(os.path.join(D, "status.json")) else {}
+    srcs = {os.path.basename(f)[:-5]: json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(D, "src", "*.json"))}
+    out = {"generated": datetime.now(DUBAI).isoformat(timespec="minutes"), "posts": [], "errors": []}
+    for slug, info in st.items():
+        if not info.get("id") or datetime.now(DUBAI) - datetime.fromisoformat(info["at"]) > timedelta(days=14):
+            continue
+        row = {"slug": slug, "at": info["at"], "url": info.get("url"), "kind": srcs.get(slug, {}).get("kind"), "text": srcs.get(slug, {}).get("text", "")[:120]}
+        try:
+            r = call("GET", f"{info['id']}/insights", metric="views,likes,replies,reposts,quotes,shares")
+            for m in r.get("data", []):
+                row[m["name"]] = (m.get("values") or [{}])[0].get("value", m.get("total_value", {}).get("value"))
+        except Exception as e:
+            out["errors"].append(f"{slug}: {str(e)[:200]}")
+        out["posts"].append(row)
+    now = int(time.time())
+    for label, days in (("account_1d", 1), ("account_7d", 7)):
+        try:
+            r = call("GET", "me/threads_insights", metric="views,likes,replies,reposts,quotes,followers_count", since=now - days * 86400, until=now)
+            acc = {}
+            for m in r.get("data", []):
+                if "total_value" in m:
+                    acc[m["name"]] = m["total_value"].get("value")
+                else:
+                    acc[m["name"]] = sum(v.get("value", 0) for v in m.get("values", []))
+            out[label] = acc
+        except Exception as e:
+            out["errors"].append(f"{label}: {str(e)[:200]}")
+    kinds = {}
+    for p in out["posts"]:
+        k = p.get("kind") or "—"
+        kinds.setdefault(k, {"posts": 0, "views": 0, "replies": 0, "likes": 0})
+        kinds[k]["posts"] += 1
+        for m in ("views", "replies", "likes"):
+            kinds[k][m] += p.get(m) or 0
+    out["by_kind"] = {k: {**v, "avg_views": round(v["views"] / v["posts"], 1), "avg_replies": round(v["replies"] / v["posts"], 2)} for k, v in kinds.items()}
+    os.makedirs(os.path.join(D, "stats"), exist_ok=True)
+    for name in ("latest.json", datetime.now(DUBAI).date().isoformat() + ".json"):
+        json.dump(out, open(os.path.join(D, "stats", name), "w"), ensure_ascii=False, indent=1)
+    print("insights", len(out["posts"]), "posts, errors:", out["errors"][:3])
 
 
 def check():
@@ -209,4 +280,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies}[sys.argv[1]]()
+    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights}[sys.argv[1]]()
