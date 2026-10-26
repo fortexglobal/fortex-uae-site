@@ -14,6 +14,13 @@ def get(**params):
 
 
 def table(dim, d1="30daysAgo", d2="today", limit=40, metrics="ym:s:visits,ym:s:users,ym:s:bounceRate,ym:s:avgVisitDurationSeconds"):
+    try:
+        return _table(dim, d1, d2, limit, metrics)
+    except Exception as e:
+        return {"error": str(e), "body": getattr(e, "read", lambda: b"")()[:200].decode("utf-8", "replace")}
+
+
+def _table(dim, d1, d2, limit, metrics):
     r = get(ids=C, metrics=metrics, dimensions=dim, date1=d1, date2=d2, limit=limit, sort="-ym:s:visits")
     return [{"name": " / ".join(str(x.get("name")) for x in row["dimensions"]), "v": [round(m, 1) for m in row["metrics"]]} for row in r.get("data", [])]
 
@@ -23,7 +30,8 @@ def main():
            "source": table("ym:s:lastTrafficSource"),
            "engine": table("ym:s:lastSourceEngine"),
            "utm": table("ym:s:lastUTMSource,ym:s:lastUTMMedium,ym:s:lastUTMCampaign"),
-           "referer": table("ym:s:externalRefererHost"),
+           "referer": table("ym:s:referer"),
+           "referer_domain": table("ym:s:refererDomain"),
            "landing": table("ym:s:startURL", limit=60),
            "country_city": table("ym:s:regionCountry,ym:s:regionCity"),
            "source_city": table("ym:s:lastTrafficSource,ym:s:regionCity"),
