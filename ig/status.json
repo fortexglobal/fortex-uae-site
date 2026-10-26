@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-25T18:30Z",
+ "checked": "2026-10-26T15:50Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,51 @@
   "media_count": 4,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "ig-schet-kripto-kompanii",
+   "scheduled": "carousel",
+   "error": {
+    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"Ag7luAp31n12jl5JlpDFqrV\"}}"
+   }
+  },
+  {
+   "slug": "st-keisy",
+   "scheduled": "stories",
+   "id": "18390643297226695",
+   "ids": [
+    "18390643297226695",
+    "18075475523482210",
+    "18017225720747858",
+    "17954564037276419",
+    "18368387185301427",
+    "18123994528910494",
+    "18143648956612405"
+   ],
+   "permalink": "https://www.instagram.com/stories/fortex__uae/"
+  },
+  {
+   "slug": "reel-vat-bank-check",
+   "scheduled": "carousel",
+   "id": "18119972776756388",
+   "permalink": "https://www.instagram.com/reel/De9poBslNXF/"
+  }
+ ],
  "media": [
+  {
+   "id": "18119972776756388",
+   "timestamp": "2026-10-26T15:54:26+0000",
+   "permalink": "https://www.instagram.com/reel/De9poBslNXF/",
+   "media_type": "VIDEO",
+   "caption": "С 1 октября в ОАЭ действуют новые правила проверки поставщик"
+  },
+  {
+   "id": "18156829264521709",
+   "timestamp": "2026-10-26T15:51:31+0000",
+   "permalink": "https://www.instagram.com/p/De9pVnsGmic/",
+   "media_type": "CAROUSEL_ALBUM",
+   "caption": "Счёт для крипто-компании в ОАЭ открыть можно, даже после отк"
+  },
   {
    "id": "17999237060825094",
    "timestamp": "2026-10-24T15:34:09+0000",

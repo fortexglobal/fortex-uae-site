@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Кейсы",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-26T19:00+04:00",
  "bg_prompt": "elegant executive desk in a Dubai office with city view at dusk, documents and pen, warm light, no people, no text",
  "caption": "Серия сторис для Актуального «Кейсы»",
@@ -53,5 +53,19 @@
   "executive desk with documents, fountain pen and coffee in a Dubai office at dusk, warm light, no text, no people",
   "Dubai skyline reflected in glass building facade at sunset, abstract premium, no text",
   "luxury lounge interior in Dubai with leather armchairs and city view at night, no people, no text"
- ]
+ ],
+ "result": {
+  "id": "18390643297226695",
+  "ids": [
+   "18390643297226695",
+   "18075475523482210",
+   "18017225720747858",
+   "17954564037276419",
+   "18368387185301427",
+   "18123994528910494",
+   "18143648956612405"
+  ],
+  "permalink": "https://www.instagram.com/stories/fortex__uae/"
+ },
+ "published_at": "2026-10-26T15:53Z"
 }
