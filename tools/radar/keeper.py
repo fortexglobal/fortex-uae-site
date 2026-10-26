@@ -97,6 +97,40 @@ def selfupdate():
         os._exit(0)
 
 
+RADAR_FILES = {"radar": ["autoreply.py", "starters.py", "content.py", "igdm.py", "reactions.py", "newsfeed.py", "kb.md"],
+               "leadbot": ["leadbot.py"]}
+
+
+def deploy_radar():
+    """Обновления ассистента из репозитория: только файлы, которые уже стоят на сервере.
+    Бэкап → проверка синтаксиса → перезапуск → если сервис не поднялся, откат и сообщение."""
+    for svc, files in RADAR_FILES.items():
+        changed = []
+        for f in files:
+            src, dst = os.path.join(SITE, "tools", "radar", f), os.path.join("/opt/radar", f)
+            if os.path.exists(src) and os.path.exists(dst) and open(src, "rb").read() != open(dst, "rb").read():
+                changed.append((src, dst))
+        if not changed:
+            continue
+        if any(s.endswith(".py") and subprocess.run(["python3", "-m", "py_compile", s]).returncode for s, _ in changed):
+            alert(f"deploy-{svc}", f"Обновление {svc} не поставил: ошибка в коде. Работает прежняя версия.", 24)
+            continue
+        for src, dst in changed:
+            subprocess.run(["cp", "-p", dst, dst + ".prev"])
+            open(dst, "wb").write(open(src, "rb").read())
+            subprocess.run(["chown", "radar:radar", dst])
+        subprocess.run(["systemctl", "restart", svc]); time.sleep(12)
+        if subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() != "active":
+            for _, dst in changed:
+                subprocess.run(["cp", "-p", dst + ".prev", dst])
+            subprocess.run(["systemctl", "restart", svc])
+            alert(f"deploy-{svc}", f"Обновление {svc} не запустилось, вернул прежнюю версию.", 24)
+        else:
+            names = ", ".join(os.path.basename(d) for _, d in changed)
+            print("deployed", svc, names, flush=True)
+            tg(f"🔄 Ассистент обновлён: {names}")
+
+
 def pull():
     if not os.path.isdir(os.path.join(SITE, ".git")):
         subprocess.run(["git", "clone", "-q", "--depth", "1", f"https://github.com/{REPO}", SITE], check=True)
@@ -229,6 +263,7 @@ def main():
             if every("pull", 1):
                 pull()
                 selfupdate()
+                deploy_radar()
             publications()
             replies()
             balances()
