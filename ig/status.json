@@ -1,42 +1,13 @@
 {
- "checked": "2026-10-26T15:50Z",
+ "checked": "2026-10-26T15:56Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 4,
+  "media_count": 6,
   "id": "28276626788683589"
  },
- "published": [
-  {
-   "slug": "ig-schet-kripto-kompanii",
-   "scheduled": "carousel",
-   "error": {
-    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"Ag7luAp31n12jl5JlpDFqrV\"}}"
-   }
-  },
-  {
-   "slug": "st-keisy",
-   "scheduled": "stories",
-   "id": "18390643297226695",
-   "ids": [
-    "18390643297226695",
-    "18075475523482210",
-    "18017225720747858",
-    "17954564037276419",
-    "18368387185301427",
-    "18123994528910494",
-    "18143648956612405"
-   ],
-   "permalink": "https://www.instagram.com/stories/fortex__uae/"
-  },
-  {
-   "slug": "reel-vat-bank-check",
-   "scheduled": "carousel",
-   "id": "18119972776756388",
-   "permalink": "https://www.instagram.com/reel/De9poBslNXF/"
-  }
- ],
+ "published": [],
  "media": [
   {
    "id": "18119972776756388",
