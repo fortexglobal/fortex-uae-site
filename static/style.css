@@ -473,3 +473,4 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 @media (max-width:700px){.hero-mid{transform:translateY(-3vh)}.hero .row{gap:16px}}
 .svc-grid-2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:700px){.svc-grid-2{grid-template-columns:1fr}}
+.sec.seo{background:rgba(246,247,249,.96);position:relative}.sec.seo .prose{text-shadow:none}.sec.seo .prose h2{font-family:var(--head);font-weight:600;letter-spacing:-.02em}

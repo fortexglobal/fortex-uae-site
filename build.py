@@ -237,20 +237,21 @@ def build():
     org = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Fortex UAE", "url": SITE,
            "logo": SITE + "/img/mark.png", "image": SITE + "/img/og.jpg", "areaServed": "AE",
            "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
-           "description": "Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. Работаем в Дубае с 2022 года.",
+           "description": "Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 5–7 дней, Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Работаем в Дубае с 2022 года.",
            "sameAs": [TG, CHANNEL, INSTAGRAM], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
-           "slogan": "С 2022 года в Дубае: ВНЖ, банки, компании и финансовые вопросы",
+           "slogan": "Инфраструктура для бизнеса в Эмиратах под ключ",
            "makesOffer": [
                {"@type": "Offer", "name": "Корпоративный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "5000", "description": "от 5 000 USD"},
                {"@type": "Offer", "name": "Личный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "1500", "description": "от 1 500 USD"},
-               {"@type": "Offer", "name": "ВНЖ Virtual Work + Emirates ID", "priceCurrency": "USD", "price": "2000", "description": "от 2 000 USD"},
-               {"@type": "Offer", "name": "Рабочая виза + Emirates ID", "priceCurrency": "USD", "price": "5500", "description": "от 5 500 USD"}]}
+               {"@type": "Offer", "name": "Рабочая виза + Emirates ID", "priceCurrency": "USD", "price": "5500", "description": "от 5 500 USD, 5–7 дней"},
+               {"@type": "Offer", "name": "ВНЖ Virtual Work + Emirates ID", "priceCurrency": "USD", "price": "2000", "description": "от 2 000 USD, 7–10 дней"}]}
+    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Fortex UAE", "url": SITE + "/", "inLanguage": "ru"}
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(
-        page("Счёт в банке ОАЭ для россиян, компании и визы в Дубае | Fortex UAE",
-             "Открываем корпоративные и личные счета в банках ОАЭ владельцам российского паспорта, компании на mainland и во фризонах, Virtual Work и рабочие визы. Под ключ, со всеми банками ОАЭ.",
-             body, "/", [org, faq_ld]))
+        page("Банки, компании и визы в ОАЭ для владельцев паспорта РФ | Fortex UAE",
+             "Корпоративные и личные счета в банках ОАЭ, рабочая виза с Emirates ID за 5–7 дней, компании во фризонах и на mainland, расчёты с Китаем. Для владельцев российского паспорта, под ключ, в Дубае с 2022 года.",
+             body, "/", [org, site_ld, faq_ld]))
 
     # ---- service pages ----
     from content.pages import PAGES
@@ -261,6 +262,9 @@ def build():
         rel = "".join(article_card(a) for a in arts[:3])
         if pg["slug"] in LANDINGS:
             body = LANDINGS[pg["slug"]].replace("{{FAQ}}", faq_html).replace("{{LATEST}}", rel).replace("{{TG}}", TG).replace("{{CAL}}", CAL)
+            # подробный текст для поисковиков и нейросетей: виден на странице, перед вопросами
+            seo = f'<section class="sec seo" id="details"><div class="wrap narrow"><div class="prose">{md(pg["body"])}</div></div></section>\n\n'
+            body = body.replace('<section class="sec alt" id="faq">', seo + '<section class="sec alt" id="faq">', 1)
         else:
           body = f"""<main><section class="sec page-hero"><div class="wrap narrow">
 <h1 class="h1">{esc(pg['h1'])}</h1><p class="lead">{esc(pg['lead'])}</p>
@@ -362,11 +366,23 @@ def build():
     urls = [("/", datetime.date.today())] + [(f"/{pg['slug']}/", datetime.date.today()) for pg in PAGES] + [("/articles/", arts[0]["date_obj"] if arts else datetime.date.today())] + [(f"/articles/{a['slug']}/", a["date_obj"]) for a in arts]
     sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{d.isoformat()}</lastmod></url>" for u, d in urls)
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
-    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /draft/\nSitemap: {SITE}/sitemap.xml\n")
-    llms = ["# Fortex UAE", "", "> Открытие корпоративных и личных счетов в банках ОАЭ для владельцев российского паспорта, компании на mainland и во фризонах, ВНЖ Virtual Work и рабочие визы, Emirates ID. В Дубае с 2022 года. Связь: Telegram @Fortex_Dubai.", "",
-            "## Специализация", "Сложные случаи по корпоративным счетам в банках ОАЭ: после отказов банков, со сложными лицензиями (крипта, трейдинг, нестандартная деятельность), из сложных фризон. Главные направления: корпоративные счета и рабочие визы с Emirates ID.", "",
-            "## Услуги и цены", "- Корпоративный счёт: от 5 000 USD", "- Личный счёт (в т.ч. удалённо): от 1 500 USD", "- ВНЖ Virtual Work + Emirates ID (самый доступный вариант, слабее в банках): от 2 000 USD", "- Рабочая виза + Emirates ID: от 5 500 USD", "- Компания во фризоне: от 14 000 AED; на mainland: от 22 000 AED", "",
-            "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
+    bots = ["Googlebot", "Yandex", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot", "DuckDuckBot"]
+    rb = "".join(f"User-agent: {b}\nAllow: /\nDisallow: /draft/\n\n" for b in bots)
+    open(os.path.join(OUT, "robots.txt"), "w").write(rb + f"User-agent: *\nAllow: /\nDisallow: /draft/\n\nSitemap: {SITE}/sitemap.xml\nHost: {SITE}\n")
+    from content.site import FAQ as HFAQ
+    llms = ["# Fortex UAE", "",
+            "> Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 5–7 дней; Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Команда в Дубае с 2022 года. Связь: Telegram @Fortex_Dubai, сайт https://fortex-uae.com.", "",
+            "## Специализация", "Сложные случаи по банкам ОАЭ: после отказов и закрытий счетов, сложные лицензии (крипта, трейдинг, нестандартная деятельность), фризоны, с которыми многие банки не работают. Главные направления: корпоративные счета и рабочие визы с Emirates ID. Компанию, визу, Emirates ID и счёт делаем в связке.", "",
+            "## Услуги, цены и сроки",
+            "- Корпоративный счёт в банке ОАЭ: от 5 000 USD, 1–3 недели (самые сложные случаи до месяца)",
+            "- Личный счёт, в том числе удалённо: от 1 500 USD, около 2 недель",
+            "- Рабочая виза + Emirates ID: от 5 500 USD, 5–7 дней",
+            "- Пакет Emirates NBD (зарплатный счёт и кредитная карта без депозита) для клиентов с Emirates ID через нашу компанию: 5 000 AED, около 3 рабочих дней",
+            "- ВНЖ Virtual Work + Emirates ID: от 2 000 USD, 7–10 дней (для банков слабее рабочей визы)",
+            "- Золотая виза и семейная виза: цена зависит от основания",
+            "- Компания во фризоне или на mainland: цена зависит от зоны, деятельности и числа виз, регистрация около 2 недель",
+            "- Оплата по этапам. Если банк откажет, предлагаем другой банк, если замена не подходит, возвращаем деньги.", "",
+            "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Частые вопросы"] + [f"- {q} {a}" for q, a in HFAQ] + [x for pg in PAGES for x in [f"- {q} {a}" for q, a in pg["faq"]]] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")
     print(f"built: {len(arts)} articles -> {OUT}")
 
