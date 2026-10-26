@@ -363,3 +363,25 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 .how-vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:22px;background:#0B1626;box-shadow:0 24px 60px rgba(11,22,38,.22)}
 .how-vid .btn{margin-top:20px}
 @media (max-width:700px){.how-vid video{aspect-ratio:9/16;max-width:380px;margin:0 auto}.how-vid .btn{width:100%;max-width:380px}}
+
+/* первый экран: только заголовок, подзаголовок и кнопки, разнесены по высоте экрана */
+.hero-in{min-height:calc(100svh - 64px);max-height:none;padding-top:0;padding-bottom:0}
+.hero-copy{display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100svh - 64px);padding:9vh 0 10vh}
+.hero .display{margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.06;max-width:780px}
+.hero .lead{margin:0;font-size:clamp(18px,1.7vw,22px);max-width:620px}
+.hero .row{margin:0}
+/* полоса доверия сразу под первым экраном */
+.strip{padding:34px 0;border-top:1px solid rgba(19,32,47,.08);border-bottom:1px solid rgba(19,32,47,.08);background:rgba(242,245,248,.82);position:relative}
+.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.strip .facts{display:flex;margin:0}
+.strip .trust{margin:0;max-width:420px;font-size:15px;color:#25313F}
+@media (max-width:700px){
+  .hero-in{display:block;min-height:0}
+  .hero-copy{min-height:calc(100svh - 64px);padding:7vh 0 6vh}
+  .hero .display{font-size:clamp(30px,8.4vw,38px);line-height:1.1}
+  .hero .lead{font-size:18px}
+  .hero .row{margin:0}
+  .strip{padding:26px 0}
+  .strip .facts{display:grid;grid-template-columns:1fr;gap:16px}
+  .strip .trust{font-size:14.5px}
+}
