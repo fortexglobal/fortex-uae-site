@@ -43,7 +43,7 @@ ENV = _env()
 
 # лимиты: начинаем спокойно, потом можно поднять в co.env
 REACT_DAILY = int(ENV.get("REACT_DAILY", "20"))
-REACT_PER_CHAT = 2
+REACT_PER_CHAT = int(ENV.get("REACT_PER_CHAT", "3"))
 REACT_DELAY = (60, 600)
 REPLY_DAILY = int(ENV.get("REPLY_DAILY", "2"))
 REPLY_DELAY = (180, 900)
@@ -239,17 +239,52 @@ async def send_ours(chat_id, text, reply_to=None):
 
 # ---------- реакции ----------
 
+ALLOWED = {}
+
+
+async def allowed_emoji(chat_id):
+    """Какие реакции разрешены в чате: None = любые, [] = никакие."""
+    if chat_id not in ALLOWED:
+        try:
+            peer = await client.get_input_entity(chat_id)
+            if isinstance(peer, types.InputPeerChannel):
+                full = (await client(functions.channels.GetFullChannelRequest(peer))).full_chat
+            else:
+                full = (await client(functions.messages.GetFullChatRequest(peer.chat_id))).full_chat
+            ar = full.available_reactions
+            if isinstance(ar, types.ChatReactionsSome):
+                ALLOWED[chat_id] = [x.emoticon for x in ar.reactions if isinstance(x, types.ReactionEmoji)]
+            elif isinstance(ar, types.ChatReactionsAll):
+                ALLOWED[chat_id] = None
+            else:
+                ALLOWED[chat_id] = []
+        except Exception as e:
+            log.warning("reactions of %s: %s", chat_id, e)
+            ALLOWED[chat_id] = None
+    return ALLOWED[chat_id]
+
+
 async def react(chat_id, msg_id, emoji=None):
-    await asyncio.sleep(random.randint(*REACT_DELAY))
     roll()
     if not S["react"] or quiet() or S["reacts"] >= REACT_DAILY or S["react_chats"].get(str(chat_id), 0) >= REACT_PER_CHAT:
         return
+    ok = await allowed_emoji(chat_id)
+    if ok == []:
+        return
+    pick = [e for e in ([emoji] if emoji else EMOJI) if ok is None or e in ok] or (ok[:1] if ok else [])
+    if not pick:
+        return
+    # место в лимите занимаем сразу, чтобы пачка сообщений не обошла лимит
+    S["reacts"] += 1; S["react_chats"][str(chat_id)] = S["react_chats"].get(str(chat_id), 0) + 1; save()
+    await asyncio.sleep(random.randint(*REACT_DELAY))
+    if quiet():
+        return
     try:
         await client(functions.messages.SendReactionRequest(peer=chat_id, msg_id=msg_id,
-                                                            reaction=[types.ReactionEmoji(emoticon=emoji or random.choice(EMOJI))]))
-        S["reacts"] += 1; S["react_chats"][str(chat_id)] = S["react_chats"].get(str(chat_id), 0) + 1; save()
+                                                            reaction=[types.ReactionEmoji(emoticon=random.choice(pick))]))
+        log.info("react ok: %s %s", await chat_title(chat_id), msg_id)
     except Exception as e:
-        log.info("react: %s", e)
+        log.warning("react %s: %s", chat_id, e)
 
 
 # ---------- ответы в чатах ----------
@@ -285,7 +320,7 @@ async def chat_title(chat_id):
         return str(chat_id)
 
 
-async def on_group(ev, text, post=False):
+async def on_group(ev, text):
     roll()
     S["seen"] = S.get("seen", 0) + 1
     if not TOPIC_RE.search(text):
@@ -294,8 +329,11 @@ async def on_group(ev, text, post=False):
     if S["scans"] >= SCAN_DAILY:
         return
     sender = await ev.get_sender()
-    if not post and suspicious(sender, text):
+    if suspicious(sender, text):
         return
+    # лайк по теме ставим сразу, без нейросети
+    if not BOT_Q_RE.search(text) and not NEG_RE.search(text):
+        asyncio.create_task(react(ev.chat_id, ev.id))
     S["scans"] += 1; save()
     hist = []
     try:
@@ -314,10 +352,6 @@ async def on_group(ev, text, post=False):
     except Exception:
         return
     score = int(res.get("score", 0) or 0)
-    if res.get("react") and score >= 3:
-        asyncio.create_task(react(ev.chat_id, ev.id))
-    if post:  # пост канала: только лайк, комментарии идут в группе обсуждения
-        return
     if score < 4 or not S["auto"] or quiet():
         return
     if S["replies"] >= REPLY_DAILY or ev.chat_id in S["reply_chats"] or sender.id in S["authors"]:
@@ -427,8 +461,6 @@ async def on_incoming(ev):
             asyncio.create_task(on_dm(ev, text))
             return
         if not ev.is_group:
-            if ev.is_channel:
-                asyncio.create_task(on_group(ev, text, post=True))
             return
         if ev.is_reply:
             rm = await ev.get_reply_message()
@@ -481,13 +513,11 @@ async def command(t):
     cmd, arg = parts[0].lower(), (parts[1].lower() if len(parts) > 1 else "")
     roll()
     if cmd == "/status":
-        groups = channels = 0
+        groups = 0
         async for d in client.iter_dialogs():
             if d.is_group:
                 groups += 1
-            elif d.is_channel:
-                channels += 1
-        await notify(f"Чатов: {groups}, каналов: {channels}. Сегодня увидел сообщений: {S.get('seen', 0)}, по нашей теме: {S.get('topical', 0)}, "
+        await notify(f"Чатов: {groups}. Сегодня увидел сообщений: {S.get('seen', 0)}, по нашей теме: {S.get('topical', 0)}, "
                      f"проверено нейросетью: {S['scans']}/{SCAN_DAILY}.\n"
                      f"Режим: {S['mode']}. Реакции: {'вкл' if S['react'] else 'выкл'} ({S['reacts']}/{REACT_DAILY}). "
                      f"Ответы в чатах: {'вкл' if S['auto'] else 'выкл'} ({S['replies']}/{REPLY_DAILY}). "
