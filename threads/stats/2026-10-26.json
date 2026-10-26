@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T17:16+04:00",
+ "generated": "2026-10-26T20:07+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -7,7 +7,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De6Hw8NFY_V",
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
-   "views": 2,
+   "views": 4,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -20,9 +20,22 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 667,
-   "likes": 12,
-   "replies": 5,
+   "views": 766,
+   "likes": 13,
+   "replies": 6,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 1
+  },
+  {
+   "slug": "t-1026-lagerya",
+   "at": "2026-10-26T18:59+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/De9jXS5kbDH",
+   "kind": "тренд",
+   "text": "Дубай делится на три лагеря.\n\nПервые: «Тут даже Макдональдс вкуснее, чем дома».\n\nВторые: «За такие деньги могли бы и пос",
+   "views": 104,
+   "likes": 1,
+   "replies": 4,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -30,37 +43,98 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1161,
-  "likes": 12,
-  "replies": 5,
-  "reposts": 0,
-  "quotes": 0,
-  "followers_count": 0
- },
- "account_7d": {
-  "views": 1339,
-  "likes": 17,
+  "views": 1376,
+  "likes": 14,
   "replies": 11,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
  },
+ "account_7d": {
+  "views": 1554,
+  "likes": 19,
+  "replies": 17,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 0
+ },
+ "profile_views_by_day": [
+  {
+   "date": "2026-10-19",
+   "views": 0
+  },
+  {
+   "date": "2026-10-20",
+   "views": 0
+  },
+  {
+   "date": "2026-10-21",
+   "views": 0
+  },
+  {
+   "date": "2026-10-22",
+   "views": 0
+  },
+  {
+   "date": "2026-10-23",
+   "views": 0
+  },
+  {
+   "date": "2026-10-24",
+   "views": 178
+  },
+  {
+   "date": "2026-10-25",
+   "views": 441
+  },
+  {
+   "date": "2026-10-26",
+   "views": 935
+  }
+ ],
+ "link_clicks_7d": [
+  {
+   "name": "clicks",
+   "period": "day",
+   "title": "clicks",
+   "description": "The number of times users clicked on a link",
+   "link_total_values": [
+    {
+     "value": 0,
+     "link_url": "https://fortex-uae.com/"
+    },
+    {
+     "value": 0,
+     "link_url": "https://t.me/Fortex_Dubai"
+    }
+   ],
+   "id": "17841423681889725/insights/clicks/day"
+  }
+ ],
  "by_kind": {
   "закреп": {
    "posts": 1,
-   "views": 2,
+   "views": 4,
    "replies": 0,
    "likes": 0,
-   "avg_views": 2.0,
+   "avg_views": 4.0,
    "avg_replies": 0.0
   },
   "стёб": {
    "posts": 1,
-   "views": 667,
-   "replies": 5,
-   "likes": 12,
-   "avg_views": 667.0,
-   "avg_replies": 5.0
+   "views": 766,
+   "replies": 6,
+   "likes": 13,
+   "avg_views": 766.0,
+   "avg_replies": 6.0
+  },
+  "тренд": {
+   "posts": 1,
+   "views": 104,
+   "replies": 4,
+   "likes": 1,
+   "avg_views": 104.0,
+   "avg_replies": 4.0
   }
  }
 }
