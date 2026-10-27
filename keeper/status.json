@@ -1,5 +1,5 @@
 {
- "at": "2026-10-27T22:30+04:00",
+ "at": "2026-10-27T22:34+04:00",
  "errors": [],
  "openrouter_left": 3.91,
  "apify_left": null,
@@ -13,13 +13,81 @@
   "keeper": "active"
  },
  "radar_files": {
-  "autoreply.py": 1792992989.4594107,
-  "starters.py": 1792992989.7624214,
-  "content.py": 1792864972.8793461,
-  "igdm.py": 1792864971.8403275,
-  "reactions.py": 1792864973.1343508,
-  "newsfeed.py": 1792864972.646342,
-  "kb.md": 1792992968.8936775,
-  "leadbot.py": 1792992968.600667
+  "autoreply.py": "27.10 22:31",
+  "starters.py": "27.10 22:31",
+  "content.py": "24.10 22:02",
+  "igdm.py": "24.10 22:02",
+  "reactions.py": "24.10 22:02",
+  "newsfeed.py": "24.10 22:02",
+  "kb.md": "27.10 22:31",
+  "server/radar.py": "27.10 22:31",
+  "leadbot.py": "26.10 09:36"
+ },
+ "openrouter_key": {
+  "label": "sk-or-v1-ab5...5d5",
+  "is_management_key": false,
+  "is_provisioning_key": false,
+  "limit": 100,
+  "limit_reset": null,
+  "limit_remaining": 87.41678805,
+  "include_byok_in_limit": false,
+  "budgets": [
+   {
+    "scope": "key_limit",
+    "guardrail_id": null,
+    "budget_id": null,
+    "limit_usd": 100,
+    "spend_usd": 12.58321195,
+    "remaining_usd": 87.41678805,
+    "reset_interval": null,
+    "resets_at": null,
+    "include_byok": false
+   }
+  ],
+  "effective_budget": {
+   "scope": "key_limit",
+   "guardrail_id": null,
+   "budget_id": null,
+   "limit_usd": 100,
+   "spend_usd": 12.58321195,
+   "remaining_usd": 87.41678805,
+   "reset_interval": null,
+   "resets_at": null,
+   "include_byok": false
+  },
+  "usage": 12.58321195,
+  "usage_daily": 2.4380045,
+  "usage_weekly": 2.91968085,
+  "usage_monthly": 12.58321195,
+  "byok_usage": 0,
+  "byok_usage_daily": 0,
+  "byok_usage_weekly": 0,
+  "byok_usage_monthly": 0,
+  "is_free_tier": false,
+  "expires_at": "2027-04-17T20:00:53.033Z",
+  "creator_user_id": "user_3KvYtlEcV37G4mZWebxzXeks8aP",
+  "organization_id": null,
+  "workspace_id": "15d073b7-9c87-50d5-988d-41688f89fbf7",
+  "allowed_data_regions": [
+   "global"
+  ],
+  "free_model_daily_requests": {
+   "used": 0,
+   "limit": 1000,
+   "remaining": 1000
+  },
+  "rate_limit": {
+   "requests": -1,
+   "interval": "10s",
+   "note": "This field is deprecated and safe to ignore."
+  }
+ },
+ "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
+ "radar_log_24h": {
+  "lines": 1529,
+  "llm_warn": 0,
+  "wealth": 151,
+  "scan_model": 0,
+  "openrouter_http": 508
  }
 }
