@@ -1,5 +1,5 @@
 {
- "at": "2026-10-27T23:00+04:00",
+ "at": "2026-10-27T23:16+04:00",
  "errors": [],
  "openrouter_left": 3.91,
  "apify_left": null,
@@ -16,12 +16,17 @@
   "autoreply.py": "27.10 22:56",
   "starters.py": "27.10 22:31",
   "content.py": "24.10 22:02",
-  "igdm.py": "27.10 22:46",
+  "igdm.py": "27.10 23:13",
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
   "kb.md": "27.10 22:43",
   "server/radar.py": "27.10 22:54",
   "leadbot.py": "26.10 09:36"
+ },
+ "consult_sources": {
+  "2026-10-27": {
+   "напрямую": 1
+  }
  },
  "openrouter_key": {
   "label": "sk-or-v1-ab5...5d5",
@@ -29,7 +34,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 87.14275405000001,
+  "limit_remaining": 87.02586005,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -37,8 +42,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 12.85724595,
-    "remaining_usd": 87.14275405000001,
+    "spend_usd": 12.97413995,
+    "remaining_usd": 87.02586005,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -49,16 +54,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 12.85724595,
-   "remaining_usd": 87.14275405000001,
+   "spend_usd": 12.97413995,
+   "remaining_usd": 87.02586005,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 12.85724595,
-  "usage_daily": 2.7120385,
-  "usage_weekly": 3.19371485,
-  "usage_monthly": 12.85724595,
+  "usage": 12.97413995,
+  "usage_daily": 2.8289325,
+  "usage_weekly": 3.31060885,
+  "usage_monthly": 12.97413995,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -84,10 +89,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 1613,
+  "lines": 1639,
   "llm_warn": 0,
   "wealth": 151,
   "scan_model": 0,
-  "openrouter_http": 516
+  "openrouter_http": 523
  }
 }
