@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T08:05+04:00",
+ "generated": "2026-10-27T08:37+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -8,7 +8,7 @@
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
    "views": 5,
-   "likes": 0,
+   "likes": 1,
    "replies": 0,
    "reposts": 0,
    "quotes": 0,
@@ -20,7 +20,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 1098,
+   "views": 1109,
    "likes": 22,
    "replies": 29,
    "reposts": 0,
@@ -43,16 +43,16 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 2023,
-  "likes": 32,
+  "views": 2034,
+  "likes": 34,
   "replies": 62,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
  },
  "account_7d": {
-  "views": 2201,
-  "likes": 37,
+  "views": 2212,
+  "likes": 39,
   "replies": 68,
   "reposts": 0,
   "quotes": 0,
@@ -89,7 +89,7 @@
   },
   {
    "date": "2026-10-26",
-   "views": 1582
+   "views": 1593
   }
  ],
  "link_clicks_7d": [
@@ -116,16 +116,16 @@
    "posts": 1,
    "views": 5,
    "replies": 0,
-   "likes": 0,
+   "likes": 1,
    "avg_views": 5.0,
    "avg_replies": 0.0
   },
   "стёб": {
    "posts": 1,
-   "views": 1098,
+   "views": 1109,
    "replies": 29,
    "likes": 22,
-   "avg_views": 1098.0,
+   "avg_views": 1109.0,
    "avg_replies": 29.0
   },
   "тренд": {
