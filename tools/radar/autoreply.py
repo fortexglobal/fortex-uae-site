@@ -35,7 +35,9 @@ STYLE = """Ты пишешь ответ в русскоязычном Telegram-�
 Что умеет наша сторона (используй как знание, не как рекламу): счета в банках ОАЭ для владельцев российского паспорта, личные и корпоративные, в том числе сложные случаи после отказов, крипта и трейдинг, сложные фризоны и лицензии; с Emirates ID и без; рабочие визы с Emirates ID (с ними банки работают охотнее, можно официально платить себе зарплату); ВНЖ Virtual Work (дёшево, но в банках слабее); компании во фризонах и на mainland; инфраструктура для ВЭД и расчётов с Китаем и Гонконгом. Ориентиры: личный счёт от 1 500 USD, корпоративный от 5 000 USD, рабочая виза от 5 500 USD, компания во фризоне от 14 000 AED. Сроки по корпоративному счёту 1–3 недели.
 
 СТИЛЬ (строго):
-- Короткие предложения по 3–6 слов. Каждое заканчивается точкой (или вопросом).
+- Короткие предложения по 3–6 слов. Пишешь как в мессенджере: каждое предложение уйдёт отдельным сообщением, поэтому каждое предложение законченное и понятное само по себе.
+- Иногда (не всегда) первым предложением короткое приветствие: «Добрый день!» или «Привет!», если в чате так общаются.
+- Без кавычек.
 - Всего 1–3 предложения. Ответ НЕ длиннее сообщения, на которое отвечаешь.
 - Можно многоточие. «:)» почти никогда: примерно один ответ из 10 и только если в ответе реально шутка. Других эмодзи нет.
 - Вопрос задавай редко, примерно в каждом третьем ответе. Чаще просто короткое утверждение или мнение.
@@ -131,6 +133,35 @@ def _clean(t, limit):
     return out
 
 
+def _parts(text):
+    """Как пишут в мессенджере: одно предложение = одно сообщение, без точки в конце, без кавычек.
+    Вопросительный и восклицательный знаки остаются, многоточие тоже."""
+    t = re.sub(r'[«»"„“”]', "", text or "").strip()
+    out = []
+    for snt in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", t):
+        snt = snt.strip()
+        if not snt:
+            continue
+        if snt.endswith(".") and not snt.endswith("..."):
+            snt = snt[:-1].rstrip()
+        out.append(snt)
+    return out[:4] or ([t] if t else [])
+
+
+async def _send(user, chat_id, text, reply_to):
+    """Отправляет ответ несколькими сообщениями, с паузой «печатает» между ними. Возвращает список сообщений."""
+    msgs = []
+    for k, part in enumerate(_parts(text)):
+        if k:
+            try:
+                async with user.action(chat_id, "typing"):
+                    await asyncio.sleep(min(6, 1.2 + len(part) * 0.06 + random.random()))
+            except Exception:
+                await asyncio.sleep(2)
+        msgs.append(await user.send_message(chat_id, part, reply_to=reply_to if k == 0 else None))
+    return msgs
+
+
 async def _owner_wrote(user, chat_id, after_id, ours):
     try:
         async for m in user.iter_messages(chat_id, from_user="me", min_id=after_id, limit=20):
@@ -210,11 +241,14 @@ async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
         draft = _clean(res.get("reply", ""), min(len(text), lim) if lim < 300 else len(text))
         if not draft:
             return
-        m = await user.send_message(ev.chat_id, draft, reply_to=ev.id)
+        ms = await _send(user, ev.chat_id, draft, ev.id)
+        m = ms[0]
         db.execute("update leads set status='auto', draft=?, ts=? where id=?", (draft, time.time(), lid)); db.commit()
         s = _load()
-        s["ours"].append([ev.chat_id, m.id])
-        s["threads"][f"{ev.chat_id}:{m.id}"] = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": lid}
+        th = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": lid}
+        for x in ms:
+            s["ours"].append([ev.chat_id, x.id])
+            s["threads"][f"{ev.chat_id}:{x.id}"] = th
         _save(s)
         await CTX["notify"](f"🤖 Ответил сам (лид #{lid}):\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
@@ -273,11 +307,13 @@ async def on_reply_to_us(user, ev, rm, text):
         reply = _clean(await _llm(msgs), max(len(text), lim) if th.get("starter") else (len(text) if depth < MAX_DEPTH else max(len(text), 90)))
         if not reply:
             return
-        m = await user.send_message(ev.chat_id, reply, reply_to=ev.id)
+        ms = await _send(user, ev.chat_id, reply, ev.id)
+        m = ms[0]
         s = _load()
-        s["ours"].append([ev.chat_id, m.id])
         th.update(depth=depth); th["history"].append(reply)
-        s["threads"][f"{ev.chat_id}:{m.id}"] = th
+        for x in ms:
+            s["ours"].append([ev.chat_id, x.id])
+            s["threads"][f"{ev.chat_id}:{x.id}"] = th
         _save(s)
         await CTX["notify"](f"🤖 Продолжил ветку ({depth}/{MAX_DEPTH}):\n«{reply}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
@@ -378,10 +414,13 @@ async def maybe_visibility(user, ev, sender, text, res):
         s = _load()
         if not s["on"] or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
             return
-        m = await user.send_message(ev.chat_id, draft, reply_to=ev.id)
+        ms = await _send(user, ev.chat_id, draft, ev.id)
+        m = ms[0]
         s = _load()
-        s["ours"].append([ev.chat_id, m.id])
-        s["threads"][f"{ev.chat_id}:{m.id}"] = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": None}
+        th = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": None}
+        for x in ms:
+            s["ours"].append([ev.chat_id, x.id])
+            s["threads"][f"{ev.chat_id}:{x.id}"] = th
         _save(s)
         await CTX["notify"](f"🤖 Ответил:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
