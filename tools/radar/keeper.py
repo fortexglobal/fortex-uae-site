@@ -131,6 +131,39 @@ def deploy_radar():
             tg(f"🔄 Ассистент обновлён: {names}")
 
 
+def export_radar():
+    """Копия radar.py с сервера в репозиторий (tools/radar/server/radar.py) без секретов: чтобы правки
+    карточек и логики делались по точному коду. Ключи, токены, api_hash, телефоны вырезаются."""
+    import base64, hashlib, re as _re
+    try:
+        src = open("/opt/radar/radar.py", encoding="utf-8").read()
+    except Exception:
+        return
+    red = src
+    red = _re.sub(r"\b\d{8,11}:[A-Za-z0-9_-]{30,}\b", "<BOT_TOKEN>", red)
+    red = _re.sub(r"sk-or-v1-[A-Za-z0-9]+", "<OPENROUTER_KEY>", red)
+    red = _re.sub(r"github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]{20,}", "<GITHUB_TOKEN>", red)
+    red = _re.sub(r"\b[0-9a-f]{32}\b", "<HEX32>", red)
+    red = _re.sub(r"\+\d[\d ()-]{8,}\d", "<PHONE>", red)
+    red = _re.sub(r"(?i)(api_id\s*=\s*)\d+", r"\1<API_ID>", red)
+    red = _re.sub(r"(?i)((?:key|token|secret|password|hash)\w*\s*=\s*)([\"'])[^\"']{12,}\2", r"\1\2<SECRET>\2", red)
+    h = hashlib.sha1(red.encode()).hexdigest()
+    if S.get("radar_export") == h:
+        return
+    url = f"https://api.github.com/repos/{REPO}/contents/tools/radar/server/radar.py"
+    hd = {"Authorization": f"Bearer {GH}", "Accept": "application/vnd.github+json"}
+    code, cur = http(url, headers=hd)
+    body = {"message": "Сервер: копия radar.py без секретов", "content": base64.b64encode(red.encode()).decode(), "branch": "main"}
+    if code == 200 and isinstance(cur, dict):
+        body["sha"] = cur["sha"]
+    code, r = http(url, body, hd, "PUT")
+    if code in (200, 201):
+        S["radar_export"] = h
+        print("radar.py exported", flush=True)
+    else:
+        print("export failed", code, str(r)[:200], flush=True)
+
+
 def pull():
     if not os.path.isdir(os.path.join(SITE, ".git")):
         subprocess.run(["git", "clone", "-q", "--depth", "1", f"https://github.com/{REPO}", SITE], check=True)
@@ -264,6 +297,8 @@ def main():
                 pull()
                 selfupdate()
                 deploy_radar()
+            if every("export", 30):
+                export_radar()
             publications()
             replies()
             balances()
