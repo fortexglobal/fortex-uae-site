@@ -467,9 +467,7 @@ async def _reply_to(cid):
                         f"<b>{html.escape(res['owner_question'])}</b>\n\n"
                         f"<b>━━━ Последние сообщения ━━━</b>\n\n{transcript_html(cv, 6, 1500)}", is_html=True)
     elif cv.get("lead_sent"):
-        # клиент уже передан: ассистент отвечает дальше, а тебе показываем, что он написал
-        await tell(cid, f"💬 <b>Клиент уже у тебя</b> @{html.escape(str(cv.get('username')))} написал снова\n\n"
-                        f"{transcript_html(cv, 2, 1200)}", is_html=True)
+        pass  # клиент уже передан: ассистент отвечает сам, Александра не дёргаем на каждое сообщение
     elif act == "partner":
         cv["lead_sent"] = True
         cv["partner"] = True
@@ -482,9 +480,11 @@ async def _reply_to(cid):
     elif act == "handoff":
         cv["lead_sent"] = True
         await tell(cid,
-            f"🔥 <b>Лид из {'Telegram' if is_tg else 'Instagram'}:</b> @{html.escape(str(cv.get('username')))}\n\n"
-            f"<b>Имя:</b> {html.escape(str(cv.get('name') or '?'))}\n"
-            f"<b>Контакт:</b> {html.escape(str(cv.get('contact') or 'не дал, пиши в директ'))}\n"
+            f"🔥 <b>Готовый лид из {'Telegram' if is_tg else 'Instagram'}:</b> @{html.escape(str(cv.get('username')))}\n"
+            + (f"Открыть переписку: https://t.me/{html.escape(str(cv.get('username')))}\n" if is_tg and cv.get('username') and not str(cv.get('username')).isdigit() else "")
+            + (f"Источник: {html.escape(str(cv.get('source')))}\n" if cv.get('source') else "") + "\n"
+            + f"<b>Имя:</b> {html.escape(str(cv.get('name') or '?'))}\n"
+            + f"<b>Контакт:</b> {html.escape(str(cv.get('contact') or 'не дал, пиши в директ'))}\n"
             f"<b>Интерес:</b> {html.escape(str(cv.get('services') or '?'))}\n\n"
             f"<b>Кратко:</b> {html.escape(str(cv.get('summary') or ''))}\n\n"
             f"<b>━━━ Переписка ━━━</b>\n\n{transcript_html(cv)}\n\n"
@@ -841,7 +841,7 @@ async def tg_inbound(ev):
                         json.dump(S["src_stats"], open(os.path.join(BASE, "consult_sources.json"), "w"), ensure_ascii=False)
                     except Exception:
                         pass
-                    await tell(cid, f"📍 @{snd.username or snd.id} нашёл нас: {w}")
+                    pass  # источник в статистике (keeper/status.json), без отдельного сообщения
                     break
         if not cv.get("source"):  # откуда пришёл: по фразе из ссылки «Бесплатная консультация» (/c/<источник>)
             low = text.lower()
@@ -858,8 +858,7 @@ async def tg_inbound(ev):
                 json.dump(S["src_stats"], open(os.path.join(BASE, "consult_sources.json"), "w"), ensure_ascii=False)
             except Exception:
                 pass
-            if "консультац" in low:
-                await tell(cid, f"🆓 Запрос на бесплатную консультацию от @{snd.username or snd.id} (источник: {cv['source']})")
+            # о запросе консультации не пишем отдельно: Александру приходит только готовый лид
         cv["history"].append({"role": "user", "text": text, "ts": time.time()})
         cv["history"] = cv["history"][-60:]
         if cv.get("human") or cv.get("muted"):
