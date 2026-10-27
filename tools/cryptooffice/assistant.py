@@ -201,7 +201,7 @@ def clean(t, limit):
     # правило AR: одна фраза, максимум 7 слов, без точки в конце и без кавычек
     t = re.sub(r"[\"«»“”„']", "", t)
     sents = re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…])?", t)
-    out = sents[0].strip() if sents else ""
+    out = t if len(t.split()) <= MAX_WORDS else (sents[0].strip() if sents else "")
     words = out.split()
     if len(words) > MAX_WORDS:
         out = ""   # обрубки не пишем: длинное сначала ужимает short()
