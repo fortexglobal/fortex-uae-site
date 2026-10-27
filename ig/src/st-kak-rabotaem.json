@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Как работаем",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-27T19:00+04:00",
  "bg_prompt": "Dubai Marina apartment workspace at golden hour, laptop with video call, coffee, skyline view, no people, no text",
  "caption": "Серия сторис для Актуального «Как работаем»",
@@ -60,5 +60,18 @@
   "laptop with a video call on a terrace in Dubai Marina at sunset, coffee cup, cozy premium, no readable text, no faces",
   "two coffee cups on a table in a premium Dubai cafe with skyline view, warm afternoon light, no people, no text",
   "Dubai Creek with traditional abra boats and modern towers at golden hour, no text"
- ]
+ ],
+ "result": {
+  "id": "17889512166685678",
+  "ids": [
+   "17889512166685678",
+   "18134994271688019",
+   "18336846262274224",
+   "18127588585808371",
+   "18098021483677056",
+   "17962279139996214"
+  ],
+  "permalink": "https://www.instagram.com/stories/fortex__uae/"
+ },
+ "published_at": "2026-10-27T15:02Z"
 }

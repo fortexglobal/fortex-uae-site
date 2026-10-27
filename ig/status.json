@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-27T14:18Z",
+ "checked": "2026-10-27T15:01Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,36 @@
   "media_count": 6,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "st-kak-rabotaem",
+   "scheduled": "stories",
+   "id": "17889512166685678",
+   "ids": [
+    "17889512166685678",
+    "18134994271688019",
+    "18336846262274224",
+    "18127588585808371",
+    "18098021483677056",
+    "17962279139996214"
+   ],
+   "permalink": "https://www.instagram.com/stories/fortex__uae/"
+  },
+  {
+   "slug": "reel-1027-limity-skorosti",
+   "scheduled": "carousel",
+   "id": "18061009004799519",
+   "permalink": "https://www.instagram.com/reel/DfAIiESCfbO/"
+  }
+ ],
  "media": [
+  {
+   "id": "18061009004799519",
+   "timestamp": "2026-10-27T15:02:47+0000",
+   "permalink": "https://www.instagram.com/reel/DfAIiESCfbO/",
+   "media_type": "VIDEO",
+   "caption": "С 1 ноября в Дубае меняют ограничения скорости на 5 дорогах."
+  },
   {
    "id": "18119972776756388",
    "timestamp": "2026-10-26T15:54:26+0000",
