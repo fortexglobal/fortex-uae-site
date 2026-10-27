@@ -1,6 +1,3 @@
-11:10:09 start reel-1027-limity-skorosti
-11:10:10 stt error HTTP Error 401: Unauthorized
-11:10:10 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
-11:10:10 clip 0: pixabay px347611 (Shutter_Footage [jeep, dubai, uae, emirates, safari, hill]) «dubai driving car road»
-11:10:11 clip 4: pixabay px360754 (Janhom_Footage [sky gate bridge, kansai airport, airport]) «highway night traffic light trails»
-11:12:35 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 10.8 MB, music=True
+11:14:21 start reel-1027-limity-skorosti
+11:14:21 stt elevenlabs HTTP Error 401: Unauthorized
+11:14:23 stt match 1.00, diffs []
