@@ -412,9 +412,10 @@ async def maybe_visibility(user, ev, sender, text, res):
             return
         s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); _save(s)
         lim, hint = await chat_style(user, ev.chat_id)
-        sysmsg = (STYLE + "\n\nЭто прямой вопрос по нашей теме. Ответь строго по сути вопроса одним-двумя короткими фактами, "
-                  "как знающий человек в чате. Не уходи в сторону и не отвечай на то, о чём не спрашивали. Без продажи. "
-                  "Если точного ответа нет в справке, скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "") + "\n\nСПРАВКА:\n" + _kb())
+        sysmsg = [{"type": "text", "text": STYLE + "\n\nСПРАВКА:\n" + _kb(), "cache_control": {"type": "ephemeral"}},
+                  {"type": "text", "text": "Это прямой вопрос по нашей теме. Ответь строго по сути вопроса одним-двумя короткими фактами, "
+                   "как знающий человек в чате. Не уходи в сторону и не отвечай на то, о чём не спрашивали. Без продажи. "
+                   "Если точного ответа нет в справке, скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "")}]
         draft = _clean(await _llm([{"role": "system", "content": sysmsg}, {"role": "user", "content": text}]),
                        min(max(len(text), 60), lim) if lim < 300 else len(text))
         if not draft:

@@ -173,7 +173,9 @@ async def llm(system, user):
                                           "HTTP-Referer": "https://fortex-uae.com", "X-Title": "Fortex IG"},
                                  json={"model": m, "temperature": 0.4, "max_tokens": 1200,
                                        "response_format": {"type": "json_object"},
-                                       "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]})
+                                       # system (правила + база знаний) одинаковый: кэшируем, повторно стоит ~в 10 раз дешевле
+                                       "messages": [{"role": "system", "content": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]},
+                                                    {"role": "user", "content": user}]})
                 if r.status_code != 200:
                     log.warning("llm %s -> %s", m, r.status_code); continue
                 mm = re.search(r"\{.*\}", r.json()["choices"][0]["message"]["content"], re.S)

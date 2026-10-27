@@ -223,7 +223,7 @@ def render_one(slug, src, browser):
         import ai_bg
         from PIL import Image
         ai_bg.KEY = os.environ["OPENROUTER_API_KEY"]
-        data = ai_bg.gen(src["bg_prompt"]) or ai_bg.gen(
+        data = ai_bg.gen(src["bg_prompt"], cover=True) or ai_bg.gen(
             "modern Dubai business district at golden hour, glass towers, calm premium mood")
         if data:
             os.makedirs(os.path.dirname(bgp), exist_ok=True)

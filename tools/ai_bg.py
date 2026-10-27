@@ -19,8 +19,12 @@ def _log(msg):
         f.write(msg + "\n")
 
 
-def gen(prompt):
-    for m in MODELS:
+COVER_MODELS = ["google/gemini-3-pro-image-preview", "google/gemini-2.5-flash-image"]  # обложка: лучшее качество
+PHOTO_MODELS = ["google/gemini-2.5-flash-image"]                                      # фото внутри: дёшево
+
+
+def gen(prompt, cover=False):
+    for m in (COVER_MODELS if cover else PHOTO_MODELS):
         body = json.dumps({"model": m, "modalities": ["image", "text"],
                            "messages": [{"role": "user", "content": STYLE + prompt}]}).encode()
         req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", body, {
