@@ -45,6 +45,25 @@ def setup(**kw):
         from telethon import events
         kw["user"].add_event_handler(tg_inbound, events.NewMessage(incoming=True, func=lambda e: e.is_private))
         kw["user"].add_event_handler(tg_outgoing, events.NewMessage(outgoing=True, func=lambda e: e.is_private))
+        kw["user"].add_event_handler(tg_typing, events.UserUpdate(func=lambda e: bool(getattr(e, "typing", False))))
+
+
+TYPING = {}  # id собеседника -> когда он последний раз «печатал» (Telegram шлёт это примерно раз в 5 с)
+
+
+async def tg_typing(ev):
+    TYPING[ev.user_id] = time.time()
+
+
+async def wait_quiet(peer, cid=None, max_wait=120):
+    """Ждём, пока человек допишет мысль: он не печатает хотя бы 6 с и с его последнего сообщения прошло 3 с."""
+    t_end = time.time() + max_wait
+    while time.time() < t_end:
+        cv = S["convs"].get(cid) if cid else None
+        last_msg = (cv or {}).get("last_user_ts", 0)
+        if time.time() - TYPING.get(peer, 0) >= 6 and time.time() - last_msg >= 3:
+            return
+        await asyncio.sleep(1)
 
 
 def token():
@@ -350,6 +369,8 @@ async def _reply_to(cid):
     u = CTX.get("user")
     typing = None
     if is_tg and u:
+        await wait_quiet(int(cv["uid"][3:]), cid)  # человек допечатывает: не перебиваем
+    if is_tg and u:
         try:
             peer = int(cv["uid"][3:])
             await asyncio.sleep(random.uniform(2, 3))  # прочитано не мгновенно
@@ -376,6 +397,7 @@ async def _reply_to(cid):
                   "Это можно коротко и по-свойски рассказать, если спросят или к слову, можно чуть поболтать про жизнь в Дубае с лёгкой иронией, "
                   "но разговор мягко возвращай к задаче клиента и к сделке. Других личных подробностей не придумывай. "
                   "Пиши как в мессенджере: короткие предложения, каждое уйдёт отдельным сообщением, без кавычек, максимум 3–4 предложения." + (f" Контакт клиента уже есть: @{uname}. Контакт НЕ проси: когда клиент готов, сразу action handoff." if uname and not uname.isdigit() else ""))
+    t_ask = time.time()
     res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
@@ -409,6 +431,10 @@ async def _reply_to(cid):
         return
     text = tame_emoji(clean(res["reply"]), cv)
     if is_tg and u:
+        if cv.get("last_user_ts", 0) > t_ask:  # пока думали, человек дописал: отвечаем уже на всё вместе
+            cv["next_at"] = time.time()
+            asyncio.get_event_loop().create_task(kick(cid, 1))
+            return
         ok = await tg_human(int(cv["uid"][3:]), text)
     else:
         # «печатаем» так, чтобы от начала до ответа прошло 3/5/7 секунд (если нейросеть думала дольше, отвечаем сразу)
@@ -748,6 +774,8 @@ async def tg_human(peer, text):
         for part in autoreply._parts(text):
             secs = max(5.0, min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4))
             try:
+                if time.time() - TYPING.get(peer, 0) < 6:  # человек печатает: подождём, не перебиваем
+                    await wait_quiet(peer, f"tg:{peer}", max_wait=60)
                 async with u.action(peer, "typing"):
                     await asyncio.sleep(secs + autoreply.gap_left(peer))
                 m = await u.send_message(peer, part)
