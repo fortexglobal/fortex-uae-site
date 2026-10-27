@@ -18,6 +18,49 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://yastatic.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru; frame-src https://mc.yandex.ru https://mc.yandex.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
 
+# Бесплатная консультация: короткие ссылки по источникам (источник виден по первому сообщению в Telegram)
+[[redirects]]
+  from = "/c/site"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/ig"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20Instagram"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/th"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20Threads"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/tg"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20Telegram-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/mail"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%B0"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/zen"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20%D0%94%D0%B7%D0%B5%D0%BD%D0%B0"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/bot"
+  to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E.%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20%D0%B1%D0%BE%D1%82%D0%B0-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/ig"
   to = "https://t.me/Fortex_Dubai?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20Instagram."

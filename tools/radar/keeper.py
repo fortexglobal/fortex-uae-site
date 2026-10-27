@@ -310,6 +310,10 @@ def push_status():
           "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
           "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
           "radar_files": {f: datetime.fromtimestamp(os.path.getmtime(os.path.join("/opt/radar", os.path.basename(f))), DUBAI).strftime("%d.%m %H:%M") for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", os.path.basename(f)))}}
+    try:  # откуда приходят в личку (бесплатная консультация по ссылкам /c/<источник>)
+        st["consult_sources"] = json.load(open("/opt/radar/consult_sources.json"))
+    except Exception:
+        pass
     key = ENV.get("OPENROUTER_KEY")
     if key:  # расход OpenRouter: по ключу и по моделям за последние дни
         c1, k = http("https://openrouter.ai/api/v1/key", headers={"Authorization": f"Bearer {key}"})

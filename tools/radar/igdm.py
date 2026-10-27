@@ -776,6 +776,23 @@ async def tg_inbound(ev):
         cv = S["convs"].setdefault(cid, {"history": [], "seen": [], "uid": cid, "username": None})
         cv["username"] = snd.username or str(snd.id)
         cv.setdefault("name", " ".join(x for x in (snd.first_name, snd.last_name) if x) or None)
+        if not cv.get("source"):  # откуда пришёл: по фразе из ссылки «Бесплатная консультация» (/c/<источник>)
+            low = text.lower()
+            for k, w in (("сайт", "с сайта"), ("instagram", "instagram"), ("threads", "threads"), ("канал", "telegram-канал"),
+                         ("письм", "письма"), ("дзен", "дзен"), ("бот", "бота-проверки")):
+                if "пишу" in low and k in low:
+                    cv["source"] = w
+                    break
+            cv.setdefault("source", "напрямую")
+            day = time.strftime("%Y-%m-%d")
+            st = S.setdefault("src_stats", {}).setdefault(day, {})
+            st[cv["source"]] = st.get(cv["source"], 0) + 1
+            try:
+                json.dump(S["src_stats"], open(os.path.join(BASE, "consult_sources.json"), "w"), ensure_ascii=False)
+            except Exception:
+                pass
+            if "консультац" in low:
+                await tell(cid, f"🆓 Запрос на бесплатную консультацию от @{snd.username or snd.id} (источник: {cv['source']})")
         cv["history"].append({"role": "user", "text": text, "ts": time.time()})
         cv["history"] = cv["history"][-60:]
         if cv.get("human"):
