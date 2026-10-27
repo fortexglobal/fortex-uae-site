@@ -1,11 +1,42 @@
 {
- "hash": "854b21fd82",
- "video": "854b21fd82.mp4",
+ "hash": "666401a2c4",
+ "video": "666401a2c4.mp4",
  "cover": "cover.jpg",
  "v": 2,
- "duration": 24.5,
+ "duration": 23.3,
+ "ai_clips": [
+  3,
+  1
+ ],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "src": "pixabay:px5715",
+   "author": "VariousPhotography [car, traffic, road, travel, city, urban,]"
+  },
+  "2": {
+   "key": "stock",
+   "src": "pixabay:px4053",
+   "author": "VariousPhotography [car, interior, vehicle, automobile, tran]"
+  },
+  "3": {
+   "key": "stock",
+   "src": "https://v3b.fal.media/files/b/0ab00738/eAxzEEDau20qczKMO9Kws_output.mp4",
+   "author": "ai"
+  },
+  "1": {
+   "key": "stock",
+   "src": "https://v3b.fal.media/files/b/0ab00737/ewVJBbKDTs-L1WvL46yU1_output.mp4",
+   "author": "ai"
+  },
+  "4": {
+   "key": "stock",
+   "src": "pixabay:px3514",
+   "author": "josemdelaa [traffic, city, hot, jam, cars, urban, tr]"
+  }
+ },
  "safe_zone": {
-  "cap_widest_px": 757,
+  "cap_widest_px": 746,
   "cap_limit_px": 828,
   "cap_box": [
    70,
@@ -17,16 +48,16 @@
   "ok": true
  },
  "qa": {
-  "duration": 24.6,
+  "duration": 23.3,
   "sheets": [
    "qa/sheet-1.jpg",
    "qa/sheet-2.jpg",
    "qa/sheet-3.jpg"
   ],
   "cuts": "qa/cuts.jpg",
-  "lufs": -14.68,
-  "true_peak": -1.97,
-  "lra": 2.8,
+  "lufs": -14.22,
+  "true_peak": -1.81,
+  "lra": 1.8,
   "silence_mid": [],
   "warnings": []
  }

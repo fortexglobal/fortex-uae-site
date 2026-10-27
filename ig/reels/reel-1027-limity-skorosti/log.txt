@@ -1,5 +1,13 @@
-06:03:59 start reel-1027-limity-skorosti
-06:03:59 reel-1027-limity-skorosti: voice 23.6s, shots [3.7, 3.7, 4.8, 3.3, 9.1]
-06:06:04   pro: IN_PROGRESS 124s
-06:07:32 clip 0: v2.5-turbo 5s ok
-06:09:24 rendered reel v2 reel-1027-limity-skorosti: 24.5s, 13.1 MB, music=True
+06:39:30 start reel-1027-limity-skorosti
+06:39:36 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
+06:39:36 clip 0: pixabay px5715 (VariousPhotography [car, traffic, road, travel, city, urban,]) «driving car highway night city lights pov»
+06:39:37 clip 2: pixabay px4053 (VariousPhotography [car, interior, vehicle, automobile, tran]) «car speedometer dashboard»
+06:39:37 clip 4: pixabay px3514 (josemdelaa [traffic, city, hot, jam, cars, urban, tr]) «traffic speed camera road»
+06:41:41   pro: IN_PROGRESS 124s
+06:41:42   pro: IN_PROGRESS 124s
+06:43:39   pro: IN_PROGRESS 242s
+06:43:39   pro: IN_PROGRESS 242s
+06:44:05 clip 3: v2.5-turbo 5s ok
+06:44:05 clip 1: v2.5-turbo 5s ok
+06:44:09 music: elevenlabs ok
+06:45:31 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 11.8 MB, music=True
