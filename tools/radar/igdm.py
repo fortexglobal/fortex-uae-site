@@ -137,7 +137,7 @@ SYSTEM = """Ты сотрудник отдела работы с клиента�
 
 Когда передавать (action "handoff"): человек готов двигаться (спрашивает, как начать, просит точную цену под себя, хочет созвониться, соглашается) или просит живого человека. Сначала попроси Telegram или телефон. Как только контакт есть, action "handoff", а в reply: что менеджер свяжется в ближайшее время.
 
-Вопросы не по делу (погода, политика, личные вопросы, кто основатель, где офис, сколько сотрудников, шутки, просто болтовня): не отвечай по существу и ничего не выдумывай. Вежливо и легко уйди от темы (можно с лёгким юмором), а следующей фразой верни разговор к задаче клиента или к нашему предложению. Например: «Про погоду лучше спросить пляж :) Давайте лучше про вашу задачу: счёт нужен для компании или личный?» или «Это не ко мне... А вот со счётом в ОАЭ помогу. Компания у вас уже есть?». Если клиент так и не говорит о задаче, предложи самое ходовое: корпоративный счёт, рабочую визу с Emirates ID или карту Skywards Infinite, одной фразой. Не дави и не повторяй одно и то же предложение дважды подряд.
+Вопросы не по делу (в Telegram про себя можно немного рассказать, см. правило канала ниже; погода, политика, кто основатель, где офис, сколько сотрудников, шутки, просто болтовня): не отвечай по существу и ничего не выдумывай. Вежливо и легко уйди от темы (можно с лёгким юмором), а следующей фразой верни разговор к задаче клиента или к нашему предложению. Например: «Про погоду лучше спросить пляж :) Давайте лучше про вашу задачу: счёт нужен для компании или личный?» или «Это не ко мне... А вот со счётом в ОАЭ помогу. Компания у вас уже есть?». Если клиент так и не говорит о задаче, предложи самое ходовое: корпоративный счёт, рабочую визу с Emirates ID или карту Skywards Infinite, одной фразой. Не дави и не повторяй одно и то же предложение дважды подряд.
 
 Если сообщение непонятное (обрывок, опечатки, неясно, что нужно): коротко и по-дружески переспроси, можно со смайликом. Например: «Не совсем понял :) Что вы хотели узнать?» или «Здравствуйте! Подскажите, что вас интересует?».
 Если человек второй раз подряд уходит не в нашу тему или явно не нуждается в наших услугах: вежливо закрой разговор одной фразой («Понял, спасибо! Если понадобится счёт или виза в ОАЭ, пишите :)») и верни action "close". Если сообщение бессмысленное, спам, реклама чужих услуг или грубость: ничего не пиши, верни action "ignore" и пустой reply.
@@ -341,11 +341,10 @@ async def _reply_to(cid):
     if is_tg and u:
         try:
             peer = int(cv["uid"][3:])
+            await asyncio.sleep(random.uniform(2, 3))  # прочитано не мгновенно
             await u.send_read_acknowledge(peer)
-            typing = u.action(peer, "typing")
-            await typing.__aenter__()
         except Exception as e:
-            log.warning("tg typing: %s", e); typing = None
+            log.warning("tg read: %s", e)
     extra = ""
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
@@ -356,7 +355,11 @@ async def _reply_to(cid):
     size = pick_length(cv)
     if str(cv.get("uid", "")).startswith("tg:"):
         uname = cv.get("username")
-        extra += ("\n\nКанал: Telegram (личные сообщения)." + (f" Контакт клиента уже есть: @{uname}. Контакт НЕ проси: когда клиент готов, сразу action handoff." if uname and not uname.isdigit() else ""))
+        extra += ("\n\nКанал: Telegram (личные сообщения). Здесь ты Алексей и пишешь от первого лица («я», «у нас с командой»). "
+                  "Алексей живёт в Дубай Марине, в Дубае с 2022 года, с командой помогает с банками, визами и компаниями в ОАЭ. "
+                  "Это можно коротко и по-свойски рассказать, если спросят или к слову, можно чуть поболтать про жизнь в Дубае с лёгкой иронией, "
+                  "но разговор мягко возвращай к задаче клиента и к сделке. Других личных подробностей не придумывай. "
+                  "Пиши как в мессенджере: короткие предложения, каждое уйдёт отдельным сообщением, без кавычек, максимум 3–4 предложения." + (f" Контакт клиента уже есть: @{uname}. Контакт НЕ проси: когда клиент готов, сразу action handoff." if uname and not uname.isdigit() else ""))
     res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
@@ -371,17 +374,11 @@ async def _reply_to(cid):
             await typing.__aexit__(None, None, None)
         return
     text = tame_emoji(clean(res["reply"]), cv)
-    # «печатаем» так, чтобы от начала до ответа прошло 3/5/7 секунд (если нейросеть думала дольше, отвечаем сразу)
-    await asyncio.sleep(max(0, target_secs(text) - (time.time() - t0)))
-    if typing:
-        await typing.__aexit__(None, None, None)
-        try:
-            m = await u.send_message(int(cv["uid"][3:]), text)
-            S["sent"].append(f"tg:{m.id}")
-            ok = m.id
-        except Exception as e:
-            log.warning("tg send: %s", e); ok = None
+    if is_tg and u:
+        ok = await tg_human(int(cv["uid"][3:]), text)
     else:
+        # «печатаем» так, чтобы от начала до ответа прошло 3/5/7 секунд (если нейросеть думала дольше, отвечаем сразу)
+        await asyncio.sleep(max(0, target_secs(text) - (time.time() - t0)))
         ok = await send(cv["uid"], text)
     if not ok:
         return
@@ -704,20 +701,38 @@ async def http_server():
 
 
 # ===== Telegram: аккаунт радара отвечает тем, кто написал ему в личку =====
+async def tg_human(peer, text):
+    """Как человек в мессенджере: одно предложение = одно сообщение, без точки в конце и кавычек,
+    перед каждым «печатает» 5–10 с (короткое 5, длинное до 10)."""
+    u = CTX.get("user")
+    if not u:
+        return None
+    import autoreply
+    last = None
+    for part in autoreply._parts(text):
+        secs = max(5.0, min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4))
+        try:
+            async with u.action(peer, "typing"):
+                await asyncio.sleep(secs)
+            m = await u.send_message(peer, part)
+            S["sent"].append(f"tg:{m.id}")
+            last = m.id
+        except Exception as e:
+            log.warning("tg send: %s", e)
+            break
+    return last
+
+
 async def tg_send(peer, text):
     u = CTX.get("user")
     if not u:
         return None
     try:
+        await asyncio.sleep(random.uniform(2, 3))
         await u.send_read_acknowledge(peer)
-        async with u.action(peer, "typing"):
-            await asyncio.sleep(min(2 + len(text) / 25, 8) + random.uniform(0, 1.5))
-        m = await u.send_message(peer, text)
-        S["sent"].append(f"tg:{m.id}")
-        return m.id
-    except Exception as e:
-        log.warning("tg send: %s", e)
-        return None
+    except Exception:
+        pass
+    return await tg_human(peer, text)
 
 
 async def tg_inbound(ev):
