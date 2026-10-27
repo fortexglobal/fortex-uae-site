@@ -310,6 +310,18 @@ def push_status():
           "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
           "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
           "radar_files": {f: datetime.fromtimestamp(os.path.getmtime(os.path.join("/opt/radar", os.path.basename(f))), DUBAI).strftime("%d.%m %H:%M") for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", os.path.basename(f)))}}
+    key = ENV.get("OPENROUTER_KEY")
+    if key:  # расход OpenRouter: по ключу и по моделям за последние дни
+        c1, k = http("https://openrouter.ai/api/v1/key", headers={"Authorization": f"Bearer {key}"})
+        st["openrouter_key"] = k.get("data") if c1 == 200 and isinstance(k, dict) else f"{c1} {str(k)[:150]}"
+        c2, a = http("https://openrouter.ai/api/v1/activity", headers={"Authorization": f"Bearer {key}"})
+        st["openrouter_activity"] = a.get("data") if c2 == 200 and isinstance(a, dict) else f"{c2} {str(a)[:150]}"
+    try:  # сколько раз за сутки радар звал нейросеть (по журналу)
+        j = subprocess.run(["journalctl", "-u", "radar", "--since", "24 hours ago", "--no-pager", "-o", "cat"], capture_output=True, text=True, timeout=60).stdout
+        st["radar_log_24h"] = {"lines": j.count("\n"), "llm_warn": j.count("LLM "), "wealth": j.count("wealth "),
+                               "scan_model": j.count("scan model"), "openrouter_http": j.count("openrouter.ai")}
+    except Exception as e:
+        st["radar_log_24h"] = str(e)[:100]
     url = f"https://api.github.com/repos/{REPO}/contents/keeper/status.json"
     hd = {"Authorization": f"Bearer {GH}", "Accept": "application/vnd.github+json"}
     code, cur = http(url, headers=hd)
@@ -337,7 +349,8 @@ def main():
         step("replies", replies)
         step("balances", balances)
         step("health", health)
-        if every("status", 15):
+        if every("status", 15) or not S.get("status_v2"):
+            S["status_v2"] = 1
             step("status", push_status)
         save()
         time.sleep(max(5, 60 - (time.time() - t)))
