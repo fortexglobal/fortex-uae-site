@@ -1,0 +1,25 @@
+{
+ "at": "2026-10-27T22:30+04:00",
+ "errors": [],
+ "openrouter_left": 3.91,
+ "apify_left": null,
+ "alerts": {
+  "llm": "26.10 21:11",
+  "bal-openrouter": "27.10 18:21"
+ },
+ "services": {
+  "radar": "active",
+  "leadbot": "active",
+  "keeper": "active"
+ },
+ "radar_files": {
+  "autoreply.py": 1792992989.4594107,
+  "starters.py": 1792992989.7624214,
+  "content.py": 1792864972.8793461,
+  "igdm.py": 1792864971.8403275,
+  "reactions.py": 1792864973.1343508,
+  "newsfeed.py": 1792864972.646342,
+  "kb.md": 1792992968.8936775,
+  "leadbot.py": 1792992968.600667
+ }
+}
