@@ -204,10 +204,23 @@ def clean(t, limit):
     out = sents[0].strip() if sents else ""
     words = out.split()
     if len(words) > MAX_WORDS:
-        # обрезаем по последней запятой в пределах лимита, иначе не пишем вовсе, чтобы не было обрубков
-        head = " ".join(words[:MAX_WORDS])
-        out = head[:head.rfind(",")] if "," in head and len(head[:head.rfind(",")].split()) >= 3 else ""
+        out = ""   # обрубки не пишем: длинное сначала ужимает short()
     return out.rstrip(" .,;:…")
+
+
+async def short(t):
+    """Вся мысль целиком в 5–7 слов: длинный ответ нейросеть пересказывает заново, а не обрезаем."""
+    t = (t or "").strip()
+    if not t:
+        return ""
+    for _ in range(2):
+        if len(re.sub(r"[\"«»“”„']", "", t).split()) <= MAX_WORDS:
+            break
+        t = await llm([{"role": "user", "content":
+            "Перескажи всю мысль и посыл этого сообщения для Telegram-чата заново, целиком, в 5–7 словах. "
+            "Не обрезай, а сожми: главное должно остаться. Разговорный русский сленг (или разговорный английский, "
+            "если сообщение на английском), без точки в конце, без кавычек, без ссылок. Верни только фразу.\n\n" + t}], 60)
+    return t
 
 
 async def is_admin(chat_id, uid):
@@ -362,7 +375,7 @@ async def on_group(ev, text):
         return
     if BOT_Q_RE.search(text) or await is_admin(ev.chat_id, sender.id):
         return
-    draft = clean(res.get("reply", ""), int(len(text) * 0.7) if len(text) > 60 else 80)
+    draft = clean(await short(res.get("reply", "")), int(len(text) * 0.7) if len(text) > 60 else 80)
     if not draft:
         return
     S["replies"] += 1; S["reply_chats"].append(ev.chat_id); S["authors"].append(sender.id); save()
@@ -399,7 +412,7 @@ async def on_reply_to_us(ev, rm, text):
             {"role": "user", "content": f"Исходное сообщение человека:\n{th['root']}\n\nНаши ответы:\n" + "\n".join(th["history"]) +
              f"\n\nНовое сообщение в ветке:\n{text[:800]}\n\n{task}\nЕсли отвечать не нужно (просто «спасибо», «ок»), "
              "верни пустую строку. Верни только текст ответа."}]
-    reply = clean(await llm(msgs), max(int(len(text) * 0.7), 90))
+    reply = clean(await short(await llm(msgs)), max(int(len(text) * 0.7), 90))
     if not reply:
         return
     th = dict(th, depth=depth)
