@@ -27,9 +27,10 @@ FAL_KEY = os.environ.get("FAL_KEY", "")
 EL_KEY = os.environ.get("ELEVENLABS_API_KEY", "")
 DRY = os.environ.get("REEL_DRY") == "1"
 FAL_MODELS = ["fal-ai/kling-video/v2.5-turbo/pro/text-to-video", "fal-ai/kling-video/v1.6/standard/text-to-video"]
-VOICE_SPEED = 1.08  # скорость генерации: на ней диктор читает цифры и ударения чище всего
-VOICE_TEMPO = 1.0926  # ускорение готового голоса без изменения тембра: итог как speed 1.18
-DEFAULT_VOICE = os.environ.get("REEL_VOICE_ID", "pNInz6obpgDQGcFmaJgB")  # Adam: глубокий мужской, хорошо читает по-русски на multilingual_v2
+VOICE_SPEED = 1.05  # Brian на 1.05 читает естественно, интонация в конце фразы вниз
+VOICE_TEMPO = 1.10  # ускорение готового голоса без изменения тембра
+DEFAULT_VOICE = os.environ.get("REEL_VOICE_ID", "nPczCjzI2devNBz1zQrb")  # Brian: утверждён Александром 26.10 (Adam читал плохо)
+VOICE_SETTINGS = {"stability": 0.6, "similarity_boost": 0.8, "style": 0.1, "use_speaker_boost": True}
 STYLE = (", vertical 9:16 framing, photorealistic, cinematic, natural skin, realistic people, dynamic camera movement, "
          "shallow depth of field, premium Dubai atmosphere, no text, no captions, no logos, no watermarks")
 NEG = "text, letters, subtitles, watermark, logo, blurry, distorted face, extra fingers, cartoon, low quality"
@@ -84,7 +85,7 @@ def tts(text, voice_id, out_mp3):
                 "character_end_times_seconds": [(i + 1) * dur / n for i in range(n)]}
     r = http(f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps?output_format=mp3_44100_128",
              {"text": text, "model_id": "eleven_multilingual_v2",
-              "voice_settings": {"stability": 0.38, "similarity_boost": 0.8, "style": 0.35, "use_speaker_boost": True, "speed": VOICE_SPEED}, "seed": 7},
+              "voice_settings": {**VOICE_SETTINGS, "speed": VOICE_SPEED}, "seed": 11},
              {"xi-api-key": EL_KEY}, timeout=300)
     open(out_mp3, "wb").write(base64.b64decode(r["audio_base64"]))
     return r.get("alignment") or r.get("normalized_alignment")
@@ -414,7 +415,8 @@ def render_motion(slug, src, out_dir):
         ff(["-i", vid, "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
             "-movflags", "+faststart", out])
     ff(["-ss", str(src.get("cover_at", 2.0)), "-i", out, "-frames:v", "1", "-q:v", "2", os.path.join(out_dir, "cover.jpg")])
-    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "music": has_music}
+    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
+            "stock": {k: v for k, v in clips.items() if v.get("key") == "stock"}, "music": has_music}
     try:
         import reel_qa
         if not DRY:
@@ -447,7 +449,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.8", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.9", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -469,7 +471,7 @@ def render_one(slug, src, browser):
         off += len(sp) + 1
     text = " ".join(lines)
     vid = src.get("voice_id") or DEFAULT_VOICE
-    vk = key(text, vid, VOICE_SPEED, DRY)  # сырой голос; ускорение ниже
+    vk = key(text, vid, VOICE_SPEED, VOICE_SETTINGS, DRY)  # сырой голос; ускорение ниже
     voice_mp3 = os.path.join(out_dir, "voice.mp3")
     if cache.get("voice") == vk and os.path.exists(voice_mp3) and cache.get("align"):
         al = cache["align"]
@@ -505,8 +507,27 @@ def render_one(slug, src, browser):
     clips = cache.setdefault("clips", {})
     paths = [os.path.join(tmp, f"c{i}.mp4") for i in range(n_shot)]
 
+    import reel_fmt
+    reel_fmt.R = sys.modules[__name__]
+    used = json.load(open(reel_fmt.USED_P)) if os.path.exists(reel_fmt.USED_P) else {}
+    ai_used = []
+
     def get(i):
         need = shot_seg[i][1] - shot_seg[i][0]
+        if shots[i].get("q"):  # живое стоковое видео (Pexels/Pixabay); ИИ-клип только если сток ничего не нашёл
+            if i == 0:
+                reel_fmt.AI_BUDGET["left"] = 0  # первый кадр всегда живой
+            try:
+                sid, author = reel_fmt.get_clip({"q": shots[i]["q"], "prompt": shots[i].get("prompt")}, paths[i], used, min(need, 6), i)
+            except RuntimeError:
+                reel_fmt.AI_BUDGET["left"] = 2
+                sid, author = reel_fmt.get_clip({"q": shots[i]["q"].split(",")[0] + " dubai", "prompt": shots[i].get("prompt")}, paths[i], used, 3, i)
+            if i == 0:
+                reel_fmt.AI_BUDGET["left"] = 2
+            if author == "ai":
+                ai_used.append(i)
+            clips[str(i)] = {"key": "stock", "src": sid, "author": author}
+            return
         ck = key(shots[i]["prompt"], need > 7.0, DRY)
         c = clips.get(str(i))
         if c and c.get("key") == ck and c.get("url") and c["url"] != "dry":
@@ -518,8 +539,10 @@ def render_one(slug, src, browser):
         url = gen_clip(shots[i]["prompt"], need, paths[i], i)
         clips[str(i)] = {"key": ck, "url": url}
 
+    get(0)  # первый кадр отдельно: для него запрет на ИИ
     with concurrent.futures.ThreadPoolExecutor(4) as ex:
-        list(ex.map(get, range(n_shot)))
+        list(ex.map(get, range(1, n_shot)))
+    json.dump(used, open(reel_fmt.USED_P, "w"))
     json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
 
     # 3. музыка
@@ -621,7 +644,8 @@ def render_one(slug, src, browser):
     except Exception as e:
         log("cover fallback", e)
         ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
-    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1),
+    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
+            "stock": {k: v for k, v in clips.items() if v.get("key") == "stock"},
             "safe_zone": safe_report(words_from(al, alts), cta_start)}
     try:
         import reel_qa

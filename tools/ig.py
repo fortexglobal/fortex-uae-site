@@ -170,7 +170,10 @@ def main():
                 m = json.load(open(meta))
                 sha = subprocess.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
                 cdn = f"https://cdn.jsdelivr.net/gh/fortexglobal/fortex-uae-site@{sha}/ig/reels/{slug}"
-                res = publish_reel(f"{cdn}/{m['video']}", f"{cdn}/{m['cover']}", item.get("caption", ""))
+                cap = item.get("caption", "")
+                if m.get("ai_clips") and "ИИ" not in cap:  # в рилсе есть ИИ-кадры: честная пометка
+                    cap = cap.rstrip() + "\n\nЧасть кадров создана с помощью ИИ."
+                res = publish_reel(f"{cdn}/{m['video']}", f"{cdn}/{m['cover']}", cap)
                 item.pop("format", None)
             else:
                 item["images"] = [f"{RAW}/ig/{slug}/{x}" for x in json.load(open(meta))["files"]]
