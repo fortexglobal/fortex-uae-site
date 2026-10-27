@@ -288,23 +288,54 @@ def health():
         alert("llm", "Автоответ в Threads не получил текст от нейросети: " + str(e.get("err", ""))[:200], 6)
 
 
+def step(name, fn):
+    try:
+        fn()
+    except Exception as e:
+        tb = traceback.format_exc()
+        print(tb, flush=True)
+        errs = S.setdefault("errors", [])
+        errs.append([datetime.now(DUBAI).strftime("%d.%m %H:%M"), name, f"{type(e).__name__}: {e}"[:300], tb[-600:]])
+        S["errors"] = errs[-15:]
+
+
+def push_status():
+    """Состояние смотрителя в репозиторий (keeper/status.json): ошибки, балансы, что выложено. Для разбора без доступа к серверу."""
+    import base64
+    st = {"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "errors": S.get("errors", []),
+          "openrouter_left": S.get("openrouter_left"), "apify_left": S.get("apify_left"),
+          "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
+          "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
+          "radar_files": {f: os.path.getmtime(os.path.join("/opt/radar", f)) for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", f))}}
+    url = f"https://api.github.com/repos/{REPO}/contents/keeper/status.json"
+    hd = {"Authorization": f"Bearer {GH}", "Accept": "application/vnd.github+json"}
+    code, cur = http(url, headers=hd)
+    body = {"message": "Смотритель: состояние", "content": base64.b64encode(json.dumps(st, ensure_ascii=False, indent=1).encode()).decode(), "branch": "main"}
+    if code == 200 and isinstance(cur, dict):
+        body["sha"] = cur["sha"]
+    code, r = http(url, body, hd, "PUT")
+    if code not in (200, 201):
+        raise RuntimeError(f"status push {code}: {str(r)[:200]}")
+
+
 def main():
-    tg("Смотритель запущен: публикации минута в минуту, ответы в Threads каждые 5 минут, балансы и работоспособность под контролем.")
+    if not S.get("started"):
+        tg("Смотритель запущен: публикации минута в минуту, ответы в Threads каждые 5 минут, балансы и работоспособность под контролем.")
+        S["started"] = time.time()
     while True:
         t = time.time()
-        try:
-            if every("pull", 1):
-                pull()
-                selfupdate()
-                deploy_radar()
-            if every("export", 30):
-                export_radar()
-            publications()
-            replies()
-            balances()
-            health()
-        except Exception:
-            traceback.print_exc()
+        if every("pull", 1):
+            step("pull", pull)
+            step("selfupdate", selfupdate)
+            step("deploy", deploy_radar)
+        if every("export", 30):
+            step("export", export_radar)
+        step("publications", publications)
+        step("replies", replies)
+        step("balances", balances)
+        step("health", health)
+        if every("status", 15):
+            step("status", push_status)
         save()
         time.sleep(max(5, 60 - (time.time() - t)))
 
