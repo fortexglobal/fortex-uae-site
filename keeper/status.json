@@ -1,11 +1,10 @@
 {
- "at": "2026-10-28T00:18+04:00",
+ "at": "2026-10-28T00:33+04:00",
  "errors": [],
- "openrouter_left": 3.12,
+ "openrouter_left": 17.79,
  "apify_left": null,
  "alerts": {
-  "llm": "26.10 21:11",
-  "bal-openrouter": "27.10 18:21"
+  "llm": "26.10 21:11"
  },
  "services": {
   "radar": "active",
@@ -13,10 +12,10 @@
   "keeper": "active"
  },
  "radar_files": {
-  "autoreply.py": "28.10 00:16",
+  "autoreply.py": "28.10 00:31",
   "starters.py": "27.10 22:31",
   "content.py": "24.10 22:02",
-  "igdm.py": "28.10 00:16",
+  "igdm.py": "28.10 00:33",
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
   "kb.md": "27.10 23:48",
@@ -34,7 +33,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 86.48060665,
+  "limit_remaining": 86.46022575,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -42,8 +41,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 13.51939335,
-    "remaining_usd": 86.48060665,
+    "spend_usd": 13.53977425,
+    "remaining_usd": 86.46022575,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -54,16 +53,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 13.51939335,
-   "remaining_usd": 86.48060665,
+   "spend_usd": 13.53977425,
+   "remaining_usd": 86.46022575,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 13.51939335,
-  "usage_daily": 3.3741859,
-  "usage_weekly": 3.85586225,
-  "usage_monthly": 13.51939335,
+  "usage": 13.53977425,
+  "usage_daily": 3.3945668,
+  "usage_weekly": 3.87624315,
+  "usage_monthly": 13.53977425,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -89,10 +88,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 1581,
+  "lines": 1571,
   "llm_warn": 0,
-  "wealth": 103,
+  "wealth": 64,
   "scan_model": 0,
-  "openrouter_http": 483
+  "openrouter_http": 443
  }
 }
