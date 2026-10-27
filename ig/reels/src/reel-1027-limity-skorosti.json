@@ -13,7 +13,7 @@
    "say": "Уже через {5 дней|пять дней} камеры в Дубае начнут ловить по-новому."
   },
   {
-   "q": "dubai highway traffic aerial",
+   "q": "highway interchange aerial traffic",
    "prompt": "aerial drone shot over a busy Dubai highway interchange at golden hour, no people",
    "say": "С первого ноября лимиты скорости меняют сразу на {5|пяти} дорогах."
   },
@@ -23,7 +23,7 @@
    "say": "На трёх дорогах скорость поднимут. Где-то с {60|шестидесяти} до {80|восьмидесяти}."
   },
   {
-   "q": "dubai road traffic sunset",
+   "q": "city road traffic sunset",
    "prompt": "cars on a Dubai road at sunset, palm trees, no faces",
    "say": "А на двух снизят. Например, со {100|ста} до {90|девяноста}."
   },
