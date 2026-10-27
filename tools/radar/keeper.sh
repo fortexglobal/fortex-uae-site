@@ -47,7 +47,7 @@ fi
 if ! grep -q '^APIFY_TOKEN=' /opt/keeper/keeper.env; then
   echo "Токен Apify для контроля баланса (console.apify.com → Settings → API & Integrations). Можно пропустить: просто Enter."
   read -r A < /dev/tty || true
-  [ -n "$A" ] && echo "APIFY_TOKEN=$A" >> /opt/keeper/keeper.env
+  echo "APIFY_TOKEN=$A" >> /opt/keeper/keeper.env   # пустой = пропущено, больше не спрашиваем
 fi
 
 # Проверка: умеет ли токен GitHub запускать публикации
