@@ -1,0 +1,37 @@
+{
+ "v": 2,
+ "status": "approved",
+ "publish_at": "2026-10-27T19:00+04:00",
+ "ring": 4,
+ "hook": "Дубай: новые лимиты скорости с 1 ноября",
+ "accent": "лимиты скорости",
+ "music": "minimal UK garage, 132 bpm, shuffled 2-step drum groove with crisp rimshots, rubbery sub bass line, short detuned synth stabs, signature sound: a filtered car-engine whoosh riser that lands on the first kick at second 3, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "prompt": "handheld shot inside a car at blue hour on a wide Dubai highway, a man in his 30s in a white linen shirt grips the steering wheel and glances up at the rear-view mirror with a focused look, skyscraper lights streaking past the windows, his face in the upper center of the frame, cinematic motion blur",
+   "say": "Уже через {5 дней|пять дней} камеры в {Дубае|Дуба́е} начнут ловить по-новому."
+  },
+  {
+   "prompt": "aerial drone tracking shot over a large multi-level highway interchange in Dubai at golden hour, dense traffic flowing smoothly across the lanes, glass towers of Business Bay in the background, slow forward glide, warm sunlight, action in the upper half of the frame",
+   "say": "Лимиты меняют сразу на {5|пяти} дорогах. На трёх скорость поднимут."
+  },
+  {
+   "prompt": "low tracking shot alongside a white sedan driving on a wide empty boulevard near Meydan in Dubai at sunset, then cut to a smiling woman in her 30s with sunglasses at the wheel, relaxed and confident, palm trees passing, golden hour light, camera moving with the car",
+   "say": "На {Аль-Асаель|Аль-Асае́ль} вместо {60|шестидесяти} разрешат {80|восемьдесят} километров в час."
+  },
+  {
+   "prompt": "close-up of a glowing car dashboard at night with the speedometer needle slowly dropping, digits blurred and out of focus, then the driver's hand eases the grip on the steering wheel, Dubai neon city lights reflected on the windshield, shallow depth of field, slow push-in",
+   "say": "А на {Аль-Ребат|Аль-Реба́т} лимит снизят со {100|ста} до {90|девяноста}."
+  },
+  {
+   "prompt": "slow dolly-in toward a roadside speed camera on a grey pole above a Dubai highway at night, cars passing below leaving long red and white light trails, Downtown skyline glowing in the distance, the camera unit in the upper center of the frame, moody blue night lighting",
+   "say": "Камеры перенастроят заранее. Поедете по привычке, и придёт штраф от {300|трёхсот} дирхамов."
+  }
+ ],
+ "cta": {
+  "title": "Подпишись",
+  "text": "Новые правила Дубая раньше, чем придёт штраф",
+  "say": "Подпишись, чтобы узнавать о новых правилах первым."
+ },
+ "caption": "С 1 ноября в Дубае меняют ограничения скорости на 5 дорогах. Проверьте, нет ли среди них вашего маршрута.\n\nСкорость поднимут:\n• Al Asayel Street (от Oud Metha до Al Meydan): с 60 до 80 км/ч\n• Al Mustaqbal Street (от Sheikh Rashid до Al Meydan): с 60 до 70 км/ч\n• Latifa bint Hamdan Street (от Sheikh Zayed Road до Al Khail Road): с 60 до 70 км/ч\n\nСкорость снизят:\n• Al Rebat Street (от Marrakech Street до Sheikh Mohammed bin Zayed Road): со 100 до 90 км/ч\n• Sheikh Sabah Al Ahmad Al Jaber Al Sabah Street (от 2nd December до Khalid bin Al Waleed): с 80 до 70 км/ч\n\nRTA заменит знаки, а камеры перенастроят под новые лимиты до 1 ноября. Изменения согласованы с полицией Дубая, по данным Khaleej Times и Gulf News. Штраф за превышение до 20 км/ч в ОАЭ составляет 300 дирхамов.\n\nКакой из этих дорог вы ездите каждый день?\n\nВидео создано с помощью ИИ.\n\n#дубай #оаэ #новостидубая #дубайжизнь #rta #водительвдубае"
+}
