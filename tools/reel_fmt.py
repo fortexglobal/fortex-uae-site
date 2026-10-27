@@ -109,6 +109,7 @@ def pixabay_pick(query, used, min_secs):
 
 
 AI_BUDGET = {"left": 4}
+LAST_LINK = {}  # idx -> (ссылка, заголовки) последнего скачанного стока, чтобы рилс v2 мог закрепить удачный кадр
 
 
 def get_clip(item, path, used, min_secs, idx):
@@ -126,6 +127,7 @@ def get_clip(item, path, used, min_secs, idx):
                 vid, link, author = got
                 open(path, "wb").write(R.http(link, raw=True, timeout=300))
                 used[vid] = 1
+                LAST_LINK[idx] = (link, "pexels")
                 R.log(f"clip {idx}: pexels {vid} ({author}) «{attempt}»")
                 return f"pexels:{vid}", author
     if PIXABAY_KEY and q:
@@ -135,6 +137,7 @@ def get_clip(item, path, used, min_secs, idx):
                 vid, link, author = got
                 open(path, "wb").write(R.http(link, headers=UA, raw=True, timeout=300))
                 used[vid] = 1
+                LAST_LINK[idx] = (link, "pixabay")
                 R.log(f"clip {idx}: pixabay {vid} ({author}) «{attempt}»")
                 return f"pixabay:{vid}", author
     if R.FAL_KEY and AI_BUDGET["left"] > 0:

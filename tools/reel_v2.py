@@ -515,6 +515,14 @@ def render_one(slug, src, browser):
     def get(i):
         need = shot_seg[i][1] - shot_seg[i][0]
         if shots[i].get("q"):  # живое стоковое видео (Pexels/Pixabay); ИИ-клип только если сток ничего не нашёл
+            c = clips.get(str(i)) or {}
+            if c.get("key") == "stock" and c.get("q") == shots[i]["q"] and c.get("link"):  # тот же запрос: тот же кадр
+                try:
+                    hd = reel_fmt.UA if c.get("site") == "pixabay" else {}
+                    open(paths[i], "wb").write(http(c["link"], headers=hd, raw=True, timeout=300))
+                    return
+                except Exception as e:
+                    log(f"stock {i} cache miss: {e}")
             if i == 0:
                 reel_fmt.AI_BUDGET["left"] = 0  # первый кадр всегда живой
             try:
@@ -526,7 +534,8 @@ def render_one(slug, src, browser):
                 reel_fmt.AI_BUDGET["left"] = 2
             if author == "ai":
                 ai_used.append(i)
-            clips[str(i)] = {"key": "stock", "src": sid, "author": author}
+            link, site = reel_fmt.LAST_LINK.get(i, (None, None)) if author != "ai" else (None, None)
+            clips[str(i)] = {"key": "stock", "q": shots[i]["q"], "src": sid, "author": author, "link": link, "site": site}
             return
         ck = key(shots[i]["prompt"], need > 7.0, DRY)
         c = clips.get(str(i))

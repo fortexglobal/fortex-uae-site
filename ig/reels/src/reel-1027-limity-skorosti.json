@@ -18,17 +18,17 @@
    "say": "С первого ноября лимиты скорости меняют сразу на {5|пяти} дорогах."
   },
   {
-   "q": "car speedometer dashboard",
+   "q": "speedometer driving",
    "prompt": "close-up of a car speedometer needle rising at night, no people",
    "say": "На трёх дорогах скорость поднимут. Где-то с {60|шестидесяти} до {80|восьмидесяти}."
   },
   {
-   "q": "city road traffic sunset",
+   "q": "dubai traffic",
    "prompt": "cars on a Dubai road at sunset, palm trees, no faces",
    "say": "А на двух снизят. Например, со {100|ста} до {90|девяноста}."
   },
   {
-   "q": "traffic speed camera road",
+   "q": "dubai highway night",
    "prompt": "roadside speed camera above a highway at night with light trails, no people",
    "say": "Поедете по привычке, и придёт штраф от {300|трёхсот} дирхамов. Список дорог в описании."
   }
