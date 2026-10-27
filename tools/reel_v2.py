@@ -91,6 +91,30 @@ def tts(text, voice_id, out_mp3):
     return r.get("alignment") or r.get("normalized_alignment")
 
 
+def speech_check(mp3, expected):
+    """Распознаём готовый голос (ElevenLabs Scribe) и сравниваем со сценарием по словам.
+    Возвращает {"match": 0..1, "heard": текст, "diffs": [[ожидали, услышали], ...]}."""
+    import difflib, uuid
+    try:
+        b = "----" + uuid.uuid4().hex
+        body = (f"--{b}\r\nContent-Disposition: form-data; name=\"model_id\"\r\n\r\nscribe_v1\r\n"
+                f"--{b}\r\nContent-Disposition: form-data; name=\"language_code\"\r\n\r\nrus\r\n"
+                f"--{b}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"v.mp3\"\r\nContent-Type: audio/mpeg\r\n\r\n").encode() \
+            + open(mp3, "rb").read() + f"\r\n--{b}--\r\n".encode()
+        r = http("https://api.elevenlabs.io/v1/speech-to-text", body,
+                 {"xi-api-key": EL_KEY, "Content-Type": f"multipart/form-data; boundary={b}"}, timeout=180)
+        heard = r.get("text", "")
+    except Exception as e:
+        log("stt error", e)
+        return {"error": str(e)[:200]}
+    norm = lambda t: re.sub(r"[^а-яёa-z0-9 ]", " ", t.lower().replace("ё", "е").replace("\u0301", "")).split()
+    a, bw = norm(expected), norm(heard)
+    sm = difflib.SequenceMatcher(None, a, bw)
+    diffs = [[" ".join(a[i1:i2]), " ".join(bw[j1:j2])] for op, i1, i2, j1, j2 in sm.get_opcodes() if op != "equal"]
+    log(f"stt match {sm.ratio():.2f}, diffs {diffs[:8]}")
+    return {"match": round(sm.ratio(), 3), "heard": heard, "diffs": diffs[:30]}
+
+
 # ---------- музыка ----------
 BANNED_MUSIC = ["corporate", "upbeat", "inspiring", "motivational", "uplifting", "happy", "background music",
                 "positive", "epic cinematic", "commercial", "luxury"]
@@ -415,7 +439,7 @@ def render_motion(slug, src, out_dir):
         ff(["-i", vid, "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
             "-movflags", "+faststart", out])
     ff(["-ss", str(src.get("cover_at", 2.0)), "-i", out, "-frames:v", "1", "-q:v", "2", os.path.join(out_dir, "cover.jpg")])
-    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
+    meta = {"stt": stt, "hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
             "stock": {k: v for k, v in clips.items() if v.get("key") == "stock"}, "music": has_music}
     try:
         import reel_qa
@@ -449,7 +473,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.9", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.10", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         return False
@@ -483,6 +507,10 @@ def render_one(slug, src, browser):
         ff(["-i", voice_mp3, "-af", f"atempo={VOICE_TEMPO}", fast])
         voice_mp3 = fast
         al = {k: ([t / VOICE_TEMPO for t in v] if k.endswith("seconds") else v) for k, v in al.items()}
+    stt = cache.get("stt") if cache.get("stt_key") == vk else None
+    if stt is None and not DRY:
+        stt = speech_check(voice_mp3, text)
+        cache.update(stt=stt, stt_key=vk)
     vdur = probe_dur(voice_mp3)
     # время начала каждой фразы
     starts, pos = [], 0
@@ -647,13 +675,16 @@ def render_one(slug, src, browser):
                  "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-maxrate", "4.5M", "-bufsize", "9M", "-pix_fmt", "yuv420p",
                  "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-movflags", "+faststart", os.path.join(out_dir, video)])
     try:
-        import reel_fmt
+        import reel_fmt, reel_cover
         reel_fmt.R = sys.modules[__name__]
-        reel_fmt.best_cover(os.path.join(out_dir, video), 0.4, max(1.2, hook_end), os.path.join(out_dir, "cover.jpg"))
+        frame = os.path.join(tmp, "frame.jpg")
+        reel_fmt.best_cover(base, 0.2, min(cta_start, total) - 0.3, frame)  # чистый кадр без текста
+        reel_cover.render(frame, src.get("cover_title") or src.get("hook"), src.get("accent"),
+                          src.get("cover_note") or "Новости Дубая", os.path.join(out_dir, "cover.jpg"), browser)
     except Exception as e:
         log("cover fallback", e)
         ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
-    meta = {"hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
+    meta = {"stt": stt, "hash": h, "video": video, "cover": "cover.jpg", "v": 2, "duration": round(total, 1), "ai_clips": ai_used,
             "stock": {k: v for k, v in clips.items() if v.get("key") == "stock"},
             "safe_zone": safe_report(words_from(al, alts), cta_start)}
     try:
