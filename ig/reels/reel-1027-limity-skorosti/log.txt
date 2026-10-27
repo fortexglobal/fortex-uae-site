@@ -1,8 +1,6 @@
-09:02:53 start reel-1027-limity-skorosti
-09:02:55 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
-09:02:55 clip 0: pixabay px50299 (18368956 [traffic, cars, city, highway, california]) «driving car highway night city lights pov»
-09:02:56 clip 2: pixabay px252242 (JoshuaWoroniecki [motorcycle, drive, driving, road, highwa]) «speedometer driving»
-09:02:56 clip 1: pixabay px291424 (TungArt7 [transportation, beautiful wallpaper, tra]) «highway interchange aerial traffic»
-09:02:57 clip 3: pixabay px108522 (Galaxy7894 [building, skyscraper, business, architec]) «dubai traffic»
-09:04:48 clip 4: v2.5-turbo 5s ok
-09:07:07 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 12.9 MB, music=True
+11:10:09 start reel-1027-limity-skorosti
+11:10:10 stt error HTTP Error 401: Unauthorized
+11:10:10 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
+11:10:10 clip 0: pixabay px347611 (Shutter_Footage [jeep, dubai, uae, emirates, safari, hill]) «dubai driving car road»
+11:10:11 clip 4: pixabay px360754 (Janhom_Footage [sky gate bridge, kansai airport, airport]) «highway night traffic light trails»
+11:12:35 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 10.8 MB, music=True

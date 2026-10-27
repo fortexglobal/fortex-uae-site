@@ -1,19 +1,20 @@
 {
- "hash": "9de9dd6d52",
- "video": "9de9dd6d52.mp4",
+ "stt": {
+  "error": "HTTP Error 401: Unauthorized"
+ },
+ "hash": "57e15e7401",
+ "video": "57e15e7401.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 23.3,
- "ai_clips": [
-  4
- ],
+ "ai_clips": [],
  "stock": {
   "0": {
    "key": "stock",
-   "q": "driving car highway night city lights pov",
-   "src": "pixabay:px50299",
-   "author": "18368956 [traffic, cars, city, highway, california]",
-   "link": "https://cdn.pixabay.com/video/2020/09/19/50299-460295794_large.mp4",
+   "q": "dubai driving car road",
+   "src": "pixabay:px347611",
+   "author": "Shutter_Footage [jeep, dubai, uae, emirates, safari, hill]",
+   "link": "https://cdn.pixabay.com/video/2026/04/19/347611_large.mp4",
    "site": "pixabay"
   },
   "2": {
@@ -42,11 +43,11 @@
   },
   "4": {
    "key": "stock",
-   "q": "dubai highway night",
-   "src": "https://v3b.fal.media/files/b/0ab00a84/By2nNVeY74r2N6SvdUZqI_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "q": "highway night traffic light trails",
+   "src": "pixabay:px360754",
+   "author": "Janhom_Footage [sky gate bridge, kansai airport, airport]",
+   "link": "https://cdn.pixabay.com/video/2026/06/26/360754_large.mp4",
+   "site": "pixabay"
   }
  },
  "safe_zone": {
