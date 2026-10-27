@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T20:40+04:00",
+ "generated": "2026-10-27T08:05+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -7,7 +7,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De6Hw8NFY_V",
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
-   "views": 4,
+   "views": 5,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -20,12 +20,12 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 792,
-   "likes": 13,
-   "replies": 6,
+   "views": 1098,
+   "likes": 22,
+   "replies": 29,
    "reposts": 0,
    "quotes": 0,
-   "shares": 1
+   "shares": 2
   },
   {
    "slug": "t-1026-lagerya",
@@ -33,9 +33,9 @@
    "url": "https://www.threads.com/@fortex__uae/post/De9jXS5kbDH",
    "kind": "тренд",
    "text": "Дубай делится на три лагеря.\n\nПервые: «Тут даже Макдональдс вкуснее, чем дома».\n\nВторые: «За такие деньги могли бы и пос",
-   "views": 133,
-   "likes": 1,
-   "replies": 4,
+   "views": 182,
+   "likes": 2,
+   "replies": 13,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -43,17 +43,17 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1452,
-  "likes": 15,
-  "replies": 11,
+  "views": 2023,
+  "likes": 32,
+  "replies": 62,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
  },
  "account_7d": {
-  "views": 1630,
-  "likes": 20,
-  "replies": 17,
+  "views": 2201,
+  "likes": 37,
+  "replies": 68,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 0
@@ -89,7 +89,7 @@
   },
   {
    "date": "2026-10-26",
-   "views": 1011
+   "views": 1582
   }
  ],
  "link_clicks_7d": [
@@ -114,27 +114,27 @@
  "by_kind": {
   "закреп": {
    "posts": 1,
-   "views": 4,
+   "views": 5,
    "replies": 0,
    "likes": 0,
-   "avg_views": 4.0,
+   "avg_views": 5.0,
    "avg_replies": 0.0
   },
   "стёб": {
    "posts": 1,
-   "views": 792,
-   "replies": 6,
-   "likes": 13,
-   "avg_views": 792.0,
-   "avg_replies": 6.0
+   "views": 1098,
+   "replies": 29,
+   "likes": 22,
+   "avg_views": 1098.0,
+   "avg_replies": 29.0
   },
   "тренд": {
    "posts": 1,
-   "views": 133,
-   "replies": 4,
-   "likes": 1,
-   "avg_views": 133.0,
-   "avg_replies": 4.0
+   "views": 182,
+   "replies": 13,
+   "likes": 2,
+   "avg_views": 182.0,
+   "avg_replies": 13.0
   }
  }
 }
