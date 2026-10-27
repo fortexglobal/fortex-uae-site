@@ -25,8 +25,4 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python3 tools/threads.py replies
       - name: Commit
-        run: |
-          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
-          python3 tools/threads_sync.py || true
-          git add threads
-          git diff --cached --quiet || (git commit -m "Threads status" && (git pull --rebase -X theirs --autostash || (git rebase --abort; git pull --no-rebase -X ours --no-edit)) && git push)
+        run: bash tools/threads_commit.sh
