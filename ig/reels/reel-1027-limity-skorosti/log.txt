@@ -1,13 +1,8 @@
-06:39:30 start reel-1027-limity-skorosti
-06:39:36 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
-06:39:36 clip 0: pixabay px5715 (VariousPhotography [car, traffic, road, travel, city, urban,]) «driving car highway night city lights pov»
-06:39:37 clip 2: pixabay px4053 (VariousPhotography [car, interior, vehicle, automobile, tran]) «car speedometer dashboard»
-06:39:37 clip 4: pixabay px3514 (josemdelaa [traffic, city, hot, jam, cars, urban, tr]) «traffic speed camera road»
-06:41:41   pro: IN_PROGRESS 124s
-06:41:42   pro: IN_PROGRESS 124s
-06:43:39   pro: IN_PROGRESS 242s
-06:43:39   pro: IN_PROGRESS 242s
-06:44:05 clip 3: v2.5-turbo 5s ok
-06:44:05 clip 1: v2.5-turbo 5s ok
-06:44:09 music: elevenlabs ok
-06:45:31 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 11.8 MB, music=True
+06:59:18 start reel-1027-limity-skorosti
+06:59:18 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
+06:59:19 clip 0: pixabay px35277 (thenickmurphy [driving, night, highway, windshield, roa]) «driving car highway night city lights pov»
+06:59:19 clip 2: pixabay px54897 (tommyvideo [speed, meter, speedometer, dashboard, ve]) «car speedometer dashboard»
+06:59:19 clip 4: pixabay px184878 (cipnt [cars, speed camera, speeding, speed limi]) «traffic speed camera road»
+06:59:19 clip 1: pixabay px248450 (TungArt7 [highway, transportation, traffic, interc]) «highway interchange aerial traffic»
+06:59:20 clip 3: pixabay px202754 (Matthias_Groeneveld [road, roundabout, traffic, sunset, urban]) «city road traffic sunset»
+07:01:06 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 11.2 MB, music=True

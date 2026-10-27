@@ -1,38 +1,35 @@
 {
- "hash": "666401a2c4",
- "video": "666401a2c4.mp4",
+ "hash": "6f09e03fe7",
+ "video": "6f09e03fe7.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 23.3,
- "ai_clips": [
-  3,
-  1
- ],
+ "ai_clips": [],
  "stock": {
   "0": {
    "key": "stock",
-   "src": "pixabay:px5715",
-   "author": "VariousPhotography [car, traffic, road, travel, city, urban,]"
+   "src": "pixabay:px35277",
+   "author": "thenickmurphy [driving, night, highway, windshield, roa]"
   },
   "2": {
    "key": "stock",
-   "src": "pixabay:px4053",
-   "author": "VariousPhotography [car, interior, vehicle, automobile, tran]"
+   "src": "pixabay:px54897",
+   "author": "tommyvideo [speed, meter, speedometer, dashboard, ve]"
   },
   "3": {
    "key": "stock",
-   "src": "https://v3b.fal.media/files/b/0ab00738/eAxzEEDau20qczKMO9Kws_output.mp4",
-   "author": "ai"
+   "src": "pixabay:px202754",
+   "author": "Matthias_Groeneveld [road, roundabout, traffic, sunset, urban]"
   },
   "1": {
    "key": "stock",
-   "src": "https://v3b.fal.media/files/b/0ab00737/ewVJBbKDTs-L1WvL46yU1_output.mp4",
-   "author": "ai"
+   "src": "pixabay:px248450",
+   "author": "TungArt7 [highway, transportation, traffic, interc]"
   },
   "4": {
    "key": "stock",
-   "src": "pixabay:px3514",
-   "author": "josemdelaa [traffic, city, hot, jam, cars, urban, tr]"
+   "src": "pixabay:px184878",
+   "author": "cipnt [cars, speed camera, speeding, speed limi]"
   }
  },
  "safe_zone": {
