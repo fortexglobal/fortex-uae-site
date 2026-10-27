@@ -176,6 +176,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
     <div>
       <a class="brand" href="/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX <b>UAE</b></span></a>
       <p class="muted">Банковские счета и финансовая инфраструктура в ОАЭ. Направление компании Fortex Global, Дубай.</p>
+      <p class="muted hours"><b>Часы работы:</b> пн–сб, 10:00–20:00 по Дубаю. Воскресенье выходной.</p>
     </div>
     <div class="foot-links">
       <a href="{TG}">Telegram @Fortex_Dubai</a>
@@ -197,7 +198,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
-    <p class="lead">Ответим в Telegram в течение 20 минут. По договорённости встречаемся лично в Дубае, оплата по этапам. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    <p class="lead">Ответим в Telegram в течение 20 минут в рабочее время (пн–сб, 10:00–20:00 по Дубаю). По договорённости встречаемся лично в Дубае. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
     {SOCIAL}
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
@@ -238,6 +239,7 @@ def build():
     org = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Fortex UAE", "url": SITE,
            "logo": SITE + "/img/mark.png", "image": SITE + "/img/og.jpg", "areaServed": "AE",
            "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
+           "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "10:00", "closes": "20:00"}],
            "description": "Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 5–7 дней, Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Работаем в Дубае с 2022 года.",
            "sameAs": [TG, CHANNEL, INSTAGRAM], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
            "slogan": "Инфраструктура для бизнеса в Эмиратах под ключ",

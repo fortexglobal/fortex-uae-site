@@ -475,3 +475,4 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 @media (max-width:700px){.svc-grid-2{grid-template-columns:1fr}}
 .sec.seo{background:rgba(246,247,249,.96);position:relative}.sec.seo .prose{text-shadow:none}.sec.seo .prose h2{font-family:var(--head);font-weight:600;letter-spacing:-.02em}
 .top .btn-gold{padding:11px 18px;font-size:15px;border-radius:12px}
+.foot .hours{margin-top:10px}
