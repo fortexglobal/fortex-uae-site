@@ -1,0 +1,19 @@
+05:50:34 start reel-1027-limity-skorosti
+05:50:39 reel-1027-limity-skorosti: voice 23.6s, shots [3.7, 3.7, 4.8, 3.3, 9.1]
+05:52:43   pro: IN_PROGRESS 123s
+05:52:43   pro: IN_PROGRESS 123s
+05:52:43   pro: IN_PROGRESS 123s
+05:52:43   pro: IN_PROGRESS 123s
+05:54:40   pro: IN_PROGRESS 240s
+05:54:40   pro: IN_PROGRESS 240s
+05:54:40   pro: IN_PROGRESS 240s
+05:54:40   pro: IN_PROGRESS 240s
+05:55:06 clip 0: v2.5-turbo 5s ok
+05:55:12 clip 2: v2.5-turbo 5s ok
+05:55:19 clip 3: v2.5-turbo 5s ok
+05:55:31 clip 1: v2.5-turbo 5s ok
+05:57:10   pro: IN_PROGRESS 123s
+05:59:07   pro: IN_PROGRESS 240s
+05:59:39 clip 4: v2.5-turbo 10s ok
+05:59:45 music: elevenlabs ok
+06:02:08 rendered reel v2 reel-1027-limity-skorosti: 24.5s, 12.9 MB, music=True
