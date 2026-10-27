@@ -101,9 +101,27 @@ def speech_check(mp3, expected):
                 f"--{b}\r\nContent-Disposition: form-data; name=\"language_code\"\r\n\r\nrus\r\n"
                 f"--{b}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"v.mp3\"\r\nContent-Type: audio/mpeg\r\n\r\n").encode() \
             + open(mp3, "rb").read() + f"\r\n--{b}--\r\n".encode()
-        r = http("https://api.elevenlabs.io/v1/speech-to-text", body,
-                 {"xi-api-key": EL_KEY, "Content-Type": f"multipart/form-data; boundary={b}"}, timeout=180)
-        heard = r.get("text", "")
+        try:
+            r = http("https://api.elevenlabs.io/v1/speech-to-text", body,
+                     {"xi-api-key": EL_KEY, "Content-Type": f"multipart/form-data; boundary={b}"}, timeout=180)
+            heard = r.get("text", "")
+        except Exception as e:  # у ключа ElevenLabs может не быть права на распознавание: слушаем через OpenRouter
+            log("stt elevenlabs", e)
+            key = os.environ.get("OPENROUTER_API_KEY", "")
+            heard = ""
+            for m in ("google/gemini-2.5-flash", "google/gemini-2.5-pro"):
+                try:
+                    r = http("https://openrouter.ai/api/v1/chat/completions",
+                             {"model": m, "temperature": 0, "messages": [{"role": "user", "content": [
+                                 {"type": "text", "text": "Дословно запиши, что говорит диктор, по-русски. Числа пиши словами так, как они прозвучали. Только текст, без комментариев."},
+                                 {"type": "input_audio", "input_audio": {"data": base64.b64encode(open(mp3, "rb").read()).decode(), "format": "mp3"}}]}]},
+                             {"Authorization": f"Bearer {key}"}, timeout=180)
+                    heard = r["choices"][0]["message"]["content"].strip()
+                    break
+                except Exception as e2:
+                    log("stt openrouter", m, e2)
+            if not heard:
+                raise RuntimeError("распознавание недоступно")
     except Exception as e:
         log("stt error", e)
         return {"error": str(e)[:200]}
@@ -476,6 +494,13 @@ def render_one(slug, src, browser):
     h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.10", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
+        meta = json.load(open(meta_p))
+        vm = os.path.join(out_dir, "voice.mp3")
+        if not DRY and EL_KEY and (not meta.get("stt") or meta["stt"].get("error")) and os.path.exists(vm):
+            sp = " ".join(parse_say(x.strip())[0] for x in [sh["say"] for sh in shots] + [cta.get("say", "")] if x.strip())
+            meta["stt"] = speech_check(vm, sp)
+            json.dump(meta, open(meta_p, "w"), indent=1, ensure_ascii=False)
+            return True
         return False
     if not DRY and not (FAL_KEY and EL_KEY):
         log("no FAL_KEY / ELEVENLABS_API_KEY, skip", slug)
@@ -507,7 +532,7 @@ def render_one(slug, src, browser):
         ff(["-i", voice_mp3, "-af", f"atempo={VOICE_TEMPO}", fast])
         voice_mp3 = fast
         al = {k: ([t / VOICE_TEMPO for t in v] if k.endswith("seconds") else v) for k, v in al.items()}
-    stt = cache.get("stt") if cache.get("stt_key") == vk else None
+    stt = cache.get("stt") if cache.get("stt_key") == vk and not (cache.get("stt") or {}).get("error") else None
     if stt is None and not DRY:
         stt = speech_check(voice_mp3, text)
         cache.update(stt=stt, stt_key=vk)
