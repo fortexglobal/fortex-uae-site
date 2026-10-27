@@ -97,7 +97,7 @@ def selfupdate():
         os._exit(0)
 
 
-RADAR_FILES = {"radar": ["autoreply.py", "starters.py", "content.py", "igdm.py", "reactions.py", "newsfeed.py", "kb.md"],
+RADAR_FILES = {"radar": ["autoreply.py", "starters.py", "content.py", "igdm.py", "reactions.py", "newsfeed.py", "kb.md", "server/radar.py"],
                "leadbot": ["leadbot.py"]}
 
 
@@ -107,7 +107,10 @@ def deploy_radar():
     for svc, files in RADAR_FILES.items():
         changed = []
         for f in files:
-            src, dst = os.path.join(SITE, "tools", "radar", f), os.path.join("/opt/radar", f)
+            src, dst = os.path.join(SITE, "tools", "radar", f), os.path.join("/opt/radar", os.path.basename(f))
+            if f.startswith("server/") and os.path.exists(src) and any(x in open(src, encoding="utf-8").read() for x in
+                    ("<BOT_TOKEN>", "<OPENROUTER_KEY>", "<GITHUB_TOKEN>", "<HEX32>", "<PHONE>", "<API_ID>", "<SECRET>")):
+                continue
             if os.path.exists(src) and os.path.exists(dst) and open(src, "rb").read() != open(dst, "rb").read():
                 changed.append((src, dst))
         if not changed:
@@ -306,7 +309,7 @@ def push_status():
           "openrouter_left": S.get("openrouter_left"), "apify_left": S.get("apify_left"),
           "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
           "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
-          "radar_files": {f: os.path.getmtime(os.path.join("/opt/radar", f)) for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", f))}}
+          "radar_files": {f: datetime.fromtimestamp(os.path.getmtime(os.path.join("/opt/radar", os.path.basename(f))), DUBAI).strftime("%d.%m %H:%M") for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", os.path.basename(f)))}}
     url = f"https://api.github.com/repos/{REPO}/contents/keeper/status.json"
     hd = {"Authorization": f"Bearer {GH}", "Accept": "application/vnd.github+json"}
     code, cur = http(url, headers=hd)
