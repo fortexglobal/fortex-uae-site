@@ -149,15 +149,21 @@ def _parts(text):
 
 
 async def _send(user, chat_id, text, reply_to):
-    """Отправляет ответ несколькими сообщениями, с паузой «печатает» между ними. Возвращает список сообщений."""
+    """Как человек: прочитал через 2–3 с, потом каждое предложение отдельным сообщением,
+    перед каждым «печатает» 5–10 с (короткое 5, длинное до 10). Возвращает список сообщений."""
+    await asyncio.sleep(random.uniform(2, 3))
+    try:
+        await user.send_read_acknowledge(chat_id, max_id=reply_to)
+    except Exception:
+        pass
     msgs = []
     for k, part in enumerate(_parts(text)):
-        if k:
-            try:
-                async with user.action(chat_id, "typing"):
-                    await asyncio.sleep(min(6, 1.2 + len(part) * 0.06 + random.random()))
-            except Exception:
-                await asyncio.sleep(2)
+        secs = min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4)
+        try:
+            async with user.action(chat_id, "typing"):
+                await asyncio.sleep(max(5.0, secs))
+        except Exception:
+            await asyncio.sleep(max(5.0, secs))
         msgs.append(await user.send_message(chat_id, part, reply_to=reply_to if k == 0 else None))
     return msgs
 
