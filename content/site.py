@@ -9,7 +9,7 @@ ACCOUNTS = """<main>
         <p class="lead">Подбираем банк под вашу задачу и готовим подачу, чтобы открыть с первого раза.</p>
       </div>
       <div class="row">
-        <a class="btn" href="{{TG}}">Написать в Telegram</a>
+        <a class="btn" href="/c/site">Бесплатная консультация</a>
         <a class="btn btn-ghost" href="#form">Бесплатный разбор за 5 минут</a>
       </div>
     </div>
@@ -156,7 +156,7 @@ HOME = """<main>
     </div>
     <div class="row">
       <a class="btn btn-gold" href="#directions">Выбрать направление</a>
-      <a class="btn btn-line" href="{{TG}}">Написать в Telegram</a>
+      <a class="btn btn-line" href="/c/site">Бесплатная консультация</a>
     </div>
   </div>
 </section>
@@ -267,7 +267,7 @@ FAQ = [
 
 # ---------- подлендинги услуг: тот же формат, что у страницы «Счета» ----------
 _BTNS = '''<div class="row">
-        <a class="btn" href="{{TG}}">Написать в Telegram</a>
+        <a class="btn" href="/c/site">Бесплатная консультация</a>
         <a class="btn btn-ghost" href="#form">Бесплатный разбор за 5 минут</a>
       </div>'''
 

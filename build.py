@@ -11,6 +11,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 SITE = "https://fortex-uae.com"
 TG = "https://t.me/Fortex_Dubai"
+CONSULT = "/c/site"  # бесплатная консультация: Telegram Алексея с пометкой «с сайта»
 CHANNEL = "https://t.me/fortex_uae"
 INSTAGRAM = "https://www.instagram.com/fortex__uae/"
 _TG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6l19.2-7.4c.9-.3 1.7.2 1.4 1.4z"/></svg>'
@@ -161,11 +162,11 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
     <nav class="nav">
       <a href="/schet-v-banke-oae/">Счета</a><a href="/rezidentstvo-oae/">Резидентство</a><a href="/kompaniya-v-dubae/">Компании</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a>
     </nav>
-    <a class="btn btn-sm" href="#form">Оставить заявку</a>
+    <a class="btn btn-sm btn-gold" href="{CONSULT}">Бесплатная консультация</a>
     <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
   </div>
   <nav class="mnav" id="mnav" hidden>
-    <a class="btn mnav-cta" href="#form">Оставить заявку</a><a href="/schet-v-banke-oae/">Счёт в банке ОАЭ</a><a href="/rezidentstvo-oae/">Резидентство и ВНЖ</a><a href="/kompaniya-v-dubae/">Компания в Дубае</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a><a href="{TG}">Написать в Telegram</a>
+    <a class="btn mnav-cta" href="{CONSULT}">Бесплатная консультация</a><a href="#form">Оставить заявку</a><a href="/schet-v-banke-oae/">Счёт в банке ОАЭ</a><a href="/rezidentstvo-oae/">Резидентство и ВНЖ</a><a href="/kompaniya-v-dubae/">Компания в Дубае</a><a href="/#cases">Кейсы</a><a href="/articles/">Статьи</a><a href="{TG}">Написать в Telegram</a>
   </nav>
 </header>
 {body}
@@ -188,7 +189,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
   </div>
   <div class="wrap fine">Fortex UAE не является банком и не принимает депозиты. Решение об открытии счёта принимает банк. Цены указаны как минимальные и уточняются после разбора ситуации.</div>
 </footer>
-<a class="float-tg" href="{TG}" aria-label="Написать в Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 15.3l-.4 5.4c.6 0 .8-.3 1.1-.5l2.7-2.5 5.5 4c1 .6 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.4 0 11.3 1.2 11.6l5.4 1.7L19.1 5.4c.6-.4 1.1-.2.7.2"/></svg><span>Написать в Telegram</span></a>
+<a class="float-tg" href="{CONSULT}" aria-label="Бесплатная консультация"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 15.3l-.4 5.4c.6 0 .8-.3 1.1-.5l2.7-2.5 5.5 4c1 .6 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.4 0 11.3 1.2 11.6l5.4 1.7L19.1 5.4c.6-.4 1.1-.2.7.2"/></svg><span>Бесплатная консультация</span></a>
 </body>
 </html>"""
 

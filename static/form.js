@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a"); if (!a) return;
     try {
-      if (/t\.me\//i.test(a.href)) ym(113701535, "reachGoal", "tg_click");
+      if (/\/c\/[a-z]+$/i.test(a.getAttribute("href") || "")) { ym(113701535, "reachGoal", "consult_click"); ym(113701535, "reachGoal", "tg_click"); }
+      else if (/t\.me\//i.test(a.href)) ym(113701535, "reachGoal", "tg_click");
       else if (/calendly\.com/i.test(a.href)) ym(113701535, "reachGoal", "call_click");
     } catch (err) {}
   });

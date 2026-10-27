@@ -338,8 +338,8 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 .proof{margin:26px 0 0;font-size:16px;line-height:1.5;color:var(--ink,#13202F);background:rgba(14,122,130,.07);border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 10px 10px 0;max-width:620px}
 .trust{margin:10px 0 0;font-size:14px;color:#5b6573;max-width:620px}
 /* плавающая кнопка Telegram */
-.float-tg{opacity:0;pointer-events:none;transform:translateY(20px);transition:.25s;position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:10px;background:#229ED9;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px 13px 14px;border-radius:40px;box-shadow:0 10px 30px rgba(34,158,217,.35)}
-.float-tg svg{width:22px;height:22px;fill:#fff}
+.float-tg{opacity:0;pointer-events:none;transform:translateY(20px);transition:.25s;position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#E6C877,#C9A24B);color:#0B1626;text-decoration:none;font-weight:700;font-size:17px;padding:16px 24px 16px 18px;border-radius:40px;box-shadow:0 12px 34px rgba(201,162,75,.45)}
+.float-tg svg{width:22px;height:22px;fill:#0B1626}
 @media (max-width:640px){.float-tg{left:16px;right:16px;justify-content:center;bottom:14px}}
 .float-tg.on{opacity:1;pointer-events:auto;transform:none}
 /* услуги: обычная сетка карточек вместо горизонтальной прокрутки */
@@ -474,3 +474,4 @@ body{background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(255,240,205,.9),
 .svc-grid-2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:700px){.svc-grid-2{grid-template-columns:1fr}}
 .sec.seo{background:rgba(246,247,249,.96);position:relative}.sec.seo .prose{text-shadow:none}.sec.seo .prose h2{font-family:var(--head);font-weight:600;letter-spacing:-.02em}
+.top .btn-gold{padding:11px 18px;font-size:15px;border-radius:12px}
