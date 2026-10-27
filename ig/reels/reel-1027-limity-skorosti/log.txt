@@ -1,8 +1,8 @@
-06:59:18 start reel-1027-limity-skorosti
-06:59:18 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
-06:59:19 clip 0: pixabay px35277 (thenickmurphy [driving, night, highway, windshield, roa]) «driving car highway night city lights pov»
-06:59:19 clip 2: pixabay px54897 (tommyvideo [speed, meter, speedometer, dashboard, ve]) «car speedometer dashboard»
-06:59:19 clip 4: pixabay px184878 (cipnt [cars, speed camera, speeding, speed limi]) «traffic speed camera road»
-06:59:19 clip 1: pixabay px248450 (TungArt7 [highway, transportation, traffic, interc]) «highway interchange aerial traffic»
-06:59:20 clip 3: pixabay px202754 (Matthias_Groeneveld [road, roundabout, traffic, sunset, urban]) «city road traffic sunset»
-07:01:06 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 11.2 MB, music=True
+09:02:53 start reel-1027-limity-skorosti
+09:02:55 reel-1027-limity-skorosti: voice 22.4s, shots [3.5, 3.4, 4.6, 3.2, 8.6]
+09:02:55 clip 0: pixabay px50299 (18368956 [traffic, cars, city, highway, california]) «driving car highway night city lights pov»
+09:02:56 clip 2: pixabay px252242 (JoshuaWoroniecki [motorcycle, drive, driving, road, highwa]) «speedometer driving»
+09:02:56 clip 1: pixabay px291424 (TungArt7 [transportation, beautiful wallpaper, tra]) «highway interchange aerial traffic»
+09:02:57 clip 3: pixabay px108522 (Galaxy7894 [building, skyscraper, business, architec]) «dubai traffic»
+09:04:48 clip 4: v2.5-turbo 5s ok
+09:07:07 rendered reel v2 reel-1027-limity-skorosti: 23.3s, 12.9 MB, music=True

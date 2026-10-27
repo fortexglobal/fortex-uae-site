@@ -1,35 +1,52 @@
 {
- "hash": "6f09e03fe7",
- "video": "6f09e03fe7.mp4",
+ "hash": "9de9dd6d52",
+ "video": "9de9dd6d52.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 23.3,
- "ai_clips": [],
+ "ai_clips": [
+  4
+ ],
  "stock": {
   "0": {
    "key": "stock",
-   "src": "pixabay:px35277",
-   "author": "thenickmurphy [driving, night, highway, windshield, roa]"
+   "q": "driving car highway night city lights pov",
+   "src": "pixabay:px50299",
+   "author": "18368956 [traffic, cars, city, highway, california]",
+   "link": "https://cdn.pixabay.com/video/2020/09/19/50299-460295794_large.mp4",
+   "site": "pixabay"
   },
   "2": {
    "key": "stock",
-   "src": "pixabay:px54897",
-   "author": "tommyvideo [speed, meter, speedometer, dashboard, ve]"
+   "q": "speedometer driving",
+   "src": "pixabay:px252242",
+   "author": "JoshuaWoroniecki [motorcycle, drive, driving, road, highwa]",
+   "link": "https://cdn.pixabay.com/video/2025/01/12/252242_large.mp4",
+   "site": "pixabay"
   },
   "3": {
    "key": "stock",
-   "src": "pixabay:px202754",
-   "author": "Matthias_Groeneveld [road, roundabout, traffic, sunset, urban]"
+   "q": "dubai traffic",
+   "src": "pixabay:px108522",
+   "author": "Galaxy7894 [building, skyscraper, business, architec]",
+   "link": "https://cdn.pixabay.com/video/2022/02/22/108522-681143783_large.mp4",
+   "site": "pixabay"
   },
   "1": {
    "key": "stock",
-   "src": "pixabay:px248450",
-   "author": "TungArt7 [highway, transportation, traffic, interc]"
+   "q": "highway interchange aerial traffic",
+   "src": "pixabay:px291424",
+   "author": "TungArt7 [transportation, beautiful wallpaper, tra]",
+   "link": "https://cdn.pixabay.com/video/2025/07/14/291424_large.mp4",
+   "site": "pixabay"
   },
   "4": {
    "key": "stock",
-   "src": "pixabay:px184878",
-   "author": "cipnt [cars, speed camera, speeding, speed limi]"
+   "q": "dubai highway night",
+   "src": "https://v3b.fal.media/files/b/0ab00a84/By2nNVeY74r2N6SvdUZqI_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
   }
  },
  "safe_zone": {
