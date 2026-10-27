@@ -436,3 +436,74 @@ async def maybe_visibility(user, ev, sender, text, res):
         await CTX["notify"](f"🤖 Ответил:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
         log.exception("route: %s", e)
+
+
+# ===== Посол Дубая: иногда коротко и по-доброму рассказываем, почему в Дубае хорошо жить =====
+# Не про услуги и не про цены. Только там, где люди сами обсуждают переезд, где жить, налоги, безопасность, климат.
+AMB_RE = re.compile(r"переезд|переехать|переезжа|релокац|эмигр|уехать (из|в|жить)|куда (уехать|переехать|податься)|где (жить|лучше жить)|"
+                    r"страна для жизни|сменить страну|внж|виз[аыу] (в|для)|налог|безопасн|стабильн|жара|жарко|климат|"
+                    r"дуба|оаэ|эмират|абу-?даби|бали|таиланд|пхукет|турци|кипр|грузи|серби|черногори|испани|португали|европ", re.I)
+AMB_DAILY = int(os.environ.get("AMB_DAILY", "4"))   # всего в день по всем чатам
+AMB_CHAT_DAYS = 2                                    # в одном чате не чаще раза в 2 дня
+AMB_SCANS = 30                                       # проверок нейросетью в день (экономия)
+AMB_STYLE = """Ты Алексей: живёшь в Дубай Марине, в Дубае с 2022 года. В русскоязычном чате люди обсуждают переезд, где жить, налоги, безопасность, климат или другие страны.
+Иногда, когда это к месту, ты коротко и по-доброму вставляешь, почему в Дубае жить хорошо. Как живой человек, не как реклама.
+Плюсы Дубая, которые можно упоминать (одну-две мысли за раз): спокойно и безопасно, в окно выглянешь, тишь да гладь; нет подоходного налога для физлиц; удобно для бизнеса и банков; много целеустремлённых людей, которые работают и развиваются; город для молодых и прогрессивных; перелёты в любую точку; всё работает, сервис.
+Честно признавай минусы, если их называют: да, летом жарко, да, ценник выше. Но люди живут и постоянно приезжают.
+НЕЛЬЗЯ: политика, войны и конфликты, критика других стран и народов, санкции, религия; цены на наши услуги, реклама услуг, ссылки, контакты, «пишите в личку»; спорить или давить; повторять «Дубай, Дубай» в каждом сообщении.
+Формат: 1–2 коротких предложения по 5–7 слов, каждое уйдёт отдельным сообщением, без кавычек, без точки в конце. Можно лёгкая ирония.
+Если вставка здесь неуместна (тема не та, люди ссорятся, трагедия, политика, реклама, нас не поймут), верни ровно SKIP."""
+
+
+def _amb_ok(s, chat_id):
+    a = s.setdefault("amb", {"day": "", "n": 0, "scans": 0, "chats": {}})
+    today = _now().date().isoformat()
+    if a.get("day") != today:
+        a.update(day=today, n=0, scans=0)
+    last = a["chats"].get(str(chat_id), 0)
+    return s["on"] and not _quiet() and a["n"] < AMB_DAILY and a["scans"] < AMB_SCANS and time.time() - last > AMB_CHAT_DAYS * 86400
+
+
+async def maybe_ambassador(user, ev, text):
+    """Вызывается на сообщения в группах. Дешёвый фильтр, потом нейросеть решает, уместно ли вставить слово про Дубай."""
+    try:
+        if ev.out or not ev.is_group or len(text) < 40 or not AMB_RE.search(text):
+            return
+        s = _load()
+        if not _amb_ok(s, ev.chat_id):
+            return
+        sender = await ev.get_sender()
+        if sender is None or getattr(sender, "bot", False) or _suspicious(sender, text) or await _is_admin(user, ev.chat_id, sender.id):
+            return
+        s["amb"]["scans"] += 1; _save(s)
+        ctx = []
+        async for m in user.iter_messages(ev.chat_id, limit=8):
+            if m.raw_text and m.id != ev.id:
+                ctx.append(m.raw_text.strip().replace("\n", " ")[:200])
+        if len(ctx) < 4:
+            return  # чат почти пустой: не живое обсуждение
+        title = await _title(ev)
+        draft = await _llm([{"role": "system", "content": AMB_STYLE},
+                            {"role": "user", "content": f"Чат: {title}\nПоследние сообщения:\n" + "\n".join(f"- {c}" for c in reversed(ctx)) +
+                             f"\n\nСообщение, на которое можно ответить:\n{text[:800]}\n\nТвой ответ или SKIP:"}], max_tokens=120)
+        draft = (draft or "").strip()
+        if not draft or draft.upper().startswith("SKIP"):
+            return
+        draft = _clean(draft, max(len(text), 80))
+        if not draft:
+            return
+        await asyncio.sleep(random.randint(*FOLLOW_DELAY))
+        s = _load()
+        if not _amb_ok(s, ev.chat_id) or await _owner_wrote(user, ev.chat_id, ev.id, s["ours"]):
+            return
+        ms = await _send(user, ev.chat_id, draft, ev.id)
+        s = _load()
+        s["amb"]["n"] += 1; s["amb"]["chats"][str(ev.chat_id)] = time.time()
+        th = {"depth": 1, "root": text[:800], "author": sender.id, "history": [draft], "lid": None, "starter": True}
+        for x in ms:
+            s["ours"].append([ev.chat_id, x.id])
+            s["threads"][f"{ev.chat_id}:{x.id}"] = th
+        _save(s)
+        await CTX["notify"](f"🌴 Про Дубай в «{title}»:\n«{draft}»", buttons=CTX["buttons"](ev.chat_id, ms[0].id))
+    except Exception as e:
+        log.exception("ambassador: %s", e)

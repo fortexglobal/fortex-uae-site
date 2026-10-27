@@ -214,6 +214,7 @@ async def on_group_message(ev):
             except Exception as e:
                 log.warning("reply check: %s", e)
         asyncio.get_event_loop().create_task(reactions.wealth_scan(user, ev, text))
+        asyncio.get_event_loop().create_task(autoreply.maybe_ambassador(user, ev, text))
         if len(text) < 20:
             return
         sender = await ev.get_sender()
