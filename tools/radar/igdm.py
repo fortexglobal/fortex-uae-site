@@ -744,17 +744,19 @@ async def tg_human(peer, text):
         return None
     import autoreply
     last = None
-    for part in autoreply._parts(text):
-        secs = max(5.0, min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4))
-        try:
-            async with u.action(peer, "typing"):
-                await asyncio.sleep(secs)
-            m = await u.send_message(peer, part)
-            S["sent"].append(f"tg:{m.id}")
-            last = m.id
-        except Exception as e:
-            log.warning("tg send: %s", e)
-            break
+    async with autoreply.peer_lock(peer):  # ответ и догоняющее не перемешиваются, всё идёт по очереди
+        for part in autoreply._parts(text):
+            secs = max(5.0, min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4))
+            try:
+                async with u.action(peer, "typing"):
+                    await asyncio.sleep(secs + autoreply.gap_left(peer))
+                m = await u.send_message(peer, part)
+                autoreply.mark_sent(peer)
+                S["sent"].append(f"tg:{m.id}")
+                last = m.id
+            except Exception as e:
+                log.warning("tg send: %s", e)
+                break
     return last
 
 

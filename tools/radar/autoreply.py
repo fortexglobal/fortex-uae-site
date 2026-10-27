@@ -153,6 +153,25 @@ def _parts(text):
     return out[:4] or ([t] if t else [])
 
 
+_LOCKS, _LAST = {}, {}
+MIN_GAP = 5.0  # между любыми двумя нашими сообщениями одному человеку или в один чат не меньше 5 секунд
+
+
+def peer_lock(peer):
+    if peer not in _LOCKS:
+        _LOCKS[peer] = asyncio.Lock()
+    return _LOCKS[peer]
+
+
+def gap_left(peer):
+    """Сколько ещё подождать, чтобы с прошлого нашего сообщения прошло не меньше MIN_GAP."""
+    return max(0.0, MIN_GAP - (time.time() - _LAST.get(peer, 0)))
+
+
+def mark_sent(peer):
+    _LAST[peer] = time.time()
+
+
 async def _send(user, chat_id, text, reply_to):
     """Как человек: прочитал через 2–3 с, потом каждое предложение отдельным сообщением,
     перед каждым «печатает» 5–10 с (короткое 5, длинное до 10). Возвращает список сообщений."""
@@ -162,14 +181,16 @@ async def _send(user, chat_id, text, reply_to):
     except Exception:
         pass
     msgs = []
-    for k, part in enumerate(_parts(text)):
-        secs = min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4)
-        try:
-            async with user.action(chat_id, "typing"):
-                await asyncio.sleep(max(5.0, secs))
-        except Exception:
-            await asyncio.sleep(max(5.0, secs))
-        msgs.append(await user.send_message(chat_id, part, reply_to=reply_to if k == 0 else None))
+    async with peer_lock(chat_id):
+        for k, part in enumerate(_parts(text)):
+            secs = max(5.0, min(10.0, 5.0 + len(part) / 12) + random.uniform(-0.4, 0.4)) + gap_left(chat_id)
+            try:
+                async with user.action(chat_id, "typing"):
+                    await asyncio.sleep(secs)
+            except Exception:
+                await asyncio.sleep(secs)
+            msgs.append(await user.send_message(chat_id, part, reply_to=reply_to if k == 0 else None))
+            mark_sent(chat_id)
     return msgs
 
 
