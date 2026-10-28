@@ -1,6 +1,6 @@
 {
  "style": "editorial",
- "status": "publishing",
+ "status": "error",
  "publish_at": "2026-10-28T19:07+04:00",
  "bg_prompt": "bright sunny daytime view of Burj Al Arab and Jumeirah beach, clear deep blue sky filling the upper half of the frame, turquoise sea, white sand, editorial travel photography, high detail, no text, no logos",
  "photos": [
@@ -56,5 +56,11 @@
   }
  ],
  "caption": "Рабочую визу в Дубае и кредитную карту Emirates NBD можно оформить одним комплексом.\n\nРабочая виза: официальное трудоустройство в компании, которая полностью принадлежит Emirati, Emirates ID и подтверждаемый доход. Срок до 10 дней, стоимость от 5 500 USD.\n\nДля банка это понятная история: доступны кредитные карты, ипотека через 6 месяцев, подача на Шенген и визу США из Дубая.\n\nПакет Emirates NBD от 5 000 AED: зарплатный счёт и кредитная карта без депозита, в том числе Skywards Infinite. До 100 000 миль, статус Skywards Silver, 1 000+ бизнес-залов. Около 3 рабочих дней.\n\nСохраните, чтобы не потерять.\n\nНапишите ВИЗА или КАРТА в комментариях, расскажем, как оформить под вашу задачу.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#рабочаявизадубай #emiratesid #емиратснбд #дубай #оаэ",
- "approved_at": "2026-10-25T11:25+04:00"
+ "approved_at": "2026-10-25T11:25+04:00",
+ "result": {
+  "error": {
+   "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"ARzWmks9LKiIhhZEwWnV9Z6\"}}"
+  }
+ },
+ "published_at": "2026-10-28T15:08Z"
 }

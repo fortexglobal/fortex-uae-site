@@ -1,43 +1,29 @@
 {
- "checked": "2026-10-28T15:00Z",
+ "checked": "2026-10-28T15:07Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 8,
+  "media_count": 9,
   "id": "28276626788683589"
  },
  "published": [
   {
-   "slug": "st-voprosy",
-   "scheduled": "stories",
-   "id": "18113917958065021",
-   "ids": [
-    "18113917958065021",
-    "17947896951350889",
-    "18153959662495806",
-    "18082003184358901",
-    "17953405959322904",
-    "18375641731213214",
-    "18096037244262904",
-    "18455857189193691",
-    "17886288648623282",
-    "18124035392285180",
-    "18105604535010702",
-    "18642935167042099",
-    "18128907448887035",
-    "17941117785409443"
-   ],
-   "permalink": "https://www.instagram.com/stories/fortex__uae/"
-  },
-  {
-   "slug": "reel-1028-bank-proverit",
+   "slug": "ig-rabochaya-viza-skywards",
    "scheduled": "carousel",
-   "id": "18134785231743307",
-   "permalink": "https://www.instagram.com/reel/DfCteoHjLDl/"
+   "error": {
+    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"ARzWmks9LKiIhhZEwWnV9Z6\"}}"
+   }
   }
  ],
  "media": [
+  {
+   "id": "18079351760428261",
+   "timestamp": "2026-10-28T15:08:09+0000",
+   "permalink": "https://www.instagram.com/p/DfCt-GGEeSw/",
+   "media_type": "CAROUSEL_ALBUM",
+   "caption": "Рабочую визу в Дубае и кредитную карту Emirates NBD можно оф"
+  },
   {
    "id": "18134785231743307",
    "timestamp": "2026-10-28T15:04:13+0000",
