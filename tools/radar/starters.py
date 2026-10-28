@@ -19,7 +19,7 @@ log = logging.getLogger("starters")
 BASE = os.path.dirname(os.path.abspath(__file__))
 STATE_F = os.path.join(BASE, "starters.json")
 DUBAI = timezone(timedelta(hours=4))
-DAYS = (0, 1, 2, 3, 4)      # будни, 5 раз в неделю (в один чат не чаще раза в 30 дней)
+DAYS = ()                   # выключено 28.10: темы в чатах не запускаем      # будни, 5 раз в неделю (в один чат не чаще раза в 30 дней)
 HOURS = (11, 18)
 CHAT_COOLDOWN = 30 * 86400
 CATS = ["Европа", "Азия и Китай", "ВЭД и платежи", "Крипта", "Россия и бизнес", "ОАЭ и Дубай", "Релокация и визы", "Другое"]
@@ -40,6 +40,8 @@ def load():
     except Exception:
         S = {}
     S.setdefault("on", True)
+    if not S.get("off_2810"):  # решение Александра 28.10: темы в чатах больше не запускаем (видят как спам, банят)
+        S["on"] = False; S["auto"] = False; S["off_2810"] = True
     S.setdefault("auto", False)
     S.setdefault("used", {})
     S.setdefault("cats", {})

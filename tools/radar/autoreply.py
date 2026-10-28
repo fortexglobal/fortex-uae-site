@@ -295,7 +295,7 @@ async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
             return
         if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
             return
-        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); _save(s)
+        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); s.setdefault("chat_last", {})[str(ev.chat_id)] = time.time(); _save(s)
         delay = random.randint(*DELAY)
         await CTX["notify"](f"🤖 Лид #{lid}: если ничего не нажмёшь, отвечу сам примерно через {delay // 60} мин. «Пропустить» в карточке отменит")
         await asyncio.sleep(delay)
@@ -336,6 +336,7 @@ async def on_reply_to_us(user, ev, rm, text):
             neg = NEG_RE.search(text) is not None
             if neg:
                 s["neg"].append(time.time())
+                s.setdefault("muted_chats", {})[str(ev.chat_id)] = int(time.time())  # назвали спамом: в этом чате больше не пишем
             _save(s)
             await CTX["notify"](("⚠️ Негатив на автоответ" if neg else "❓ Спрашивают, кто мы / бот ли это") +
                                 f" в чате. Сам не отвечаю, ветку остановил.\n«{text[:500]}»")
@@ -427,8 +428,9 @@ async def delete_message(user, chat_id, msg_id):
 
 
 # ---------- маршрутизация: прямое попадание -> ответ (+👍), косвенное -> только реакция, мимо -> ничего ----------
-DAILY = int(os.environ.get("AUTO_DAILY", "15"))
-PER_CHAT_DAY = 2
+DAILY = int(os.environ.get("AUTO_DAILY", "6"))   # 28.10: очень аккуратно, в паре чатов забанили за «спам»
+PER_CHAT_DAY = 1
+CHAT_GAP_H = 72                                    # в одном чате не чаще раза в 3 дня
 GEO_RE = re.compile(r"дуба[йеяю]|\bоаэ\b|эмират|\buae\b|dubai|абу[- ]?даби|abu ?dhabi|шардж|sharjah|аджман|ajman|рас[- ]?аль|ras al", re.I)
 EID_RE = re.compile(r"emirates ?id|эмирейтс ?(ай ?ди|id)|\bэмирейтс\b", re.I)
 TOPIC_RE = re.compile(r"сч[её]т|банк|\bвнж\b|виз[аыуе]|резидент|ресидент|резиденц|emirates ?id|эмирейтс|компани|лиценз|фри ?зон|free ?zone|freezone|mainland|мейнленд|golden|золот\w* виз|virtual work|отказал|заблокир|заморозил", re.I)
@@ -460,7 +462,10 @@ def classify(text, title, res):
 
 
 def _can_reply(s, chat_id, author):
-    return s["on"] and not _quiet() and s["total"] < DAILY and s["chats"].get(str(chat_id), 0) < PER_CHAT_DAY and author not in s["authors"]
+    last = s.setdefault("chat_last", {}).get(str(chat_id), 0)
+    return (s["on"] and not _quiet() and s["total"] < DAILY and s["chats"].get(str(chat_id), 0) < PER_CHAT_DAY
+            and author not in s["authors"] and str(chat_id) not in s.setdefault("muted_chats", {})
+            and time.time() - last > CHAT_GAP_H * 3600)
 
 
 def _kb():
@@ -497,7 +502,7 @@ async def maybe_visibility(user, ev, sender, text, res):
         s = _load()
         if f"{ev.chat_id}:{ev.id}" in s.get("lead_keys", []) or not _can_reply(s, ev.chat_id, sender.id):
             return
-        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); _save(s)
+        s["total"] += 1; s["chats"][str(ev.chat_id)] = s["chats"].get(str(ev.chat_id), 0) + 1; s["authors"].append(sender.id); s.setdefault("chat_last", {})[str(ev.chat_id)] = time.time(); _save(s)
         lim, hint = await chat_style(user, ev.chat_id)
         sysmsg = [{"type": "text", "text": STYLE + "\n\nСПРАВКА:\n" + _kb(), "cache_control": {"type": "ephemeral"}},
                   {"type": "text", "text": "Это прямой вопрос по нашей теме. Ответь строго по сути вопроса одним-двумя короткими фактами, "
@@ -531,8 +536,8 @@ async def maybe_visibility(user, ev, sender, text, res):
 AMB_RE = re.compile(r"переезд|переехать|переезжа|релокац|эмигр|уехать (из|в|жить)|куда (уехать|переехать|податься)|где (жить|лучше жить)|"
                     r"страна для жизни|сменить страну|внж|виз[аыу] (в|для)|налог|безопасн|стабильн|жара|жарко|климат|"
                     r"дуба|оаэ|эмират|абу-?даби|бали|таиланд|пхукет|турци|кипр|грузи|серби|черногори|испани|португали|европ", re.I)
-AMB_DAILY = int(os.environ.get("AMB_DAILY", "4"))   # всего в день по всем чатам
-AMB_CHAT_DAYS = 7                                    # в одном чате не чаще раза в неделю
+AMB_DAILY = int(os.environ.get("AMB_DAILY", "2"))   # всего в день по всем чатам
+AMB_CHAT_DAYS = 14                                   # в одном чате не чаще раза в 2 недели (28.10: осторожнее)
 AMB_SCANS = 30                                       # проверок нейросетью в день (экономия)
 AMB_STYLE = """Ты Алексей: живёшь в Дубай Марине, в Дубае с 2022 года. В русскоязычном чате люди обсуждают переезд, где жить, налоги, безопасность, климат или другие страны.
 Иногда, когда это к месту, ты коротко и по-доброму вставляешь, почему в Дубае жить хорошо. Как живой человек, не как реклама.
@@ -549,6 +554,8 @@ def _amb_ok(s, chat_id):
     if a.get("day") != today:
         a.update(day=today, n=0, scans=0)
     last = a["chats"].get(str(chat_id), 0)
+    if str(chat_id) in s.setdefault("muted_chats", {}):
+        return False
     return s["on"] and not _quiet() and a["n"] < AMB_DAILY and a["scans"] < AMB_SCANS and time.time() - last > AMB_CHAT_DAYS * 86400
 
 
