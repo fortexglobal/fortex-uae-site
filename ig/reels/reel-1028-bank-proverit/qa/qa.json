@@ -1,0 +1,15 @@
+{
+ "duration": 34.0,
+ "sheets": [
+  "qa/sheet-1.jpg",
+  "qa/sheet-2.jpg",
+  "qa/sheet-3.jpg",
+  "qa/sheet-4.jpg"
+ ],
+ "cuts": "qa/cuts.jpg",
+ "lufs": -14.34,
+ "true_peak": -2.0,
+ "lra": 1.2,
+ "silence_mid": [],
+ "warnings": []
+}

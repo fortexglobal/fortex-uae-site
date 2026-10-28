@@ -1,0 +1,24 @@
+08:23:18 start reel-1028-bank-proverit
+08:23:25 stt elevenlabs HTTP Error 401: Unauthorized
+08:23:28 stt match 0.96, diffs [['эмирейтс ай ди', 'emirates id'], ['телеграм', 'telegram']]
+08:23:28 reel-1028-bank-proverit: voice 33.0s, shots [4.1, 5.7, 4.1, 3.9, 3.7, 4.3, 8.1]
+08:25:32   pro: IN_PROGRESS 122s
+08:27:34   pro: IN_PROGRESS 245s
+08:29:31   pro: IN_PROGRESS 361s
+08:31:33   pro: IN_PROGRESS 484s
+08:32:10 clip 0: v2.5-turbo 5s ok
+08:32:11 clip 3: pixabay px198890 (Roque_dg [contract, agreement, firm, business, off]) «signing contract office bright»
+08:32:12 clip 5: pixabay px110937 (criss1234 [tower, building, development, emirate, a]) «dubai business bay skyscrapers day»
+08:32:20 hero image 4 ok
+08:32:20 hero image 1 ok
+08:32:21 hero image 6 ok
+08:33:40 hero clip 4 ok
+08:33:42 hero clip 6 ok
+08:33:55 hero clip 1 ok
+08:34:13   pro: IN_PROGRESS 122s
+08:36:15   pro: IN_PROGRESS 244s
+08:38:12   pro: IN_PROGRESS 361s
+08:40:14   pro: IN_PROGRESS 483s
+08:41:59 clip 2: v2.5-turbo 5s ok
+08:42:04 music: elevenlabs ok
+08:45:54 rendered reel v2 reel-1028-bank-proverit: 33.9s, 16.3 MB, music=True

@@ -1,0 +1,89 @@
+{
+ "stt": {
+  "match": 0.956,
+  "heard": "Открываете компанию в Дубае? Вот почему банки отказывают в счёте. Первое. Emirates ID хотя бы у директора. Без него почти все банки скажут нет. Второе. Выписки за шесть месяцев. Откуда у вас деньги? Выписки из Сбера обычно не принимают. Подтверждать нужно иначе. Третье. Деятельность компании должна совпадать с вашим опытом. Всю жизнь продавали машины, а компания про нефть? Это отказ. Мы готовим ответы банку заранее, и счёт открывается за одну-три недели. Пишите в Telegram, разберём ваш случай бесплатно.",
+  "diffs": [
+   [
+    "эмирейтс ай ди",
+    "emirates id"
+   ],
+   [
+    "телеграм",
+    "telegram"
+   ]
+  ]
+ },
+ "hash": "7c6e26b897",
+ "video": "7c6e26b897.mp4",
+ "cover": "cover.jpg",
+ "v": 2,
+ "duration": 33.9,
+ "ai_clips": [
+  0,
+  4,
+  6,
+  1,
+  2
+ ],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "q": "dubai marina promenade day",
+   "src": "https://v3b.fal.media/files/b/0ab02b80/AOeKqw_rL3yn0uC4UHBga_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  },
+  "3": {
+   "key": "stock",
+   "q": "signing contract office bright",
+   "src": "pixabay:px198890",
+   "author": "Roque_dg [contract, agreement, firm, business, off]",
+   "link": "https://cdn.pixabay.com/video/2024/02/02/198890-909564521_large.mp4",
+   "site": "pixabay"
+  },
+  "5": {
+   "key": "stock",
+   "q": "dubai business bay skyscrapers day",
+   "src": "pixabay:px110937",
+   "author": "criss1234 [tower, building, development, emirate, a]",
+   "link": "https://cdn.pixabay.com/video/2022/03/16/110937-689949681_large.mp4",
+   "site": "pixabay"
+  },
+  "2": {
+   "key": "stock",
+   "q": "bank statement documents desk",
+   "src": "https://v3b.fal.media/files/b/0ab02bbb/i7gxxu_mG0cTxUTwamIBI_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  }
+ },
+ "safe_zone": {
+  "cap_widest_px": 757,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 34.0,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg",
+   "qa/sheet-3.jpg",
+   "qa/sheet-4.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.34,
+  "true_peak": -2.0,
+  "lra": 1.2,
+  "silence_mid": [],
+  "warnings": []
+ }
+}
