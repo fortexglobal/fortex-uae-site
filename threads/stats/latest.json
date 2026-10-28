@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T08:37+04:00",
+ "generated": "2026-10-28T08:15+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -7,7 +7,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De6Hw8NFY_V",
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
-   "views": 5,
+   "views": 7,
    "likes": 1,
    "replies": 0,
    "reposts": 0,
@@ -20,12 +20,12 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 1109,
-   "likes": 22,
-   "replies": 29,
+   "views": 1326,
+   "likes": 25,
+   "replies": 36,
    "reposts": 0,
    "quotes": 0,
-   "shares": 2
+   "shares": 3
   },
   {
    "slug": "t-1026-lagerya",
@@ -33,9 +33,48 @@
    "url": "https://www.threads.com/@fortex__uae/post/De9jXS5kbDH",
    "kind": "тренд",
    "text": "Дубай делится на три лагеря.\n\nПервые: «Тут даже Макдональдс вкуснее, чем дома».\n\nВторые: «За такие деньги могли бы и пос",
-   "views": 182,
+   "views": 205,
    "likes": 2,
    "replies": 13,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1027-dorogo",
+   "at": "2026-10-27T10:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/De_N5BBlNxI",
+   "kind": "вопрос",
+   "text": "Непопулярное мнение: Дубай не такой дорогой, как о нём рассказывают.\n\nДорого: аренда, такси, бранч по выходным.\n\nВполне ",
+   "views": 76,
+   "likes": 1,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1027-komissiya",
+   "at": "2026-10-27T14:31+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/De_peAUHAn5",
+   "kind": "партнёры",
+   "text": "Клиент: «За что комиссия? Я же сам нашёл объект в объявлении».\n\nЧего он не видел:\n\n1. 40 сообщений, чтобы поймать продав",
+   "views": 63,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1027-emiratesid",
+   "at": "2026-10-27T18:31+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfAE8AKFvgf",
+   "kind": "тренд",
+   "text": "Emirates ID: ожидание и реальность.\n\nОжидание: получил карточку, и все двери открыты.\n\nРеальность: карточка есть, а банк",
+   "views": 74,
+   "likes": 0,
+   "replies": 0,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -43,26 +82,22 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 2034,
-  "likes": 34,
-  "replies": 62,
+  "views": 2149,
+  "likes": 4,
+  "replies": 7,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 0
+  "followers_count": 1
  },
  "account_7d": {
-  "views": 2212,
-  "likes": 39,
-  "replies": 68,
+  "views": 2768,
+  "likes": 45,
+  "replies": 75,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 0
+  "followers_count": 1
  },
  "profile_views_by_day": [
-  {
-   "date": "2026-10-19",
-   "views": 0
-  },
   {
    "date": "2026-10-20",
    "views": 0
@@ -89,7 +124,11 @@
   },
   {
    "date": "2026-10-26",
-   "views": 1593
+   "views": 1870
+  },
+  {
+   "date": "2026-10-27",
+   "views": 279
   }
  ],
  "link_clicks_7d": [
@@ -114,27 +153,43 @@
  "by_kind": {
   "закреп": {
    "posts": 1,
-   "views": 5,
+   "views": 7,
    "replies": 0,
    "likes": 1,
-   "avg_views": 5.0,
+   "avg_views": 7.0,
    "avg_replies": 0.0
   },
   "стёб": {
    "posts": 1,
-   "views": 1109,
-   "replies": 29,
-   "likes": 22,
-   "avg_views": 1109.0,
-   "avg_replies": 29.0
+   "views": 1326,
+   "replies": 36,
+   "likes": 25,
+   "avg_views": 1326.0,
+   "avg_replies": 36.0
   },
   "тренд": {
-   "posts": 1,
-   "views": 182,
+   "posts": 2,
+   "views": 279,
    "replies": 13,
    "likes": 2,
-   "avg_views": 182.0,
-   "avg_replies": 13.0
+   "avg_views": 139.5,
+   "avg_replies": 6.5
+  },
+  "вопрос": {
+   "posts": 1,
+   "views": 76,
+   "replies": 0,
+   "likes": 1,
+   "avg_views": 76.0,
+   "avg_replies": 0.0
+  },
+  "партнёры": {
+   "posts": 1,
+   "views": 63,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 63.0,
+   "avg_replies": 0.0
   }
  }
 }
