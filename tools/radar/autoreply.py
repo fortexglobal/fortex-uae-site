@@ -109,8 +109,40 @@ async def _llm(messages, max_tokens=220):
     return ""
 
 
-def _clean(t, limit):
+def short7(t, max_sent=2, max_words=7):
+    """Жёстко: не больше 2 предложений, в каждом не больше 7 слов. Длинные предложения выкидываем,
+    если все длинные, берём первое и обрезаем до 7 слов."""
+    sents = [x.strip() for x in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", t or "") if x.strip()]
+    ok = [x for x in sents if len(x.split()) <= max_words][:max_sent]
+    if not ok and sents:
+        w = sents[0].split()[:max_words]
+        ok = [" ".join(w).rstrip(",;:")]
+    return " ".join(ok)
+
+
+def fits7(t, max_sent=2, max_words=7):
+    sents = [x.strip() for x in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", t or "") if x.strip()]
+    return 0 < len(sents) <= max_sent and all(len(x.split()) <= max_words for x in sents)
+
+
+async def shorten(t):
+    """Если черновик длиннее нормы, переписываем коротко (1–2 предложения по 5–7 слов), смысл сохраняем."""
     t = (t or "").strip().strip('"«»')
+    if not t or fits7(t):
+        return t
+    try:
+        r = await _llm([{"role": "user", "content": "Перепиши ответ для чата максимально коротко: 1–2 предложения, в каждом не больше 7 слов. "
+                         "Сохрани главный смысл и живой разговорный тон, без кавычек, без цен. Верни только текст.\n\n" + t}], max_tokens=80)
+        r = (r or "").strip().strip('"«»')
+        if r:
+            t = r
+    except Exception:
+        pass
+    return short7(t)
+
+
+def _clean(t, limit):
+    t = short7((t or "").strip().strip('"«»'))
     t = t.replace("—", ",").replace("–", ",")
     t = re.sub(r"(?i)по (моему )?опыту,?\s*", "", t)
     t = re.sub(r"\s+,", ",", t).strip()
@@ -271,7 +303,7 @@ async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
             s["total"] = max(0, s["total"] - 1); _save(s)
             return
         lim, _hint = await chat_style(user, ev.chat_id)
-        draft = _clean(res.get("reply", ""), min(len(text), lim) if lim < 300 else len(text))
+        draft = _clean(await shorten(res.get("reply", "")), min(len(text), lim) if lim < 300 else len(text))
         if not draft:
             return
         ms = await _send(user, ev.chat_id, draft, ev.id)
@@ -337,7 +369,7 @@ async def on_reply_to_us(user, ev, rm, text):
                 {"role": "user", "content": f"Исходное сообщение человека:\n{th['root']}\n\nНаши ответы:\n" +
                  "\n".join(th["history"]) + f"\n\nНовое сообщение в ветке:\n{text[:800]}\n\n{task}\n"
                  "Если отвечать не нужно (просто «спасибо», «ок»), верни пустую строку. Верни только текст ответа."}]
-        reply = _clean(await _llm(msgs), max(len(text), lim) if th.get("starter") else (len(text) if depth < MAX_DEPTH else max(len(text), 90)))
+        reply = _clean(await shorten(await _llm(msgs)), max(len(text), lim) if th.get("starter") else (len(text) if depth < MAX_DEPTH else max(len(text), 90)))
         if not reply:
             return
         ms = await _send(user, ev.chat_id, reply, ev.id)
@@ -438,7 +470,7 @@ async def maybe_visibility(user, ev, sender, text, res):
                   {"type": "text", "text": "Это прямой вопрос по нашей теме. Ответь строго по сути вопроса одним-двумя короткими фактами, "
                    "как знающий человек в чате. Не уходи в сторону и не отвечай на то, о чём не спрашивали. Без продажи. "
                    "Если точного ответа нет в справке, скажи осторожно и общими словами, ничего не выдумывай.\n" + (hint or "")}]
-        draft = _clean(await _llm([{"role": "system", "content": sysmsg}, {"role": "user", "content": text}]),
+        draft = _clean(await shorten(await _llm([{"role": "system", "content": sysmsg}, {"role": "user", "content": text}])),
                        min(max(len(text), 60), lim) if lim < 300 else len(text))
         if not draft:
             return
@@ -512,7 +544,7 @@ async def maybe_ambassador(user, ev, text):
         draft = (draft or "").strip()
         if not draft or draft.upper().startswith("SKIP"):
             return
-        draft = _clean(draft, max(len(text), 80))
+        draft = _clean(await shorten(draft), max(len(text), 80))
         if not draft:
             return
         await asyncio.sleep(random.randint(*FOLLOW_DELAY))

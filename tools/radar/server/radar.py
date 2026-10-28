@@ -189,7 +189,7 @@ def chat_recently_replied(chat_id):
 
 
 def clean_draft(t):
-    t = (t or "").strip()
+    t = autoreply.short7((t or "").strip().strip('"«»'))
     t = t.replace(" — ", ", ").replace(" – ", ", ").replace("—", "-").replace("–", "-")
     while t.endswith(".") and not t.endswith(".."):
         t = t[:-1].rstrip()
@@ -250,7 +250,7 @@ async def on_group_message(ev):
         cur = db.execute(
             "insert into leads(ts,chat_id,chat_title,msg_id,author,author_id,text,score,topic,draft,status,link) values(?,?,?,?,?,?,?,?,?,?,?,?)",
             (time.time(), ev.chat_id, title, ev.id, author, sender.id, text, int(res.get("score", 0)),
-             res.get("topic", ""), clean_draft(res.get("reply", "")), "new", link))
+             res.get("topic", ""), clean_draft(await autoreply.shorten(res.get("reply", ""))), "new", link))
         db.commit()
         lid = cur.lastrowid
         warn = ""
@@ -260,7 +260,7 @@ async def on_group_message(ev):
             warn += f"\n• Дневной лимит ответов ({MAX_REPLIES_PER_DAY}) исчерпан"
         import html as _h
         e = lambda x: _h.escape(str(x or ""))
-        draft = clean_draft(res.get("reply", ""))
+        draft = clean_draft(await autoreply.shorten(res.get("reply", "")))
         said = text if len(text) <= 280 else text[:270].rsplit(" ", 1)[0] + "…"
         meaning = (res.get("meaning") or res.get("why", "")).strip()
         if len(meaning) > 160:
