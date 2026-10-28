@@ -74,3 +74,21 @@ def render_light(frame_jpg, title, accent, out_jpg, browser):
     pg.wait_for_timeout(900)
     pg.screenshot(path=out_jpg, type="jpeg", quality=90)
     pg.close()
+
+
+def render_cta_light(title, text, out_png, browser):
+    """Финальная карточка рилса в светлом стиле: кремовая плашка, Playfair, золотая кнопка Telegram. Прозрачный PNG."""
+    css = (f"@font-face{{font-family:PF;src:url({_ttf('PlayfairDisplay_500Medium.ttf')})}}"
+           f"*{{box-sizing:border-box;margin:0;padding:0}}html,body{{background:transparent;width:{W}px;height:{H}px;overflow:hidden}}"
+           f".b{{position:absolute;left:90px;right:90px;top:560px;background:rgba(244,239,230,.97);padding:64px 64px 70px;color:#0B1626;text-align:center}}"
+           f".k{{font:600 22px Inter,sans-serif;letter-spacing:.26em;color:#A88A4A}}"
+           f"h1{{font:500 78px/1.1 PF,serif;margin:26px 0 22px}}p{{font:400 34px/1.35 Inter,sans-serif;color:#3b4250}}"
+           f".btn{{display:inline-block;margin-top:40px;background:#0B1626;color:#F3E6C4;font:600 32px Inter,sans-serif;padding:22px 40px;border-radius:50px}}")
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>'
+           f'<div class="b"><div class="k">FORTEX UAE</div><h1>{html.escape(title)}</h1><p>{html.escape(text)}</p>'
+           f'<div class="btn">Telegram @Fortex_Dubai</div></div></body></html>')
+    pg = browser.new_page(viewport={"width": W, "height": H})
+    pg.set_content(doc)
+    pg.wait_for_timeout(600)
+    pg.screenshot(path=out_png, omit_background=True)
+    pg.close()

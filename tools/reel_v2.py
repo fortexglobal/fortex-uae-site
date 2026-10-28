@@ -543,7 +543,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), src.get("look"), src.get("cover_shot"), "v2.12", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), src.get("look"), src.get("cover_shot"), "v2.13", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         meta = json.load(open(meta_p))
@@ -632,6 +632,12 @@ def render_one(slug, src, browser):
             url = hero_clip(shots[i], paths[i], out_dir, i, ck)
             clips[str(i)] = {"key": ck, "url": url, "hero": shots[i]["hero"]}
             ai_used.append(i)
+            return
+        if shots[i].get("link"):  # закреплённый стоковый клип (подобран через tools/stock_search.py)
+            hd = reel_fmt.UA if "pixabay" in shots[i]["link"] else {}
+            open(paths[i], "wb").write(http(shots[i]["link"], headers=hd, raw=True, timeout=300))
+            clips[str(i)] = {"key": "stock", "q": shots[i].get("q", ""), "src": shots[i]["link"], "author": "pinned",
+                             "link": shots[i]["link"], "site": "pixabay" if "pixabay" in shots[i]["link"] else "pexels"}
             return
         if shots[i].get("q"):  # живое стоковое видео (Pexels/Pixabay); ИИ-клип только если сток ничего не нашёл
             c = clips.get(str(i)) or {}
@@ -735,9 +741,13 @@ def render_one(slug, src, browser):
     # 5. CTA-карточка и субтитры
     import reel_render
     ov = os.path.join(tmp, "cta.png")
-    pg = browser.new_page(viewport={"width": W, "height": H})
-    pg.set_content(reel_render.scene_html({"type": "cta", "title": cta["title"], "text": cta.get("text", "")})); pg.wait_for_timeout(250)
-    pg.screenshot(path=ov, omit_background=True); pg.close()
+    if LIGHT:
+        import reel_cover
+        reel_cover.render_cta_light(cta["title"], cta.get("text", ""), ov, browser)
+    else:
+        pg = browser.new_page(viewport={"width": W, "height": H})
+        pg.set_content(reel_render.scene_html({"type": "cta", "title": cta["title"], "text": cta.get("text", "")})); pg.wait_for_timeout(250)
+        pg.screenshot(path=ov, omit_background=True); pg.close()
     hook_end = min(2.8, shot_seg[1][0] if n_shot > 1 else 2.8)
     ass = os.path.join(tmp, "subs.ass")
     open(ass, "w", encoding="utf-8").write(build_ass(words_from(al, alts), src.get("hook"), src.get("accent"), hook_end, cta_start, total, LIGHT))
@@ -746,7 +756,7 @@ def render_one(slug, src, browser):
         os.remove(old)
     video = f"{h}.mp4"
     inputs = ["-i", base, "-loop", "1", "-t", f"{total:.2f}", "-i", ov, "-i", voice_mp3]
-    vf = (f"[0]drawbox=x=0:y=0:w=iw:h=ih:color=black@0.38:t=fill:enable='gte(t,{cta_start:.2f})'[bd];"
+    vf = (f"[0]drawbox=x=0:y=0:w=iw:h=ih:color={'0xF4EFE6@0.30' if LIGHT else 'black@0.38'}:t=fill:enable='gte(t,{cta_start:.2f})'[bd];"
           f"[1]format=rgba,fade=t=in:st={cta_start:.2f}:d=0.25:alpha=1[cta];"
           f"[bd][cta]overlay=0:0:enable='gte(t,{cta_start:.2f})',"
           f"subtitles={ass}:fontsdir={FONTDIR},format=yuv420p[v]")

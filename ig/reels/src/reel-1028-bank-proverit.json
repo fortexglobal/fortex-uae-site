@@ -7,13 +7,14 @@
  "format_kind": "бизнес",
  "hook": "3 вещи, которые проверит банк",
  "accent": "3 вещи",
- "cover_shot": 1,
+ "cover_shot": 6,
  "music": "lo-fi house, 118 bpm, warm Rhodes chords on the offbeat, shuffled closed hi-hats, deep round sub bass, soft vinyl crackle, signature sound: a short filtered sax stab between phrases, no vocals, sparse, leaves room for voice",
  "shots": [
   {
    "q": "dubai marina promenade day",
    "prompt": "Dubai Marina promenade in bright daylight, people walking from behind, yachts and towers, smooth gimbal shot",
-   "say": "Открываете компанию в Дубае? Вот почему банки отказывают в счёте."
+   "say": "Открываете компанию в Дубае? Вот почему банки отказывают в счёте.",
+   "link": "https://cdn.pixabay.com/video/2025/03/16/265261_large.mp4"
   },
   {
    "hero": "man",
@@ -24,12 +25,14 @@
   {
    "q": "bank statement documents desk",
    "prompt": "hands reviewing printed bank statements on a bright office desk, soft daylight, close-up",
-   "say": "Второе: выписки за {6 месяцев|шесть месяцев}, откуда у вас деньги."
+   "say": "Второе: выписки за {6 месяцев|шесть месяцев}, откуда у вас деньги.",
+   "link": "https://cdn.pixabay.com/video/2025/07/23/293084_large.mp4"
   },
   {
    "q": "signing contract office bright",
    "prompt": "hands signing a contract on a bright white desk, soft daylight, close-up",
-   "say": "Выписки из Сбера обычно не принимают, подтверждать нужно иначе."
+   "say": "Выписки из Сбера обычно не принимают, подтверждать нужно иначе.",
+   "link": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_large.mp4"
   },
   {
    "hero": "man",
@@ -40,7 +43,8 @@
   {
    "q": "dubai business bay skyscrapers day",
    "prompt": "glass skyscrapers of Business Bay Dubai in bright daylight, slow upward tilt",
-   "say": "Всю жизнь продавали машины, а компания про нефть? Это отказ."
+   "say": "Всю жизнь продавали машины, а компания про нефть? Это отказ.",
+   "link": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4"
   },
   {
    "hero": "man",
@@ -51,7 +55,7 @@
  ],
  "cta": {
   "title": "Разберём ваш случай",
-  "text": "Бесплатная консультация в Telegram @Fortex_Dubai",
+  "text": "Бесплатная консультация по счетам, визам и компаниям в ОАЭ",
   "say": "Пишите в Телеграм, разберём ваш случай бесплатно."
  },
  "cover_title": "3 вещи, которые проверит банк",
