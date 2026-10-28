@@ -114,6 +114,8 @@ async def on_button(ev):
         return await starters.on_button(ev, action, slug)
     if action in ("cigok", "cigfix"):
         return await ig_button(ev, action, slug)
+    if action in ("crlok", "crlfix"):
+        return await reel_button(ev, action, slug)
     if action == "cok":
         p, sha = await load_post(slug)
         if not p:
@@ -363,6 +365,27 @@ async def ig_button(ev, action, slug):
         PENDING[ev.sender_id] = "ig:" + slug
         await ev.answer()
         await ev.respond("Надиктуй голосовым или напиши, что поправить в карусели. Можно про слайды, подпись или фото на обложке")
+
+
+async def reel_button(ev, action, slug):
+    """Рилс на утверждении: ig/reels/src/<slug>.json, status wait -> approved (выйдет по publish_at)."""
+    if action == "crlok":
+        raw, sha = await gh_get(f"ig/reels/src/{slug}.json")
+        if not raw:
+            return await ev.answer("Рилс не найден", alert=True)
+        src = json.loads(raw)
+        if src.get("status") == "published":
+            return await ev.answer("Уже опубликован")
+        src["status"] = "approved"; src["approved_at"] = datetime.now(DUBAI).isoformat(timespec="minutes")
+        await gh_put(f"ig/reels/src/{slug}.json", json.dumps(src, ensure_ascii=False, indent=1), sha, f"Reel approved: {slug}")
+        await tg("editMessageReplyMarkup", {"chat_id": ev.chat_id, "message_id": ev.message_id,
+                                            "reply_markup": json.dumps({"inline_keyboard": []})})
+        await ev.answer("Утверждено ✅")
+        when = (src.get("publish_at") or "")[11:16]
+        await ev.respond(f"✅ Утверждено. Рилс выйдет в Instagram {('в ' + when) if when else 'по расписанию'}")
+    else:
+        await ev.answer()
+        await ev.respond("Напиши, что поправить в рилсе, в чат с Claude: переделаю и пришлю снова")
 
 
 SYSTEM_IG = """Ты редактор Instagram Fortex UAE (Дубай: счета в банках ОАЭ для владельцев российского паспорта, сложные случаи, рабочие визы, ВНЖ, компании).

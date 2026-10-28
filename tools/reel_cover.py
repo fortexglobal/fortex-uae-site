@@ -41,3 +41,36 @@ def render(frame_jpg, title, accent, note, out_jpg, browser):
     pg.wait_for_timeout(900)
     pg.screenshot(path=out_jpg, type="jpeg", quality=90)
     pg.close()
+
+
+# ---------- светлый журнальный стиль ленты (ig/feed/STYLE.md, утверждён 28.10.2026) ----------
+FONTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+
+
+def _ttf(name):
+    return "data:font/ttf;base64," + base64.b64encode(open(os.path.join(FONTS, name), "rb").read()).decode()
+
+
+def render_light(frame_jpg, title, accent, out_jpg, browser):
+    """Светлый кадр на весь экран, внизу кремовая плашка с заголовком Playfair, акцент курсивом золотом.
+    Всё внутри зоны 3:4, которую Instagram показывает в сетке."""
+    t = html.escape(title or "")
+    if accent and html.escape(accent) in t:
+        t = t.replace(html.escape(accent), f"<i>{html.escape(accent)}</i>", 1)
+    url = "data:image/jpeg;base64," + base64.b64encode(open(frame_jpg, "rb").read()).decode()
+    css = (f"@font-face{{font-family:PF;font-style:normal;src:url({_ttf('PlayfairDisplay_500Medium.ttf')})}}"
+           f"@font-face{{font-family:PF;font-style:italic;src:url({_ttf('PlayfairDisplay_500Medium_Italic.ttf')})}}"
+           f"*{{box-sizing:border-box;margin:0;padding:0}}body{{width:{W}px;height:{H}px;overflow:hidden}}"
+           f".c{{position:relative;width:{W}px;height:{H}px;overflow:hidden;background:#F4EFE6}}"
+           f".ph{{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(1.06) saturate(.92)}}"
+           f".b{{position:absolute;left:44px;right:44px;bottom:{H - BOT + 44}px;background:rgba(244,239,230,.95);padding:46px 50px 52px;color:#0B1626}}"
+           f".k{{font:600 22px Inter,sans-serif;letter-spacing:.26em;color:#A88A4A;margin-bottom:20px}}"
+           f"h1{{font:500 72px/1.12 PF,serif;letter-spacing:-.01em;text-wrap:balance}}h1 i{{color:#9C7A33}}")
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body><div class="c">'
+           f'<div class="ph" style="background-image:url({url})"></div>'
+           f'<div class="b"><div class="k">FORTEX UAE</div><h1>{t}</h1></div></div></body></html>')
+    pg = browser.new_page(viewport={"width": W, "height": H})
+    pg.set_content(doc)
+    pg.wait_for_timeout(900)
+    pg.screenshot(path=out_jpg, type="jpeg", quality=90)
+    pg.close()

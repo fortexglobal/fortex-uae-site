@@ -1,0 +1,60 @@
+{
+ "v": 2,
+ "status": "wait",
+ "publish_at": "2026-10-28T19:00+04:00",
+ "ring": 2,
+ "look": "light",
+ "format_kind": "бизнес",
+ "hook": "3 вещи, которые проверит банк",
+ "accent": "3 вещи",
+ "cover_shot": 1,
+ "music": "lo-fi house, 118 bpm, warm Rhodes chords on the offbeat, shuffled closed hi-hats, deep round sub bass, soft vinyl crackle, signature sound: a short filtered sax stab between phrases, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "q": "dubai marina promenade day",
+   "prompt": "Dubai Marina promenade in bright daylight, people walking from behind, yachts and towers, smooth gimbal shot",
+   "say": "Открываете компанию в Дубае? Вот почему банки отказывают в счёте."
+  },
+  {
+   "hero": "man",
+   "img": "The man sits at an outdoor cafe table on Dubai Marina promenade in the late morning, looking at his laptop with a cup of coffee, yachts and towers softly blurred behind, medium shot",
+   "move": "he looks at the laptop screen, then takes a sip of coffee, light breeze, subtle handheld camera",
+   "say": "Первое: {Emirates ID|Эмирейтс ай-ди} хотя бы у директора. Без него почти все банки скажут нет."
+  },
+  {
+   "q": "bank statement documents desk",
+   "prompt": "hands reviewing printed bank statements on a bright office desk, soft daylight, close-up",
+   "say": "Второе: выписки за {6 месяцев|шесть месяцев}, откуда у вас деньги."
+  },
+  {
+   "q": "signing contract office bright",
+   "prompt": "hands signing a contract on a bright white desk, soft daylight, close-up",
+   "say": "Выписки из Сбера обычно не принимают, подтверждать нужно иначе."
+  },
+  {
+   "hero": "man",
+   "img": "The man sits at a desk across from a bank relationship manager, seen from behind, in a bright modern bank office with floor-to-ceiling windows and the Dubai skyline, he explains something with a calm open-hand gesture, medium shot",
+   "move": "he talks and gestures calmly, the manager nods, subtle natural movement, slow push-in",
+   "say": "Третье: деятельность компании должна совпадать с вашим опытом."
+  },
+  {
+   "q": "dubai business bay skyscrapers day",
+   "prompt": "glass skyscrapers of Business Bay Dubai in bright daylight, slow upward tilt",
+   "say": "Всю жизнь продавали машины, а компания про нефть? Это отказ."
+  },
+  {
+   "hero": "man",
+   "img": "The man walks along Dubai Marina promenade in bright daylight, smiling and looking at his phone, towers and yachts behind him, medium shot from the front",
+   "move": "he walks toward the camera smiling and glances at his phone, natural walking motion, steady tracking shot",
+   "say": "Мы готовим ответы банку заранее, и счёт открывается за {1-3 недели|одну-три недели}."
+  }
+ ],
+ "cta": {
+  "title": "Разберём ваш случай",
+  "text": "Бесплатная консультация в Telegram @Fortex_Dubai",
+  "say": "Пишите в Телеграм, разберём ваш случай бесплатно."
+ },
+ "cover_title": "3 вещи, которые проверит банк",
+ "cover_accent": "3 вещи",
+ "caption": "Счёт для компании в ОАЭ: что банк проверит первым делом.\n\n1. Emirates ID хотя бы у директора или одного из учредителей. Без резидентской визы почти все банки откажут, поэтому порядок такой: лицензия, виза и Emirates ID, потом банк.\n\n2. Источник средств: выписки за последние 6 месяцев. Выписки из банков под санкциями обычно не принимают, деньги нужно подтвердить иначе.\n\n3. Деятельность в лицензии должна совпадать с вашим опытом и реальной работой. Несовпадение одна из частых причин отказа.\n\nИ главное: не подавайтесь во все банки подряд. Каждый отказ видят следующие банки.\n\nКакой пункт для вас самый сложный? Напишите СЧЁТ в комментариях, подскажем.\n\nБесплатная консультация в Telegram @Fortex_Dubai\n\n#дубай #оаэ #бизнесвдубае #счетвдубае #компаниявоаэ"
+}

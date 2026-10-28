@@ -217,6 +217,52 @@ def gen_clip(prompt, secs, out_mp4, idx):
     raise RuntimeError(last)
 
 
+# ---------- герой бренда: фото с образцом лица + оживление (Kling image-to-video) ----------
+HERO_LOOK = ("Ultra photorealistic vertical 9:16 photo shot on a modern smartphone, bright daytime, soft natural sunlight, "
+             "airy light palette with warm cream, beige and soft sky-blue tones, real skin texture, candid documentary moment, "
+             "Dubai, no text, no logos, no brand names, no watermarks. Scene: ")
+
+
+def hero_image(hero, prompt, out_jpg):
+    heroes = json.load(open(os.path.join(ROOT, "ig", "heroes", "heroes.json")))
+    h = heroes[hero]
+    ref = base64.b64encode(open(os.path.join(ROOT, h["file"]), "rb").read()).decode()
+    content = [{"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + ref}},
+               {"type": "text", "text": "Keep exactly the same person as in the reference photo (same face, hair, age, build): "
+                + h["desc"] + ". " + HERO_LOOK + prompt}]
+    last = None
+    for _ in range(2):
+        try:
+            r = http("https://openrouter.ai/api/v1/chat/completions",
+                     {"model": "google/gemini-2.5-flash-image", "modalities": ["image", "text"], "image_config": {"aspect_ratio": "9:16"},
+                      "messages": [{"role": "user", "content": content}]},
+                     {"Authorization": "Bearer " + os.environ.get("OPENROUTER_API_KEY", "")})
+            url = r["choices"][0]["message"]["images"][0]["image_url"]["url"]
+            open(out_jpg, "wb").write(base64.b64decode(url.split(",", 1)[1]))
+            return
+        except Exception as e:
+            last = e
+            log("hero image retry:", e)
+    raise RuntimeError(f"hero image failed: {last}")
+
+
+def hero_clip(sh, out_mp4, out_dir, i, ck):
+    img = os.path.join(out_dir, f"hero-{i}-{ck[:6]}.jpg")
+    if not os.path.exists(img):
+        for old in glob.glob(os.path.join(out_dir, f"hero-{i}-*.jpg")):
+            os.remove(old)
+        hero_image(sh["hero"], sh["img"], img)
+        log(f"hero image {i} ok")
+    uri = "data:image/jpeg;base64," + base64.b64encode(open(img, "rb").read()).decode()
+    r = fal_run("fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+                {"prompt": sh.get("move") or "subtle natural movement, slow push-in, handheld camera", "image_url": uri,
+                 "duration": "5", "negative_prompt": NEG + ", distorted hands, morphing face", "cfg_scale": 0.5})
+    url = r["video"]["url"]
+    open(out_mp4, "wb").write(http(url, raw=True, timeout=300))
+    log(f"hero clip {i} ok")
+    return url
+
+
 # ---------- звуковые эффекты ----------
 SFX = {
     "whoosh1": ("fast cinematic whoosh swipe transition, short airy swoosh, clean, no music", 0.6),
@@ -367,7 +413,7 @@ def esc(s):
     return s.replace("\\", "").replace("{", "(").replace("}", ")")
 
 
-def build_ass(words, hook, accent, hook_end, cap_end, total):
+def build_ass(words, hook, accent, hook_end, cap_end, total, light=False):
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -379,13 +425,19 @@ ScaledBorderAndShadow: yes
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Inter Display ExtraBold,80,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,6,0,5,80,80,0,1
 Style: Hook,Inter Display ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00261610,&H00000000,0,0,0,0,100,100,-1,0,3,26,0,8,124,124,330,1
+Style: HookL,Playfair Display Medium,84,&H0026160B,&H0026160B,&H00E6EFF4,&H00000000,0,0,0,0,100,100,0,0,3,30,0,8,124,124,330,1
 Style: Brand,Inter Display ExtraBold,34,&H3061A2C9,&H3061A2C9,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,2,0,7,76,76,250,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     ev = [f"Dialogue: 0,{t_ass(0)},{t_ass(cap_end)},Brand,,0,0,0,,FORTEX UAE"]
-    if hook:
+    if hook and light:  # кремовая плашка, шрифт с засечками, акцент курсивом золотом (как обложки ленты)
+        ht = esc(hook)
+        if accent and accent in hook:
+            ht = ht.replace(esc(accent), "{\\i1\\c&H337A9C&}" + esc(accent) + "{\\i0\\c&H26160B&}", 1)
+        ev.append(f"Dialogue: 2,{t_ass(0)},{t_ass(hook_end)},HookL,,0,0,0,,{{\\fad(120,180)}}{ht}")
+    elif hook:
         ht = esc(hook)
         if accent and accent in hook:
             ht = ht.replace(esc(accent), "{\\c&H77C8E6&}" + esc(accent) + "{\\c&HFFFFFF&}", 1)
@@ -491,7 +543,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.11", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), src.get("look"), src.get("cover_shot"), "v2.12", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         meta = json.load(open(meta_p))
@@ -567,6 +619,20 @@ def render_one(slug, src, browser):
 
     def get(i):
         need = shot_seg[i][1] - shot_seg[i][0]
+        if shots[i].get("hero"):  # постоянный герой бренда (ig/heroes): фото с образцом лица, потом оживление
+            ck = key("hero", shots[i]["hero"], shots[i]["img"], shots[i].get("move"), DRY)
+            c = clips.get(str(i)) or {}
+            if c.get("key") == ck and c.get("url"):
+                try:
+                    open(paths[i], "wb").write(http(c["url"], raw=True, timeout=300))
+                    ai_used.append(i)
+                    return
+                except Exception as e:
+                    log(f"hero {i} cache miss: {e}")
+            url = hero_clip(shots[i], paths[i], out_dir, i, ck)
+            clips[str(i)] = {"key": ck, "url": url, "hero": shots[i]["hero"]}
+            ai_used.append(i)
+            return
         if shots[i].get("q"):  # живое стоковое видео (Pexels/Pixabay); ИИ-клип только если сток ничего не нашёл
             c = clips.get(str(i)) or {}
             if c.get("key") == "stock" and c.get("q") == shots[i]["q"] and c.get("link"):  # тот же запрос: тот же кадр
@@ -621,6 +687,9 @@ def render_one(slug, src, browser):
 
     # 4. нарезка кадров под фразы
     XF = 0.28
+    LIGHT = src.get("look") == "light"  # светлый журнальный стиль ленты (ig/feed/STYLE.md)
+    GRADE = ("eq=contrast=0.98:brightness=0.035:saturation=0.9:gamma=1.04,colorbalance=rm=0.03:gm=0.01:bm=-0.03"
+             if LIGHT else "eq=contrast=1.06:saturation=1.08")
     TRANS = ["smoothleft", "zoomin", "smoothup", "slideleft", "smoothright", "circleopen"]
     parts = []
     for i, (a, b) in enumerate(shot_seg):
@@ -639,7 +708,7 @@ def render_one(slug, src, browser):
             ff(["-ss", f"{off:.3f}", "-stream_loop", "-1", "-i", paths[i], "-t", f"{piece:.3f}", "-vf",
                 f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS},"
                 f"scale=w='iw*({zz})':h='ih*({zz})':eval=frame,crop={W}:{H},"
-                f"eq=contrast=1.06:saturation=1.08,format=yuv420p",
+                f"{GRADE},format=yuv420p",
                 "-an", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", sp])
             subs.append(sp)
         if len(subs) == 1:
@@ -671,7 +740,7 @@ def render_one(slug, src, browser):
     pg.screenshot(path=ov, omit_background=True); pg.close()
     hook_end = min(2.8, shot_seg[1][0] if n_shot > 1 else 2.8)
     ass = os.path.join(tmp, "subs.ass")
-    open(ass, "w", encoding="utf-8").write(build_ass(words_from(al, alts), src.get("hook"), src.get("accent"), hook_end, cta_start, total))
+    open(ass, "w", encoding="utf-8").write(build_ass(words_from(al, alts), src.get("hook"), src.get("accent"), hook_end, cta_start, total, LIGHT))
 
     for old in glob.glob(os.path.join(out_dir, "*.mp4")):
         os.remove(old)
@@ -716,9 +785,17 @@ def render_one(slug, src, browser):
         import reel_fmt, reel_cover
         reel_fmt.R = sys.modules[__name__]
         frame = os.path.join(tmp, "frame.jpg")
-        reel_fmt.best_cover(base, 0.2, min(cta_start, total) - 0.3, frame)  # чистый кадр без текста
-        reel_cover.render(frame, src.get("cover_title") or src.get("hook"), src.get("accent"),
-                          src.get("cover_note") or "Новости Дубая", os.path.join(out_dir, "cover.jpg"), browser)
+        cs = src.get("cover_shot")
+        if isinstance(cs, int) and 0 <= cs < n_shot:
+            reel_fmt.best_cover(base, shot_seg[cs][0] + 0.1, shot_seg[cs][1] - 0.1, frame)
+        else:
+            reel_fmt.best_cover(base, 0.2, min(cta_start, total) - 0.3, frame)  # чистый кадр без текста
+        if LIGHT:
+            reel_cover.render_light(frame, src.get("cover_title") or src.get("hook"), src.get("cover_accent") or src.get("accent"),
+                                    os.path.join(out_dir, "cover.jpg"), browser)
+        else:
+            reel_cover.render(frame, src.get("cover_title") or src.get("hook"), src.get("accent"),
+                              src.get("cover_note") or "Новости Дубая", os.path.join(out_dir, "cover.jpg"), browser)
     except Exception as e:
         log("cover fallback", e)
         ff(["-ss", "0.9", "-i", os.path.join(out_dir, video), "-frames:v", "1", "-q:v", "3", os.path.join(out_dir, "cover.jpg")])
