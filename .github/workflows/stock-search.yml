@@ -1,0 +1,24 @@
+name: Stock search
+# Поиск стоковых видео с превью (tools/stock_search.py) -> research/stock/
+on:
+  workflow_dispatch:
+    inputs:
+      q: {description: "запросы через |", required: true}
+permissions:
+  contents: write
+jobs:
+  s:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Search
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          Q: ${{ inputs.q }}
+        run: pip install -q pillow && python3 tools/stock_search.py "$Q"
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add research && git commit -m "Stock search" && git pull --rebase && git push
