@@ -1,0 +1,29 @@
+name: Media probe
+# Разбор чужого видео по ссылке: кадры каждые 1.5 с, сведения о файле, звук отдельно. Результат в research/<name>/.
+on:
+  workflow_dispatch:
+    inputs:
+      url: {description: "прямая ссылка на mp4", required: true}
+      name: {description: "папка", required: true}
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe
+        env: {URL: "${{ inputs.url }}", NAME: "${{ inputs.name }}"}
+        run: |
+          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
+          d=research/$NAME; mkdir -p $d
+          curl -sL -A "Mozilla/5.0" -o /tmp/v.mp4 "$URL"
+          ffprobe -v error -show_format -show_streams /tmp/v.mp4 > $d/probe.txt
+          ffmpeg -v error -i /tmp/v.mp4 -vf "fps=1/1.5,scale=320:-2,tile=6x4" -frames:v 2 $d/sheet-%d.jpg
+          ffmpeg -v error -i /tmp/v.mp4 -vn -ac 1 -ar 16000 -b:a 48k $d/audio.mp3
+          ffmpeg -v error -i /tmp/v.mp4 -vf "select='gt(scene,0.3)',showinfo" -f null - 2>&1 | grep -o "pts_time:[0-9.]*" > $d/cuts.txt || true
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add research && git commit -m "Media probe" && git pull --rebase && git push
