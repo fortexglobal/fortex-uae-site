@@ -25,4 +25,10 @@ jobs:
       - name: Commit status
         run: |
           git add ig
-          git diff --cached --quiet || (git commit -m "Instagram status" && git pull --rebase --autostash && git push)
+          git diff --cached --quiet && exit 0
+          git commit -m "Instagram status"
+          for i in 1 2 3 4 5; do  # смотритель и другие задачи пушат в то же время: повторяем
+            git pull --rebase --autostash -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null || true; sleep $((i * 7))
+          done
+          exit 1
