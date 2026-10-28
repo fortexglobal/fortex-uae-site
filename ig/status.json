@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-28T13:32Z",
+ "checked": "2026-10-28T15:00Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,44 @@
   "media_count": 8,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "st-voprosy",
+   "scheduled": "stories",
+   "id": "18113917958065021",
+   "ids": [
+    "18113917958065021",
+    "17947896951350889",
+    "18153959662495806",
+    "18082003184358901",
+    "17953405959322904",
+    "18375641731213214",
+    "18096037244262904",
+    "18455857189193691",
+    "17886288648623282",
+    "18124035392285180",
+    "18105604535010702",
+    "18642935167042099",
+    "18128907448887035",
+    "17941117785409443"
+   ],
+   "permalink": "https://www.instagram.com/stories/fortex__uae/"
+  },
+  {
+   "slug": "reel-1028-bank-proverit",
+   "scheduled": "carousel",
+   "id": "18134785231743307",
+   "permalink": "https://www.instagram.com/reel/DfCteoHjLDl/"
+  }
+ ],
  "media": [
+  {
+   "id": "18134785231743307",
+   "timestamp": "2026-10-28T15:04:13+0000",
+   "permalink": "https://www.instagram.com/reel/DfCteoHjLDl/",
+   "media_type": "VIDEO",
+   "caption": "Счёт для компании в ОАЭ: что банк проверит первым делом.\n\n1."
+  },
   {
    "id": "18374391796213873",
    "timestamp": "2026-10-27T15:07:37+0000",

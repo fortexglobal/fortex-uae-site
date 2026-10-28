@@ -1,7 +1,7 @@
 {
  "format": "stories",
  "highlight": "Вопросы",
- "status": "publishing",
+ "status": "published",
  "publish_at": "2026-10-28T19:00+04:00",
  "bg_prompt": "calm premium Dubai cafe terrace with city view in the evening, warm lights, no people, no text",
  "caption": "Серия сторис для Актуального «Вопросы»",
@@ -83,5 +83,26 @@
   "calm premium Dubai cafe terrace at night with warm lights and skyline, no people, no text",
   "Dubai Frame and city view at sunset, soft colors, no text, no people",
   "modern minimalist workspace with notebook and smartphone, Dubai skyline blurred behind, no text, no people"
- ]
+ ],
+ "result": {
+  "id": "18113917958065021",
+  "ids": [
+   "18113917958065021",
+   "17947896951350889",
+   "18153959662495806",
+   "18082003184358901",
+   "17953405959322904",
+   "18375641731213214",
+   "18096037244262904",
+   "18455857189193691",
+   "17886288648623282",
+   "18124035392285180",
+   "18105604535010702",
+   "18642935167042099",
+   "18128907448887035",
+   "17941117785409443"
+  ],
+  "permalink": "https://www.instagram.com/stories/fortex__uae/"
+ },
+ "published_at": "2026-10-28T15:03Z"
 }
