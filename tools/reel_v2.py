@@ -17,7 +17,7 @@ ig/reels/src/<slug>.json с "v": 2:
 Результат: ig/reels/<slug>/<hash>.mp4, cover.jpg, render.json (формат как у v1, публикует tools/ig.py).
 Ключи: FAL_KEY, ELEVENLABS_API_KEY. REEL_DRY=1: тестовый прогон без API.
 """
-import base64, concurrent.futures, glob, hashlib, json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.error
+import base64, math, concurrent.futures, glob, hashlib, json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -491,7 +491,7 @@ def render_one(slug, src, browser):
         return reel_fmt.render(slug, src, out_dir, h)
     shots = src["shots"][:7]
     cta = src.get("cta") or {"title": "Подпишись", "text": "Новости Дубая для предпринимателей каждый день", "say": "Подписывайся, чтобы быть в курсе."}
-    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.10", DRY)[:10]
+    h = key(src.get("hook"), src.get("accent"), shots, cta, src.get("music"), src.get("voice_id"), "v2.11", DRY)[:10]
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
         meta = json.load(open(meta_p))
@@ -626,15 +626,28 @@ def render_one(slug, src, browser):
     for i, (a, b) in enumerate(shot_seg):
         d = b - a + (XF if i + 1 < len(shot_seg) else 0)
         cl = probe_dur(paths[i]) or 5
-        slow = min(max(d / cl, 1.0), 1.5)
         part = os.path.join(tmp, f"p{i}.mp4")
-        punch = "1.0+0.04*t/%.2f" % d
-        ff(["-i", paths[i], "-vf",
-            f"setpts={slow:.3f}*PTS,scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS},"
-            f"tpad=stop_mode=clone:stop_duration=6,"
-            f"scale=w='iw*({punch})':h='ih*({punch})':eval=frame,crop={W}:{H},"
-            f"eq=contrast=1.06:saturation=1.08,format=yuv420p",
-            "-t", f"{d:.3f}", "-an", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", part])
+        # без замедления: фразу режем на куски ~2 с из разных моментов ролика (динамика как в топовых рилсах)
+        n = max(1, int(math.ceil(d / 2.2)))
+        piece = d / n
+        subs = []
+        for k in range(n):
+            off = 0.0 if cl <= piece + 0.1 else (cl - piece - 0.05) * (k / max(1, n - 1) if n > 1 else 0.15)
+            z0, z1 = (1.0, 1.06) if k % 2 == 0 else (1.10, 1.04)  # чередуем лёгкий наезд и отъезд
+            zz = f"{z0}+({z1}-{z0})*t/{piece:.3f}"
+            sp = os.path.join(tmp, f"p{i}_{k}.mp4")
+            ff(["-ss", f"{off:.3f}", "-stream_loop", "-1", "-i", paths[i], "-t", f"{piece:.3f}", "-vf",
+                f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS},"
+                f"scale=w='iw*({zz})':h='ih*({zz})':eval=frame,crop={W}:{H},"
+                f"eq=contrast=1.06:saturation=1.08,format=yuv420p",
+                "-an", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", sp])
+            subs.append(sp)
+        if len(subs) == 1:
+            os.replace(subs[0], part)
+        else:
+            lst = os.path.join(tmp, f"p{i}.txt")
+            open(lst, "w").write("".join(f"file '{x}'\n" for x in subs))
+            ff(["-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", part])
         parts.append(part)
     base = os.path.join(tmp, "base.mp4")
     if len(parts) == 1:
