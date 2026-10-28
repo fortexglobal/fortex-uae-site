@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T08:23+04:00",
+ "generated": "2026-10-28T22:34+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -7,7 +7,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De6Hw8NFY_V",
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
-   "views": 7,
+   "views": 9,
    "likes": 1,
    "replies": 0,
    "reposts": 0,
@@ -20,7 +20,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De8thl8lb8G",
    "kind": "стёб",
    "text": "Стадии жизни в Дубае:\n\n1. «Я на недельку, посмотреть»\n2. «Ну, месяц можно»\n3. «А где тут делают Emirates ID?»\n4. Объясня",
-   "views": 1326,
+   "views": 1329,
    "likes": 25,
    "replies": 36,
    "reposts": 0,
@@ -59,7 +59,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De_peAUHAn5",
    "kind": "партнёры",
    "text": "Клиент: «За что комиссия? Я же сам нашёл объект в объявлении».\n\nЧего он не видел:\n\n1. 40 сообщений, чтобы поймать продав",
-   "views": 63,
+   "views": 67,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -72,7 +72,46 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfAE8AKFvgf",
    "kind": "тренд",
    "text": "Emirates ID: ожидание и реальность.\n\nОжидание: получил карточку, и все двери открыты.\n\nРеальность: карточка есть, а банк",
-   "views": 74,
+   "views": 75,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1028-tolpa",
+   "at": "2026-10-28T10:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfByx6okcHu",
+   "kind": "тренд",
+   "text": "Правила Дубая, которые узнаёшь на практике:\n\n• все перешли на красный, штраф выписали всем\n• все тут паркуются, эвакуато",
+   "views": 133,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 1
+  },
+  {
+   "slug": "t-1028-dohodnost",
+   "at": "2026-10-28T14:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfCONT_m8LG",
+   "kind": "партнёры",
+   "text": "Клиент: Хочу честно узнать про доходность. Только не от риелтора.\n\nРиелтор: Вот цифры аренды в этом доме за год.\n\nКлиент",
+   "views": 57,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1028-attrakcion",
+   "at": "2026-10-28T18:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfCprP9G4n-",
+   "kind": "консультация",
+   "text": "Аттракцион невиданной щедрости, только сегодня и только у нас. В ленте опять спрашивают, откроет ли банк счёт на фриланс",
+   "views": 41,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -82,15 +121,15 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 2149,
-  "likes": 4,
-  "replies": 7,
+  "views": 633,
+  "likes": 0,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "account_7d": {
-  "views": 2768,
+  "views": 3122,
   "likes": 45,
   "replies": 75,
   "reposts": 0,
@@ -98,10 +137,6 @@
   "followers_count": 1
  },
  "profile_views_by_day": [
-  {
-   "date": "2026-10-20",
-   "views": 0
-  },
   {
    "date": "2026-10-21",
    "views": 0
@@ -128,7 +163,11 @@
   },
   {
    "date": "2026-10-27",
-   "views": 279
+   "views": 504
+  },
+  {
+   "date": "2026-10-28",
+   "views": 129
   }
  ],
  "link_clicks_7d": [
@@ -153,27 +192,27 @@
  "by_kind": {
   "закреп": {
    "posts": 1,
-   "views": 7,
+   "views": 9,
    "replies": 0,
    "likes": 1,
-   "avg_views": 7.0,
+   "avg_views": 9.0,
    "avg_replies": 0.0
   },
   "стёб": {
    "posts": 1,
-   "views": 1326,
+   "views": 1329,
    "replies": 36,
    "likes": 25,
-   "avg_views": 1326.0,
+   "avg_views": 1329.0,
    "avg_replies": 36.0
   },
   "тренд": {
-   "posts": 2,
-   "views": 279,
+   "posts": 3,
+   "views": 413,
    "replies": 13,
    "likes": 2,
-   "avg_views": 139.5,
-   "avg_replies": 6.5
+   "avg_views": 137.7,
+   "avg_replies": 4.33
   },
   "вопрос": {
    "posts": 1,
@@ -184,11 +223,19 @@
    "avg_replies": 0.0
   },
   "партнёры": {
-   "posts": 1,
-   "views": 63,
+   "posts": 2,
+   "views": 124,
    "replies": 0,
    "likes": 0,
-   "avg_views": 63.0,
+   "avg_views": 62.0,
+   "avg_replies": 0.0
+  },
+  "консультация": {
+   "posts": 1,
+   "views": 41,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 41.0,
    "avg_replies": 0.0
   }
  }
