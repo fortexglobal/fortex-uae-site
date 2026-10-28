@@ -1,5 +1,5 @@
 {
- "at": "2026-10-28T07:33+04:00",
+ "at": "2026-10-28T07:48+04:00",
  "errors": [],
  "openrouter_left": 17.6,
  "apify_left": null,
@@ -92,6 +92,6 @@
   "llm_warn": 0,
   "wealth": 19,
   "scan_model": 0,
-  "openrouter_http": 360
+  "openrouter_http": 359
  }
 }
