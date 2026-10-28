@@ -87,6 +87,29 @@ def vid(which):
     os.remove(lst)
 
 
+HEROES = [
+    "a Russian businessman about 40 years old with typical Slavic features: fair skin, light-brown hair cut short, grey-blue eyes, straight nose, slightly wide cheekbones, neat light stubble, white linen shirt, navy trousers, steel watch; he stands on a Dubai Marina promenade in the evening, relaxed confident smile",
+    "a Russian entrepreneur about 35 years old with typical Slavic features: fair skin, ash-blond hair, blue eyes, broad face, clean-shaven, light beige shirt with rolled sleeves; he sits at a cafe table in Downtown Dubai with a laptop and a phone, looking at the camera calmly",
+    "a Russian businesswoman about 33 years old with typical Slavic features: fair skin, long light-brown hair, grey-green eyes, high cheekbones, natural makeup, elegant cream blazer; she walks along Dubai Marina with a phone in her hand, warm smile",
+]
+
+
+def heroes():
+    key = os.environ["OPENROUTER_API_KEY"]
+    os.makedirs(OUT, exist_ok=True)
+    for k, h in enumerate(HEROES):
+        try:
+            r = http("https://openrouter.ai/api/v1/chat/completions",
+                     {"model": "google/gemini-2.5-flash-image", "modalities": ["image", "text"], "image_config": {"aspect_ratio": "9:16"},
+                      "messages": [{"role": "user", "content": REAL + "Portrait-oriented candid photo of " + h}]},
+                     {"Authorization": f"Bearer {key}"})
+            url = r["choices"][0]["message"]["images"][0]["image_url"]["url"]
+            open(os.path.join(OUT, f"hero-{k}.jpg"), "wb").write(base64.b64decode(url.split(",", 1)[1]))
+            print("hero", k, "ok")
+        except Exception as e:
+            print("hero", k, "error", e)
+
+
 def story():
     """Герой + 2 сцены с тем же героем (картинка героя подаётся как образец) и оживление этих 2 сцен."""
     key = os.environ["OPENROUTER_API_KEY"]
@@ -137,6 +160,8 @@ def story():
 if __name__ == "__main__":
     if sys.argv[1] == "img":
         img()
+    elif sys.argv[1] == "heroes":
+        heroes()
     elif sys.argv[1] == "story":
         story()
     elif sys.argv[1] == "topic":
