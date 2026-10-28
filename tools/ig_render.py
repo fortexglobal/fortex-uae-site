@@ -233,12 +233,15 @@ def render_one(slug, src, browser):
     # дополнительные фото для кадров сторис: src["bgs"] = [промпты], файлы ig/bg/<slug>-<k>.jpg
     photos = []
     for k, prompt in enumerate(src.get("bgs", []) or src.get("photos", [])):
+        hero = None
+        if isinstance(prompt, dict):  # {"prompt": "...", "hero": "man|woman"}: фото с постоянным героем бренда
+            prompt, hero = prompt.get("prompt", ""), prompt.get("hero")
         pp = os.path.join(ROOT, "ig", "bg", f"{slug}-{k}.jpg")
         if not os.path.exists(pp) and os.environ.get("OPENROUTER_API_KEY"):
             import ai_bg
             from PIL import Image
             ai_bg.KEY = os.environ["OPENROUTER_API_KEY"]
-            data = ai_bg.gen(prompt)
+            data = ai_bg.gen(prompt, hero=hero)
             if data:
                 os.makedirs(os.path.dirname(pp), exist_ok=True)
                 open(pp, "wb").write(data)

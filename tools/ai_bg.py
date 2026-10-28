@@ -23,10 +23,22 @@ COVER_MODELS = ["google/gemini-3-pro-image-preview", "google/gemini-2.5-flash-im
 PHOTO_MODELS = ["google/gemini-2.5-flash-image"]                                      # фото внутри: дёшево
 
 
-def gen(prompt, cover=False):
+HEROES = json.load(open(os.path.join(ROOT, "ig", "heroes", "heroes.json"))) if os.path.exists(os.path.join(ROOT, "ig", "heroes", "heroes.json")) else {}
+
+
+def gen(prompt, cover=False, hero=None):
+    """hero: "man" или "woman" — постоянный герой бренда (ig/heroes), подаётся как образец, чтобы лицо было тем же."""
     for m in (COVER_MODELS if cover else PHOTO_MODELS):
+        if hero and hero in HEROES:
+            ref = base64.b64encode(open(os.path.join(ROOT, HEROES[hero]["file"]), "rb").read()).decode()
+            style = STYLE.replace("no recognizable people or faces, ", "")
+            content = [{"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + ref}},
+                       {"type": "text", "text": "Keep exactly the same person as in the reference photo (same face, hair, age, build): "
+                        + HEROES[hero]["desc"] + ". " + style + prompt}]
+        else:
+            content = STYLE + prompt
         body = json.dumps({"model": m, "modalities": ["image", "text"],
-                           "messages": [{"role": "user", "content": STYLE + prompt}]}).encode()
+                           "messages": [{"role": "user", "content": content}]}).encode()
         req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", body, {
             "Authorization": f"Bearer {KEY}", "Content-Type": "application/json",
             "HTTP-Referer": "https://fortex-uae.com", "X-Title": "Fortex covers"})
