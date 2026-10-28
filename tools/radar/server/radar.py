@@ -261,7 +261,6 @@ async def on_group_message(ev):
             warn += f"\n• Дневной лимит ответов ({MAX_REPLIES_PER_DAY}) исчерпан"
         import html as _h
         e = lambda x: _h.escape(str(x or ""))
-        draft = clean_draft(await autoreply.shorten(res.get("reply", "")))
         said = text if len(text) <= 280 else text[:270].rsplit(" ", 1)[0] + "…"
         meaning = (res.get("meaning") or res.get("why", "")).strip()
         if len(meaning) > 160:
