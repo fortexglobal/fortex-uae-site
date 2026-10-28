@@ -1,0 +1,12 @@
+05:51:01 start reel-1028-reysy-pobeda
+05:51:09 stt elevenlabs HTTP Error 401: Unauthorized
+05:51:11 stt match 1.00, diffs []
+05:51:11 reel-1028-reysy-pobeda: voice 30.4s, shots [5.0, 4.8, 3.5, 6.0, 4.3, 7.8]
+05:51:12 clip 0: pixabay px176930 (phgvu307 [airplane, takeoff, airport, sunset, runw]) «airplane takeoff runway»
+05:51:12 clip 4: pixabay px5628 (Coverr-Free-Footage [baggage claim, luggage belt, airport, tr]) «airport terminal walking luggage»
+05:51:12 clip 1: pixabay px30870 (Expatsiam [thailand, bangkok, airport, aircraft, tr]) «airport departure board»
+05:51:12 clip 5: pixabay px205449 (Asif_khanAK [buildings, skyline, sea, ocean, dubai, a]) «dubai skyline sunset»
+05:51:12 clip 3: pixabay px255761 (luongleddata [airline, airplane, airplane window, airp]) «airplane landing city»
+05:51:13 clip 2: pixabay px382382 (adzr [clouds, airplane window, clouds from air]) «airplane window view clouds»
+05:51:18 music: elevenlabs ok
+05:54:35 rendered reel v2 reel-1028-reysy-pobeda: 31.3s, 14.9 MB, music=True

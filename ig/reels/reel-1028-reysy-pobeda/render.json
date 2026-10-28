@@ -1,0 +1,90 @@
+{
+ "stt": {
+  "match": 1.0,
+  "heard": "Летите из Казани, Уфы или Екатеринбурга? Эта новость для вас. С двадцать пятого октября Победа запустила сразу пять новых рейсов в Эмираты. Из Москвы теперь летают в Абу-Даби четыре раза в неделю. А из Уфы, Казани, Екатеринбурга и Владикавказа прямо в Дубай два раза в неделю. Важно, в Дубае они садятся не в главном аэропорту, а во втором за городом. Летите по делам или на зимовку. Сохраните, чтобы не потерять расписание. Подпишись, чтобы первым узнавать новости Дубая.",
+  "diffs": []
+ },
+ "hash": "ce9bdc1d99",
+ "video": "ce9bdc1d99.mp4",
+ "cover": "cover.jpg",
+ "v": 2,
+ "duration": 31.3,
+ "ai_clips": [],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "q": "airplane takeoff runway",
+   "src": "pixabay:px176930",
+   "author": "phgvu307 [airplane, takeoff, airport, sunset, runw]",
+   "link": "https://cdn.pixabay.com/video/2023/08/20/176930-856259149_large.mp4",
+   "site": "pixabay"
+  },
+  "4": {
+   "key": "stock",
+   "q": "airport terminal walking luggage",
+   "src": "pixabay:px5628",
+   "author": "Coverr-Free-Footage [baggage claim, luggage belt, airport, tr]",
+   "link": "https://cdn.pixabay.com/video/2016/09/22/5628-183849390_large.mp4",
+   "site": "pixabay"
+  },
+  "1": {
+   "key": "stock",
+   "q": "airport departure board",
+   "src": "pixabay:px30870",
+   "author": "Expatsiam [thailand, bangkok, airport, aircraft, tr]",
+   "link": "https://cdn.pixabay.com/video/2020/01/04/30870-382770842_large.mp4",
+   "site": "pixabay"
+  },
+  "5": {
+   "key": "stock",
+   "q": "dubai skyline sunset",
+   "src": "pixabay:px205449",
+   "author": "Asif_khanAK [buildings, skyline, sea, ocean, dubai, a]",
+   "link": "https://cdn.pixabay.com/video/2024/03/24/205449-926957426_large.mp4",
+   "site": "pixabay"
+  },
+  "3": {
+   "key": "stock",
+   "q": "airplane landing city",
+   "src": "pixabay:px255761",
+   "author": "luongleddata [airline, airplane, airplane window, airp]",
+   "link": "https://cdn.pixabay.com/video/2025/02/01/255761_large.mp4",
+   "site": "pixabay"
+  },
+  "2": {
+   "key": "stock",
+   "q": "airplane window view clouds",
+   "src": "pixabay:px382382",
+   "author": "adzr [clouds, airplane window, clouds from air]",
+   "link": "https://cdn.pixabay.com/video/2026/10/13/382382_large.mp4",
+   "site": "pixabay"
+  }
+ },
+ "safe_zone": {
+  "cap_widest_px": 754,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 31.4,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg",
+   "qa/sheet-3.jpg",
+   "qa/sheet-4.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.31,
+  "true_peak": -1.88,
+  "lra": 0.9,
+  "silence_mid": [],
+  "warnings": []
+ }
+}
