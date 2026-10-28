@@ -16,16 +16,24 @@ SCENES = [
 ]
 
 
+SCENES_TOPIC = [
+    "a gigantic glowing golden bank card the size of a skyscraper stands upright between the towers of Downtown Dubai at golden hour like a monument, people on the boulevard in the foreground stop and film it on their phones",
+    "a colossal burgundy passport floats slowly above Dubai Marina like an airship, its pages gently opening, people on yachts and the promenade below look up and take photos",
+    "an enormous round steel bank vault door slowly opens in the middle of the golden desert dunes outside Dubai, warm light pours out, a small group of business people in the foreground walks toward it",
+    "a whole glass office tower flies like an airplane over the Persian Gulf toward the Dubai skyline at sunset, people on Palm Jumeirah beach in the foreground point at it in amazement",
+]
+
+
 def http(url, data=None, headers=None, timeout=300):
     req = urllib.request.Request(url, json.dumps(data).encode() if data is not None else None,
                                  {"Content-Type": "application/json", **(headers or {})})
     return json.load(urllib.request.urlopen(req, timeout=timeout))
 
 
-def img():
+def img(scenes=None, prefix="img"):
     key = os.environ["OPENROUTER_API_KEY"]
     os.makedirs(OUT, exist_ok=True)
-    for k, sc in enumerate(SCENES):
+    for k, sc in enumerate(scenes or SCENES):
         try:
             r = http("https://openrouter.ai/api/v1/chat/completions",
                      {"model": "google/gemini-2.5-flash-image", "modalities": ["image", "text"],
@@ -33,7 +41,7 @@ def img():
                       "messages": [{"role": "user", "content": STYLE + sc}]},
                      {"Authorization": f"Bearer {key}"})
             url = r["choices"][0]["message"]["images"][0]["image_url"]["url"]
-            open(os.path.join(OUT, f"img-{k}.jpg"), "wb").write(base64.b64decode(url.split(",", 1)[1]))
+            open(os.path.join(OUT, f"{prefix}-{k}.jpg"), "wb").write(base64.b64decode(url.split(",", 1)[1]))
             print("img", k, "ok")
         except Exception as e:
             print("img", k, "error", e)
@@ -71,5 +79,7 @@ def vid(which):
 if __name__ == "__main__":
     if sys.argv[1] == "img":
         img()
+    elif sys.argv[1] == "topic":
+        img(SCENES_TOPIC, "topic")
     else:
         vid([int(x) for x in sys.argv[2].split(",")])
