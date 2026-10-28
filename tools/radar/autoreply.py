@@ -24,7 +24,8 @@ DELAY = (180, 900)
 FOLLOW_DELAY = (90, 420)
 QUIET = (0, 8)
 MIN_SCORE = 4
-MAX_DEPTH = 3
+MAX_DEPTH = 2  # решение Александра 28.10: показал экспертность и вовремя закончил, дальше только 👍
+ARGUE_RE = re.compile(r"не соглас|это не так|неправд|ошибаете|ошибаешься|не верно|неверно|не правы|не прав\b|вообще не|глупост|сами вы|откуда вы знаете|с чего вы взяли|не факт", re.I)
 
 BOT_Q_RE = re.compile(r"\bбот\b|ты бот|вы бот|нейросет|chat ?gpt|\bgpt\b|кто (ты|вы) так|кто вы\b|откуда (ты|вы)|это реклам|реклама\?|продаёте|продаете|на кого работа", re.I)
 NEG_RE = re.compile(r"спам|рекламщ|заткн|отвал|задолбал|надоел|бан\b|забань|кто тебя спрашивал|не пиши|не лезь|мошенн|развод|скам|инфоцыган|клоун|бред|чушь|ерунд", re.I)
@@ -52,6 +53,7 @@ STYLE = """Ты пишешь ответ в русскоязычном Telegram-�
 - Цены почти никогда. В крайнем случае «от X» из ориентиров выше.
 - Не обещай 100% и конкретный банк. Не советуй ничего скрывать от банка. Только законные пути: компания и счёт в ОАЭ, зарплата себе через рабочую визу.
 - Никогда не спорь. Всегда спокойно и на позитиве. Не упоминай название компании.
+- ЗНАЙ, КОГДА ОСТАНОВИТЬСЯ: ты эксперт по Дубаю, но со всеми дружишь. Показал экспертность одной-двумя репликами и закончил. Не втягивайся в длинные обсуждения, не доказывай свою правоту. Если с тобой не согласны: «Да, у всех по-разному» или «Тоже вариант», и всё.
 Примеры: «С русским паспортом открывают. Но не везде. Компания уже есть?» / «В Дубае с этим проще. Главное источник средств.» / «Тут половина чата посредники... Банк лучше напрямую.»"""
 
 
@@ -343,8 +345,13 @@ async def on_reply_to_us(user, ev, rm, text):
                                     "Посмотри, что не так с тоном. Включить: /auto on")
             return
         if th.get("stopped") or th["depth"] >= MAX_DEPTH or _quiet():
+            if not th.get("thumbed") and not _quiet() and ev.sender_id == th.get("author"):
+                th["thumbed"] = True; _save(s)
+                await _close_thumb(user, ev.chat_id, ev.id)  # разговор закончили: просто 👍 на последнее сообщение
             return
-        if not th.get("starter") and not (TOPIC_RE.search(text) or "?" in text):
+        if ARGUE_RE.search(text):  # спорят: по-дружески соглашаемся одной фразой и заканчиваем
+            th["argue"] = True
+        if not th.get("starter") and not th.get("argue") and not (TOPIC_RE.search(text) or "?" in text):
             return  # ушли от нашей темы: молчим
         if await _is_admin(user, ev.chat_id, ev.sender_id) and ev.sender_id != th["author"]:
             return
@@ -354,23 +361,29 @@ async def on_reply_to_us(user, ev, rm, text):
             return
         depth = th["depth"] + 1
         lim, hint = await chat_style(user, ev.chat_id)
-        if th.get("starter"):
+        if th.get("argue"):
+            task = ("Человек не согласен или спорит. Не спорь и ничего не доказывай: по-дружески признай, что у всех по-разному "
+                    "или что его вариант тоже рабочий, одной короткой фразой. Без вопроса. Это последнее сообщение в ветке.")
+            depth = MAX_DEPTH
+        elif th.get("starter"):
             task = ("Это обсуждение начали мы своим вопросом, человек ответил. Отреагируй по-человечески: коротко поблагодари или согласись, "
                     "можешь задать один уточняющий вопрос по сути. Мы разбираемся в теме, но говорим скромно. Если в разговоре прозвучала задача, которую мы решаем "
                     "(счёт, виза, компания, переводы через ОАЭ), и это звучит уместно, можно вскользь одной фразой сказать, что в Дубае такое решаемо и мы этим занимаемся, "
                     "без цен и без «пишите в личку», если человек сам не интересуется. Не продавай. Не придумывай личных историй." + (
                     " Это наше последнее сообщение в ветке: если человеку это актуально, можно спокойно сказать «если что, пишите в личку»." if depth >= MAX_DEPTH else ""))
         else:
-          task = ("Это наше третье и последнее сообщение в ветке: коротко ответь по сути и вскользь, без давления, "
-                "предложи написать в личку, если нужна консультация (например «Если что, пишите в личку. Подскажу.»)."
-                if depth == MAX_DEPTH else "Коротко ответь по сути. Вопрос только если без него никак.")
+          task = ("Это наше последнее сообщение в ветке: коротко ответь по сути и закругли разговор по-дружески, без вопроса. "
+                "Только если человеку явно нужна помощь, вскользь: «Если что, пишите в личку. Подскажу.»"
+                if depth >= MAX_DEPTH else "Коротко ответь по сути. Вопрос только если без него никак.")
         task += "\n" + hint
         msgs = [{"role": "system", "content": STYLE},
                 {"role": "user", "content": f"Исходное сообщение человека:\n{th['root']}\n\nНаши ответы:\n" +
                  "\n".join(th["history"]) + f"\n\nНовое сообщение в ветке:\n{text[:800]}\n\n{task}\n"
                  "Если отвечать не нужно (просто «спасибо», «ок»), верни пустую строку. Верни только текст ответа."}]
         reply = _clean(await shorten(await _llm(msgs)), max(len(text), lim) if th.get("starter") else (len(text) if depth < MAX_DEPTH else max(len(text), 90)))
-        if not reply:
+        if not reply:  # «спасибо», «ок» и т.п.: не отвечаем, ставим 👍 и закрываем ветку
+            th["stopped"] = True; th["thumbed"] = True; _save(s)
+            await _close_thumb(user, ev.chat_id, ev.id)
             return
         ms = await _send(user, ev.chat_id, reply, ev.id)
         m = ms[0]
@@ -383,6 +396,26 @@ async def on_reply_to_us(user, ev, rm, text):
         await CTX["notify"](f"🤖 Продолжил ветку ({depth}/{MAX_DEPTH}):\n«{reply}»", buttons=CTX["buttons"](ev.chat_id, m.id))
     except Exception as e:
         log.exception("follow up: %s", e)
+
+
+async def _close_thumb(user, chat_id, msg_id):
+    """Конец разговора: через паузу ставим 👍 (если в чате нельзя, 🤝 или 🙏) на последнее сообщение человека."""
+    try:
+        from telethon.tl.functions.messages import SendReactionRequest
+        from telethon.tl.types import ReactionEmoji
+        await asyncio.sleep(random.randint(20, 90))
+        for emo in ("👍", "🤝", "🙏"):
+            try:
+                await user(SendReactionRequest(peer=chat_id, msg_id=msg_id, reaction=[ReactionEmoji(emoticon=emo)]))
+                log.info("close thumb %s in %s/%s", emo, chat_id, msg_id)
+                return
+            except Exception as e:
+                if "REACTION_INVALID" in str(e) or "REACTION_EMPTY" in str(e):
+                    continue
+                log.warning("close thumb: %s", e)
+                return
+    except Exception as e:
+        log.warning("close thumb: %s", e)
 
 
 async def delete_message(user, chat_id, msg_id):
