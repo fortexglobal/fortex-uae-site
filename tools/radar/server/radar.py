@@ -247,10 +247,11 @@ async def on_group_message(ev):
             link = f"https://t.me/{chat.username}/{ev.id}"
         else:
             link = f"https://t.me/c/{str(ev.chat_id).replace('-100', '')}/{ev.id}"
+        draft = clean_draft(await autoreply.shorten(res.get("reply", "")))  # один раз: в карточке и при «Отправить» один и тот же текст
         cur = db.execute(
             "insert into leads(ts,chat_id,chat_title,msg_id,author,author_id,text,score,topic,draft,status,link) values(?,?,?,?,?,?,?,?,?,?,?,?)",
             (time.time(), ev.chat_id, title, ev.id, author, sender.id, text, int(res.get("score", 0)),
-             res.get("topic", ""), clean_draft(await autoreply.shorten(res.get("reply", ""))), "new", link))
+             res.get("topic", ""), draft, "new", link))
         db.commit()
         lid = cur.lastrowid
         warn = ""
