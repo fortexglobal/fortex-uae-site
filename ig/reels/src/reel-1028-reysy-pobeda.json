@@ -1,0 +1,47 @@
+{
+ "v": 2,
+ "status": "approved",
+ "publish_at": "2026-10-28T19:00+04:00",
+ "ring": 4,
+ "hook": "5 новых прямых рейсов из России в ОАЭ",
+ "accent": "5 новых",
+ "music": "afro house, 122 bpm, rolling log drum bassline, tight shakers and open hi-hat swing, short marimba plucks answering each other, signature sound: a jet-engine whoosh filter sweep that drops into the first kick, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "q": "airplane takeoff runway",
+   "prompt": "passenger airplane taking off from a runway at golden hour, filmed from the side, no people visible",
+   "say": "Летите из Казани, Уфы или Екатеринбурга? Эта новость для вас."
+  },
+  {
+   "q": "airport departure board",
+   "prompt": "airport departures board with flipping flight information, travelers walking past seen from behind, blurred, no readable text",
+   "say": "С {25 октября|двадцать пятого октября} Победа запустила сразу {5|пять} новых рейсов в Эмираты."
+  },
+  {
+   "q": "airplane window view clouds",
+   "prompt": "view through an airplane window over clouds and wing at sunrise, no people",
+   "say": "Из Москвы теперь летают в Абу-Даби, {4 раза|четыре раза} в неделю."
+  },
+  {
+   "q": "airplane landing city",
+   "prompt": "passenger jet descending over a desert city at sunset, wide shot, no people",
+   "say": "А из Уфы, Казани, Екатеринбурга и Владикавказа прямо в Дубай, {2 раза|два раза} в неделю."
+  },
+  {
+   "q": "airport terminal walking luggage",
+   "prompt": "travelers pulling suitcases through a bright modern airport terminal, seen from behind, no faces",
+   "say": "Важно: в Дубае они садятся не в главном аэропорту, а во втором, за городом."
+  },
+  {
+   "q": "dubai skyline sunset",
+   "prompt": "Dubai skyline at sunset with tall towers, slow aerial drift, no people",
+   "say": "Летите по делам или на зимовку? Сохраните, чтобы не потерять расписание."
+  }
+ ],
+ "cta": {
+  "title": "Подпишись",
+  "text": "Новости для тех, кто летает в Дубай",
+  "say": "Подпишись, чтобы первым узнавать новости Дубая."
+ },
+ "caption": "Из пяти городов России запустили новые прямые рейсы «Победы» в ОАЭ. Сохраните расписание.\n\nНовые рейсы с конца октября:\n• Москва → Абу-Даби, с 25 октября: пн, ср, пт, вс\n• Уфа → Дубай, с 25 октября: пт, вс\n• Екатеринбург → Дубай, с 26 октября: пн, сб\n• Казань → Дубай, с 27 октября: вт, чт\n• Владикавказ → Дубай, с 27 октября: вт, сб\n\nРейсы в Дубай прилетают в аэропорт Al Maktoum (DWC) в районе Dubai South, а не в DXB. Закладывайте время на дорогу до Марины или Даунтауна.\n\nРасписание по данным Dubai Map и АТОР. Цены динамические, расписание лучше сверить на сайте авиакомпании перед покупкой.\n\nИз какого города вы летаете в Дубай?\n\nЛетите надолго и нужна резидентская виза с Emirates ID? Напишите ВИЗА в комментариях, подскажем вариант.\nИли пишите в Telegram @Fortex_Dubai\n\n#дубай #оаэ #новостидубая #победа #рейсывдубай #переездвдубай"
+}
