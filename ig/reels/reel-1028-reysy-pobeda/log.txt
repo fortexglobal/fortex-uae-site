@@ -1,3 +1,1 @@
-08:58:07 start reel-1028-reysy-pobeda
-08:58:07 reel-1028-reysy-pobeda: voice 30.4s, shots [5.0, 4.8, 3.5, 6.0, 4.3, 7.8]
-09:01:29 rendered reel v2 reel-1028-reysy-pobeda: 31.3s, 15.2 MB, music=True
+09:12:57 start reel-1028-reysy-pobeda
