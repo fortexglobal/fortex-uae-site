@@ -13,50 +13,48 @@
    ]
   ]
  },
- "hash": "7c6e26b897",
- "video": "7c6e26b897.mp4",
+ "hash": "bd8eb42b35",
+ "video": "bd8eb42b35.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 33.9,
  "ai_clips": [
-  0,
   4,
   6,
-  1,
-  2
+  1
  ],
  "stock": {
   "0": {
    "key": "stock",
    "q": "dubai marina promenade day",
-   "src": "https://v3b.fal.media/files/b/0ab02b80/AOeKqw_rL3yn0uC4UHBga_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "src": "https://cdn.pixabay.com/video/2025/03/16/265261_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2025/03/16/265261_large.mp4",
+   "site": "pixabay"
   },
   "3": {
    "key": "stock",
    "q": "signing contract office bright",
-   "src": "pixabay:px198890",
-   "author": "Roque_dg [contract, agreement, firm, business, off]",
-   "link": "https://cdn.pixabay.com/video/2024/02/02/198890-909564521_large.mp4",
+   "src": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_large.mp4",
    "site": "pixabay"
   },
   "5": {
    "key": "stock",
    "q": "dubai business bay skyscrapers day",
-   "src": "pixabay:px110937",
-   "author": "criss1234 [tower, building, development, emirate, a]",
-   "link": "https://cdn.pixabay.com/video/2022/03/16/110937-689949681_large.mp4",
+   "src": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4",
    "site": "pixabay"
   },
   "2": {
    "key": "stock",
    "q": "bank statement documents desk",
-   "src": "https://v3b.fal.media/files/b/0ab02bbb/i7gxxu_mG0cTxUTwamIBI_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "src": "https://cdn.pixabay.com/video/2025/07/23/293084_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2025/07/23/293084_large.mp4",
+   "site": "pixabay"
   }
  },
  "safe_zone": {
