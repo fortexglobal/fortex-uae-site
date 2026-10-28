@@ -4,8 +4,8 @@
   "heard": "Летите из Казани, Уфы или Екатеринбурга? Эта новость для вас. С двадцать пятого октября Победа запустила сразу пять новых рейсов в Эмираты. Из Москвы теперь летают в Абу-Даби четыре раза в неделю. А из Уфы, Казани, Екатеринбурга и Владикавказа прямо в Дубай два раза в неделю. Важно, в Дубае они садятся не в главном аэропорту, а во втором за городом. Летите по делам или на зимовку. Сохраните, чтобы не потерять расписание. Подпишись, чтобы первым узнавать новости Дубая.",
   "diffs": []
  },
- "hash": "24ff44bf16",
- "video": "24ff44bf16.mp4",
+ "hash": "54d177e1cf",
+ "video": "54d177e1cf.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 31.3,
@@ -53,10 +53,10 @@
   },
   "2": {
    "key": "stock",
-   "q": "airplane wing above clouds",
-   "src": "pixabay:px382383",
-   "author": "adzr [clouds, airplane window, clouds from air]",
-   "link": "https://cdn.pixabay.com/video/2026/10/13/382383_large.mp4",
+   "q": "airplane taking off sky",
+   "src": "pixabay:px228563",
+   "author": "Kanenori [airplane, passenger plane, aircraft, tak]",
+   "link": "https://cdn.pixabay.com/video/2024/08/28/228563_large.mp4",
    "site": "pixabay"
   }
  },
