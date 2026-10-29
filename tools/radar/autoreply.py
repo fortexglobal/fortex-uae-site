@@ -24,6 +24,7 @@ DELAY = (180, 900)
 FOLLOW_DELAY = (90, 420)
 QUIET = (0, 8)
 MIN_SCORE = 4
+TOPIC_REPLIES = False  # решение Александра 29.10: на вопросы по счетам, ВНЖ и т.п. в чатах сами не отвечаем (удаляют), только посол Дубая
 MAX_DEPTH = 2  # решение Александра 28.10: показал экспертность и вовремя закончил, дальше только 👍
 ARGUE_RE = re.compile(r"не соглас|это не так|неправд|ошибаете|ошибаешься|не верно|неверно|не правы|не прав\b|вообще не|глупост|сами вы|откуда вы знаете|с чего вы взяли|не факт", re.I)
 
@@ -68,8 +69,8 @@ def _load():
         s = {}
     today = _now().date().isoformat()
     s.setdefault("on", True); s.setdefault("threads", {}); s.setdefault("neg", []); s.setdefault("ours", [])
-    if not s.get("off_2910"):  # решение Александра 29.10: сам Алексей в чатах не пишет (все сообщения удаляли). Реакции и личка работают
-        s["on"] = False; s["off_2910"] = True
+    if not s.get("on_2910b"):  # 29.10 вечер: включаем обратно, но только продвижение Дубая (до 2 в день), по нашей теме сами не отвечаем
+        s["on"] = True; s["on_2910b"] = True
     if s.get("day") != today:
         s.update(day=today, total=0, chats={}, authors=[])
     return s
@@ -348,7 +349,7 @@ async def maybe_auto_reply(user, ev, sender, text, res, lid, db):
     try:
         s = _load()
         s.setdefault("lead_keys", []).append(f"{ev.chat_id}:{ev.id}"); s["lead_keys"] = s["lead_keys"][-300:]; _save(s)
-        if classify(text, await _title(ev), res) != "direct" or not _can_reply(s, ev.chat_id, sender.id):
+        if not TOPIC_REPLIES or classify(text, await _title(ev), res) != "direct" or not _can_reply(s, ev.chat_id, sender.id):
             return
         if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
             return
@@ -553,7 +554,7 @@ async def maybe_visibility(user, ev, sender, text, res):
         if _suspicious(sender, text) or BOT_Q_RE.search(text) or await _is_admin(user, ev.chat_id, sender.id):
             return
         await _react(user, ev, sender, text, res.get("reaction") or "👍")
-        if kind != "direct":
+        if kind != "direct" or not TOPIC_REPLIES:
             return  # косвенное: только реакция
         await asyncio.sleep(20)  # даём ветке лида забрать сообщение
         s = _load()
@@ -594,7 +595,7 @@ AMB_RE = re.compile(r"переезд|переехать|переезжа|рел�
                     r"страна для жизни|сменить страну|внж|виз[аыу] (в|для)|налог|безопасн|стабильн|жара|жарко|климат|"
                     r"дуба|оаэ|эмират|абу-?даби|бали|таиланд|пхукет|турци|кипр|грузи|серби|черногори|испани|португали|европ", re.I)
 AMB_DAILY = int(os.environ.get("AMB_DAILY", "2"))   # всего в день по всем чатам
-AMB_CHAT_DAYS = 14                                   # в одном чате не чаще раза в 2 недели (28.10: осторожнее)
+AMB_CHAT_DAYS = 7                                    # в одном чате не чаще раза в неделю
 AMB_SCANS = 30                                       # проверок нейросетью в день (экономия)
 AMB_STYLE = """Ты Алексей: живёшь в Дубай Марине, в Дубае с 2022 года. В русскоязычном чате люди обсуждают переезд, где жить, налоги, безопасность, климат или другие страны.
 Иногда, когда это к месту, ты коротко и по-доброму вставляешь, почему в Дубае жить хорошо. Как живой человек, не как реклама.
