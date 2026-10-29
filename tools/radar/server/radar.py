@@ -197,10 +197,11 @@ def clean_draft(t):
 
 
 # ---------------- user account: watching ----------------
+CHATS_OFF = True  # решение Александра 29.10: вся активность в чатах выключена (чтение, лиды, реакции, ответы, посол Дубая). Работает только личка
 @user.on(events.NewMessage(incoming=True))
 async def on_group_message(ev):
     try:
-        if kv_get("paused") == "1" or not ev.is_group:
+        if CHATS_OFF or kv_get("paused") == "1" or not ev.is_group:  # 29.10: в чатах ничего не читаем и не делаем
             return
         text = ev.raw_text or ""
         if ev.is_reply:
