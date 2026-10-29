@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-29T14:14Z",
+ "checked": "2026-10-29T15:00Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,7 +7,16 @@
   "media_count": 10,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "reel-1029-naselenie-dubaya",
+   "scheduled": "carousel",
+   "error": {
+    "status": "ERROR",
+    "id": "18112948916154173"
+   }
+  }
+ ],
  "media": [
   {
    "id": "18079351760428261",
