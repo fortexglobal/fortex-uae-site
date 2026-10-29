@@ -1,0 +1,17 @@
+name: Photo test
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        env: {OPENROUTER_API_KEY: "${{ secrets.OPENROUTER_API_KEY }}"}
+        run: python3 tools/photo_test.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add research && git commit -m "Photo test" && git pull --rebase && git push
