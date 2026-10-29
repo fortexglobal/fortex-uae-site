@@ -1,5 +1,5 @@
 {
- "at": "2026-10-29T19:07+04:00",
+ "at": "2026-10-29T19:22+04:00",
  "errors": [],
  "openrouter_left": 8.9,
  "apify_left": null,
@@ -19,7 +19,7 @@
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
   "kb.md": "29.10 15:23",
-  "server/radar.py": "29.10 19:05",
+  "server/radar.py": "29.10 19:08",
   "leadbot.py": "26.10 09:36"
  },
  "spambot": {
@@ -164,10 +164,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 1066,
+  "lines": 1067,
   "llm_warn": 0,
   "wealth": 135,
   "scan_model": 0,
-  "openrouter_http": 300
+  "openrouter_http": 298
  }
 }
