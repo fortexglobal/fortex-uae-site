@@ -310,6 +310,16 @@ def push_status():
           "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
           "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
           "radar_files": {f: datetime.fromtimestamp(os.path.getmtime(os.path.join("/opt/radar", os.path.basename(f))), DUBAI).strftime("%d.%m %H:%M") for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", os.path.basename(f)))}}
+    try:  # спам-ограничения аккаунта радара (ответ @SpamBot) и ошибки реакций/отправки за сутки
+        sb = json.load(open("/opt/radar/spambot.json"))
+        st["spambot"] = {"checked": datetime.fromtimestamp(sb["at"], DUBAI).strftime("%d.%m %H:%M"), "limited": sb["limited"], "text": sb["text"][:600]}
+    except Exception:
+        pass
+    try:
+        j = subprocess.run(["journalctl", "-u", "radar", "--since", "48 hours ago", "--no-pager", "-o", "short-iso"], capture_output=True, text=True, timeout=60).stdout
+        st["radar_errors"] = [l[:220] for l in j.splitlines() if any(k in l for k in ("reaction failed", "PEER_FLOOD", "FloodWait", "USER_RESTRICTED", "CHAT_WRITE_FORBIDDEN", "USER_BANNED", "SendReaction", "Forbidden", "spambot"))][-25:]
+    except Exception:
+        pass
     try:  # живы ли наши сообщения в чатах (autoreply.survival)
         sv = json.load(open("/opt/radar/survival.json"))
         days = {}

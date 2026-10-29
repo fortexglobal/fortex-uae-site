@@ -277,13 +277,37 @@ async def survival(user):
     log.info("survival: %d messages checked", len(items))
 
 
+SPAM_F = os.path.join(BASE, "spambot.json")
+
+
+async def spam_status(user):
+    """Спросить @SpamBot, есть ли у аккаунта ограничения (спам-лист). Ответ в spambot.json, смотритель выкладывает его в отчёт."""
+    await user.send_message("SpamBot", "/start")
+    await asyncio.sleep(8)
+    msgs = await user.get_messages("SpamBot", limit=1)
+    text = msgs[0].message if msgs else ""
+    limited = not any(x in text.lower() for x in ("no limits", "свободен", "никаких ограничений", "не ограничен", "good news"))
+    json.dump({"at": int(time.time()), "limited": limited, "text": text[:1500]}, open(SPAM_F, "w"), ensure_ascii=False)
+    log.info("spambot: limited=%s", limited)
+    return limited, text
+
+
 async def survival_loop(user):
     await asyncio.sleep(90)
+    n = 0
     while True:
         try:
             await survival(user)
         except Exception as e:
             log.warning("survival: %s", e)
+        try:
+            if n % 2 == 0:  # раз в 12 часов
+                limited, text = await spam_status(user)
+                if limited and CTX.get("notify"):
+                    await CTX["notify"]("⚠️ Аккаунт Алексея в спам-ограничении Telegram. Ответ @SpamBot:\n" + text[:800])
+        except Exception as e:
+            log.warning("spambot: %s", e)
+        n += 1
         await asyncio.sleep(6 * 3600)
 
 
