@@ -1,0 +1,99 @@
+{
+ "stt": {
+  "match": 0.969,
+  "heard": "Говорят, из Дубая сейчас все уезжают. Цифры говорят обратное. За девять месяцев этого года город вырос почти на двести двадцать семь тысяч человек. Теперь в Дубае живут четыре миллиона восемьсот тысяч человек. И это не только туристы. Только за сентябрь город прибавил больше двадцати четырех тысяч жителей. Самая большая группа - люди от тридцати до тридцати четырех лет. А любой переезд начинается с визы и Emirates ID. Без них сложно открыть счёт и снять жильё. Подпишись, чтобы понимать Дубай раньше других.",
+  "diffs": [
+   [
+    "эмирейтс ай ди",
+    "emirates id"
+   ]
+  ]
+ },
+ "hash": "39958c9af9",
+ "video": "39958c9af9.mp4",
+ "cover": "cover.jpg",
+ "v": 2,
+ "duration": 32.7,
+ "ai_clips": [
+  0,
+  1,
+  2
+ ],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "q": "dubai marina promenade day",
+   "src": "https://v3b.fal.media/files/b/0ab04990/qlNSAfvbi80a7C0IUxLBB_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  },
+  "4": {
+   "key": "stock",
+   "q": "business people walking office",
+   "src": "pixabay:px2340",
+   "author": "Life-Of-Vids [meeting, planning, marketing, business, ]",
+   "link": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_large.mp4",
+   "site": "pixabay"
+  },
+  "5": {
+   "key": "stock",
+   "q": "paperwork office",
+   "src": "pixabay:px87146",
+   "author": "tolomedia43 [file, documents, office, paperwork]",
+   "link": "https://cdn.pixabay.com/video/2021/09/01/87146-601076915_large.mp4",
+   "site": "pixabay"
+  },
+  "3": {
+   "key": "stock",
+   "q": "family walking beach day",
+   "src": "pixabay:px181704",
+   "author": "Matthias_Groeneveld [girls, beach, people, netherlands, fries]",
+   "link": "https://cdn.pixabay.com/video/2023/09/21/181704-867371523_large.mp4",
+   "site": "pixabay"
+  },
+  "1": {
+   "key": "stock",
+   "q": "dubai metro station crowd",
+   "src": "https://v3b.fal.media/files/b/0ab0499f/yeLsKilrg0hcir1Oe--o2_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  },
+  "2": {
+   "key": "stock",
+   "q": "dubai skyline day",
+   "src": "https://v3b.fal.media/files/b/0ab0499f/y2u-rVZqUQKbF_kqTddiq_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  }
+ },
+ "safe_zone": {
+  "cap_widest_px": 755,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 32.7,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg",
+   "qa/sheet-3.jpg",
+   "qa/sheet-4.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.13,
+  "true_peak": -1.87,
+  "lra": 2.1,
+  "silence_mid": [],
+  "warnings": []
+ }
+}

@@ -1,0 +1,15 @@
+05:52:14 start reel-1029-naselenie-dubaya
+05:52:18 stt elevenlabs HTTP Error 401: Unauthorized
+05:52:21 stt match 0.97, diffs [['эмирейтс ай ди', 'emirates id']]
+05:52:21 reel-1029-naselenie-dubaya: voice 31.8s, shots [4.2, 5.1, 3.5, 5.7, 4.1, 10.0]
+05:54:24   pro: IN_PROGRESS 122s
+05:54:44 clip 0: v2.5-turbo 5s ok
+05:54:44 clip 4: pixabay px2340 (Life-Of-Vids [meeting, planning, marketing, business, ]) «business people walking office»
+05:54:44 clip 5: pixabay px87146 (tolomedia43 [file, documents, office, paperwork]) «paperwork office»
+05:54:45 clip 3: pixabay px181704 (Matthias_Groeneveld [girls, beach, people, netherlands, fries]) «family walking beach day»
+05:56:46   pro: IN_PROGRESS 122s
+05:56:47   pro: IN_PROGRESS 122s
+05:57:18 clip 1: v2.5-turbo 5s ok
+05:57:18 clip 2: v2.5-turbo 5s ok
+05:57:24 music: elevenlabs ok
+06:00:34 rendered reel v2 reel-1029-naselenie-dubaya: 32.7s, 16.4 MB, music=True
