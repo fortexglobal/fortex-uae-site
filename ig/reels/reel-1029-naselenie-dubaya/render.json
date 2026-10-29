@@ -9,64 +9,60 @@
    ]
   ]
  },
- "hash": "39958c9af9",
- "video": "39958c9af9.mp4",
+ "hash": "3bdda4c43d",
+ "video": "3bdda4c43d.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 32.7,
- "ai_clips": [
-  0,
-  1,
-  2
- ],
+ "ai_clips": [],
  "stock": {
   "0": {
    "key": "stock",
-   "q": "dubai marina promenade day",
-   "src": "https://v3b.fal.media/files/b/0ab04990/qlNSAfvbi80a7C0IUxLBB_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "q": "dubai sheikh zayed road aerial day",
+   "src": "https://cdn.pixabay.com/video/2022/02/22/108523-681143788_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2022/02/22/108523-681143788_large.mp4",
+   "site": "pixabay"
   },
   "4": {
    "key": "stock",
-   "q": "business people walking office",
-   "src": "pixabay:px2340",
-   "author": "Life-Of-Vids [meeting, planning, marketing, business, ]",
-   "link": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_large.mp4",
+   "q": "city people walking urban",
+   "src": "https://cdn.pixabay.com/video/2015/10/16/999-142621149_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2015/10/16/999-142621149_large.mp4",
    "site": "pixabay"
   },
   "5": {
    "key": "stock",
    "q": "paperwork office",
-   "src": "pixabay:px87146",
-   "author": "tolomedia43 [file, documents, office, paperwork]",
+   "src": "https://cdn.pixabay.com/video/2021/09/01/87146-601076915_large.mp4",
+   "author": "pinned",
    "link": "https://cdn.pixabay.com/video/2021/09/01/87146-601076915_large.mp4",
    "site": "pixabay"
   },
   "3": {
    "key": "stock",
-   "q": "family walking beach day",
-   "src": "pixabay:px181704",
-   "author": "Matthias_Groeneveld [girls, beach, people, netherlands, fries]",
-   "link": "https://cdn.pixabay.com/video/2023/09/21/181704-867371523_large.mp4",
+   "q": "beach people walking summer",
+   "src": "https://cdn.pixabay.com/video/2019/06/19/24541-343454486_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2019/06/19/24541-343454486_large.mp4",
    "site": "pixabay"
   },
   "1": {
    "key": "stock",
-   "q": "dubai metro station crowd",
-   "src": "https://v3b.fal.media/files/b/0ab0499f/yeLsKilrg0hcir1Oe--o2_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "q": "dubai metro",
+   "src": "https://cdn.pixabay.com/video/2024/03/12/203953-922734728_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2024/03/12/203953-922734728_large.mp4",
+   "site": "pixabay"
   },
   "2": {
    "key": "stock",
-   "q": "dubai skyline day",
-   "src": "https://v3b.fal.media/files/b/0ab0499f/y2u-rVZqUQKbF_kqTddiq_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "q": "dubai burj khalifa aerial day",
+   "src": "https://cdn.pixabay.com/video/2022/02/22/108530-681143812_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2022/02/22/108530-681143812_large.mp4",
+   "site": "pixabay"
   }
  },
  "safe_zone": {
