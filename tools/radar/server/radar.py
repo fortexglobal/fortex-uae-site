@@ -629,7 +629,7 @@ async def main():
     asyncio.get_event_loop().create_task(igdm.loop())
     starters.setup(user=user, notify=notify, openrouter_key=OPENROUTER_KEY, bot_token=BOT_TOKEN, owner_id=owner_id)
     asyncio.get_event_loop().create_task(starters.loop())
-    asyncio.get_event_loop().create_task(autoreply.survival_loop(user))
+    # 29.10: проверки чатов и @SpamBot выключены, аккаунт работает только на входящие в личку
     newsfeed.setup(user=user, notify=notify)
     asyncio.get_event_loop().create_task(newsfeed.loop())
     content.setup(bot_token=BOT_TOKEN, openrouter_key=OPENROUTER_KEY, owner_id=owner_id,
