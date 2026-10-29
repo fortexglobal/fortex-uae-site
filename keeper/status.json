@@ -1,7 +1,7 @@
 {
- "at": "2026-10-29T09:28+04:00",
+ "at": "2026-10-29T09:43+04:00",
  "errors": [],
- "openrouter_left": 12.86,
+ "openrouter_left": 12.73,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11"
@@ -12,15 +12,64 @@
   "keeper": "active"
  },
  "radar_files": {
-  "autoreply.py": "28.10 15:06",
+  "autoreply.py": "29.10 09:39",
   "starters.py": "28.10 15:06",
   "content.py": "28.10 12:23",
   "igdm.py": "28.10 00:36",
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
   "kb.md": "27.10 23:48",
-  "server/radar.py": "28.10 10:56",
+  "server/radar.py": "29.10 09:39",
   "leadbot.py": "26.10 09:36"
+ },
+ "survival": {
+  "checked": "29.10 09:41",
+  "by_day": {
+   "2026-10-23": {
+    "sent": 4,
+    "alive": 4,
+    "deleted": 0,
+    "chat_gone": 0,
+    "deleted_in": {}
+   },
+   "2026-10-25": {
+    "sent": 1,
+    "alive": 1,
+    "deleted": 0,
+    "chat_gone": 0,
+    "deleted_in": {}
+   },
+   "2026-10-27": {
+    "sent": 2,
+    "alive": 0,
+    "deleted": 2,
+    "chat_gone": 0,
+    "deleted_in": {
+     "Русские в Дубае 🇦🇪": 1,
+     "Финансы 🇦🇪 ОАЭ | Банки, карты, счета": 1
+    }
+   },
+   "2026-10-28": {
+    "sent": 13,
+    "alive": 0,
+    "deleted": 13,
+    "chat_gone": 0,
+    "deleted_in": {
+     "Русские в Дубае 🇦🇪": 2,
+     "Банки, счета и переводы в Турции": 10,
+     "Nederlands leren — Учим нидерландский": 1
+    }
+   },
+   "?": {
+    "sent": 3,
+    "alive": 0,
+    "deleted": 0,
+    "chat_gone": 3,
+    "deleted_in": {
+     "-1001686273730": 3
+    }
+   }
+  }
  },
  "consult_sources": {
   "2026-10-27": {
@@ -33,7 +82,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 84.56092775,
+  "limit_remaining": 84.53310235000001,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -41,8 +90,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 15.43907225,
-    "remaining_usd": 84.56092775,
+    "spend_usd": 15.46689765,
+    "remaining_usd": 84.53310235000001,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -53,16 +102,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 15.43907225,
-   "remaining_usd": 84.56092775,
+   "spend_usd": 15.46689765,
+   "remaining_usd": 84.53310235000001,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 15.43907225,
-  "usage_daily": 0.0268234,
-  "usage_weekly": 5.77554115,
-  "usage_monthly": 15.43907225,
+  "usage": 15.46689765,
+  "usage_daily": 0.0546488,
+  "usage_weekly": 5.80336655,
+  "usage_monthly": 15.46689765,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -88,10 +137,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 1255,
+  "lines": 1280,
   "llm_warn": 0,
-  "wealth": 156,
+  "wealth": 160,
   "scan_model": 0,
-  "openrouter_http": 365
+  "openrouter_http": 375
  }
 }
