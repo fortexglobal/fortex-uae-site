@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T22:34+04:00",
+ "generated": "2026-10-29T08:16+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -85,7 +85,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfByx6okcHu",
    "kind": "тренд",
    "text": "Правила Дубая, которые узнаёшь на практике:\n\n• все перешли на красный, штраф выписали всем\n• все тут паркуются, эвакуато",
-   "views": 133,
+   "views": 134,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -111,7 +111,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfCprP9G4n-",
    "kind": "консультация",
    "text": "Аттракцион невиданной щедрости, только сегодня и только у нас. В ленте опять спрашивают, откроет ли банк счёт на фриланс",
-   "views": 41,
+   "views": 43,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -121,7 +121,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 633,
+  "views": 639,
   "likes": 0,
   "replies": 0,
   "reposts": 0,
@@ -129,7 +129,7 @@
   "followers_count": 1
  },
  "account_7d": {
-  "views": 3122,
+  "views": 3128,
   "likes": 45,
   "replies": 75,
   "reposts": 0,
@@ -167,7 +167,7 @@
   },
   {
    "date": "2026-10-28",
-   "views": 129
+   "views": 135
   }
  ],
  "link_clicks_7d": [
@@ -208,10 +208,10 @@
   },
   "тренд": {
    "posts": 3,
-   "views": 413,
+   "views": 414,
    "replies": 13,
    "likes": 2,
-   "avg_views": 137.7,
+   "avg_views": 138.0,
    "avg_replies": 4.33
   },
   "вопрос": {
@@ -232,10 +232,10 @@
   },
   "консультация": {
    "posts": 1,
-   "views": 41,
+   "views": 43,
    "replies": 0,
    "likes": 0,
-   "avg_views": 41.0,
+   "avg_views": 43.0,
    "avg_replies": 0.0
   }
  }
