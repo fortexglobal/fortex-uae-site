@@ -1,0 +1,34 @@
+name: Image probe
+# Скачать картинки по списку research/<name>/urls.txt («имя ссылка» в строке), сделать листы для разбора. Результат в research/<name>/.
+on:
+  workflow_dispatch:
+    inputs:
+      name: {description: "папка в research", required: true}
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch
+        env: {NAME: "${{ inputs.name }}"}
+        run: |
+          pip install -q pillow
+          d=research/$NAME
+          while read n u; do [ -n "$u" ] && curl -sL -A "Mozilla/5.0" -o "$d/$n.jpg" "$u"; done < $d/urls.txt
+          python3 - <<'PY'
+          import glob, os
+          from PIL import Image
+          d = "research/" + os.environ["NAME"]
+          for f in glob.glob(d + "/*.jpg"):
+              try:
+                  im = Image.open(f).convert("RGB"); im.thumbnail((1080, 1350)); im.save(f, quality=85)
+              except Exception as e:
+                  print("bad", f, e); os.remove(f)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add research && git commit -m "Image probe" && git pull --rebase && git push
