@@ -1,18 +1,18 @@
 {
- "generated": "2026-10-28T07:48+04:00",
+ "generated": "2026-10-29T07:50+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "fortex__uae",
   "followers_count": 0,
   "follows_count": 3,
-  "media_count": 8,
+  "media_count": 10,
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 55,
+  "reach": 56,
   "views": 88,
   "accounts_engaged": 1,
-  "total_interactions": 2,
+  "total_interactions": 4,
   "profile_links_taps": 0,
   "follows_and_unfollows": {
    "error": ""
@@ -38,9 +38,69 @@
    "date": "2026-10-28",
    "followers": 0,
    "media": 8
+  },
+  {
+   "date": "2026-10-29",
+   "followers": 0,
+   "media": 10
   }
  ],
  "media": [
+  {
+   "id": "18079351760428261",
+   "at": "2026-10-28T15:08:09+0000",
+   "kind": "FEED",
+   "type": "CAROUSEL_ALBUM",
+   "link": "https://www.instagram.com/p/DfCt-GGEeSw/",
+   "caption": "Рабочую визу в Дубае и кредитную карту Emirates NBD можно оформить одним комплексом.\n\nРабочая виза: официальное трудоустройство в компании, ",
+   "likes": 1,
+   "comments": 0,
+   "ins": {
+    "reach": 0,
+    "views": 0,
+    "saved": 0,
+    "shares": 0,
+    "likes": 1,
+    "comments": 0,
+    "total_interactions": 1,
+    "profile_visits": 3,
+    "follows": 0
+   },
+   "unavailable": [],
+   "ours": {}
+  },
+  {
+   "id": "18134785231743307",
+   "at": "2026-10-28T15:04:13+0000",
+   "kind": "REELS",
+   "type": "VIDEO",
+   "link": "https://www.instagram.com/reel/DfCteoHjLDl/",
+   "caption": "Счёт для компании в ОАЭ: что банк проверит первым делом.\n\n1. Emirates ID хотя бы у директора или одного из учредителей. Без резидентской виз",
+   "likes": 1,
+   "comments": 0,
+   "ins": {
+    "reach": 0,
+    "views": 0,
+    "saved": 0,
+    "shares": 0,
+    "likes": 1,
+    "comments": 0,
+    "total_interactions": 1,
+    "ig_reels_avg_watch_time": 12948,
+    "ig_reels_video_view_total_time": 12948
+   },
+   "unavailable": [
+    "profile_visits",
+    "follows"
+   ],
+   "ours": {
+    "slug": "reel-1028-bank-proverit",
+    "style": "",
+    "format": "news",
+    "test": "",
+    "ring": 2
+   }
+  },
   {
    "id": "18374391796213873",
    "at": "2026-10-27T15:07:37+0000",
@@ -167,7 +227,7 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 52,
+    "reach": 53,
     "views": 54,
     "saved": 0,
     "shares": 0,
