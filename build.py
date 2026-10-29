@@ -20,7 +20,7 @@ SOCIAL = (f'<div class="social">'
           f'<a href="{CHANNEL}" target="_blank" rel="noopener"><span class="si">{_TG_SVG}</span><span><b>Telegram-канал</b><small>@fortex_uae</small></span></a>'
           f'<a href="{INSTAGRAM}" target="_blank" rel="noopener"><span class="si">{_IG_SVG}</span><span><b>Instagram</b><small>@fortex__uae</small></span></a>'
           f'</div>')
-CAL = "https://calendly.com/fortex-uae/30min"
+CAL = "/c/call"  # 29.10: Calendly пока не используем, созвон договариваем в Telegram
 EMAIL = "alexey@fortex-uae.com"
 MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
 
@@ -181,7 +181,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
     <div class="foot-links">
       <a href="{TG}">Telegram @Fortex_Dubai</a>
       <a href="{CHANNEL}">Канал Fortex UAE</a>
-      <a href="{CAL}">Записаться на звонок</a>
+      <a href="{CAL}">Договориться о созвоне</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <a href="/articles/">Статьи</a>
       <a href="/privacy/">Политика конфиденциальности</a>
@@ -334,7 +334,7 @@ def build():
 {('<img class="cover" src="' + a["cover"] + '" alt="" width="1280" height="720">') if a.get("cover") else ""}
 <div class="prose">{a['html']}</div>
 <div class="cta-box"><h3>Разберём вашу ситуацию за 5 минут</h3><p>Напишите, какой у вас паспорт, есть ли компания в ОАЭ и были ли отказы банков. Скажем, какой банк сейчас реально откроет счёт.</p>
-<div class="row"><a class="btn" href="{TG}">Написать в Telegram</a><a class="btn btn-ghost" href="{CAL}">Записаться на звонок</a></div></div>
+<div class="row"><a class="btn" href="{TG}">Написать в Telegram</a><a class="btn btn-ghost" href="{CAL}">Договориться о созвоне</a></div></div>
 <p class="small" style="margin-top:18px">Новые разборы по банкам и визам ОАЭ выходят в нашем канале <a href="{CHANNEL}" style="color:var(--accent)">t.me/fortex_uae</a></p>
 </div></article>
 {('<section class="sec alt"><div class="wrap"><h2 class="h2">Ещё статьи</h2><div class="grid3">' + more + '</div></div></section>') if more else ''}

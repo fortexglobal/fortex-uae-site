@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       if (/\/c\/[a-z]+$/i.test(a.getAttribute("href") || "")) { ym(113701535, "reachGoal", "consult_click"); ym(113701535, "reachGoal", "tg_click"); }
       else if (/t\.me\//i.test(a.href)) ym(113701535, "reachGoal", "tg_click");
-      else if (/calendly\.com/i.test(a.href)) ym(113701535, "reachGoal", "call_click");
+      else if (/calendly\.com|\/c\/call$/i.test(a.href)) ym(113701535, "reachGoal", "call_click");
     } catch (err) {}
   });
   // мобильное меню

@@ -68,6 +68,8 @@ def _load():
         s = {}
     today = _now().date().isoformat()
     s.setdefault("on", True); s.setdefault("threads", {}); s.setdefault("neg", []); s.setdefault("ours", [])
+    if not s.get("off_2910"):  # решение Александра 29.10: сам Алексей в чатах не пишет (все сообщения удаляли). Реакции и личка работают
+        s["on"] = False; s["off_2910"] = True
     if s.get("day") != today:
         s.update(day=today, total=0, chats={}, authors=[])
     return s
