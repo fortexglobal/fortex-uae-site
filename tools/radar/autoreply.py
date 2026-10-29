@@ -226,7 +226,62 @@ async def _send(user, chat_id, text, reply_to):
                 await asyncio.sleep(secs)
             msgs.append(await user.send_message(chat_id, part, reply_to=reply_to if k == 0 else None))
             mark_sent(chat_id)
+    try:  # журнал всех наших сообщений в чатах: потом проверяем, сколько из них удалили
+        st = _load()
+        st.setdefault("sent_log", []).extend([[chat_id, m.id, int(time.time())] for m in msgs])
+        st["sent_log"] = st["sent_log"][-1500:]
+        _save(st)
+    except Exception:
+        pass
     return msgs
+
+
+SURV_F = os.path.join(BASE, "survival.json")
+
+
+async def survival(user):
+    """Какие наши сообщения в чатах ещё живы, а какие удалили (или нас выкинули из чата). Пишет survival.json, смотритель выкладывает его в отчёт."""
+    s = _load()
+    ts_of = {(int(c), int(i)): t for c, i, t in s.get("sent_log", [])}
+    by = {}
+    for c, i in s.get("ours", []) + [[c, i] for c, i, _ in s.get("sent_log", [])]:
+        if int(i) not in by.setdefault(int(c), []):
+            by[int(c)].append(int(i))
+    items = []
+    for c, ids in by.items():
+        title = str(c)
+        try:
+            ent = await user.get_entity(c)
+            title = getattr(ent, "title", title)
+            msgs = await user.get_messages(ent, ids=ids)
+        except Exception as e:
+            items += [{"chat": title, "id": i, "alive": None, "err": type(e).__name__, "ts": ts_of.get((c, i))} for i in ids]
+            continue
+        for i, m in zip(ids, msgs):
+            if m:
+                items.append({"chat": title, "id": i, "alive": True, "ts": int(m.date.timestamp())})
+                continue
+            t = ts_of.get((c, i))
+            if not t:  # время удалённого: по ближайшему сообщению перед ним
+                try:
+                    prev = await user.get_messages(ent, limit=1, offset_id=i)
+                    t = int(prev[0].date.timestamp()) if prev else None
+                except Exception:
+                    t = None
+            items.append({"chat": title, "id": i, "alive": False, "ts": t})
+        await asyncio.sleep(2)
+    json.dump({"at": int(time.time()), "items": items}, open(SURV_F, "w"), ensure_ascii=False)
+    log.info("survival: %d messages checked", len(items))
+
+
+async def survival_loop(user):
+    await asyncio.sleep(90)
+    while True:
+        try:
+            await survival(user)
+        except Exception as e:
+            log.warning("survival: %s", e)
+        await asyncio.sleep(6 * 3600)
 
 
 async def _owner_wrote(user, chat_id, after_id, ours):

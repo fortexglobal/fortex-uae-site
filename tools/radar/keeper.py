@@ -310,6 +310,20 @@ def push_status():
           "alerts": {k: datetime.fromtimestamp(v, DUBAI).strftime("%d.%m %H:%M") for k, v in S.get("alerts", {}).items()},
           "services": {svc: subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() for svc in ("radar", "leadbot", "keeper")},
           "radar_files": {f: datetime.fromtimestamp(os.path.getmtime(os.path.join("/opt/radar", os.path.basename(f))), DUBAI).strftime("%d.%m %H:%M") for f in sum(RADAR_FILES.values(), []) if os.path.exists(os.path.join("/opt/radar", os.path.basename(f)))}}
+    try:  # живы ли наши сообщения в чатах (autoreply.survival)
+        sv = json.load(open("/opt/radar/survival.json"))
+        days = {}
+        for it in sv["items"]:
+            d = datetime.fromtimestamp(it["ts"], DUBAI).strftime("%Y-%m-%d") if it.get("ts") else "?"
+            x = days.setdefault(d, {"sent": 0, "alive": 0, "deleted": 0, "chat_gone": 0, "deleted_in": {}})
+            x["sent"] += 1
+            k = {True: "alive", False: "deleted", None: "chat_gone"}[it.get("alive")]
+            x[k] += 1
+            if k != "alive":
+                x["deleted_in"][it["chat"]] = x["deleted_in"].get(it["chat"], 0) + 1
+        st["survival"] = {"checked": datetime.fromtimestamp(sv["at"], DUBAI).strftime("%d.%m %H:%M"), "by_day": dict(sorted(days.items())[-7:])}
+    except Exception:
+        pass
     try:  # откуда приходят в личку (бесплатная консультация по ссылкам /c/<источник>)
         st["consult_sources"] = json.load(open("/opt/radar/consult_sources.json"))
     except Exception:
