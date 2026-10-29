@@ -1,0 +1,52 @@
+{
+ "v": 2,
+ "status": "approved",
+ "publish_at": "2026-10-29T19:00+04:00",
+ "ring": 3,
+ "segment": 2,
+ "look": "light",
+ "format_kind": "новость",
+ "hook": "+227 тысяч новых жителей Дубая за 9 месяцев",
+ "accent": "+227 тысяч",
+ "music": "lo-fi boom bap, 88 bpm, dusty swung drums with a lazy snare, round upright bass line, muted Rhodes chords, signature sound: a short vinyl-chopped oud phrase only in the gaps between phrases, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "q": "dubai marina promenade day",
+   "prompt": "Dubai Marina promenade in bright daylight, many people walking seen from behind, yachts and towers, smooth gimbal tracking shot",
+   "say": "Говорят, из Дубая сейчас все уезжают. Цифры говорят обратное."
+  },
+  {
+   "q": "dubai metro station crowd",
+   "prompt": "busy bright modern metro station in Dubai, crowd of commuters walking seen from behind, daylight through glass, slow tracking shot",
+   "say": "За {9 месяцев|девять месяцев} этого года город вырос почти на {227 тысяч|двести двадцать семь тысяч} человек."
+  },
+  {
+   "q": "dubai skyline day",
+   "prompt": "Dubai skyline in bright daylight, slow aerial drone shot over towers and roads, clear blue sky",
+   "say": "Теперь в Дубае живут {4,8 миллиона|четыре миллиона восемьсот тысяч} человек."
+  },
+  {
+   "q": "family walking beach day",
+   "prompt": "a family walking along a sunny beach in Dubai seen from behind, parents and kids, skyline in the distance, daylight",
+   "say": "И это не только туристы. Только за сентябрь город прибавил больше {24 тысяч|двадцати четырёх тысяч} жителей."
+  },
+  {
+   "q": "business people walking office",
+   "prompt": "young professionals walking through a bright modern office lobby seen from behind, glass and daylight, steady tracking shot",
+   "say": "Самая большая группа: люди от {30 до 34|тридцати до тридцати четырёх} лет."
+  },
+  {
+   "q": "paperwork office",
+   "prompt": "hands filling in paperwork and passport documents on a bright office desk, soft daylight, close-up, no readable text",
+   "say": "А любой переезд начинается с визы и {Emirates ID|Эмирейтс ай-ди}. Без них сложно открыть счёт и снять жильё."
+  }
+ ],
+ "cta": {
+  "title": "Подпишись",
+  "text": "Дубай для предпринимателей: цифры и правила",
+  "say": "Подпишись, чтобы понимать Дубай раньше других."
+ },
+ "cover_title": "+227 тысяч новых жителей за 9 месяцев",
+ "cover_accent": "+227 тысяч",
+ "caption": "Дубай не пустеет: за 9 месяцев 2026 года в городе стало на 226 885 жителей больше.\n\nПо данным Dubai Data and Statistics Establishment, которые приводят Gulf News и Emirates 24|7, население Дубая в сентябре достигло 4 807 185 человек.\n\nТолько за сентябрь город прибавил больше 24 000 жителей. Самая большая возрастная группа: от 30 до 34 лет, это около 15% населения. Всего в Дубае около 858 000 семей.\n\nКаждый, кто переезжает надолго, начинает с резидентской визы и Emirates ID. От них зависят личный счёт в банке, долгосрочная аренда и местные сервисы. Варианты: рабочая виза или Virtual Work для тех, кто работает удалённо на компанию в другой стране.\n\nВы уже в Дубае или только думаете о переезде? Напишите в комментариях.\n\nНапишите ВИЗА в комментариях, подскажем, какой вариант подходит вам. Или пишите в Telegram @Fortex_Dubai\n\n#дубай #оаэ #новостидубая #переездвдубай #визаоаэ #жизньвдубае"
+}
