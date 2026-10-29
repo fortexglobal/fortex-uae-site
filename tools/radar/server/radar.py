@@ -452,6 +452,9 @@ async def on_button(ev):
         await ev.reply(f"Пришли свой текст для #{lid}: нажми на текст ответа в карточке, он скопируется, вставь сюда и поправь. Отправлю в чат по одному предложению")
 
 
+PHOTO_LOCK = asyncio.Lock()
+
+
 @bot.on(events.NewMessage(func=lambda e: e.is_private and bool(e.photo)))
 async def on_owner_photo(ev):
     """Живые фото Александра для Threads: сохраняем в репозиторий threads/photos/, ежедневная задача Threads берёт их в посты."""
@@ -463,11 +466,12 @@ async def on_owner_photo(ev):
         data = await ev.download_media(bytes)
         name = f"threads/photos/{datetime.now(content.DUBAI).strftime('%Y%m%d-%H%M%S')}-{ev.id}.jpg"
         await content.gh_put(name, data, None, "Threads: живое фото от Александра")
-        raw, sha = await content.gh_get("threads/photos/inbox.json")
-        inbox = json.loads(raw) if raw else []
-        inbox.append({"file": name, "caption": (ev.raw_text or "").strip(), "album": str(ev.grouped_id or ""),
-                      "at": datetime.now(content.DUBAI).isoformat(timespec="minutes"), "used": False})
-        await content.gh_put("threads/photos/inbox.json", json.dumps(inbox, ensure_ascii=False, indent=1), sha, "Threads: фото в очередь")
+        async with PHOTO_LOCK:  # альбом приходит пачкой: пишем очередь по одному
+            raw, sha = await content.gh_get("threads/photos/inbox.json")
+            inbox = json.loads(raw) if raw else []
+            inbox.append({"file": name, "caption": (ev.raw_text or "").strip(), "album": str(ev.grouped_id or ""),
+                          "at": datetime.now(content.DUBAI).isoformat(timespec="minutes"), "used": False})
+            await content.gh_put("threads/photos/inbox.json", json.dumps(inbox, ensure_ascii=False, indent=1), sha, "Threads: фото в очередь")
         if not ev.grouped_id or ev.raw_text:
             await ev.reply(f"📸 Сохранил для Threads (в очереди: {sum(1 for x in inbox if not x['used'])}). "
                            "Можно добавить подпись к фото: что это и где, я сделаю из этого пост")
