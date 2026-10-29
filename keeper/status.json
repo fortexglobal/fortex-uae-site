@@ -1,5 +1,5 @@
 {
- "at": "2026-10-30T01:05+04:00",
+ "at": "2026-10-30T01:21+04:00",
  "errors": [],
  "openrouter_left": 8.52,
  "apify_left": null,
@@ -166,8 +166,8 @@
  "radar_log_24h": {
   "lines": 954,
   "llm_warn": 0,
-  "wealth": 109,
+  "wealth": 107,
   "scan_model": 0,
-  "openrouter_http": 246
+  "openrouter_http": 244
  }
 }
