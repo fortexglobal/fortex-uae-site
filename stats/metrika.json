@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-28T03:51Z",
+ "generated": "2026-10-29T03:53Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 100.0,
-  "посетители": 73.0,
-  "отказы_%": 50.0,
-  "время_на_сайте_сек": 73.77
+  "визиты": 93.0,
+  "посетители": 68.0,
+  "отказы_%": 46.23655914,
+  "время_на_сайте_сек": 46.16129032
  },
  "goals": {
   "Заявка с сайта": 1.0,
@@ -19,14 +19,14 @@
   {
    "name": "Direct traffic",
    "values": [
-    82.0,
-    59.0
+    79.0,
+    55.0
    ]
   },
   {
-   "name": "Internal traffic",
+   "name": "Recommendation system traffic",
    "values": [
-    9.0,
+    6.0,
     6.0
    ]
   },
@@ -45,18 +45,18 @@
    ]
   },
   {
-   "name": "Recommendation system traffic",
+   "name": "Internal traffic",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   }
  ],
  "source_details": [
   {
-   "name": "fortex-uae.com",
+   "name": "Yandex Zen",
    "values": [
-    9.0,
+    6.0,
     6.0
    ]
   },
@@ -68,10 +68,10 @@
    ]
   },
   {
-   "name": "Yandex Zen",
+   "name": "fortex-uae.com",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   },
   {
@@ -91,17 +91,17 @@
  ],
  "utm": [
   {
+   "name": "telegram / channel",
+   "values": [
+    6.0,
+    6.0
+   ]
+  },
+  {
    "name": "instagram / bio",
    "values": [
     4.0,
     4.0
-   ]
-  },
-  {
-   "name": "telegram / channel",
-   "values": [
-    3.0,
-    3.0
    ]
   }
  ],
@@ -109,29 +109,22 @@
   {
    "name": "/",
    "values": [
-    94.0,
-    70.0
+    83.0,
+    62.0
    ]
   },
   {
    "name": "/articles/mexc-ushla-iz-rossii/",
    "values": [
-    2.0,
-    2.0
+    5.0,
+    5.0
    ]
   },
   {
    "name": "/articles/rossiyanam-iz-evropy-schet-oae/",
    "values": [
-    1.0,
-    1.0
-   ]
-  },
-  {
-   "name": "/draft/mexc-ushla-iz-rossii/",
-   "values": [
-    1.0,
-    1.0
+    3.0,
+    3.0
    ]
   },
   {
@@ -171,6 +164,79 @@
   "Автоцель: переход в соц.сеть"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 8.0,
+   "посетители": 7.0,
+   "отказы_%": 12.5,
+   "время_на_сайте_сек": 17.625
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     4.0,
+     3.0
+    ]
+   },
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     4.0,
+     4.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Yandex Zen",
+    "values": [
+     4.0,
+     4.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "telegram / channel",
+    "values": [
+     4.0,
+     4.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/",
+    "values": [
+     3.0,
+     3.0
+    ]
+   },
+   {
+    "name": "/articles/mexc-ushla-iz-rossii/",
+    "values": [
+     3.0,
+     3.0
+    ]
+   },
+   {
+    "name": "/articles/rossiyanam-iz-evropy-schet-oae/",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 21.0,
    "посетители": 19.0,
@@ -278,48 +344,12 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 9.0,
-   "посетители": 8.0,
-   "отказы_%": 77.77777778,
-   "время_на_сайте_сек": 92.22222222
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     8.0,
-     7.0
-    ]
-   }
-  ],
-  "source_details": [],
-  "utm": [],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     9.0,
-     8.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-10-27",
+ "date_yesterday": "2026-10-28",
  "today": {
   "totals": {
-   "визиты": 1.0,
-   "посетители": 1.0,
-   "отказы_%": 100.0,
+   "визиты": 0.0,
+   "посетители": 0.0,
+   "отказы_%": 0.0,
    "время_на_сайте_сек": 0.0
   },
   "goals": {
@@ -330,25 +360,9 @@
    "Автоцель: переход в мессенджер": 0.0,
    "Автоцель: переход в соц.сеть": 0.0
   },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
+  "sources": [],
   "source_details": [],
   "utm": [],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ]
+  "pages": []
  }
 }

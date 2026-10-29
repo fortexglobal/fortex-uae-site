@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T03:51Z",
+ "generated": "2026-10-29T03:54Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,10 +10,10 @@
   {
    "name": "Direct traffic",
    "v": [
-    84.0,
-    60.0,
-    54.8,
-    59.6
+    87.0,
+    61.0,
+    52.9,
+    58.0
    ]
   },
   {
@@ -23,6 +23,15 @@
     6.0,
     33.3,
     252.4
+   ]
+  },
+  {
+   "name": "Recommendation system traffic",
+   "v": [
+    6.0,
+    6.0,
+    0.0,
+    24.0
    ]
   },
   {
@@ -42,15 +51,6 @@
     0.0,
     15.0
    ]
-  },
-  {
-   "name": "Recommendation system traffic",
-   "v": [
-    2.0,
-    2.0,
-    0.0,
-    24.0
-   ]
   }
  ],
  "engine": [
@@ -64,21 +64,21 @@
    ]
   },
   {
+   "name": "Yandex Zen",
+   "v": [
+    6.0,
+    6.0,
+    0.0,
+    24.0
+   ]
+  },
+  {
    "name": "Instagram",
    "v": [
     3.0,
     3.0,
     0.0,
     14.3
-   ]
-  },
-  {
-   "name": "Yandex Zen",
-   "v": [
-    2.0,
-    2.0,
-    0.0,
-    24.0
    ]
   },
   {
@@ -102,21 +102,21 @@
  ],
  "utm": [
   {
+   "name": "telegram / None / channel",
+   "v": [
+    7.0,
+    7.0,
+    0.0,
+    210.7
+   ]
+  },
+  {
    "name": "instagram / None / bio",
    "v": [
     3.0,
     3.0,
     0.0,
     14.3
-   ]
-  },
-  {
-   "name": "telegram / None / channel",
-   "v": [
-    3.0,
-    3.0,
-    0.0,
-    459.7
    ]
   },
   {
@@ -140,6 +140,15 @@
    ]
   },
   {
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ada26c2a5fe1b4c0fa0e59c",
+   "v": [
+    4.0,
+    4.0,
+    0.0,
+    24.0
+   ]
+  },
+  {
    "name": "http://m.facebook.com",
    "v": [
     2.0,
@@ -158,7 +167,7 @@
    ]
   },
   {
-   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ada26c2a5fe1b4c0fa0e59c",
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ae0be64b240b06b88c6853a",
    "v": [
     1.0,
     1.0,
@@ -167,7 +176,7 @@
    ]
   },
   {
-   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ae0be64b240b06b88c6853a",
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ae20fae8273846d47e013d6",
    "v": [
     1.0,
     1.0,
@@ -207,8 +216,8 @@
   {
    "name": "dzen.ru",
    "v": [
-    2.0,
-    2.0,
+    6.0,
+    6.0,
     0.0,
     24.0
    ]
@@ -245,10 +254,19 @@
   {
    "name": "https://fortex-uae.com/",
    "v": [
-    91.0,
-    66.0,
-    54.9,
-    75.3
+    93.0,
+    67.0,
+    53.8,
+    74.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/articles/mexc-ushla-iz-rossii/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ada26c2a5fe1b4c0fa0e59c",
+   "v": [
+    4.0,
+    4.0,
+    0.0,
+    24.0
    ]
   },
   {
@@ -306,7 +324,16 @@
    ]
   },
   {
-   "name": "https://fortex-uae.com/articles/mexc-ushla-iz-rossii/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ada26c2a5fe1b4c0fa0e59c",
+   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    15.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae0be64b240b06b88c6853a",
    "v": [
     1.0,
     1.0,
@@ -315,7 +342,7 @@
    ]
   },
   {
-   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae0be64b240b06b88c6853a",
+   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae20fae8273846d47e013d6",
    "v": [
     1.0,
     1.0,
@@ -355,10 +382,10 @@
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    33.0,
+    35.0,
     12.0,
-    33.3,
-    142.5
+    31.4,
+    135.2
    ]
   },
   {
@@ -377,6 +404,15 @@
     7.0,
     50.0,
     211.1
+   ]
+  },
+  {
+   "name": "Russia / Moscow",
+   "v": [
+    7.0,
+    7.0,
+    0.0,
+    23.4
    ]
   },
   {
@@ -416,12 +452,12 @@
    ]
   },
   {
-   "name": "Russia / Moscow",
+   "name": "Russia / None",
    "v": [
     3.0,
     3.0,
     0.0,
-    22.7
+    15.3
    ]
   },
   {
@@ -431,15 +467,6 @@
     2.0,
     0.0,
     15.0
-   ]
-  },
-  {
-   "name": "Russia / None",
-   "v": [
-    2.0,
-    2.0,
-    0.0,
-    15.5
    ]
   },
   {
@@ -555,19 +582,28 @@
   {
    "name": "Direct traffic / None",
    "v": [
-    29.0,
-    29.0,
-    89.7,
-    3.9
+    30.0,
+    30.0,
+    86.7,
+    4.3
    ]
   },
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    27.0,
+    29.0,
     9.0,
-    33.3,
-    151.4
+    31.0,
+    142.0
+   ]
+  },
+  {
+   "name": "Recommendation system traffic / Moscow",
+   "v": [
+    6.0,
+    6.0,
+    0.0,
+    24.0
    ]
   },
   {
@@ -640,15 +676,6 @@
     2.0,
     0.0,
     15.0
-   ]
-  },
-  {
-   "name": "Recommendation system traffic / Moscow",
-   "v": [
-    2.0,
-    2.0,
-    0.0,
-    24.0
    ]
   },
   {
@@ -791,19 +818,19 @@
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    40.0,
-    22.0,
-    32.5,
-    152.5
+    43.0,
+    23.0,
+    30.2,
+    142.9
    ]
   },
   {
    "name": "PC / Google Chrome",
    "v": [
-    38.0,
-    29.0,
-    57.9,
-    31.0
+    42.0,
+    33.0,
+    52.4,
+    30.3
    ]
   },
   {
@@ -926,6 +953,24 @@
    ]
   },
   {
+   "name": "2026-10-28 / Direct traffic",
+   "v": [
+    4.0,
+    3.0,
+    25.0,
+    11.2
+   ]
+  },
+  {
+   "name": "2026-10-28 / Recommendation system traffic",
+   "v": [
+    4.0,
+    4.0,
+    0.0,
+    24.0
+   ]
+  },
+  {
    "name": "2026-10-22 / Ad traffic",
    "v": [
     3.0,
@@ -1005,34 +1050,25 @@
     0.0,
     24.0
    ]
-  },
-  {
-   "name": "2026-10-28 / Direct traffic",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
   }
  ],
  "new_vs_return": [
   {
    "name": "New users",
    "v": [
-    74.0,
-    74.0,
-    55.4,
-    56.5
+    79.0,
+    79.0,
+    51.9,
+    54.3
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    28.0,
+    30.0,
     7.0,
-    35.7,
-    114.9
+    33.3,
+    108.2
    ]
   }
  ]
