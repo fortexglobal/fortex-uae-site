@@ -55,12 +55,25 @@ def publish():
         if done >= 1:  # не больше одного поста за запуск
             break
         params = {"media_type": "TEXT", "text": src["text"][:500]}
-        if src.get("image"):
+        imgs = src.get("images") or []
+        if len(imgs) >= 2:  # подборка фото (карусель, до 10 штук)
+            base = f"https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/{sha()}/"
+            try:
+                kids = [call("POST", "me/threads", media_type="IMAGE", is_carousel_item="true", image_url=base + im)["id"] for im in imgs[:10]]
+                time.sleep(10)
+                params = {"media_type": "CAROUSEL", "text": src["text"][:500], "children": ",".join(kids)}
+            except Exception as e:
+                st[slug] = {"error": "carousel: " + str(e)[:280], "at": now.isoformat(timespec="minutes")}
+                json.dump(st, open(status_p, "w"), ensure_ascii=False, indent=1)
+                continue
+        elif imgs and not src.get("image"):
+            src["image"] = imgs[0]
+        if src.get("image") and params["media_type"] == "TEXT":
             params = {"media_type": "IMAGE", "text": src["text"][:500],
                       "image_url": f"https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/{sha()}/{src['image']}"}
         try:
             c = call("POST", "me/threads", **params)
-            time.sleep(8 if src.get("image") else 2)
+            time.sleep(8 if (src.get("image") or imgs) else 2)
             r = call("POST", "me/threads_publish", creation_id=c["id"])
             info = call("GET", r["id"], fields="permalink")
             st[slug] = {"id": r["id"], "url": info.get("permalink", ""), "at": now.isoformat(timespec="minutes")}
