@@ -1,5 +1,5 @@
 {
- "at": "2026-10-29T08:56+04:00",
+ "at": "2026-10-29T09:12+04:00",
  "errors": [],
  "openrouter_left": 12.86,
  "apify_left": null,
@@ -33,7 +33,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 84.57432994999999,
+  "limit_remaining": 84.56917675,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -41,8 +41,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 15.42567005,
-    "remaining_usd": 84.57432994999999,
+    "spend_usd": 15.43082325,
+    "remaining_usd": 84.56917675,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -53,16 +53,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 15.42567005,
-   "remaining_usd": 84.57432994999999,
+   "spend_usd": 15.43082325,
+   "remaining_usd": 84.56917675,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 15.42567005,
-  "usage_daily": 0.0134212,
-  "usage_weekly": 5.76213895,
-  "usage_monthly": 15.42567005,
+  "usage": 15.43082325,
+  "usage_daily": 0.0185744,
+  "usage_weekly": 5.76729215,
+  "usage_monthly": 15.43082325,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -90,8 +90,8 @@
  "radar_log_24h": {
   "lines": 1244,
   "llm_warn": 0,
-  "wealth": 150,
+  "wealth": 152,
   "scan_model": 0,
-  "openrouter_http": 356
+  "openrouter_http": 359
  }
 }
