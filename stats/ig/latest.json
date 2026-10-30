@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-29T07:50+04:00",
+ "generated": "2026-10-30T07:51+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "fortex__uae",
-  "followers_count": 0,
+  "followers_count": 1,
   "follows_count": 3,
   "media_count": 10,
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 56,
+  "reach": 55,
   "views": 88,
   "accounts_engaged": 1,
   "total_interactions": 4,
@@ -43,6 +43,11 @@
    "date": "2026-10-29",
    "followers": 0,
    "media": 10
+  },
+  {
+   "date": "2026-10-30",
+   "followers": 1,
+   "media": 10
   }
  ],
  "media": [
@@ -56,8 +61,8 @@
    "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 0,
-    "views": 0,
+    "reach": 2,
+    "views": 5,
     "saved": 0,
     "shares": 0,
     "likes": 1,
@@ -79,15 +84,15 @@
    "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 0,
-    "views": 0,
+    "reach": 2,
+    "views": 3,
     "saved": 0,
     "shares": 0,
     "likes": 1,
     "comments": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 12948,
-    "ig_reels_video_view_total_time": 12948
+    "ig_reels_avg_watch_time": 6083,
+    "ig_reels_video_view_total_time": 24334
    },
    "unavailable": [
     "profile_visits",
@@ -112,7 +117,7 @@
    "comments": 0,
    "ins": {
     "reach": 1,
-    "views": 3,
+    "views": 4,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -135,14 +140,14 @@
    "comments": 0,
    "ins": {
     "reach": 1,
-    "views": 1,
+    "views": 2,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 10951,
-    "ig_reels_video_view_total_time": 21903
+    "ig_reels_avg_watch_time": 8514,
+    "ig_reels_video_view_total_time": 25542
    },
    "unavailable": [
     "profile_visits",
