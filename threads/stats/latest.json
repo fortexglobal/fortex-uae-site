@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T21:03+04:00",
+ "generated": "2026-10-30T22:06+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -176,8 +176,21 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
    "kind": "вопрос",
    "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
-   "views": 60,
+   "views": 68,
    "likes": 0,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1030-znakomstva",
+   "at": "2026-10-30T21:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfIH0_eGkO-",
+   "kind": "знакомства",
+   "text": "Дубай, пятница, давайте знакомиться: кто чем занимается и чем может быть полезен?\n\nЯ начну: помогаем со счетами, визами ",
+   "views": 6,
+   "likes": 1,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
@@ -186,16 +199,16 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 600,
-  "likes": 4,
+  "views": 656,
+  "likes": 5,
   "replies": 4,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "account_7d": {
-  "views": 3842,
-  "likes": 51,
+  "views": 3898,
+  "likes": 52,
   "replies": 79,
   "reposts": 0,
   "quotes": 0,
@@ -232,7 +245,7 @@
   },
   {
    "date": "2026-10-30",
-   "views": 494
+   "views": 550
   }
  ],
  "link_clicks_7d": [
@@ -281,10 +294,10 @@
   },
   "вопрос": {
    "posts": 2,
-   "views": 137,
+   "views": 145,
    "replies": 2,
    "likes": 1,
-   "avg_views": 68.5,
+   "avg_views": 72.5,
    "avg_replies": 1.0
   },
   "партнёры": {
@@ -310,6 +323,14 @@
    "likes": 0,
    "avg_views": 71.0,
    "avg_replies": 0.0
+  },
+  "знакомства": {
+   "posts": 1,
+   "views": 6,
+   "replies": 2,
+   "likes": 1,
+   "avg_views": 6.0,
+   "avg_replies": 2.0
   }
  }
 }
