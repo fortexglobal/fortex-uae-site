@@ -7,8 +7,7 @@
  "test": "A",
  "bg_prompt": "bright daylight view from a Dubai Marina apartment balcony, glass railing, towers and water, a small set of apartment keys on the balcony table in the foreground, airy light, real photo shot on a phone, no people, no text, no logos",
  "photos": [
-  "a set of new apartment keys on a white marble kitchen table by a big window with Dubai Marina towers, bright natural daylight, real photo shot on a phone, no people, no text",
-  "a cup of coffee, a notebook and a pen on a light wooden desk by a window with the Dubai skyline, bright daylight, real photo shot on a phone, no people, no text"
+  "a set of new apartment keys on a white marble kitchen table by a big window with Dubai Marina towers, bright natural daylight, real photo shot on a phone, no people, no text"
  ],
  "slides": [
   {
@@ -40,8 +39,9 @@
   {
    "type": "page",
    "head": "Налоги",
-   "photo": 1,
-   "body": "Не отразили доход: штраф **20%** от неуплаченного налога, при умысле **40%**, плюс пени.\n\nНе подали декларацию: **до 30%** налога. Крупные суммы грозят уголовной ответственностью."
+   "body": "Не отразили доход: штраф **20%** от неуплаченного налога, при умысле **40%**, плюс пени.\n\nНе подали декларацию: **до 30%** налога. Крупные суммы грозят уголовной ответственностью.",
+   "h": "20% и 40%",
+   "h2": "штраф от неуплаченного налога"
   },
   {
    "type": "cta",
