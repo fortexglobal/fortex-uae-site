@@ -1,5 +1,5 @@
 {
- "at": "2026-10-30T14:53+04:00",
+ "at": "2026-10-30T15:09+04:00",
  "errors": [],
  "openrouter_left": 7.88,
  "apify_left": null,
@@ -161,10 +161,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 669,
+  "lines": 672,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 36
+  "openrouter_http": 32
  }
 }
