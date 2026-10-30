@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T08:21+04:00",
+ "generated": "2026-10-30T21:03+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -137,7 +137,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfEzC4dEeNk",
    "kind": "партнёры",
    "text": "Типы клиентов риелтора в Дубае:\n\n1. «Я просто посмотреть». Третий год\n2. «Нужен вид на море, тишина и рядом метро»\n3. «П",
-   "views": 46,
+   "views": 48,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -156,30 +156,52 @@
    "reposts": 0,
    "quotes": 0,
    "shares": 0
+  },
+  {
+   "slug": "t-1030-programma",
+   "at": "2026-10-30T12:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfHKCQFFvta",
+   "kind": "юмор",
+   "text": "Обязательная программа в Дубае:\n\n1. Падел по выходным\n2. Разговор про офф-план за каждым ужином\n3. «Думаю открыть свой б",
+   "views": 71,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1030-sharja",
+   "at": "2026-10-30T19:00+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
+   "kind": "вопрос",
+   "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
+   "views": 60,
+   "likes": 0,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 353,
-  "likes": 1,
-  "replies": 0,
+  "views": 600,
+  "likes": 4,
+  "replies": 4,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "account_7d": {
-  "views": 3346,
-  "likes": 46,
-  "replies": 75,
+  "views": 3842,
+  "likes": 51,
+  "replies": 79,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "profile_views_by_day": [
-  {
-   "date": "2026-10-22",
-   "views": 0
-  },
   {
    "date": "2026-10-23",
    "views": 0
@@ -206,7 +228,11 @@
   },
   {
    "date": "2026-10-29",
-   "views": 104
+   "views": 106
+  },
+  {
+   "date": "2026-10-30",
+   "views": 494
   }
  ],
  "link_clicks_7d": [
@@ -254,19 +280,19 @@
    "avg_replies": 2.6
   },
   "вопрос": {
-   "posts": 1,
-   "views": 77,
-   "replies": 0,
+   "posts": 2,
+   "views": 137,
+   "replies": 2,
    "likes": 1,
-   "avg_views": 77.0,
-   "avg_replies": 0.0
+   "avg_views": 68.5,
+   "avg_replies": 1.0
   },
   "партнёры": {
    "posts": 3,
-   "views": 175,
+   "views": 177,
    "replies": 0,
    "likes": 1,
-   "avg_views": 58.3,
+   "avg_views": 59.0,
    "avg_replies": 0.0
   },
   "консультация": {
@@ -275,6 +301,14 @@
    "replies": 0,
    "likes": 0,
    "avg_views": 47.0,
+   "avg_replies": 0.0
+  },
+  "юмор": {
+   "posts": 1,
+   "views": 71,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 71.0,
    "avg_replies": 0.0
   }
  }
