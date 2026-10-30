@@ -126,11 +126,36 @@ body{width:1080px;height:1350px;overflow:hidden;font-family:Inter,"Inter Display
 """
 
 
-def ed_slide(s, i, n, cover_url, photo_url):
+def _ttf(name):
+    return "data:font/ttf;base64," + base64.b64encode(open(os.path.join(ROOT, "tools", "fonts", name), "rb").read()).decode()
+
+
+LIGHT_CSS = ""  # светлый журнальный стиль ленты (ig/feed/STYLE.md), включается "look": "light"
+try:
+    LIGHT_CSS = (f"@font-face{{font-family:PF;font-style:normal;src:url({_ttf('PlayfairDisplay_500Medium.ttf')})}}"
+                 f"@font-face{{font-family:PF;font-style:italic;src:url({_ttf('PlayfairDisplay_500Medium_Italic.ttf')})}}"
+                 ".lcover{background:#F4EFE6;color:#0B1626;padding:84px 72px}"
+                 ".lcover .k{font:600 24px Inter,sans-serif;letter-spacing:.26em;color:#A88A4A}"
+                 ".lcover h1{font:500 84px/1.1 PF,serif;letter-spacing:-.01em;margin-top:30px;text-wrap:balance}"
+                 ".lcover h1 i{color:#9C7A33}"
+                 ".lcover .ip{position:absolute;left:72px;right:72px;bottom:84px;height:620px;background-size:cover;background-position:center;border-radius:6px;filter:brightness(1.06) saturate(.92)}"
+                 ".light .eh{font-family:PF,serif;font-weight:500;letter-spacing:-.01em}"
+                 ".light .eh2{font-family:PF,serif;font-style:italic;font-weight:500}")
+except Exception:
+    pass
+
+
+def ed_slide(s, i, n, cover_url, photo_url, light=False):
     import re as _re
     nb = lambda t: _re.sub(r"(\d) (\d{3})", "\\1\u00a0\\2", _re.sub(r"(\d) (USD|AED|EUR|дн|нед|мес)", "\\1\u00a0\\2", t))
     kind = s.get("type", "page")
     mark = f'<div class="mk">{MARK}<span>FORTEX UAE</span></div>'
+    if kind == "cover" and light:
+        title = E(s["title"])
+        if s.get("bold"):
+            title = title.replace(E(s["bold"]), f"<i>{E(s['bold'])}</i>", 1)
+        return (f'<div class="e lcover"><div class="k">FORTEX UAE · {E(s.get("kicker") or "ГАЙД")}</div><h1>{title}</h1>'
+                f'<div class="ip" style="background-image:url({cover_url})"></div></div>')
     if kind == "cover":
         title = E(s["title"])
         if s.get("bold"):
@@ -152,7 +177,7 @@ def ed_slide(s, i, n, cover_url, photo_url):
     paras = "".join(f"<p>{md(nb(x))}</p>" for x in s.get("body", "").split("\n\n") if x.strip())
     btn = '<div class="ebtn">Telegram @Fortex_Dubai</div>' if kind == "cta" else ""
     foot = f'<div class="efoot"><span>@fortex__uae</span>' + ('<b>Листайте →</b>' if i < n - 1 else f'<span>{i + 1}/{n}</span>') + '</div>'
-    cls = "e epage ecta" if kind == "cta" else "e epage"
+    cls = ("e epage ecta" if kind == "cta" else "e epage") + (" light" if light else "")
     return f'<div class="{cls}">{pic}<div class="ebody">{head}{big}<div class="etext">{paras}</div>{btn}</div>{foot}</div>'
 
 
@@ -250,7 +275,7 @@ def render_one(slug, src, browser):
             photos.append(pp)
     photo_urls = ["data:image/jpeg;base64," + base64.b64encode(open(x, "rb").read()).decode() for x in photos]
     h = hashlib.md5((src.get("format", "") + json.dumps(src["slides"], sort_keys=True, ensure_ascii=False) +
-                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + str([os.path.getsize(x) for x in photos]) + CSS[-3000:] + STORY_CSS + ED_CSS + src.get("style", "") + "v3").encode()).hexdigest()[:10]
+                     str(os.path.exists(bgp) and os.path.getsize(bgp)) + str([os.path.getsize(x) for x in photos]) + CSS[-3000:] + STORY_CSS + ED_CSS + src.get("style", "") + src.get("look", "") + "v3").encode()).hexdigest()[:10]
     out_dir = os.path.join(ROOT, "ig", slug)
     meta_p = os.path.join(out_dir, "render.json")
     if os.path.exists(meta_p) and json.load(open(meta_p)).get("hash") == h:
@@ -265,7 +290,8 @@ def render_one(slug, src, browser):
             if sl.get("photo") is not None and photo_urls:
                 pu = photo_urls[int(sl["photo"]) % len(photo_urls)]
             pg = browser.new_page(viewport={"width": W, "height": H})
-            pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{ED_CSS}{FONTS}</style></head><body>{ed_slide(sl, i, n, bg_url, pu)}</body></html>')
+            light = src.get("look") == "light"
+            pg.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{ED_CSS}{FONTS}{LIGHT_CSS if light else ""}</style></head><body>{ed_slide(sl, i, n, bg_url, pu, light)}</body></html>')
             try:
                 pg.wait_for_load_state("networkidle", timeout=8000)
             except Exception:
