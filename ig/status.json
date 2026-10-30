@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-30T15:06Z",
+ "checked": "2026-10-30T15:07Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,23 @@
   "media_count": 11,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "ig-e-invoicing-2027",
+   "scheduled": "carousel",
+   "error": {
+    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"AacTEsS-OAK5dzDQ9cIMO_T\"}}"
+   }
+  }
+ ],
  "media": [
+  {
+   "id": "18338247562275554",
+   "timestamp": "2026-10-30T15:07:53+0000",
+   "permalink": "https://www.instagram.com/p/DfH3hhYnPic/",
+   "media_type": "CAROUSEL_ALBUM",
+   "caption": "Минфин ОАЭ смягчил правила электронных счетов (e-invoicing)."
+  },
   {
    "id": "17945721315089509",
    "timestamp": "2026-10-30T15:00:58+0000",
