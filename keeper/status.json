@@ -1,5 +1,5 @@
 {
- "at": "2026-10-30T11:47+04:00",
+ "at": "2026-10-30T12:03+04:00",
  "errors": [],
  "openrouter_left": 7.92,
  "apify_left": null,
@@ -28,7 +28,6 @@
   "text": "Hello Alexey!\n\nI’m very sorry that you had to contact me. Unfortunately, some actions can trigger a harsh response from our anti-spam systems. If you think your account was limited by mistake, you can submit a complaint to our moderators.\n\nWhile the account is limited, you will not be able to send messages to people who do not have your number in their phone contacts or add them to groups and channels. Of course, when people contact you first, you can always reply to them."
  },
  "radar_errors": [
-  "2026-10-28T07:56:48+00:00 ubuntu-s-1vcpu-1gb-fra1 python[143352]: 2026-10-28 07:56:48,805 WARNING reaction failed: Content of the message was not modified (caused by SendReactionRequest)",
   "2026-10-28T10:14:03+00:00 ubuntu-s-1vcpu-1gb-fra1 python[144543]: 2026-10-28 10:14:03,911 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-28T10:19:40+00:00 ubuntu-s-1vcpu-1gb-fra1 python[144543]: 2026-10-28 10:19:40,251 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-28T20:33:44+00:00 ubuntu-s-1vcpu-1gb-fra1 python[146347]: 2026-10-28 20:33:44,120 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
@@ -109,7 +108,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 82.92572154999999,
+  "limit_remaining": 82.8887218,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -117,8 +116,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 17.07427845,
-    "remaining_usd": 82.92572154999999,
+    "spend_usd": 17.1112782,
+    "remaining_usd": 82.8887218,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -129,16 +128,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 17.07427845,
-   "remaining_usd": 82.92572154999999,
+   "spend_usd": 17.1112782,
+   "remaining_usd": 82.8887218,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 17.07427845,
-  "usage_daily": 0,
-  "usage_weekly": 7.41074735,
-  "usage_monthly": 17.07427845,
+  "usage": 17.1112782,
+  "usage_daily": 0.03699975,
+  "usage_weekly": 7.4477471,
+  "usage_monthly": 17.1112782,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -164,10 +163,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 766,
+  "lines": 744,
   "llm_warn": 0,
-  "wealth": 42,
+  "wealth": 36,
   "scan_model": 0,
-  "openrouter_http": 137
+  "openrouter_http": 117
  }
 }
