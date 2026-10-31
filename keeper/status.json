@@ -1,5 +1,5 @@
 {
- "at": "2026-10-31T11:44+04:00",
+ "at": "2026-10-31T12:00+04:00",
  "errors": [],
  "openrouter_left": 7.66,
  "apify_left": null,
@@ -28,10 +28,6 @@
   "text": "Hello Alexey!\n\nI’m very sorry that you had to contact me. Unfortunately, some actions can trigger a harsh response from our anti-spam systems. If you think your account was limited by mistake, you can submit a complaint to our moderators.\n\nWhile the account is limited, you will not be able to send messages to people who do not have your number in their phone contacts or add them to groups and channels. Of course, when people contact you first, you can always reply to them."
  },
  "radar_errors": [
-  "2026-10-29T07:48:21+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 07:48:21,440 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
-  "2026-10-29T07:50:16+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 07:50:16,688 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
-  "2026-10-29T07:52:32+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 07:52:32,161 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
-  "2026-10-29T07:55:07+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 07:55:07,500 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-29T08:12:01+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 08:12:01,381 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-29T09:03:57+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 09:03:57,273 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-29T10:34:32+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 10:34:32,578 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
@@ -102,7 +98,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 82.6659192,
+  "limit_remaining": 82.58574585,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -110,8 +106,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 17.3340808,
-    "remaining_usd": 82.6659192,
+    "spend_usd": 17.41425415,
+    "remaining_usd": 82.58574585,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -122,16 +118,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 17.3340808,
-   "remaining_usd": 82.6659192,
+   "spend_usd": 17.41425415,
+   "remaining_usd": 82.58574585,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 17.3340808,
-  "usage_daily": 0,
-  "usage_weekly": 7.6705497,
-  "usage_monthly": 17.3340808,
+  "usage": 17.41425415,
+  "usage_daily": 0.08017335,
+  "usage_weekly": 7.75072305,
+  "usage_monthly": 17.41425415,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -157,10 +153,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 667,
+  "lines": 668,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 1
+  "openrouter_http": 4
  }
 }
