@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T08:14+04:00",
+ "generated": "2026-10-31T08:22+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -212,7 +212,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1363,
+  "views": 1365,
   "likes": 9,
   "replies": 11,
   "reposts": 0,
@@ -220,7 +220,7 @@
   "followers_count": 1
  },
  "account_7d": {
-  "views": 4605,
+  "views": 4607,
   "likes": 56,
   "replies": 86,
   "reposts": 0,
@@ -258,7 +258,7 @@
   },
   {
    "date": "2026-10-30",
-   "views": 1257
+   "views": 1259
   }
  ],
  "link_clicks_7d": [
