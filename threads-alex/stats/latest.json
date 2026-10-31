@@ -1,0 +1,71 @@
+{
+ "generated": "2026-10-31T15:50+04:00",
+ "posts": [],
+ "errors": [],
+ "account_1d": {
+  "views": 631,
+  "likes": 6,
+  "replies": 6,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1447
+ },
+ "account_7d": {
+  "views": 634,
+  "likes": 6,
+  "replies": 6,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1447
+ },
+ "profile_views_by_day": [
+  {
+   "date": "2026-10-24",
+   "views": 0
+  },
+  {
+   "date": "2026-10-25",
+   "views": 0
+  },
+  {
+   "date": "2026-10-26",
+   "views": 0
+  },
+  {
+   "date": "2026-10-27",
+   "views": 0
+  },
+  {
+   "date": "2026-10-28",
+   "views": 3
+  },
+  {
+   "date": "2026-10-29",
+   "views": 0
+  },
+  {
+   "date": "2026-10-30",
+   "views": 0
+  },
+  {
+   "date": "2026-10-31",
+   "views": 631
+  }
+ ],
+ "link_clicks_7d": [
+  {
+   "name": "clicks",
+   "period": "day",
+   "title": "clicks",
+   "description": "The number of times users clicked on a link",
+   "link_total_values": [
+    {
+     "value": 3,
+     "link_url": "http://fortex-uae.com/c/alex"
+    }
+   ],
+   "id": "17841465254316890/insights/clicks/day"
+  }
+ ],
+ "by_kind": {}
+}
