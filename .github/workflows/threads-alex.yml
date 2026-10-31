@@ -1,0 +1,38 @@
+name: Threads Alex
+# Личный аккаунт Александра в Threads: публикация постов threads-alex/src по publish_at и статистика.
+# Ключ: секрет THREADS_TOKEN_ALEX. Пока секрета нет, ничего не делает.
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"   # каждые 15 минут: публикация
+    - cron: "40 3 * * *"           # 07:40 по Дубаю: статистика
+    - cron: "13 2 1 * *"           # продление ключа раз в месяц
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: threads-alex
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      THREADS_TOKEN: ${{ secrets.THREADS_TOKEN_ALEX }}
+      THREADS_DIR: threads-alex
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Publish
+        if: env.THREADS_TOKEN != ''
+        continue-on-error: true
+        run: python3 tools/threads.py publish
+      - name: Insights
+        if: env.THREADS_TOKEN != '' && (github.event.schedule == '40 3 * * *' || github.event_name != 'schedule')
+        continue-on-error: true
+        run: python3 tools/threads.py insights
+      - name: Refresh token
+        if: env.THREADS_TOKEN != '' && github.event.schedule == '13 2 1 * *'
+        run: python3 tools/threads.py refresh
+      - name: Commit
+        if: env.THREADS_TOKEN != ''
+        run: bash tools/threads_commit.sh threads-alex

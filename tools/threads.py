@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://graph.threads.net/v1.0"
 TOKEN = os.environ.get("THREADS_TOKEN", "")
 DUBAI = timezone(timedelta(hours=4))
-D = os.path.join(ROOT, "threads")
+D = os.path.join(ROOT, os.environ.get("THREADS_DIR", "threads"))  # threads-alex: личный аккаунт Александра
 TOPIC = "Дубай"  # решение Александра 31.10: все посты с темой «Дубай» (самая большая подборка)
 
 
