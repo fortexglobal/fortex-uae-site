@@ -369,6 +369,34 @@ def check():
     print("token ok:", me.get("username"))
 
 
+def history():
+    """Последние 60 постов аккаунта (включая написанные вручную) со статистикой → stats/history.json. Для анализа, что заходит."""
+    rows, url_params = [], {"fields": "id,text,timestamp,permalink,media_type,topic_tag", "limit": 50}
+    data = call("GET", "me/threads", **url_params)
+    posts = data.get("data", [])
+    after = data.get("paging", {}).get("cursors", {}).get("after")
+    if after and len(posts) < 60:
+        try:
+            posts += call("GET", "me/threads", after=after, **url_params).get("data", [])
+        except Exception as e:
+            print("page2:", e)
+    for p in posts[:60]:
+        row = {k: p.get(k) for k in ("id", "timestamp", "permalink", "media_type", "topic_tag")}
+        row["text"] = (p.get("text") or "")[:500]
+        row["len"] = len(p.get("text") or "")
+        try:
+            r = call("GET", f"{p['id']}/insights", metric="views,likes,replies,reposts,quotes,shares")
+            for m in r.get("data", []):
+                row[m["name"]] = (m.get("values") or [{}])[0].get("value", m.get("total_value", {}).get("value"))
+        except Exception as e:
+            row["error"] = str(e)[:150]
+        rows.append(row)
+    os.makedirs(os.path.join(D, "stats"), exist_ok=True)
+    json.dump({"generated": datetime.now(DUBAI).isoformat(timespec="minutes"), "posts": rows},
+              open(os.path.join(D, "stats", "history.json"), "w"), ensure_ascii=False, indent=1)
+    print("history", len(rows))
+
+
 def refresh():
     r = urllib.request.urlopen(f"https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token={TOKEN}", timeout=60)
     print("refreshed, expires_in", json.loads(r.read()).get("expires_in"))
@@ -378,4 +406,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "dedupe": dedupe, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights}[sys.argv[1]]()
+    {"publish": publish, "dedupe": dedupe, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights, "history": history}[sys.argv[1]]()

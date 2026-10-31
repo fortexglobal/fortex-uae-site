@@ -22,6 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {ref: main}
+      - name: Check token and history
+        if: env.THREADS_TOKEN != '' && github.event_name != 'schedule'
+        continue-on-error: true
+        run: python3 tools/threads.py check && python3 tools/threads.py history
       - name: Publish
         if: env.THREADS_TOKEN != ''
         continue-on-error: true
