@@ -20,6 +20,7 @@ API = "https://graph.threads.net/v1.0"
 TOKEN = os.environ.get("THREADS_TOKEN", "")
 DUBAI = timezone(timedelta(hours=4))
 D = os.path.join(ROOT, "threads")
+TOPIC = "Дубай"  # решение Александра 31.10: все посты с темой «Дубай» (самая большая подборка)
 
 
 def call(method, path, **params):
@@ -116,8 +117,18 @@ def publish():
         if src.get("image") and params["media_type"] == "TEXT":
             params = {"media_type": "IMAGE", "text": src["text"][:500],
                       "image_url": f"https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/{sha()}/{src['image']}"}
+        topic = src.get("topic", TOPIC)
+        if topic:  # тема публикации (кликабельная «Дубай» рядом с именем): посты с темой получают больше показов
+            params["topic_tag"] = topic
         try:
-            c = call("POST", "me/threads", **params)
+            try:
+                c = call("POST", "me/threads", **params)
+            except RuntimeError as e:
+                if "topic" not in str(e).lower() or "topic_tag" not in params:
+                    raise
+                print("topic_tag rejected, posting without it:", str(e)[:200])
+                params.pop("topic_tag")
+                c = call("POST", "me/threads", **params)
             time.sleep(8 if (src.get("image") or imgs) else 2)
             r = call("POST", "me/threads_publish", creation_id=c["id"])
             info = call("GET", r["id"], fields="permalink")
