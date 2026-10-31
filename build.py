@@ -388,6 +388,9 @@ def build():
             "## Страницы"] + [f"- [{pg['h1']}]({SITE}/{pg['slug']}/): {pg['description']}" for pg in PAGES] + ["", "## Частые вопросы"] + [f"- {q} {a}" for q, a in HFAQ] + [x for pg in PAGES for x in [f"- {q} {a}" for q, a in pg["faq"]]] + ["", "## Статьи"] + [f"- [{a['title']}]({SITE}/articles/{a['slug']}/): {a.get('description', '')}" for a in arts]
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")
     print(f"built: {len(arts)} articles -> {OUT}")
+    # новый дизайн (финтех): шапка, подвал, главная, слой стилей nx.css поверх style.css
+    import subprocess, sys
+    subprocess.run([sys.executable, os.path.join(ROOT, "tools", "redesign", "mock.py"), "--prod"], check=True)
 
 
 if __name__ == "__main__":

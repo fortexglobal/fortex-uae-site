@@ -6,12 +6,13 @@
 
 python3 build.py && python3 tools/redesign/mock.py
 """
-import os, re, glob, html
+import os, re, glob, html, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PUB = os.path.join(ROOT, "public")
-B = "/v/redesign-fx7"
-OUT = os.path.join(ROOT, "static", B.strip("/"))
+PROD = "--prod" in sys.argv  # основной сайт: правим public/ на месте, без noindex
+B = "" if PROD else "/v/redesign-fx7"
+OUT = PUB if PROD else os.path.join(ROOT, "static", B.strip("/"))
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 ARTICLES = []  # (url, tag, title)
@@ -181,7 +182,8 @@ def page(path):
     if "<main" not in s:
         return None
     rel = os.path.relpath(path, PUB)
-    s = s.replace("<head>", '<head>\n<meta name="robots" content="noindex,nofollow">', 1)
+    if not PROD:
+        s = s.replace("<head>", '<head>\n<meta name="robots" content="noindex,nofollow">', 1)
     s = s.replace('family=Onest:wght@400;500;600&family=Unbounded:wght@500;600', 'family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800;900&family=Manrope:wght@500;600;700;800')
     s = s.replace('<link rel="stylesheet" href="/style.css">', f'<link rel="stylesheet" href="/style.css">\n<link rel="stylesheet" href="{B}/nx.css">')
     s = re.sub(r'<header class="top">.*?</header>', header(), s, count=1, flags=re.S)
@@ -207,7 +209,11 @@ if __name__ == "__main__":
     collect_articles()
     os.makedirs(OUT, exist_ok=True)
     done = [r for p in sorted(glob.glob(os.path.join(PUB, "**", "index.html"), recursive=True))
-            if not p.startswith(os.path.join(PUB, "v")) and "/draft/" not in p and (r := page(p))]
-    import shutil; shutil.copytree(os.path.join(HERE, "img"), os.path.join(OUT, "img"), dirs_exist_ok=True)
+            if not p.startswith(os.path.join(PUB, "v") + os.sep) and "/draft/" not in p and (r := page(p))]
+    import shutil; shutil.copytree(os.path.join(HERE, "img"), os.path.join(PUB if PROD else OUT, "img", "docs"), dirs_exist_ok=True)
+    if PROD:  # справка для нейросетей: те же правки текста
+        lp = os.path.join(PUB, "llms.txt")
+        if os.path.exists(lp):
+            open(lp, "w", encoding="utf-8").write(clean(open(lp, encoding="utf-8").read()))
     open(os.path.join(OUT, "nx.css"), "w", encoding="utf-8").write(open(os.path.join(HERE, "nx.css"), encoding="utf-8").read())
     print(len(done), "pages:", ", ".join(done))
