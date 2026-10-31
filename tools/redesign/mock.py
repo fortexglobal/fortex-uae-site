@@ -35,7 +35,7 @@ def header():
     svcs = "".join(f'<a href="{B}{u}"><b>{t}</b><span>{d}</span></a>' for u, t, d in svc)
     contacts = ('<a href="https://t.me/Fortex_Dubai"><b>Telegram @Fortex_Dubai</b><span>Ответим в течение часа</span></a>'
                 '<a href="/c/call"><b>Записаться на звонок</b><span>Zoom или Telegram</span></a>'
-                '<a href="https://t.me/fortex_uae"><b>Канал @fortex_uae</b><span>Новости банков и виз</span></a>'
+                '<a href="tel:+971558194123"><b>+971 55 819 4123</b><span>Звонок, WhatsApp</span></a>'
                 '<a href="mailto:alexey@fortex-uae.com"><b>alexey@fortex-uae.com</b><span>Пн–сб, 10:00–20:00 по Дубаю</span></a>')
     dd = lambda name, items, wide="": (f'<div class="nx-dd{wide}"><button type="button" aria-expanded="false">{name}<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>'
                                        f'<div class="nx-menu">{items}</div></div>')
@@ -45,7 +45,7 @@ def header():
            f'<details><summary>Контакты</summary>{contacts}</details>'
            f'<a class="nx-cta nx-mcta" href="/c/site">Бесплатная консультация</a>')
     return f'''<header class="nx-hdr nx-ondark" id="nxh">
-  <a class="nx-logo" href="{B}/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX</span><span class="nx-uae"><i class="nx-flag" aria-hidden="true"></i><em>UAE</em></span></a>
+  <a class="nx-logo" href="{B}/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX</span><span class="nx-uae"><em>UAE</em></span></a>
   <nav class="nx-nav" aria-label="Меню">
     {dd("Услуги", svcs, " nx-wide")}
     <a href="{B}/#cases">Кейсы</a>
@@ -78,16 +78,36 @@ def footer():
     return f'''<footer class="nx-foot nx-dark">
   <div class="nx-fwrap">
     <div class="nx-fcols">
-      <div><a class="nx-logo" href="{B}/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX</span><span class="nx-uae"><i class="nx-flag" aria-hidden="true"></i><em>UAE</em></span></a>
+      <div><a class="nx-logo" href="{B}/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX</span><span class="nx-uae"><em>UAE</em></span></a>
         <p>Банковские счета и финансовая инфраструктура в ОАЭ. Направление компании Fortex Global, Дубай.</p>
         <p class="nx-dim">Часы работы: пн–сб, 10:00–20:00 по Дубаю. Воскресенье выходной.</p></div>
       <div><h4>Услуги</h4><a href="{B}/schet-v-banke-oae/">Счёт в банке ОАЭ</a><a href="{B}/rezidentstvo-oae/">Резидентство и ВНЖ</a><a href="{B}/kompaniya-v-dubae/">Компания в Дубае</a><a href="{B}/#cases">Кейсы</a></div>
-      <div><h4>Связь</h4><a href="https://t.me/Fortex_Dubai">Telegram @Fortex_Dubai</a><a href="/c/call">Записаться на звонок</a><a href="mailto:alexey@fortex-uae.com">alexey@fortex-uae.com</a></div>
-      <div><h4>Читать</h4><a href="{B}/articles/">Статьи</a><a href="https://t.me/fortex_uae">Telegram-канал @fortex_uae</a><a href="https://www.instagram.com/fortex__uae/">Instagram @fortex__uae</a><a href="{B}/privacy/">Политика конфиденциальности</a></div>
+      <div><h4>Связь</h4><a href="https://t.me/Fortex_Dubai">Telegram @Fortex_Dubai</a><a href="tel:+971558194123">+971 55 819 4123</a><a href="/c/call">Записаться на звонок</a><a href="mailto:alexey@fortex-uae.com">alexey@fortex-uae.com</a></div>
+      <div><h4>Читать</h4><a href="{B}/articles/">Статьи</a><a href="{B}/privacy/">Политика конфиденциальности</a></div>
     </div>
     <p class="nx-legal">Fortex UAE не является банком и не принимает депозиты. Решение об открытии счёта принимает банк. Цены указаны как минимальные и уточняются после разбора ситуации.</p>
   </div>
 </footer>'''
+
+
+TEXT_FIX = [
+    ("Не берём всю сумму вперёд: часть на старте, остальное после результата.", "Оплата по этапам: каждый этап оплачивается перед его началом, всю сумму сразу вносить не нужно."),
+    ("Нет. Оплата по этапам: часть на старте, остальное после результата.", "Не обязательно всё сразу. Оплата по этапам: каждый этап оплачивается перед его началом."),
+    ("Оплата по этапам: часть на старте, остальное после результата.", "Оплата по этапам: каждый этап оплачивается перед его началом."),
+    ("Оплата по этапам, всю сумму вперёд не берём.", "Оплата по этапам, каждый этап перед его началом."),
+    ("Часть на старте, остальное после результата.", "Оплата вперёд, но по этапам."),
+]
+
+
+def clean(s):
+    """Правки текста по оплате; убрать Telegram-канал и Instagram (там пока пусто)."""
+    for a, b in TEXT_FIX:
+        s = s.replace(a, b)
+    s = re.sub(r'<div class="social">.*?</div>\s*(?=</div>)', "", s, flags=re.S)
+    s = re.sub(r'<p class="small"[^>]*>[^<]*<a href="https://t.me/fortex_uae"[^>]*>[^<]*</a>\s*</p>', "", s)
+    s = re.sub(r'<a [^>]*href="https://(t.me/fortex_uae|www.instagram.com/fortex__uae/)"[^>]*>.*?</a>', "", s, flags=re.S)
+    s = s.replace(', "https://t.me/fortex_uae", "https://www.instagram.com/fortex__uae/"', "")
+    return s
 
 
 def relink(s):
@@ -160,7 +180,7 @@ def page(path):
     s = s.replace('<script src="/video.js" defer></script>', "").replace('<script src="/video.js"></script>', "")
     s = re.sub(r'<script[^>]*src="/(video|bank).js"[^>]*></script>', "", s)
     s = s.replace("</body>", NX_JS + "\n</body>", 1)
-    s = relink(s)
+    s = clean(relink(s))
     out = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(s)

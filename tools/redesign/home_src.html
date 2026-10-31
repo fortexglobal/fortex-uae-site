@@ -91,13 +91,14 @@ section{padding:110px 0 0}
 .svc p{font-size:14px;margin-bottom:8px;max-width:75%}
 .svc p em{font-style:normal;font-weight:700}
 .svc .for{color:var(--violet)} .svc .sit{color:var(--magenta)} .svc .sol{color:var(--coral)}
-.svc .meta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.svc .meta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:relative;z-index:1;padding-right:150px}
+.svc .tag{white-space:nowrap;line-height:1.2}
 .tag{padding:7px 12px;border-radius:999px;background:var(--lav);font-weight:700;font-size:13px}
-.tag.g{background:var(--grad);color:#fff}
-.shape{position:absolute;right:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;opacity:.95}
+.tag.gr{background:var(--grad);color:#fff}
+.shape{position:absolute;right:-36px;bottom:-36px;width:176px;height:176px;border-radius:50%;opacity:.95}
 .shape::after{content:"";position:absolute;inset:-22px;border-radius:50%;border:1.5px solid currentColor;opacity:.25}
 .star{position:absolute;width:16px;height:16px;background:currentColor;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);width:12px;height:12px}
-.ico{position:absolute;right:34px;bottom:40px;z-index:1}
+.ico{position:absolute;right:20px;bottom:20px;width:64px;height:64px;z-index:1}
 
 /* sticky stacking steps */
 .steps{position:relative}
@@ -248,9 +249,9 @@ details p{margin-top:12px;color:var(--muted)}
         <p><em class="for">Для кого:</em> компании на mainland или во фризоне</p>
         <p><em class="sit">Ситуация:</em> «Подались сами, везде отказ»</p>
         <p><em class="sol">Решение:</em> подбираем банк под вашу деятельность и готовим подачу, в том числе после отказов</p>
-        <div class="meta"><span class="tag g">от 5 000 USD</span><span class="tag">1–3 недели</span></div>
+        <div class="meta"><span class="tag gr">от 5 000 USD</span><span class="tag">1–3 недели</span></div>
         <div class="shape" style="background:#2f6bff"></div>
-        <svg class="ico" width="92" height="92" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 10 12 4l9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 10 12 4l9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg>
         <i class="star" style="color:#1747c9;right:200px;top:40px"></i>
       </div>
       <div class="svc wide reveal">
@@ -258,9 +259,9 @@ details p{margin-top:12px;color:var(--muted)}
         <p><em class="for">Для кого:</em> собственники и сотрудники</p>
         <p><em class="sit">Ситуация:</em> «Нужна понятная для банков история»</p>
         <p><em class="sol">Решение:</em> официальная зарплата и виза, с ней открываем Emirates NBD с кредитной картой без депозита</p>
-        <div class="meta"><span class="tag g">от 5 500 USD</span><span class="tag">5–7 дней</span></div>
+        <div class="meta"><span class="tag gr">от 5 500 USD</span><span class="tag">5–7 дней</span></div>
         <div class="shape" style="background:#d4af6a"></div>
-        <svg class="ico" width="92" height="92" viewBox="0 0 24 24" fill="none" stroke="#0a1020" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M6 16c.8-1.6 5.2-1.6 6 0M14 10h4M14 13h4"/></svg>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#0a1020" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M6 16c.8-1.6 5.2-1.6 6 0M14 10h4M14 13h4"/></svg>
         <i class="star" style="color:#2f6bff;right:210px;top:60px"></i>
       </div>
       <div class="svc reveal">
@@ -269,13 +270,15 @@ details p{margin-top:12px;color:var(--muted)}
         <p><em class="sol">Решение:</em> подбираем фризону или mainland и деятельность так, чтобы потом без проблем открыть счёт</p>
         <div class="meta"><span class="tag">около 2 недель</span></div>
         <div class="shape" style="background:#1747c9"></div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="11" height="18" rx="1"/><path d="M15 9h5v12h-5M7 7h2M11 7h1M7 11h2M11 11h1M7 15h2M11 15h1M8 21v-3h3v3"/></svg>
       </div>
       <div class="svc reveal">
         <h3>ЛИЧНЫЙ СЧЁТ</h3>
         <p><em class="for">Для кого:</em> переезжающие и инвесторы</p>
         <p><em class="sol">Решение:</em> Emirates NBD, Mashreq и другие банки, в том числе удалённо, без приезда</p>
-        <div class="meta"><span class="tag g">от 1 500 USD</span><span class="tag">около 2 недель</span></div>
+        <div class="meta"><span class="tag gr">от 1 500 USD</span><span class="tag">около 2 недель</span></div>
         <div class="shape" style="background:#12b897"></div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 9.5h19M6 14.5h4"/></svg>
       </div>
       <div class="svc reveal">
         <h3>СЛОЖНЫЕ СЛУЧАИ</h3>
@@ -283,6 +286,7 @@ details p{margin-top:12px;color:var(--muted)}
         <p><em class="sol">Решение:</em> отказы, закрытия счетов, сложные фризоны. Честно говорим о шансах до оплаты</p>
         <div class="meta"><span class="tag">наша специализация</span></div>
         <div class="shape" style="background:#2f6bff"></div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></svg>
       </div>
     </div>
   </section>
@@ -297,7 +301,7 @@ details p{margin-top:12px;color:var(--muted)}
         <div class="art"><div class="b" style="background:#d4af6a"></div><i class="star" style="color:#2f6bff;left:12%;top:20%"></i></div></div>
       <div class="step"><div><div class="num">03 · Подготовка</div><h3>ГОТОВИМ К ВОПРОСАМ БАНКА</h3><p>Документы, описание деятельности, подача. Вы заранее знаете, что спросит комплаенс и как отвечать.</p></div>
         <div class="art"><div class="b" style="background:#1747c9"></div><i class="star" style="color:#12b897;left:8%;top:14%"></i></div></div>
-      <div class="step"><div><div class="num">04 · Результат</div><h3>СЧЁТ, ВИЗА ИЛИ КОМПАНИЯ</h3><p>Оплата по этапам, всю сумму вперёд не берём. Если банк откажет, предложим другой или вернём деньги.</p></div>
+      <div class="step"><div><div class="num">04 · Результат</div><h3>СЧЁТ, ВИЗА ИЛИ КОМПАНИЯ</h3><p>Оплата по этапам, каждый этап перед его началом. Если банк откажет, предложим другой или вернём деньги.</p></div>
         <div class="art"><div class="b" style="background:var(--grad)"></div><i class="star" style="color:#2f6bff;left:14%;top:8%"></i></div></div>
     </div>
   </section>
@@ -331,7 +335,7 @@ details p{margin-top:12px;color:var(--muted)}
 
 <div class="wrap">
   <section>
-    <p class="trust reveal">МЫ НЕ БЕРЁМ <span class="chip">50% на старте</span> ВСЮ СУММУ ВПЕРЁД, ЧЕСТНО ГОВОРИМ О ШАНСАХ <span class="chip">до оплаты</span> И ВОЗВРАЩАЕМ ДЕНЬГИ, ЕСЛИ <span class="chip">банк отказал</span> НЕ ПО ВАШЕЙ ВИНЕ</p>
+    <p class="trust reveal">ОПЛАТА <span class="chip">шаг за шагом</span> ПО ЭТАПАМ, ЧЕСТНО ГОВОРИМ О ШАНСАХ <span class="chip">до оплаты</span> И ВОЗВРАЩАЕМ ДЕНЬГИ, ЕСЛИ <span class="chip">банк отказал</span> НЕ ПО ВАШЕЙ ВИНЕ</p>
   </section>
 
   <section id="cases">
@@ -351,8 +355,8 @@ details p{margin-top:12px;color:var(--muted)}
     <h2 class="h2">КОМАНДА ПОСТОЯННО В ДУБАЕ. РАБОТАЕМ ТАМ, ГДЕ УДОБНО ВАМ</h2>
     <div class="cols">
       <div class="g"><h3>TELEGRAM И ZOOM</h3><p>Клиенты живут в России, Европе, Азии и Дубае. Вся переписка остаётся у вас, каждая договорённость письменно.</p></div>
-      <div class="g"><h3>ВСТРЕЧИ В ДУБАЕ</h3><p>Хотите увидеть нас вживую, договоримся. Шаги в банке, которые проходят лично, проходим рядом с вами.</p></div>
-      <div class="g"><h3>ОПЛАТА ПО ЭТАПАМ</h3><p>Часть на старте, остальное после результата. Есть свой удобный формат сделки, обсудим.</p></div>
+      <div class="g"><h3>ВСТРЕЧА В ДУБАЕ</h3><p>Хотите увидеть нас вживую, договоримся. Шаги в банке, которые проходят лично, проходим рядом с вами.</p></div>
+      <div class="g"><h3>ОПЛАТА ПО ЭТАПАМ</h3><p>Оплата вперёд, но по этапам: каждый этап перед его началом. Всё фиксируем письменно.</p></div>
       <div class="g"><h3>ВОЗВРАТ ПРИ ОТКАЗЕ</h3><p>Предлагаем другой банк, а если замена не подходит, возвращаем деньги. Исключение: отказ по вине клиента.</p></div>
     </div>
   </div>
