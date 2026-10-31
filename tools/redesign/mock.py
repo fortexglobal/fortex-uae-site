@@ -202,5 +202,6 @@ if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     done = [r for p in sorted(glob.glob(os.path.join(PUB, "**", "index.html"), recursive=True))
             if not p.startswith(os.path.join(PUB, "v")) and "/draft/" not in p and (r := page(p))]
+    import shutil; shutil.copytree(os.path.join(HERE, "img"), os.path.join(OUT, "img"), dirs_exist_ok=True)
     open(os.path.join(OUT, "nx.css"), "w", encoding="utf-8").write(open(os.path.join(HERE, "nx.css"), encoding="utf-8").read())
     print(len(done), "pages:", ", ".join(done))

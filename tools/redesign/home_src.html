@@ -121,21 +121,27 @@ section{padding:110px 0 0}
 .stack{position:relative;height:520px}
 .doc{position:absolute;left:50%;top:50%;border-radius:22px;box-shadow:0 30px 60px rgba(20,10,60,.25);transition:all .7s cubic-bezier(.2,.8,.2,1);opacity:0;transform:translate(-50%,-30%) scale(.9)}
 .doc.on{opacity:1}
-.d1{width:250px;height:340px;background:#7a1e2b;color:#f0c66a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:Unbounded,"Arial Black",sans-serif;font-weight:800;font-size:13px;text-align:center}
-.d1.on{transform:translate(-95%,-58%) rotate(-10deg)}
-.d2{width:330px;height:208px;background:linear-gradient(135deg,#f5f1e6,#dfe9e4);padding:20px;font-size:12px;color:#234}
-.d2.on{transform:translate(-30%,-80%) rotate(6deg)}
-.d3{width:300px;height:380px;background:#fff;padding:24px;font-size:12px}
-.d3.on{transform:translate(-10%,-38%) rotate(-3deg)}
-.d4{width:340px;height:214px;background:linear-gradient(120deg,#16121f,#13306e 45%,#12b897 85%,#1747c9);color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
-.d4.on{transform:translate(-62%,8%) rotate(-6deg)}
-.lbl{position:absolute;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);font-size:13px;max-width:210px;opacity:0;transition:opacity .5s .3s;z-index:3}
+.d1{width:250px;height:353px}
+.d1.on{transform:translate(-112%,-58%) rotate(-8deg)}
+.d2{width:330px;height:218px}
+.d2.on{transform:translate(-22%,-100%) rotate(5deg)}
+.d3{width:280px;height:360px;background:#fff;padding:24px;font-size:12px}
+.d3.on{transform:translate(4%,-42%) rotate(-2deg)}
+.d4{width:340px;height:220px}
+.d4.on{transform:translate(-64%,18%) rotate(-5deg)}
+.doc.ph{background:none;padding:0;box-shadow:0 24px 50px -12px rgba(10,20,50,.35),0 6px 14px rgba(10,20,50,.12)}
+.d1.ph{border-radius:12px}.d2.ph{border-radius:16px}.d4.ph{border-radius:18px}
+.doc.ph img{display:block;width:100%;height:100%;object-fit:contain;max-width:100%}
+.lbl{display:none!important;position:absolute;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);font-size:13px;max-width:210px;opacity:0;transition:opacity .5s .3s;z-index:3}
 .lbl b{display:block;font-size:14px;margin-bottom:2px}
 .lbl.on{opacity:1}
 .prog{display:flex;flex-direction:column;gap:10px;margin-top:30px}
-.prog div{display:flex;gap:12px;align-items:center;font-weight:700;color:#a3adc2;transition:color .4s}
+.prog div{display:flex;gap:12px;align-items:flex-start;font-weight:700;color:#a3adc2;transition:color .4s}
 .prog div i{width:28px;height:28px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-style:normal;font-size:12px}
 .prog div.on{color:var(--ink)}
+.prog small{display:block;font-weight:500;font-size:14px;color:var(--muted);max-height:0;overflow:hidden;transition:max-height .5s}
+.prog div.on small{max-height:60px}
+.prog b{display:block}
 .prog div.on i{background:var(--grad);border-color:transparent;color:#fff}
 
 /* trust text with chips */
@@ -190,7 +196,7 @@ details p{margin-top:12px;color:var(--muted)}
   .art{height:150px}
   .build{height:auto;overflow:hidden}
   .build .stick{position:relative;height:auto;grid-template-columns:1fr;padding:40px 0}
-  .stack{height:440px;transform:scale(.8)}
+  .stack{height:400px;transform:scale(.6);margin:-30px 0}
   .burst{width:600px;height:600px;left:50%}
   .cases,.dark .cols{grid-template-columns:1fr}
   .float{position:relative;right:auto;bottom:auto;margin:40px auto 0}
@@ -314,16 +320,16 @@ details p{margin-top:12px;color:var(--muted)}
       <h2 class="h2" style="margin-bottom:10px">СОБИРАЕМ ИНФРАСТРУКТУРУ ПОД ВАС</h2>
       <p style="color:var(--muted);max-width:420px">От паспорта до карты в кармане. Прокрутите вниз.</p>
       <div class="prog" id="prog">
-        <div><i>1</i>Паспорт РФ</div><div><i>2</i>Виза и Emirates ID</div><div><i>3</i>Компания</div><div><i>4</i>Счёт и карта</div>
+        <div><i>1</i><span><b>Паспорт РФ</b><small>Начинаем с того, что есть. Банки снова открывают счета</small></span></div><div><i>2</i><span><b>Виза и Emirates ID</b><small>5–7 дней. Понятная для банка история</small></span></div><div><i>3</i><span><b>Компания</b><small>Юрисдикция и деятельность под будущий счёт</small></span></div><div><i>4</i><span><b>Счёт и карта</b><small>Корпоративный и личный, 1–3 недели</small></span></div>
       </div>
     </div>
     <div style="position:relative">
       <div class="burst" id="burst"></div>
       <div class="stack">
-        <div class="doc d1" id="d1"><div style="font-size:28px">★</div>РОССИЙСКАЯ<br>ФЕДЕРАЦИЯ<br><span style="font-size:10px;opacity:.8">ПАСПОРТ</span></div>
-        <div class="doc d2" id="d2"><b style="font-family:Unbounded,Arial Black,sans-serif;font-size:13px">UNITED ARAB EMIRATES</b><br>Resident Identity Card<div style="display:flex;gap:14px;margin-top:16px"><div style="width:70px;height:86px;border-radius:8px;background:#c9d5d0"></div><div>Name: ●●●●●●<br>ID: 784-●●●●-●●●●<br>Expiry: ●●/●●/●●</div></div></div>
+        <div class="doc d1 ph" id="d1"><img src="/v/redesign-fx7/img/passport.webp" alt="Паспорт РФ" width="500" height="706" loading="lazy"></div>
+        <div class="doc d2 ph" id="d2"><img src="/v/redesign-fx7/img/eid.webp" alt="Emirates ID, образец" width="680" height="447" loading="lazy"></div>
         <div class="doc d3" id="d3"><b style="font-family:Unbounded,Arial Black,sans-serif;font-size:13px">TRADE LICENSE</b><div style="height:2px;background:var(--grad);margin:12px 0"></div>Company: ●●●●●● FZ-LLC<br>Activity: General Trading<br>Jurisdiction: Free Zone<div style="margin-top:22px;display:grid;gap:8px"><div style="height:8px;background:#eee;border-radius:4px"></div><div style="height:8px;background:#eee;border-radius:4px;width:80%"></div><div style="height:8px;background:#eee;border-radius:4px;width:60%"></div></div><div style="position:absolute;right:24px;bottom:24px;width:64px;height:64px;border-radius:50%;border:3px solid #2f6bff;opacity:.6"></div></div>
-        <div class="doc d4" id="d4"><div style="display:flex;justify-content:space-between"><b style="font-family:Unbounded,Arial Black,sans-serif;font-size:13px">FORTEX · UAE</b><span>AED</span></div><div style="width:44px;height:32px;border-radius:6px;background:linear-gradient(135deg,#f6d27a,#c9973a)"></div><div style="font-family:Unbounded,"Arial Black",sans-serif;letter-spacing:.14em;font-size:15px">●●●● ●●●● ●●●● 2026</div></div>
+        <div class="doc d4 ph" id="d4"><img src="/v/redesign-fx7/img/card.webp" alt="Банковская карта" width="720" height="467" loading="lazy"></div>
         <div class="lbl" id="l1" style="left:0;top:4%"><b>Паспорт РФ</b>Начинаем с того, что есть. Банки снова открывают счета</div>
         <div class="lbl" id="l2" style="right:-10px;top:0"><b>Виза и Emirates ID</b>5–7 дней. Понятная для банка история</div>
         <div class="lbl" id="l3" style="right:-20px;top:55%"><b>Компания</b>Юрисдикция и деятельность под счёт</div>
