@@ -1,21 +1,13 @@
 {
- "checked": "2026-10-31T15:07Z",
+ "checked": "2026-10-31T15:17Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 13,
+  "media_count": 14,
   "id": "28276626788683589"
  },
- "published": [
-  {
-   "slug": "ig-fns-nedvizhimost-oae",
-   "scheduled": "carousel",
-   "error": {
-    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"AsfmcKG7DtzgmdAXwMZMBCx\"}}"
-   }
-  }
- ],
+ "published": [],
  "media": [
   {
    "id": "17996007645050875",
