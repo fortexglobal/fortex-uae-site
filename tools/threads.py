@@ -94,6 +94,12 @@ def publish():
             continue
         if done >= 1:  # не больше одного поста за запуск
             break
+        gap = int(os.environ.get("MIN_GAP_MIN", "0"))  # личный аккаунт: не выходить сразу после ручного поста Александра
+        if gap:
+            last = recent_posts(1)
+            if last and now - datetime.strptime(last[0]["timestamp"], "%Y-%m-%dT%H:%M:%S%z") < timedelta(minutes=gap):
+                print("last post too recent, wait", slug)
+                break
         dup = already_posted(src["text"])
         if dup:  # такой текст уже вышел (параллельный запуск): не публикуем второй раз
             st[slug] = {"id": dup["id"], "url": dup.get("permalink", ""), "at": now.isoformat(timespec="minutes"), "dedup": True}

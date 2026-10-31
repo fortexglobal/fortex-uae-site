@@ -19,6 +19,7 @@ jobs:
     env:
       THREADS_TOKEN: ${{ secrets.THREADS_TOKEN_ALEX }}
       THREADS_DIR: threads-alex
+      MIN_GAP_MIN: "90"
     steps:
       - uses: actions/checkout@v4
         with: {ref: main}
@@ -33,7 +34,7 @@ jobs:
       - name: Insights
         if: env.THREADS_TOKEN != '' && (github.event.schedule == '40 3 * * *' || github.event_name != 'schedule')
         continue-on-error: true
-        run: python3 tools/threads.py insights
+        run: python3 tools/threads.py insights && python3 tools/threads.py history
       - name: Refresh token
         if: env.THREADS_TOKEN != '' && github.event.schedule == '13 2 1 * *'
         run: python3 tools/threads.py refresh
