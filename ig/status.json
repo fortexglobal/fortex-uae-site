@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-31T14:48Z",
+ "checked": "2026-10-31T15:00Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,22 @@
   "media_count": 12,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "reel-1031-kak-my-rabotaem",
+   "scheduled": "carousel",
+   "id": "17998149810083302",
+   "permalink": "https://www.instagram.com/reel/DfKbfiZAkvp/"
+  }
+ ],
  "media": [
+  {
+   "id": "17998149810083302",
+   "timestamp": "2026-10-31T15:01:00+0000",
+   "permalink": "https://www.instagram.com/reel/DfKbfiZAkvp/",
+   "media_type": "VIDEO",
+   "caption": "Банк ОАЭ отказал? Почти всегда дело не в паспорте, а в подач"
+  },
   {
    "id": "18338247562275554",
    "timestamp": "2026-10-30T15:07:53+0000",
