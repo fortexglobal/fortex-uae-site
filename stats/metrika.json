@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-30T03:54Z",
+ "generated": "2026-10-31T03:51Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 82.0,
-  "посетители": 60.0,
+  "визиты": 70.0,
+  "посетители": 50.0,
   "отказы_%": 50.0,
-  "время_на_сайте_сек": 47.79268293
+  "время_на_сайте_сек": 49.72857143
  },
  "goals": {
   "Заявка с сайта": 0.0,
@@ -19,8 +19,8 @@
   {
    "name": "Direct traffic",
    "values": [
-    73.0,
-    52.0
+    60.0,
+    41.0
    ]
   },
   {
@@ -32,6 +32,13 @@
   },
   {
    "name": "Internal traffic",
+   "values": [
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "Link traffic",
    "values": [
     1.0,
     1.0
@@ -61,6 +68,13 @@
    ]
   },
   {
+   "name": "dataindex.pro",
+   "values": [
+    1.0,
+    1.0
+   ]
+  },
+  {
    "name": "Facebook",
    "values": [
     1.0,
@@ -81,8 +95,8 @@
   {
    "name": "/",
    "values": [
-    73.0,
-    54.0
+    60.0,
+    44.0
    ]
   },
   {
@@ -101,6 +115,13 @@
   },
   {
    "name": "/articles/mexc-ushla-iz-rossii",
+   "values": [
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "/draft/fns-proveryaet-nedvizhimost-oae/",
    "values": [
     1.0,
     1.0
@@ -144,6 +165,64 @@
  ],
  "yesterday": {
   "totals": {
+   "визиты": 2.0,
+   "посетители": 2.0,
+   "отказы_%": 50.0,
+   "время_на_сайте_сек": 8.0
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Link traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "dataindex.pro",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "utm": [],
+  "pages": [
+   {
+    "name": "/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "/draft/fns-proveryaet-nedvizhimost-oae/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
+  "totals": {
    "визиты": 5.0,
    "посетители": 5.0,
    "отказы_%": 80.0,
@@ -185,80 +264,7 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 8.0,
-   "посетители": 7.0,
-   "отказы_%": 12.5,
-   "время_на_сайте_сек": 17.625
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     4.0,
-     3.0
-    ]
-   },
-   {
-    "name": "Recommendation system traffic",
-    "values": [
-     4.0,
-     4.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "Yandex Zen",
-    "values": [
-     4.0,
-     4.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "telegram / channel",
-    "values": [
-     4.0,
-     4.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     3.0,
-     3.0
-    ]
-   },
-   {
-    "name": "/articles/mexc-ushla-iz-rossii/",
-    "values": [
-     3.0,
-     3.0
-    ]
-   },
-   {
-    "name": "/articles/rossiyanam-iz-evropy-schet-oae/",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-10-29",
+ "date_yesterday": "2026-10-30",
  "today": {
   "totals": {
    "визиты": 0.0,
