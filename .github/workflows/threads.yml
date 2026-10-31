@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}  # свежий main, а не снимок на момент запуска: иначе второй запуск в очереди публиковал повтор
       - name: Check token
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
@@ -25,6 +26,11 @@ jobs:
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
         run: python3 tools/threads.py probe && rm threads/probe.json
+      - name: Dedupe
+        if: hashFiles('threads/dedupe.request') != ''
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }
+        run: python3 tools/threads.py dedupe && rm threads/dedupe.request
       - name: Publish
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }

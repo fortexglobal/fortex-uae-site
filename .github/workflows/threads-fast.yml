@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}  # свежий main, а не снимок на момент запуска: иначе второй запуск в очереди публиковал повтор
       - name: Publish
         continue-on-error: true
         env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}" }

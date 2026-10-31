@@ -40,6 +40,45 @@ def sha():
     return subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
 
 
+def recent_posts(limit=25):
+    try:
+        return call("GET", "me/threads", fields="id,text,timestamp,permalink", limit=limit).get("data", [])
+    except Exception as e:
+        print("recent posts:", e)
+        return []
+
+
+def norm(t):
+    return " ".join((t or "").split())[:120]
+
+
+def already_posted(text):
+    n = norm(text)
+    for p in recent_posts():
+        if norm(p.get("text")) == n:
+            return p
+    return None
+
+
+def dedupe():
+    """Удалить повторы наших постов (одинаковый текст): оставляем самый ранний."""
+    seen, out = {}, []
+    for p in sorted(recent_posts(50), key=lambda x: x.get("timestamp", "")):
+        n = norm(p.get("text"))
+        if not n:
+            continue
+        if n in seen:
+            try:
+                call("DELETE", p["id"])
+                out.append({"deleted": p.get("permalink"), "text": n[:60]})
+            except Exception as e:
+                out.append({"not_deleted": p.get("permalink"), "text": n[:60], "error": str(e)[:200]})
+        else:
+            seen[n] = p["id"]
+    json.dump(out, open(os.path.join(D, "dedupe.json"), "w"), ensure_ascii=False, indent=1)
+    print(json.dumps(out, ensure_ascii=False, indent=1))
+
+
 def publish():
     status_p = os.path.join(D, "status.json")
     st = json.load(open(status_p)) if os.path.exists(status_p) else {}
@@ -54,6 +93,12 @@ def publish():
             continue
         if done >= 1:  # не больше одного поста за запуск
             break
+        dup = already_posted(src["text"])
+        if dup:  # такой текст уже вышел (параллельный запуск): не публикуем второй раз
+            st[slug] = {"id": dup["id"], "url": dup.get("permalink", ""), "at": now.isoformat(timespec="minutes"), "dedup": True}
+            json.dump(st, open(status_p, "w"), ensure_ascii=False, indent=1)
+            print("already posted", slug)
+            continue
         params = {"media_type": "TEXT", "text": src["text"][:500]}
         imgs = src.get("images") or []
         if len(imgs) >= 2:  # подборка фото (карусель, до 10 штук)
@@ -322,4 +367,4 @@ if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights}[sys.argv[1]]()
+    {"publish": publish, "dedupe": dedupe, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights}[sys.argv[1]]()
