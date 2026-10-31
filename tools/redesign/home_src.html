@@ -35,7 +35,7 @@ a{color:inherit;text-decoration:none}
 .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);position:relative}
 
 /* hero */
-.hero{position:relative;min-height:100vh;background:#050a18;color:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero{position:relative;min-height:100vh;padding:130px 24px 140px;background:#050a18;color:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.7;mix-blend-mode:screen}
 .b1{width:70vw;height:70vw;right:-20vw;top:-25vw;background:#1747c9;animation:f1 14s ease-in-out infinite}
 .b2{width:60vw;height:60vw;left:20vw;top:20vh;background:#12b897;animation:f2 17s ease-in-out infinite}
@@ -62,11 +62,14 @@ a{color:inherit;text-decoration:none}
 .ticker div{display:inline-block;animation:tick 30s linear infinite;font-weight:700;font-size:14px}
 .ticker span{margin:0 26px}.ticker b{color:#d4af6a}
 @keyframes tick{to{transform:translateX(-50%)}}
-.hero h1{position:relative;font-weight:900;font-size:clamp(34px,6.2vw,92px);max-width:1150px;padding:0 20px}
+.hero h1{position:relative;font-weight:900;font-size:clamp(34px,7vw,124px);line-height:1;letter-spacing:-.02em;max-width:94vw;margin:0 auto;padding:0 10px}
 .hero h1 .rot{display:inline-block;min-width:3ch;border-right:.08em solid #fff;padding-right:.08em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{border-color:transparent}}
 .hero .sub{position:relative;margin-top:28px;font-size:clamp(16px,1.6vw,20px);opacity:.85}
-.hero .ctas{position:relative;margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .ctas{position:relative;margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .ctas .pill{padding:19px 34px;font-size:17px}
+.hcards{position:relative;display:flex;gap:16px;justify-content:center;align-items:stretch;flex-wrap:wrap;margin-top:56px}
+.hcards .pay,.hcards .float{position:relative;left:auto;right:auto;bottom:auto;margin:0}
 .pill.light{background:#fff;color:#0a1020}
 .pill.light::before{display:none}
 .float{position:absolute;right:4vw;bottom:6vh;display:flex;align-items:center;gap:16px;padding:16px 16px 16px 22px;max-width:330px;text-align:left;
@@ -186,6 +189,7 @@ details p{margin-top:12px;color:var(--muted)}
 .reveal.in{opacity:1;transform:none}
 
 @media (max-width:900px){
+  .hero h1{font-size:7.2vw}
   .pay{position:relative;left:auto;bottom:auto;margin:30px auto 0;width:300px}
   .chart{height:30vh}
   .hero .ctas .pill:not(.light){background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3)}
@@ -222,19 +226,21 @@ details p{margin-top:12px;color:var(--muted)}
   <path d="M0 330 C120 320 180 300 260 305 S420 250 520 262 S680 210 780 220 S940 150 1040 165 S1220 90 1320 80 L1440 60 L1440 400 L0 400Z" fill="url(#cf)"/>
   <path class="line" d="M0 330 C120 320 180 300 260 305 S420 250 520 262 S680 210 780 220 S940 150 1040 165 S1220 90 1320 80 L1440 60" fill="none" stroke="url(#cg)" stroke-width="2.5"/></svg>
   <div>
-    <h1><span class="rot" id="rot">Счета</span> в ОАЭ<br>для владельцев паспорта РФ</h1>
+    <h1><span class="rot" id="rot">Счета</span> в ОАЭ<br>для владельцев<br>паспорта РФ</h1>
     <p class="sub">Банки, компании и визы в Эмиратах под ключ. Работаем в Дубае с 2022 года.</p>
     <div class="ctas">
       <a class="pill light" href="https://t.me/Fortex_Dubai"><span>Написать в Telegram</span></a>
       <a class="pill" href="#svc"><span>Выбрать направление</span></a>
     </div>
-  </div>
+    <div class="hcards">
   <div class="pay"><div style="opacity:.7">Пример платежа · иллюстрация</div>
     <div class="row"><b>Поставщику · Гонконг</b><span>CNY</span></div>
     <div class="row"><span style="opacity:.75">Счёт в банке ОАЭ</span><span class="ok">● Отправлен</span></div>
     <div class="bar"><i></i></div></div>
   <a class="float" href="https://t.me/Fortex_Dubai">Уже отказали в банке?<br>Разберём ситуацию бесплатно, 5 минут
     <i><svg width="22" height="22" viewBox="0 0 24 24" fill="#2f6bff"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></i></a>
+    </div>
+  </div>
 </div>
 
 <div class="wrap">
@@ -391,7 +397,7 @@ details p{margin-top:12px;color:var(--muted)}
 
 <script>
 // rotating word in hero
-const words=["Счета","Визы","Компании","Emirates ID"];let wi=0;const rot=document.getElementById('rot');
+const words=["Счета","Визы","Компании"];let wi=0;const rot=document.getElementById('rot');
 setInterval(()=>{wi=(wi+1)%words.length;rot.textContent=words[wi]},2200);
 // header color
 const hdr=document.getElementById('hdr');

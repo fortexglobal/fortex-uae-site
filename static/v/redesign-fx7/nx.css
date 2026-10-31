@@ -19,8 +19,8 @@ body{background:var(--nx-bg)!important;font-family:var(--body);overflow-x:clip}
 .nx-uae{display:inline-flex;align-items:center}
 .nx-uae em{font-style:normal;font-weight:800;letter-spacing:.03em;background:linear-gradient(135deg,#e6c877 0%,#c9a24b 55%,#a9823f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nx-ondark .nx-uae em{background:linear-gradient(135deg,#f3dc93 0%,#d4b061 60%,#b8913f 100%);-webkit-background-clip:text;background-clip:text}
-.nx-nav{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nx-nav>a,.nx-dd>button{font:600 14px/1 var(--body);color:inherit;text-decoration:none;background:none;border:0;padding:10px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.nx-nav{display:flex;align-items:center;justify-content:center;gap:14px;flex:1}
+.nx-nav>a,.nx-dd>button{font:600 15px/1 var(--body);color:inherit;text-decoration:none;background:none;border:0;padding:10px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .nx-nav>a:hover,.nx-dd>button:hover,.nx-dd.open>button{background:rgba(127,140,170,.16)}
 .nx-dd{position:relative}
 .nx-dd svg{transition:transform .25s}
