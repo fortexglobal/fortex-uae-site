@@ -190,7 +190,14 @@ details p{margin-top:12px;color:var(--muted)}
 .reveal.in{opacity:1;transform:none}
 
 @media (max-width:900px){
-  .hero h1{font-size:8.4vw;line-height:1.05}
+  /* телефон: как было до правок главного экрана для компьютера */
+  .hero h1{font-size:34px;line-height:1.02;letter-spacing:-.01em;padding:0 20px}
+  .hero h1 br.d{display:none}
+  .hero .ctas{margin-top:34px;gap:12px}
+  .hero .ctas .pill{padding:12px 20px;font-size:14px}
+  .hcards{display:block;margin-top:0}
+  .hcards .pay{margin:30px auto 0;width:300px}
+  .hcards .float{margin:40px auto 0}
   .pay{position:relative;left:auto;bottom:auto;margin:30px auto 0;width:300px}
   .chart{height:30vh}
   .hero .ctas .pill:not(.light){background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3)}
@@ -227,7 +234,7 @@ details p{margin-top:12px;color:var(--muted)}
   <path d="M0 330 C120 320 180 300 260 305 S420 250 520 262 S680 210 780 220 S940 150 1040 165 S1220 90 1320 80 L1440 60 L1440 400 L0 400Z" fill="url(#cf)"/>
   <path class="line" d="M0 330 C120 320 180 300 260 305 S420 250 520 262 S680 210 780 220 S940 150 1040 165 S1220 90 1320 80 L1440 60" fill="none" stroke="url(#cg)" stroke-width="2.5"/></svg>
   <div>
-    <h1><span class="rot" id="rot">Счета</span> в ОАЭ<br>для владельцев<br>паспорта РФ</h1>
+    <h1><span class="rot" id="rot">Счета</span> в ОАЭ<br>для владельцев<br class="d"> паспорта РФ</h1>
     <p class="sub">Банки, компании и визы в Эмиратах под ключ. Работаем в Дубае с 2022 года.</p>
     <div class="ctas">
       <a class="pill light" href="https://t.me/Fortex_Dubai"><span>Написать в Telegram</span></a>
@@ -398,7 +405,7 @@ details p{margin-top:12px;color:var(--muted)}
 
 <script>
 // rotating word in hero
-const words=["Счета","Визы","Компании"];let wi=0;const rot=document.getElementById('rot');
+const words=innerWidth<=900?["Счета","Визы","Компании","Emirates ID"]:["Счета","Визы","Компании"];let wi=0;const rot=document.getElementById('rot');
 setInterval(()=>{wi=(wi+1)%words.length;rot.textContent=words[wi]},2200);
 // header color
 const hdr=document.getElementById('hdr');
