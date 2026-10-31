@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T08:22+04:00",
+ "generated": "2026-10-31T10:47+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -176,7 +176,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
    "kind": "вопрос",
    "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
-   "views": 85,
+   "views": 86,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
@@ -189,7 +189,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfIH0_eGkO-",
    "kind": "знакомства",
    "text": "Дубай, пятница, давайте знакомиться: кто чем занимается и чем может быть полезен?\n\nЯ начну: помогаем со счетами, визами ",
-   "views": 64,
+   "views": 65,
    "likes": 1,
    "replies": 4,
    "reposts": 0,
@@ -202,7 +202,20 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfIOvQHiRec",
    "kind": "вопрос",
    "text": "Дубай, вопрос к ВЛАДЕЛЬЦАМ КВАРТИР в ОАЭ: вам уже приходило ПИСЬМО ИЗ РОССИЙСКОЙ НАЛОГОВОЙ про сделку?\n\nПишут, что ФНС с",
-   "views": 153,
+   "views": 154,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1031-fns-kak-ponyat",
+   "at": "2026-10-31T10:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfJhIS3llgY",
+   "kind": "юмор",
+   "text": "КАК ПОНЯТЬ, что налоговая заинтересуется вашей КВАРТИРОЙ В ДУБАЕ:\n\n1. Купили после 2023 года\n2. Платили НАЛИЧНЫМИ, крипт",
+   "views": 0,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -212,7 +225,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1365,
+  "views": 1422,
   "likes": 9,
   "replies": 11,
   "reposts": 0,
@@ -220,7 +233,7 @@
   "followers_count": 1
  },
  "account_7d": {
-  "views": 4607,
+  "views": 4664,
   "likes": 56,
   "replies": 86,
   "reposts": 0,
@@ -258,7 +271,7 @@
   },
   {
    "date": "2026-10-30",
-   "views": 1259
+   "views": 1316
   }
  ],
  "link_clicks_7d": [
@@ -307,10 +320,10 @@
   },
   "вопрос": {
    "posts": 3,
-   "views": 315,
+   "views": 317,
    "replies": 2,
    "likes": 1,
-   "avg_views": 105.0,
+   "avg_views": 105.7,
    "avg_replies": 0.67
   },
   "партнёры": {
@@ -330,19 +343,19 @@
    "avg_replies": 0.0
   },
   "юмор": {
-   "posts": 1,
+   "posts": 2,
    "views": 71,
    "replies": 0,
    "likes": 0,
-   "avg_views": 71.0,
+   "avg_views": 35.5,
    "avg_replies": 0.0
   },
   "знакомства": {
    "posts": 1,
-   "views": 64,
+   "views": 65,
    "replies": 4,
    "likes": 1,
-   "avg_views": 64.0,
+   "avg_views": 65.0,
    "avg_replies": 4.0
   }
  }
