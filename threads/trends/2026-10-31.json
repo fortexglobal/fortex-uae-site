@@ -1,0 +1,133 @@
+{
+ "date": "2026-10-31",
+ "queries": [
+  "Дубай",
+  "риелтор Дубай",
+  "ОАЭ",
+  "жизнь в Дубае",
+  "переезд в Дубай",
+  "бизнес в Дубае"
+ ],
+ "top": [
+  {
+   "username": "leraizvekova",
+   "followers": 158,
+   "url": "https://www.threads.com/@leraizvekova/post/DfEiOQriGHT",
+   "gist": "остались ли в Дубае люди без бранчей, падела, недвижимости и бизнеса",
+   "technique": "вопрос ко всему городу со стереотипами",
+   "format": "вопрос",
+   "length": 230,
+   "views": 7865,
+   "replies": 121,
+   "benchmark": true
+  },
+  {
+   "username": "moonlight02",
+   "followers": 50,
+   "url": "https://www.threads.com/@moonlight02/post/DfG4hbaiHbn",
+   "gist": "в Дубае весь быт закрыт «своими» русскоязычными мастерами",
+   "technique": "тёплый личный список + фото",
+   "format": "текст+фото",
+   "length": 480,
+   "views": 5728,
+   "replies": 40,
+   "benchmark": true
+  },
+  {
+   "username": "zaru.kim",
+   "followers": 858,
+   "url": "https://www.threads.com/@zaru.kim/post/DfEFUiik9R_",
+   "gist": "угадайте по фото, в каком я городе",
+   "technique": "игра-угадайка",
+   "format": "фото",
+   "length": 31,
+   "views": 5245,
+   "replies": 63,
+   "benchmark": true
+  },
+  {
+   "username": "viktoria_lambo",
+   "followers": 319,
+   "url": "https://www.threads.com/@viktoria_lambo/post/DfHE8C6jd1m",
+   "gist": "ищу умных подруг в Дубае, кто рядом в Downtown",
+   "technique": "знакомства с районом",
+   "format": "текст",
+   "length": 420,
+   "views": 3293,
+   "replies": 56,
+   "benchmark": false
+  },
+  {
+   "username": "tarikari_",
+   "followers": 446,
+   "url": "https://www.threads.com/@tarikari_/post/DfHkEa3CISG",
+   "gist": "перекличка организаторов мероприятий и сообществ",
+   "technique": "перекличка по профессии",
+   "format": "текст",
+   "length": 80,
+   "views": 3449,
+   "replies": 74,
+   "benchmark": false
+  },
+  {
+   "username": "ekaterina.alikinaa",
+   "followers": 633,
+   "url": "https://www.threads.com/@ekaterina.alikinaa/post/DfHCrwPCIp9",
+   "gist": "за неделю от бизнес-идеи в Дубае до первого договора",
+   "technique": "эмоция + поздравьте",
+   "format": "текст",
+   "length": 150,
+   "views": 1270,
+   "replies": 19,
+   "benchmark": false
+  },
+  {
+   "username": "olya_rian",
+   "followers": 2235,
+   "url": "https://www.threads.com/@olya_rian/post/DfH-WQVDXMy",
+   "gist": "e-invoicing как очередной аттракцион для бизнеса в Дубае",
+   "technique": "ирония-жалоба на новые правила",
+   "format": "текст",
+   "length": 370,
+   "views": 1478,
+   "replies": 10,
+   "benchmark": false
+  },
+  {
+   "username": "veronikadudoladova",
+   "followers": 101,
+   "url": "https://www.threads.com/@veronikadudoladova/post/DfFvRajkRfw",
+   "gist": "Бали или Дубай для отпуска и почему",
+   "technique": "дилемма",
+   "format": "вопрос",
+   "length": 90,
+   "views": 401,
+   "replies": 20,
+   "benchmark": false
+  },
+  {
+   "username": "esseltea",
+   "followers": 69,
+   "url": "https://www.threads.com/@esseltea/post/DfG7abIjExo",
+   "gist": "титул самого скучного человека в Дубае: нет падела, бранчей, бизнеса",
+   "technique": "анти-список",
+   "format": "текст",
+   "length": 330,
+   "views": 1909,
+   "replies": 7,
+   "benchmark": false
+  },
+  {
+   "username": "alex_dubai_ned",
+   "followers": 191,
+   "url": "https://www.threads.com/@alex_dubai_ned/post/DfIXSKQD6eo",
+   "gist": "самый переоценённый район Дубая: _____",
+   "technique": "заполни пропуск / провокация",
+   "format": "текст",
+   "length": 230,
+   "views": 219,
+   "replies": 1,
+   "benchmark": false
+  }
+ ]
+}
