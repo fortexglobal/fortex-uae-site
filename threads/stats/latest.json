@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T22:07+04:00",
+ "generated": "2026-10-31T08:14+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -111,7 +111,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfCprP9G4n-",
    "kind": "консультация",
    "text": "Аттракцион невиданной щедрости, только сегодня и только у нас. В ленте опять спрашивают, откроет ли банк счёт на фриланс",
-   "views": 47,
+   "views": 48,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -176,7 +176,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
    "kind": "вопрос",
    "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
-   "views": 68,
+   "views": 85,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
@@ -189,9 +189,22 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfIH0_eGkO-",
    "kind": "знакомства",
    "text": "Дубай, пятница, давайте знакомиться: кто чем занимается и чем может быть полезен?\n\nЯ начну: помогаем со счетами, визами ",
-   "views": 6,
+   "views": 64,
    "likes": 1,
-   "replies": 3,
+   "replies": 4,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1030-fns-pismo",
+   "at": "2026-10-30T22:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfIOvQHiRec",
+   "kind": "вопрос",
+   "text": "Дубай, вопрос к ВЛАДЕЛЬЦАМ КВАРТИР в ОАЭ: вам уже приходило ПИСЬМО ИЗ РОССИЙСКОЙ НАЛОГОВОЙ про сделку?\n\nПишут, что ФНС с",
+   "views": 153,
+   "likes": 0,
+   "replies": 0,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -199,17 +212,17 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 656,
-  "likes": 5,
-  "replies": 4,
+  "views": 1363,
+  "likes": 9,
+  "replies": 11,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "account_7d": {
-  "views": 3898,
-  "likes": 52,
-  "replies": 79,
+  "views": 4605,
+  "likes": 56,
+  "replies": 86,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
@@ -245,7 +258,7 @@
   },
   {
    "date": "2026-10-30",
-   "views": 550
+   "views": 1257
   }
  ],
  "link_clicks_7d": [
@@ -293,12 +306,12 @@
    "avg_replies": 2.6
   },
   "вопрос": {
-   "posts": 2,
-   "views": 145,
+   "posts": 3,
+   "views": 315,
    "replies": 2,
    "likes": 1,
-   "avg_views": 72.5,
-   "avg_replies": 1.0
+   "avg_views": 105.0,
+   "avg_replies": 0.67
   },
   "партнёры": {
    "posts": 3,
@@ -310,10 +323,10 @@
   },
   "консультация": {
    "posts": 1,
-   "views": 47,
+   "views": 48,
    "replies": 0,
    "likes": 0,
-   "avg_views": 47.0,
+   "avg_views": 48.0,
    "avg_replies": 0.0
   },
   "юмор": {
@@ -326,11 +339,11 @@
   },
   "знакомства": {
    "posts": 1,
-   "views": 6,
-   "replies": 3,
+   "views": 64,
+   "replies": 4,
    "likes": 1,
-   "avg_views": 6.0,
-   "avg_replies": 3.0
+   "avg_views": 64.0,
+   "avg_replies": 4.0
   }
  }
 }
