@@ -27,8 +27,8 @@ body{background:var(--nx-bg)!important;font-family:var(--body);overflow-x:clip}
 .nx-dd.open svg{transform:rotate(180deg)}
 .nx-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,6px);min-width:300px;background:#fff;color:var(--nx-ink);border-radius:22px;padding:10px;
   box-shadow:0 24px 60px rgba(10,20,50,.18);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;display:grid;gap:2px}
-.nx-dd.open .nx-menu,.nx-dd:focus-within .nx-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
-@media (hover:hover){.nx-dd:hover .nx-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}.nx-dd:hover svg{transform:rotate(180deg)}}
+.nx-dd.open .nx-menu,.nx-dd:has(:focus-visible) .nx-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
 .nx-wide .nx-menu{min-width:560px;grid-template-columns:1fr 1fr}
 .nx-menu a{display:block;padding:12px 14px;border-radius:14px;text-decoration:none;color:inherit}
 .nx-menu a:hover{background:var(--nx-soft)}

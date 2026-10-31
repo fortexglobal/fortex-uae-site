@@ -92,8 +92,14 @@ const dark=()=>{const y=40;let d=false;document.querySelectorAll('.nx-dark').for
  fl.classList.toggle('nx-show',scrollY>500&&!document.querySelector('.nx-final')?.matches(':hover'));
  const f=document.querySelector('.nx-final,.foot');if(f){const r=f.getBoundingClientRect();if(r.top<innerHeight-80)fl.classList.remove('nx-show')}};
 addEventListener('scroll',dark,{passive:true});addEventListener('resize',dark);dark();
-h.querySelectorAll('.nx-dd>button').forEach(b=>b.addEventListener('click',e=>{const p=b.parentElement,o=p.classList.toggle('open');b.setAttribute('aria-expanded',o);h.querySelectorAll('.nx-dd').forEach(x=>{if(x!==p){x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')}});e.stopPropagation()}));
-document.addEventListener('click',()=>h.querySelectorAll('.nx-dd').forEach(x=>x.classList.remove('open')));
+h.querySelectorAll('.nx-dd>button').forEach(b=>b.addEventListener('click',e=>{const p=b.parentElement,o=matchMedia('(hover:hover)').matches?p.classList.add('open')||true:p.classList.toggle('open');b.setAttribute('aria-expanded',o);h.querySelectorAll('.nx-dd').forEach(x=>{if(x!==p){x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')}});e.stopPropagation()}));
+const closeAll=()=>h.querySelectorAll('.nx-dd').forEach(x=>{x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')});
+document.addEventListener('click',closeAll);addEventListener('scroll',closeAll,{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+const hov=matchMedia('(hover:hover)').matches;
+h.querySelectorAll('.nx-dd').forEach(d=>{let t;
+ if(hov){d.addEventListener('mouseenter',()=>{clearTimeout(t);closeAll();d.classList.add('open');d.firstElementChild.setAttribute('aria-expanded','true')});
+  d.addEventListener('mouseleave',()=>{t=setTimeout(()=>{d.classList.remove('open');d.firstElementChild.setAttribute('aria-expanded','false');if(document.activeElement&&d.contains(document.activeElement))document.activeElement.blur()},250)})}
+ d.querySelectorAll('.nx-menu a').forEach(a=>a.addEventListener('click',closeAll))});
 bg.addEventListener('click',()=>{const o=mob.hidden;mob.hidden=!o;bg.setAttribute('aria-expanded',o);h.classList.toggle('nx-menuopen',o);document.body.style.overflow=o?'hidden':''});
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mob.hidden=true;h.classList.remove('nx-menuopen');document.body.style.overflow=''}));
 })();

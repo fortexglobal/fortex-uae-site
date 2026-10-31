@@ -246,11 +246,26 @@ details p{margin-top:12px;color:var(--muted)}
   .x-hcards{margin-top:36px;gap:32px}
   .x-hin .x-ctas{gap:56px}
   .x-hin .x-sub{font-size:clamp(20px,1.7vw,26px);font-weight:600;opacity:.92;margin-top:32px}
+  /* кнопки главного экрана: Telegram-градиент и стеклянная кнопка с градиентной рамкой */
+  .x-hero .x-ctas .x-pill .x-bi{width:24px;height:24px;flex:none;position:relative}
+  .x-hero .x-ctas .x-pill.x-tgb{background:linear-gradient(135deg,#37b6f5 0%,#2f6bff 55%,#1747c9 100%);color:#fff;box-shadow:0 18px 50px -10px rgba(47,107,255,.7),inset 0 1px 0 rgba(255,255,255,.35);gap:12px}
+  .x-hero .x-ctas .x-pill.x-tgb::before{display:block;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);background-size:250% 100%;opacity:1;animation:shine 3.2s ease-in-out infinite}
+  @keyframes shine{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
+  .x-hero .x-ctas .x-pill.x-tgb:hover{transform:translateY(-2px);box-shadow:0 24px 60px -10px rgba(47,107,255,.85),inset 0 1px 0 rgba(255,255,255,.35)}
+  .x-hero .x-ctas .x-pill.x-dirb{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);gap:12px;border:0;
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28)}
+  .x-hero .x-ctas .x-pill.x-dirb::before{display:block;inset:0;padding:1.5px;border-radius:inherit;background:linear-gradient(100deg,#d4af6a,#12b897 50%,#2f6bff);opacity:1;
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .x-hero .x-ctas .x-pill.x-dirb:hover{background:rgba(255,255,255,.14)}
+  .x-hero .x-ctas .x-pill.x-dirb .x-bi{transition:transform .3s}
+  .x-hero .x-ctas .x-pill.x-dirb:hover .x-bi{transform:translateX(5px)}
+  .x-hero .x-ctas .x-pill{transition:transform .25s,box-shadow .25s,background .25s}
 }
 @media (max-width:900px){
   /* телефон: как было до правок главного экрана для компьютера */
   .x-hero h1{font-size:34px;line-height:1.02;letter-spacing:-.01em;padding:0 20px}
   .x-hero h1 br.x-d{display:none}
+  .x-hero .x-ctas .x-pill .x-bi{display:none}
   .x-hero .x-sub{padding:0 32px;max-width:420px;margin-left:auto;margin-right:auto}
   .x-hero .x-ctas{margin-top:34px;gap:12px}
   .x-hero .x-ctas .x-pill{padding:12px 20px;font-size:14px}
@@ -287,8 +302,8 @@ details p{margin-top:12px;color:var(--muted)}
     <h1><span class="x-rot" id="rot">Счета</span> в ОАЭ<br>для владельцев<br class="x-d"> паспорта РФ</h1>
     <p class="x-sub">Банки, компании и визы в Эмиратах под ключ. Работаем в Дубае с 2022 года.</p>
     <div class="x-ctas">
-      <a class="x-pill x-light" href="https://t.me/Fortex_Dubai"><span>Написать в Telegram</span></a>
-      <a class="x-pill" href="/v/redesign-fx7/#directions"><span>Выбрать направление</span></a>
+      <a class="x-pill x-light x-tgb" href="https://t.me/Fortex_Dubai"><svg class="x-bi" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg><span>Написать в Telegram</span></a>
+      <a class="x-pill x-dirb" href="/v/redesign-fx7/#directions"><span>Выбрать направление</span><svg class="x-bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="x-hcards">
   <div class="x-pay"><div style="opacity:.7">Пример платежа · иллюстрация</div>
@@ -533,8 +548,14 @@ const dark=()=>{const y=40;let d=false;document.querySelectorAll('.nx-dark').for
  fl.classList.toggle('nx-show',scrollY>500&&!document.querySelector('.nx-final')?.matches(':hover'));
  const f=document.querySelector('.nx-final,.foot');if(f){const r=f.getBoundingClientRect();if(r.top<innerHeight-80)fl.classList.remove('nx-show')}};
 addEventListener('scroll',dark,{passive:true});addEventListener('resize',dark);dark();
-h.querySelectorAll('.nx-dd>button').forEach(b=>b.addEventListener('click',e=>{const p=b.parentElement,o=p.classList.toggle('open');b.setAttribute('aria-expanded',o);h.querySelectorAll('.nx-dd').forEach(x=>{if(x!==p){x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')}});e.stopPropagation()}));
-document.addEventListener('click',()=>h.querySelectorAll('.nx-dd').forEach(x=>x.classList.remove('open')));
+h.querySelectorAll('.nx-dd>button').forEach(b=>b.addEventListener('click',e=>{const p=b.parentElement,o=matchMedia('(hover:hover)').matches?p.classList.add('open')||true:p.classList.toggle('open');b.setAttribute('aria-expanded',o);h.querySelectorAll('.nx-dd').forEach(x=>{if(x!==p){x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')}});e.stopPropagation()}));
+const closeAll=()=>h.querySelectorAll('.nx-dd').forEach(x=>{x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')});
+document.addEventListener('click',closeAll);addEventListener('scroll',closeAll,{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+const hov=matchMedia('(hover:hover)').matches;
+h.querySelectorAll('.nx-dd').forEach(d=>{let t;
+ if(hov){d.addEventListener('mouseenter',()=>{clearTimeout(t);closeAll();d.classList.add('open');d.firstElementChild.setAttribute('aria-expanded','true')});
+  d.addEventListener('mouseleave',()=>{t=setTimeout(()=>{d.classList.remove('open');d.firstElementChild.setAttribute('aria-expanded','false');if(document.activeElement&&d.contains(document.activeElement))document.activeElement.blur()},250)})}
+ d.querySelectorAll('.nx-menu a').forEach(a=>a.addEventListener('click',closeAll))});
 bg.addEventListener('click',()=>{const o=mob.hidden;mob.hidden=!o;bg.setAttribute('aria-expanded',o);h.classList.toggle('nx-menuopen',o);document.body.style.overflow=o?'hidden':''});
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mob.hidden=true;h.classList.remove('nx-menuopen');document.body.style.overflow=''}));
 })();
