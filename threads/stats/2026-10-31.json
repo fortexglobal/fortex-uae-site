@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T10:47+04:00",
+ "generated": "2026-10-31T12:58+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -163,7 +163,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfHKCQFFvta",
    "kind": "юмор",
    "text": "Обязательная программа в Дубае:\n\n1. Падел по выходным\n2. Разговор про офф-план за каждым ужином\n3. «Думаю открыть свой б",
-   "views": 71,
+   "views": 73,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -176,7 +176,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
    "kind": "вопрос",
    "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
-   "views": 86,
+   "views": 87,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
@@ -202,7 +202,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfIOvQHiRec",
    "kind": "вопрос",
    "text": "Дубай, вопрос к ВЛАДЕЛЬЦАМ КВАРТИР в ОАЭ: вам уже приходило ПИСЬМО ИЗ РОССИЙСКОЙ НАЛОГОВОЙ про сделку?\n\nПишут, что ФНС с",
-   "views": 154,
+   "views": 155,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -215,7 +215,20 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfJhIS3llgY",
    "kind": "юмор",
    "text": "КАК ПОНЯТЬ, что налоговая заинтересуется вашей КВАРТИРОЙ В ДУБАЕ:\n\n1. Купили после 2023 года\n2. Платили НАЛИЧНЫМИ, крипт",
-   "views": 0,
+   "views": 48,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "t-1031-master",
+   "at": "2026-10-31T12:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfJu0rnkZ4a",
+   "kind": "юмор",
+   "text": "Стадии поиска СВОЕГО МАСТЕРА в Дубае:\n\n1. «Схожу куда угодно, тут же всё красиво»\n2. Стрижка за 400 дирхамов, слёзы в та",
+   "views": 3,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -225,26 +238,22 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1422,
-  "likes": 9,
-  "replies": 11,
+  "views": 1441,
+  "likes": 0,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "account_7d": {
-  "views": 4664,
-  "likes": 56,
-  "replies": 86,
+  "views": 4789,
+  "likes": 53,
+  "replies": 81,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 1
  },
  "profile_views_by_day": [
-  {
-   "date": "2026-10-23",
-   "views": 0
-  },
   {
    "date": "2026-10-24",
    "views": 178
@@ -271,7 +280,11 @@
   },
   {
    "date": "2026-10-30",
-   "views": 1316
+   "views": 1409
+  },
+  {
+   "date": "2026-10-31",
+   "views": 32
   }
  ],
  "link_clicks_7d": [
@@ -320,10 +333,10 @@
   },
   "вопрос": {
    "posts": 3,
-   "views": 317,
+   "views": 319,
    "replies": 2,
    "likes": 1,
-   "avg_views": 105.7,
+   "avg_views": 106.3,
    "avg_replies": 0.67
   },
   "партнёры": {
@@ -343,11 +356,11 @@
    "avg_replies": 0.0
   },
   "юмор": {
-   "posts": 2,
-   "views": 71,
+   "posts": 3,
+   "views": 124,
    "replies": 0,
    "likes": 0,
-   "avg_views": 35.5,
+   "avg_views": 41.3,
    "avg_replies": 0.0
   },
   "знакомства": {
