@@ -1,21 +1,29 @@
 {
- "checked": "2026-10-31T15:00Z",
+ "checked": "2026-10-31T15:07Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 12,
+  "media_count": 13,
   "id": "28276626788683589"
  },
  "published": [
   {
-   "slug": "reel-1031-kak-my-rabotaem",
+   "slug": "ig-fns-nedvizhimost-oae",
    "scheduled": "carousel",
-   "id": "17998149810083302",
-   "permalink": "https://www.instagram.com/reel/DfKbfiZAkvp/"
+   "error": {
+    "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"AsfmcKG7DtzgmdAXwMZMBCx\"}}"
+   }
   }
  ],
  "media": [
+  {
+   "id": "17996007645050875",
+   "timestamp": "2026-10-31T15:07:38+0000",
+   "permalink": "https://www.instagram.com/p/DfKcSs3lH_F/",
+   "media_type": "CAROUSEL_ALBUM",
+   "caption": "Российская налоговая начала проверять сделки с недвижимостью"
+  },
   {
    "id": "17998149810083302",
    "timestamp": "2026-10-31T15:01:00+0000",
