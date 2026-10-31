@@ -1,5 +1,5 @@
 {
- "at": "2026-10-31T13:01+04:00",
+ "at": "2026-10-31T13:16+04:00",
  "errors": [],
  "openrouter_left": 7.58,
  "apify_left": null,
@@ -28,7 +28,6 @@
   "text": "Hello Alexey!\n\nI’m very sorry that you had to contact me. Unfortunately, some actions can trigger a harsh response from our anti-spam systems. If you think your account was limited by mistake, you can submit a complaint to our moderators.\n\nWhile the account is limited, you will not be able to send messages to people who do not have your number in their phone contacts or add them to groups and channels. Of course, when people contact you first, you can always reply to them."
  },
  "radar_errors": [
-  "2026-10-29T09:03:57+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 09:03:57,273 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-29T10:34:32+00:00 ubuntu-s-1vcpu-1gb-fra1 python[168754]: 2026-10-29 10:34:32,578 WARNING reaction failed: You can't write in this chat (caused by SendReactionRequest)",
   "2026-10-29T13:06:53+00:00 ubuntu-s-1vcpu-1gb-fra1 python[181484]: 2026-10-29 13:06:53,681 INFO spambot: limited=True",
   "2026-10-29T13:11:53+00:00 ubuntu-s-1vcpu-1gb-fra1 python[181563]: 2026-10-29 13:11:53,739 INFO spambot: limited=True",
@@ -152,7 +151,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 662,
+  "lines": 659,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
