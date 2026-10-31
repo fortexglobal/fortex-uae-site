@@ -1,0 +1,21 @@
+name: Doc images
+# Картинки документов для макета сайта: python3 tools/redesign/gen_docs.py [passport eid card] → research/docs/
+on:
+  workflow_dispatch:
+    inputs:
+      which: {description: "passport eid card", required: false, default: ""}
+permissions:
+  contents: write
+jobs:
+  g:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        env: {OPENROUTER_API_KEY: "${{ secrets.OPENROUTER_API_KEY }}"}
+        run: python3 tools/redesign/gen_docs.py ${{ inputs.which }}
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add research && git commit -qm "Doc images" && git pull -q --rebase && git push -q
