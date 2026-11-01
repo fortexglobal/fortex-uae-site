@@ -491,10 +491,7 @@ async def on_owner_photo(ev):
         await ev.reply("Видео пока не беру в очередь Threads, только фото. Видео лучше выложить вручную")
         return
     mime = (getattr(getattr(ev, "document", None), "mime_type", "") or "image/jpeg").lower()
-    if "heic" in mime or "heif" in mime:
-        await ev.reply("Это фото в формате HEIC, Threads его не примет. Отправьте его как обычное фото (не файлом)")
-        return
-    ext = {"image/png": "png", "image/webp": "webp"}.get(mime, "jpg")
+    ext = {"image/png": "png", "image/webp": "webp", "image/heic": "heic", "image/heif": "heif"}.get(mime, "jpg")  # HEIC переводит в JPG GitHub Actions
     try:
         import content
         data = await ev.download_media(bytes)
@@ -516,7 +513,7 @@ async def on_owner_photo(ev):
             PHOTO_ALBUMS_REPLIED.add(key)
             await asyncio.sleep(4 if ev.grouped_id else 0)  # дать альбому догрузиться, чтобы счётчик был точнее
             left = sum(1 for x in inbox if not x["used"])
-            await ev.reply(f"📸 Сохранил для Threads (в очереди около {left}). Можно добавить подпись: что это и где, сделаю из этого пост")
+            await ev.reply(f"📸 Сохранил в библиотеку фото (неиспользованных около {left}). Разберу, что на фото, и выложу, когда подойдёт по теме. Подпись «что и где» поможет")
     except Exception as e:
         log.warning("owner photo: %s", e)
         await ev.reply(f"Не смог сохранить это фото, пришлите его ещё раз: {str(e)[:120]}")

@@ -1,0 +1,32 @@
+name: Photo library
+# Живые фото для Threads: HEIC → JPG, без геолокации, описание нейросетью → threads/photos/inbox.json
+on:
+  push:
+    paths: ["threads/photos/**", "!threads/photos/inbox.json"]
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: photo-lib
+  cancel-in-progress: false
+jobs:
+  lib:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Process
+        env: {OPENROUTER_API_KEY: "${{ secrets.OPENROUTER_API_KEY }}"}
+        run: |
+          pip install -q pillow pillow-heif
+          python3 tools/photo_lib.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add -A threads/photos
+          git diff --cached --quiet && exit 0
+          git commit -qm "Фото: библиотека для Threads"
+          for i in 1 2 3 4; do git pull -q --rebase -X theirs && git push -q && exit 0; sleep $((i*5)); done
