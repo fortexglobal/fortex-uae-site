@@ -1,22 +1,36 @@
 {
- "generated": "2026-10-31T15:50+04:00",
- "posts": [],
+ "generated": "2026-11-01T08:26+04:00",
+ "posts": [
+  {
+   "slug": "a-1031-druzya",
+   "at": "2026-10-31T20:38+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfKmv73FHzC",
+   "kind": "юмор",
+   "text": "Стадии ДРУЗЕЙ, которые прилетели ко мне в Дубай «на недельку»:\n\n1. «Жарковато, но красиво»\n2. «А сколько тут стоит АРЕНД",
+   "views": 341,
+   "likes": 1,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  }
+ ],
  "errors": [],
  "account_1d": {
-  "views": 631,
-  "likes": 6,
-  "replies": 6,
+  "views": 3171,
+  "likes": 34,
+  "replies": 16,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 1447
+  "followers_count": 1449
  },
  "account_7d": {
-  "views": 634,
-  "likes": 6,
-  "replies": 6,
+  "views": 3174,
+  "likes": 34,
+  "replies": 16,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 1447
+  "followers_count": 1449
  },
  "profile_views_by_day": [
   {
@@ -49,7 +63,7 @@
   },
   {
    "date": "2026-10-31",
-   "views": 631
+   "views": 3171
   }
  ],
  "link_clicks_7d": [
@@ -60,6 +74,10 @@
    "description": "The number of times users clicked on a link",
    "link_total_values": [
     {
+     "value": 0,
+     "link_url": "https://fortex-uae.com/"
+    },
+    {
      "value": 3,
      "link_url": "http://fortex-uae.com/c/alex"
     }
@@ -67,5 +85,14 @@
    "id": "17841465254316890/insights/clicks/day"
   }
  ],
- "by_kind": {}
+ "by_kind": {
+  "юмор": {
+   "posts": 1,
+   "views": 341,
+   "replies": 0,
+   "likes": 1,
+   "avg_views": 341.0,
+   "avg_replies": 0.0
+  }
+ }
 }
