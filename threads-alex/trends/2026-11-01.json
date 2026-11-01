@@ -1,0 +1,91 @@
+{
+ "date": "2026-11-01",
+ "queries": [
+  "жизнь в Дубае",
+  "инвестиции Дубай",
+  "Дубай юмор"
+ ],
+ "note": "актор вернул 20 постов только по первому запросу",
+ "top": [
+  {
+   "username": "travel_paris_",
+   "url": "https://www.threads.com/@travel_paris_/post/DfIODk1iElL",
+   "sut": "эмигранты в разных городах: давайте ездить друг к другу в гости, кто где живёт?",
+   "priem": "вопрос всем + перекличка «кто где живёт»",
+   "len": 230,
+   "views": 255733,
+   "replies": 888,
+   "score": null
+  },
+  {
+   "username": "olga.produbai",
+   "url": "https://www.threads.com/@olga.produbai/post/DfJlAw3jall",
+   "sut": "живу в Дубае и не делаю вид, что это обычный город",
+   "priem": "одна строка-заявление, автор до 3000, 22k просмотров",
+   "len": 70,
+   "views": 22018,
+   "replies": 55,
+   "score": null
+  },
+  {
+   "username": "kymbat_amirkhanova",
+   "url": "https://www.threads.com/@kymbat_amirkhanova/post/DfKuVskCDZq",
+   "sut": "после парковки нужны 15 минут в машине, у вас тоже так?",
+   "priem": "личное бытовое наблюдение + «у вас тоже так?», автор до 3000",
+   "len": 190,
+   "views": 9997,
+   "replies": 143,
+   "score": null
+  },
+  {
+   "username": "wasilkovva",
+   "url": "https://www.threads.com/@wasilkovva/post/DfJ4FyniFZC",
+   "sut": "ищу соседку в Дубае, живу месяц",
+   "priem": "живой запрос от новичка, автор до 3000",
+   "len": 140,
+   "views": 3764,
+   "replies": 10,
+   "score": null
+  },
+  {
+   "username": "luannadxb",
+   "url": "https://www.threads.com/@luannadxb/post/DfKo_ODjXnn",
+   "sut": "люди открывают компании в Дубае только ради Emirates ID",
+   "priem": "«знаете, сколько людей…» экспертное наблюдение",
+   "len": 420,
+   "views": 499,
+   "replies": 2,
+   "score": null
+  },
+  {
+   "username": "ula_dubai",
+   "url": "https://www.threads.com/@ula_dubai/post/DfLR_CoDDdG",
+   "sut": "ищут маркетолога в Дубае, жёсткий тон",
+   "priem": "вакансия с эмоцией",
+   "len": 450,
+   "views": 656,
+   "replies": 5,
+   "score": null
+  },
+  {
+   "username": "nataliia170315",
+   "url": "https://www.threads.com/@nataliia170315/post/DfLLIDwFms1",
+   "sut": "сравнение расходов на школу Дубай vs Майами",
+   "priem": "цифры-сравнение",
+   "len": 230,
+   "views": 616,
+   "replies": 5,
+   "score": null
+  },
+  {
+   "username": "gera_shakeeva",
+   "url": "https://www.threads.com/@gera_shakeeva/post/DfK2erciKIR",
+   "sut": "ответ: могу встретить, показать Дубай",
+   "priem": "отклик на вирусную тему",
+   "len": 300,
+   "views": 546,
+   "replies": 2,
+   "score": null
+  }
+ ]
+}
