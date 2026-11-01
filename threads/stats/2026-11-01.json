@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T08:22+04:00",
+ "generated": "2026-11-01T12:09+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -7,7 +7,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/De6Hw8NFY_V",
    "kind": "закреп",
    "text": "Кто мы и чем полезны, коротко.\n\nFortex UAE, команда в Дубае с 2022 года.\n\n• корпоративные и личные счета в банках ОАЭ, в",
-   "views": 13,
+   "views": 14,
    "likes": 1,
    "replies": 0,
    "reposts": 0,
@@ -176,7 +176,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfH2rAoEXoZ",
    "kind": "вопрос",
    "text": "Дубай, выбор: зарплата в 2 раза больше, но живёте в Шардже и каждый день стоите в пробке. Или всё как сейчас. Что выбере",
-   "views": 91,
+   "views": 93,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
@@ -241,9 +241,9 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfKKSzMlLLL",
    "kind": "вопрос",
    "text": "ПО КАКОМУ ПРИЗНАКУ вы сразу понимаете, что у человека в Дубае ВСЁ ОК С ДЕНЬГАМИ?\n\nБез дорогих часов, суперкаров и брендо",
-   "views": 1760,
-   "likes": 2,
-   "replies": 4,
+   "views": 2068,
+   "likes": 4,
+   "replies": 11,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -254,7 +254,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfKbdSNES_h",
    "kind": "вопрос",
    "text": "Дубай, назовите САМЫЙ ПЕРЕОЦЕНЁННЫЙ РАЙОН города.\n\nОДНИМ СЛОВОМ, без объяснений",
-   "views": 69,
+   "views": 70,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -267,7 +267,7 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfKsn1hFXe_",
    "kind": "эксперт",
    "text": "А вы знали: пока ваш EMIRATES ID В ПРОЦЕССЕ, выезжать из ОАЭ НЕЛЬЗЯ.\n\nКто узнал об этом уже С БИЛЕТОМ НА РУКАХ?",
-   "views": 179,
+   "views": 180,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -277,26 +277,22 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 3672,
-  "likes": 4,
-  "replies": 4,
+  "views": 2658,
+  "likes": 1,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 1
+  "followers_count": 2
  },
  "account_7d": {
-  "views": 7020,
+  "views": 7237,
   "likes": 57,
-  "replies": 85,
+  "replies": 100,
   "reposts": 0,
   "quotes": 0,
-  "followers_count": 1
+  "followers_count": 2
  },
  "profile_views_by_day": [
-  {
-   "date": "2026-10-24",
-   "views": 178
-  },
   {
    "date": "2026-10-25",
    "views": 441
@@ -323,7 +319,11 @@
   },
   {
    "date": "2026-10-31",
-   "views": 2263
+   "views": 2574
+  },
+  {
+   "date": "2026-11-01",
+   "views": 84
   }
  ],
  "link_clicks_7d": [
@@ -348,10 +348,10 @@
  "by_kind": {
   "закреп": {
    "posts": 1,
-   "views": 13,
+   "views": 14,
    "replies": 0,
    "likes": 1,
-   "avg_views": 13.0,
+   "avg_views": 14.0,
    "avg_replies": 0.0
   },
   "стёб": {
@@ -372,11 +372,11 @@
   },
   "вопрос": {
    "posts": 5,
-   "views": 2155,
-   "replies": 6,
-   "likes": 3,
-   "avg_views": 431.0,
-   "avg_replies": 1.2
+   "views": 2466,
+   "replies": 13,
+   "likes": 5,
+   "avg_views": 493.2,
+   "avg_replies": 2.6
   },
   "партнёры": {
    "posts": 3,
@@ -412,10 +412,10 @@
   },
   "эксперт": {
    "posts": 1,
-   "views": 179,
+   "views": 180,
    "replies": 0,
    "likes": 0,
-   "avg_views": 179.0,
+   "avg_views": 180.0,
    "avg_replies": 0.0
   }
  }
