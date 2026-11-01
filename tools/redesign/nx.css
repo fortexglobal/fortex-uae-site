@@ -170,3 +170,7 @@ html.has-video body{background:var(--nx-bg)!important}
 .svc.hl .svc-tag{background:rgba(255,255,255,.22)!important}
 .svc.hl2{background:rgba(212,175,106,.14)!important;border-color:rgba(212,175,106,.4)!important}
 .svc *{opacity:1!important}
+
+/* без боковых «выездов» блоков: из-за них страница уезжала вбок на телефоне */
+[data-slide],[data-rot]{transform:none!important;opacity:1!important}
+html{overflow-x:clip}
