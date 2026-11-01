@@ -100,6 +100,12 @@ def publish(item):
     wait_ready(c["id"])
     p = publish_container(c["id"])
     if "id" not in p:
+        # Meta иногда отвечает ошибкой (2207085), хотя пост уже вышел: проверяем ленту
+        time.sleep(20)
+        head = item["caption"].strip()[:60]
+        for m in call("GET", "me/media", fields="id,caption,permalink", limit="5").get("data", []):
+            if (m.get("caption") or "").strip()[:60] == head:
+                return {"id": m["id"], "permalink": m.get("permalink", ""), "recovered": True}
         return {"error": p}
     link = call("GET", p["id"], fields="permalink").get("permalink", "")
     return {"id": p["id"], "permalink": link}
@@ -155,7 +161,7 @@ def main():
                     continue
             # защита от дублей: такой пост уже есть в Instagram
             if item.get("format") != "stories" and item.get("caption"):
-                same = [m for m in recent if (m.get("caption") or "").strip() == item["caption"].strip()]
+                same = [m for m in recent if (m.get("caption") or "").strip()[:60] == item["caption"].strip()[:60]]
                 if same:
                     item.update(status="published", result={"id": same[0]["id"], "permalink": same[0].get("permalink", ""), "dedup": True})
                     json.dump(item, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

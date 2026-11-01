@@ -1,6 +1,6 @@
 {
  "style": "editorial",
- "status": "error",
+ "status": "published",
  "publish_at": "2026-10-27T19:07+04:00",
  "bg_prompt": "bright sunny daytime view of Dubai Marina skyline from the sea, clear deep blue sky filling the upper half of the frame, turquoise water, white yacht, editorial travel photography, high detail, no text, no logos",
  "photos": [
@@ -52,9 +52,9 @@
  "rev": 1,
  "approved_at": "2026-10-24T21:53+04:00",
  "result": {
-  "error": {
-   "error": "{\"error\":{\"message\":\"Fatal\",\"type\":\"OAuthException\",\"code\":-1,\"error_subcode\":2207085,\"is_transient\":false,\"error_user_title\":\"Generic Internal Error\",\"error_user_msg\":\"An internal server error occurred. Please try again later.\",\"fbtrace_id\":\"APeCd0rDk1-5MIkLrHKXsha\"}}"
-  }
+  "id": "18374391796213873",
+  "permalink": "https://www.instagram.com/p/DfAJHRoIHDs/",
+  "recovered": true
  },
  "published_at": "2026-10-27T15:08Z"
 }
