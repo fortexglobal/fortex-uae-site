@@ -6,7 +6,7 @@
  "ring": 2,
  "segment": 2,
  "test": "A",
- "bg_prompt": "bright sunny daytime view of Dubai Creek Harbour waterfront with light modern architecture, clear deep blue sky filling the upper half of the frame, calm turquoise water, editorial travel photography, high detail, no text, no logos",
+ "bg_prompt": "sharp bright sunny daytime photo of Dubai Marina towers and turquoise water seen from a pier, crisp focus throughout, clear deep blue sky filling the upper half of the frame, light modern architecture, editorial travel photography, high detail, no blur, no text, no logos",
  "photos": [
   "bright modern free zone business park in Dubai with light stone and glass buildings, palm trees and wide walkways, sunny daytime, editorial architecture photography, no people, no text, no logos",
   "bright street-level view of a modern Dubai shopping boulevard with cafe terraces and light facades, sunny daytime, editorial travel photography, people far away and not recognizable, no text, no logos",
@@ -53,5 +53,6 @@
    "body": "Расскажите в Telegram, чем занимаетесь и где ваши клиенты. Предложим зону, деятельность и банк.\n\nЦена компании зависит от зоны и числа виз, корпоративный счёт **от 5 000 USD**."
   }
  ],
- "caption": "Mainland или фризона? Для бизнеса с паспортом РФ главный вопрос другой: откроет ли банк счёт такой компании.\n\nФризона даёт 100% владение и подходит для торговли и услуг за рубеж. Банки лучше воспринимают репутационные зоны: DMCC, DAFZA, Meydan.\n\nMainland нужен для клиентов внутри ОАЭ, офлайн-точек, ресторанов, стройки и недвижимости. Местный партнёр не обязателен, но если все клиенты за рубежом, банк проверит строже.\n\nЛицензия выходит за несколько рабочих дней, весь процесс около 2 недель. Дальше виза, Emirates ID и корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите БАНК в комментариях, подскажем, какая зона подойдёт под ваш бизнес.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#компаниявоаэ #фризона #бизнесвдубае #оаэ #дубай"
+ "caption": "Mainland или фризона? Для бизнеса с паспортом РФ главный вопрос другой: откроет ли банк счёт такой компании.\n\nФризона даёт 100% владение и подходит для торговли и услуг за рубеж. Банки лучше воспринимают репутационные зоны: DMCC, DAFZA, Meydan.\n\nMainland нужен для клиентов внутри ОАЭ, офлайн-точек, ресторанов, стройки и недвижимости. Местный партнёр не обязателен, но если все клиенты за рубежом, банк проверит строже.\n\nЛицензия выходит за несколько рабочих дней, весь процесс около 2 недель. Дальше виза, Emirates ID и корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите БАНК в комментариях, подскажем, какая зона подойдёт под ваш бизнес.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#компаниявоаэ #фризона #бизнесвдубае #оаэ #дубай",
+ "new_bg": true
 }
