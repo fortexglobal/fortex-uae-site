@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T12:09+04:00",
+ "generated": "2026-11-01T13:07+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -241,9 +241,9 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfKKSzMlLLL",
    "kind": "вопрос",
    "text": "ПО КАКОМУ ПРИЗНАКУ вы сразу понимаете, что у человека в Дубае ВСЁ ОК С ДЕНЬГАМИ?\n\nБез дорогих часов, суперкаров и брендо",
-   "views": 2068,
+   "views": 2208,
    "likes": 4,
-   "replies": 11,
+   "replies": 13,
    "reposts": 0,
    "quotes": 0,
    "shares": 0
@@ -273,11 +273,24 @@
    "reposts": 0,
    "quotes": 0,
    "shares": 0
+  },
+  {
+   "slug": "t-1101-taksi",
+   "at": "2026-11-01T12:30+04:00",
+   "url": "https://www.threads.com/@fortex__uae/post/DfMToHMm_e2",
+   "kind": "юмор",
+   "text": "ТИПЫ ПАССАЖИРОВ такси в Дубае:\n\n1. Первая неделя: фоткает салон, «у нас это бизнес-класс»\n2. Через месяц: спорит с навиг",
+   "views": 63,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 2658,
+  "views": 2868,
   "likes": 1,
   "replies": 0,
   "reposts": 0,
@@ -285,7 +298,7 @@
   "followers_count": 2
  },
  "account_7d": {
-  "views": 7237,
+  "views": 7447,
   "likes": 57,
   "replies": 100,
   "reposts": 0,
@@ -319,11 +332,11 @@
   },
   {
    "date": "2026-10-31",
-   "views": 2574
+   "views": 2575
   },
   {
    "date": "2026-11-01",
-   "views": 84
+   "views": 293
   }
  ],
  "link_clicks_7d": [
@@ -372,11 +385,11 @@
   },
   "вопрос": {
    "posts": 5,
-   "views": 2466,
-   "replies": 13,
+   "views": 2606,
+   "replies": 15,
    "likes": 5,
-   "avg_views": 493.2,
-   "avg_replies": 2.6
+   "avg_views": 521.2,
+   "avg_replies": 3.0
   },
   "партнёры": {
    "posts": 3,
@@ -395,11 +408,11 @@
    "avg_replies": 0.0
   },
   "юмор": {
-   "posts": 3,
-   "views": 140,
+   "posts": 4,
+   "views": 203,
    "replies": 0,
    "likes": 0,
-   "avg_views": 46.7,
+   "avg_views": 50.8,
    "avg_replies": 0.0
   },
   "знакомства": {
