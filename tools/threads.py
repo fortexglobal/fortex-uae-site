@@ -213,7 +213,7 @@ REPLY_PROMPT = """Ты ведёшь Threads @fortex__uae (Fortex UAE, Дубай
 Ветка до этого:
 {thread}
 Новый комментарий @{user}: «{text}»
-Ответь 1–2 короткими предложениями (до 200 знаков): отреагируй на то, что человек сказал, коротким утверждением с юмором или лёгкой иронией на эту тему (согласись, подшути, добавь меткий факт). Вопросов не задавай, знак «?» не используй. Если человек сам спрашивает про счёт, визу или компанию: ответь по сути одной фразой и скажи, что в Telegram @Fortex_Dubai бесплатно разберём его случай (консультация бесплатная). Без эмодзи и смайликов, только русские слова (без английских вставок), без длинных тире, без хэштегов, без ссылок, без обещаний «100%», без цен кроме «от X». Не продавай, если не спрашивают.
+Ответь ОДНИМ очень коротким предложением: от 3 до 7 слов, не больше. Это реплика с юмором или лёгкой иронией на то, что сказал человек (согласись, подшути, метко подытожь). Не пересказывай комментарий и не объясняй. Каждый раз строй фразу по-новому: не начинай с «Ага», «Вот это», «Это тоже», «О,», не используй «дорогого стоит», «образ жизни», «признак». Свои недавние ответы (не повторяй их начало и конструкцию): {recent}. Вопросов не задавай, знак «?» не используй. Если человек сам спрашивает про счёт, визу или компанию: одна фраза до 10 слов, что бесплатно разберём его случай в Telegram @Fortex_Dubai. Без эмодзи и смайликов, только русские слова, без длинных тире, без хэштегов, без ссылок, без обещаний и цен. Не продавай, если не спрашивают.
 Если это спам, реклама, оскорбление, политика или просто одно эмодзи без слов, верни ровно SKIP."""
 
 HOT_WORDS = ("счёт", "счет", "банк", "виз", "emirates", "эмирейтс", "компани", "лиценз", "сколько стоит", "цена", "стоимость", "помогите", "подскажите", "как открыть", "отказ")
@@ -276,8 +276,14 @@ def replies():
             while p and p in by_id and len(chain) < 6:
                 chain.insert(0, f"@{by_id[p].get('username')}: {by_id[p].get('text', '')[:200]}")
                 p = (by_id[p].get("replied_to") or {}).get("id")
-            ans = llm(REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",
-                                          user=user, text=c["text"][:500]))
+            recent = [v.get("text", "") for v in done.values() if isinstance(v, dict) and v.get("text")][-6:]
+            prm = REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",
+                                      user=user, text=c["text"][:500], recent=" | ".join(recent) or "(нет)")
+            ans = llm(prm)
+            hot_q = any(w in c["text"].lower() for w in HOT_WORDS)
+            lim = 10 if hot_q else 7
+            if ans and not ans.upper().startswith("SKIP") and len(ans.split()) > lim:  # слишком длинно: одна попытка переписать
+                ans = llm(prm + f"\n\nТвой вариант «{ans}» слишком длинный. Дай одно предложение не длиннее {lim} слов.") or ans
             import re as _r, random as _rnd
             ans = _r.sub(r"\s*[—–]\s*", ", ", ans).strip().strip("«»\"")
             ans = _r.sub(r"\s+([,.!…)])", r"\1", ans)
@@ -287,6 +293,13 @@ def replies():
                 import re as _re
                 keep = [x.strip() for x in _re.findall(r"[^.!?…]+[.!?…]*", ans) if x.strip() and "?" not in x]
                 ans = " ".join(keep) if keep else ans.replace("?", ".")
+            if ans and not ans.upper().startswith("SKIP"):
+                first = _r.findall(r"[^.!…]+[.!…]*", ans)
+                ans = (first[0] if first else ans).strip()
+                w = ans.split()
+                if len(w) > lim + 2:
+                    ans = " ".join(w[:lim]).rstrip(",;:") 
+                ans = ans.rstrip(".")
             if any(w in c["text"].lower() for w in HOT_WORDS):
                 hot.append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "user": user, "text": c["text"][:300], "post": info.get("url", ""), "sent": False})
             if not ans:
