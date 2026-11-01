@@ -209,7 +209,7 @@ if __name__ == "__main__":
     collect_articles()
     os.makedirs(OUT, exist_ok=True)
     done = [r for p in sorted(glob.glob(os.path.join(PUB, "**", "index.html"), recursive=True))
-            if not p.startswith(os.path.join(PUB, "v") + os.sep) and "/draft/" not in p and (r := page(p))]
+            if not p.startswith(os.path.join(PUB, "v") + os.sep) and (PROD or "/draft/" not in p) and (r := page(p))]
     import shutil; shutil.copytree(os.path.join(HERE, "img"), os.path.join(PUB if PROD else OUT, "img", "docs"), dirs_exist_ok=True)
     if PROD:  # справка для нейросетей: те же правки текста
         lp = os.path.join(PUB, "llms.txt")
