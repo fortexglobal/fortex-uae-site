@@ -1,0 +1,66 @@
+{
+ "style": "editorial",
+ "look": "light",
+ "status": "wait",
+ "publish_at": "2026-11-06T19:07+04:00",
+ "ring": 4,
+ "segment": 2,
+ "test": "B",
+ "bg_prompt": "bright sunny daytime view of Downtown Dubai and Burj Khalifa from a park with palm trees, clear deep blue sky filling the upper half of the frame, light architecture, editorial travel photography, high detail, no text, no logos",
+ "photos": [
+  "calculator, a cup of coffee and neat financial papers on a white marble table by a large window with Dubai towers, bright morning light, editorial still life photography, no readable text, no logos",
+  "bright modern coworking space in Dubai with light wood and plants, sunny daytime, editorial interior photography, no people, no text, no logos",
+  "entrepreneur in a light shirt working on a laptop on a bright terrace overlooking Dubai, face not visible, daylight, editorial photography, no readable text, no logos"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "НОВОСТИ",
+   "title": "Налоговую льготу для малого бизнеса в ОАЭ продлили до 2029 года",
+   "bold": "продлили до 2029 года",
+   "note": "Источники: Gulf News и The National"
+  },
+  {
+   "type": "page",
+   "head": "Что случилось",
+   "photo": 0,
+   "body": "Минфин ОАЭ продлил **Small Business Relief**, решение № 131. Об этом писали **Gulf News и The National**.\n\nРаньше льгота действовала до конца 2026. Теперь для налоговых периодов, которые заканчиваются **до 31 декабря 2029**."
+  },
+  {
+   "type": "page",
+   "head": "Кого касается",
+   "h": "До 3 млн AED",
+   "h2": "выручки в год, порог не изменился",
+   "body": "Компании с выручкой до **3 млн AED** в год могут не платить корпоративный налог и сдавать отчётность по упрощённым правилам.\n\nУсловия прописаны в налоговом законодательстве, проверяем их под вашу компанию."
+  },
+  {
+   "type": "page",
+   "head": "Обычные правила",
+   "h": "0% и 9%",
+   "h2": "корпоративный налог без льготы",
+   "body": "Без льготы ставка **0%** на прибыль до **375 000 AED** и **9%** сверх.\n\nРегистрироваться плательщиком нужно **всем**, даже без оборота. За позднюю регистрацию штраф **10 000 AED**."
+  },
+  {
+   "type": "page",
+   "head": "Фризона",
+   "h": "Не значит без налога",
+   "h2": "0% только при выполнении условий",
+   "body": "Ставка **0%** во фризоне только для квалифицированной деятельности при выполнении условий, иначе **9%**.\n\nНДС **5%**: регистрация обязательна при обороте от **375 000 AED** за 12 месяцев."
+  },
+  {
+   "type": "page",
+   "head": "Что это значит",
+   "h": "Ещё 3 года",
+   "h2": "минимальной нагрузки для малого бизнеса",
+   "body": "Для небольшой компании налоговая нагрузка в ОАЭ остаётся минимальной ещё **3 года**.\n\nКомпанию, визу, **Emirates ID** и корпоративный счёт собираем комплексом. Счёт **от 5 000 USD**."
+  },
+  {
+   "type": "cta",
+   "head": "Как начать",
+   "h": "Разберём ваш случай",
+   "h2": "за 30 минут",
+   "body": "Напишите в Telegram, чем занимаетесь и какой оборот планируете. Подскажем зону, деятельность и банк.\n\nМатериал информационный и не является налоговой консультацией."
+  }
+ ],
+ "caption": "Минфин ОАЭ продлил налоговую льготу для малого бизнеса до 2029 года. Об этом писали Gulf News и The National.\n\nSmall Business Relief действовала до конца 2026. Теперь её можно применять для налоговых периодов, которые заканчиваются до 31 декабря 2029. Порог прежний: выручка до 3 млн AED в год.\n\nБез льготы корпоративный налог 0% на прибыль до 375 000 AED и 9% сверх. Регистрироваться плательщиком нужно всем, даже без оборота.\n\nФризона не значит без налога: 0% только для квалифицированной деятельности при выполнении условий.\n\nСохраните, чтобы не потерять.\n\nНапишите БАНК в комментариях, подскажем, как собрать компанию, визу и счёт под вашу задачу.\n\nИли пишите в Telegram @Fortex_Dubai\n\nМатериал информационный и не является налоговой консультацией.\n\n#оаэ #налогиоаэ #бизнесвдубае #компаниявоаэ #дубай"
+}

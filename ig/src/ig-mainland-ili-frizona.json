@@ -1,0 +1,57 @@
+{
+ "style": "editorial",
+ "look": "light",
+ "status": "wait",
+ "publish_at": "2026-11-04T19:07+04:00",
+ "ring": 2,
+ "segment": 2,
+ "test": "A",
+ "bg_prompt": "bright sunny daytime view of Dubai Creek Harbour waterfront with light modern architecture, clear deep blue sky filling the upper half of the frame, calm turquoise water, editorial travel photography, high detail, no text, no logos",
+ "photos": [
+  "bright modern free zone business park in Dubai with light stone and glass buildings, palm trees and wide walkways, sunny daytime, editorial architecture photography, no people, no text, no logos",
+  "bright street-level view of a modern Dubai shopping boulevard with cafe terraces and light facades, sunny daytime, editorial travel photography, people far away and not recognizable, no text, no logos",
+  "business owner in a light shirt signing papers at a white desk in a bright Dubai office, hands and documents in focus, face not visible, soft daylight, editorial photography, no readable text, no logos"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "ГАЙД",
+   "title": "Mainland или фризона: какая компания в ОАЭ понравится банку",
+   "bold": "понравится банку",
+   "note": "Компания, виза и счёт одним комплексом"
+  },
+  {
+   "type": "page",
+   "head": "Фризона",
+   "photo": 0,
+   "body": "**100% владение**, удобна для международной торговли и услуг за рубеж, ведётся удалённо.\n\nБанки лучше воспринимают репутационные фризоны: **DMCC, DAFZA, Meydan**."
+  },
+  {
+   "type": "page",
+   "head": "Mainland",
+   "photo": 1,
+   "body": "Клиенты внутри ОАЭ, госконтракты, офлайн-точки. Рестораны, стройка, недвижимость обычно **только mainland**.\n\nМестный партнёр **не обязателен**. Но если все клиенты за рубежом, банк проверит строже."
+  },
+  {
+   "type": "page",
+   "head": "Что важно банку",
+   "h": "Логика модели",
+   "h2": "зона, деятельность и CV совпадают",
+   "body": "Банк смотрит, совпадает ли зона с моделью бизнеса. Лицензия **Дубая** для банков весомее, чем в других эмиратах.\n\nПоэтому зону и деятельность подбираем **сразу под банк**."
+  },
+  {
+   "type": "page",
+   "head": "Комплекс под ключ",
+   "photo": 2,
+   "body": "Компания, виза инвестора или партнёра, **Emirates ID**, корпоративный счёт.\n\nЛицензия выходит за несколько рабочих дней, весь процесс с документами около **2 недель**, можно **удалённо**."
+  },
+  {
+   "type": "cta",
+   "head": "Как начать",
+   "h": "Подберём зону",
+   "h2": "под ваш бизнес и банк",
+   "body": "Расскажите в Telegram, чем занимаетесь и где ваши клиенты. Предложим зону, деятельность и банк.\n\nЦена компании зависит от зоны и числа виз, корпоративный счёт **от 5 000 USD**."
+  }
+ ],
+ "caption": "Mainland или фризона? Для бизнеса с паспортом РФ главный вопрос другой: откроет ли банк счёт такой компании.\n\nФризона даёт 100% владение и подходит для торговли и услуг за рубеж. Банки лучше воспринимают репутационные зоны: DMCC, DAFZA, Meydan.\n\nMainland нужен для клиентов внутри ОАЭ, офлайн-точек, ресторанов, стройки и недвижимости. Местный партнёр не обязателен, но если все клиенты за рубежом, банк проверит строже.\n\nЛицензия выходит за несколько рабочих дней, весь процесс около 2 недель. Дальше виза, Emirates ID и корпоративный счёт от 5 000 USD.\n\nСохраните, чтобы не потерять.\n\nНапишите БАНК в комментариях, подскажем, какая зона подойдёт под ваш бизнес.\n\nИли пишите в Telegram @Fortex_Dubai\n\n#компаниявоаэ #фризона #бизнесвдубае #оаэ #дубай"
+}
