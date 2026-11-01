@@ -134,6 +134,7 @@ k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNo
 (window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=113701535','ym');
 ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true}});
 </script>
+<script>(function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window,document,"clarity","script","z6y07ypf5t");</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/113701535" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <meta name="google-site-verification" content="mKwCr9eRkWvZ4j-IzNC5kxXeoQB-ydTXVXMPlgVBLmg">
 <meta name="msvalidate.01" content="E59AF275B841F17C2D1998734F418033">
@@ -294,6 +295,8 @@ def build():
 <p>Только чтобы ответить на ваш вопрос, подобрать услугу и связаться с вами. Ответы в директе Instagram может готовить наш ассистент на основе нейросети, сложные вопросы и дальнейшую работу ведёт менеджер.</p>
 <h2>Передача третьим лицам</h2>
 <p>Мы не продаём и не передаём ваши данные третьим лицам, кроме сервисов, без которых работа невозможна (хостинг сайта, Telegram, Instagram, сервис нейросети для подготовки ответа), и банков или госорганов ОАЭ только с вашего согласия в рамках услуги.</p>
+<h2>Аналитика сайта</h2>
+<p>Чтобы делать сайт удобнее, мы используем Яндекс Метрику и Microsoft Clarity. Они обезличенно записывают, как посетители пользуются страницами (клики, прокрутка, время на сайте), и используют cookie. Введённые в форму данные эти сервисы не сохраняют.</p>
 <h2>Хранение и удаление</h2>
 <p>Храним данные, пока это нужно для общения и оказания услуги. Чтобы удалить свои данные, напишите на {EMAIL} или в Telegram @Fortex_Dubai. Удалим в течение 30 дней.</p>
 <h2 id="en">Privacy Policy (English)</h2>
@@ -301,6 +304,7 @@ def build():
 <p><b>Data we receive:</b> your name, contact (Telegram or phone) and request details that you submit via the website form or send us in Telegram or Instagram Direct (@fortex__uae). Instagram messages are received via the official Instagram API.</p>
 <p><b>Purpose:</b> only to answer your question, offer a relevant service and contact you. Replies in Instagram Direct may be drafted by our AI assistant based on our knowledge base; complex questions and further work are handled by a human manager.</p>
 <p><b>Sharing:</b> we do not sell your data. We only use service providers required to operate (website hosting, Telegram, Instagram, an AI model provider to draft replies), and share data with UAE banks or authorities only with your consent as part of the service.</p>
+<p><b>Analytics:</b> we use Yandex Metrica and Microsoft Clarity to see in anonymised form how visitors use the pages (clicks, scrolling, time on site); they use cookies.</p>
 <p><b>Retention and deletion:</b> we keep data only as long as needed. To delete your data, email {EMAIL}; we will delete it within 30 days.</p>
 <p>Updated: 22 October 2026.</p>
 </div></div></section></main>"""
