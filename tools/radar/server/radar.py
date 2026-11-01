@@ -455,29 +455,71 @@ async def on_button(ev):
 PHOTO_LOCK = asyncio.Lock()
 
 
-@bot.on(events.NewMessage(func=lambda e: e.is_private and bool(e.photo)))
+def _is_img_doc(e):
+    d = getattr(e, "document", None)
+    return bool(d) and (getattr(d, "mime_type", "") or "").startswith("image/")
+
+
+def _is_video(e):
+    d = getattr(e, "document", None)
+    return bool(getattr(e, "video", None)) or (bool(d) and (getattr(d, "mime_type", "") or "").startswith("video/"))
+
+
+PHOTO_ALBUMS_REPLIED = set()
+
+
+async def _gh_retry(fn, tries=6):
+    """GitHub отвечает 409, если несколько фото пишутся одновременно: повторяем с паузой."""
+    last = None
+    for i in range(tries):
+        try:
+            return await fn()
+        except Exception as e:
+            last = e
+            await asyncio.sleep(1.5 * (i + 1))
+    raise last
+
+
+@bot.on(events.NewMessage(func=lambda e: e.is_private and (bool(e.photo) or _is_img_doc(e) or _is_video(e))))
 async def on_owner_photo(ev):
-    """Живые фото Александра для Threads: сохраняем в репозиторий threads/photos/, ежедневная задача Threads берёт их в посты."""
+    """Живые фото Александра для Threads: сохраняем в репозиторий threads/photos/, ежедневная задача Threads берёт их в посты.
+    Принимает фото и картинки файлом; альбом сохраняет по одной, без конфликтов; отвечает один раз на альбом."""
     s = await ev.get_sender()
     if not is_owner(s):
         return
+    if _is_video(ev):
+        await ev.reply("Видео пока не беру в очередь Threads, только фото. Видео лучше выложить вручную")
+        return
+    mime = (getattr(getattr(ev, "document", None), "mime_type", "") or "image/jpeg").lower()
+    if "heic" in mime or "heif" in mime:
+        await ev.reply("Это фото в формате HEIC, Threads его не примет. Отправьте его как обычное фото (не файлом)")
+        return
+    ext = {"image/png": "png", "image/webp": "webp"}.get(mime, "jpg")
     try:
         import content
         data = await ev.download_media(bytes)
-        name = f"threads/photos/{datetime.now(content.DUBAI).strftime('%Y%m%d-%H%M%S')}-{ev.id}.jpg"
-        await content.gh_put(name, data, None, "Threads: живое фото от Александра")
-        async with PHOTO_LOCK:  # альбом приходит пачкой: пишем очередь по одному
-            raw, sha = await content.gh_get("threads/photos/inbox.json")
-            inbox = json.loads(raw) if raw else []
-            inbox.append({"file": name, "caption": (ev.raw_text or "").strip(), "album": str(ev.grouped_id or ""),
-                          "at": datetime.now(content.DUBAI).isoformat(timespec="minutes"), "used": False})
-            await content.gh_put("threads/photos/inbox.json", json.dumps(inbox, ensure_ascii=False, indent=1), sha, "Threads: фото в очередь")
-        if not ev.grouped_id or ev.raw_text:
-            await ev.reply(f"📸 Сохранил для Threads (в очереди: {sum(1 for x in inbox if not x['used'])}). "
-                           "Можно добавить подпись к фото: что это и где, я сделаю из этого пост")
+        async with PHOTO_LOCK:  # всё по одному: и файл, и очередь
+            name = f"threads/photos/{datetime.now(content.DUBAI).strftime('%Y%m%d-%H%M%S')}-{ev.id}.{ext}"
+            await _gh_retry(lambda: content.gh_put(name, data, None, "Threads: живое фото от Александра"))
+
+            async def add():
+                raw, sha = await content.gh_get("threads/photos/inbox.json")
+                inbox = json.loads(raw) if raw else []
+                if not any(x.get("file") == name for x in inbox):
+                    inbox.append({"file": name, "caption": (ev.raw_text or "").strip(), "album": str(ev.grouped_id or ""),
+                                  "at": datetime.now(content.DUBAI).isoformat(timespec="minutes"), "used": False})
+                await content.gh_put("threads/photos/inbox.json", json.dumps(inbox, ensure_ascii=False, indent=1), sha, "Threads: фото в очередь")
+                return inbox
+            inbox = await _gh_retry(add)
+        key = str(ev.grouped_id or ev.id)
+        if key not in PHOTO_ALBUMS_REPLIED:
+            PHOTO_ALBUMS_REPLIED.add(key)
+            await asyncio.sleep(4 if ev.grouped_id else 0)  # дать альбому догрузиться, чтобы счётчик был точнее
+            left = sum(1 for x in inbox if not x["used"])
+            await ev.reply(f"📸 Сохранил для Threads (в очереди около {left}). Можно добавить подпись: что это и где, сделаю из этого пост")
     except Exception as e:
         log.warning("owner photo: %s", e)
-        await ev.reply(f"Не смог сохранить фото: {e}")
+        await ev.reply(f"Не смог сохранить это фото, пришлите его ещё раз: {str(e)[:120]}")
 
 
 @bot.on(events.NewMessage(func=lambda e: e.is_private and not (e.raw_text or "").startswith("/")))
@@ -485,8 +527,8 @@ async def on_owner_text(ev):
     s = await ev.get_sender()
     if not is_owner(s):
         return
-    if ev.photo:
-        return  # фото обрабатывает on_owner_photo
+    if ev.photo or _is_img_doc(ev) or _is_video(ev):
+        return  # фото и видео обрабатывает on_owner_photo
     text = ev.raw_text.strip()
     # login flow
     if state["login"] == "phone":
