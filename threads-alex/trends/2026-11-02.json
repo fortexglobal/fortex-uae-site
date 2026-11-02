@@ -1,0 +1,16 @@
+{
+ "date": "2026-11-02",
+ "queries": ["переезд в Дубай", "Дубай юмор", "инвестиции Дубай", "жизнь в Дубае"],
+ "note": "первые три запроса вернули 0 постов за 2 дня; 20 постов только по «жизнь в Дубае», из них про Дубай немного. Трагедии, политика и конфликты исключены",
+ "top": [
+  {"username": "mrbrmr", "url": "https://www.threads.com/@mrbrmr/post/DfKzqOxiHs0", "sut": "«мне не с кем это обсудить»: звезда на концерте в Дубае", "priem": "инфоповод + «не с кем обсудить», автор до 3000 (56 подп.)", "len": 95, "views": 271561, "replies": 46},
+  {"username": "farida_dubai_", "url": "https://www.threads.com/@farida_dubai_/post/DfMdJ_iDJzf", "sut": "жалоба на качество русскоязычных ресторанов в Дубае при высоких ценах", "priem": "эмоциональная жалоба, спорная тема, много ответов", "len": 340, "views": 7641, "replies": 41},
+  {"username": "dr_roxi_", "url": "https://www.threads.com/@dr_roxi_/post/DfJz5tIkeze", "sut": "родители в Дубае: британская, американская или IB?", "priem": "вопрос узкой группе Дубая с выбором из 3 вариантов", "len": 230, "views": 6036, "replies": 18},
+  {"username": "torii_sobol", "url": "https://www.threads.com/@torii_sobol/post/DfKpfO7D68W", "sut": "артист впервые в Дубае, одна строка", "priem": "инфоповод одной строкой, автор до 3000", "len": 33, "views": 2821, "replies": 6},
+  {"username": "aigul_safiullina", "url": "https://www.threads.com/@aigul_safiullina/post/DfLMg1Mjfkl", "sut": "негласные правила региона, назовите одно", "priem": "«негласные правила + назовёте одно?», не Дубай, автор до 3000, 89k просмотров", "len": 100, "views": 89329, "replies": 243},
+  {"username": "lavrikee", "url": "https://www.threads.com/@lavrikee/post/DfL8unxCGeB", "sut": "вопрос про родителей", "priem": "один вопрос из личной жизни каждого, автор до 3000, не Дубай", "len": 80, "views": 39755, "replies": 394},
+  {"username": "oksanasukhava", "url": "https://www.threads.com/@oksanasukhava/post/DfJzYM9DadY", "sut": "какая практика вам реально помогла", "priem": "короткий вопрос «что вам реально помогло», автор до 3000", "len": 60, "views": 22790, "replies": 149},
+  {"username": "metatron_prishel", "url": "https://www.threads.com/@metatron_prishel/post/DfJ6AdEDPTH", "sut": "список личных достижений, включая работу в Дубае", "priem": "личный список + «с кем поделиться?»", "len": 330, "views": 4589, "replies": 5}
+ ],
+ "takeaway": "«Негласные правила Дубая, назовёте одно?» и вопросы в одну строку дают сотни ответов; русских постов про Дубай в поиске за 2 дня мало"
+}
