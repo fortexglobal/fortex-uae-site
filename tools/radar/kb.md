@@ -12,7 +12,7 @@
 - Без обещания «100%»: сроки и результат зависят от кейса, поэтому сначала короткий разбор.
 
 ## Кто мы
-- Fortex UAE (направление Fortex Global), Дубай. Сайт fortex-uae.com, Telegram @Fortex_Dubai, канал t.me/fortex_uae, Instagram @fortex__uae.
+- Fortex UAE (направление Fortex Global), Дубай. Сайт fortex-uae.com, Telegram @Fortex_Dubai, канал t.me/fortex_uae.
 - С 2022 года занимаемся ВНЖ, банками, компаниями и финансовыми вопросами в ОАЭ. Команда постоянно в Дубае. Очень много клиентов.
 - Всё делаем своей командой, под ключ, в одном окне.
 - Работаем со всеми банками ОАЭ. Специализация: сложные случаи (после отказов, крипто, трейдинг, сложные фризоны, нестандартная деятельность).
@@ -135,5 +135,5 @@
 ## Подпись в письмах
 Алексей Ронин
 Fortex UAE · Дубай
-Telegram: @Fortex_Dubai · канал: t.me/fortex_uae
-Instagram: @fortex__uae · fortex-uae.com
+Telegram: t.me/Fortex_Dubai
+fortex-uae.com
