@@ -367,6 +367,28 @@ def insights():
         out["link_clicks_7d"] = r.get("data", [])
     except Exception as e:
         out["errors"].append(f"clicks: {str(e)[:200]}")
+    # подписчики по дням: снимок общего числа, прирост за сутки (API не даёт подписки по каждому посту)
+    fp = os.path.join(D, "stats", "followers.json")
+    os.makedirs(os.path.join(D, "stats"), exist_ok=True)
+    fol = json.load(open(fp)) if os.path.exists(fp) else {}
+    total = (out.get("account_1d") or {}).get("followers_count")
+    today = datetime.now(DUBAI).date().isoformat()
+    if total is not None:
+        fol[today] = total
+        json.dump(dict(sorted(fol.items())[-120:]), open(fp, "w"), indent=1)
+    days = sorted(fol)
+    if len(days) >= 2:
+        out["followers_gain_1d"] = fol[days[-1]] - fol[days[-2]]
+    if len(days) >= 8:
+        out["followers_gain_7d"] = fol[days[-1]] - fol[days[-8]]
+    pv = {x["date"]: x["views"] for x in out.get("profile_views_by_day", [])}
+    out["profile_views_1d"] = pv.get(max(pv)) if pv else None
+    out["link_clicks_7d_total"] = sum(v.get("value", 0) for m in out.get("link_clicks_7d", []) for v in m.get("link_total_values", []))
+    # качество поста: не просмотры, а действия (ответы, репосты, цитаты, пересылки) на 1000 просмотров
+    for p in out["posts"]:
+        act = sum(p.get(k) or 0 for k in ("replies", "reposts", "quotes", "shares"))
+        p["actions"] = act
+        p["actions_per_1k"] = round(act * 1000 / p["views"], 1) if p.get("views") else None
     kinds = {}
     for p in out["posts"]:
         k = p.get("kind") or "—"
