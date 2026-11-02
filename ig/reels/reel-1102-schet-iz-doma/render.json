@@ -1,0 +1,82 @@
+{
+ "stt": {
+  "match": 0.887,
+  "heard": "Многие думают, что ради счёта в ОАЭ нужно лететь в Дубай. Нет. Личный счёт можно открыть удалённо, даже без Emirates ID. Такие счета сейчас открывают три банка ОАЭ. Наш кейс - счёт в Emirates NBD за две недели, без единой поездки. Пишите банк в комментариях, разберём ваш случай.",
+  "diffs": [
+   [
+    "эмирейтс ай ди",
+    "emirates id"
+   ],
+   [
+    "эмирейтс эн би ди",
+    "emirates nbd"
+   ]
+  ]
+ },
+ "hash": "d59a292a72",
+ "video": "d59a292a72.mp4",
+ "cover": "cover.jpg",
+ "v": 2,
+ "duration": 20.9,
+ "ai_clips": [],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "q": "dubai skyline day",
+   "src": "https://cdn.pixabay.com/video/2025/08/12/296958_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2025/08/12/296958_large.mp4",
+   "site": "pixabay"
+  },
+  "1": {
+   "key": "stock",
+   "q": "woman working laptop home",
+   "src": "pixabay:px265521",
+   "author": "GradientARC [young, woman, modern desk, cozy room, na]",
+   "link": "https://cdn.pixabay.com/video/2025/03/18/265521_large.mp4",
+   "site": "pixabay"
+  },
+  "3": {
+   "key": "stock",
+   "q": "man using smartphone sofa",
+   "src": "pixabay:px3135",
+   "author": "Life-Of-Vids [smartphone, businessman, mobile, people,]",
+   "link": "https://cdn.pixabay.com/video/2016/05/12/3135-166335908_large.mp4",
+   "site": "pixabay"
+  },
+  "2": {
+   "key": "stock",
+   "q": "modern bank building glass",
+   "src": "pixabay:px55933",
+   "author": "ChristianBodhi [skyscrapers, buildings, tower, architect]",
+   "link": "https://cdn.pixabay.com/video/2020/11/09/55933-478348794_large.mp4",
+   "site": "pixabay"
+  }
+ },
+ "safe_zone": {
+  "cap_widest_px": 677,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 21.0,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg",
+   "qa/sheet-3.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.33,
+  "true_peak": -1.89,
+  "lra": 3.2,
+  "silence_mid": [],
+  "warnings": []
+ }
+}

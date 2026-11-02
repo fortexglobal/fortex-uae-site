@@ -1,0 +1,9 @@
+05:45:10 start reel-1102-schet-iz-doma
+05:45:13 stt elevenlabs HTTP Error 401: Unauthorized
+05:45:15 stt match 0.89, diffs [['эмирейтс ай ди', 'emirates id'], ['эмирейтс эн би ди', 'emirates nbd']]
+05:45:15 reel-1102-schet-iz-doma: voice 20.0s, shots [4.3, 4.6, 3.2, 8.8]
+05:45:17 clip 1: pixabay px265521 (GradientARC [young, woman, modern desk, cozy room, na]) «woman working laptop home»
+05:45:17 clip 3: pixabay px3135 (Life-Of-Vids [smartphone, businessman, mobile, people,]) «man using smartphone sofa»
+05:45:17 clip 2: pixabay px55933 (ChristianBodhi [skyscrapers, buildings, tower, architect]) «modern bank building glass»
+05:45:23 music: elevenlabs ok
+05:47:49 rendered reel v2 reel-1102-schet-iz-doma: 20.9s, 8.9 MB, music=True
