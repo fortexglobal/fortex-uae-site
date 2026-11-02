@@ -1,47 +1,47 @@
 {
- "generated": "2026-11-01T03:56Z",
+ "generated": "2026-11-02T04:00Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 93.0,
-  "посетители": 67.0,
-  "отказы_%": 35.48387097,
-  "время_на_сайте_сек": 196.38709677
+  "визиты": 112.0,
+  "посетители": 78.0,
+  "отказы_%": 32.14285714,
+  "время_на_сайте_сек": 184.48214286
  },
  "goals": {
-  "Заявка с сайта": 0.0,
-  "Клик в Telegram": 7.0,
+  "Заявка с сайта": 1.0,
+  "Клик в Telegram": 6.0,
   "Запись на звонок": 0.0,
-  "Автоцель: отправка формы": 0.0,
-  "Автоцель: переход в мессенджер": 5.0,
+  "Автоцель: отправка формы": 1.0,
+  "Автоцель: переход в мессенджер": 4.0,
   "Автоцель: переход в соц.сеть": 1.0
  },
  "sources": [
   {
    "name": "Direct traffic",
    "values": [
-    66.0,
-    42.0
+    71.0,
+    41.0
    ]
   },
   {
    "name": "Recommendation system traffic",
    "values": [
-    20.0,
-    20.0
+    31.0,
+    31.0
    ]
   },
   {
    "name": "Social network traffic",
    "values": [
-    2.0,
-    2.0
+    4.0,
+    4.0
    ]
   },
   {
    "name": "Internal traffic",
    "values": [
-    1.0,
-    1.0
+    2.0,
+    2.0
    ]
   },
   {
@@ -63,22 +63,22 @@
   {
    "name": "Yandex Zen",
    "values": [
-    20.0,
-    20.0
+    31.0,
+    31.0
    ]
   },
   {
    "name": "Facebook",
    "values": [
-    2.0,
-    2.0
+    4.0,
+    4.0
    ]
   },
   {
    "name": "fortex-uae.com",
    "values": [
-    1.0,
-    1.0
+    2.0,
+    2.0
    ]
   },
   {
@@ -100,8 +100,8 @@
   {
    "name": "telegram / channel",
    "values": [
-    21.0,
-    21.0
+    22.0,
+    22.0
    ]
   }
  ],
@@ -109,8 +109,8 @@
   {
    "name": "/",
    "values": [
-    62.0,
-    44.0
+    68.0,
+    45.0
    ]
   },
   {
@@ -118,6 +118,13 @@
    "values": [
     16.0,
     16.0
+   ]
+  },
+  {
+   "name": "/articles/kak-platit-za-kvartiru-v-dubae/",
+   "values": [
+    11.0,
+    11.0
    ]
   },
   {
@@ -130,8 +137,8 @@
   {
    "name": "/articles/mexc-ushla-iz-rossii/",
    "values": [
-    3.0,
-    3.0
+    4.0,
+    4.0
    ]
   },
   {
@@ -156,6 +163,13 @@
    ]
   },
   {
+   "name": "/draft/kak-platit-za-kvartiru-v-dubae/",
+   "values": [
+    1.0,
+    1.0
+   ]
+  },
+  {
    "name": "/draft/rossiyanam-iz-evropy-schet-oae/",
    "values": [
     1.0,
@@ -172,13 +186,24 @@
  ],
  "goals_by_source": [
   {
+   "name": "Recommendation system traffic",
+   "values": [
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "name": "Direct traffic",
    "values": [
     0.0,
-    7.0,
+    6.0,
     0.0,
     0.0,
-    5.0,
+    4.0,
     1.0
    ]
   }
@@ -192,6 +217,114 @@
   "Автоцель: переход в соц.сеть"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 36.0,
+   "посетители": 22.0,
+   "отказы_%": 25.0,
+   "время_на_сайте_сек": 97.66666667
+  },
+  "goals": {
+   "Заявка с сайта": 1.0,
+   "Клик в Telegram": 1.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 1.0,
+   "Автоцель: переход в мессенджер": 1.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     22.0,
+     9.0
+    ]
+   },
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     11.0,
+     11.0
+    ]
+   },
+   {
+    "name": "Social network traffic",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "Internal traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Yandex Zen",
+    "values": [
+     11.0,
+     11.0
+    ]
+   },
+   {
+    "name": "Facebook",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "fortex-uae.com",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "telegram / channel",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/",
+    "values": [
+     23.0,
+     10.0
+    ]
+   },
+   {
+    "name": "/articles/kak-platit-za-kvartiru-v-dubae/",
+    "values": [
+     11.0,
+     11.0
+    ]
+   },
+   {
+    "name": "/articles/mexc-ushla-iz-rossii/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "/draft/kak-platit-za-kvartiru-v-dubae/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 31.0,
    "посетители": 24.0,
@@ -292,71 +425,13 @@
    }
   ]
  },
- "day_before": {
+ "date_yesterday": "2026-11-01",
+ "today": {
   "totals": {
    "визиты": 2.0,
    "посетители": 2.0,
-   "отказы_%": 50.0,
-   "время_на_сайте_сек": 8.0
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Link traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "dataindex.pro",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "utm": [],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "/draft/fns-proveryaet-nedvizhimost-oae/",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-10-31",
- "today": {
-  "totals": {
-   "визиты": 3.0,
-   "посетители": 2.0,
    "отказы_%": 0.0,
-   "время_на_сайте_сек": 14.33333333
+   "время_на_сайте_сек": 18.5
   },
   "goals": {
    "Заявка с сайта": 0.0,
@@ -370,7 +445,7 @@
    {
     "name": "Direct traffic",
     "values": [
-     3.0,
+     2.0,
      2.0
     ]
    }
@@ -381,7 +456,7 @@
    {
     "name": "/",
     "values": [
-     3.0,
+     2.0,
      2.0
     ]
    }
