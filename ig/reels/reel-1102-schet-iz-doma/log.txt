@@ -1,3 +1,1 @@
-05:51:05 start reel-1102-schet-iz-doma
-05:51:05 reel-1102-schet-iz-doma: voice 20.0s, shots [4.3, 4.6, 3.2, 8.8]
-05:53:48 rendered reel v2 reel-1102-schet-iz-doma: 20.9s, 9.5 MB, music=True
+09:05:03 start reel-1102-schet-iz-doma
