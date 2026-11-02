@@ -1,21 +1,29 @@
 {
- "checked": "2026-11-02T15:00Z",
+ "checked": "2026-11-02T15:07Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 14,
+  "media_count": 15,
   "id": "28276626788683589"
  },
  "published": [
   {
-   "slug": "reel-1102-schet-iz-doma",
+   "slug": "ig-korp-schet-komplaens",
    "scheduled": "carousel",
-   "id": "17873483505642816",
-   "permalink": "https://www.instagram.com/reel/DfPlFzKIQE_/"
+   "id": "18132255883745693",
+   "permalink": "https://www.instagram.com/p/DfPl6gTIEzL/",
+   "recovered": true
   }
  ],
  "media": [
+  {
+   "id": "18132255883745693",
+   "timestamp": "2026-11-02T15:07:56+0000",
+   "permalink": "https://www.instagram.com/p/DfPl6gTIEzL/",
+   "media_type": "CAROUSEL_ALBUM",
+   "caption": "Корпоративный счёт в ОАЭ с паспортом РФ открывают. Отказываю"
+  },
   {
    "id": "17873483505642816",
    "timestamp": "2026-11-02T15:01:04+0000",
