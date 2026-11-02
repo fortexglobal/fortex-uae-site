@@ -26,9 +26,10 @@
    "say": "Такие счета сейчас открывают {3|три} банка ОАЭ."
   },
   {
-   "q": "man using smartphone sofa",
-   "prompt": "man seen from the side relaxing on a sofa in a bright living room, scrolling his smartphone, soft daylight, face not in focus",
-   "say": "Наш кейс: счёт в {Emirates NBD|Эмирейтс эн-би-ди} за {2 недели|две недели}, без единой поездки."
+   "q": "dubai marina promenade day",
+   "prompt": "Dubai Marina promenade in bright daylight, people walking from behind, yachts and towers, smooth gimbal shot",
+   "say": "Наш кейс: счёт в {Emirates NBD|Эмирейтс эн-би-ди} за {2 недели|две недели}, без единой поездки.",
+   "link": "https://cdn.pixabay.com/video/2025/03/16/265261_large.mp4"
   }
  ],
  "cta": {
