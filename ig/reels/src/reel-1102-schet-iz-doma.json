@@ -1,0 +1,42 @@
+{
+ "v": 2,
+ "status": "approved",
+ "publish_at": "2026-11-02T19:00+04:00",
+ "ring": 1,
+ "look": "light",
+ "format_kind": "бизнес",
+ "hook": "Личный счёт в ОАЭ за 2 недели из дома",
+ "accent": "из дома",
+ "music": "nu-disco, 112 bpm, filtered four-on-the-floor kick with a soft sidechain pump, slap bass octave line, muted funk guitar chops on the offbeat, signature sound: a short bright marimba blip on each scene change, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "q": "dubai skyline day",
+   "prompt": "aerial drone flight over Dubai skyscrapers and the sea in bright daylight, smooth forward motion, no people close up",
+   "say": "Многие думают, что ради счёта в ОАЭ нужно лететь в Дубай.",
+   "link": "https://cdn.pixabay.com/video/2025/08/12/296958_large.mp4"
+  },
+  {
+   "q": "woman working laptop home",
+   "prompt": "woman seen from behind working on a laptop at a bright home desk by a window, soft daylight, no face visible",
+   "say": "Нет. Личный счёт можно открыть удалённо, даже без {Emirates ID|Эмирейтс ай-ди}."
+  },
+  {
+   "q": "modern bank building glass",
+   "prompt": "modern glass bank tower in Dubai in bright daylight, slow upward tilt, no people",
+   "say": "Такие счета сейчас открывают {3|три} банка ОАЭ."
+  },
+  {
+   "q": "man using smartphone sofa",
+   "prompt": "man seen from the side relaxing on a sofa in a bright living room, scrolling his smartphone, soft daylight, face not in focus",
+   "say": "Наш кейс: счёт в {Emirates NBD|Эмирейтс эн-би-ди} за {2 недели|две недели}, без единой поездки."
+  }
+ ],
+ "cta": {
+  "title": "Разберём ваш случай",
+  "text": "Подскажем, какой банк откроет счёт удалённо",
+  "say": "Пишите БАНК в комментариях, разберём ваш случай."
+ },
+ "cover_title": "Счёт в ОАЭ из дома",
+ "cover_accent": "из дома",
+ "caption": "Счёт в банке ОАЭ можно открыть, не прилетая в Дубай.\n\nЛичный счёт открывается удалённо, без приезда и без Emirates ID. Сейчас так работают Emirates NBD, UBL и FAB. Списки банков меняются, поэтому банк подбираем под вашу задачу.\n\nНаш кейс: личный счёт в Emirates NBD удалённо, без единой поездки, за 2 недели.\n\nЛичный счёт под ключ от 1 500 USD, обычно около 2 недель. Если банк откажет, предложим другой.\n\nВы бы открыли счёт удалённо или только лично в отделении?\n\nНапишите БАНК в комментариях, подскажем, подойдёт ли это вам. Проверить шансы за минуту можно в боте @FortexCheck_Bot, ссылка в шапке.\nИли пишите в Telegram @Fortex_Dubai\n\n#дубай #оаэ #счетвоаэ #банкиоаэ #бизнесвдубае"
+}
