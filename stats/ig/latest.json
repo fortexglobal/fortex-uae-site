@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T07:54+04:00",
+ "generated": "2026-11-02T07:57+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "fortex__uae",
@@ -9,21 +9,16 @@
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 14,
-  "views": 70,
+  "reach": 4,
+  "views": 62,
   "accounts_engaged": 2,
-  "total_interactions": 4,
+  "total_interactions": 5,
   "profile_links_taps": 0,
   "follows_and_unfollows": {
    "error": ""
   }
  },
  "followers_history": [
-  {
-   "date": "2026-10-25",
-   "followers": 0,
-   "media": 4
-  },
   {
    "date": "2026-10-26",
    "followers": 0,
@@ -58,6 +53,11 @@
    "date": "2026-11-01",
    "followers": 1,
    "media": 14
+  },
+  {
+   "date": "2026-11-02",
+   "followers": 1,
+   "media": 14
   }
  ],
  "media": [
@@ -72,7 +72,7 @@
    "comments": 0,
    "ins": {
     "reach": 2,
-    "views": 5,
+    "views": 8,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -82,7 +82,13 @@
     "follows": 0
    },
    "unavailable": [],
-   "ours": {}
+   "ours": {
+    "slug": "ig-fns-nedvizhimost-oae",
+    "style": "editorial",
+    "format": "",
+    "test": "A",
+    "ring": 2
+   }
   },
   {
    "id": "17998149810083302",
@@ -95,14 +101,14 @@
    "comments": 0,
    "ins": {
     "reach": 2,
-    "views": 2,
+    "views": 3,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 9378,
-    "ig_reels_video_view_total_time": 18756
+    "ig_reels_avg_watch_time": 6848,
+    "ig_reels_video_view_total_time": 20546
    },
    "unavailable": [
     "profile_visits",
@@ -126,8 +132,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 7,
+    "reach": 2,
+    "views": 9,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -137,7 +143,13 @@
     "follows": 0
    },
    "unavailable": [],
-   "ours": {}
+   "ours": {
+    "slug": "ig-e-invoicing-2027",
+    "style": "editorial",
+    "format": "",
+    "test": "",
+    "ring": ""
+   }
   },
   {
    "id": "17945721315089509",
@@ -149,7 +161,7 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 1,
+    "reach": 2,
     "views": 1,
     "saved": 0,
     "shares": 0,
@@ -192,7 +204,13 @@
     "follows": 0
    },
    "unavailable": [],
-   "ours": {}
+   "ours": {
+    "slug": "ig-rabochaya-viza-skywards",
+    "style": "editorial",
+    "format": "",
+    "test": "",
+    "ring": ""
+   }
   },
   {
    "id": "18134785231743307",
@@ -236,8 +254,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 4,
+    "reach": 2,
+    "views": 5,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -247,7 +265,13 @@
     "follows": 0
    },
    "unavailable": [],
-   "ours": {}
+   "ours": {
+    "slug": "ig-schet-pasport-rf",
+    "style": "editorial",
+    "format": "",
+    "test": "",
+    "ring": ""
+   }
   },
   {
    "id": "18061009004799519",
@@ -259,15 +283,15 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 2,
+    "reach": 2,
+    "views": 3,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 8514,
-    "ig_reels_video_view_total_time": 25542
+    "ig_reels_avg_watch_time": 12176,
+    "ig_reels_video_view_total_time": 48705
    },
    "unavailable": [
     "profile_visits",
@@ -324,7 +348,7 @@
    "comments": 0,
    "ins": {
     "reach": 2,
-    "views": 6,
+    "views": 7,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -352,15 +376,15 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 53,
-    "views": 54,
+    "reach": 54,
+    "views": 55,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 3202,
-    "ig_reels_video_view_total_time": 182534
+    "ig_reels_avg_watch_time": 3162,
+    "ig_reels_video_view_total_time": 183416
    },
    "unavailable": [
     "profile_visits",
@@ -381,16 +405,16 @@
    "type": "CAROUSEL_ALBUM",
    "link": "https://www.instagram.com/p/De1OtiNFsEM/",
    "caption": "Рабочая виза или Virtual Work: что выбрать?\n\nОбе дают резидентство ОАЭ и Emirates ID.\n\nVirtual Work быстрее и доступнее: от 2 000 USD, 7–10 ",
-   "likes": 0,
+   "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 2,
+    "reach": 2,
+    "views": 5,
     "saved": 0,
     "shares": 0,
-    "likes": 0,
+    "likes": 1,
     "comments": 0,
-    "total_interactions": 0,
+    "total_interactions": 1,
     "profile_visits": 0,
     "follows": 0
    },
@@ -442,8 +466,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 2,
-    "views": 4,
+    "reach": 3,
+    "views": 8,
     "saved": 0,
     "shares": 0,
     "likes": 0,
