@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-02T14:40Z",
+ "checked": "2026-11-02T15:00Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,22 @@
   "media_count": 14,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "reel-1102-schet-iz-doma",
+   "scheduled": "carousel",
+   "id": "17873483505642816",
+   "permalink": "https://www.instagram.com/reel/DfPlFzKIQE_/"
+  }
+ ],
  "media": [
+  {
+   "id": "17873483505642816",
+   "timestamp": "2026-11-02T15:01:04+0000",
+   "permalink": "https://www.instagram.com/reel/DfPlFzKIQE_/",
+   "media_type": "VIDEO",
+   "caption": "Счёт в банке ОАЭ можно открыть, не прилетая в Дубай.\n\nЛичный"
+  },
   {
    "id": "17996007645050875",
    "timestamp": "2026-10-31T15:07:38+0000",
