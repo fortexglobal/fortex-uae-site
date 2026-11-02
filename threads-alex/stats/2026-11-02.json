@@ -1,0 +1,132 @@
+{
+ "generated": "2026-11-02T08:33+04:00",
+ "posts": [
+  {
+   "slug": "a-1031-druzya",
+   "at": "2026-10-31T20:38+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfKmv73FHzC",
+   "kind": "юмор",
+   "text": "Стадии ДРУЗЕЙ, которые прилетели ко мне в Дубай «на недельку»:\n\n1. «Жарковато, но красиво»\n2. «А сколько тут стоит АРЕНД",
+   "views": 458,
+   "likes": 2,
+   "replies": 5,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "a-1101-menedzher",
+   "at": "2026-11-01T11:28+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfMMjzKHIHp",
+   "kind": "business",
+   "text": "Непопулярное мнение: в ОАЭ счёт открывает не «ХОРОШИЙ БАНК», а ХОРОШИЙ МЕНЕДЖЕР в этом банке.\n\nМы с командой не раз виде",
+   "views": 622,
+   "likes": 8,
+   "replies": 5,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0
+  },
+  {
+   "slug": "a-1101-zima",
+   "at": "2026-11-01T20:21+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfNJhZaGksE",
+   "kind": "юмор",
+   "text": "Как понять, что в Дубае наступила ЗИМА:\n\n1. Утром +24, и ты такой «бр-р»\n2. Достал худи, которое лежало с марта\n3. Ужин ",
+   "views": 201,
+   "likes": 3,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 1
+  }
+ ],
+ "errors": [],
+ "account_1d": {
+  "views": 5450,
+  "likes": 28,
+  "replies": 15,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1451
+ },
+ "account_7d": {
+  "views": 5453,
+  "likes": 68,
+  "replies": 31,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1451
+ },
+ "profile_views_by_day": [
+  {
+   "date": "2026-10-25",
+   "views": 0
+  },
+  {
+   "date": "2026-10-26",
+   "views": 0
+  },
+  {
+   "date": "2026-10-27",
+   "views": 0
+  },
+  {
+   "date": "2026-10-28",
+   "views": 3
+  },
+  {
+   "date": "2026-10-29",
+   "views": 0
+  },
+  {
+   "date": "2026-10-30",
+   "views": 0
+  },
+  {
+   "date": "2026-10-31",
+   "views": 3483
+  },
+  {
+   "date": "2026-11-01",
+   "views": 1967
+  }
+ ],
+ "link_clicks_7d": [
+  {
+   "name": "clicks",
+   "period": "day",
+   "title": "clicks",
+   "description": "The number of times users clicked on a link",
+   "link_total_values": [
+    {
+     "value": 0,
+     "link_url": "https://fortex-uae.com/"
+    },
+    {
+     "value": 3,
+     "link_url": "http://fortex-uae.com/c/alex"
+    }
+   ],
+   "id": "17841465254316890/insights/clicks/day"
+  }
+ ],
+ "by_kind": {
+  "юмор": {
+   "posts": 2,
+   "views": 659,
+   "replies": 7,
+   "likes": 5,
+   "avg_views": 329.5,
+   "avg_replies": 3.5
+  },
+  "business": {
+   "posts": 1,
+   "views": 622,
+   "replies": 5,
+   "likes": 8,
+   "avg_views": 622.0,
+   "avg_replies": 5.0
+  }
+ }
+}
