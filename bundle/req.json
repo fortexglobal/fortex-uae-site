@@ -1,1 +1,1 @@
-{"cmd": "audio", "n": 17, "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989", "type": "original_sound", "dl": 0, "q": ["Habibi Come To Dubai", "Dubai", "Ленинград", "Feeling Good", "Back To Black", "luxury", "money", "phonk", "Che Vuole Questa Musica"]}
+{"cmd":"raw","n":18,"calls":[["DELETE","/api/v1/post/fe15b9e1-b5bd-4dbd-b2c7-4281fc38ab44",null]]}

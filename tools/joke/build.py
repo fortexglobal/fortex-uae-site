@@ -108,8 +108,27 @@ def build(spec_path):
     json.dump(rs, open(f"{tmp}/cards.json", "w"), ensure_ascii=False)
     run(["node", "tools/joke/render.js", FONTS, f"{tmp}/cards.json"])
     # 3. музыка из библиотеки Instagram (bundle.social)
-    music_id, audio = None, None
-    for q in [spec.get("music_q", ""), "phonk", ""]:
+    music_id, audio, from_start = None, None, False
+    snd = spec.get("sound")  # {"q": "...", "match": "подстрока названия"}: оригинальный звук из залетевших рилсов
+    if snd:
+        code, b = call("GET", f"/api/v1/misc/instagram/audio?teamId={TEAM}&audioType=original_sound&searchQuery={urllib.parse.quote(snd['q'])}")
+        items = (b or {}).get("audio", []) if isinstance(b, dict) else []
+        m = snd.get("match", snd["q"]).lower()
+        items = [a for a in items if m in (a.get("title") or "").lower() and a.get("download_url")
+                 and (a.get("duration_in_ms") or 0) >= (len(cards) * STEP + END) * 1000]
+        if snd.get("id"):
+            items = [a for a in items if a["audio_id"] == snd["id"]] or items
+        for a in items[:3]:
+            try:
+                f = f"{tmp}/a.m4a"; dl(a["download_url"], f)
+                music_id, audio, from_start = a["audio_id"], f, True
+                res["music"] = f"original sound: {a.get('title')} ({a['audio_id']})"
+                break
+            except Exception as e:
+                res["log"].append(f"sound dl fail {str(e)[:80]}")
+        if not audio:
+            res["log"].append(f"sound not found: {snd}")
+    for q in ([] if audio else [spec.get("music_q", ""), "phonk", ""]):
         path = f"/api/v1/misc/instagram/audio?teamId={TEAM}&audioType=music" + (f"&searchQuery={urllib.parse.quote(q)}" if q else "")
         code, b = call("GET", path)
         items = (b or {}).get("audio", []) if isinstance(b, dict) else []
@@ -128,7 +147,7 @@ def build(spec_path):
     # 4. сборка
     pngs = [c["out"] for c in rs["cards"]]
     inp = ["-i", base]
-    ss = best_window(audio, dur) if audio else 0
+    ss = 0 if from_start else (best_window(audio, dur) if audio else 0)
     if audio:
         inp += ["-ss", str(ss), "-i", audio]
     fc, last = "", "0:v"
@@ -162,7 +181,9 @@ def build(spec_path):
         if cc == 200 and c.get("url"):
             ig["thumbnail"] = c["url"]
         if music_id:
-            ig["musicSoundInfo"] = {"musicSoundId": music_id, "musicSoundVolume": 0, "videoOriginalSoundVolume": 100}
+            # оригинальный звук играет с начала, как в залетевших рилсах: ставим его самого на 100, звук ролика на 0
+            ig["musicSoundInfo"] = ({"musicSoundId": music_id, "musicSoundVolume": 100, "videoOriginalSoundVolume": 0} if from_start
+                                    else {"musicSoundId": music_id, "musicSoundVolume": 0, "videoOriginalSoundVolume": 100})
         code, p = call("POST", "/api/v1/post/", {"teamId": TEAM, "title": f"joke {rid}", "postDate": spec["publish_at"],
                                                  "status": "SCHEDULED", "socialAccountTypes": ["INSTAGRAM"], "data": {"INSTAGRAM": ig}})
         res["post"] = [code, p.get("id") if isinstance(p, dict) else p, p.get("status") if isinstance(p, dict) else None]
