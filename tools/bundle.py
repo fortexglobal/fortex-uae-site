@@ -38,5 +38,10 @@ if cmd == "discover":
             out[f"{hdr} {p}"] = [code, b if isinstance(b, str) else b]
             if code == 200:
                 break
+if cmd == "connect":
+    out["r"] = call("POST", "/api/v1/social-account/connect", {"type": "INSTAGRAM", "teamId": req["teamId"],
+                    "redirectUrl": "https://fortex-uae.com/", "instagramConnectionMethod": "FACEBOOK"})
+if cmd == "accounts":
+    out["r"] = call("GET", "/api/v1/team/" + req["teamId"])
 json.dump(out, open(f"bundle/out/{cmd}.json", "w"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(out, ensure_ascii=False, default=str)[:3000])
