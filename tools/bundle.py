@@ -64,5 +64,34 @@ if cmd == "audio":  # {"cmd":"audio","q":["", "luxury"],"n":4,"type":"music"} ->
                     urllib.request.urlretrieve(a["download_url"], f)
                 except Exception as e:
                     out.setdefault("dl_err", []).append(str(e)[:100])
+if cmd == "post":  # {"cmd":"post","teamId":..,"posts":[{"title","video","cover","text","date","music","mvol","ovol"}]}
+    import uuid
+    def upload(fp):
+        bnd = uuid.uuid4().hex
+        ct = "video/mp4" if fp.endswith(".mp4") else "image/jpeg"
+        body = (f"--{bnd}\r\nContent-Disposition: form-data; name=\"teamId\"\r\n\r\n{req['teamId']}\r\n"
+                f"--{bnd}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{os.path.basename(fp)}\"\r\nContent-Type: {ct}\r\n\r\n").encode() \
+               + open(fp, "rb").read() + f"\r\n--{bnd}--\r\n".encode()
+        r = urllib.request.Request(BASE + "/api/v1/upload/", data=body, method="POST",
+                                   headers={"x-api-key": KEY, "Content-Type": f"multipart/form-data; boundary={bnd}", "User-Agent": "fortex-bot/1.0"})
+        try:
+            with urllib.request.urlopen(r, timeout=300) as x:
+                return x.status, json.loads(x.read())
+        except urllib.error.HTTPError as e:
+            return e.code, e.read()[:1000].decode("utf-8", "ignore")
+    out["r"] = []
+    for p in req["posts"]:
+        res = {"title": p["title"]}
+        cv, v = upload(p["video"]); res["video"] = [cv, v if cv != 200 else v.get("id")]
+        cc, c = upload(p["cover"]); res["cover"] = [cc, c if cc != 200 else c.get("url")]
+        if cv == 200:
+            ig = {"type": "REEL", "text": p["text"], "uploadIds": [v["id"]], "shareToFeed": True}
+            if cc == 200 and c.get("url"):
+                ig["thumbnail"] = c["url"]
+            if p.get("music"):
+                ig["musicSoundInfo"] = {"musicSoundId": p["music"], "musicSoundVolume": p.get("mvol", 0), "videoOriginalSoundVolume": p.get("ovol", 100)}
+            res["post"] = call("POST", "/api/v1/post/", {"teamId": req["teamId"], "title": p["title"], "postDate": p["date"],
+                               "status": p.get("status", "SCHEDULED"), "socialAccountTypes": ["INSTAGRAM"], "data": {"INSTAGRAM": ig}})
+        out["r"].append(res)
 json.dump(out, open(f"bundle/out/{cmd}.json", "w"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(out, ensure_ascii=False, default=str)[:3000])
