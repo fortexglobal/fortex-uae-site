@@ -331,8 +331,8 @@ def main(only=None):
             if only and slug != only:
                 continue
             src = json.load(open(f, encoding="utf-8"))
-            if src.get("status") == "published":
-                continue
+            if src.get("status") == "published" or src.get("prerendered"):
+                continue  # prerendered: стиль v2 рисует tools/ig_v2.py
             render_one(slug, src, b)
         b.close()
 
