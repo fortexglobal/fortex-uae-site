@@ -1,0 +1,22 @@
+name: Bundle social
+# Рилсы с музыкой Instagram через bundle.social (tools/bundle.py, запрос в bundle/req.json)
+on:
+  push:
+    paths: ["bundle/req.json"]
+permissions:
+  contents: write
+concurrency: bundle
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run
+        env: { BUNDLE_SOCIAL_API_KEY: "${{ secrets.BUNDLE_SOCIAL_API_KEY }}" }
+        run: python3 tools/bundle.py 2>&1 | tee bundle/out.log
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add bundle
+          git diff --cached --quiet || (git commit -m "Bundle social" && git pull --rebase --autostash && git push)
