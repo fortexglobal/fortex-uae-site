@@ -1,0 +1,178 @@
+{
+ "generated": "2026-11-03T08:28+04:00",
+ "posts": [
+  {
+   "slug": "a-1031-druzya",
+   "at": "2026-10-31T20:38+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfKmv73FHzC",
+   "kind": "юмор",
+   "text": "Стадии ДРУЗЕЙ, которые прилетели ко мне в Дубай «на недельку»:\n\n1. «Жарковато, но красиво»\n2. «А сколько тут стоит АРЕНД",
+   "views": 477,
+   "likes": 2,
+   "replies": 5,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 5,
+   "actions_per_1k": 10.5
+  },
+  {
+   "slug": "a-1101-menedzher",
+   "at": "2026-11-01T11:28+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfMMjzKHIHp",
+   "kind": "business",
+   "text": "Непопулярное мнение: в ОАЭ счёт открывает не «ХОРОШИЙ БАНК», а ХОРОШИЙ МЕНЕДЖЕР в этом банке.\n\nМы с командой не раз виде",
+   "views": 752,
+   "likes": 9,
+   "replies": 7,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 7,
+   "actions_per_1k": 9.3
+  },
+  {
+   "slug": "a-1101-zima",
+   "at": "2026-11-01T20:21+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfNJhZaGksE",
+   "kind": "юмор",
+   "text": "Как понять, что в Дубае наступила ЗИМА:\n\n1. Утром +24, и ты такой «бр-р»\n2. Достал худи, которое лежало с марта\n3. Ужин ",
+   "views": 283,
+   "likes": 4,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 1,
+   "actions": 3,
+   "actions_per_1k": 10.6
+  },
+  {
+   "slug": "a-1102-ofis",
+   "at": "2026-11-02T11:26+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfOxE2am-nj",
+   "kind": "вопрос",
+   "text": "Мой любимый ОФИС в Марине. Вид на яхты, а ворона на парапете, кажется, ТОЖЕ НА СОЗВОНЕ.\n\nДубай, а вы откуда чаще всего Р",
+   "views": 601,
+   "likes": 19,
+   "replies": 8,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 8,
+   "actions_per_1k": 13.3
+  },
+  {
+   "slug": "a-1102-stadii-investora",
+   "at": "2026-11-02T21:04+04:00",
+   "url": "https://www.threads.com/@aleks___ruso/post/DfPzSD_lrhz",
+   "kind": "юмор",
+   "text": "Стадии ИНВЕСТОРА в Дубае:\n\n1. «Возьму студию, все же берут»\n2. Пятая презентация застройщика за неделю\n3. Считаешь уже н",
+   "views": 215,
+   "likes": 1,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  }
+ ],
+ "errors": [],
+ "account_1d": {
+  "views": 3230,
+  "likes": 23,
+  "replies": 9,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1452
+ },
+ "account_7d": {
+  "views": 6716,
+  "likes": 96,
+  "replies": 44,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 1452
+ },
+ "profile_views_by_day": [
+  {
+   "date": "2026-10-26",
+   "views": 0
+  },
+  {
+   "date": "2026-10-27",
+   "views": 0
+  },
+  {
+   "date": "2026-10-28",
+   "views": 3
+  },
+  {
+   "date": "2026-10-29",
+   "views": 0
+  },
+  {
+   "date": "2026-10-30",
+   "views": 0
+  },
+  {
+   "date": "2026-10-31",
+   "views": 3483
+  },
+  {
+   "date": "2026-11-01",
+   "views": 2246
+  },
+  {
+   "date": "2026-11-02",
+   "views": 984
+  }
+ ],
+ "link_clicks_7d": [
+  {
+   "name": "clicks",
+   "period": "day",
+   "title": "clicks",
+   "description": "The number of times users clicked on a link",
+   "link_total_values": [
+    {
+     "value": 0,
+     "link_url": "https://fortex-uae.com/"
+    },
+    {
+     "value": 3,
+     "link_url": "http://fortex-uae.com/c/alex"
+    }
+   ],
+   "id": "17841465254316890/insights/clicks/day"
+  }
+ ],
+ "profile_views_1d": 984,
+ "link_clicks_7d_total": 3,
+ "by_kind": {
+  "юмор": {
+   "posts": 3,
+   "views": 975,
+   "replies": 7,
+   "likes": 7,
+   "avg_views": 325.0,
+   "avg_replies": 2.33
+  },
+  "business": {
+   "posts": 1,
+   "views": 752,
+   "replies": 7,
+   "likes": 9,
+   "avg_views": 752.0,
+   "avg_replies": 7.0
+  },
+  "вопрос": {
+   "posts": 1,
+   "views": 601,
+   "replies": 8,
+   "likes": 19,
+   "avg_views": 601.0,
+   "avg_replies": 8.0
+  }
+ }
+}
