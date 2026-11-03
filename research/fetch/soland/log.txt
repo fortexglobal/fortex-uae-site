@@ -1,0 +1,10 @@
+ok research/fetch/soland/p00.jpg
+ok research/fetch/soland/p01.jpg
+ok research/fetch/soland/p02.jpg
+ok research/fetch/soland/p03.jpg
+ok research/fetch/soland/p04.jpg
+ok research/fetch/soland/p05.jpg
+ok research/fetch/soland/p06.jpg
+ok research/fetch/soland/p07.jpg
+ok research/fetch/soland/p08.jpg
+ok research/fetch/soland/p09.jpg
