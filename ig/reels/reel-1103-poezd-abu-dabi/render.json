@@ -9,14 +9,12 @@
    ]
   ]
  },
- "hash": "77b6cdd9ba",
- "video": "77b6cdd9ba.mp4",
+ "hash": "74ee969a02",
+ "video": "74ee969a02.mp4",
  "cover": "cover.jpg",
  "v": 2,
  "duration": 19.3,
- "ai_clips": [
-  3
- ],
+ "ai_clips": [],
  "stock": {
   "0": {
    "key": "stock",
@@ -28,27 +26,27 @@
   },
   "1": {
    "key": "stock",
-   "q": "train passengers interior",
-   "src": "pixabay:px3608",
-   "author": "Coverr-Free-Footage [reading, comics, subway, subway station,]",
-   "link": "https://cdn.pixabay.com/video/2016/06/27/3608-172488324_large.mp4",
+   "q": "dubai metro train",
+   "src": "https://cdn.pixabay.com/video/2024/03/12/203953-922734728_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2024/03/12/203953-922734728_large.mp4",
    "site": "pixabay"
   },
   "2": {
    "key": "stock",
-   "q": "train window view desert",
-   "src": "pixabay:px120479",
-   "author": "ChristianBodhi [train, railway, journey, travel, railroa]",
-   "link": "https://cdn.pixabay.com/video/2022/06/15/120479-720880603_large.mp4",
+   "q": "desert sand dunes aerial day",
+   "src": "pixabay:px284568",
+   "author": "antonlukin [namibia, nature, africa, drone, desert, ]",
+   "link": "https://cdn.pixabay.com/video/2025/06/09/284568_large.mp4",
    "site": "pixabay"
   },
   "3": {
    "key": "stock",
    "q": "dubai skyline day",
-   "src": "https://v3b.fal.media/files/b/0ab0f23d/56DfIhI5P6eTA9GIAyx0o_output.mp4",
-   "author": "ai",
-   "link": null,
-   "site": null
+   "src": "https://cdn.pixabay.com/video/2020/02/05/31956-389724705_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2020/02/05/31956-389724705_large.mp4",
+   "site": "pixabay"
   }
  },
  "safe_zone": {

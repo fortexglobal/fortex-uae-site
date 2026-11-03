@@ -1,9 +1,4 @@
-05:50:02 start reel-1103-poezd-abu-dabi
-05:50:05 stt elevenlabs HTTP Error 401: Unauthorized
-05:50:06 stt match 0.98, diffs [['оаэ', 'уаэ']]
-05:50:06 reel-1103-poezd-abu-dabi: voice 18.4s, shots [3.8, 4.4, 4.3, 6.8]
-05:50:07 clip 1: pixabay px3608 (Coverr-Free-Footage [reading, comics, subway, subway station,]) «train passengers interior»
-05:50:08 clip 2: pixabay px120479 (ChristianBodhi [train, railway, journey, travel, railroa]) «train window view desert»
-05:51:37 clip 3: v2.5-turbo 5s ok
-05:51:43 music: elevenlabs ok
-05:54:20 rendered reel v2 reel-1103-poezd-abu-dabi: 19.3s, 11.5 MB, music=True
+05:57:34 start reel-1103-poezd-abu-dabi
+05:57:35 reel-1103-poezd-abu-dabi: voice 18.4s, shots [3.8, 4.4, 4.3, 6.8]
+05:57:36 clip 2: pixabay px284568 (antonlukin [namibia, nature, africa, drone, desert, ]) «desert sand dunes aerial day»
+06:00:11 rendered reel v2 reel-1103-poezd-abu-dabi: 19.3s, 9.4 MB, music=True
