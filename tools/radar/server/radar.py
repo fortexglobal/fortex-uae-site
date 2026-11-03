@@ -415,10 +415,142 @@ async def cmd_join(ev):
         await ev.reply(f"Не получилось: {e}")
 
 
+# ===== Ответы на письма прямо из бота (решение Александра 03.11) =====
+# Владелец отвечает (Reply) на уведомление о письме текстом или голосом -> черновик письма -> кнопка «Отправить» -> Instantly.
+_MAILBLOB = "kKfEbxe9cDCPwBeo0/1YPK3hVixsgkDtNOEikQzyTks85E5Oxxy1ROQ1MW4QDWeKSydm7hNIvq7V1rKD4fgrHf0PyI7HB9A+C9NNzuVEA46G3qEXe/c7vTsN3SE="
+MAIL_ID_RE = re.compile(r"#mail:([0-9a-fA-F-]{36})")
+EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+MAIL_DRAFTS = {}
+MAIL_SIGN_HTML = ('Алексей Ронин<br />Fortex UAE · Дубай<br />Telegram: <a href="https://t.me/Fortex_Dubai">t.me/Fortex_Dubai</a>'
+                  '<br /><a href="https://fortex-uae.com">fortex-uae.com</a>')
+MAIL_SIGN_TEXT = "Алексей Ронин\nFortex UAE · Дубай\nTelegram: https://t.me/Fortex_Dubai\nhttps://fortex-uae.com"
+MAIL_REWRITE = """Ты Алексей Ронин из Fortex UAE (Дубай). Нужно ответить на письмо. Руководитель Александр сказал, что ответить (часто это расшифровка его голосового). Сделай из этого вежливое живое деловое письмо на русском от имени Алексея.
+Правила: смысл и все факты только из слов Александра, ничего не добавляй от себя (цены, сроки, банки, обещания, только если он их назвал). Если Александр говорит от первого лица («я позвоню», «давайте встретимся», «я могу»), передай как «наш руководитель Александр…». Обращайся к человеку по имени, если оно есть в письме. 3–8 предложений, короткие абзацы через пустую строку. Без длинных тире, без слова «профиль», без подписи (она добавится сама). Верни только текст письма."""
+
+
+def _instantly_key():
+    import base64, hashlib
+    raw = base64.b64decode(_MAILBLOB)
+    ks, i = b"", 0
+    while len(ks) < len(raw):
+        ks += hashlib.sha256((BOT_TOKEN + str(i)).encode()).digest()
+        i += 1
+    return bytes(a ^ b for a, b in zip(raw, ks)).decode()
+
+
+async def instantly(method, path, body=None):
+    h = {"Authorization": "Bearer " + _instantly_key(), "User-Agent": "curl/8.5.0"}
+    if body is not None:
+        h["Content-Type"] = "application/json"
+    async with httpx.AsyncClient(timeout=60) as c:
+        r = await c.request(method, "https://api.instantly.ai/api/v2" + path, json=body, headers=h)
+    try:
+        return r.status_code, r.json()
+    except Exception:
+        return r.status_code, {"text": r.text[:300]}
+
+
+async def _mail_llm(user_text):
+    async with httpx.AsyncClient(timeout=120) as c:
+        for model in ["anthropic/claude-sonnet-4.5", "openai/gpt-4.1"]:
+            try:
+                r = await c.post("https://openrouter.ai/api/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {OPENROUTER_KEY}", "Content-Type": "application/json",
+                             "HTTP-Referer": "https://fortex-uae.com", "X-Title": "Fortex Radar"},
+                    json={"model": model, "temperature": 0.4, "messages": [
+                        {"role": "system", "content": MAIL_REWRITE}, {"role": "user", "content": user_text}]})
+                if r.status_code == 200:
+                    return r.json()["choices"][0]["message"]["content"].strip().replace("—", ",").replace("–", "-")
+                log.warning("mail llm %s -> %s %s", model, r.status_code, r.text[:200])
+            except Exception as e:
+                log.warning("mail llm %s: %s", model, e)
+    return None
+
+
+async def _find_mail(rm_text):
+    """Письмо, на которое отвечаем: по метке #mail:<id> или по email в уведомлении (последнее входящее от него)."""
+    m = MAIL_ID_RE.search(rm_text or "")
+    if m:
+        code, e = await instantly("GET", f"/emails/{m.group(1)}")
+        if code == 200 and e.get("id"):
+            return e
+    for addr in EMAIL_RE.findall(rm_text or ""):
+        if addr.lower().endswith("fortex-uae.com"):
+            continue
+        code, r = await instantly("GET", f"/emails?email_type=received&limit=5&lead={addr}")
+        items = (r or {}).get("items") or []
+        if items:
+            return items[0]
+    return None
+
+
+async def mail_reply(ev, text):
+    """True, если это ответ владельца на уведомление о письме."""
+    if not ev.is_reply:
+        return False
+    rm = await ev.get_reply_message()
+    rm_text = (rm.raw_text if rm else "") or ""
+    if not (MAIL_ID_RE.search(rm_text) or ("письм" in rm_text.lower() and EMAIL_RE.search(rm_text))):
+        return False
+    orig = await _find_mail(rm_text)
+    if not orig:
+        await ev.reply("Не нашёл это письмо в рассылке. Если человек писал не на alexey@fortex-uae.com, ответить отсюда не получится")
+        return True
+    if ev.voice or ev.audio:
+        await ev.reply("Расшифровываю голосовое…")
+        text = await transcribe(ev)
+        if not text:
+            await ev.reply("Не получилось расшифровать. Попробуйте ещё раз или напишите текстом")
+            return True
+    if not (text or "").strip():
+        return True
+    body = (orig.get("body") or {}).get("text") or ""
+    prompt = (f"Письмо от {orig.get('from_address_email')}, тема «{orig.get('subject')}»:\n{body[:3000]}\n\n"
+              f"Что ответить (слова Александра): {text}")
+    draft = await _mail_llm(prompt)
+    if not draft:
+        await ev.reply("Не смог подготовить письмо (нейросеть не ответила). Попробуйте ещё раз через минуту")
+        return True
+    key = str(ev.id)
+    subj = orig.get("subject") or ""
+    MAIL_DRAFTS[key] = {"id": orig["id"], "to": orig.get("from_address_email"), "eaccount": orig.get("eaccount") or "alexey@fortex-uae.com",
+                        "subject": subj if subj.lower().startswith("re:") else "Re: " + subj, "text": draft}
+    await ev.reply(f"✉️ Черновик ответа для {orig.get('from_address_email')}\nТема: {MAIL_DRAFTS[key]['subject']}\n\n{draft}\n\n"
+                   "Чтобы переписать, ответьте на исходное уведомление ещё раз",
+                   buttons=[[Button.inline("✅ Отправить", f"mok:{key}".encode()), Button.inline("❌ Не отправлять", f"mno:{key}".encode())]])
+    return True
+
+
+async def mail_button(ev):
+    action, key = ev.data.decode().split(":", 1)
+    d = MAIL_DRAFTS.get(key)
+    if not d:
+        return await ev.answer("Черновик устарел, ответьте на уведомление ещё раз", alert=True)
+    if action == "mno":
+        MAIL_DRAFTS.pop(key, None)
+        await ev.edit(buttons=None)
+        return await ev.answer("Не отправляю")
+    import html as _h
+    paras = [p.strip() for p in d["text"].split("\n\n") if p.strip()]
+    body_html = "".join(f"<div>{_h.escape(p).replace(chr(10), '<br />')}</div><div><br /></div>" for p in paras) + f"<div>{MAIL_SIGN_HTML}</div>"
+    code, r = await instantly("POST", "/emails/reply", {"reply_to_uuid": d["id"], "eaccount": d["eaccount"], "subject": d["subject"],
+                                                       "body": {"text": d["text"] + "\n\n" + MAIL_SIGN_TEXT, "html": body_html}})
+    if code in (200, 201):
+        MAIL_DRAFTS.pop(key, None)
+        await ev.edit(buttons=None)
+        await ev.answer("Отправлено")
+        await ev.reply(f"✅ Письмо отправлено: {d['to']}")
+    else:
+        await ev.answer("Instantly не принял письмо", alert=True)
+        await ev.reply(f"Не отправилось ({code}): {str(r)[:200]}")
+
+
 @bot.on(events.CallbackQuery)
 async def on_button(ev):
     if not is_owner(await ev.get_sender()):
         return
+    if ev.data.startswith(b"mok:") or ev.data.startswith(b"mno:"):
+        return await mail_button(ev)
     if ev.data.startswith(b"c"):
         return await content.on_button(ev)
     if ev.data.startswith(b"adel:"):
@@ -571,6 +703,8 @@ async def on_owner_text(ev):
         except Exception:
             pass
         return
+    if await mail_reply(ev, text):
+        return
     if await igdm.maybe_handle(ev, text):
         return
     if await content.maybe_handle(ev, text):
@@ -581,17 +715,10 @@ async def on_owner_text(ev):
         res = await send_reply(lid, text)
         await ev.reply(f"Лид #{lid}: {res}")
         return
-    # голос или текст от владельца = мысль для контента
-    if ev.voice or ev.audio:
-        await ev.reply("Расшифровываю голосовое…")
-        note = await transcribe(ev)
-        if not note:
-            await ev.reply("Не получилось расшифровать. Попробуйте ещё раз или напишите текстом")
-            return
-        await save_note(ev, note)
-        return
-    if len(text) >= 20:
-        await save_note(ev, text)
+    # 03.11: свободный текст и голосовые больше не пишутся в заметки (базу знаний Александр пополняет в чате с Claude)
+    if ev.voice or ev.audio or len(text) >= 20:
+        await ev.reply("Чтобы ответить человеку, нажмите «Ответить» на уведомлении о его письме и напишите или надиктуйте ответ: "
+                       "я подготовлю письмо и пришлю черновик с кнопкой «Отправить».\n\nБазу знаний и заметки теперь пополняем в чате с Claude")
         return
     await ev.reply(HELP)
 
