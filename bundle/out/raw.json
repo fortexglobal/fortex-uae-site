@@ -13,8 +13,8 @@
      "title": "lux-v1 компания (юмор)",
      "referenceKey": null,
      "postDate": "2026-11-03T15:54:00.000Z",
-     "postedDate": null,
-     "status": "SCHEDULED",
+     "postedDate": "2026-11-03T15:54:47.182Z",
+     "status": "POSTED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
@@ -34,10 +34,16 @@
      "error": null,
      "errors": {},
      "errorsVerbose": {},
-     "externalData": {},
+     "externalData": {
+      "INSTAGRAM": {
+       "id": "18393041035228085",
+       "permalink": "https://www.instagram.com/reel/DfSQBe8AvCp/",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/4a2d5d92-aaaa-4a64-86c1-d40ebadc85c0.jpeg"
+      }
+     },
      "retryCount": 0,
      "createdAt": "2026-11-03T15:48:59.395Z",
-     "updatedAt": "2026-11-03T15:48:59.395Z",
+     "updatedAt": "2026-11-03T15:54:47.183Z",
      "deletedAt": null,
      "firstComment": null,
      "uploads": [
@@ -74,11 +80,11 @@
       {
        "postId": "f49a8645-6e9c-42b4-8f4f-100f7dbb2e09",
        "socialAccountId": "8705fd63-5d38-4d05-ba89-77e278e0580b",
-       "externalPostId": null,
+       "externalPostId": "18393041035228085",
        "externalAlternatePostId": null,
        "externalVideoId": null,
        "createdAt": "2026-11-03T15:48:59.395Z",
-       "updatedAt": "2026-11-03T15:48:59.395Z",
+       "updatedAt": "2026-11-03T15:54:47.116Z",
        "deletedAt": null,
        "socialAccount": {
         "id": "8705fd63-5d38-4d05-ba89-77e278e0580b",
