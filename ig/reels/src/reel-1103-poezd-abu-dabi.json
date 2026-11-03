@@ -1,0 +1,42 @@
+{
+ "v": 2,
+ "status": "approved",
+ "publish_at": "2026-11-03T19:00+04:00",
+ "ring": 4,
+ "look": "light",
+ "format_kind": "новость",
+ "hook": "Из Дубая в Абу-Даби на поезде от 39 AED",
+ "accent": "от 39 AED",
+ "music": "electro breakbeat, 126 bpm, chugging 16th-note analog bassline that rolls like train wheels on rails, tight 909 rimshots and dry claps, short filtered chord stabs, signature sound: a soft rising synth swell like a passing train that lands on each scene change, no vocals, sparse, leaves room for voice",
+ "shots": [
+  {
+   "q": "dubai highway day",
+   "prompt": "car driving on a wide Dubai highway with skyscrapers in bright daylight, smooth forward motion, no people close up",
+   "say": "Теперь между эмиратами можно ездить без машины и без пробок.",
+   "link": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4"
+  },
+  {
+   "q": "train passengers interior",
+   "prompt": "passengers seen from behind sitting in a bright modern train carriage, sunlight through large windows, gentle motion, no faces",
+   "say": "Новый поезд ОАЭ продал {120 тысяч|сто двадцать тысяч} билетов за первый месяц."
+  },
+  {
+   "q": "train window view desert",
+   "prompt": "view from a modern train window of a sunny desert landscape rushing by, bright daylight, no people",
+   "say": "Дорога до Абу-Даби около часа, билет от {39|тридцати девяти} дирхамов."
+  },
+  {
+   "q": "dubai skyline day",
+   "prompt": "aerial drone flight over Dubai skyscrapers in bright daylight, smooth forward motion, no people close up",
+   "say": "А с {30 ноября|тридцатого ноября} откроют новые станции на западе страны."
+  }
+ ],
+ "cta": {
+  "title": "Подпишись",
+  "text": "Новости Дубая, которые экономят время и деньги",
+  "say": "Подпишись, чтобы узнавать новости Дубая первым."
+ },
+ "cover_title": "Поезд в Абу-Даби от 39 AED",
+ "cover_accent": "от 39 AED",
+ "caption": "Из Дубая в Абу-Даби теперь можно доехать на поезде за час и от 39 AED.\n\nПассажирская сеть Etihad Rail заработала 30 сентября и за первые 30 дней продала 120 000 билетов. Поезда соединяют Абу-Даби, Дубай, Аль-Дайд (Шарджа) и Фуджейру.\n\nСтанция в Дубае: Al Yalayis в Jumeirah Golf Estates, к ней ведёт пешеходный мост от станции метро на красной ветке. В Абу-Даби поезд приходит на станцию в Mohamed bin Zayed City. В пути около 1 часа 4 минут.\n\nБилет из Дубая в Абу-Даби от 39 AED в классе Comfort, Premium от 109 AED. Цена зависит от дня и времени поездки.\n\n30 ноября откроют станции Madinat Zayed и Liwa, 30 декабря Al Sila, Al Mirfa и Al Dhannah. По данным Gulf News и The National.\n\nВы бы поехали в Абу-Даби на поезде или по-прежнему на машине? Перешлите тому, кто часто ездит между эмиратами.\n\n#дубай #оаэ #новостидубая #абудаби #etihadrail #дубайжизнь"
+}
