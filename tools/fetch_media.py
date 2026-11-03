@@ -24,6 +24,19 @@ for src in glob.glob("research/fetch/*.json"):
         if os.path.exists(out):
             continue
         try:
+            if it.get("apify"):
+                # медиа публичных постов из датасета Apify (картинки каруселей и видео рилсов)
+                with urllib.request.urlopen(f"https://api.apify.com/v2/datasets/{it['apify']}/items?clean=1", timeout=60) as r:
+                    rows = json.load(r)
+                os.makedirs(out, exist_ok=True)
+                for row in rows:
+                    sc = row.get("shortCode", "x")
+                    if row.get("videoUrl"):
+                        dl(row["videoUrl"], os.path.join(out, sc + ".mp4"))
+                    for n, u in enumerate(row.get("images") or [], 1):
+                        dl(u, os.path.join(out, f"{sc}_{n}.jpg"))
+                    log.append(f"ok {out}/{sc}")
+                continue
             if it.get("url"):
                 dl(it["url"], out)
                 log.append(f"ok {out}")
