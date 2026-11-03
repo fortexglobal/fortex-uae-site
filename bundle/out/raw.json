@@ -5,16 +5,45 @@
    "GET",
    "/api/v1/social-account/by-type?type=INSTAGRAM&teamId=34938f1a-9cb5-4a85-be16-15addc7b8989",
    [
-    400,
-    "{\"statusCode\":400,\"message\":\"Team does not have a Instagram account\"}"
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/social-account/by-type?type=FACEBOOK&teamId=34938f1a-9cb5-4a85-be16-15addc7b8989",
-   [
-    400,
-    "{\"statusCode\":400,\"message\":\"Team does not have a Facebook account\"}"
+    200,
+    {
+     "id": "8705fd63-5d38-4d05-ba89-77e278e0580b",
+     "type": "INSTAGRAM",
+     "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
+     "username": null,
+     "displayName": null,
+     "bio": null,
+     "avatarUrl": "https://storage.bundle.social/social-account-avatars/bee2c21a-174c-443c-b7ee-b9462507ab29/8705fd63-5d38-4d05-ba89-77e278e0580b/3e8f62364b0f574a-6cda3a5d94945faa.jpg",
+     "externalId": null,
+     "providerPageId": null,
+     "userUsername": "122103011547530730",
+     "userDisplayName": "Alexey Ronin",
+     "userEmail": "fortexglobal.otc@gmail.com",
+     "userId": "122103011547530730",
+     "channels": [
+      {
+       "id": "17841434625185251",
+       "name": "Счета в банках ОАЭ | Fortex UAE",
+       "username": "fortex__uae",
+       "avatarUrl": "https://storage.bundle.social/social-account-avatars/bee2c21a-174c-443c-b7ee-b9462507ab29/8705fd63-5d38-4d05-ba89-77e278e0580b-channel-17841434625185251/3198587fed1810eb-b55de06abdf3f3cc.jpg",
+       "metadata": {
+        "facebookPageId": "1431481810042135"
+       }
+      }
+     ],
+     "mastodonServerId": null,
+     "instagramConnectionMethod": "FACEBOOK",
+     "twitterSubType": null,
+     "isTiktokBusinessAccount": null,
+     "disconnectedCheckTryAt": null,
+     "deleteOn": null,
+     "messagingStatus": "DISABLED",
+     "messagingStatusUpdatedAt": null,
+     "messagingLastError": null,
+     "createdAt": "2026-11-03T10:26:14.613Z",
+     "updatedAt": "2026-11-03T10:26:15.306Z",
+     "deletedAt": null
+    }
    ]
   ]
  ]
