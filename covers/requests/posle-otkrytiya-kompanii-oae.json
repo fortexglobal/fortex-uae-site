@@ -1,5 +1,6 @@
 {
- "prompt": "modern Dubai business office desk in the evening, a fresh company trade license document in a folder, a laptop, a pen and a cup of coffee, city towers glowing through the window, calm confident mood",
+ "prompt": "bright modern office meeting room in Dubai in the evening, wooden desk with an open laptop, a notebook, a pen and a cup of coffee, city skyline lights behind large windows, calm confident business mood",
  "title": "Компания открыта. Что дальше?",
- "topic": "Компании"
+ "topic": "Компании",
+ "new_bg": true
 }
