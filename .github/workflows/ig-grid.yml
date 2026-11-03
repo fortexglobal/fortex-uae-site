@@ -1,0 +1,22 @@
+name: Instagram grid preview
+on:
+  workflow_dispatch:
+  push:
+    paths: ["ig/grid/req"]
+permissions:
+  contents: write
+jobs:
+  grid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch grid covers (read only)
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/ig_grid.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add ig/grid
+          git diff --cached --quiet || (git commit -m "Instagram grid preview" && git pull --rebase && git push)
