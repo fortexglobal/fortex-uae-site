@@ -79,6 +79,7 @@ if cmd == "post":  # {"cmd":"post","teamId":..,"posts":[{"title","video","cover"
                 return x.status, json.loads(x.read())
         except urllib.error.HTTPError as e:
             return e.code, e.read()[:1000].decode("utf-8", "ignore")
+    out["deleted"] = [[i, call("DELETE", f"/api/v1/post/{i}")[0]] for i in req.get("delete", [])]
     out["r"] = []
     for p in req["posts"]:
         res = {"title": p["title"]}
