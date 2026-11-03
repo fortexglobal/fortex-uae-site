@@ -9,8 +9,8 @@
    "must": "dubai"
   },
   {
-   "stock": "clock waiting",
-   "must": ""
+   "stock": "dubai metro station",
+   "must": "dubai"
   },
   {
    "stock": "business documents desk",
@@ -50,5 +50,5 @@
  "y": 900,
  "music_q": "phonk",
  "caption": "Банк: приходите завтра.\nЗавтра: приходите послезавтра.\n\nМы собираем документы так, чтобы банку не пришлось просить ещё. Личные и корпоративные счета в ОАЭ, в том числе удалённо.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #жизньвдубае",
- "rev": 2
+ "rev": 3
 }
