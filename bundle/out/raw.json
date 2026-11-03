@@ -2,276 +2,43 @@
  "cmd": "raw",
  "r": [
   [
-   "POST",
-   "/api/v1/social-account/set-channel",
+   "DELETE",
+   "/api/v1/post/f11c84d4-373c-404a-bb4e-239b7f768ec4",
    [
     200,
     {
-     "id": "8705fd63-5d38-4d05-ba89-77e278e0580b",
-     "type": "INSTAGRAM",
+     "id": "f11c84d4-373c-404a-bb4e-239b7f768ec4",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
-     "username": "fortex__uae",
-     "displayName": "Счета в банках ОАЭ | Fortex UAE",
-     "bio": "▪️Откроем любой счет в ОАЭ для россиян \n▪️Сложные случаи после отказов · Визы · Компании\n▪️Бесплатная консультация 💯 \n👇 разбор вашей ситуации",
-     "avatarUrl": "https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/859698095_18111449486154173_5610982531235461627_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7d201b&_nc_ohc=OYFUDUj_2EUQ7kNvwH2gl0-&_nc_oc=AdpxV-mGfQUXq97ez-3p2x1oEZn1Z83VSzkIX8o1GhwXZNymvnxHe1o6xokOQn5ZX14&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AJ-jyNUEAAAA&_nc_gid=kEsuEHlGkcj_TG0QoyNrRA&oh=00_AQRhTp2edPKvvexXyBYKJ5XxaN841p23qzfieHAMRq3SnA&oe=6AEF8AD6",
-     "externalId": "17841434625185251",
-     "providerPageId": "1431481810042135",
-     "userUsername": "122103011547530730",
-     "userDisplayName": "Alexey Ronin",
-     "userEmail": "fortexglobal.otc@gmail.com",
-     "userId": "122103011547530730",
-     "channels": [
-      {
-       "id": "17841434625185251",
-       "name": "Счета в банках ОАЭ | Fortex UAE",
-       "username": "fortex__uae",
-       "avatarUrl": "https://storage.bundle.social/social-account-avatars/bee2c21a-174c-443c-b7ee-b9462507ab29/8705fd63-5d38-4d05-ba89-77e278e0580b-channel-17841434625185251/3198587fed1810eb-b55de06abdf3f3cc.jpg",
-       "metadata": {
-        "facebookPageId": "1431481810042135"
+     "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
+     "title": "joke 2026-11-04",
+     "referenceKey": null,
+     "postDate": "2026-11-04T09:30:00.000Z",
+     "postedDate": null,
+     "status": "DELETED",
+     "data": {
+      "INSTAGRAM": {
+       "type": "REEL",
+       "text": "Банк: приходите завтра.\nЗавтра: приходите послезавтра.\n\nМы собираем документы так, чтобы банку не пришлось просить ещё. Личные и корпоративные счета в ОАЭ, в том числе удалённо.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #жизньвдубае",
+       "uploadIds": [
+        "a7cc9b76-c4b4-49b4-8515-18cd4c8b6154"
+       ],
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/6a7d84b4-4b7d-4473-9f02-3d0f8e731ccc.jpeg",
+       "shareToFeed": false,
+       "musicSoundInfo": {
+        "musicSoundId": "1347176186322399",
+        "musicSoundVolume": 0,
+        "videoOriginalSoundVolume": 100
        }
       }
-     ],
-     "mastodonServerId": null,
-     "instagramConnectionMethod": "FACEBOOK",
-     "twitterSubType": null,
-     "isTiktokBusinessAccount": null,
-     "disconnectedCheckTryAt": null,
-     "deleteOn": null,
-     "messagingStatus": "DISABLED",
-     "messagingStatusUpdatedAt": null,
-     "messagingLastError": null,
-     "createdAt": "2026-11-03T10:26:14.613Z",
-     "updatedAt": "2026-11-03T10:27:47.412Z",
-     "deletedAt": null
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=music&searchQuery=luxury",
-   [
-    200,
-    {
-     "audio": [
-      {
-       "audio_id": "2477944699150252",
-       "cover_artwork_thumbnail_uri": "https://static.xx.fbcdn.net/rsrc.php/yM/r/LXmIH1W7DBC.webp",
-       "display_artist": "Dr. Pheel",
-       "duration_in_ms": 176250,
-       "audio_type": "music",
-       "title": "Peaceful Piano",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNXsorbOut-qN1uzNeS-m4lHIK4p4gebrpncxytUr1YKf4zMVkdnRHJbO_NSkJbirKbq7igaEBdcUhPkEDW53h-.mp4?strext=1&_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=Y6METjr3QgIQ7kNvwFDXMyM&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTEyNjQ4NDc2NTIwNTg5OSwiYXNzZXRfYWdlX2RheXMiOjI1ODMsInZpX3VzZWNhc2VfaWQiOjEwNTY4LCJkdXJhdGlvbl9zIjoxNzYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTG0ek37tzzE9fSew_6lDecALomBjKwPK6JPIQxt0Z5zw&oe=6AEF74E8&dl=1"
-      },
-      {
-       "audio_id": "796285350766311",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/334155965_5821718184607417_1962187574669616260_n.jpg?stp=c0.683.1365.1365a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=ZYe0VuVmLn4Q7kNvwF3r8yK&_nc_oc=AdohmMWjHGdimxlelm8CPLUfCHTnuRjHEB902j7CY_R3lVUj1pm0BwjAcFEJkFusRo4&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQRLDJgJ0QWj262QIwY0lWaA3DUEsuIXe50JUSNEqJ1Y_Q&oe=6AEF9AF4",
-       "display_artist": "Mike Block (Producer)",
-       "duration_in_ms": 239750,
-       "audio_type": "music",
-       "title": "Brahms Violin Sonata 108 #3-2",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNyM9ZuXaudHuTAKhuHloEkanpfPwsngJgENyGqTzvmdijFrzGVdfEBIC9wKYnV6EXIA2AuVlLt7JXkojocca4p.mp4?strext=1&_nc_cat=100&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=KowLvXasETkQ7kNvwFisS-T&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTQ3MDM0MTMwNjg5NTk4OSwiYXNzZXRfYWdlX2RheXMiOjI3MTIsInZpX3VzZWNhc2VfaWQiOjEwNTY4LCJkdXJhdGlvbl9zIjoyMzksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQAri3GAGVtyKHJOZxzXwWQOj3pg0gO4VMxkCiXep3XOA&oe=6AEFA512&dl=1"
-      },
-      {
-       "audio_id": "2185456801802676",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/274602736_106434688647609_2260428062682802319_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=3Qxzeq5dDtUQ7kNvwEADUdt&_nc_oc=Ado6aW1R3b_6RlNQUd2YKIuIwAaf4mmY1BQzc8GQ4uJGsWq2_l4hWhIPDUcKBsb4Gp4&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQQefmQc0YeMvj6Ro1CAZDLfEhcK8c7dvHWlc0gP1X2cww&oe=6AEF7994",
-       "display_artist": "Sugartapes",
-       "duration_in_ms": 157760,
-       "audio_type": "music",
-       "title": "Head In The Clouds",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQPrCmu_37XLZUIf7Y-9o0xk52kGYOjquEOswKM-ffRBf9ofpAYmaGRt6NAWupx8EzIJKIDsEsc4l_ws7RwgdmTE.mp4?strext=1&_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=c2oJJ0VTfGwQ7kNvwHYyVBW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTIyNTA5MTY1NTEyNzc0NSwiYXNzZXRfYWdlX2RheXMiOjk0NSwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE1NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTvYLWenJxMIZikBFU3szD7rDeuIrls2KACH45VM97S6g&oe=6AEF7936&dl=1"
-      },
-      {
-       "audio_id": "1372666635060078",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQSUCl7BlWW8eAhcmtLCw2LuDjHhYb6oLTmZicij0LlWhA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 60035,
-       "audio_type": "music",
-       "title": "Breathtaker",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQOROwuJP6MUuNC_EOdGxe1knKzAOtRwRQZmVCRL8u2D0DnwrU4VAAaDBgIdHkz3le20qGygULgt55-Qrx7HfXiH.mp4?strext=1&_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=LNa_cyD0QP4Q7kNvwFZzPNO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6OTg5OTc5OTI3NDIzMjc2LCJhc3NldF9hZ2VfZGF5cyI6ODAsInZpX3VzZWNhc2VfaWQiOjEwNTY4LCJkdXJhdGlvbl9zIjo2MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQ6w8lQuEeraigh5JAsK3qa7WPvSuGSEWg3PjSrMtn26Q&oe=6AEF7AEC&dl=1"
-      },
-      {
-       "audio_id": "561265408494798",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/210700752_4167686903292458_4716434385737305258_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=xfMLNunYuqAQ7kNvwFvUBiC&_nc_oc=AdoRfUzWckk5S5SDhPlXsPQLo5wMFk7a1DFLtQsPrO0YrVPKLYWm79FomEpaKQ-oYaY&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQQVsGx3seNtxZsAwTNjbAxbk9WD-AHXKgQuxL3orQGORg&oe=6AEFA1F7",
-       "display_artist": "Mignon Geli",
-       "duration_in_ms": 184666,
-       "audio_type": "music",
-       "title": "Medicine Mountain (feat. Phillip J. Moore)",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPYEqAuYtES8ZdCNFOoh2Zf9yZMmIVQVv9KRSXrsr9uTqghYfARjDjHRsO0cP3n4qPlovV9AUsBaU7EPNsBpu94.mp4?strext=1&_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=lzjNaQgmQ70Q7kNvwF18GgA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6OTEyMDcyNjcwNjAwMjgzLCJhc3NldF9hZ2VfZGF5cyI6MTgzMSwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE4NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTJpHhWqZktlnksrZv5enXWjtaYqAWIdafdvMw217qx2A&oe=6AEF9BA1&dl=1"
-      },
-      {
-       "audio_id": "421348377170726",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQSUCl7BlWW8eAhcmtLCw2LuDjHhYb6oLTmZicij0LlWhA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 138650,
-       "audio_type": "music",
-       "title": "Deep Blue",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNEQphw3SVKpURyzib7esCmRVn0fpLVcVz5I-q5lzr1DvVi8FC6o9VrN9B8YU8AzgI-aTmnp5dkkFwUN6xc6Vwu.mp4?strext=1&_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=hjpYRA5yLSMQ7kNvwFiyRYc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTUwNzIyMTIyMDIwNTQ2OSwiYXNzZXRfYWdlX2RheXMiOjkxNiwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjEzOCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQRLIf3lANM_NSmTr614VOjispFLcX2ifnus-i0Cm9C3hQ&oe=6AEFA034&dl=1"
-      },
-      {
-       "audio_id": "969600794596390",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469782732_1162006038638037_5775078101940730184_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=TWQboWPNdqAQ7kNvwEBETho&_nc_oc=Adp5psVGs2_p6iFGkSYiXsPFnf2ZxNNy4uQUstZeLDxydllVgKckEc9uBRTqhL0o8gg&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQQ7sPzCVe1f1-x11_E0QvzPOxLkpalyBuX2KXk0puBuzw&oe=6AEF96B2",
-       "display_artist": "Rik Basu",
-       "duration_in_ms": 164040,
-       "audio_type": "music",
-       "title": "Sitaron Ke Pass",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMlgrQko9VHMw-hQzk0pqEhAVfZmsCiK-5LbgO7HLZuLY5r5EVJPkCfScfNNVI85J3q28B169crZhz-5eLj7Oh2.mp4?strext=1&_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=7Ij0LHxy28EQ7kNvwHVZ-87&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NTAxODU0Nzg5MjEyNjI5LCJhc3NldF9hZ2VfZGF5cyI6NjM3LCJ2aV91c2VjYXNlX2lkIjoxMDgyMiwiZHVyYXRpb25fcyI6MTY0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQRpeR4-RLGenRkrT5XBCsvGMdUmFGq211l0XEGuYQO83Q&oe=6AEF84F4&dl=1"
-      },
-      {
-       "audio_id": "776855123643462",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/315714061_685012229658445_5262212836422871685_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=Cjmgg69rJlMQ7kNvwFG5Pc-&_nc_oc=AdqehSkG1GwFIOvUN1YVDeA12P7d4M2lfhAcd98DRMqWnHp2zEWJ-a_pesdY5zZ408U&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQQbvlTjk-Poe_ytlvvDCMD_bJYEVdB4yNfbqn9905TGcQ&oe=6AEF6E3C",
-       "display_artist": "Chela Rivas",
-       "duration_in_ms": 149508,
-       "audio_type": "music",
-       "title": "Hola",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNrN2PQb0qEqsKMxvyVBYlgmUcwl9_0abWOJdwzalhg8d0y1Zim55XDSAtVMq6irW8E-9bkdujIw4TuGwlDLgoN.mp4?strext=1&_nc_cat=103&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=gLG9qPuDO98Q7kNvwET2C_z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjM0NTMxMTM2Mzg3NzMxLCJhc3NldF9hZ2VfZGF5cyI6MTQ5NCwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE0OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQFZCE_xjN6RLYNAsdPyxHKB6GF9BRPprrvm5l2-TEL_g&oe=6AEF8003&dl=1"
-      },
-      {
-       "audio_id": "1147818560896993",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/315714061_685012229658445_5262212836422871685_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=Cjmgg69rJlMQ7kNvwFG5Pc-&_nc_oc=AdqehSkG1GwFIOvUN1YVDeA12P7d4M2lfhAcd98DRMqWnHp2zEWJ-a_pesdY5zZ408U&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQQbvlTjk-Poe_ytlvvDCMD_bJYEVdB4yNfbqn9905TGcQ&oe=6AEF6E3C",
-       "display_artist": "Chela Rivas",
-       "duration_in_ms": 177650,
-       "audio_type": "music",
-       "title": "Moomba",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMWk2V3uUQ6UndFZefA3BLM4CW_ISDs5ef583n7tXgReHpsLFFSLQHOsTcD3ZXUSsER1TyZ7Y9yGNlu7XsacjqK.mp4?strext=1&_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=B2PNRmBZ1RoQ7kNvwEv7NRO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTk3NTkwMzQyNjMxNTIzNCwiYXNzZXRfYWdlX2RheXMiOjM0MSwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE3NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQso9rHL2H3LZm7dcfz5_V0ozp-gDv1p3WKMAtkr--WlA&oe=6AEF9B38&dl=1"
-      },
-      {
-       "audio_id": "2662790980841451",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=LPIe48IYFUjJ-WTovZTPng&oh=00_AQSUCl7BlWW8eAhcmtLCw2LuDjHhYb6oLTmZicij0LlWhA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 58550,
-       "audio_type": "music",
-       "title": "Make Me",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQN8GVwjkaIeNTMM0Px5Ds8U2B8sRZOljuzT6LJZBqGuRm7ap_KXjxkZjDRv3ymBfh4yR1lB6Gthdp0gMOi8QOvh.mp4?strext=1&_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=Fac5lJMaKmkQ7kNvwEqX7_5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTExNTQxMTg1NDE0NjExMiwiYXNzZXRfYWdlX2RheXMiOjg4LCJ2aV91c2VjYXNlX2lkIjoxMDU2OCwiZHVyYXRpb25fcyI6NTgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQSXfC7PQ_54knUIZpVJJum_QFfc83BhhGmGljr2dWY_uA&oe=6AEFA0F5&dl=1"
-      },
-      {
-       "audio_id": "348215759196053",
-       "cover_artwork_thumbnail_uri": "https://static.xx.fbcdn.net/rsrc.php/yM/r/LXmIH1W7DBC.webp",
-       "display_artist": "G.No",
-       "duration_in_ms": 216557,
-       "audio_type": "music",
-       "title": "Luxury",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQPs5pppt2LrzXYFkmXnRxajgXPOpfzLl-4PaWiVsg_q2mLazMakvD2WgWlhkAxaFumqD72wOctRUJgUdtBgu4mO.mp4?strext=1&_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=4u2I_KpvpC4Q7kNvwEy6H-U&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NzgxMjc5Njk2MjEwNjUyMywiYXNzZXRfYWdlX2RheXMiOjI2ODEsInZpX3VzZWNhc2VfaWQiOjEwNTY4LCJkdXJhdGlvbl9zIjoyMTYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQv3aiQcYV6TsrN-JRoD6QS3pYgg0HkCRis5PCS-OFxRw&oe=6AEFA092&dl=1"
-      }
-     ]
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=music&searchQuery=dubai",
-   [
-    200,
-    {
-     "audio": [
-      {
-       "audio_id": "1626635767828538",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t1.6435-1/77379272_10157073050697362_9219561284171726848_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=xB788FZ9E_MQ7kNvwG0AQQc&_nc_oc=Adp-svO5cKuiMOAUMi8OqnLmOLqHPOT8h4y7cMcf-3PjeTESHBe8IlRvhyErhUVOQ_Y&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQR4992YZj-PslhiAWo09zbSzmjLzHpaOB7eM7NWM5nJ1g&oe=6B11155D",
-       "display_artist": "Ella Joy Meir",
-       "duration_in_ms": 168068,
-       "audio_type": "music",
-       "title": "King Crazy (Instrumental)",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNLZ6Sl-LB0qTeViML6k1FQX32B7WnOArJiiGE1yP9W-9fVJh-8iWv0DQK15lIF_EULYOEqnVcg8hV3wNzNIf0x.mp4?strext=1&_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=w7uezBMvW08Q7kNvwHIkRAk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NDc0NzE2NjU0ODkyODE4LCJhc3NldF9hZ2VfZGF5cyI6MTE1OSwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE2OCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQ-_Ztr3N6rmal2etT4sn7cOR8xUr6myE32VMEh3-0xww&oe=6AEF76EC&dl=1"
-      },
-      {
-       "audio_id": "562931326897871",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 130160,
-       "audio_type": "music",
-       "title": "Habibi",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMDerXCOERlQgdeBNlTRs9f35wDrM3ixQLpIl5H4jGYiuHTHfAUJqJ43flDyK3RRI8BEX4Q7T-9tEERxdERxILQ.mp4?strext=1&_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=EV4kzcwIWegQ7kNvwHVZAiY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NzM3NTk0NDk1ODkxMDgwLCJhc3NldF9hZ2VfZGF5cyI6NDg5LCJ2aV91c2VjYXNlX2lkIjoxMDU2OCwiZHVyYXRpb25fcyI6MTMwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTV2xZjgLR4Q2ySTdKql4LeFLrXBL-Rd3HTeYl3xqMIvg&oe=6AEFA2AC&dl=1"
-      },
-      {
-       "audio_id": "534836465627737",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 135460,
-       "audio_type": "music",
-       "title": "Midnight Dreamer",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMrP5bQyiOPRkeAuPYjUNlG4J-LW028L7UOFkRNgZCszi1xNc-GwRMyqbQ5P2JnQEGdpNAn21K061kKn3gvZAqh.mp4?strext=1&_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=vL_t4UC7vrQQ7kNvwFNJd4x&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NDg0NjIyMjIxMDg3MDc2LCJhc3NldF9hZ2VfZGF5cyI6Nzk1LCJ2aV91c2VjYXNlX2lkIjoxMDU2OCwiZHVyYXRpb25fcyI6MTM1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTvQxNRwSHtWDci1E4UFdgiWClvfd59z7eQhj6N_1XCHg&oe=6AEFA421&dl=1"
-      },
-      {
-       "audio_id": "341745901246038",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/671266519_1503406028079138_3052593733305415062_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=wmWVpIRYPZ0Q7kNvwEjQCGi&_nc_oc=AdogtnwoWEuYdt68wXdDAOSfREBgq0oxMhNiXGbled1atFQNRsEiCZ-4exYRw7Dn5ec&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQt7qI0vZxMzdAX7-kAkLK72fhHOs7Wh-2SIgWUjH1F8A&oe=6AEF9A54",
-       "display_artist": "Mani Draper",
-       "duration_in_ms": 135906,
-       "audio_type": "music",
-       "title": "Long Way Home",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPs6JDXZv26aFbK6PBRnm_r9Km1-zg1ItplaFKQO5UrGe9k7SxeiIavL_wIOpHF6q2SZT6Y3QEwkVZiVHBt8BJG.mp4?strext=1&_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=f2VHDx1dZ08Q7kNvwFbj7tX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6OTkxOTg1MDQyNTA4NTE5LCJhc3NldF9hZ2VfZGF5cyI6MTYxNiwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjEzNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTn7xhJugmR0K1mWrA3llSPQMZkmxu5SLJxqvSHBhIKrA&oe=6AEF7D98&dl=1"
-      },
-      {
-       "audio_id": "963714851530295",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 157683,
-       "audio_type": "music",
-       "title": "Arabic Sunset",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMbqnSKiTGMYACI6I8Dd2bqP9LOXjwvdc5RTSzl20I2i3td5frpDvFCBHNGnIwHr1hN_Tftn_hs9-kx7Zk98JTr.mp4?strext=1&_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=7xypsBTw8U8Q7kNvwGF-Fgl&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODA4NjM3MTExMjk3NTY0LCJhc3NldF9hZ2VfZGF5cyI6MTE4OSwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE1NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQSTdva3wR87MM0chDJnWTvLrsRnQNxH-aLLoKIdsZ07EA&oe=6AEFA4E5&dl=1"
-      },
-      {
-       "audio_id": "784691813695630",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 131528,
-       "audio_type": "music",
-       "title": "Magic Of Arabia",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMGQumfkWU4evWsWBsEfRWRJvyLQm5cvPvranMePaiUhv7TOEnIi3CDPjvipF54q7Qepl8s6-tSL4cQXOoJjhcU.mp4?strext=1&_nc_cat=103&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=IRuTMtRxfTIQ7kNvwGBnO_Q&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6OTQwNzQ4MjUwODU4MDE1LCJhc3NldF9hZ2VfZGF5cyI6OTc3LCJ2aV91c2VjYXNlX2lkIjoxMDU2OCwiZHVyYXRpb25fcyI6MTMxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQQnkX7K31e6dc9CipEyYdDa9F36I1U28WLKjmX2aoSJA&oe=6AEF8B17&dl=1"
-      },
-      {
-       "audio_id": "1343098370370428",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/415893583_916288226530660_5955815784762171763_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=0NJX0JwdPdcQ7kNvwGXoGPq&_nc_oc=Adr8bpu_5NFDlq2dcI7OiPpr2MbDgbIZ_cbbeYeiEpEdVXVnzh6By4KVMvUkXL23SRQ&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQRl8nQu52SaGWxBo8FdF3b-BZ32FDrIh_Np2ABdH6RNzQ&oe=6AEF9615",
-       "display_artist": "Tony Dark Eyes",
-       "duration_in_ms": 155288,
-       "audio_type": "music",
-       "title": "Arabian Nights",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPRniohGDjL4R8pXRA-jwxS8X37raVNgUZ7FHVb6xQ8RBQ0cYKWUzUJpqJpEhgWwa8Nds-T4onVAyT5FtTmt-9W.mp4?strext=1&_nc_cat=100&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=v7WvVkGSoBUQ7kNvwER239z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTI5NTU0ODUzODIyNTIxOSwiYXNzZXRfYWdlX2RheXMiOjYxMiwidmlfdXNlY2FzZV9pZCI6MTA4MjIsImR1cmF0aW9uX3MiOjE1NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQTLtcazvHM5V6QpqjkxngBM9BQngIqUaOMt-3ePH9iAnQ&oe=6AEF9516&dl=1"
-      },
-      {
-       "audio_id": "915612133562826",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 138163,
-       "audio_type": "music",
-       "title": "Arabic Guitar",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQN1acbkyxs0gqecTAmOwiIWwVPiMJ5prS4zD10nqz8tJBLKghUglYvuoMLOvzZguM87-wTZP-bwlzgs2mA4g3qI.mp4?strext=1&_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=imngF0u6kLkQ7kNvwGF3CaS&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE3MjE4ODc3NDEzODY4MywiYXNzZXRfYWdlX2RheXMiOjEwMzUsInZpX3VzZWNhc2VfaWQiOjEwNTY4LCJkdXJhdGlvbl9zIjoxMzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQS6w7nouz4z7h7GF2kep2E9se9iBIuNfG6p20Z1bhYB1A&oe=6AEF9C70&dl=1"
-      },
-      {
-       "audio_id": "634177839298356",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/448512170_868656528419046_5732370623623642653_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=Nzzmk0R5qZ4Q7kNvwEGrFJU&_nc_oc=AdoZzoJEXpzHj08gjcOQqYp4HmKk-PDlD1zw0AYnhbUSD0yFgUlWBZQ91d_8nCHeEcE&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQSx2Yqz5hLwdEpbiilgtZ6xO-DLyh45uCnjnWsiPnSNQQ&oe=6AEF8A4E",
-       "display_artist": "Shuba",
-       "duration_in_ms": 173980,
-       "audio_type": "music",
-       "title": "Rose Petal Love",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPzEdu-HD1Fyz2St4I1DmB_rT-IoowgF2v5c9jUSmaaViomhN07vs9Zksu5PaBNN-wQu874gN7Chvsn5EKnvp7W.mp4?strext=1&_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=ggDPoxjLJJoQ7kNvwHO7cAJ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NjA1MTA4NjA1NzIyMDIzLCJhc3NldF9hZ2VfZGF5cyI6NjM3LCJ2aV91c2VjYXNlX2lkIjoxMDgyMiwiZHVyYXRpb25fcyI6MTczLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQTBdVah-iCthXAWdgDkAGGAaQkK_4HliXZmH0MROOkDw&oe=6AEF8A79&dl=1"
-      },
-      {
-       "audio_id": "7430773493688473",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 159260,
-       "audio_type": "music",
-       "title": "Marrakesh",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQPn01vzwR0jDNv5RF_fDkdQQL3j0BkzykoyfPj92QZIoimlAvk7FCKY4rMWPeclQKH93JHYFNPb28ExUcHV6Ms-.mp4?strext=1&_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=DXVUwJOtQKcQ7kNvwGVoztp&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTUxNDAxMjQxMjUyMDA4NywiYXNzZXRfYWdlX2RheXMiOjg4MiwidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE1OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQSnvssWiUQJoq4vzi3D6cG7yprrUXH8sLTvs9XvCTjhrw&oe=6AEFA013&dl=1"
-      },
-      {
-       "audio_id": "546796021562090",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/469664734_1119322796867067_2405028789482486743_n.jpg?stp=c159.159.682.682a_dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=1oZtTFco-hIQ7kNvwHSlAqD&_nc_oc=AdoYa9qqDeYMqK0gpMae67w7nQ81QxlVY33YQ4xyegKTkV5DmH-uhd0eTCi6LBU7Opk&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQQKaL_n19J3wqs2uPkwam75VycJ6knSzZj5EQvsbV8tZA&oe=6AEF6F3D",
-       "display_artist": "Giulio Cercato",
-       "duration_in_ms": 148100,
-       "audio_type": "music",
-       "title": "Dubai",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQN1m_RMP70Q3HCfXS0hfUMhAvMwPXCuEyVvOqprDf3reJ95aNl2wDfilO7hN4pTIo7C8uulpECHgWxnR4tzvjxC.mp4?strext=1&_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=wJ74xysE6OkQ7kNvwENtKjk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6NTg1NTg0OTEzODc1OTE5LCJhc3NldF9hZ2VfZGF5cyI6Njk4LCJ2aV91c2VjYXNlX2lkIjoxMDU2OCwiZHVyYXRpb25fcyI6MTQ4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQSVYjrc8HlQauFZ3gIZJ4U4Zclws9ps9wN_0-YEAJylqw&oe=6AEF8FE1&dl=1"
-      },
-      {
-       "audio_id": "393689273783570",
-       "cover_artwork_thumbnail_uri": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-1/315714061_685012229658445_5262212836422871685_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=1&ccb=1-7&_nc_sid=68a4df&_nc_ohc=Cjmgg69rJlMQ7kNvwFG5Pc-&_nc_oc=AdqehSkG1GwFIOvUN1YVDeA12P7d4M2lfhAcd98DRMqWnHp2zEWJ-a_pesdY5zZ408U&_nc_zt=24&_nc_ht=scontent-fra3-2.xx&edm=AOP_XFkEAAAA&_nc_gid=AluoCGY4NGvLkWAXyhlOYw&oh=00_AQTG-NUj8EBHdatSnchLmrObf38wAdjq9liOGsvyXMRPAQ&oe=6AEF6E3C",
-       "display_artist": "Chela Rivas",
-       "duration_in_ms": 151850,
-       "audio_type": "music",
-       "title": "Dubai",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPMPrzEYQqWQuhWX79krnc0DpZUvfSviqOHlrYGOhsejm1qNKZoaxaFcQDCorD1Vb0oCS1bqYgT-EaRPV5vmwtl.mp4?strext=1&_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=BXGPre9eUEcQ7kNvwFAtvgA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpb19hYWNwXzQ4X2ZyYWdfMl9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjA2NDM0NzE2Mzk2MzI3NSwiYXNzZXRfYWdlX2RheXMiOjc2MywidmlfdXNlY2FzZV9pZCI6MTA1NjgsImR1cmF0aW9uX3MiOjE1MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&edm=AOP_XFkEAAAA&_nc_zt=28&oh=00_AQQrvIvBhUxnzBdFsmr9INo1U_nX1sFx229vnkR66Y0hFQ&oe=6AEF70CD&dl=1"
-      }
-     ]
+     },
+     "error": null,
+     "errors": {},
+     "errorsVerbose": {},
+     "externalData": {},
+     "retryCount": 0,
+     "createdAt": "2026-11-03T12:42:28.180Z",
+     "updatedAt": "2026-11-03T12:43:38.848Z",
+     "deletedAt": "2026-11-03T12:43:38.848Z"
     }
    ]
   ]
