@@ -1,0 +1,9 @@
+{"items": [
+ {"stock": "businessman back seat luxury car", "must": "car", "out": "v1_car.mp4", "dur": 9, "start": 1},
+ {"stock": "dubai marina yacht", "must": "dubai", "out": "v2_1.mp4", "dur": 1.6, "start": 2},
+ {"stock": "burj khalifa", "must": "burj", "out": "v2_2.mp4", "dur": 1.6, "start": 2},
+ {"stock": "sports car driving dubai", "must": "car", "out": "v2_3.mp4", "dur": 1.6, "start": 2},
+ {"stock": "private jet", "must": "jet", "out": "v2_4.mp4", "dur": 1.6, "start": 2},
+ {"stock": "luxury hotel lobby", "must": "lobby", "out": "v2_5.mp4", "dur": 1.6, "start": 2},
+ {"stock": "dubai skyline sunset", "must": "dubai", "out": "v2_6.mp4", "dur": 2.2, "start": 2}
+]}
