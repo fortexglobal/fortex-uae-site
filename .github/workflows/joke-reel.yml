@@ -16,7 +16,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
-          pip install -q numpy
+          pip install -q numpy pillow
           cd tools/joke && npm init -y >/dev/null && npm i -s playwright@1.48.2 @fontsource/playfair-display@5 @fontsource/manrope@5 && npx playwright install --with-deps chromium >/dev/null
       - name: Build and schedule
         env:
