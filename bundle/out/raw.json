@@ -3,78 +3,61 @@
  "r": [
   [
    "GET",
-   "/api/v1/post/b0eab97f-6da7-4e40-b466-5d48dbf131e8",
+   "/api/v1/post/f49a8645-6e9c-42b4-8f4f-100f7dbb2e09",
    [
     200,
     {
-     "id": "b0eab97f-6da7-4e40-b466-5d48dbf131e8",
+     "id": "f49a8645-6e9c-42b4-8f4f-100f7dbb2e09",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
      "title": "lux-v1 компания (юмор)",
      "referenceKey": null,
-     "postDate": "2026-11-03T15:30:00.000Z",
-     "postedDate": "2026-11-03T15:39:09.317Z",
-     "status": "ERROR",
+     "postDate": "2026-11-03T15:54:00.000Z",
+     "postedDate": null,
+     "status": "SCHEDULED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
        "text": "Жизнь слишком простая? Есть решение: компания в Дубае.\n\nФризона или Mainland, счёт в банке, виза резидента, Emirates ID. Звучит как квест. Для нас это обычный вторник.\n\nПишите «компания» в директ или в Telegram @Fortex_Dubai. Сложности оставьте нам, себе оставьте море.\n\nfortex-uae.com\n\n#дубай #оаэ #компаниявдубае #бизнесвдубае #визаоаэ",
        "uploadIds": [
-        "61a906cd-e65b-46a4-a0d5-fe00107e0e19"
+        "523a452e-edfb-4cfd-9658-5090e9b0b9e3"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/82954c14-c78c-4464-9237-3b2b2dd524da.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/4a2d5d92-aaaa-4a64-86c1-d40ebadc85c0.jpeg",
        "shareToFeed": true,
        "musicSoundInfo": {
         "musicSoundId": "1039098790480932",
-        "musicSoundVolume": 0,
+        "musicSoundVolume": 1,
         "videoOriginalSoundVolume": 100
        }
       }
      },
      "error": null,
-     "errors": {
-      "INSTAGRAM": "Could not create a media container"
-     },
-     "errorsVerbose": {
-      "INSTAGRAM": {
-       "code": "Meta:1:2207099",
-       "errorMessage": "Audio volume cannot be set to 0",
-       "isTransient": false,
-       "retryability": "unknown",
-       "httpStatus": 400,
-       "meta": {
-        "type": "OAuthException",
-        "fbtrace_id": "AZCqpa3SeTlt90pIjAMszEi",
-        "error_subcode": 2207099,
-        "error_user_title": "invalid audio volume in audio configuration"
-       },
-       "userFacingMessage": "Could not create a media container"
-      }
-     },
+     "errors": {},
+     "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-03T12:20:05.679Z",
-     "updatedAt": "2026-11-03T15:39:09.317Z",
+     "createdAt": "2026-11-03T15:48:59.395Z",
+     "updatedAt": "2026-11-03T15:48:59.395Z",
      "deletedAt": null,
      "firstComment": null,
      "uploads": [
       {
-       "postId": "b0eab97f-6da7-4e40-b466-5d48dbf131e8",
-       "uploadId": "61a906cd-e65b-46a4-a0d5-fe00107e0e19",
-       "createdAt": "2026-11-03T12:20:05.679Z",
-       "updatedAt": "2026-11-03T12:20:05.679Z",
+       "postId": "f49a8645-6e9c-42b4-8f4f-100f7dbb2e09",
+       "uploadId": "523a452e-edfb-4cfd-9658-5090e9b0b9e3",
+       "createdAt": "2026-11-03T15:48:59.395Z",
+       "updatedAt": "2026-11-03T15:48:59.395Z",
        "deletedAt": null,
        "upload": {
-        "id": "61a906cd-e65b-46a4-a0d5-fe00107e0e19",
+        "id": "523a452e-edfb-4cfd-9658-5090e9b0b9e3",
         "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
         "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-        "iconUrl": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19-icon.jpg",
-        "thumbnailUrl": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19-thumbnail.jpg",
-        "url": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19.mp4",
+        "iconUrl": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3-icon.jpg",
+        "thumbnailUrl": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3-thumbnail.jpg",
+        "url": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3.mp4",
         "externalLink": null,
-        "iconPath": "34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19-icon.jpg",
-        "thumbnailPath": "34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19-thumbnail.jpg",
-        "path": "34938f1a-9cb5-4a85-be16-15addc7b8989/61a906cd-e65b-46a4-a0d5-fe00107e0e19.mp4",
+        "iconPath": "34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3-icon.jpg",
+        "thumbnailPath": "34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3-thumbnail.jpg",
+        "path": "34938f1a-9cb5-4a85-be16-15addc7b8989/523a452e-edfb-4cfd-9658-5090e9b0b9e3.mp4",
         "type": "video",
         "width": 1080,
         "height": 1920,
@@ -82,20 +65,20 @@
         "videoLength": 14,
         "mime": "video/mp4",
         "ext": "mp4",
-        "createdAt": "2026-11-03T12:20:00.148Z",
-        "updatedAt": "2026-11-03T12:20:00.148Z"
+        "createdAt": "2026-11-03T15:48:56.892Z",
+        "updatedAt": "2026-11-03T15:48:56.892Z"
        }
       }
      ],
      "socialAccounts": [
       {
-       "postId": "b0eab97f-6da7-4e40-b466-5d48dbf131e8",
+       "postId": "f49a8645-6e9c-42b4-8f4f-100f7dbb2e09",
        "socialAccountId": "8705fd63-5d38-4d05-ba89-77e278e0580b",
        "externalPostId": null,
        "externalAlternatePostId": null,
        "externalVideoId": null,
-       "createdAt": "2026-11-03T12:20:05.679Z",
-       "updatedAt": "2026-11-03T12:20:05.679Z",
+       "createdAt": "2026-11-03T15:48:59.395Z",
+       "updatedAt": "2026-11-03T15:48:59.395Z",
        "deletedAt": null,
        "socialAccount": {
         "id": "8705fd63-5d38-4d05-ba89-77e278e0580b",
