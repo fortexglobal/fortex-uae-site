@@ -39,8 +39,8 @@ if cmd == "discover":
             if code == 200:
                 break
 if cmd == "connect":
-    out["r"] = call("POST", "/api/v1/social-account/connect", {"type": "INSTAGRAM", "teamId": req["teamId"],
-                    "redirectUrl": "https://fortex-uae.com/", "instagramConnectionMethod": "FACEBOOK"})
+    out["r"] = call("POST", "/api/v1/social-account/connect", dict({"type": req.get("type", "INSTAGRAM"), "teamId": req["teamId"], "redirectUrl": "https://fortex-uae.com/"},
+                    **({"instagramConnectionMethod": "FACEBOOK"} if req.get("type", "INSTAGRAM") == "INSTAGRAM" else {})))
 if cmd == "accounts":
     out["r"] = call("GET", "/api/v1/team/" + req["teamId"])
 if cmd == "raw":  # {"cmd":"raw","calls":[[method, path, body|null], ...]}
