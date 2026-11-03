@@ -380,8 +380,7 @@ async def _reply_to(cid):
     if is_tg and u:
         try:
             peer = int(cv["uid"][3:])
-            await asyncio.sleep(random.uniform(2, 3))  # прочитано не мгновенно
-            await u.send_read_acknowledge(peer)
+            await u.send_read_acknowledge(peer)  # уже прочитано через 3 с в tg_read_soon, здесь на всякий случай
         except Exception as e:
             log.warning("tg read: %s", e)
     extra = ""
@@ -882,10 +881,23 @@ async def tg_inbound(ev):
                 S["seen_other"].append(cid)
                 await tell(cid, f"Новое сообщение в Telegram (аккаунт радара) от @{cv['username']}. Ассистент в тестовом режиме и не отвечает.\n\n«{text[:300]}»\n\nЧтобы тестировать на нём: /igdm test {cv['username']}")
             save(); return
+        asyncio.get_event_loop().create_task(tg_read_soon(snd.id, ev.id))  # прочитано через 3 с (решение Александра 03.11)
         on_user_message(cv)
         save()
     except Exception:
         log.exception("tg inbound")
+
+
+async def tg_read_soon(peer, max_id, delay=3.0):
+    """Отметить сообщение прочитанным ровно через ~3 секунды после получения, не дожидаясь ответа."""
+    u = CTX.get("user")
+    if not u:
+        return
+    await asyncio.sleep(delay + random.uniform(-0.3, 0.3))
+    try:
+        await u.send_read_acknowledge(peer, max_id=max_id)
+    except Exception as e:
+        log.warning("tg read soon: %s", e)
 
 
 async def tg_outgoing(ev):
