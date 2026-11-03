@@ -1,3 +1,5 @@
 public/
 __pycache__/
 *.pyc
+tools/joke/node_modules/
+tools/joke/package*.json

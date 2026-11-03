@@ -1,0 +1,31 @@
+name: Joke reel (Reels only)
+# Собирает и ставит в расписание шуточный рилс по reels/joke/<id>.json (во вкладку Reels, без сетки)
+on:
+  workflow_dispatch:
+  push:
+    paths: ["reels/joke/*.json"]
+permissions:
+  contents: write
+concurrency: joke-reel
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
+          pip install -q numpy
+          cd tools/joke && npm init -y >/dev/null && npm i -s playwright@1.48.2 @fontsource/playfair-display@5 @fontsource/manrope@5 && npx playwright install --with-deps chromium >/dev/null
+      - name: Build and schedule
+        env:
+          BUNDLE_SOCIAL_API_KEY: ${{ secrets.BUNDLE_SOCIAL_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: python3 tools/joke/build.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add reels/joke
+          git diff --cached --quiet || (git commit -m "Joke reel" && git pull --rebase --autostash && git push)
