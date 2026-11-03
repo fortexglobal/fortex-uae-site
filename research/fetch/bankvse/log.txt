@@ -1,0 +1,6 @@
+ok research/fetch/bankvse/p0.png
+ok research/fetch/bankvse/p1.png
+ok research/fetch/bankvse/p2.png
+ok research/fetch/bankvse/p3.png
+ok research/fetch/bankvse/p4.png
+ok research/fetch/bankvse/p5.png
