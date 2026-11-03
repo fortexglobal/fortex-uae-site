@@ -16,19 +16,21 @@
    "link": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4"
   },
   {
-   "q": "train passengers interior",
-   "prompt": "passengers seen from behind sitting in a bright modern train carriage, sunlight through large windows, gentle motion, no faces",
-   "say": "Новый поезд ОАЭ продал {120 тысяч|сто двадцать тысяч} билетов за первый месяц."
+   "q": "dubai metro train",
+   "prompt": "modern elevated train moving past Dubai towers in warm daylight, smooth side tracking shot, no people close up",
+   "say": "Новый поезд ОАЭ продал {120 тысяч|сто двадцать тысяч} билетов за первый месяц.",
+   "link": "https://cdn.pixabay.com/video/2024/03/12/203953-922734728_large.mp4"
   },
   {
-   "q": "train window view desert",
-   "prompt": "view from a modern train window of a sunny desert landscape rushing by, bright daylight, no people",
+   "q": "desert sand dunes aerial day",
+   "prompt": "aerial view of golden desert sand dunes in bright daylight, smooth forward drone motion, no people",
    "say": "Дорога до Абу-Даби около часа, билет от {39|тридцати девяти} дирхамов."
   },
   {
    "q": "dubai skyline day",
    "prompt": "aerial drone flight over Dubai skyscrapers in bright daylight, smooth forward motion, no people close up",
-   "say": "А с {30 ноября|тридцатого ноября} откроют новые станции на западе страны."
+   "say": "А с {30 ноября|тридцатого ноября} откроют новые станции на западе страны.",
+   "link": "https://cdn.pixabay.com/video/2020/02/05/31956-389724705_large.mp4"
   }
  ],
  "cta": {
