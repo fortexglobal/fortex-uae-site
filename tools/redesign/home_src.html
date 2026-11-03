@@ -57,6 +57,10 @@ a{color:inherit;text-decoration:none}
 .pay .ok{color:#3fe0b5;font-weight:700}
 .pay .bar{height:4px;border-radius:4px;background:rgba(255,255,255,.12);margin-top:12px;overflow:hidden}
 .pay .bar i{display:block;height:100%;width:0;background:var(--grad);animation:fill 3s 1s ease-out forwards}
+.pay{display:block;color:inherit;text-decoration:none;cursor:pointer;transition:transform .25s,border-color .25s,background .25s}
+.pay:hover{transform:translateY(-3px);border-color:rgba(212,175,106,.6);background:rgba(255,255,255,.12)}
+.pay .more{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.3px;color:#d4af6a;display:flex;justify-content:space-between}
+.pay:hover .more span{transform:translateX(3px)}.pay .more span{transition:transform .25s}
 @keyframes fill{to{width:100%}}
 .ticker{margin-top:16px;overflow:hidden;border-radius:999px;background:#0a1020;color:#cfd8ea;padding:14px 0;white-space:nowrap;position:relative;z-index:2}
 .ticker div{display:inline-block;animation:tick 30s linear infinite;font-weight:700;font-size:14px}
@@ -265,10 +269,11 @@ details p{margin-top:12px;color:var(--muted)}
       <a class="pill dirb" href="#svc"><span>Выбрать направление</span><svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="hcards">
-  <div class="pay"><div style="opacity:.7">Пример платежа · иллюстрация</div>
+  <a class="pay" href="/schet-v-banke-oae/#hard" aria-label="Платежи поставщикам в Китай и Гонконг: как это работает"><div style="opacity:.7">Пример платежа · иллюстрация</div>
     <div class="row"><b>Поставщику · Гонконг</b><span>CNY</span></div>
     <div class="row"><span style="opacity:.75">Счёт в банке ОАЭ</span><span class="ok">● Отправлен</span></div>
-    <div class="bar"><i></i></div></div>
+    <div class="bar"><i></i></div>
+    <div class="more">Платежи в Китай и Гонконг <span>→</span></div></a>
   <a class="float" href="https://t.me/Fortex_Dubai">Уже отказали в банке?<br>Разберём ситуацию бесплатно, 5 минут
     <i><svg width="22" height="22" viewBox="0 0 24 24" fill="#2f6bff"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></i></a>
     </div>
