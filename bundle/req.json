@@ -1,1 +1,32 @@
-{"cmd":"raw","n":19,"calls":[["GET","/api/v1/post/b0eab97f-6da7-4e40-b466-5d48dbf131e8",null]]}
+{
+ "cmd": "post",
+ "n": 20,
+ "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
+ "delete": [
+  "b0eab97f-6da7-4e40-b466-5d48dbf131e8",
+  "cf426536-04d3-4d0c-a142-0fbc8ef77108",
+  "427a37b7-1984-4d81-8024-98068ba47e04"
+ ],
+ "posts": [
+  {
+   "title": "lux-v1 компания (юмор)",
+   "video": "bundle/media/lux-v1.mp4",
+   "cover": "bundle/media/lux-v1-cover.jpg",
+   "text": "Жизнь слишком простая? Есть решение: компания в Дубае.\n\nФризона или Mainland, счёт в банке, виза резидента, Emirates ID. Звучит как квест. Для нас это обычный вторник.\n\nПишите «компания» в директ или в Telegram @Fortex_Dubai. Сложности оставьте нам, себе оставьте море.\n\nfortex-uae.com\n\n#дубай #оаэ #компаниявдубае #бизнесвдубае #визаоаэ",
+   "date": "2026-11-03T15:54:00.000Z",
+   "music": "1039098790480932",
+   "mvol": 1,
+   "ovol": 100
+  },
+  {
+   "title": "lux-v2 счёт (юмор)",
+   "video": "bundle/media/lux-v2.mp4",
+   "cover": "bundle/media/lux-v2-cover.jpg",
+   "text": "Билет в Дубай: 0 ₽.\nСчёт в банке ОАЭ: есть.\n\nУдалённо, без прилёта и без Emirates ID: Emirates NBD, FAB, UBL. Около двух недель, диван можно оставить свой.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #emiratesnbd",
+   "date": "2026-11-04T15:30:00.000Z",
+   "music": "1347176186322399",
+   "mvol": 1,
+   "ovol": 100
+  }
+ ]
+}

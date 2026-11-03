@@ -182,8 +182,8 @@ def build(spec_path):
             ig["thumbnail"] = c["url"]
         if music_id:
             # оригинальный звук играет с начала, как в залетевших рилсах: ставим его самого на 100, звук ролика на 0
-            ig["musicSoundInfo"] = ({"musicSoundId": music_id, "musicSoundVolume": 100, "videoOriginalSoundVolume": 0} if from_start
-                                    else {"musicSoundId": music_id, "musicSoundVolume": 0, "videoOriginalSoundVolume": 100})
+            ig["musicSoundInfo"] = ({"musicSoundId": music_id, "musicSoundVolume": 100, "videoOriginalSoundVolume": 1} if from_start
+                                    else {"musicSoundId": music_id, "musicSoundVolume": 1, "videoOriginalSoundVolume": 100})
         code, p = call("POST", "/api/v1/post/", {"teamId": TEAM, "title": f"joke {rid}", "postDate": spec["publish_at"],
                                                  "status": "SCHEDULED", "socialAccountTypes": ["INSTAGRAM"], "data": {"INSTAGRAM": ig}})
         res["post"] = [code, p.get("id") if isinstance(p, dict) else p, p.get("status") if isinstance(p, dict) else None]
