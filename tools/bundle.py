@@ -46,5 +46,23 @@ if cmd == "accounts":
     out["r"] = call("GET", "/api/v1/team/" + req["teamId"])
 if cmd == "raw":  # {"cmd":"raw","calls":[[method, path, body|null], ...]}
     out["r"] = [[m, pth, call(m, pth, b)] for m, pth, b in req["calls"]]
+if cmd == "audio":  # {"cmd":"audio","q":["", "luxury"],"n":4,"type":"music"} -> список + скачанные bundle/out/audio/<id>.m4a
+    import urllib.parse
+    os.makedirs("bundle/out/audio", exist_ok=True)
+    out["r"] = {}
+    for q in req["q"]:
+        path = f"/api/v1/misc/instagram/audio?teamId={req['teamId']}&audioType={req.get('type', 'music')}"
+        if q:
+            path += "&searchQuery=" + urllib.parse.quote(q)
+        code, b = call("GET", path)
+        items = (b or {}).get("audio", []) if isinstance(b, dict) else []
+        out["r"][q or "_top"] = [code] + [{k: a.get(k) for k in ("audio_id", "title", "display_artist", "duration_in_ms")} for a in items]
+        for a in items[:req.get("dl", 4)]:
+            f = f"bundle/out/audio/{a['audio_id']}.m4a"
+            if a.get("download_url") and not os.path.exists(f):
+                try:
+                    urllib.request.urlretrieve(a["download_url"], f)
+                except Exception as e:
+                    out.setdefault("dl_err", []).append(str(e)[:100])
 json.dump(out, open(f"bundle/out/{cmd}.json", "w"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(out, ensure_ascii=False, default=str)[:3000])
