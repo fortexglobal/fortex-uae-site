@@ -3,11 +3,11 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/f11c84d4-373c-404a-bb4e-239b7f768ec4",
+   "/api/v1/post/fe15b9e1-b5bd-4dbd-b2c7-4281fc38ab44",
    [
     200,
     {
-     "id": "f11c84d4-373c-404a-bb4e-239b7f768ec4",
+     "id": "fe15b9e1-b5bd-4dbd-b2c7-4281fc38ab44",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
      "title": "joke 2026-11-04",
@@ -20,12 +20,12 @@
        "type": "REEL",
        "text": "Банк: приходите завтра.\nЗавтра: приходите послезавтра.\n\nМы собираем документы так, чтобы банку не пришлось просить ещё. Личные и корпоративные счета в ОАЭ, в том числе удалённо.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #жизньвдубае",
        "uploadIds": [
-        "a7cc9b76-c4b4-49b4-8515-18cd4c8b6154"
+        "72a45ff3-4f9d-4058-a454-1e6d7a10e074"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/6a7d84b4-4b7d-4473-9f02-3d0f8e731ccc.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/8095b514-b6f8-4b5a-bed3-3b0ab7ab59d3.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "1347176186322399",
+        "musicSoundId": "510484690923516",
         "musicSoundVolume": 0,
         "videoOriginalSoundVolume": 100
        }
@@ -36,9 +36,9 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-03T12:42:28.180Z",
-     "updatedAt": "2026-11-03T12:43:38.848Z",
-     "deletedAt": "2026-11-03T12:43:38.848Z"
+     "createdAt": "2026-11-03T12:45:58.511Z",
+     "updatedAt": "2026-11-03T12:55:13.695Z",
+     "deletedAt": "2026-11-03T12:55:13.695Z"
     }
    ]
   ]
