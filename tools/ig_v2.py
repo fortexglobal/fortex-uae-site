@@ -42,7 +42,7 @@ def md(s):
 
 BASE = """*{box-sizing:border-box;margin:0}body{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:M;color:#fff;background:#111}
 .ph{position:absolute;inset:0;background-size:cover;background-position:center}
-.wm{font-weight:800;font-size:44px;letter-spacing:-1.5px}
+.wm{font-weight:800;font-size:44px;letter-spacing:-1.5px;text-shadow:0 2px 16px rgba(0,0,0,.45)}
 .up{text-transform:uppercase;letter-spacing:1px;line-height:1.25}.l{font-weight:300}.b{font-weight:800}
 .gold{color:#8A6A3A}.body{font-size:34px;line-height:1.42;font-weight:400}.body p+p{margin-top:18px}.body b{font-weight:800}
 .num{position:absolute;right:90px;font-size:24px;letter-spacing:3px;font-weight:600;opacity:.85}"""
