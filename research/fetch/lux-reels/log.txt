@@ -1,0 +1,7 @@
+ok research/fetch/lux-reels/v1_car.mp4 <- pixabay px19627 street, traffic, cars, city, night, view, car, skyscrapers, quick, vehicle, dyna
+ok research/fetch/lux-reels/v2_1.mp4 <- pixabay px111204 sunset, nature, sky, dubai
+ok research/fetch/lux-reels/v2_2.mp4 <- pixabay px296958 travel, burjkalifa, dubai, uae, emirate, arab, burj-al-arab, burj khalifa, touri
+ok research/fetch/lux-reels/v2_3.mp4 <- pixabay px184734 car, desert, driving, drone, sand, arial, tajikistan
+ok research/fetch/lux-reels/v2_4.mp4 <- pixabay px296335 ai generated, hooded, cyclist, bike, jet, airplane, smoke, pink, sunset, runway,
+ok research/fetch/lux-reels/v2_5.mp4 <- pixabay px362909 ai generated, hotel, architecture, building, vacation, resort, tourism, luxuriou
+ok research/fetch/lux-reels/v2_6.mp4 <- pixabay px296958 travel, burjkalifa, dubai, uae, emirate, arab, burj-al-arab, burj khalifa, touri
