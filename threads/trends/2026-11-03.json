@@ -1,0 +1,143 @@
+{
+ "date": "2026-11-03",
+ "queries": [
+  "Дубай",
+  "работа в Дубае",
+  "недвижимость Дубай",
+  "бизнес в Дубае",
+  "риелтор Дубай",
+  "цены Дубай"
+ ],
+ "top": [
+  {
+   "username": "ivan__shmatov",
+   "followers": 527,
+   "url": "https://www.threads.com/@ivan__shmatov/post/DfPa7yMDEUn",
+   "summary": "Назовите страну, которая оказалась переоценённой, только честно",
+   "technique": "вопрос-антирейтинг ко всем, «только честно»",
+   "format": "вопрос",
+   "length": 120,
+   "views": 167977,
+   "replies": 977,
+   "score": 3373,
+   "benchmark": true
+  },
+  {
+   "username": "sisters_designerss",
+   "followers": 73,
+   "url": "https://www.threads.com/@sisters_designerss/post/DfOxeLiDoc2",
+   "summary": "Предприниматели, давайте знакомиться: какой бизнес и в каком городе",
+   "technique": "ветка знакомств",
+   "format": "знакомства",
+   "length": 130,
+   "views": 2976,
+   "replies": 161,
+   "score": 531,
+   "benchmark": false
+  },
+  {
+   "username": "beauty_ds_akvarel",
+   "followers": 164,
+   "url": "https://www.threads.com/@beauty_ds_akvarel/post/DfMQQJViGNy",
+   "summary": "Предприниматели Threads, давайте знакомиться",
+   "technique": "ветка знакомств",
+   "format": "знакомства",
+   "length": 95,
+   "views": 2427,
+   "replies": 72,
+   "score": 250,
+   "benchmark": false
+  },
+  {
+   "username": "sasha_kotkinaa",
+   "followers": 242,
+   "url": "https://www.threads.com/@sasha_kotkinaa/post/DfPl8MhiU_v",
+   "summary": "Запустила рекламу в GPT на офлайн-бизнес в Дубае: 4 лида и 1 продажа",
+   "technique": "свежий личный результат в цифрах, интрига про автора",
+   "format": "мнение+фото",
+   "length": 155,
+   "views": 16391,
+   "replies": 35,
+   "score": 246,
+   "benchmark": true
+  },
+  {
+   "username": "vasilinabelle",
+   "followers": 1598,
+   "url": "https://www.threads.com/@vasilinabelle/post/DfPB437DZQr",
+   "summary": "Сдала на права в Дубае за 2 недели",
+   "technique": "эмоция одной строкой капсом, личная победа",
+   "format": "фото",
+   "length": 70,
+   "views": 6529,
+   "replies": 42,
+   "score": 238,
+   "benchmark": true
+  },
+  {
+   "username": "a.golovatskiy",
+   "followers": 458,
+   "url": "https://www.threads.com/@a.golovatskiy/post/DfP6mZPCCUv",
+   "summary": "В Дубае легко подтянуть английский: угадайте, какие слова выучил на площадке",
+   "technique": "угадайка с юмором, 😂",
+   "format": "вопрос",
+   "length": 250,
+   "views": 3291,
+   "replies": 46,
+   "score": 173,
+   "benchmark": false
+  },
+  {
+   "username": "elmira.smm1",
+   "followers": 56,
+   "url": "https://www.threads.com/@elmira.smm1/post/DfPyWacDT8Y",
+   "summary": "Предприниматели, из каких вы стран и чем занимаетесь",
+   "technique": "знакомства + «найдёте партнёров»",
+   "format": "знакомства",
+   "length": 200,
+   "views": 629,
+   "replies": 28,
+   "score": 86,
+   "benchmark": false
+  },
+  {
+   "username": "a.golovatskiy",
+   "followers": 458,
+   "url": "https://www.threads.com/@a.golovatskiy/post/DfPoFlRiOPm",
+   "summary": "Коллега ищет 1BR в Arjan, проверим силу Threads",
+   "technique": "просьба к ленте, брокеры в комментариях",
+   "format": "вопрос",
+   "length": 300,
+   "views": 816,
+   "replies": 15,
+   "score": 52,
+   "benchmark": false
+  },
+  {
+   "username": "via.vlada",
+   "followers": 2166,
+   "url": "https://www.threads.com/@via.vlada/post/DfPNsVbCLrL",
+   "summary": "Какую визу сделать, чтобы остаться подольше в Дубае",
+   "technique": "живой вопрос по нашей теме (визы)",
+   "format": "вопрос",
+   "length": 56,
+   "views": 4215,
+   "replies": 11,
+   "score": 42,
+   "benchmark": false
+  },
+  {
+   "username": "abdullah.poa",
+   "followers": 31,
+   "url": "https://www.threads.com/@abdullah.poa/post/DfOnOE5Cs2S",
+   "summary": "Агенты, клиент впервые в Дубае: какой район покажете первым",
+   "technique": "вопрос к профессиональному цеху",
+   "format": "партнёры",
+   "length": 70,
+   "views": 328,
+   "replies": 1,
+   "score": 3,
+   "benchmark": false
+  }
+ ]
+}
