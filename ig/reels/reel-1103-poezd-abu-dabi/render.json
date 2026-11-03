@@ -1,0 +1,79 @@
+{
+ "stt": {
+  "match": 0.979,
+  "heard": "Теперь между эмиратами можно ездить без машины и без пробок. Новый поезд УАЭ продал сто двадцать тысяч билетов за первый месяц. Дорога до Абу-Даби около часа. Билет от тридцати девяти дирхамов. А с тридцатого ноября откроют новые станции на западе страны. Подпишись, чтобы узнавать новости Дубая первым.",
+  "diffs": [
+   [
+    "оаэ",
+    "уаэ"
+   ]
+  ]
+ },
+ "hash": "77b6cdd9ba",
+ "video": "77b6cdd9ba.mp4",
+ "cover": "cover.jpg",
+ "v": 2,
+ "duration": 19.3,
+ "ai_clips": [
+  3
+ ],
+ "stock": {
+  "0": {
+   "key": "stock",
+   "q": "dubai highway day",
+   "src": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4",
+   "author": "pinned",
+   "link": "https://cdn.pixabay.com/video/2020/08/29/48504-454713939_large.mp4",
+   "site": "pixabay"
+  },
+  "1": {
+   "key": "stock",
+   "q": "train passengers interior",
+   "src": "pixabay:px3608",
+   "author": "Coverr-Free-Footage [reading, comics, subway, subway station,]",
+   "link": "https://cdn.pixabay.com/video/2016/06/27/3608-172488324_large.mp4",
+   "site": "pixabay"
+  },
+  "2": {
+   "key": "stock",
+   "q": "train window view desert",
+   "src": "pixabay:px120479",
+   "author": "ChristianBodhi [train, railway, journey, travel, railroa]",
+   "link": "https://cdn.pixabay.com/video/2022/06/15/120479-720880603_large.mp4",
+   "site": "pixabay"
+  },
+  "3": {
+   "key": "stock",
+   "q": "dubai skyline day",
+   "src": "https://v3b.fal.media/files/b/0ab0f23d/56DfIhI5P6eTA9GIAyx0o_output.mp4",
+   "author": "ai",
+   "link": null,
+   "site": null
+  }
+ },
+ "safe_zone": {
+  "cap_widest_px": 738,
+  "cap_limit_px": 828,
+  "cap_box": [
+   70,
+   1110,
+   910,
+   1230
+  ],
+  "overflow": [],
+  "ok": true
+ },
+ "qa": {
+  "duration": 19.4,
+  "sheets": [
+   "qa/sheet-1.jpg",
+   "qa/sheet-2.jpg"
+  ],
+  "cuts": "qa/cuts.jpg",
+  "lufs": -14.32,
+  "true_peak": -1.91,
+  "lra": 3.3,
+  "silence_mid": [],
+  "warnings": []
+ }
+}
