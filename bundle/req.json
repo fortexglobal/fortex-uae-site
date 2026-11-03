@@ -1,1 +1,3 @@
-{"cmd":"raw","n":9,"calls":[["GET","/api/v1/social-account/by-type?type=INSTAGRAM&teamId=34938f1a-9cb5-4a85-be16-15addc7b8989",null]]}
+{"cmd":"raw","n":10,"calls":[["POST","/api/v1/social-account/set-channel",{"type":"INSTAGRAM","teamId":"34938f1a-9cb5-4a85-be16-15addc7b8989","channelId":"17841434625185251"}],
+["GET","/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=music&searchQuery=luxury",null],
+["GET","/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=music&searchQuery=dubai",null]]}
