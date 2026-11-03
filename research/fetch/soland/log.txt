@@ -8,3 +8,9 @@ ok research/fetch/soland/p06.jpg
 ok research/fetch/soland/p07.jpg
 ok research/fetch/soland/p08.jpg
 ok research/fetch/soland/p09.jpg
+ok research/fetch/soland/h0.jpg
+ok research/fetch/soland/h1.jpg
+ok research/fetch/soland/h2.jpg
+ok research/fetch/soland/h3.jpg
+ok research/fetch/soland/h4.jpg
+ok research/fetch/soland/h5.jpg
