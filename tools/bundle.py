@@ -40,7 +40,8 @@ if cmd == "discover":
                 break
 if cmd == "connect":
     out["r"] = call("POST", "/api/v1/social-account/connect", dict({"type": req.get("type", "INSTAGRAM"), "teamId": req["teamId"], "redirectUrl": "https://fortex-uae.com/"},
-                    **({"instagramConnectionMethod": "FACEBOOK"} if req.get("type", "INSTAGRAM") == "INSTAGRAM" else {})))
+                    **({"instagramConnectionMethod": "FACEBOOK"} if req.get("type", "INSTAGRAM") == "INSTAGRAM" else {}),
+                    **({"withBusinessScope": True} if req.get("biz") else {})))
 if cmd == "accounts":
     out["r"] = call("GET", "/api/v1/team/" + req["teamId"])
 if cmd == "raw":  # {"cmd":"raw","calls":[[method, path, body|null], ...]}
