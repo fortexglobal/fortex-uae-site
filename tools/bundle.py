@@ -43,5 +43,7 @@ if cmd == "connect":
                     "redirectUrl": "https://fortex-uae.com/", "instagramConnectionMethod": "FACEBOOK"})
 if cmd == "accounts":
     out["r"] = call("GET", "/api/v1/team/" + req["teamId"])
+if cmd == "raw":  # {"cmd":"raw","calls":[[method, path, body|null], ...]}
+    out["r"] = [[m, pth, call(m, pth, b)] for m, pth, b in req["calls"]]
 json.dump(out, open(f"bundle/out/{cmd}.json", "w"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(out, ensure_ascii=False, default=str)[:3000])
