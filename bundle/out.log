@@ -1,1 +1,1 @@
-{"cmd": "raw", "r": [["GET", "/api/v1/social-account/by-type?type=INSTAGRAM&teamId=34938f1a-9cb5-4a85-be16-15addc7b8989", [400, "{\"statusCode\":400,\"message\":\"Team does not have a Instagram account\"}"]], ["GET", "/api/v1/social-account/by-type?type=FACEBOOK&teamId=34938f1a-9cb5-4a85-be16-15addc7b8989", [400, "{\"statusCode\":400,\"message\":\"Team does not have a Facebook account\"}"]]]}
+{"cmd": "connect", "r": [503, "no available server\n"]}
