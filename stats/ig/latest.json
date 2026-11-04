@@ -1,29 +1,24 @@
 {
- "generated": "2026-11-03T07:55+04:00",
+ "generated": "2026-11-04T07:56+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "fortex__uae",
   "followers_count": 1,
   "follows_count": 3,
-  "media_count": 16,
+  "media_count": 18,
   "id": "28276626788683589"
  },
  "account_7d": {
   "reach": 3,
-  "views": 63,
-  "accounts_engaged": 2,
-  "total_interactions": 4,
+  "views": 73,
+  "accounts_engaged": 4,
+  "total_interactions": 6,
   "profile_links_taps": 0,
   "follows_and_unfollows": {
    "error": ""
   }
  },
  "followers_history": [
-  {
-   "date": "2026-10-27",
-   "followers": 0,
-   "media": 6
-  },
   {
    "date": "2026-10-28",
    "followers": 0,
@@ -58,9 +53,72 @@
    "date": "2026-11-03",
    "followers": 1,
    "media": 16
+  },
+  {
+   "date": "2026-11-04",
+   "followers": 1,
+   "media": 18
   }
  ],
  "media": [
+  {
+   "id": "18393041035228085",
+   "at": "2026-11-03T15:54:41+0000",
+   "kind": "REELS",
+   "type": "VIDEO",
+   "link": "https://www.instagram.com/reel/DfSQBe8AvCp/",
+   "caption": "Жизнь слишком простая? Есть решение: компания в Дубае.\n\nФризона или Mainland, счёт в банке, виза резидента, Emirates ID. Звучит как квест. Д",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 2,
+    "views": 6,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 18741,
+    "ig_reels_video_view_total_time": 74966
+   },
+   "unavailable": [
+    "profile_visits",
+    "follows"
+   ],
+   "ours": {}
+  },
+  {
+   "id": "18005260479008996",
+   "at": "2026-11-03T15:01:51+0000",
+   "kind": "REELS",
+   "type": "VIDEO",
+   "link": "https://www.instagram.com/reel/DfSJ_PKkkB2/",
+   "caption": "Из Дубая в Абу-Даби теперь можно доехать на поезде за час и от 39 AED.\n\nПассажирская сеть Etihad Rail заработала 30 сентября и за первые 30 ",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 2,
+    "views": 6,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 10600,
+    "ig_reels_video_view_total_time": 42400
+   },
+   "unavailable": [
+    "profile_visits",
+    "follows"
+   ],
+   "ours": {
+    "slug": "reel-1103-poezd-abu-dabi",
+    "style": "",
+    "format": "news",
+    "test": "",
+    "ring": 4
+   }
+  },
   {
    "id": "18132255883745693",
    "at": "2026-11-02T15:07:56+0000",
@@ -71,8 +129,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 0,
-    "views": 0,
+    "reach": 2,
+    "views": 5,
     "saved": 0,
     "shares": 0,
     "likes": 0,
@@ -97,18 +155,18 @@
    "type": "VIDEO",
    "link": "https://www.instagram.com/reel/DfPlFzKIQE_/",
    "caption": "Счёт в банке ОАЭ можно открыть, не прилетая в Дубай.\n\nЛичный счёт открывается удалённо, без приезда и без Emirates ID. Сейчас так работают E",
-   "likes": 0,
+   "likes": 2,
    "comments": 0,
    "ins": {
-    "reach": 1,
-    "views": 2,
+    "reach": 2,
+    "views": 3,
     "saved": 0,
     "shares": 0,
-    "likes": 0,
+    "likes": 2,
     "comments": 0,
-    "total_interactions": 0,
-    "ig_reels_avg_watch_time": 2608,
-    "ig_reels_video_view_total_time": 5216
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 2080,
+    "ig_reels_video_view_total_time": 8323
    },
    "unavailable": [
     "profile_visits",
@@ -498,8 +556,8 @@
    "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 2,
-    "views": 6,
+    "reach": 3,
+    "views": 8,
     "saved": 0,
     "shares": 0,
     "likes": 1,
