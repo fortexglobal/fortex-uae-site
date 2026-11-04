@@ -1,22 +1,29 @@
 {
- "checked": "2026-11-04T06:00Z",
+ "checked": "2026-11-04T06:20Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
   "account_type": "BUSINESS",
-  "media_count": 18,
+  "media_count": 19,
   "id": "28276626788683589"
  },
  "published": [
   {
-   "slug": "pin-3-kontakty",
+   "slug": "pin-2-uslugi",
    "scheduled": "carousel",
-   "id": "18023067677954976",
-   "permalink": "https://www.instagram.com/p/DfTw3n9EdHN/",
+   "id": "17910328038578009",
+   "permalink": "https://www.instagram.com/p/DfTzJxqnIJn/",
    "recovered": true
   }
  ],
  "media": [
+  {
+   "id": "17910328038578009",
+   "timestamp": "2026-11-04T06:20:36+0000",
+   "permalink": "https://www.instagram.com/p/DfTzJxqnIJn/",
+   "media_type": "IMAGE",
+   "caption": "Что мы делаем в Дубае:\n\n▫️ Личные и корпоративные счета в ба"
+  },
   {
    "id": "18023067677954976",
    "timestamp": "2026-11-04T06:00:35+0000",
