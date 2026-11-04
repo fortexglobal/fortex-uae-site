@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T08:24+04:00",
+ "generated": "2026-11-04T08:26+04:00",
  "posts": [
   {
    "slug": "t-1025-zakrep",
@@ -487,14 +487,14 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfR4sxLkRux",
    "kind": "провокация",
    "text": "Купить квартиру в Дубае НАЛИЧНЫМИ или через «знакомого обменника» кажется простым решением.\n\nПока ФНС не спросит, КАК ПР",
-   "views": 696,
+   "views": 720,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 2,
-   "actions_per_1k": 2.9
+   "actions_per_1k": 2.8
   },
   {
    "slug": "t-1103-bespoleznyi-sovet",
@@ -529,7 +529,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 2311,
+  "views": 2313,
   "likes": 1,
   "replies": 4,
   "reposts": 0,
@@ -537,7 +537,7 @@
   "followers_count": 2
  },
  "account_7d": {
-  "views": 10595,
+  "views": 10597,
   "likes": 49,
   "replies": 62,
   "reposts": 0,
@@ -575,7 +575,7 @@
   },
   {
    "date": "2026-11-03",
-   "views": 1293
+   "views": 1295
   }
  ],
  "link_clicks_7d": [
@@ -598,7 +598,7 @@
   }
  ],
  "followers_gain_1d": 0,
- "profile_views_1d": 1293,
+ "profile_views_1d": 1295,
  "link_clicks_7d_total": 0,
  "by_kind": {
   "закреп": {
@@ -683,10 +683,10 @@
   },
   "провокация": {
    "posts": 3,
-   "views": 877,
+   "views": 901,
    "replies": 2,
    "likes": 1,
-   "avg_views": 292.3,
+   "avg_views": 300.3,
    "avg_replies": 0.67
   }
  }
