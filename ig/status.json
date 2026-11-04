@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-04T06:28Z",
+ "checked": "2026-11-04T06:40Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,23 @@
   "media_count": 20,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "pin-1-o-nas",
+   "scheduled": "carousel",
+   "id": "18154375177531983",
+   "permalink": "https://www.instagram.com/p/DfT1dQ8kasU/",
+   "recovered": true
+  }
+ ],
  "media": [
+  {
+   "id": "18154375177531983",
+   "timestamp": "2026-11-04T06:40:40+0000",
+   "permalink": "https://www.instagram.com/p/DfT1dQ8kasU/",
+   "media_type": "IMAGE",
+   "caption": "Fortex: команда в Дубае с 2022 года.\n\nМы помогаем русскоязыч"
+  },
   {
    "id": "17910328038578009",
    "timestamp": "2026-11-04T06:20:36+0000",
