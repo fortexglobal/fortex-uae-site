@@ -1,0 +1,94 @@
+{
+ "date": "2026-11-04",
+ "queries": [
+  "дубай",
+  "Дубай отношения",
+  "падел Дубай",
+  "Дубай юмор",
+  "инвестиции Дубай",
+  "переезд в Дубай"
+ ],
+ "note": "По запросам кроме «дубай» за 2 дня пусто. Авторов до 3000 подписчиков с 5000+ просмотров нет. Сильнейшие приёмы: личная беспомощность новичка + просьба совета (92k/280), живое фото + вопрос одним словом (17k/151), «если бы… куда бы вы» вопрос.",
+ "top": [
+  {
+   "username": "vladislav_yakov",
+   "url": "https://www.threads.com/@vladislav_yakov/post/DfQpl7TiFaL",
+   "summary": "Переехал полгода назад, не понимаю, что делать по выходным, посоветуйте",
+   "technique": "личная беспомощность + просьба совета, каждый отвечает из своей жизни",
+   "length": 230,
+   "views": 92782,
+   "replies": 280,
+   "followers": 21922
+  },
+  {
+   "username": "borschgram",
+   "url": "https://www.threads.com/@borschgram/post/DfRFRXYiH2s",
+   "summary": "Фото осеннего леса + «в какой город попал мой пост?»",
+   "technique": "живое фото + гео-вопрос, ответ одним словом",
+   "length": 50,
+   "views": 17228,
+   "replies": 151,
+   "followers": 5294
+  },
+  {
+   "username": "horoshayas",
+   "url": "https://www.threads.com/@horoshayas/post/DfOqL2XjNNM",
+   "summary": "Где вы чувствуете себя в безопасности? У меня это Дубай",
+   "technique": "вопрос + свой ответ в 1 строку",
+   "length": 90,
+   "views": 12577,
+   "replies": 127,
+   "followers": 6183
+  },
+  {
+   "username": "luxaridze",
+   "url": "https://www.threads.com/@luxaridze/post/DfSJlE0jirB",
+   "summary": "Ироничный ответ: перечень 20 моллов Дубая «и по кругу»",
+   "technique": "ирония-список, панчлайн в конце",
+   "length": 430,
+   "views": 4310,
+   "replies": 1,
+   "followers": 140
+  },
+  {
+   "username": "stellachiarri",
+   "url": "https://www.threads.com/@stellachiarri/post/DfSk6JUCD4r",
+   "summary": "Куда слетать на недельку перезагрузиться?",
+   "technique": "короткая просьба совета",
+   "length": 70,
+   "views": 618,
+   "replies": 17,
+   "followers": 2037
+  },
+  {
+   "username": "aylish.001",
+   "url": "https://www.threads.com/@aylish.001/post/DfSbSUUCBU7",
+   "summary": "Карусель с подписью одним словом",
+   "technique": "фото без текста",
+   "length": 8,
+   "views": 354,
+   "replies": 2,
+   "followers": 40
+  },
+  {
+   "username": "helldragonnn",
+   "url": "https://www.threads.com/@helldragonnn/post/DfRoNYwkbji",
+   "summary": "Если бы нужно было улететь на море на этой неделе, куда бы полетели?",
+   "technique": "«если бы… куда бы вы» вопрос",
+   "length": 75,
+   "views": 283,
+   "replies": 10,
+   "followers": 54
+  },
+  {
+   "username": "artemphoenix",
+   "url": "https://www.threads.com/@artemphoenix/post/DfRN4rWCCl6",
+   "summary": "Таиланд или Вьетнам для зимовки, куда бы уехали на 3 месяца?",
+   "technique": "выбор из двух + вопрос",
+   "length": 260,
+   "views": 336,
+   "replies": 3,
+   "followers": 647
+  }
+ ]
+}
