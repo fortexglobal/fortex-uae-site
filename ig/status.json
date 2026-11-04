@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-04T05:27Z",
+ "checked": "2026-11-04T06:00Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -7,8 +7,23 @@
   "media_count": 18,
   "id": "28276626788683589"
  },
- "published": [],
+ "published": [
+  {
+   "slug": "pin-3-kontakty",
+   "scheduled": "carousel",
+   "id": "18023067677954976",
+   "permalink": "https://www.instagram.com/p/DfTw3n9EdHN/",
+   "recovered": true
+  }
+ ],
  "media": [
+  {
+   "id": "18023067677954976",
+   "timestamp": "2026-11-04T06:00:35+0000",
+   "permalink": "https://www.instagram.com/p/DfTw3n9EdHN/",
+   "media_type": "IMAGE",
+   "caption": "Как с нами связаться\n\nTelegram: @Fortex_Dubai\nСайт: fortex-u"
+  },
   {
    "id": "18393041035228085",
    "timestamp": "2026-11-03T15:54:41+0000",
