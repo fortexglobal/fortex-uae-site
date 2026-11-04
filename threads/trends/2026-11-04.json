@@ -1,0 +1,143 @@
+{
+ "date": "2026-11-04",
+ "queries": [
+  "жизнь в Дубае",
+  "переезд в Дубай",
+  "ОАЭ",
+  "Дубай",
+  "недвижимость Дубай"
+ ],
+ "top": [
+  {
+   "username": "vladislav_yakov",
+   "followers": 21922,
+   "url": "https://www.threads.com/@vladislav_yakov/post/DfQpl7TiFaL",
+   "summary": "Переехал полгода назад, не понимаю, что делать по выходным в Дубае",
+   "technique": "просьба совета ко всему городу от новичка, каждый может ответить",
+   "format": "вопрос",
+   "length": 300,
+   "views": 92634,
+   "replies": 279,
+   "score": 1062,
+   "benchmark": false
+  },
+  {
+   "username": "anastasiya_gavrina",
+   "followers": 1680,
+   "url": "https://www.threads.com/@anastasiya_gavrina/post/DfRi73CEexp",
+   "summary": "Вопрос к собственникам Дубая: видели резюме маркетолога с результатом, а не задачами?",
+   "technique": "обращение «Дубай, вопрос к…» + наблюдение с болью",
+   "format": "вопрос",
+   "length": 330,
+   "views": 1510,
+   "replies": 44,
+   "score": 141,
+   "benchmark": false
+  },
+  {
+   "username": "luxaridze",
+   "followers": 140,
+   "url": "https://www.threads.com/@luxaridze/post/DfSJlE0jirB",
+   "summary": "Ироничный ответ списком из 20 моллов на вопрос, что делать по выходным",
+   "technique": "абсурдный список-перечисление, панчлайн в конце",
+   "format": "список",
+   "length": 420,
+   "views": 4283,
+   "replies": 1,
+   "score": 128,
+   "benchmark": false
+  },
+  {
+   "username": "anastasiya_gavrina",
+   "followers": 1680,
+   "url": "https://www.threads.com/@anastasiya_gavrina/post/DfR--geiOXS",
+   "summary": "Нетворкинг в Дубае: визиток стопка, через месяц помнишь двоих",
+   "technique": "узнаваемая ситуация для предпринимателей",
+   "format": "мнение",
+   "length": 260,
+   "views": 801,
+   "replies": 31,
+   "score": 101,
+   "benchmark": false
+  },
+  {
+   "username": "elmira.smm1",
+   "followers": 57,
+   "url": "https://www.threads.com/@elmira.smm1/post/DfPyWacDT8Y",
+   "summary": "Предприниматели, из каких вы стран и чем занимаетесь?",
+   "technique": "ветка знакомств",
+   "format": "знакомства",
+   "length": 230,
+   "views": 771,
+   "replies": 28,
+   "score": 86,
+   "benchmark": false
+  },
+  {
+   "username": "marina.mgbrand",
+   "followers": 704,
+   "url": "https://www.threads.com/@marina.mgbrand/post/DfRmSt-jJ1U",
+   "summary": "Основательница PR-агентства в Дубае сделала ИИ-агента, «хотели бы такого?»",
+   "technique": "интрига про автора + вопрос-опрос",
+   "format": "вопрос",
+   "length": 330,
+   "views": 1080,
+   "replies": 20,
+   "score": 68,
+   "benchmark": false
+  },
+  {
+   "username": "eight.path",
+   "followers": 168,
+   "url": "https://www.threads.com/@eight.path/post/DfSOHunDnIb",
+   "summary": "Креативное агентство в Дубае отчиталось, что разобрало 60+ писем",
+   "technique": "отчёт-благодарность, социальное доказательство",
+   "format": "мнение",
+   "length": 450,
+   "views": 1047,
+   "replies": 10,
+   "score": 47,
+   "benchmark": false
+  },
+  {
+   "username": "akmal.rustami.dubai",
+   "followers": 209,
+   "url": "https://www.threads.com/@akmal.rustami.dubai/post/DfPk7G-ADaH",
+   "summary": "Сколько застройщиков в Дубае и где точный список?",
+   "technique": "короткий вопрос, на который хочется ответить экспертам",
+   "format": "вопрос",
+   "length": 60,
+   "views": 819,
+   "replies": 7,
+   "score": 23,
+   "benchmark": false
+  },
+  {
+   "username": "bestvalery_",
+   "followers": 89,
+   "url": "https://www.threads.com/@bestvalery_/post/DfSWU5LiJ0q",
+   "summary": "Сдаёт Tesla за 6000 AED в месяц, в комментариях спор о цене",
+   "technique": "спор о цене, «завышено или нет?»",
+   "format": "мнение",
+   "length": 400,
+   "views": 1827,
+   "replies": 4,
+   "score": 16,
+   "benchmark": false
+  },
+  {
+   "username": "mariya__vladislavovna",
+   "followers": 134,
+   "url": "https://www.threads.com/@mariya__vladislavovna/post/DfSomDwCI2w",
+   "summary": "Emirates ID не считывают терминалы в банках, кто сталкивался?",
+   "technique": "бытовая проблема + «кто сталкивался?»",
+   "format": "вопрос",
+   "length": 300,
+   "views": 1307,
+   "replies": 1,
+   "score": 4,
+   "benchmark": false
+  }
+ ],
+ "note": "Ориентиров (до 3000 подписчиков и от 5000 просмотров) по Дубаю за 2 дня нет; ближе всех luxaridze (140 подп., 4283)."
+}
