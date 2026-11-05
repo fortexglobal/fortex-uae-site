@@ -12,3 +12,5 @@ ok research/fetch/ink/s1.mp4
 ok research/fetch/ink/s2.mp4
 ok research/fetch/ink/s3.mp4
 ok research/fetch/ink/s4.mp4
+ok research/fetch/ink/s5.mp4
+ok research/fetch/ink/s7.mp4
