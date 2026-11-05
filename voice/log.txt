@@ -1,1 +1,9 @@
-ok voice/out/reel-enbd-test/brian_1.mp3
+ok voice/out/ink-schet/brian_1.mp3
+ok voice/out/ink-schet/brian_2.mp3
+ok voice/out/ink-schet/brian_3.mp3
+ok voice/out/ink-schet/brian_4.mp3
+ok voice/out/ink-schet/brian_5.mp3
+ok voice/out/ink-schet/brian_6.mp3
+ok voice/out/ink-schet/brian_7.mp3
+ok voice/out/ink-schet/brian_8.mp3
+ok voice/out/ink-schet/brian_9.mp3
