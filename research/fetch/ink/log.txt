@@ -8,3 +8,7 @@ ok research/fetch/ink/s6.png
 ok research/fetch/ink/s7.png
 ok research/fetch/ink/s0.mp4
 ok research/fetch/ink/s6.mp4
+ok research/fetch/ink/s1.mp4
+ok research/fetch/ink/s2.mp4
+ok research/fetch/ink/s3.mp4
+ok research/fetch/ink/s4.mp4
