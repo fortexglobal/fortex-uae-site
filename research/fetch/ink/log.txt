@@ -1,2 +1,7 @@
 ok research/fetch/ink/s0.png
 ok research/fetch/ink/s1.png
+ok research/fetch/ink/s2.png
+ok research/fetch/ink/s3.png
+ok research/fetch/ink/s4.png
+ok research/fetch/ink/s5.png
+ok research/fetch/ink/s6.png

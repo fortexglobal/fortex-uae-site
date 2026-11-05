@@ -6,3 +6,4 @@ ok research/fetch/bankvse/p4.png
 ok research/fetch/bankvse/p5.png
 
 
+
