@@ -86,7 +86,7 @@ if cmd == "post":  # {"cmd":"post","teamId":..,"posts":[{"title","video","cover"
         cv, v = upload(p["video"]); res["video"] = [cv, v if cv != 200 else v.get("id")]
         cc, c = upload(p["cover"]); res["cover"] = [cc, c if cc != 200 else c.get("url")]
         if cv == 200:
-            ig = {"type": "REEL", "text": p["text"], "uploadIds": [v["id"]], "shareToFeed": True}
+            ig = {"type": "REEL", "text": p["text"], "uploadIds": [v["id"]], "shareToFeed": p.get("feed", True)}
             if cc == 200 and c.get("url"):
                 ig["thumbnail"] = c["url"]
             if p.get("music"):
