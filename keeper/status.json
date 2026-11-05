@@ -1,5 +1,5 @@
 {
- "at": "2026-11-05T03:52+04:00",
+ "at": "2026-11-05T04:07+04:00",
  "errors": [],
  "openrouter_left": 5.31,
  "apify_left": null,
@@ -130,7 +130,7 @@
    "include_byok": false
   },
   "usage": 19.68284625,
-  "usage_daily": 0.12616065,
+  "usage_daily": 0,
   "usage_weekly": 0.63702415,
   "usage_monthly": 1.4386831,
   "byok_usage": 0,
