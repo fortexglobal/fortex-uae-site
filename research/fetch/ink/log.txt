@@ -1,0 +1,2 @@
+ok research/fetch/ink/s0.png
+ok research/fetch/ink/s1.png
