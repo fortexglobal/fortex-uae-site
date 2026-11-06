@@ -1,0 +1,24 @@
+{
+ "id": "2026-11-06",
+ "publish_at": "2026-11-06T09:30:00.000Z",
+ "topic": "визы и Emirates ID",
+ "style": "V",
+ "clips": [
+  {"stock": "dubai airport terminal", "must": "dubai"},
+  {"stock": "passport documents desk", "must": ""},
+  {"stock": "dubai downtown street", "must": "dubai"},
+  {"stock": "modern clinic reception", "must": ""},
+  {"stock": "dubai marina day", "must": "dubai"}
+ ],
+ "cards": [
+  ["Разрешение выпустили!", "Дальше медосмотр"],
+  ["Медосмотр прошли!", "Дальше биометрия"],
+  ["Пока ждёте Emirates ID,", "отпуск тоже подождёт"],
+  ["Мы ведём весь путь:", "Medical, биометрия, ID"]
+ ],
+ "end": ["Пишите нам", "мы поможем"],
+ "y": 900,
+ "sound": {"q": "Echo Sax End", "match": "echo sax"},
+ "caption": "Визу одобрили: ура.\nEmirates ID: ещё пара шагов.\n\nВедём весь путь сами: документы, Medical, биометрия, Emirates ID. Рабочая виза с Emirates ID от 5 500 USD.\n\nПишите «виза» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #визавдубае #emiratesid #жизньвдубае",
+ "rev": 1
+}
