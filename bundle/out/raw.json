@@ -3,29 +3,29 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/74464885-f692-426f-94cb-f85f65187ed7",
+   "/api/v1/post/4d7f6e57-51d0-4ad1-b70f-353adc9b741d",
    [
     200,
     {
-     "id": "74464885-f692-426f-94cb-f85f65187ed7",
+     "id": "4d7f6e57-51d0-4ad1-b70f-353adc9b741d",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-     "title": "joke 2026-11-05",
+     "title": "joke 2026-11-06",
      "referenceKey": null,
-     "postDate": "2026-11-05T09:30:00.000Z",
+     "postDate": "2026-11-06T09:30:00.000Z",
      "postedDate": null,
      "status": "DELETED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
-       "text": "Компания в Дубае есть, а банк просит Emirates ID, CV и выписки за полгода. Классика.\n\nДелаем по порядку: лицензия во фризоне или на mainland, виза и Emirates ID, потом корпоративный счёт. Всё своей командой, в одном окне, регистрация возможна удалённо.\n\nПишите «компания» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #компаниявдубае #бизнесвдубае #фризона",
+       "text": "Визу одобрили: ура.\nEmirates ID: ещё пара шагов.\n\nВедём весь путь сами: документы, Medical, биометрия, Emirates ID. Рабочая виза с Emirates ID от 5 500 USD.\n\nПишите «виза» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #визавдубае #emiratesid #жизньвдубае",
        "uploadIds": [
-        "cd2cf342-9da9-4bde-8df3-03cc20a8380b"
+        "37261e84-f3e7-4d07-8dd0-45997ccf4bb6"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/57335046-a7d3-417f-ae9f-c874513a9d04.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/69b7d838-b7c4-4a16-8993-dfd7b1fedf1a.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "707190335719095",
+        "musicSoundId": "361815916782155",
         "musicSoundVolume": 100,
         "videoOriginalSoundVolume": 1
        }
@@ -36,9 +36,9 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-05T06:18:47.189Z",
-     "updatedAt": "2026-11-05T06:19:36.031Z",
-     "deletedAt": "2026-11-05T06:19:36.031Z"
+     "createdAt": "2026-11-06T06:16:57.652Z",
+     "updatedAt": "2026-11-06T06:19:38.137Z",
+     "deletedAt": "2026-11-06T06:19:38.137Z"
     }
    ]
   ]
