@@ -921,3 +921,35 @@ async def tg_outgoing(ev):
         save()
     except Exception:
         log.exception("tg outgoing")
+
+
+async def send_dialogs(ev, text):
+    """/dialogs [часов] — владельцу: переписки Алексея за последние N часов (по умолчанию 48), даже если собеседник их удалил."""
+    import datetime as _dt
+    try:
+        hours = int((text.split() + ["48"])[1])
+    except Exception:
+        hours = 48
+    since = time.time() - hours * 3600
+    items = [(max([h.get("ts", 0) for h in cv.get("history", [])] or [0]), cid, cv) for cid, cv in S.get("convs", {}).items()]
+    items = sorted([x for x in items if x[0] >= since], reverse=True)
+    if not items:
+        return await ev.reply(f"За последние {hours} ч переписок не было")
+    await ev.reply(f"📂 Переписки Алексея за {hours} ч: {len(items)}")
+    who = {"user": "👤", "bot": "🤖 Алексей", "owner": "🧑‍💼 Ты"}
+    for last, cid, cv in items[:15]:
+        ch = "Telegram" if str(cv.get("uid") or "").startswith("tg:") else "Instagram"
+        head = (f"<b>@{html.escape(str(cv.get('username') or '?'))}</b> · {ch}"
+                + (f" · {html.escape(str(cv.get('name')))}" if cv.get("name") else "")
+                + (f"\n<i>{html.escape(str(cv.get('summary')))[:300]}</i>" if cv.get("summary") else ""))
+        lines = []
+        for h in cv.get("history", []):
+            t = _dt.datetime.fromtimestamp(h.get("ts", 0) + 4 * 3600).strftime("%d.%m %H:%M") if h.get("ts") else ""
+            lines.append(f"{t} {who.get(h.get('role'), h.get('role'))}: {html.escape(str(h.get('text', '')))}")
+        buf = head + "\n\n"
+        for ln in lines:
+            if len(buf) + len(ln) > 3800:
+                await ev.respond(buf, parse_mode="html"); buf = ""
+            buf += ln + "\n\n"
+        if buf.strip():
+            await ev.respond(buf, parse_mode="html")

@@ -707,6 +707,8 @@ async def on_owner_text(ev):
         except Exception:
             pass
         return
+    if text.strip().lower().split()[:1] in (["/dialogs"], ["/диалоги"]):
+        return await igdm.send_dialogs(ev, text.strip())
     if await mail_reply(ev, text):
         return
     if await igdm.maybe_handle(ev, text):
