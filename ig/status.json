@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-06T08:51Z",
+ "checked": "2026-11-06T09:56Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18103300415364563",
+   "timestamp": "2026-11-06T09:30:49+0000",
+   "permalink": "https://www.instagram.com/reel/DfZSdidkRzc/",
+   "media_type": "VIDEO",
+   "caption": "Визу одобрили: ура.\nEmirates ID: ещё пара шагов.\n\nВедём весь"
+  },
   {
    "id": "17913012264480916",
    "timestamp": "2026-11-05T16:32:10+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/p/De1OpQWlvRp/",
    "media_type": "CAROUSEL_ALBUM",
    "caption": "Банк в ОАЭ отказал. Что дальше?\n\nГлавное: не подавайтесь сам"
-  },
-  {
-   "id": "18083292146352525",
-   "timestamp": "2026-10-23T09:23:42+0000",
-   "permalink": "https://www.instagram.com/p/De1OkWkFkm9/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Нас часто спрашивают, почему у нас нет офиса.\n\nКлиенты по вс"
   }
  ]
 }
