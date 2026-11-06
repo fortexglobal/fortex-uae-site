@@ -4,21 +4,58 @@
  "topic": "визы и Emirates ID",
  "style": "V",
  "clips": [
-  {"stock": "dubai airport terminal", "must": "dubai"},
-  {"stock": "passport documents desk", "must": ""},
-  {"stock": "dubai downtown street", "must": "dubai"},
-  {"stock": "modern clinic reception", "must": ""},
-  {"stock": "dubai marina day", "must": "dubai"}
+  {
+   "stock": "dubai airport terminal",
+   "must": "dubai"
+  },
+  {
+   "stock": "passport documents desk",
+   "must": ""
+  },
+  {
+   "stock": "dubai downtown street",
+   "must": "dubai"
+  },
+  {
+   "stock": "modern clinic reception",
+   "must": ""
+  },
+  {
+   "stock": "dubai marina day",
+   "must": "dubai"
+  }
  ],
  "cards": [
-  ["Разрешение выпустили!", "Дальше медосмотр"],
-  ["Медосмотр прошли!", "Дальше биометрия"],
-  ["Пока ждёте Emirates ID,", "отпуск тоже подождёт"],
-  ["Мы ведём весь путь:", "Medical, биометрия, ID"]
+  [
+   "Как получить",
+   "Emirates ID в Дубае?"
+  ],
+  [
+   "Шаг 1: разрешение",
+   "дальше медосмотр"
+  ],
+  [
+   "Шаг 2: медосмотр",
+   "дальше биометрия"
+  ],
+  [
+   "Шаг 3: биометрия",
+   "и вот он, Emirates ID"
+  ],
+  [
+   "Пока ждёте карту,",
+   "отпуск тоже подождёт"
+  ]
  ],
- "end": ["Пишите нам", "мы поможем"],
+ "end": [
+  "Ведём весь путь сами",
+  "пишите, поможем"
+ ],
  "y": 900,
- "sound": {"q": "Echo Sax End", "match": "echo sax"},
+ "sound": {
+  "q": "Echo Sax End",
+  "match": "echo sax"
+ },
  "caption": "Визу одобрили: ура.\nEmirates ID: ещё пара шагов.\n\nВедём весь путь сами: документы, Medical, биометрия, Emirates ID. Рабочая виза с Emirates ID от 5 500 USD.\n\nПишите «виза» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #визавдубае #emiratesid #жизньвдубае",
- "rev": 1
+ "rev": 2
 }
