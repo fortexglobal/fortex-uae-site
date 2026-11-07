@@ -1,5 +1,5 @@
 {
- "at": "2026-11-07T18:02+04:00",
+ "at": "2026-11-07T18:18+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -175,6 +175,6 @@
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 1
+  "openrouter_http": 0
  }
 }
