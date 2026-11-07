@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-07T09:17Z",
+ "checked": "2026-11-07T10:03Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18137209150712052",
+   "timestamp": "2026-11-07T09:30:38+0000",
+   "permalink": "https://www.instagram.com/reel/Dfb3P3YmXrt/",
+   "media_type": "VIDEO",
+   "caption": "Переезд в Дубай: квартира выбрана, кофе куплен, а банк и аре"
+  },
   {
    "id": "18103300415364563",
    "timestamp": "2026-11-06T09:30:49+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/p/De1OtiNFsEM/",
    "media_type": "CAROUSEL_ALBUM",
    "caption": "Рабочая виза или Virtual Work: что выбрать?\n\nОбе дают резиде"
-  },
-  {
-   "id": "18146568127608471",
-   "timestamp": "2026-10-23T09:24:17+0000",
-   "permalink": "https://www.instagram.com/p/De1OpQWlvRp/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Банк в ОАЭ отказал. Что дальше?\n\nГлавное: не подавайтесь сам"
   }
  ]
 }
