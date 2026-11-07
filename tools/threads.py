@@ -216,6 +216,20 @@ REPLY_PROMPT = """Ты ведёшь Threads @fortex__uae (Fortex UAE, Дубай
 Ответь ОДНИМ очень коротким предложением: от 3 до 7 слов, не больше. Это реплика с юмором или лёгкой иронией на то, что сказал человек (согласись, подшути, метко подытожь). Не пересказывай комментарий и не объясняй. Каждый раз строй фразу по-новому: не начинай с «Ага», «Вот это», «Это тоже», «О,», не используй «дорогого стоит», «образ жизни», «признак». Свои недавние ответы (не повторяй их начало и конструкцию): {recent}. Вопросов не задавай, знак «?» не используй. Если человек сам спрашивает про счёт, визу или компанию: одна фраза до 10 слов, что бесплатно разберём его случай в Telegram @Fortex_Dubai. Без эмодзи и смайликов, только русские слова, без длинных тире, без хэштегов, без ссылок, без обещаний и цен. Не продавай, если не спрашивают.
 Если это спам, реклама, оскорбление, политика или просто одно эмодзи без слов, верни ровно SKIP."""
 
+ALEX = os.path.basename(D) == "threads-alex"
+
+ALEX_PROMPT = """Ты отвечаешь от имени Александра в его личном Threads @aleks___ruso. Он живёт в Дубае, предприниматель, пишет про жизнь, переезд, бизнес и Дубай. Задача: ответы с сарказмом и самоиронией, чтобы людям было смешно и хотелось спорить и отвечать дальше. Сарказм дружеский: подкалываем ситуацию, стереотипы, себя и Дубай, но не унижаем человека, не смеёмся над бедой, болезнью, внешностью, национальностью. Пиши как собеседник (на «ты» или «вы»).
+Пост Александра: «{post}»
+Ветка до этого:
+{thread}
+Новый комментарий @{user}: «{text}»
+Сначала реши, что это за комментарий:
+1) Реклама чужих услуг, продвижение своего канала или аккаунта, «пиши в личку», заработок, крипта, ставки, накрутка, ссылки на чужие проекты, бот или спам, оскорбление, политика, или текст вообще не связан с постом и разговором: верни ровно HIDE.
+2) Одно эмодзи без слов или что-то, на что нечего сказать: верни ровно SKIP.
+3) Иначе ответь ОДНИМ коротким предложением, от 3 до 10 слов, с сарказмом или иронией на то, что сказал человек. Не пересказывай комментарий и не объясняй шутку. Каждый раз строй фразу по-новому, не повторяй начало и конструкцию своих недавних ответов: {recent}. Вопросов не задавай, знак «?» не используй. Если человек всерьёз спрашивает про счёт, визу, ВНЖ или компанию в ОАЭ: одна фраза до 12 слов, что разберём его случай в Telegram @Fortex_Dubai. Без эмодзи, только русские слова, без длинных тире, без хэштегов, без ссылок, без цен и обещаний, без мата."""
+
+AD_RE = r"(https?://|t\.me/|www\.|\.ru\b|\.com\b|пиши(те)? в (лс|личку|директ)|в моём (тг|телеграм|профиле)|подпис(ыв)?айтесь|заработ|казино|накрут|бесплатн(ый|ая) (курс|урок|консультац)|оказываю услуг|помогу (открыть|оформить|получить)|наша компания|обращайтесь)"
+
 HOT_WORDS = ("счёт", "счет", "банк", "виз", "emirates", "эмирейтс", "компани", "лиценз", "сколько стоит", "цена", "стоимость", "помогите", "подскажите", "как открыть", "отказ")
 
 
@@ -246,6 +260,16 @@ def replies():
     hot = json.load(open(hp)) if os.path.exists(hp) else []
     srcs = {os.path.basename(f)[:-5]: json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(D, "src", "*.json"))}
     me = call("GET", "me", fields="username").get("username", "fortex__uae")
+    if ALEX:  # личный аккаунт: все его посты, включая написанные вручную
+        st = {}
+        for p in recent_posts(30):
+            if p.get("text") is None and not p.get("id"):
+                continue
+            ts = (p.get("timestamp") or "").replace("+0000", "+00:00")
+            st[p["id"]] = {"id": p["id"], "at": ts, "url": p.get("permalink", "")}
+            srcs[p["id"]] = {"text": p.get("text") or ""}
+    hdp = os.path.join(D, "hidden.json")
+    hidden = json.load(open(hdp)) if os.path.exists(hdp) else []
     sent = 0
     for slug, info in st.items():
         if not info.get("id") or sent >= 8:
@@ -277,11 +301,27 @@ def replies():
                 chain.insert(0, f"@{by_id[p].get('username')}: {by_id[p].get('text', '')[:200]}")
                 p = (by_id[p].get("replied_to") or {}).get("id")
             recent = [v.get("text", "") for v in done.values() if isinstance(v, dict) and v.get("text")][-6:]
-            prm = REPLY_PROMPT.format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",
+            import re as _r0
+            ans = ""
+            if ALEX and _r0.search(AD_RE, c["text"].lower()) and not any(w in c["text"].lower() for w in ("?", "подскаж", "как ")):
+                ans = "HIDE"
+            prm = (ALEX_PROMPT if ALEX else REPLY_PROMPT).format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",
                                       user=user, text=c["text"][:500], recent=" | ".join(recent) or "(нет)")
-            ans = llm(prm)
+            if not (ALEX and ans == "HIDE"):
+                ans = llm(prm)
+            if ALEX and ans.strip().upper().startswith("HIDE"):
+                try:
+                    call("POST", f"{c['id']}/manage_reply", hide="true")
+                    done[c["id"]] = {"hidden": c["text"][:200], "user": user}
+                    hidden.append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "user": user, "text": c["text"][:300], "post": info.get("url", "")})
+                    print("hidden", user, c["text"][:80])
+                except Exception as e:
+                    done[c["id"]] = "hide error " + str(e)[:200]
+                    print("hide error", e)
+                json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
+                continue
             hot_q = any(w in c["text"].lower() for w in HOT_WORDS)
-            lim = 10 if hot_q else 7
+            lim = (12 if hot_q else 10) if ALEX else (10 if hot_q else 7)
             if ans and not ans.upper().startswith("SKIP") and len(ans.split()) > lim:  # слишком длинно: одна попытка переписать
                 ans = llm(prm + f"\n\nТвой вариант «{ans}» слишком длинный. Дай одно предложение не длиннее {lim} слов.") or ans
             import re as _r, random as _rnd
@@ -323,6 +363,8 @@ def replies():
             time.sleep(15)
     json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
     json.dump(hot[-200:], open(hp, "w"), ensure_ascii=False, indent=1)
+    if ALEX:
+        json.dump(hidden[-300:], open(hdp, "w"), ensure_ascii=False, indent=1)
     print("replies sent", sent)
 
 

@@ -1,5 +1,5 @@
 name: Threads Alex
-# Личный аккаунт Александра в Threads: публикация постов threads-alex/src по publish_at и статистика.
+# Личный аккаунт Александра в Threads: публикация постов threads-alex/src по publish_at, саркастичные ответы на комментарии под его постами, скрытие рекламы и оффтопа, статистика.
 # Ключ: секрет THREADS_TOKEN_ALEX. Пока секрета нет, ничего не делает.
 on:
   schedule:
@@ -31,6 +31,12 @@ jobs:
         if: env.THREADS_TOKEN != ''
         continue-on-error: true
         run: python3 tools/threads.py publish
+      - name: Reply to comments (sarcasm) and hide ads
+        if: env.THREADS_TOKEN != ''
+        continue-on-error: true
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python3 tools/threads.py replies
       - name: Insights
         if: env.THREADS_TOKEN != '' && (github.event.schedule == '40 3 * * *' || github.event_name != 'schedule')
         continue-on-error: true
