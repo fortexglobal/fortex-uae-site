@@ -1,0 +1,27 @@
+name: Threads demographics
+# Разово: аудитория (возраст, пол, страны, города) обоих аккаунтов Threads -> */stats/demographics.json
+on:
+  workflow_dispatch:
+  push:
+    paths: [".github/workflows/threads-demographics.yml"]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fortex
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN }}", THREADS_DIR: threads }
+        run: python3 tools/threads.py demographics
+      - name: Alex
+        continue-on-error: true
+        env: { THREADS_TOKEN: "${{ secrets.THREADS_TOKEN_ALEX }}", THREADS_DIR: threads-alex }
+        run: python3 tools/threads.py demographics
+      - name: Commit
+        run: |
+          git config user.name "Claude"; git config user.email "noreply@anthropic.com"
+          git add threads/stats/demographics.json threads-alex/stats/demographics.json || true
+          git diff --cached --quiet || (git commit -m "Threads demographics" && git pull --rebase --autostash && git push)

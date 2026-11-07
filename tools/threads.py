@@ -507,8 +507,22 @@ def refresh():
     print("refreshed, expires_in", json.loads(r.read()).get("expires_in"))
 
 
+def demographics():
+    """Аудитория аккаунта: возраст, пол, страны, города подписчиков (Threads API follower_demographics, от 100 подписчиков)."""
+    out = {"generated": datetime.now(DUBAI).isoformat(timespec="minutes")}
+    for b in ("age", "gender", "country", "city"):
+        try:
+            r = call("GET", "me/threads_insights", metric="follower_demographics", breakdown=b)
+            out[b] = r.get("data", [])
+        except Exception as e:
+            out[b] = {"error": str(e)[:300]}
+    os.makedirs(os.path.join(D, "stats"), exist_ok=True)
+    json.dump(out, open(os.path.join(D, "stats", "demographics.json"), "w"), ensure_ascii=False, indent=1)
+    print(json.dumps(out, ensure_ascii=False)[:2000])
+
+
 if __name__ == "__main__":
     if not TOKEN:
         print("no THREADS_TOKEN, skip")
         sys.exit(0)
-    {"publish": publish, "dedupe": dedupe, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights, "history": history}[sys.argv[1]]()
+    {"publish": publish, "dedupe": dedupe, "search": search, "refresh": refresh, "check": check, "probe": probe, "replies": replies, "insights": insights, "history": history, "demographics": demographics}[sys.argv[1]]()
