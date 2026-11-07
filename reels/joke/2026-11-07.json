@@ -1,0 +1,64 @@
+{
+ "id": "2026-11-07",
+ "publish_at": "2026-11-07T09:30:00.000Z",
+ "topic": "переезд и жизнь в Дубае",
+ "style": "A",
+ "clips": [
+  {
+   "stock": "dubai airport arrival",
+   "must": "dubai"
+  },
+  {
+   "stock": "dubai marina apartment",
+   "must": "dubai"
+  },
+  {
+   "stock": "passport documents desk",
+   "must": ""
+  },
+  {
+   "stock": "dubai downtown street",
+   "must": "dubai"
+  },
+  {
+   "stock": "laptop remote work",
+   "must": ""
+  },
+  {
+   "stock": "dubai skyline day",
+   "must": "dubai"
+  }
+ ],
+ "cards": [
+  [
+   "Переезд в Дубай:",
+   "с чего начать?"
+  ],
+  [
+   "Квартира нравится,",
+   "а арендодатель: где ID?"
+  ],
+  [
+   "Банк тоже улыбается:",
+   "сначала Emirates ID"
+  ],
+  [
+   "Работаете удалённо?",
+   "есть ВНЖ Virtual Work"
+  ],
+  [
+   "От вас паспорт и фото,",
+   "остальное делаем мы"
+  ]
+ ],
+ "end": [
+  "Пишите нам",
+  "мы поможем"
+ ],
+ "y": 900,
+ "sound": {
+  "q": "Comme Ci Comme Ca",
+  "match": "comme ci"
+ },
+ "caption": "Переезд в Дубай: квартира выбрана, кофе куплен, а банк и арендодатель вежливо спрашивают Emirates ID.\n\nЕсли вы работаете удалённо на компанию в другой стране, подойдёт ВНЖ Virtual Work: резидентская виза на 1 год и Emirates ID, от 2 000 USD, 7-10 рабочих дней после приезда при готовых документах. От вас паспорт и фото, остальное делаем мы.\n\nПишите «переезд» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #переездвдубай #жизньвдубае #внжоаэ #emiratesid"
+}
