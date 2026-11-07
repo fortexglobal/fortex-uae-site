@@ -228,6 +228,10 @@ ALEX_PROMPT = """Ты отвечаешь от имени Александра в
 2) Одно эмодзи без слов или что-то, на что нечего сказать: верни ровно SKIP.
 3) Иначе ответь ОДНИМ очень коротким предложением, от 3 до 7 слов, не больше, с сарказмом или иронией на то, что сказал человек. Не пересказывай комментарий и не объясняй шутку. Без кавычек и цитат, без тире. Каждый раз строй фразу по-новому, не повторяй начало и конструкцию своих недавних ответов: {recent}. Вопросов не задавай, знак «?» не используй. Если человек всерьёз спрашивает про счёт, визу, ВНЖ или компанию в ОАЭ: одна фраза до 7 слов, что разберём его случай в Telegram @Fortex_Dubai. Без эмодзи, только русские слова, без длинных тире, без хэштегов, без ссылок, без цен и обещаний, без мата."""
 
+KW_REPLIES = ["Гайд ждёт тебя в Telegram @Fortex_Dubai", "Ссылка в шапке, гайд пришлют сразу",
+              "Напиши в Telegram @Fortex_Dubai, гайд там", "Лови гайд по ссылке в шапке",
+              "Гайд уже в Telegram @Fortex_Dubai, забирай"]
+
 AD_RE = r"(https?://|t\.me/|www\.|\.ru\b|\.com\b|пиши(те)? в (лс|личку|директ)|в моём (тг|телеграм|профиле)|подпис(ыв)?айтесь|заработ|казино|накрут|бесплатн(ый|ая) (курс|урок|консультац)|оказываю услуг|помогу (открыть|оформить|получить)|наша компания|обращайтесь)"
 
 HOT_WORDS = ("счёт", "счет", "банк", "виз", "emirates", "эмирейтс", "компани", "лиценз", "сколько стоит", "цена", "стоимость", "помогите", "подскажите", "как открыть", "отказ")
@@ -301,8 +305,25 @@ def replies():
                 chain.insert(0, f"@{by_id[p].get('username')}: {by_id[p].get('text', '')[:200]}")
                 p = (by_id[p].get("replied_to") or {}).get("id")
             recent = [v.get("text", "") for v in done.values() if isinstance(v, dict) and v.get("text")][-6:]
-            import re as _r0
+            import re as _r0, random as _rk
             ans = ""
+            kw = _r0.sub(r"[^\w\s]", " ", c["text"].lower()).split()
+            if ALEX and 0 < len(kw) <= 4 and any(w in ("счёт", "счет", "гайд", "ошибки", "ошибок") for w in kw):
+                # слово-триггер из делового поста (07.11): человек хочет гайд «7 ошибок»
+                ans = _rk.choice(KW_REPLIES)
+                hot.append({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "user": user, "text": c["text"][:300], "post": info.get("url", ""), "sent": False, "kw": True})
+                try:
+                    cont = call("POST", "me/threads", media_type="TEXT", text=ans, reply_to_id=c["id"])
+                    time.sleep(3)
+                    r = call("POST", "me/threads_publish", creation_id=cont["id"])
+                    done[c["id"]] = {"id": r["id"], "user": user, "post": slug, "text": ans, "kw": True}
+                    sent += 1
+                    print("kw replied", user, ans)
+                except Exception as e:
+                    done[c["id"]] = "error " + str(e)[:200]
+                json.dump(done, open(rp, "w"), ensure_ascii=False, indent=1)
+                time.sleep(15)
+                continue
             if ALEX and _r0.search(AD_RE, c["text"].lower()) and not any(w in c["text"].lower() for w in ("?", "подскаж", "как ")):
                 ans = "HIDE"
             prm = (ALEX_PROMPT if ALEX else REPLY_PROMPT).format(post=srcs.get(slug, {}).get("text", "")[:400], thread="\n".join(chain) or "(нет)",

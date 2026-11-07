@@ -318,6 +318,19 @@ def build():
     open(os.path.join(OUT, "spasibo", "index.html"), "w", encoding="utf-8").write(page("Заявка отправлена | Fortex UAE", "Спасибо, мы свяжемся с вами в Telegram.",
         f"<main><section class='sec'><div class='wrap narrow'><h1 class='h1'>Спасибо, заявка отправлена</h1><p class='lead'>Свяжемся с вами в Telegram в ближайшее время. Если срочно, напишите сами: <a href='{TG}'>@Fortex_Dubai</a></p><a class='btn' href='/'>На главную</a></div></section></main>", "/spasibo/"))
 
+    # ---- гайд-подарок «7 ошибок» (лид-магнит личного Threads Александра, 07.11) ----
+    gid_md = os.path.join(ROOT, "content", "gid.md")
+    if os.path.exists(gid_md):
+        cta = ("<div class='row' style='margin-top:28px'><a class='btn' href='/c/gid'>Разобрать мою ситуацию бесплатно</a></div>"
+               "<p class='muted' style='margin-top:12px'>Откроется Telegram @Fortex_Dubai. Ответим в течение дня, пн–сб 10:00–20:00 по Дубаю.</p>")
+        os.makedirs(os.path.join(OUT, "gid"), exist_ok=True)
+        open(os.path.join(OUT, "gid", "index.html"), "w", encoding="utf-8").write(page(
+            "7 ошибок, из-за которых банк ОАЭ отказывает | Fortex UAE",
+            "Гайд: почему банки ОАЭ отказывают в открытии счёта и как подготовиться к проверке с первой подачи.",
+            f"<main><section class='sec'><div class='wrap narrow'><p class='muted'>Гайд Fortex UAE · 5 минут чтения</p>"
+            f"<h1 class='h1'>7 ошибок, из\u2011за которых банк ОАЭ отказывает</h1>"
+            f"<div class='prose'>{md(open(gid_md, encoding='utf-8').read())}</div>{cta}</div></section></main>", "/gid/"))
+
     # ---- articles ----
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
     cards = "".join(article_card(a) for a in arts) or "<p class='muted'>Скоро здесь появятся статьи.</p>"
