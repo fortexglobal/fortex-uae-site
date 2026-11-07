@@ -1,0 +1,2 @@
+ok research/fetch/ipcheck/ipoteka.html
+ok research/fetch/ipcheck/alex2.html
