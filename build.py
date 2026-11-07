@@ -320,11 +320,11 @@ def build():
 
     # ---- гайды-подарки (лид-магниты личного Threads Александра, 07.11) ----
     for g_slug, g_file, g_title, g_desc, g_h1, g_btn, g_cta in (
-        ("ipoteka", "ipoteka.md", "Ипотека в Дубае с паспортом РФ: путь за 6 месяцев | Fortex UAE",
-         "Гайд: как получить ипотеку в Дубае с паспортом РФ через рабочую визу, 3 правила банка, что можно купить и сколько нужно своих денег.",
-         "Ипотека в Дубае с паспортом РФ: путь за 6&nbsp;месяцев", "Прикинуть мой путь к ипотеке бесплатно", "/c/ipoteka-gid"),
+        ("ipoteka", "ipoteka.md", "Ипотека в Дубае с паспортом РФ: как это устроено | Fortex UAE",
+         "Как получить ипотеку в Дубае с паспортом РФ через рабочую визу: путь за 6 месяцев, 3 правила банка, что можно купить и сколько нужно своих денег.",
+         "Ипотека в Дубае с паспортом РФ: путь за 6&nbsp;месяцев", "Прикинуть мой вариант", "/c/ipoteka-gid"),
         ("gid", "gid.md", "7 ошибок, из-за которых банк ОАЭ отказывает | Fortex UAE",
-         "Гайд: почему банки ОАЭ отказывают в открытии счёта и как подготовиться к проверке с первой подачи.",
+         "Почему банки ОАЭ отказывают в открытии счёта и как подготовиться к проверке с первой подачи.",
          "7 ошибок, из\u2011за которых банк ОАЭ отказывает", "Разобрать мою ситуацию бесплатно", "/c/gid")):
         g_md = os.path.join(ROOT, "content", g_file)
         if not os.path.exists(g_md):
@@ -333,7 +333,7 @@ def build():
                "<p class='muted' style='margin-top:12px'>Откроется Telegram @Fortex_Dubai. Отвечаем пн–сб 10:00–20:00 по Дубаю.</p>")
         os.makedirs(os.path.join(OUT, g_slug), exist_ok=True)
         open(os.path.join(OUT, g_slug, "index.html"), "w", encoding="utf-8").write(page(g_title, g_desc,
-            f"<main><section class='sec'><div class='wrap narrow'><p class='muted'>Гайд Fortex UAE · 5 минут чтения</p>"
+            f"<main><section class='sec'><div class='wrap narrow'><p class='muted'>Fortex UAE · 5 минут чтения</p>"
             f"<h1 class='h1'>{g_h1}</h1><div class='prose'>{md(open(g_md, encoding='utf-8').read())}</div>{cta}</div></section></main>", f"/{g_slug}/"))
 
     # ---- articles ----
