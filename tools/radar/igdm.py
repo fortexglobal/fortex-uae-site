@@ -884,6 +884,8 @@ async def tg_inbound(ev):
                     break
         if not cv.get("source"):  # откуда пришёл: по фразе из ссылки «Бесплатная консультация» (/c/<источник>)
             low = text.lower()
+            if "есть вопрос по ипотеке в дубае" in low or "есть вопрос по счёту в оаэ" in low:
+                cv["source"] = "с сайта"  # кнопка «Задать вопрос» на страницах /ipoteka/ и /gid/
             for k, w in (("сайт", "с сайта"), ("instagram", "instagram"), ("threads", "threads"), ("канал", "telegram-канал"),
                          ("письм", "письма"), ("дзен", "дзен"), ("бот", "бота-проверки")):
                 if "пишу" in low and k in low:
