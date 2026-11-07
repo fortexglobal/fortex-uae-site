@@ -1,0 +1,15 @@
+{
+ "generated": "2026-11-07T20:54+04:00",
+ "age": {
+  "error": "400 {\"error\":{\"message\":\"Invalid operation\",\"type\":\"OAuthException\",\"code\":801,\"error_subcode\":4279032,\"is_transient\":false,\"error_user_title\":\"Low Follower Count\",\"error_user_msg\":\"You cannot fetch user follower demographic insights for users with less than 100 followers.\",\"fbtrace_id\":\"AcFW_uJfMTn"
+ },
+ "gender": {
+  "error": "400 {\"error\":{\"message\":\"Invalid operation\",\"type\":\"OAuthException\",\"code\":801,\"error_subcode\":4279032,\"is_transient\":false,\"error_user_title\":\"Low Follower Count\",\"error_user_msg\":\"You cannot fetch user follower demographic insights for users with less than 100 followers.\",\"fbtrace_id\":\"A9wE6J0px_J"
+ },
+ "country": {
+  "error": "400 {\"error\":{\"message\":\"Invalid operation\",\"type\":\"OAuthException\",\"code\":801,\"error_subcode\":4279032,\"is_transient\":false,\"error_user_title\":\"Low Follower Count\",\"error_user_msg\":\"You cannot fetch user follower demographic insights for users with less than 100 followers.\",\"fbtrace_id\":\"AzWNm2GjKdU"
+ },
+ "city": {
+  "error": "400 {\"error\":{\"message\":\"Invalid operation\",\"type\":\"OAuthException\",\"code\":801,\"error_subcode\":4279032,\"is_transient\":false,\"error_user_title\":\"Low Follower Count\",\"error_user_msg\":\"You cannot fetch user follower demographic insights for users with less than 100 followers.\",\"fbtrace_id\":\"AfQum3JXsNj"
+ }
+}

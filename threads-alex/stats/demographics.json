@@ -1,0 +1,677 @@
+{
+ "generated": "2026-11-07T20:54+04:00",
+ "age": [
+  {
+   "name": "follower_demographics",
+   "period": "day",
+   "title": "follower_demographics",
+   "description": "The demographic characteristics of followers, including countries, cities and gender distribution.",
+   "total_value": {
+    "breakdowns": [
+     {
+      "dimension_keys": [
+       "age"
+      ],
+      "results": [
+       {
+        "dimension_values": [
+         "18-24"
+        ],
+        "value": 33
+       },
+       {
+        "dimension_values": [
+         "25-34"
+        ],
+        "value": 414
+       },
+       {
+        "dimension_values": [
+         "35-44"
+        ],
+        "value": 620
+       },
+       {
+        "dimension_values": [
+         "45-54"
+        ],
+        "value": 251
+       },
+       {
+        "dimension_values": [
+         "55-64"
+        ],
+        "value": 100
+       },
+       {
+        "dimension_values": [
+         "65+"
+        ],
+        "value": 40
+       }
+      ]
+     }
+    ]
+   },
+   "id": "17841465254316890/insights/follower_demographics/day"
+  }
+ ],
+ "gender": [
+  {
+   "name": "follower_demographics",
+   "period": "day",
+   "title": "follower_demographics",
+   "description": "The demographic characteristics of followers, including countries, cities and gender distribution.",
+   "total_value": {
+    "breakdowns": [
+     {
+      "dimension_keys": [
+       "gender"
+      ],
+      "results": [
+       {
+        "dimension_values": [
+         "F"
+        ],
+        "value": 476
+       },
+       {
+        "dimension_values": [
+         "M"
+        ],
+        "value": 903
+       },
+       {
+        "dimension_values": [
+         "U"
+        ],
+        "value": 79
+       }
+      ]
+     }
+    ]
+   },
+   "id": "17841465254316890/insights/follower_demographics/day"
+  }
+ ],
+ "country": [
+  {
+   "name": "follower_demographics",
+   "period": "day",
+   "title": "follower_demographics",
+   "description": "The demographic characteristics of followers, including countries, cities and gender distribution.",
+   "total_value": {
+    "breakdowns": [
+     {
+      "dimension_keys": [
+       "country"
+      ],
+      "results": [
+       {
+        "dimension_values": [
+         "RS"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "DE"
+        ],
+        "value": 13
+       },
+       {
+        "dimension_values": [
+         "BD"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "FI"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "RU"
+        ],
+        "value": 717
+       },
+       {
+        "dimension_values": [
+         "PT"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "FR"
+        ],
+        "value": 12
+       },
+       {
+        "dimension_values": [
+         "UA"
+        ],
+        "value": 57
+       },
+       {
+        "dimension_values": [
+         "SA"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "BR"
+        ],
+        "value": 18
+       },
+       {
+        "dimension_values": [
+         "MA"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "MD"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "BY"
+        ],
+        "value": 55
+       },
+       {
+        "dimension_values": [
+         "GB"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "ID"
+        ],
+        "value": 19
+       },
+       {
+        "dimension_values": [
+         "KG"
+        ],
+        "value": 10
+       },
+       {
+        "dimension_values": [
+         "CA"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "GE"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "US"
+        ],
+        "value": 51
+       },
+       {
+        "dimension_values": [
+         "EG"
+        ],
+        "value": 19
+       },
+       {
+        "dimension_values": [
+         "IL"
+        ],
+        "value": 11
+       },
+       {
+        "dimension_values": [
+         "AE"
+        ],
+        "value": 65
+       },
+       {
+        "dimension_values": [
+         "CH"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "UZ"
+        ],
+        "value": 7
+       },
+       {
+        "dimension_values": [
+         "IN"
+        ],
+        "value": 10
+       },
+       {
+        "dimension_values": [
+         "IQ"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "IR"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "MX"
+        ],
+        "value": 18
+       },
+       {
+        "dimension_values": [
+         "IT"
+        ],
+        "value": 25
+       },
+       {
+        "dimension_values": [
+         "AM"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "ES"
+        ],
+        "value": 16
+       },
+       {
+        "dimension_values": [
+         "KZ"
+        ],
+        "value": 65
+       },
+       {
+        "dimension_values": [
+         "AR"
+        ],
+        "value": 17
+       },
+       {
+        "dimension_values": [
+         "TH"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "PE"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "CY"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "CZ"
+        ],
+        "value": 7
+       },
+       {
+        "dimension_values": [
+         "PH"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "VN"
+        ],
+        "value": 7
+       },
+       {
+        "dimension_values": [
+         "AZ"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "NG"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "PK"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "PL"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "NL"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "TR"
+        ],
+        "value": 8
+       }
+      ]
+     }
+    ]
+   },
+   "id": "17841465254316890/insights/follower_demographics/day"
+  }
+ ],
+ "city": [
+  {
+   "name": "follower_demographics",
+   "period": "day",
+   "title": "follower_demographics",
+   "description": "The demographic characteristics of followers, including countries, cities and gender distribution.",
+   "total_value": {
+    "breakdowns": [
+     {
+      "dimension_keys": [
+       "city"
+      ],
+      "results": [
+       {
+        "dimension_values": [
+         "London, England"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Yerevan, Yerevan"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Bishkek, Bishkek"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Yekaterinburg, Sverdlovsk Oblast"
+        ],
+        "value": 9
+       },
+       {
+        "dimension_values": [
+         "Balashikha, Moscow Oblast"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Almaty, Almaty Region"
+        ],
+        "value": 18
+       },
+       {
+        "dimension_values": [
+         "Barcelona, Cataluña"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Nizhny Novgorod, Nizhny Novgorod Oblast"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Riga, Riga Planning Region"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Khimki, Moscow Oblast"
+        ],
+        "value": 38
+       },
+       {
+        "dimension_values": [
+         "Tolyatti, Samara Oblast"
+        ],
+        "value": 7
+       },
+       {
+        "dimension_values": [
+         "Kursk, Kursk Oblast"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Lviv, Lviv Oblast"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Kyiv, Kyiv"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "Prague, Prague"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Tambov, Tambov Oblast"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Novaya Usman, Voronezh Oblast"
+        ],
+        "value": 13
+       },
+       {
+        "dimension_values": [
+         "Chelyabinsk, Chelyabinsk Oblast"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Ufa, Bashkortostan"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Moscow, Moscow"
+        ],
+        "value": 222
+       },
+       {
+        "dimension_values": [
+         "Tyumen, Tyumen Oblast"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Buenos Aires, Ciudad Autónoma de Buenos Aires"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Novosibirsk, Novosibirsk Oblast"
+        ],
+        "value": 10
+       },
+       {
+        "dimension_values": [
+         "Badung, Bali"
+        ],
+        "value": 9
+       },
+       {
+        "dimension_values": [
+         "Krasnoyarsk, Krasnoyarsk Krai"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Irkutsk, Irkutsk Oblast"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Chita, Zabaykalsky Krai"
+        ],
+        "value": 7
+       },
+       {
+        "dimension_values": [
+         "Minsk, Minsk"
+        ],
+        "value": 26
+       },
+       {
+        "dimension_values": [
+         "Karaganda, Karaganda Region"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Novokuybyshevsk, Samara Oblast"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Krasnodar, Krasnodar Krai"
+        ],
+        "value": 13
+       },
+       {
+        "dimension_values": [
+         "Rostov-on-Don, Rostov Oblast"
+        ],
+        "value": 12
+       },
+       {
+        "dimension_values": [
+         "Tselinograd, Akmola Region"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "Lima, Lima Region"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Aktobe, Aktobe Region"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Nizhnekamsk, Tatarstan"
+        ],
+        "value": 14
+       },
+       {
+        "dimension_values": [
+         "Sochi, Krasnodar Krai"
+        ],
+        "value": 6
+       },
+       {
+        "dimension_values": [
+         "PetropavlovskKamchatskiy, Kamchatka Krai"
+        ],
+        "value": 4
+       },
+       {
+        "dimension_values": [
+         "Kazan, Tatarstan"
+        ],
+        "value": 11
+       },
+       {
+        "dimension_values": [
+         "Saint Petersburg, Saint Petersburg"
+        ],
+        "value": 43
+       },
+       {
+        "dimension_values": [
+         "Tbilisi, Tbilisi"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Cairo, Cairo Governorate"
+        ],
+        "value": 8
+       },
+       {
+        "dimension_values": [
+         "Dubai, Dubai"
+        ],
+        "value": 54
+       },
+       {
+        "dimension_values": [
+         "Omsk, Omsk Oblast"
+        ],
+        "value": 5
+       },
+       {
+        "dimension_values": [
+         "Samara, Samara Oblast"
+        ],
+        "value": 46
+       }
+      ]
+     }
+    ]
+   },
+   "id": "17841465254316890/insights/follower_demographics/day"
+  }
+ ]
+}
