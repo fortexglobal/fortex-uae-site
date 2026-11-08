@@ -883,6 +883,7 @@ async def tg_human(peer, text):
                 m = await u.send_message(peer, part)
                 autoreply.mark_sent(peer)
                 S["sent"].append(f"tg:{m.id}")
+                save()  # сразу на диск: иначе после перезапуска своё же сообщение примем за «ручной ответ» и замолчим (08.11)
                 last = m.id
             except Exception as e:
                 log.warning("tg send: %s", e)
