@@ -83,14 +83,25 @@ def build(spec_path):
     # 1. сток: по клипу на карточку + один на концовку
     clips = spec["clips"][: len(cards) + 1]
     seg = dur / len(clips)
+    # клипы не повторяются между рилсами (жалоба Александра 08.11: одинаковые картинки каждый день)
+    import random, datetime as _dt
+    cu_path = "reels/joke/clips_used.json"
+    clips_used = json.load(open(cu_path)) if os.path.exists(cu_path) else {}
+    cutoff = (_dt.date.fromisoformat(rid[:10]) - _dt.timedelta(days=45)).isoformat() if rid[:4].isdigit() else ""
+    recent = {k for k, d in clips_used.items() if d >= cutoff}
+    rnd = random.Random(rid)
     used = set()
     parts = []
     for i, c in enumerate(clips):
         found = stock_search.search(c["stock"])
         want = c.get("must", "").lower()
-        pick = [r for r in found if (not want or want in (r.get("tags", "") + " " + r.get("link", "")).lower()) and r.get("id") not in used]
-        pick = [r for r in pick if (r.get("dur") or 0) >= seg + 1] or pick or found
-        r = pick[0]; used.add(r.get("id"))
+        fresh = [r for r in found if r.get("id") not in used and r.get("id") not in recent]
+        pool = [r for r in fresh if not want or want in (r.get("tags", "") + " " + r.get("link", "")).lower()] or fresh
+        pool = [r for r in pool if (r.get("dur") or 0) >= seg + 1] or pool
+        if not pool:  # всё уже было: берём хотя бы не из этого же рилса
+            pool = [r for r in found if r.get("id") not in used] or found
+        top = pool[:12]
+        r = rnd.choice(top); used.add(r.get("id"))
         raw = f"{tmp}/c{i}.src.mp4"; dl(r["link"], raw)
         out = f"{tmp}/c{i}.mp4"
         run(["ffmpeg", "-y", "-v", "error", "-ss", "1", "-i", raw, "-t", f"{seg:.2f}", "-an",
@@ -187,6 +198,10 @@ def build(spec_path):
         code, p = call("POST", "/api/v1/post/", {"teamId": TEAM, "title": f"joke {rid}", "postDate": spec["publish_at"],
                                                  "status": "SCHEDULED", "socialAccountTypes": ["INSTAGRAM"], "data": {"INSTAGRAM": ig}})
         res["post"] = [code, p.get("id") if isinstance(p, dict) else p, p.get("status") if isinstance(p, dict) else None]
+        if code == 200:
+            for cid in used:
+                clips_used[cid] = rid[:10]
+            json.dump(clips_used, open(cu_path, "w"), indent=0)
         if code == 200 and music_id:
             hist = json.load(open("reels/joke/music_used.json")) if os.path.exists("reels/joke/music_used.json") else []
             json.dump(hist + [music_id], open("reels/joke/music_used.json", "w"))
@@ -197,7 +212,7 @@ def build(spec_path):
 
 
 for sp in sorted(glob.glob("reels/joke/*.json")):
-    if os.path.basename(sp) in ("music_used.json",):
+    if os.path.basename(sp) in ("music_used.json", "clips_used.json", "sounds.json", "trending.json"):
         continue
     try:
         build(sp)
