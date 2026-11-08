@@ -785,6 +785,29 @@ async def loop():
                     # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
                     CTX["resumed"] = True
                     for cid, cv in list(S["convs"].items()):
+                        # разово 08.11 17:37: дожим Дмитрия по новому правилу (Александр попросил отправить)
+                        if ("dmitriy_fu" not in S.setdefault("oneoff", []) and str(cv.get("uid", "")).startswith("tg:")
+                                and any("Что включает поэтапно" in (x.get("text") or "") for x in (cv.get("history") or []))):
+                            S["oneoff"].append("dmitriy_fu")
+                            cv["human"] = False
+                            cv["muted"] = False
+                            save()
+                            txt = ("Дмитрий, коротко по пакету:\n\n"
+                                   "1. Зарплатный счёт в Emirates NBD\n"
+                                   "2. Кредитка Skywards Infinite без депозита: лимит, мили, бизнес-залы\n"
+                                   "3. Дебетовая карта в подарок\n"
+                                   "Всё вместе около 3 рабочих дней, пакет 5 000 AED\n\n"
+                                   "Банкир встречается с вами в Дубае: подпись и пара вопросов. Через 1–2 дня приходит welcome letter с номером счёта\n\n"
+                                   "У вас Emirates ID уже есть?")
+                            async def _dfu(cv=cv, cid=cid, txt=txt):
+                                await asyncio.sleep(random.randint(10, 30))
+                                if await tg_block(int(cv["uid"][3:]), txt):
+                                    cv["history"].append({"role": "bot", "text": txt, "ts": time.time(), "fu": 4})
+                                    cv["fu_at"] = 0
+                                    save()
+                                    await tell(cid, f"Отправил дожим @{cv.get('username')}:\n\n{txt}")
+                            asyncio.get_event_loop().create_task(_dfu())
+                            continue
                         # разово 08.11: созвон Марины (09.11 10:00) в новую логику: подтвердит -> календарь и напоминания
                         if ("marina_call_obj" not in S.setdefault("oneoff", []) and "marina_call" in S["oneoff"]
                                 and any((x.get("text") or "").strip() == "Окей, тогда так" for x in (cv.get("history") or []))):
