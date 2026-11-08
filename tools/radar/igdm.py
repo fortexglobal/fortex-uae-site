@@ -118,6 +118,104 @@ def secret(name):
         return ""
 
 
+# ===== Созвоны (правило Александра 08.11) =====
+# Клиент назвал день -> Александр в боте даёт время -> клиент согласен (call_ok) ->
+# событие в Google Календарь (веб-хук Apps Script, файл gcal_hook), встреча в Zoom (файл zoom_creds, если есть),
+# за 40 минут напоминаем клиенту, за 5 минут шлём ссылку клиенту и в бот.
+from datetime import timezone, timedelta
+DXB = timezone(timedelta(hours=4))
+WD = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+ZOOM_RE = re.compile(r"https?://\S*zoom\.\S+")
+
+
+def call_when(ts):
+    d = datetime.fromtimestamp(ts, DXB)
+    return f"{WD[d.weekday()]} {d:%d.%m} в {d:%H:%M} по Дубаю"
+
+
+async def zoom_create(topic, ts, minutes):
+    """Встреча в Zoom через Server-to-Server OAuth. Нет ключей или ошибка -> None."""
+    cr = secret("zoom_creds").split()
+    if len(cr) != 3:
+        return None
+    acc, cid_, sec = cr
+    try:
+        async with httpx.AsyncClient(timeout=30) as c:
+            t = await c.post(f"https://zoom.us/oauth/token?grant_type=account_credentials&account_id={acc}", auth=(cid_, sec))
+            tok = t.json().get("access_token")
+            if not tok:
+                log.warning("zoom token %s", t.status_code); return None
+            r = await c.post("https://api.zoom.us/v2/users/me/meetings", headers={"Authorization": f"Bearer {tok}"},
+                             json={"topic": topic, "type": 2, "duration": minutes, "timezone": "Asia/Dubai",
+                                   "start_time": datetime.fromtimestamp(ts, DXB).strftime("%Y-%m-%dT%H:%M:%S"),
+                                   "settings": {"join_before_host": True, "waiting_room": False}})
+            return r.json().get("join_url")
+    except Exception as e:
+        log.warning("zoom: %s", e)
+        return None
+
+
+async def gcal_put(cv):
+    """Событие в Google Календарь владельца через веб-хук Apps Script. True = поставлено."""
+    hook = secret("gcal_hook")
+    call = cv.get("call") or {}
+    if not hook or not call.get("at"):
+        return False
+    who = cv.get("name") or ""
+    tgl = f"https://t.me/{cv.get('username')}" if cv.get("username") and not str(cv.get("username")).isdigit() else ""
+    body = {"id": call.get("gcal_id") or "",
+            "title": f"Созвон: {cv.get('services') or 'консультация'}, {who} @{cv.get('username')}".replace(",  @", ", @"),
+            "start": datetime.fromtimestamp(call["at"], DXB).isoformat(),
+            "end": datetime.fromtimestamp(call["at"] + call.get("min", 60) * 60, DXB).isoformat(),
+            "description": "\n".join(x for x in [cv.get("summary") or "", tgl, call.get("link") or ""] if x)}
+    try:
+        async with httpx.AsyncClient(timeout=40, follow_redirects=True) as c:
+            r = await c.post(hook, content=json.dumps(body), headers={"Content-Type": "text/plain"})
+            j = json.loads(r.text) if r.text.strip().startswith("{") else {}
+            if j.get("id"):
+                call["gcal_id"] = j["id"]
+                return True
+            log.warning("gcal %s %s", r.status_code, r.text[:200])
+    except Exception as e:
+        log.warning("gcal: %s", e)
+    return False
+
+
+async def say(cv, text):
+    """Сообщение клиенту в его канале (в Telegram с человеческой скоростью)."""
+    uid = cv["uid"]
+    ok = await (tg_human(int(uid[3:]), text) if str(uid).startswith("tg:") else send(uid, text))
+    if ok:
+        cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
+        save()
+    return ok
+
+
+async def call_tick(now):
+    """Напоминания по подтверждённым созвонам: за 40 минут клиенту, за 5 минут ссылка клиенту и в бот."""
+    for cid, cv in list(S.get("convs", {}).items()):
+        call = cv.get("call") or {}
+        if call.get("status") != "confirmed" or not call.get("at"):
+            continue
+        at = call["at"]
+        if now > at + 3600:
+            call["status"] = "done"; save(); continue
+        if not call.get("r40") and at - 40 * 60 <= now < at - 10 * 60:
+            call["r40"] = True; save()
+            asyncio.get_event_loop().create_task(say(cv, random.choice([
+                "Добрый день! Через 40 минут созваниваемся, всё в силе?",
+                "Добрый день! Напоминаю, через 40 минут созвон в Zoom. Всё в силе?"])))
+        if not call.get("r5") and at - 5 * 60 <= now < at + 15 * 60:
+            call["r5"] = True; save()
+            u = html.escape(str(cv.get("username")))
+            if call.get("link"):
+                asyncio.get_event_loop().create_task(say(cv, f"Вот ссылка на Zoom, подключайтесь: {call['link']}"))
+                await tell(cid, f"📞 <b>Через 5 минут созвон</b> с @{u}\n\n{html.escape(call['link'])}", is_html=True)
+            else:
+                await tell(cid, f"🔴 <b>Нужно твоё внимание</b>\n\n📞 <b>Через 5 минут созвон</b> с @{u}, а ссылки на Zoom нет.\n"
+                                f"Пришли ссылку реплаем, Алексей сразу отправит клиенту.", is_html=True)
+
+
 async def send(uid, text):
     if str(uid).startswith("mc:"):
         return await mc_send(uid[3:], text)
@@ -162,7 +260,7 @@ SYSTEM = """Ты сотрудник отдела работы с клиента�
 НЕ ВЫДУМЫВАЙ (правило Александра 03.11): любые цифры, проценты (в том числе доли оплаты, предоплаты, этапов), сроки, условия, документы и обещания только из базы знаний дословно по смыслу. Про встречу говори только «встретимся, всё расскажем и покажем»; не обещай принести лицензии, договоры или другие документы и не называй место. Если в базе нет точного ответа, это ask_owner, а не догадка.
 Когда звать владельца (action "ask_owner"): ответа нет в базе знаний, вопрос нестандартный (конкретный банк под необычную деятельность, юридические тонкости, скидки, точный срок по сложному кейсу). Тогда в reply коротко: что уточнишь у коллег и вернёшься (каждый раз своими словами), а в owner_question сам вопрос клиента с контекстом.
 
-СОЗВОН (правило Александра 08.11): если человек готов созвониться или соглашается («хорошо», «интересно», «давайте созвонимся»), сам предложи Zoom: так сразу можно задать все вопросы, понятнее и быстрее. И спроси, в какой день ему удобнее (каждый раз своими словами, коротко). Время и день сам не назначай, ссылку на Zoom не обещай, контакт для созвона не проси. action "none". Когда человек назвал день или дни (и время, если назвал), action "call", в call_days его слова про день и время, а в reply коротко: сейчас уточню время и подтвержу. Дальше ждём ответ Александра, он придёт как ответ коллеги.
+СОЗВОН (правило Александра 08.11): если человек готов созвониться или соглашается («хорошо», «интересно», «давайте созвонимся»), сам предложи Zoom: так сразу можно задать все вопросы, понятнее и быстрее. И спроси, в какой день ему удобнее (каждый раз своими словами, коротко). Время и день сам не назначай, ссылку на Zoom не обещай, контакт для созвона не проси. action "none". Когда человек назвал день или дни (и время, если назвал), action "call", в call_days его слова про день и время, а в reply коротко: сейчас уточню время и подтвержу. Дальше ждём ответ Александра, он придёт как ответ коллеги. Когда мы предложили клиенту время созвона и он согласен, action "call_ok" и короткое подтверждение: ссылку на Zoom пришлёшь перед началом.
 Когда передавать (action "handoff"): человек готов двигаться (спрашивает, как начать, просит точную цену под себя, соглашается начать оформление) или просит живого человека. Сначала попроси Telegram или телефон. Как только контакт есть, action "handoff", а в reply: что подключаешь руководителя (руководство), он напишет лично с аккаунта компании @FortexGlobal (там логотип, это наш официальный аккаунт), каждый раз своими словами. Слово «менеджер» не используй.
 
 Вопросы не по делу (в Telegram про себя можно немного рассказать, см. правило канала ниже; погода, политика, кто основатель, где офис, сколько сотрудников, шутки, просто болтовня): не отвечай по существу и ничего не выдумывай. Вежливо и легко уйди от темы (можно с лёгким юмором), а следующей фразой верни разговор к задаче клиента или к нашему предложению. Например: «Про погоду лучше спросить пляж :) Давайте лучше про вашу задачу: счёт нужен для компании или личный?» или «Это не ко мне... А вот со счётом в ОАЭ помогу. Компания у вас уже есть?». Если клиент так и не говорит о задаче, предложи самое ходовое: корпоративный счёт, рабочую визу с Emirates ID или карту Skywards Infinite, одной фразой. Не дави и не повторяй одно и то же предложение дважды подряд.
@@ -189,7 +287,7 @@ SYSTEM = """Ты сотрудник отдела работы с клиента�
 ПАУЗА НА РАСЧЁТ (правило Александра 08.11): если для ответа нужно что-то посчитать (ипотека, платёж, расходы) или уточнить у коллег, а клиент согласился («да, давайте», «посчитайте»), не выдавай расчёт мгновенно. В reply короткая фраза «Сейчас прикину, пару минут» (или «Уточню и вернусь»), а сам ответ положи в поле "then" (2–3 коротких предложения с цифрами-ориентирами и вопросом), и "then_min": 3–5. Он уйдёт через эти минуты. Для обычных вопросов поля then не используй.
 
 Ответь строго JSON без пояснений:
-{"reply": "<текст клиенту>", "then": "<только при паузе на расчёт>", "then_min": 0, "action": "none|ask_owner|call|handoff|partner|alert|close|ignore|react", "call_days": "<только для call: какие дни и время назвал клиент>", "reaction": "<👍 или 🤝, только для react>", "owner_question": "<если ask_owner>", "contact": "<Telegram или телефон, если клиент дал>", "name": "<имя клиента, если известно>", "summary": "<кратко: кто, задача, что предложили>", "services": "<какие услуги интересны>"}
+{"reply": "<текст клиенту>", "then": "<только при паузе на расчёт>", "then_min": 0, "action": "none|ask_owner|call|call_ok|handoff|partner|alert|close|ignore|react", "call_days": "<только для call: какие дни и время назвал клиент>", "reaction": "<👍 или 🤝, только для react>", "owner_question": "<если ask_owner>", "contact": "<Telegram или телефон, если клиент дал>", "name": "<имя клиента, если известно>", "summary": "<кратко: кто, задача, что предложили>", "services": "<какие услуги интересны>"}
 
 БАЗА ЗНАНИЙ:
 """
@@ -340,6 +438,8 @@ async def followup(cid):
     stage = cv.get("fu", 0)
     cv["fu_at"] = 0
     tg = str(cv.get("uid", "")).startswith("tg:")
+    if (cv.get("call") or {}).get("status") == "confirmed":
+        save(); return  # созвон назначен: не дожимаем, только напоминания
     if cv.get("human") or cv.get("lead_sent") or cv.get("pending_q") or (not tg and time.time() - (cv.get("last_user_ts") or 0) > WINDOW):
         save(); return
     if tg and stage == 0 and not cv.get("fu_unread_waited"):
@@ -438,6 +538,13 @@ async def _reply_to(cid):
     extra = ""
     if cv.get("pending_q"):
         extra = f"\n\nСейчас мы ждём ответ коллег на вопрос: «{cv['pending_q']}». Не обещай ответ ещё раз, но можешь продолжать разговор по другим темам."
+    call = cv.get("call") or {}
+    if call.get("status") == "proposed":
+        extra += (f"\n\nМы предложили клиенту созвон в Zoom: {call_when(call['at'])}. Если клиент согласен на это время, action call_ok и короткое подтверждение "
+                  "(что ссылку на Zoom пришлёшь перед началом). Если просит другой день или время, action call и в call_days его вариант.")
+    elif call.get("status") == "confirmed" and call.get("at", 0) > time.time() - 3600:
+        extra += (f"\n\nСозвон в Zoom уже подтверждён: {call_when(call['at'])}. Ссылку пришлём за 5 минут до начала. "
+                  "Если клиент подтверждает, что всё в силе, ответь коротко. Если просит перенести, action call и в call_days новый вариант.")
     if cv.get("lead_sent"):
         extra += ("\n\nКлиент уже передан руководителю. Не проси контакт снова и не делай action handoff. "
                   "Отвечай коротко на его вопросы по базе знаний, а если вопрос про следующий шаг, скажи, что руководитель уже в курсе и скоро напишет с аккаунта @FortexGlobal. "
@@ -534,11 +641,25 @@ async def _reply_to(cid):
     elif act == "call":
         days = str(res.get("call_days") or "день не уточнил")
         cv["pending_q"] = f"Клиент готов созвониться в Zoom ({days}). Какое время подтвердить?"
+        cv["call_q"] = True
         await tell(cid, f"🔴 <b>Нужно твоё внимание</b>\n\n📞 <b>Готов на созвон в Zoom:</b> @{html.escape(str(cv.get('username')))}\n"
                         f"<b>Когда удобно:</b> {html.escape(days)}\n"
                         f"<b>Суть:</b> {html.escape(str(cv.get('summary') or ''))}\n\n"
                         f"<b>Какое время подтвердить?</b> Ответь реплаем, Алексей передаст клиенту.\n\n"
                         f"<b>━━━ Последние сообщения ━━━</b>\n\n{transcript_html(cv, 6, 1500)}", is_html=True)
+    elif act == "call_ok" and (cv.get("call") or {}).get("at"):
+        call = cv["call"]
+        call["status"] = "confirmed"
+        call["r40"] = call["r5"] = False
+        if not call.get("link"):
+            call["link"] = await zoom_create(f"Fortex UAE: {cv.get('name') or cv.get('username')}", call["at"], call.get("min", 60))
+        ok = await gcal_put(cv)
+        save()
+        await tell(cid, f"✅ <b>Созвон подтверждён:</b> @{html.escape(str(cv.get('username')))}\n"
+                        f"<b>Когда:</b> {html.escape(call_when(call['at']))}, {call.get('min', 60)} мин\n"
+                        f"<b>Календарь:</b> {'поставил' if ok else 'не поставил (нет подключения), поставь сам'}\n"
+                        f"<b>Zoom:</b> {html.escape(call['link']) if call.get('link') else 'ссылки нет, пришли реплаем до начала'}\n\n"
+                        f"Клиенту напомню за 40 минут, ссылку отправлю за 5 минут.", is_html=True)
     elif cv.get("lead_sent"):
         pass  # клиент уже передан: ассистент отвечает сам, Александра не дёргаем на каждое сообщение
     elif act == "partner":
@@ -702,6 +823,7 @@ async def loop():
                                 and not cv.get("next_at") and now - (cv.get("last_user_ts") or 0) < 3 * 3600):
                             cv["next_at"] = now + random.randint(5, 20)
                             log.info("resume after restart: %s", cid)
+                await call_tick(now)
                 for cid, cv in list(S["convs"].items()):
                     if cv.get("then_at") and cv["then_at"] <= now and not cv.get("human"):
                         txt = cv.pop("then_text", "")
@@ -726,6 +848,13 @@ async def loop():
         await asyncio.sleep(2)
 
 
+REWRITE_CALL = """Ты Алексей из Fortex UAE. Клиент готов созвониться в Zoom, Александр (руководитель) ответил, на какое время его назначить, часто это расшифровка голосового.
+Определи дату и время начала созвона по Дубаю и длительность (если не сказано, 60 минут). Дни недели считай от сегодняшней даты: ближайший такой день в будущем.
+Напиши клиенту коротко, на «вы», 1–2 предложения, без длинных тире: предложи это время и спроси, удобно ли. Пример: «Давайте в среду в 12:00 по Дубаю, вам удобно?»
+Если из ответа Александра время понять нельзя, start null.
+Ответь JSON: {"start": "YYYY-MM-DD HH:MM" или null, "minutes": 60, "reply": "<текст клиенту>"}"""
+
+
 REWRITE = """Ты сотрудник Fortex UAE в директе Instagram. Коллега (владелец) дал ответ на вопрос клиента, часто это расшифровка голосового.
 Перескажи его клиенту коротко и по-человечески, 1–3 предложения, на «вы», без длинных тире, без слова «профиль». Ничего не добавляй от себя, кроме вежливой связки.
 Ответь JSON: {"reply": "<текст клиенту>"}"""
@@ -747,6 +876,39 @@ async def maybe_handle(ev, text):
             await ev.reply("Не расшифровалось, ответь ещё раз реплаем или текстом")
             return True
     log.info("owner reply for %s", cid)
+    call = cv.get("call") or {}
+    zl = ZOOM_RE.search(text or "")
+    if zl and call.get("status") == "confirmed" and len(text.strip()) < len(zl.group(0)) + 40:
+        call["link"] = zl.group(0).rstrip(".,)")
+        S["ask"].pop(str(rid), None)
+        if time.time() >= call["at"] - 6 * 60:
+            call["r5"] = True
+            await say(cv, f"Вот ссылка на Zoom, подключайтесь: {call['link']}")
+            await ev.reply(f"Отправил ссылку @{cv.get('username')}")
+        else:
+            save()
+            await ev.reply("Ссылку сохранил, Алексей отправит клиенту за 5 минут до начала")
+        return True
+    if cv.get("call_q"):
+        d = datetime.now(DXB)
+        r = await llm(REWRITE_CALL, f"Сегодня {WD[d.weekday()]} {d:%Y-%m-%d %H:%M} (Дубай).\nВопрос: {cv.get('pending_q')}\n"
+                                    f"Переписка:\n{transcript(cv, 8)}\n\nОтвет Александра: {text}") or {}
+        try:
+            at = datetime.strptime(r.get("start") or "", "%Y-%m-%d %H:%M").replace(tzinfo=DXB).timestamp()
+        except Exception:
+            at = 0
+        if at > time.time():
+            out = clean(r.get("reply") or "")
+            if out and await say(cv, out):
+                cv["call"] = {"at": at, "min": int(r.get("minutes") or 60), "status": "proposed",
+                              "link": zl.group(0).rstrip(".,)") if zl else None}
+                cv["call_q"] = False
+                cv["pending_q"] = None
+                S["ask"].pop(str(rid), None)
+                schedule_followup(cv, 0)
+                save()
+                await ev.reply(f"Предложил @{cv.get('username')}: {call_when(at)}\n\n{out}\n\nКогда клиент согласится, поставлю в календарь.")
+                return True
     last_q = cv.get("pending_q") or next((h["text"] for h in reversed(cv["history"]) if h["role"] == "user"), "")
     res = await llm(REWRITE, f"Вопрос клиента: {last_q}\nПереписка:\n{transcript(cv, 10)}\n\nОтвет коллеги: {text}")
     out = clean((res or {}).get("reply") or text)
@@ -786,6 +948,14 @@ async def command(ev):
             if (cv.get("username") or "").lower() == u:
                 cv["human"] = True
                 cv["next_at"] = 0
+    elif a in ("gcal", "zoom") and len(parts) > 2:
+        open(os.path.join(BASE, "gcal_hook" if a == "gcal" else "zoom_creds"), "w").write(" ".join(parts[2:]))
+        try:
+            await ev.delete()
+        except Exception:
+            pass
+        await ev.respond(("Google Календарь" if a == "gcal" else "Zoom") + " подключён, сообщение с ключом удалил")
+        return
     elif a == "resume" and len(parts) > 2:
         u = parts[2].lstrip("@").lower()
         for cv in S["convs"].values():
@@ -807,7 +977,8 @@ async def command(ev):
                    f"Telegram (аккаунт радара{tg_name}): {'включён' if S.get('tg_enabled') else 'выключен'}\n"
                    f"Токен Instagram: {'есть' if token() else 'нет'}, ключ ManyChat: {'есть' if secret('manychat_key') else 'нет'}\n"
                    f"Диалогов: {len(S['convs'])}, ведёт ассистент: {active}\n\n"
-                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm pause @аккаунт (ассистент молчит в диалоге)\n/igdm resume @аккаунт (вернуть ассистента)\n/igdm manychat | graph (откуда берём сообщения)\n/igdm tg on | off (отвечать в личке аккаунта радара)")
+                   f"/igdm on | off\n/igdm test @аккаунт (кому отвечать в тесте)\n/igdm live (отвечать всем)\n/igdm pause @аккаунт (ассистент молчит в диалоге)\n/igdm resume @аккаунт (вернуть ассистента)\n/igdm manychat | graph (откуда берём сообщения)\n/igdm tg on | off (отвечать в личке аккаунта радара)\n"
+                   f"Календарь: {'подключён' if secret('gcal_hook') else 'нет'}, Zoom: {'подключён' if secret('zoom_creds') else 'нет'}\n/igdm gcal <ссылка веб-хука>\n/igdm zoom <Account ID> <Client ID> <Client Secret>")
 
 
 def load_if_needed():
