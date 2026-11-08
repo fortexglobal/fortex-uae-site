@@ -317,7 +317,7 @@ def push_status():
         pass
     try:
         j = subprocess.run(["journalctl", "-u", "radar", "--since", "48 hours ago", "--no-pager", "-o", "short-iso"], capture_output=True, text=True, timeout=60).stdout
-        st["radar_errors"] = [l[:220] for l in j.splitlines() if any(k in l for k in ("reaction failed", "PEER_FLOOD", "FloodWait", "USER_RESTRICTED", "CHAT_WRITE_FORBIDDEN", "USER_BANNED", "SendReaction", "Forbidden", "spambot"))][-25:]
+        st["radar_errors"] = [l[:220] for l in j.splitlines() if any(k in l for k in ("reaction failed", "PEER_FLOOD", "FloodWait", "USER_RESTRICTED", "CHAT_WRITE_FORBIDDEN", "USER_BANNED", "SendReaction", "Forbidden", "spambot", "zoom", "gcal"))][-25:]
     except Exception:
         pass
     try:  # живы ли наши сообщения в чатах (autoreply.survival)

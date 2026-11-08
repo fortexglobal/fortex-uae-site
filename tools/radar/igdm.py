@@ -144,11 +144,13 @@ async def zoom_create(topic, ts, minutes):
             t = await c.post(f"https://zoom.us/oauth/token?grant_type=account_credentials&account_id={acc}", auth=(cid_, sec))
             tok = t.json().get("access_token")
             if not tok:
-                log.warning("zoom token %s", t.status_code); return None
+                log.warning("zoom token %s %s", t.status_code, t.text[:200]); return None
             hd = {"Authorization": f"Bearer {tok}"}
             uid = "me"
             try:  # Server-to-Server OAuth иногда не принимает "me": берём владельца аккаунта
                 u = (await c.get("https://api.zoom.us/v2/users", headers=hd, params={"page_size": 1})).json()
+                if not u.get("users"):
+                    log.warning("zoom users %s", str(u)[:200])
                 uid = ((u.get("users") or [{}])[0].get("id")) or "me"
             except Exception:
                 pass
