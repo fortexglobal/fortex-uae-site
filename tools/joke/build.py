@@ -184,7 +184,8 @@ def build(spec_path):
     inp = ["-i", base]
     ss = 0 if from_start else (best_window(audio, dur) if audio else 0)
     if audio:
-        inp += ["-ss", str(ss), "-i", audio]
+        # короткий трендовый звук (часто 10–13 с) зацикливаем до длины ролика
+        inp += ["-stream_loop", "-1", "-ss", str(ss), "-i", audio]
     fc, last = "", "0:v"
     off = 2 if audio else 1
     for i, png in enumerate(pngs):
