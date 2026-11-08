@@ -641,6 +641,25 @@ async def loop():
                     # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
                     CTX["resumed"] = True
                     for cid, cv in list(S["convs"].items()):
+                        # разово 08.11: ответ Александра на вопрос Марины (part-time во второй компании)
+                        h1 = cv.get("history") or []
+                        if (cv.get("pending_q") and not CTX.get("marina_pt")
+                                and any((x.get("text") or "").strip() == "Окей, тогда так" for x in h1)):
+                            CTX["marina_pt"] = True
+                            ans = ("Да, так можно: основным работодателем будет наша компания, а во второй компании "
+                                   "вы можете быть оформлены на part-time и тоже получать там зарплату")
+                            async def _pt(cv=cv, cid=cid, ans=ans):
+                                await asyncio.sleep(random.randint(8, 20))
+                                r = await llm(REWRITE, f"Вопрос клиента: {cv.get('pending_q')}\nПереписка:\n{transcript(cv, 10)}\n\nОтвет коллеги: {ans}")
+                                out = clean((r or {}).get("reply") or ans)
+                                if await send(cv["uid"], out):
+                                    cv["history"].append({"role": "bot", "text": out, "ts": time.time()})
+                                    cv["pending_q"] = None
+                                    schedule_followup(cv, 0)
+                                    save()
+                                    await tell(cid, f"Ответил @{cv.get('username')} про part-time:\n\n{out}")
+                            asyncio.get_event_loop().create_task(_pt())
+                            continue
                         # разово 08.11: Марина. Наше же «Окей, тогда так» после перезапуска приняли за ручной ответ и замолчали.
                         h0 = cv.get("history") or []
                         if cv.get("human") and any(x.get("role") == "owner" and (x.get("text") or "").strip() == "Окей, тогда так" for x in h0):
