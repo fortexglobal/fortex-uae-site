@@ -210,6 +210,15 @@ async def call_tick(now):
         at = call["at"]
         if now > at + 3600:
             call["status"] = "done"; save(); continue
+        if not call.get("link") and not call.get("zoom_tried") and secret("zoom_creds") and now < at:
+            # созвон подтвердили до подключения Zoom: создаём встречу заранее, ссылка уйдёт за 5 минут
+            call["zoom_tried"] = True
+            call["link"] = await zoom_create(f"Fortex UAE: {cv.get('name') or cv.get('username')}", at, call.get("min", 60))
+            save()
+            if call.get("link"):
+                await tell(cid, f"📞 Встреча в Zoom создана: @{html.escape(str(cv.get('username')))}, {html.escape(call_when(at))}\n{html.escape(call['link'])}\n\nКлиенту отправлю за 5 минут до начала.", is_html=True)
+            else:
+                await tell(cid, "🔴 <b>Нужно твоё внимание</b>\n\nZoom не создал встречу, проверь ключи и права приложения (meeting:write, user:read). Ссылку пришли реплаем.", is_html=True)
         if not call.get("r40") and at - 40 * 60 <= now < at - 10 * 60:
             call["r40"] = True; save()
             asyncio.get_event_loop().create_task(say(cv, random.choice([
