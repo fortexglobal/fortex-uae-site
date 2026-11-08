@@ -135,9 +135,11 @@ def call_when(ts):
 
 async def zoom_create(topic, ts, minutes):
     """Встреча в Zoom через Server-to-Server OAuth. Нет ключей или ошибка -> None."""
-    cr = secret("zoom_creds").split()
-    if len(cr) != 3:
+    cr = re.findall(r"[A-Za-z0-9_\-]{15,}", secret("zoom_creds"))
+    if len(cr) < 3:
+        CTX["zoom_err"] = f"в сохранённых ключах {len(cr)} значения вместо 3, отправь /igdm zoom ещё раз"
         return None
+    cr = cr[:3]
     acc, cid_, sec = cr
     try:
         async with httpx.AsyncClient(timeout=30) as c:
@@ -1025,7 +1027,18 @@ async def command(ev):
                 cv["human"] = True
                 cv["next_at"] = 0
     elif a in ("gcal", "zoom") and len(parts) > 2:
-        open(os.path.join(BASE, "gcal_hook" if a == "gcal" else "zoom_creds"), "w").write(" ".join(parts[2:]))
+        val = " ".join(parts[2:])
+        if a == "zoom":
+            keys = re.findall(r"[A-Za-z0-9_\-]{15,}", val)
+            if len(keys) < 3:
+                try:
+                    await ev.delete()
+                except Exception:
+                    pass
+                await ev.respond(f"Нашёл {len(keys)} ключа из 3. Нужно: /igdm zoom AccountID ClientID ClientSecret (через пробел, без скобок)")
+                return
+            val = " ".join(keys[:3])
+        open(os.path.join(BASE, "gcal_hook" if a == "gcal" else "zoom_creds"), "w").write(val)
         try:
             await ev.delete()
         except Exception:
