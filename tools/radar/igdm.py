@@ -185,8 +185,10 @@ SYSTEM = """Ты сотрудник отдела работы с клиента�
 
 Если спрашивают, бот ли ты или живой ли человек, отвечай честно: ты ассистент команды Fortex, отвечаешь быстро и можешь подключить руководителя.
 
+ПАУЗА НА РАСЧЁТ (правило Александра 08.11): если для ответа нужно что-то посчитать (ипотека, платёж, расходы) или уточнить у коллег, а клиент согласился («да, давайте», «посчитайте»), не выдавай расчёт мгновенно. В reply короткая фраза «Сейчас прикину, пару минут» (или «Уточню и вернусь»), а сам ответ положи в поле "then" (2–3 коротких предложения с цифрами-ориентирами и вопросом), и "then_min": 3–5. Он уйдёт через эти минуты. Для обычных вопросов поля then не используй.
+
 Ответь строго JSON без пояснений:
-{"reply": "<текст клиенту>", "action": "none|ask_owner|handoff|partner|alert|close|ignore|react", "reaction": "<👍 или 🤝, только для react>", "owner_question": "<если ask_owner>", "contact": "<Telegram или телефон, если клиент дал>", "name": "<имя клиента, если известно>", "summary": "<кратко: кто, задача, что предложили>", "services": "<какие услуги интересны>"}
+{"reply": "<текст клиенту>", "then": "<только при паузе на расчёт>", "then_min": 0, "action": "none|ask_owner|handoff|partner|alert|close|ignore|react", "reaction": "<👍 или 🤝, только для react>", "owner_question": "<если ask_owner>", "contact": "<Telegram или телефон, если клиент дал>", "name": "<имя клиента, если известно>", "summary": "<кратко: кто, задача, что предложили>", "services": "<какие услуги интересны>"}
 
 БАЗА ЗНАНИЙ:
 """
@@ -463,7 +465,7 @@ async def _reply_to(cid):
     res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
-    if res and res.get("reply") and DEFER_RE.search(res["reply"]) and len(res["reply"]) < 120:
+    if res and res.get("reply") and not res.get("then") and DEFER_RE.search(res["reply"]) and len(res["reply"]) < 120:
         # «сейчас распишу» без самого ответа: просим ответить сразу (правило Александра 07.11)
         res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                        f"Твой вариант «{res['reply']}» только обещает ответ. Дай сам ответ сейчас: {LENGTHS['detail']}.\n"
@@ -510,6 +512,10 @@ async def _reply_to(cid):
     if not ok:
         return
     cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
+    if res.get("then") and is_tg:  # «ушли посчитать»: вернёмся с ответом через 3–5 минут
+        mins = max(2.0, min(6.0, float(res.get("then_min") or 4)))
+        cv["then_text"] = tame_emoji(clean(res["then"]), cv)
+        cv["then_at"] = time.time() + mins * 60 + random.randint(-20, 40)
     if res.get("action") == "close":
         cv["fu_at"] = 0  # разговор закрыт: догоняющие не шлём
         cv["muted"] = True  # не наш клиент: дальше не отвечаем
@@ -641,6 +647,17 @@ async def loop():
                             cv["next_at"] = now + random.randint(5, 20)
                             log.info("resume after restart: %s", cid)
                 for cid, cv in list(S["convs"].items()):
+                    if cv.get("then_at") and cv["then_at"] <= now and not cv.get("human"):
+                        txt = cv.pop("then_text", "")
+                        cv.pop("then_at", None)
+                        if txt and str(cv.get("uid", "")).startswith("tg:"):
+                            async def _then(cv=cv, txt=txt):
+                                if await tg_human(int(cv["uid"][3:]), txt):
+                                    cv["history"].append({"role": "bot", "text": txt, "ts": time.time()})
+                                    schedule_followup(cv, 0)
+                                    save()
+                            asyncio.get_event_loop().create_task(_then())
+                        continue
                     if cv.get("next_at") and cv["next_at"] <= now and not cv.get("human"):
                         asyncio.get_event_loop().create_task(reply_to(cid))
                     elif cv.get("fu_at") and cv["fu_at"] <= now and not cv.get("next_at"):
