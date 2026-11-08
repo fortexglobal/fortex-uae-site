@@ -1,5 +1,5 @@
 {
- "at": "2026-11-08T08:34+04:00",
+ "at": "2026-11-08T08:50+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -18,7 +18,7 @@
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11",
-  "bal-openrouter": "07.11 20:38"
+  "bal-openrouter": "08.11 08:44"
  },
  "services": {
   "radar": "active",
@@ -172,7 +172,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 659,
+  "lines": 660,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
