@@ -120,7 +120,31 @@ def build(spec_path):
     run(["node", "tools/joke/render.js", FONTS, f"{tmp}/cards.json"])
     # 3. музыка из библиотеки Instagram (bundle.social)
     music_id, audio, from_start = None, None, False
-    snd = spec.get("sound")  # {"q": "...", "match": "подстрока названия"}: оригинальный звук из залетевших рилсов
+    # 08.11: настоящие тренды из reels/joke/trending.json (Apify s_actors/instagram-trending-audio, RU):
+    # spec["sounds"] = [{"id": audioId, "q": [поисковые фразы]}...], берём первый, чей audio_id нашёлся в библиотеке bundle
+    for cand in spec.get("sounds", []):
+        if audio:
+            break
+        for q in cand.get("q", []):
+            code, b = call("GET", f"/api/v1/misc/instagram/audio?teamId={TEAM}&audioType=original_sound&searchQuery={urllib.parse.quote(q)}")
+            items = (b or {}).get("audio", []) if isinstance(b, dict) else []
+            hit = [a for a in items if str(a.get("audio_id")) == str(cand["id"]) and a.get("download_url")]
+            if not hit:
+                code, b = call("GET", f"/api/v1/misc/instagram/audio?teamId={TEAM}&audioType=music&searchQuery={urllib.parse.quote(q)}")
+                items = (b or {}).get("audio", []) if isinstance(b, dict) else []
+                hit = [a for a in items if str(a.get("audio_id")) == str(cand["id"]) and a.get("download_url")]
+            if hit:
+                a = hit[0]
+                try:
+                    f = f"{tmp}/a.m4a"; dl(a["download_url"], f)
+                    music_id, audio, from_start = a["audio_id"], f, True
+                    res["music"] = f"trending: {a.get('title')} | {a.get('display_artist')} ({a['audio_id']})"
+                except Exception as e:
+                    res["log"].append(f"trend dl fail {str(e)[:80]}")
+                break
+        if not audio:
+            res["log"].append(f"trend not in library: {cand.get('id')} {cand.get('q')}")
+    snd = None if audio else spec.get("sound")  # {"q": "...", "match": "подстрока названия"}: запасной вариант
     if snd:
         code, b = call("GET", f"/api/v1/misc/instagram/audio?teamId={TEAM}&audioType=original_sound&searchQuery={urllib.parse.quote(snd['q'])}")
         items = (b or {}).get("audio", []) if isinstance(b, dict) else []
