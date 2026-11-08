@@ -641,6 +641,17 @@ async def loop():
                     # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
                     CTX["resumed"] = True
                     for cid, cv in list(S["convs"].items()):
+                        # разово 08.11: Марина. Наше же «Окей, тогда так» после перезапуска приняли за ручной ответ и замолчали.
+                        h0 = cv.get("history") or []
+                        if cv.get("human") and any(x.get("role") == "owner" and (x.get("text") or "").strip() == "Окей, тогда так" for x in h0):
+                            for x in h0:
+                                if x.get("role") == "owner" and (x.get("text") or "").strip() == "Окей, тогда так":
+                                    x["role"] = "bot"
+                            cv["human"], cv["muted"] = False, False
+                            cv["next_at"] = now + random.randint(10, 25)
+                            log.info("resume (own message mistaken for manual): %s", cid)
+                            await tell(cid, f"Ассистент снова ведёт диалог с @{cv.get('username')} (своё сообщение после перезапуска принял за ручное).")
+                            continue
                         h = cv.get("history") or []
                         if (h and h[-1].get("role") == "user" and not cv.get("human") and not cv.get("muted")
                                 and not cv.get("next_at") and now - (cv.get("last_user_ts") or 0) < 3 * 3600):
