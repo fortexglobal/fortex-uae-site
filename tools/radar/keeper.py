@@ -251,6 +251,54 @@ def balances():
                 ok("bal-apify", f"Apify: снова есть запас, ${left:.2f}.")
 
 
+def backup():
+    """Раз в неделю (и по файлу keeper/backup.request) архив в Google Диск через веб-хук Apps Script:
+    код, база знаний, контент и состояние из репозитория (без медиа) + состояние сервера (без ключей и сессий)."""
+    import base64, io, tarfile, glob
+    try:
+        hook = open("/opt/radar/gcal_hook").read().strip()
+    except Exception:
+        return  # веб-хук ещё не подключён
+    req = os.path.join(SITE, "keeper", "backup.request")
+    if not (every("backup", 7 * 24 * 60) or os.path.exists(req)):
+        return
+    skip_ext = (".mp4", ".mov", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp3", ".m4a", ".wav", ".ogg", ".ttf", ".otf", ".woff", ".woff2", ".pdf", ".zip", ".pyc")
+    files = subprocess.run(["git", "-C", SITE, "ls-files"], capture_output=True, text=True).stdout.splitlines()
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w:gz") as tar:
+        for f in files:
+            if not f.lower().endswith(skip_ext):
+                p = os.path.join(SITE, f)
+                if os.path.isfile(p) and os.path.getsize(p) < 3_000_000:
+                    tar.add(p, arcname="repo/" + f)
+        for p in glob.glob("/opt/radar/*.json") + glob.glob("/opt/radar/*.md") + glob.glob(os.path.join(HOME, "*.json")):
+            name = os.path.basename(p).lower()
+            if any(k in name for k in ("secret", "token", "key", "session", "cred")) or os.path.getsize(p) > 20_000_000:
+                continue
+            tar.add(p, arcname=("server/radar/" if p.startswith("/opt/radar") else "server/keeper/") + os.path.basename(p))
+    data = buf.getvalue()
+    stamp = datetime.now(DUBAI).strftime("%Y-%m-%d")
+    res = []
+    for name, payload, folder, replace, mime in (
+            (f"fortex-backup-{stamp}.tar.gz", data, "archives", False, "application/gzip"),
+            ("kb.md", open(os.path.join(SITE, "tools", "radar", "kb.md"), "rb").read(), "latest", True, "text/markdown"),
+            ("SYSTEM.md", open(os.path.join(SITE, "docs", "SYSTEM.md"), "rb").read() if os.path.exists(os.path.join(SITE, "docs", "SYSTEM.md")) else b"", "latest", True, "text/markdown")):
+        if not payload:
+            continue
+        code, r = http(hook, data={"action": "backup", "name": name, "b64": base64.b64encode(payload).decode(), "folder": folder, "replace": replace, "mime": mime},
+                       method="POST", timeout=180)
+        if not (isinstance(r, dict) and r.get("ok")):
+            code = f"{code} {str(r)[:120]}"
+        res.append(f"{name}: {code}")
+    if os.path.exists(req):
+        try:
+            os.remove(req)
+        except Exception:
+            pass
+    ok_all = all(x.endswith(" 200") for x in res)
+    tg(("Бэкап в Google Диск готов" if ok_all else "🔴 Нужно твоё внимание\n\nБэкап в Google Диск с ошибкой") + f": архив {len(data) // 1024} КБ\n" + "\n".join(res))
+
+
 def health():
     if every("kbsize", 360):  # 08.11: база знаний растёт, при 80 000 знаков пора делить на основную и справочную
         try:
@@ -384,6 +432,7 @@ def main():
         step("replies", replies)
         step("balances", balances)
         step("health", health)
+        step("backup", backup)
         if every("status", 15) or not S.get("status_v2"):
             S["status_v2"] = 1
             step("status", push_status)
