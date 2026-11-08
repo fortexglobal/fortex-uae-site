@@ -1,5 +1,5 @@
 {
- "at": "2026-11-08T14:02+04:00",
+ "at": "2026-11-08T14:18+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -26,13 +26,13 @@
   "keeper": "active"
  },
  "radar_files": {
-  "autoreply.py": "29.10 17:05",
+  "autoreply.py": "08.11 14:10",
   "starters.py": "28.10 15:06",
   "content.py": "28.10 12:23",
-  "igdm.py": "07.11 21:14",
+  "igdm.py": "08.11 14:18",
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
-  "kb.md": "07.11 21:35",
+  "kb.md": "08.11 14:18",
   "server/radar.py": "06.11 10:02",
   "leadbot.py": "26.10 09:36"
  },
@@ -120,7 +120,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 79.75943290000001,
+  "limit_remaining": 79.69492915000001,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -128,8 +128,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 20.2405671,
-    "remaining_usd": 79.75943290000001,
+    "spend_usd": 20.30507085,
+    "remaining_usd": 79.69492915000001,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -140,16 +140,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 20.2405671,
-   "remaining_usd": 79.75943290000001,
+   "spend_usd": 20.30507085,
+   "remaining_usd": 79.69492915000001,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 20.2405671,
-  "usage_daily": 0.1855791,
-  "usage_weekly": 1.194745,
-  "usage_monthly": 1.99640395,
+  "usage": 20.30507085,
+  "usage_daily": 0.25008285,
+  "usage_weekly": 1.25924875,
+  "usage_monthly": 2.0609077,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -175,10 +175,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 634,
+  "lines": 688,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 4
+  "openrouter_http": 5
  }
 }
