@@ -188,7 +188,9 @@ def _parts(text):
         if snt.endswith(".") and not snt.endswith("..."):
             snt = snt[:-1].rstrip()
         out.append(snt)
-    return out[:4] or ([t] if t else [])
+    if len(out) > 3:  # не больше 3 сообщений подряд (правило Александра 08.11): первые два и последнее (обычно вопрос)
+        out = out[:2] + out[-1:]
+    return out or ([t] if t else [])
 
 
 _LOCKS, _LAST = {}, {}
