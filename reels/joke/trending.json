@@ -1,0 +1,249 @@
+{
+ "updated": "2026-11-08",
+ "country": "RU",
+ "source": "apify s_actors/instagram-trending-audio",
+ "sounds": [
+  {
+   "title": "Хлопья летят наверх",
+   "artist": "FEDUK",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 3,
+   "reelsCount": 113801,
+   "durationSeconds": 262.6,
+   "isExplicit": false,
+   "audioId": "385536922226990"
+  },
+  {
+   "title": "Романс - syuzann.na",
+   "artist": "syuzann.na",
+   "isTrending": true,
+   "isOriginalAudio": true,
+   "creatorsInSample": 3,
+   "reelsCount": 3419,
+   "durationSeconds": 10,
+   "isExplicit": false,
+   "audioId": "27368718699423502"
+  },
+  {
+   "title": "Original audio",
+   "artist": "lydiafowler",
+   "isTrending": true,
+   "isOriginalAudio": true,
+   "creatorsInSample": 2,
+   "reelsCount": 20740,
+   "durationSeconds": 12.8,
+   "isExplicit": false,
+   "audioId": "28324590607159978"
+  },
+  {
+   "title": "Спектакль окончен",
+   "artist": "Полина Гагарина",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 2,
+   "reelsCount": 8578,
+   "durationSeconds": 240.5,
+   "isExplicit": false,
+   "audioId": "3668022626608616"
+  },
+  {
+   "title": "На берегу неба (Remix)",
+   "artist": "Наша Таня, Maxcon",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 2,
+   "reelsCount": 124798,
+   "durationSeconds": 110.8,
+   "isExplicit": false,
+   "audioId": "1769355783441875"
+  },
+  {
+   "title": "Эйфория",
+   "artist": "JONY",
+   "isTrending": false,
+   "isOriginalAudio": false,
+   "creatorsInSample": 2,
+   "reelsCount": 4053,
+   "durationSeconds": 187.2,
+   "isExplicit": false,
+   "audioId": "877877568635004"
+  },
+  {
+   "title": "Princess Vibe",
+   "artist": "arsy",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 14865,
+   "durationSeconds": 106.1,
+   "isExplicit": false,
+   "audioId": "1473793084343564"
+  },
+  {
+   "title": "Frozen",
+   "artist": "Madonna, Sickick",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 1043454,
+   "durationSeconds": 120.2,
+   "isExplicit": false,
+   "audioId": "433365925118198"
+  },
+  {
+   "title": "levitate",
+   "artist": "ambit.",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 47022,
+   "durationSeconds": 167.2,
+   "isExplicit": false,
+   "audioId": "2730350140447239"
+  },
+  {
+   "title": "Dance Potion",
+   "artist": "ASADI, XYE",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 18088,
+   "durationSeconds": 184.9,
+   "isExplicit": false,
+   "audioId": "1231916197734178"
+  },
+  {
+   "title": "Смотря Какой Fabric",
+   "artist": "ASTRXNXM",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 11262,
+   "durationSeconds": 128.1,
+   "isExplicit": false,
+   "audioId": "3382937255214228"
+  },
+  {
+   "title": "Black Out Days (Future Islands Remix)",
+   "artist": "Phantogram",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 101475,
+   "durationSeconds": 248.3,
+   "isExplicit": false,
+   "audioId": "895661407270814"
+  },
+  {
+   "title": "UP",
+   "artist": "INNA",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 1175422,
+   "durationSeconds": 150.4,
+   "isExplicit": false,
+   "audioId": "4134179443348165"
+  },
+  {
+   "title": "do or die",
+   "artist": "STOSLIV",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 7589,
+   "durationSeconds": 122.4,
+   "isExplicit": false,
+   "audioId": "2252681275583286"
+  },
+  {
+   "title": "Mah-Na-Mah-Na",
+   "artist": "The Dave Pell Singers",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 115199,
+   "durationSeconds": 134.9,
+   "isExplicit": false,
+   "audioId": "281422365749166"
+  },
+  {
+   "title": "Vida Loca",
+   "artist": "Ramzuto",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 2065810,
+   "durationSeconds": 171,
+   "isExplicit": false,
+   "audioId": "764432093247105"
+  },
+  {
+   "title": "Чудо",
+   "artist": "Jah Khalib, Bahh Tee, Turken",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 42805,
+   "durationSeconds": 189,
+   "isExplicit": false,
+   "audioId": "1065417588078527"
+  },
+  {
+   "title": "Oh My Gosh",
+   "artist": "Deelite",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 7438,
+   "durationSeconds": 120.9,
+   "isExplicit": false,
+   "audioId": "754644080665959"
+  },
+  {
+   "title": "Rasputin",
+   "artist": "Boney M.",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 1647651,
+   "durationSeconds": 351.5,
+   "isExplicit": false,
+   "audioId": "547724942376833"
+  },
+  {
+   "title": "Random Switch (remix)",
+   "artist": "Carpe Diem",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 207893,
+   "durationSeconds": 84.5,
+   "isExplicit": false,
+   "audioId": "1251522077193598"
+  },
+  {
+   "title": "White Horse (Rude Edit)",
+   "artist": "Wonderland Avenue",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 27771,
+   "durationSeconds": 175.2,
+   "isExplicit": false,
+   "audioId": "1416357376174370"
+  },
+  {
+   "title": "Hello November",
+   "artist": "OneTail",
+   "isTrending": true,
+   "isOriginalAudio": false,
+   "creatorsInSample": 1,
+   "reelsCount": 3363,
+   "durationSeconds": 111.2,
+   "isExplicit": false,
+   "audioId": "1118544544230948"
+  }
+ ]
+}
