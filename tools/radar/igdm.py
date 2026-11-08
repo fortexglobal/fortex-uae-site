@@ -641,6 +641,23 @@ async def loop():
                     # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
                     CTX["resumed"] = True
                     for cid, cv in list(S["convs"].items()):
+                        # разово 08.11 15:08: Александр просит предложить Марине созвон завтра в 10:00
+                        hz = cv.get("history") or []
+                        if ("marina_call" not in S.setdefault("oneoff", []) and str(cv.get("uid", "")).startswith("tg:")
+                                and any((x.get("text") or "").strip() == "Окей, тогда так" for x in hz)):
+                            S["oneoff"].append("marina_call")
+                            save()
+                            msg = "Хорошо, давайте. Завтра в 10 утра по Дубаю удобно будет созвониться в Zoom?"
+                            async def _call(cv=cv, cid=cid, msg=msg):
+                                await asyncio.sleep(random.randint(10, 25))
+                                if await tg_human(int(cv["uid"][3:]), msg):
+                                    cv["history"].append({"role": "bot", "text": msg, "ts": time.time()})
+                                    cv["pending_q"] = None
+                                    schedule_followup(cv, 0)
+                                    save()
+                                    await tell(cid, f"Предложил @{cv.get('username')} созвон: {msg}")
+                            asyncio.get_event_loop().create_task(_call())
+                            continue
                         # разово 08.11: ответ Александра на вопрос Марины (part-time во второй компании)
                         h1 = cv.get("history") or []
                         if (cv.get("pending_q") and not CTX.get("marina_pt")
