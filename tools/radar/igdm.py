@@ -771,6 +771,13 @@ async def loop():
                     # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
                     CTX["resumed"] = True
                     for cid, cv in list(S["convs"].items()):
+                        # разово 08.11: созвон Марины (09.11 10:00) в новую логику: подтвердит -> календарь и напоминания
+                        if ("marina_call_obj" not in S.setdefault("oneoff", []) and "marina_call" in S["oneoff"]
+                                and any((x.get("text") or "").strip() == "Окей, тогда так" for x in (cv.get("history") or []))):
+                            S["oneoff"].append("marina_call_obj")
+                            if not cv.get("call"):
+                                cv["call"] = {"at": datetime(2026, 11, 9, 10, 0, tzinfo=DXB).timestamp(), "min": 60, "status": "proposed", "link": None}
+                            save()
                         # разово 08.11 15:08: Александр просит предложить Марине созвон завтра в 10:00
                         hz = cv.get("history") or []
                         if ("marina_call" not in S.setdefault("oneoff", []) and str(cv.get("uid", "")).startswith("tg:")
