@@ -1,5 +1,5 @@
 {
- "at": "2026-11-08T19:48+04:00",
+ "at": "2026-11-08T20:03+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -14,11 +14,10 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 296, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 361, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 502: {\n  \"message\": \"Server Error\"\n}\n\n"
   ]
  ],
- "openrouter_left": 4.25,
+ "openrouter_left": 14.24,
  "apify_left": null,
  "alerts": {
-  "llm": "26.10 21:11",
-  "bal-openrouter": "08.11 08:44"
+  "llm": "26.10 21:11"
  },
  "services": {
   "radar": "active",
@@ -29,7 +28,7 @@
   "autoreply.py": "08.11 14:10",
   "starters.py": "28.10 15:06",
   "content.py": "28.10 12:23",
-  "igdm.py": "08.11 19:45",
+  "igdm.py": "08.11 20:00",
   "reactions.py": "24.10 22:02",
   "newsfeed.py": "24.10 22:02",
   "kb.md": "08.11 19:14",
@@ -175,7 +174,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 974,
+  "lines": 977,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
