@@ -252,6 +252,13 @@ def balances():
 
 
 def health():
+    if every("kbsize", 360):  # 08.11: база знаний растёт, при 80 000 знаков пора делить на основную и справочную
+        try:
+            n = len(open(os.path.join(SITE, "tools", "radar", "kb.md"), encoding="utf-8").read())
+            if n >= 80000:
+                alert("kbsize", f"🔴 Нужно твоё внимание\n\nБаза знаний Алексея выросла до {n:,} знаков. Пора разделить её на основную и справочную (напиши Claude: «раздели базу знаний»).".replace(",", " "), 168)
+        except Exception:
+            pass
     if every("site", 10):
         code, _ = http("https://fortex-uae.com/", timeout=20)
         if code != 200:
