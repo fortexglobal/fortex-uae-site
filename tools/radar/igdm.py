@@ -145,11 +145,21 @@ async def zoom_create(topic, ts, minutes):
             tok = t.json().get("access_token")
             if not tok:
                 log.warning("zoom token %s", t.status_code); return None
-            r = await c.post("https://api.zoom.us/v2/users/me/meetings", headers={"Authorization": f"Bearer {tok}"},
+            hd = {"Authorization": f"Bearer {tok}"}
+            uid = "me"
+            try:  # Server-to-Server OAuth иногда не принимает "me": берём владельца аккаунта
+                u = (await c.get("https://api.zoom.us/v2/users", headers=hd, params={"page_size": 1})).json()
+                uid = ((u.get("users") or [{}])[0].get("id")) or "me"
+            except Exception:
+                pass
+            r = await c.post(f"https://api.zoom.us/v2/users/{uid}/meetings", headers=hd,
                              json={"topic": topic, "type": 2, "duration": minutes, "timezone": "Asia/Dubai",
                                    "start_time": datetime.fromtimestamp(ts, DXB).strftime("%Y-%m-%dT%H:%M:%S"),
                                    "settings": {"join_before_host": True, "waiting_room": False}})
-            return r.json().get("join_url")
+            j = r.json()
+            if not j.get("join_url"):
+                log.warning("zoom meeting %s %s", r.status_code, str(j)[:200])
+            return j.get("join_url")
     except Exception as e:
         log.warning("zoom: %s", e)
         return None
