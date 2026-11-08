@@ -188,8 +188,10 @@ def _parts(text):
         if snt.endswith(".") and not snt.endswith("..."):
             snt = snt[:-1].rstrip()
         out.append(snt)
-    if len(out) > 3:  # не больше 3 сообщений подряд (правило Александра 08.11): первые два и последнее (обычно вопрос)
-        out = out[:2] + out[-1:]
+    # подряд максимум 3 сообщения, 4 только если все короткие (правило Александра 08.11); при обрезке оставляем последнее (обычно вопрос)
+    cap = 4 if len(out) == 4 and all(len(x) <= 45 for x in out) else 3
+    if len(out) > cap:
+        out = out[:cap - 1] + out[-1:]
     return out or ([t] if t else [])
 
 
