@@ -337,7 +337,9 @@ def build():
         os.makedirs(os.path.join(OUT, g_slug), exist_ok=True)
         open(os.path.join(OUT, g_slug, "index.html"), "w", encoding="utf-8").write(page(g_title, g_desc,
             f"<main><section class='sec'><div class='wrap narrow'><p class='muted'>Fortex UAE · 5 минут чтения</p>"
-            f"<h1 class='h1'>{g_h1}</h1><div class='prose'>{md(open(g_md, encoding='utf-8').read())}</div>{cta}</div></section></main>", f"/{g_slug}/"))
+            f"<h1 class='h1'>{g_h1}</h1>"
+            + (f"<div class='row' style='margin:8px 0 24px'><a class='btn' href='{g_cta}'>{g_btn}</a></div>" if g_slug == "virtual-work" else "")
+            + f"<div class='prose'>{md(open(g_md, encoding='utf-8').read())}</div>{cta}</div></section></main>", f"/{g_slug}/"))
 
     # ---- articles ----
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
