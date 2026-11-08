@@ -1030,6 +1030,11 @@ async def command(ev):
             await ev.delete()
         except Exception:
             pass
+        if a == "zoom":  # новые ключи: пробуем ещё раз создать встречи для уже подтверждённых созвонов
+            for c_ in S.get("convs", {}).values():
+                if (c_.get("call") or {}).get("status") == "confirmed" and not c_["call"].get("link"):
+                    c_["call"]["zoom_tried"] = False
+            save()
         await ev.respond(("Google Календарь" if a == "gcal" else "Zoom") + " подключён, сообщение с ключом удалил")
         return
     elif a == "resume" and len(parts) > 2:
