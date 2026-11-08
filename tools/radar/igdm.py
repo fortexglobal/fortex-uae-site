@@ -808,6 +808,17 @@ async def loop():
                                     await tell(cid, f"Отправил дожим @{cv.get('username')}:\n\n{txt}")
                             asyncio.get_event_loop().create_task(_dfu())
                             continue
+                        # разово 08.11 17:49: Марина подтвердила 12:00 (09.11): созвон подтверждён, напоминания 11:20 и 11:55
+                        if ("marina_call_12" not in S.setdefault("oneoff", [])
+                                and any((x.get("text") or "").strip() == "Окей, тогда так" for x in (cv.get("history") or []))):
+                            S["oneoff"] += ["marina_call_12", "marina_call_obj"]
+                            cv["call"] = {"at": datetime(2026, 11, 9, 12, 0, tzinfo=DXB).timestamp(), "min": 60,
+                                          "status": "confirmed", "link": (cv.get("call") or {}).get("link"),
+                                          "gcal_id": "cjcagsdedip8fbtak8e3mo1cro", "r40": False, "r5": False}
+                            cv["call_q"] = False
+                            cv["pending_q"] = None
+                            cv["fu_at"] = 0
+                            save()
                         # разово 08.11: созвон Марины (09.11 10:00) в новую логику: подтвердит -> календарь и напоминания
                         if ("marina_call_obj" not in S.setdefault("oneoff", []) and "marina_call" in S["oneoff"]
                                 and any((x.get("text") or "").strip() == "Окей, тогда так" for x in (cv.get("history") or []))):
