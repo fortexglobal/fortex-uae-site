@@ -1,0 +1,83 @@
+{
+ "date": "2026-11-08",
+ "queries": [
+  "аренда Дубай",
+  "Дубай юмор",
+  "ипотека Дубай"
+ ],
+ "note": "Результаты дал только «аренда Дубай» (поиск ловит слово «аренда» вообще, много шума: Тбилиси, Вьетнам, футбол). «Дубай юмор» и «ипотека Дубай» за 2 дня пусто. Подписчиков авторов актор не вернул, отметить до 3000 нельзя. Сигнал: люди сами спрашивают про недвижимость в кредит и ВНЖ (romario__rus), личная победа «мне 63, компания, ВНЖ, квартира» 6,3k. Знакомства и «посоветуйте места» в Дубае держат ответы.",
+ "top": [
+  {
+   "username": "inessa.chekhlova",
+   "url": "https://www.threads.com/@inessa.chekhlova/post/DfbgISDDaUS",
+   "gist": "мне 63: открыла компанию в ОАЭ, ВНЖ, купила квартиру в Дубае",
+   "technique": "личная победа одним абзацем, возраст как интрига",
+   "length": 250,
+   "views": 6274,
+   "replies": 10
+  },
+  {
+   "username": "romario__rus",
+   "url": "https://www.threads.com/@romario__rus/post/DfbwUnrjogJ",
+   "gist": "почему никто не говорит про стоимость компании, счёт, недвижимость в кредит, ВНЖ",
+   "technique": "претензия-вопрос, спрос на честные цифры по ипотеке и ВНЖ",
+   "length": 230,
+   "views": 1091,
+   "replies": 3
+  },
+  {
+   "username": "aamutahti",
+   "url": "https://www.threads.com/@aamutahti/post/Dfb8pXuCEiP",
+   "gist": "посоветуйте любимые локации на выходные в Дубае",
+   "technique": "просьба совета всему Дубаю",
+   "length": 150,
+   "views": 988,
+   "replies": 8
+  },
+  {
+   "username": "valentinsjusupovs",
+   "url": "https://www.threads.com/@valentinsjusupovs/post/DfbhydODfji",
+   "gist": "«нишевые места» Дубая: Бурдж-Халифа, Пальма, Марина в смешных падежах",
+   "technique": "ирония над банальностью + «я начну»",
+   "length": 190,
+   "views": 891,
+   "replies": 14
+  },
+  {
+   "username": "kate.indubai",
+   "url": "https://www.threads.com/@kate.indubai/post/DfcGSrcEfFd",
+   "gist": "давайте знакомиться, Kate, Dubai",
+   "technique": "ветка знакомств одной строкой",
+   "length": 100,
+   "views": 500,
+   "replies": 3
+  },
+  {
+   "username": "novata_n",
+   "url": "https://www.threads.com/@novata_n/post/DfcgHBLjbRg",
+   "gist": "недавно переехала, ищу подруг и коллаборации",
+   "technique": "новичок ищет знакомства",
+   "length": 420,
+   "views": 496,
+   "replies": 7
+  },
+  {
+   "username": "id_soboleva",
+   "url": "https://www.threads.com/@id_soboleva/post/DfY9wV-CEVJ",
+   "gist": "сделала CRM для салона с ИИ (не Дубай)",
+   "technique": "эмоция + результат + «0 рублей»",
+   "length": 330,
+   "views": 51882,
+   "replies": 431
+  },
+  {
+   "username": "a_m_minakov",
+   "url": "https://www.threads.com/@a_m_minakov/post/DfbfKYujFZu",
+   "gist": "ответ-спор на пост про CRM (не Дубай)",
+   "technique": "резкое мнение «предприниматель хороший, финансист хреновый»",
+   "length": 420,
+   "views": 15992,
+   "replies": 31
+  }
+ ]
+}
