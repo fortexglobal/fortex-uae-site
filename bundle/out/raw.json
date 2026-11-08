@@ -3,29 +3,29 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/4d7f6e57-51d0-4ad1-b70f-353adc9b741d",
+   "/api/v1/post/f8b9c8ab-ef08-47dc-8a51-a01ff30471dc",
    [
     200,
     {
-     "id": "4d7f6e57-51d0-4ad1-b70f-353adc9b741d",
+     "id": "f8b9c8ab-ef08-47dc-8a51-a01ff30471dc",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-     "title": "joke 2026-11-06",
+     "title": "joke 2026-11-08",
      "referenceKey": null,
-     "postDate": "2026-11-06T09:30:00.000Z",
+     "postDate": "2026-11-08T09:30:00.000Z",
      "postedDate": null,
      "status": "DELETED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
-       "text": "Визу одобрили: ура.\nEmirates ID: ещё пара шагов.\n\nВедём весь путь сами: документы, Medical, биометрия, Emirates ID. Рабочая виза с Emirates ID от 5 500 USD.\n\nПишите «виза» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #визавдубае #emiratesid #жизньвдубае",
+       "text": "Счёт в банке ОАЭ заморозили: неприятно.\nОтвет банку с документами: обычно решает.\n\nЗаморозка чаще всего начинается с блокировки онлайн-банка, а причина почти всегда в письме банка без ответа или устаревшем KYC. Поможем найти запрос, собрать документы и правильно ответить банку.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #жизньвдубае",
        "uploadIds": [
-        "37261e84-f3e7-4d07-8dd0-45997ccf4bb6"
+        "401dce6e-7e1d-4de3-8e60-14af2850a203"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/69b7d838-b7c4-4a16-8993-dfd7b1fedf1a.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/760c3593-0032-4a9c-ab70-6e50a8239193.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "361815916782155",
+        "musicSoundId": "348086827723863",
         "musicSoundVolume": 100,
         "videoOriginalSoundVolume": 1
        }
@@ -36,9 +36,9 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-06T06:16:57.652Z",
-     "updatedAt": "2026-11-06T06:19:38.137Z",
-     "deletedAt": "2026-11-06T06:19:38.137Z"
+     "createdAt": "2026-11-08T06:17:07.892Z",
+     "updatedAt": "2026-11-08T06:18:19.750Z",
+     "deletedAt": "2026-11-08T06:18:19.749Z"
     }
    ]
   ]
