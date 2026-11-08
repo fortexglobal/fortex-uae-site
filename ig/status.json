@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-08T09:18Z",
+ "checked": "2026-11-08T10:04Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "fortex__uae",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18157743385522748",
+   "timestamp": "2026-11-08T09:31:06+0000",
+   "permalink": "https://www.instagram.com/reel/DfecDZKDxP2/",
+   "media_type": "VIDEO",
+   "caption": "Счёт в банке ОАЭ заморозили: неприятно.\nОтвет банку с докуме"
+  },
   {
    "id": "18137209150712052",
    "timestamp": "2026-11-07T09:30:38+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/De4duN2kxC2/",
    "media_type": "VIDEO",
    "caption": "Банк в ОАЭ отказал? Не спешите подаваться в следующий.\n\nКажд"
-  },
-  {
-   "id": "18110229629581283",
-   "timestamp": "2026-10-23T09:24:56+0000",
-   "permalink": "https://www.instagram.com/p/De1OtiNFsEM/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Рабочая виза или Virtual Work: что выбрать?\n\nОбе дают резиде"
   }
  ]
 }
