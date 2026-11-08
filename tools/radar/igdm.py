@@ -144,7 +144,7 @@ async def zoom_create(topic, ts, minutes):
             t = await c.post(f"https://zoom.us/oauth/token?grant_type=account_credentials&account_id={acc}", auth=(cid_, sec))
             tok = t.json().get("access_token")
             if not tok:
-                log.warning("zoom token %s %s", t.status_code, t.text[:200]); return None
+                CTX["zoom_err"] = f"token {t.status_code}: {t.text[:200]}"; log.warning("zoom %s", CTX["zoom_err"]); return None
             hd = {"Authorization": f"Bearer {tok}"}
             uid = "me"
             try:  # Server-to-Server OAuth иногда не принимает "me": берём владельца аккаунта
@@ -160,10 +160,10 @@ async def zoom_create(topic, ts, minutes):
                                    "settings": {"join_before_host": True, "waiting_room": False}})
             j = r.json()
             if not j.get("join_url"):
-                log.warning("zoom meeting %s %s", r.status_code, str(j)[:200])
+                CTX["zoom_err"] = f"meeting {r.status_code}: {str(j)[:200]}"; log.warning("zoom %s", CTX["zoom_err"])
             return j.get("join_url")
     except Exception as e:
-        log.warning("zoom: %s", e)
+        CTX["zoom_err"] = f"exception: {str(e)[:200]}"; log.warning("zoom: %s", e)
         return None
 
 
@@ -220,7 +220,7 @@ async def call_tick(now):
             if call.get("link"):
                 await tell(cid, f"📞 Встреча в Zoom создана: @{html.escape(str(cv.get('username')))}, {html.escape(call_when(at))}\n{html.escape(call['link'])}\n\nКлиенту отправлю за 5 минут до начала.", is_html=True)
             else:
-                await tell(cid, "🔴 <b>Нужно твоё внимание</b>\n\nZoom не создал встречу, проверь ключи и права приложения (meeting:write, user:read). Ссылку пришли реплаем.", is_html=True)
+                await tell(cid, f"🔴 <b>Нужно твоё внимание</b>\n\nZoom не создал встречу. Ответ Zoom: <code>{html.escape(str(CTX.get('zoom_err', '?')))}</code>\n\nПерешли это Claude. Ссылку на созвон можно прислать реплаем.", is_html=True)
         if not call.get("r40") and at - 40 * 60 <= now < at - 10 * 60:
             call["r40"] = True; save()
             asyncio.get_event_loop().create_task(say(cv, random.choice([
