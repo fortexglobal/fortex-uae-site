@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T18:10+04:00",
+ "generated": "2026-11-08T18:39+04:00",
  "posts": [
   {
    "slug": "t-1026-stadii",
@@ -727,14 +727,14 @@
    "url": "https://www.threads.com/@fortex__uae/post/DfcdCWnFZlB",
    "kind": "фото",
    "text": "Дубай, СКИДЫВАЙТЕ В ОТВЕТЫ свой ЛУЧШИЙ ЗАКАТ в городе 🌅\n\nНачну: вот этот, С ЯХТЫ",
-   "views": 197,
+   "views": 199,
    "likes": 0,
    "replies": 3,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 3,
-   "actions_per_1k": 15.2
+   "actions_per_1k": 15.1
   },
   {
    "slug": "t-1107-zamorozka",
@@ -784,7 +784,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 679,
+  "views": 681,
   "likes": 1,
   "replies": 0,
   "reposts": 0,
@@ -792,7 +792,7 @@
   "followers_count": 3
  },
  "account_7d": {
-  "views": 8441,
+  "views": 8443,
   "likes": 23,
   "replies": 41,
   "reposts": 0,
@@ -830,7 +830,7 @@
   },
   {
    "date": "2026-11-08",
-   "views": 131
+   "views": 133
   }
  ],
  "link_clicks_7d": [
@@ -840,6 +840,10 @@
    "title": "clicks",
    "description": "The number of times users clicked on a link",
    "link_total_values": [
+    {
+     "value": 1,
+     "link_url": "http://fortex-uae.com/virtual-work"
+    },
     {
      "value": 0,
      "link_url": "https://fortex-uae.com/"
@@ -853,8 +857,8 @@
   }
  ],
  "followers_gain_1d": 1,
- "profile_views_1d": 131,
- "link_clicks_7d_total": 0,
+ "profile_views_1d": 133,
+ "link_clicks_7d_total": 1,
  "by_kind": {
   "стёб": {
    "posts": 1,
@@ -938,10 +942,10 @@
   },
   "фото": {
    "posts": 2,
-   "views": 305,
+   "views": 307,
    "replies": 5,
    "likes": 1,
-   "avg_views": 152.5,
+   "avg_views": 153.5,
    "avg_replies": 2.5
   }
  }
