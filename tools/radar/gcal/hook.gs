@@ -15,5 +15,6 @@ function doPost(e) {
     ev = cal.createEvent(d.title, start, end, {description: d.description || ''});
     ev.addPopupReminder(10);
   }
+  ev.setColor(CalendarApp.EventColor.ORANGE);  // созвоны с клиентами оранжевым (зелёный у Александра занят)
   return ContentService.createTextOutput(JSON.stringify({ok: true, id: ev.getId()})).setMimeType(ContentService.MimeType.JSON);
 }
