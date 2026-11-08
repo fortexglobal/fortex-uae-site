@@ -13,12 +13,12 @@ SITE = "https://fortex-uae.com"
 TG = "https://t.me/Fortex_Dubai"
 CONSULT = "/c/site"  # бесплатная консультация: Telegram Алексея с пометкой «с сайта»
 CHANNEL = "https://t.me/fortex_uae"
-INSTAGRAM = "https://www.instagram.com/fortex__uae/"
+INSTAGRAM = "https://www.instagram.com/ronin.dubai/"
 _TG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6l19.2-7.4c.9-.3 1.7.2 1.4 1.4z"/></svg>'
 _IG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>'
 SOCIAL = (f'<div class="social">'
           f'<a href="{CHANNEL}" target="_blank" rel="noopener"><span class="si">{_TG_SVG}</span><span><b>Telegram-канал</b><small>@fortex_uae</small></span></a>'
-          f'<a href="{INSTAGRAM}" target="_blank" rel="noopener"><span class="si">{_IG_SVG}</span><span><b>Instagram</b><small>@fortex__uae</small></span></a>'
+          f'<a href="{INSTAGRAM}" target="_blank" rel="noopener"><span class="si">{_IG_SVG}</span><span><b>Instagram</b><small>@ronin.dubai</small></span></a>'
           f'</div>')
 CAL = "/c/call"  # 29.10: Calendly пока не используем, созвон договариваем в Telegram
 EMAIL = "alexey@fortex-uae.com"
@@ -241,20 +241,20 @@ def build():
            "logo": SITE + "/img/mark.png", "image": SITE + "/img/og.jpg", "areaServed": "AE",
            "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
            "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "10:00", "closes": "20:00"}],
-           "description": "Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 5–7 дней, Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Работаем в Дубае с 2022 года.",
+           "description": "Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 7–10 рабочих дней, Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Работаем в Дубае с 2022 года.",
            "sameAs": [TG, CHANNEL, INSTAGRAM], "knowsLanguage": ["ru", "en"], "foundingDate": "2022",
            "slogan": "Инфраструктура для бизнеса в Эмиратах под ключ",
            "makesOffer": [
                {"@type": "Offer", "name": "Корпоративный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "5000", "description": "от 5 000 USD"},
                {"@type": "Offer", "name": "Личный счёт в банке ОАЭ", "priceCurrency": "USD", "price": "1500", "description": "от 1 500 USD"},
-               {"@type": "Offer", "name": "Рабочая виза + Emirates ID", "priceCurrency": "USD", "price": "5500", "description": "от 5 500 USD, 5–7 дней"},
+               {"@type": "Offer", "name": "Рабочая виза + Emirates ID", "priceCurrency": "AED", "price": "20000", "description": "20 000 AED, 7–10 рабочих дней"},
                {"@type": "Offer", "name": "ВНЖ Virtual Work + Emirates ID", "priceCurrency": "USD", "price": "2000", "description": "от 2 000 USD, 7–10 дней"}]}
     site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Fortex UAE", "url": SITE + "/", "inLanguage": "ru"}
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(
         page("Банки, компании и визы в ОАЭ для владельцев паспорта РФ | Fortex UAE",
-             "Корпоративные и личные счета в банках ОАЭ, рабочая виза с Emirates ID за 5–7 дней, компании во фризонах и на mainland, расчёты с Китаем. Для владельцев российского паспорта, под ключ, в Дубае с 2022 года.",
+             "Корпоративные и личные счета в банках ОАЭ, рабочая виза с Emirates ID за 7–10 рабочих дней, компании во фризонах и на mainland, расчёты с Китаем. Для владельцев российского паспорта, под ключ, в Дубае с 2022 года.",
              body, "/", [org, site_ld, faq_ld]))
 
     # ---- service pages ----
@@ -290,7 +290,7 @@ def build():
 <h1 class="h1">Политика конфиденциальности</h1>
 <p>Fortex UAE (направление компании Fortex Global, Дубай, ОАЭ). Связь: {EMAIL}, Telegram @Fortex_Dubai.</p>
 <h2>Какие данные мы получаем</h2>
-<p>Имя, контакт в Telegram или телефон и описание задачи, которые вы оставляете в форме на сайте или пишете нам в Telegram и Instagram. Переписку в директе Instagram @fortex__uae мы получаем через официальный API Instagram.</p>
+<p>Имя, контакт в Telegram или телефон и описание задачи, которые вы оставляете в форме на сайте или пишете нам в Telegram и Instagram. Переписку в директе Instagram @ronin.dubai мы получаем через официальный API Instagram.</p>
 <h2>Зачем</h2>
 <p>Только чтобы ответить на ваш вопрос, подобрать услугу и связаться с вами. Ответы в директе Instagram может готовить наш ассистент на основе нейросети, сложные вопросы и дальнейшую работу ведёт менеджер.</p>
 <h2>Передача третьим лицам</h2>
@@ -301,7 +301,7 @@ def build():
 <p>Храним данные, пока это нужно для общения и оказания услуги. Чтобы удалить свои данные, напишите на {EMAIL} или в Telegram @Fortex_Dubai. Удалим в течение 30 дней.</p>
 <h2 id="en">Privacy Policy (English)</h2>
 <p>Fortex UAE (a business line of Fortex Global, Dubai, UAE). Contact: {EMAIL}.</p>
-<p><b>Data we receive:</b> your name, contact (Telegram or phone) and request details that you submit via the website form or send us in Telegram or Instagram Direct (@fortex__uae). Instagram messages are received via the official Instagram API.</p>
+<p><b>Data we receive:</b> your name, contact (Telegram or phone) and request details that you submit via the website form or send us in Telegram or Instagram Direct (@ronin.dubai). Instagram messages are received via the official Instagram API.</p>
 <p><b>Purpose:</b> only to answer your question, offer a relevant service and contact you. Replies in Instagram Direct may be drafted by our AI assistant based on our knowledge base; complex questions and further work are handled by a human manager.</p>
 <p><b>Sharing:</b> we do not sell your data. We only use service providers required to operate (website hosting, Telegram, Instagram, an AI model provider to draft replies), and share data with UAE banks or authorities only with your consent as part of the service.</p>
 <p><b>Analytics:</b> we use Yandex Metrica and Microsoft Clarity to see in anonymised form how visitors use the pages (clicks, scrolling, time on site); they use cookies.</p>
@@ -401,12 +401,12 @@ def build():
     open(os.path.join(OUT, "robots.txt"), "w").write(rb + f"User-agent: *\nAllow: /\nDisallow: /draft/\n\nSitemap: {SITE}/sitemap.xml\nHost: {SITE}\n")
     from content.site import FAQ as HFAQ
     llms = ["# Fortex UAE", "",
-            "> Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 5–7 дней; Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Команда в Дубае с 2022 года. Связь: Telegram @Fortex_Dubai, сайт https://fortex-uae.com.", "",
+            "> Инфраструктура для бизнеса в ОАЭ под ключ для владельцев российского паспорта: корпоративные и личные счета во всех банках ОАЭ, в том числе после отказов; рабочая виза с Emirates ID за 7–10 рабочих дней; Virtual Work, золотая и семейная виза; компании во фризонах и на mainland; расчёты с Китаем и Гонконгом. Команда в Дубае с 2022 года. Связь: Telegram @Fortex_Dubai, сайт https://fortex-uae.com.", "",
             "## Специализация", "Сложные случаи по банкам ОАЭ: после отказов и закрытий счетов, сложные лицензии (крипта, трейдинг, нестандартная деятельность), фризоны, с которыми многие банки не работают. Главные направления: корпоративные счета и рабочие визы с Emirates ID. Компанию, визу, Emirates ID и счёт делаем в связке.", "",
             "## Услуги, цены и сроки",
             "- Корпоративный счёт в банке ОАЭ: от 5 000 USD, 1–3 недели (самые сложные случаи до месяца)",
             "- Личный счёт, в том числе удалённо: от 1 500 USD, около 2 недель",
-            "- Рабочая виза + Emirates ID: от 5 500 USD, 5–7 дней",
+            "- Рабочая виза + Emirates ID: 20 000 AED, 7–10 рабочих дней",
             "- Пакет Emirates NBD (зарплатный счёт и кредитная карта без депозита) для клиентов с Emirates ID через нашу компанию: 5 000 AED, около 3 рабочих дней",
             "- ВНЖ Virtual Work + Emirates ID: от 2 000 USD, 7–10 дней (для банков слабее рабочей визы)",
             "- Золотая виза и семейная виза: цена зависит от основания",
