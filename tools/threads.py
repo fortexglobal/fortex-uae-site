@@ -430,9 +430,10 @@ def insights():
     try:
         r = call("GET", "me/threads_insights", metric="views", since=now - 7 * 86400, until=now)
         for m in r.get("data", []):
-            out["profile_views_by_day"] = [{"date": v.get("end_time", "")[:10], "views": v.get("value")} for v in m.get("values", [])]
+            # 08.11: это ПРОСМОТРЫ постов по дням, а не заходы в профиль (заходов API не даёт, их видно только в приложении)
+            out["views_by_day"] = [{"date": v.get("end_time", "")[:10], "views": v.get("value")} for v in m.get("values", [])]
     except Exception as e:
-        out["errors"].append(f"profile_views: {str(e)[:200]}")
+        out["errors"].append(f"views_by_day: {str(e)[:200]}")
     try:
         r = call("GET", "me/threads_insights", metric="clicks", since=now - 7 * 86400, until=now)
         out["link_clicks_7d"] = r.get("data", [])
@@ -452,8 +453,8 @@ def insights():
         out["followers_gain_1d"] = fol[days[-1]] - fol[days[-2]]
     if len(days) >= 8:
         out["followers_gain_7d"] = fol[days[-1]] - fol[days[-8]]
-    pv = {x["date"]: x["views"] for x in out.get("profile_views_by_day", [])}
-    out["profile_views_1d"] = pv.get(max(pv)) if pv else None
+    pv = {x["date"]: x["views"] for x in out.get("views_by_day", [])}
+    out["views_1d"] = pv.get(max(pv)) if pv else None
     out["link_clicks_7d_total"] = sum(v.get("value", 0) for m in out.get("link_clicks_7d", []) for v in m.get("link_total_values", []))
     # качество поста: не просмотры, а действия (ответы, репосты, цитаты, пересылки) на 1000 просмотров
     for p in out["posts"]:
