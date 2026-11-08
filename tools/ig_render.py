@@ -176,7 +176,7 @@ def ed_slide(s, i, n, cover_url, photo_url, light=False):
             big = big.replace('class="eh"', 'class="eh" style="margin-top:0"', 1)
     paras = "".join(f"<p>{md(nb(x))}</p>" for x in s.get("body", "").split("\n\n") if x.strip())
     btn = '<div class="ebtn">Telegram @Fortex_Dubai</div>' if kind == "cta" else ""
-    foot = f'<div class="efoot"><span>@fortex__uae</span>' + ('<b>Листайте →</b>' if i < n - 1 else f'<span>{i + 1}/{n}</span>') + '</div>'
+    foot = f'<div class="efoot"><span>@ronin.dubai</span>' + ('<b>Листайте →</b>' if i < n - 1 else f'<span>{i + 1}/{n}</span>') + '</div>'
     cls = ("e epage ecta" if kind == "cta" else "e epage") + (" light" if light else "")
     return f'<div class="{cls}">{pic}<div class="ebody">{head}{big}<div class="etext">{paras}</div>{btn}</div>{foot}</div>'
 
@@ -197,7 +197,7 @@ def slide_html(s, i, n, bg_url, photo_url=""):
     if photo_url and kind != "cover":
         theme = "photo"
     dots = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
-    swipe = ("Дальше →" if STORY["on"] else "Листайте →") if i < n - 1 else "@fortex__uae"
+    swipe = ("Дальше →" if STORY["on"] else "Листайте →") if i < n - 1 else "@ronin.dubai"
     top = f'<div class="top">{MARK}<span>FORTEX UAE</span><span class="pg">{i + 1}/{n}</span></div>'
     foot = f'<div class="foot"><div class="dots">{dots}</div><span class="sw">{swipe}</span></div>'
     if kind == "cover":

@@ -56,7 +56,7 @@ def publish_stories(imgs):
             return {"error": p, "done": ids}
         ids.append(p["id"])
         time.sleep(3)
-    return {"id": ids[0] if ids else "", "ids": ids, "permalink": "https://www.instagram.com/stories/fortex__uae/"}
+    return {"id": ids[0] if ids else "", "ids": ids, "permalink": "https://www.instagram.com/stories/ronin.dubai/"}
 
 
 def publish_reel(video_url, cover_url, caption):
