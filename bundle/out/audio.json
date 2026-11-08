@@ -1,463 +1,322 @@
 {
  "cmd": "audio",
  "r": {
-  "Habibi Come To Dubai": [
+  "Хлопья летят наверх": [
+   200
+  ],
+  "Frozen Sickick": [
+   200
+  ],
+  "Rasputin": [
    200,
    {
-    "audio_id": "199641739310628",
-    "title": "HABIBI (pt2) COME TO DUBAI🇦🇪",
-    "display_artist": null,
-    "duration_in_ms": 7011
+    "audio_id": "1804932633795858",
+    "title": "Traka",
+    "display_artist": "Tony Dark Eyes",
+    "duration_in_ms": 121925
    },
    {
-    "audio_id": "226141173133952",
-    "title": "Habibi, come to Dubai",
-    "display_artist": null,
-    "duration_in_ms": 27815
+    "audio_id": "2094850318579593",
+    "title": "Built Different",
+    "display_artist": "Bloom",
+    "duration_in_ms": 65055
    },
    {
-    "audio_id": "271847035088936",
-    "title": "Habibi come to Dubai ❤️🔥",
-    "display_artist": null,
-    "duration_in_ms": 11373
+    "audio_id": "1103318524423168",
+    "title": "Breathe In, Go Slow",
+    "display_artist": "The Poison Oaks",
+    "duration_in_ms": 208788
    },
    {
-    "audio_id": "331875706499449",
-    "title": "Habibi don’t come to Dubai",
-    "display_artist": null,
-    "duration_in_ms": 9032
+    "audio_id": "565131877647270",
+    "title": "Rise To The Occasion",
+    "display_artist": "Trout Recording",
+    "duration_in_ms": 225172
    },
    {
-    "audio_id": "511566616721099",
-    "title": "Come to Dubai Habibi",
-    "display_artist": null,
-    "duration_in_ms": 9587
+    "audio_id": "762068171980920",
+    "title": "Born To Be Champions",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 125177
    },
    {
-    "audio_id": "689748376790195",
-    "title": "Habibi come to dubai",
-    "display_artist": null,
-    "duration_in_ms": 18100
+    "audio_id": "244026519601076",
+    "title": "Mesmer",
+    "display_artist": "Austin Woodward, Adam Griffith",
+    "duration_in_ms": 208941
    },
    {
-    "audio_id": "698360426188705",
-    "title": "Habibi come to dubai",
-    "display_artist": null,
-    "duration_in_ms": 39533
+    "audio_id": "694242741521191",
+    "title": "The Tao of Nothingness",
+    "display_artist": "Dr. Pheel",
+    "duration_in_ms": 178250
    },
    {
-    "audio_id": "717602220510025",
-    "title": "Habibi come to dubai",
-    "display_artist": null,
-    "duration_in_ms": 30998
+    "audio_id": "449818782400930",
+    "title": "Betrayal (feat. Defiant Kings iZZ)",
+    "display_artist": "Jumbo",
+    "duration_in_ms": 152793
+   },
+   {
+    "audio_id": "561297087954510",
+    "title": "Birch Tree",
+    "display_artist": "Ljova and the Kontraband",
+    "duration_in_ms": 187578
+   },
+   {
+    "audio_id": "976824423721846",
+    "title": "Woke Up Like This (Reels Sound - Listicle)",
+    "display_artist": "Sugartapes",
+    "duration_in_ms": 19904
    }
   ],
-  "Dubai": [
+  "Vida Loca Ramzuto": [
    200,
    {
-    "audio_id": "124094406156672",
-    "title": "Ya Salam Ya Dubai - يا سلام يا دبي",
-    "display_artist": null,
-    "duration_in_ms": 29836
+    "audio_id": "1418611098781784",
+    "title": "Too Cool",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 108840
    },
    {
-    "audio_id": "171150488513303",
-    "title": "SkyDive Dubai",
-    "display_artist": null,
-    "duration_in_ms": 50475
+    "audio_id": "6663298070454103",
+    "title": "LALALA (Instrumental)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 136935
    },
    {
-    "audio_id": "186359490899793",
-    "title": "Hai Ramadan at Expo City Dubai حيّ رمضان",
-    "display_artist": null,
-    "duration_in_ms": 9425
+    "audio_id": "561529346779419",
+    "title": "City Nights (Instrumental)",
+    "display_artist": "Chela Rivas",
+    "duration_in_ms": 161360
    },
    {
-    "audio_id": "188933100619539",
-    "title": "Dubai Builds The Future",
-    "display_artist": null,
-    "duration_in_ms": 117537
+    "audio_id": "483431327882256",
+    "title": "Loco",
+    "display_artist": "Tony Dark Eyes",
+    "duration_in_ms": 133320
    },
    {
-    "audio_id": "199553243237086",
-    "title": "Winter Winter Dubai Song | tidding",
-    "display_artist": null,
-    "duration_in_ms": 52244
+    "audio_id": "1055232847236139",
+    "title": "Dance Adventures",
+    "display_artist": "Danny Peter Wolf",
+    "duration_in_ms": 62100
    },
    {
-    "audio_id": "199641739310628",
-    "title": "HABIBI (pt2) COME TO DUBAI🇦🇪",
-    "display_artist": null,
-    "duration_in_ms": 7011
-   },
-   {
-    "audio_id": "204510759180805",
-    "title": "Videographer Dubai",
-    "display_artist": null,
-    "duration_in_ms": 17600
-   },
-   {
-    "audio_id": "208993215203216",
-    "title": "I am a Dubai Girl | tidding",
-    "display_artist": null,
-    "duration_in_ms": 49642
-   },
-   {
-    "audio_id": "215610367667593",
-    "title": "Manybeat, Aaron Sevilla - Dubai Go",
-    "display_artist": null,
-    "duration_in_ms": 49712
-   },
-   {
-    "audio_id": "222164224026033",
-    "title": "Dubai-Cars-FasBeam",
-    "display_artist": null,
-    "duration_in_ms": 59976
+    "audio_id": "2270024163543016",
+    "title": "Encendio (feat. Vito Vasquez) (Instrumental)",
+    "display_artist": "Tibado",
+    "duration_in_ms": 158571
    }
   ],
-  "Ленинград": [
+  "UP INNA": [
    200,
    {
-    "audio_id": "676997491329377",
-    "title": "Leningrad Symphony – Shostakovich",
-    "display_artist": null,
-    "duration_in_ms": 99218
+    "audio_id": "1579921342191993",
+    "title": "Motive (Instrumental)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 189134
    },
    {
-    "audio_id": "2052245438582179",
-    "title": "Snow over Leningrad",
-    "display_artist": null,
-    "duration_in_ms": 32600
+    "audio_id": "1744948239772680",
+    "title": "Greatness",
+    "display_artist": "Jordan Olmos",
+    "duration_in_ms": 67660
    },
    {
-    "audio_id": "25234845362871127",
-    "title": "Leningrad is on fire",
-    "display_artist": null,
-    "duration_in_ms": 60200
+    "audio_id": "1364566625814248",
+    "title": "Hold The Moment",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 55670
    },
    {
-    "audio_id": "302876949195024",
-    "title": "Ленинград и Сергей Шнуров",
-    "display_artist": null,
-    "duration_in_ms": 24310
+    "audio_id": "1852688158814799",
+    "title": "Hypnotized (Instrumental)",
+    "display_artist": "Company Money",
+    "duration_in_ms": 172973
    },
    {
-    "audio_id": "396455119383783",
-    "title": "Ленинград (Зоя) — За грехи (виноваты петухи)",
-    "display_artist": null,
-    "duration_in_ms": 23080
+    "audio_id": "1540755600953104",
+    "title": "Stardust (Instrumental)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 141824
    },
    {
-    "audio_id": "544295261228837",
-    "title": "Ленинград, Сергей Шнуров, Зоя — Принцип (премьера)",
-    "display_artist": null,
-    "duration_in_ms": 24146
+    "audio_id": "1379743266787702",
+    "title": "Imagination",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 136050
    },
    {
-    "audio_id": "725521037229767",
-    "title": "Ленинград - Х****а",
-    "display_artist": null,
-    "duration_in_ms": 16366
+    "audio_id": "1068592065620532",
+    "title": "Legendary",
+    "display_artist": "LAVLO",
+    "duration_in_ms": 67490
    },
    {
-    "audio_id": "778492844804177",
-    "title": "Ленинграда - заШЫбись",
-    "display_artist": null,
-    "duration_in_ms": 28210
+    "audio_id": "1306855697259067",
+    "title": "Feels So Good (Instrumental)",
+    "display_artist": "Company Money",
+    "duration_in_ms": 165810
+   },
+   {
+    "audio_id": "9513789255356881",
+    "title": "Power On (Instrumental)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 116549
+   },
+   {
+    "audio_id": "24357110390657450",
+    "title": "Elevate",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 114844
    }
   ],
-  "Feeling Good": [
+  "Mah-Na-Mah-Na": [
    200,
    {
-    "audio_id": "166913019586469",
-    "title": "Good Feeling (Izzy Remix)",
-    "display_artist": null,
-    "duration_in_ms": 65247
+    "audio_id": "177759253150601",
+    "title": "I'm Happy",
+    "display_artist": "Sleeping Lion",
+    "duration_in_ms": 189464
    },
    {
-    "audio_id": "247131601052465",
-    "title": "Ajey - Feeling Good",
-    "display_artist": null,
-    "duration_in_ms": 9704
+    "audio_id": "915612133562826",
+    "title": "Arabic Guitar",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 138163
    },
    {
-    "audio_id": "252898820862939",
-    "title": "Martin Masiello-Feeling Good",
-    "display_artist": null,
-    "duration_in_ms": 53453
+    "audio_id": "1255021938307940",
+    "title": "Aurora",
+    "display_artist": "Azam Ali, Loga Ramin Torkian",
+    "duration_in_ms": 181369
    },
    {
-    "audio_id": "263325636715428",
-    "title": "Feeling Good - Brian Brown",
-    "display_artist": null,
-    "duration_in_ms": 33900
+    "audio_id": "919627336251474",
+    "title": "Looking For Love",
+    "display_artist": "Julia Gartha",
+    "duration_in_ms": 127679
    },
    {
-    "audio_id": "287429456626004",
-    "title": "Avicii - Feeling Good",
-    "display_artist": null,
-    "duration_in_ms": 8495
+    "audio_id": "595378569172720",
+    "title": "I Love My Baby",
+    "display_artist": "Afro Sound Machine",
+    "duration_in_ms": 203830
    },
    {
-    "audio_id": "315805260752109",
-    "title": "Wel- Welcome to my zone~ feelin' good right now2x",
-    "display_artist": null,
-    "duration_in_ms": 69427
+    "audio_id": "147615442551337",
+    "title": "El Helwa Di",
+    "display_artist": "Mike Block (Producer)",
+    "duration_in_ms": 253369
    },
    {
-    "audio_id": "360580126743011",
-    "title": "feeling good",
-    "display_artist": null,
-    "duration_in_ms": 90024
+    "audio_id": "671461094197409",
+    "title": "Barber Of Seville",
+    "display_artist": "Mike Block",
+    "duration_in_ms": 196188
    },
    {
-    "audio_id": "371722661495476",
-    "title": "Feeling good",
-    "display_artist": null,
-    "duration_in_ms": 16832
+    "audio_id": "586966341126970",
+    "title": "Habibi (Instrumental)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 130160
    },
    {
-    "audio_id": "390333093774457",
-    "title": "Johnny Huynh - Feeling Good (cover)",
-    "display_artist": null,
-    "duration_in_ms": 30253
+    "audio_id": "528683314686820",
+    "title": "Stay Up (feat. Kianna)",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 143446
+   },
+   {
+    "audio_id": "670484083340031",
+    "title": "Up Here",
+    "display_artist": "bldgs",
+    "duration_in_ms": 187950
    }
   ],
-  "Back To Black": [
+  "На берегу неба": [
    200,
    {
-    "audio_id": "103604219480842",
-    "title": "Amy Winehouse - Back To Black Voceux",
-    "display_artist": null,
-    "duration_in_ms": 43769
-   },
-   {
-    "audio_id": "105623199300146",
-    "title": "Amy Winehouse ft. Bülent Ersoy - BACK TO BLACK",
-    "display_artist": null,
-    "duration_in_ms": 27375
-   },
-   {
-    "audio_id": "305806058664070",
-    "title": "Back to black Tamara Salles",
-    "display_artist": null,
-    "duration_in_ms": 68010
-   },
-   {
-    "audio_id": "366878009477546",
-    "title": "Karla Ruiz - Back to Black",
-    "display_artist": null,
-    "duration_in_ms": 35525
-   },
-   {
-    "audio_id": "372899127996562",
-    "title": "amy winehouse • back to black • V festival 2008",
-    "display_artist": null,
-    "duration_in_ms": 50061
-   },
-   {
-    "audio_id": "373673594538349",
-    "title": "Back to Black x Suraj Hua Maddham (SANJ)",
-    "display_artist": null,
-    "duration_in_ms": 53104
-   },
-   {
-    "audio_id": "389871230743481",
-    "title": "Amy Winehouse - Back to Black",
-    "display_artist": null,
-    "duration_in_ms": 75463
+    "audio_id": "757785052896581",
+    "title": "Sunday In October",
+    "display_artist": "Trout Recording",
+    "duration_in_ms": 173014
    }
   ],
-  "luxury": [
+  "Random Switch": [
    200,
    {
-    "audio_id": "169628276113948",
-    "title": "Amicable Luxury",
-    "display_artist": null,
-    "duration_in_ms": 89953
+    "audio_id": "1128238428062791",
+    "title": "Just What I Needed",
+    "display_artist": "Giulio Cercato",
+    "duration_in_ms": 174050
    },
    {
-    "audio_id": "197957803397621",
-    "title": "Luxury Interior Design",
-    "display_artist": null,
-    "duration_in_ms": 10611
+    "audio_id": "694794862203398",
+    "title": "Tiempo",
+    "display_artist": "Paez",
+    "duration_in_ms": 127181
    },
    {
-    "audio_id": "216914414813912",
-    "title": "Life Luxury Global",
-    "display_artist": null,
-    "duration_in_ms": 15510
-   },
-   {
-    "audio_id": "237172629452254",
-    "title": "@trottersjewellers | luxury watch dealers",
-    "display_artist": null,
-    "duration_in_ms": 25518
-   },
-   {
-    "audio_id": "245149547991082",
-    "title": "Amoure Luxury Suites Coming Soon",
-    "display_artist": null,
-    "duration_in_ms": 82359
-   },
-   {
-    "audio_id": "245154921733709",
-    "title": "Ultra-Luxury Candles",
-    "display_artist": null,
-    "duration_in_ms": 44463
-   },
-   {
-    "audio_id": "251251650569538",
-    "title": "Last Night (Loud Luxury Edit)",
-    "display_artist": null,
-    "duration_in_ms": 20292
-   },
-   {
-    "audio_id": "303717215306378",
-    "title": "How can black not be luxury?",
-    "display_artist": null,
-    "duration_in_ms": 55354
-   },
-   {
-    "audio_id": "312518924863192",
-    "title": "Luxury Laksmi organic cotton",
-    "display_artist": null,
-    "duration_in_ms": 16462
+    "audio_id": "1020886490555801",
+    "title": "Hive Mind",
+    "display_artist": "Fellow Travelers",
+    "duration_in_ms": 63474
    }
   ],
-  "money": [
-   200,
-   {
-    "audio_id": "100169043155899",
-    "title": "💸❗ Love is game of Money ❗💸",
-    "display_artist": null,
-    "duration_in_ms": 16277
-   },
-   {
-    "audio_id": "105777545842349",
-    "title": "Explosivedevixe – Show me your money",
-    "display_artist": null,
-    "duration_in_ms": 69077
-   },
-   {
-    "audio_id": "120399107826147",
-    "title": "Black Money…🐃💰",
-    "display_artist": null,
-    "duration_in_ms": 11911
-   },
-   {
-    "audio_id": "125248703973473",
-    "title": "Money cant buy Happiness",
-    "display_artist": null,
-    "duration_in_ms": 18784
-   },
-   {
-    "audio_id": "126665387159100",
-    "title": "Money is Not Everything 💸",
-    "display_artist": null,
-    "duration_in_ms": 18646
-   },
-   {
-    "audio_id": "131451029895209",
-    "title": "MONEY TALKS 1",
-    "display_artist": null,
-    "duration_in_ms": 60137
-   },
-   {
-    "audio_id": "134468376141595",
-    "title": "No money only friendship ❤️👬🌎",
-    "display_artist": null,
-    "duration_in_ms": 15091
-   },
-   {
-    "audio_id": "146177638416149",
-    "title": "A lot of money",
-    "display_artist": null,
-    "duration_in_ms": 37660
-   }
+  "levitate ambit": [
+   200
   ],
-  "phonk": [
+  "Black Out Days": [
    200,
    {
-    "audio_id": "126294980552817",
-    "title": "Jaegermeister Phonk",
-    "display_artist": null,
-    "duration_in_ms": 9219
+    "audio_id": "3460749137495941",
+    "title": "Lick",
+    "display_artist": "Otis McDonald",
+    "duration_in_ms": 64319
    },
    {
-    "audio_id": "169633198612269",
-    "title": "PlayaPhonk - PHONKY TOWN",
-    "display_artist": null,
-    "duration_in_ms": 12399
+    "audio_id": "1153276916182315",
+    "title": "Boi Na Roda (Instrumental)",
+    "display_artist": "Company Money",
+    "duration_in_ms": 180050
    },
    {
-    "audio_id": "182012701581856",
-    "title": "Phonk",
-    "display_artist": null,
-    "duration_in_ms": 15070
+    "audio_id": "233331135706272",
+    "title": "Desgarra (Instrumental)",
+    "display_artist": "Destroyer Creator",
+    "duration_in_ms": 163875
    },
    {
-    "audio_id": "183252441333618",
-    "title": "1 2 Buckle My Shoe⭒Phonk Version",
-    "display_artist": null,
-    "duration_in_ms": 29999
+    "audio_id": "358491660004363",
+    "title": "Our Love (Reels Sound - Listicle)",
+    "display_artist": "Ruby Amanfu",
+    "duration_in_ms": 14127
    },
    {
-    "audio_id": "194727873492232",
-    "title": "Strangers Get in ya Car - Phonk Remix",
-    "display_artist": null,
-    "duration_in_ms": 19806
+    "audio_id": "2301335310186677",
+    "title": "Sweet Mother Africa",
+    "display_artist": "Daramola",
+    "duration_in_ms": 252378
    },
    {
-    "audio_id": "201857149320877",
-    "title": "Barbie Girl x phonk",
-    "display_artist": null,
-    "duration_in_ms": 25821
+    "audio_id": "1053536099307636",
+    "title": "The House Of The Rising Sun (Tamil Version) (feat. Daniel Alba)",
+    "display_artist": "Shilpa Ananth",
+    "duration_in_ms": 280686
    },
    {
-    "audio_id": "218731761293265",
-    "title": "Phonk",
-    "display_artist": null,
-    "duration_in_ms": 58213
+    "audio_id": "1152651375564751",
+    "title": "Swagger & Soul (feat. Jeff Coffin)",
+    "display_artist": "Charlie Peacock",
+    "duration_in_ms": 265910
    },
    {
-    "audio_id": "227292680154453",
-    "title": "phonk",
-    "display_artist": null,
-    "duration_in_ms": 25055
-   }
-  ],
-  "Che Vuole Questa Musica": [
-   200,
-   {
-    "audio_id": "209186558823976",
-    "title": "🎵 P.Gagliardi - Che vuole questa musica stasera",
-    "display_artist": null,
-    "duration_in_ms": 88074
-   },
-   {
-    "audio_id": "604009701294686",
-    "title": "Che Vuole Questa Musica Stasera",
-    "display_artist": null,
-    "duration_in_ms": 14858
-   },
-   {
-    "audio_id": "710797793887623",
-    "title": "Peppino Gagliardi Che vuole questa musica stasera",
-    "display_artist": null,
-    "duration_in_ms": 71283
-   },
-   {
-    "audio_id": "8332990286804274",
-    "title": "\"Che vuole questa musica stasera\"",
-    "display_artist": null,
-    "duration_in_ms": 51779
-   },
-   {
-    "audio_id": "25241608578829178",
-    "title": "Che vuole questa musica stasera",
-    "display_artist": null,
-    "duration_in_ms": 39041
+    "audio_id": "470234301018709",
+    "title": "Unstoppable (Instrumental)",
+    "display_artist": "Mike Floss",
+    "duration_in_ms": 184690
    }
   ]
  }
