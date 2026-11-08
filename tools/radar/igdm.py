@@ -631,6 +631,15 @@ async def loop():
                     S["_polled"] = time.time()
                     await poll()
                 now = time.time()
+                if not CTX.get("resumed"):
+                    # после перезапуска (обновление ассистента) не бросаем людей, которым не успели ответить (08.11)
+                    CTX["resumed"] = True
+                    for cid, cv in list(S["convs"].items()):
+                        h = cv.get("history") or []
+                        if (h and h[-1].get("role") == "user" and not cv.get("human") and not cv.get("muted")
+                                and not cv.get("next_at") and now - (cv.get("last_user_ts") or 0) < 3 * 3600):
+                            cv["next_at"] = now + random.randint(5, 20)
+                            log.info("resume after restart: %s", cid)
                 for cid, cv in list(S["convs"].items()):
                     if cv.get("next_at") and cv["next_at"] <= now and not cv.get("human"):
                         asyncio.get_event_loop().create_task(reply_to(cid))
