@@ -58,6 +58,28 @@ def main():
         "utm": table("ym:s:lastUTMSource,ym:s:lastUTMCampaign", d1="today", d2="today"),
         "pages": table("ym:s:startURLPath", d1="today", d2="today"),
     }
+    # Аудитория для ретаргетинга (решение Александра 09.11). Пиксель Meta стоит с 09.11,
+    # его аудитория примерно = уникальные посетители сайта с этой даты.
+    PIXEL_FROM = "2026-11-09"
+    def users(d1, flt=None, metric="ym:s:users"):
+        kw = dict(ids=C, metrics=metric, date1=d1, date2="today")
+        if flt:
+            kw["filters"] = flt
+        try:
+            t = get("/stat/v1/data", **kw).get("totals", [0])
+            return int(t[0]) if t else 0
+        except Exception as e:
+            return None
+    aud = {"pixel_from": PIXEL_FROM,
+           "since_pixel": users(PIXEL_FROM),
+           "d30": users("30daysAgo"), "d90": users("90daysAgo"), "d180": users("180daysAgo")}
+    for key, path in (("ipoteka", "/ipoteka/"), ("virtual_work", "/virtual-work/"), ("gid", "/gid/")):
+        aud[key + "_30d"] = users("30daysAgo", f"ym:pv:URLPath=@'{path}'", "ym:pv:users")
+        aud[key + "_since_pixel"] = users(PIXEL_FROM, f"ym:pv:URLPath=@'{path}'", "ym:pv:users")
+    for g in goals:
+        if "telegram" in g["name"].lower() or "заявк" in g["name"].lower():
+            aud["goal_users_30d:" + g["name"]] = users("30daysAgo", metric=f"ym:s:goal{g['id']}users")
+    out["audience"] = aud
     os.makedirs("stats", exist_ok=True)
     json.dump(out, open("stats/metrika.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(out["totals"], ensure_ascii=False), out["goals"])
