@@ -1,29 +1,24 @@
 {
- "generated": "2026-11-08T07:55+04:00",
+ "generated": "2026-11-09T07:58+04:00",
  "period": "последние 7 дней",
  "account": {
-  "username": "fortex__uae",
+  "username": "ronin.dubai",
   "followers_count": 1,
   "follows_count": 6,
   "media_count": 22,
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 106,
-  "views": 204,
+  "reach": 152,
+  "views": 240,
   "accounts_engaged": 6,
-  "total_interactions": 8,
+  "total_interactions": 7,
   "profile_links_taps": 0,
   "follows_and_unfollows": {
    "error": ""
   }
  },
  "followers_history": [
-  {
-   "date": "2026-11-01",
-   "followers": 1,
-   "media": 14
-  },
   {
    "date": "2026-11-02",
    "followers": 1,
@@ -58,9 +53,40 @@
    "date": "2026-11-08",
    "followers": 1,
    "media": 22
+  },
+  {
+   "date": "2026-11-09",
+   "followers": 1,
+   "media": 22
   }
  ],
  "media": [
+  {
+   "id": "18157743385522748",
+   "at": "2026-11-08T09:31:06+0000",
+   "kind": "REELS",
+   "type": "VIDEO",
+   "link": "https://www.instagram.com/reel/DfecDZKDxP2/",
+   "caption": "Счёт в банке ОАЭ заморозили: неприятно.\nОтвет банку с документами: обычно решает.\n\nЗаморозка чаще всего начинается с блокировки онлайн-банка",
+   "likes": 0,
+   "comments": 0,
+   "ins": {
+    "reach": 46,
+    "views": 50,
+    "saved": 0,
+    "shares": 0,
+    "likes": 0,
+    "comments": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 3752,
+    "ig_reels_video_view_total_time": 176372
+   },
+   "unavailable": [
+    "profile_visits",
+    "follows"
+   ],
+   "ours": {}
+  },
   {
    "id": "18137209150712052",
    "at": "2026-11-07T09:30:38+0000",
@@ -78,8 +104,8 @@
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 1985,
-    "ig_reels_video_view_total_time": 3970
+    "ig_reels_avg_watch_time": 3176,
+    "ig_reels_video_view_total_time": 12706
    },
    "unavailable": [
     "profile_visits",
@@ -104,8 +130,8 @@
     "likes": 1,
     "comments": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 7021,
-    "ig_reels_video_view_total_time": 14042
+    "ig_reels_avg_watch_time": 5263,
+    "ig_reels_video_view_total_time": 15791
    },
    "unavailable": [
     "profile_visits",
@@ -156,8 +182,8 @@
     "likes": 1,
     "comments": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 6898,
-    "ig_reels_video_view_total_time": 13796
+    "ig_reels_avg_watch_time": 6366,
+    "ig_reels_video_view_total_time": 19100
    },
    "unavailable": [
     "profile_visits",
@@ -208,8 +234,8 @@
     "likes": 2,
     "comments": 0,
     "total_interactions": 3,
-    "ig_reels_avg_watch_time": 4830,
-    "ig_reels_video_view_total_time": 531355
+    "ig_reels_avg_watch_time": 4818,
+    "ig_reels_video_view_total_time": 534853
    },
    "unavailable": [
     "profile_visits",
@@ -227,8 +253,8 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 2,
-    "views": 6,
+    "reach": 3,
+    "views": 10,
     "saved": 0,
     "shares": 0,
     "likes": 0,
