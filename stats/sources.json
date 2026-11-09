@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T03:58Z",
+ "generated": "2026-11-09T04:02Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,10 +10,10 @@
   {
    "name": "Direct traffic",
    "v": [
-    151.0,
-    86.0,
-    41.7,
-    164.5
+    156.0,
+    88.0,
+    41.0,
+    182.6
    ]
   },
   {
@@ -37,19 +37,19 @@
   {
    "name": "Social network traffic",
    "v": [
-    8.0,
-    8.0,
-    12.5,
-    37.4
+    9.0,
+    9.0,
+    11.1,
+    35.0
    ]
   },
   {
    "name": "Ad traffic",
    "v": [
-    4.0,
-    4.0,
+    5.0,
+    5.0,
     0.0,
-    18.0
+    19.0
    ]
   },
   {
@@ -93,19 +93,19 @@
   {
    "name": "Facebook",
    "v": [
-    6.0,
-    6.0,
+    7.0,
+    7.0,
     0.0,
-    47.0
+    42.6
    ]
   },
   {
    "name": "Instagram",
    "v": [
-    4.0,
-    4.0,
+    5.0,
+    5.0,
     0.0,
-    18.0
+    19.0
    ]
   },
   {
@@ -149,10 +149,10 @@
   {
    "name": "instagram / None / bio",
    "v": [
-    4.0,
-    4.0,
+    5.0,
+    5.0,
     0.0,
-    18.0
+    19.0
    ]
   },
   {
@@ -194,6 +194,15 @@
    ]
   },
   {
+   "name": "http://m.facebook.com",
+   "v": [
+    5.0,
+    5.0,
+    0.0,
+    14.6
+   ]
+  },
+  {
    "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ada26c2a5fe1b4c0fa0e59c",
    "v": [
     5.0,
@@ -212,12 +221,12 @@
    ]
   },
   {
-   "name": "http://m.facebook.com",
+   "name": "https://m.facebook.com/",
    "v": [
     4.0,
     4.0,
     0.0,
-    14.2
+    25.0
    ]
   },
   {
@@ -227,15 +236,6 @@
     3.0,
     0.0,
     73.3
-   ]
-  },
-  {
-   "name": "https://m.facebook.com/",
-   "v": [
-    3.0,
-    3.0,
-    0.0,
-    25.7
    ]
   },
   {
@@ -324,10 +324,10 @@
   {
    "name": "m.facebook.com",
    "v": [
-    7.0,
-    7.0,
+    9.0,
+    9.0,
     0.0,
-    19.1
+    19.2
    ]
   },
   {
@@ -371,10 +371,10 @@
   {
    "name": "https://fortex-uae.com/",
    "v": [
-    149.0,
-    95.0,
+    151.0,
+    97.0,
     45.0,
-    118.1
+    116.7
    ]
   },
   {
@@ -396,21 +396,21 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/ipoteka/",
+   "v": [
+    7.0,
+    3.0,
+    0.0,
+    98.9
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/posle-otkrytiya-kompanii-oae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae9f8c48ab6d561777124d7",
    "v": [
     5.0,
     5.0,
     100.0,
     0.0
-   ]
-  },
-  {
-   "name": "https://fortex-uae.com/ipoteka/",
-   "v": [
-    5.0,
-    2.0,
-    0.0,
-    98.4
    ]
   },
   {
@@ -447,6 +447,15 @@
     2.0,
     50.0,
     7.5
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/virtual-work/",
+   "v": [
+    2.0,
+    1.0,
+    0.0,
+    1721.5
    ]
   },
   {
@@ -619,16 +628,25 @@
     0.0,
     394.0
    ]
+  },
+  {
+   "name": "https://fortex-uae.com/virtual-work/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR-pbfPBGwEf0g_oQC6Ebl-ieFgYHPmPqS7Lv1r3Qyuufa2tC78S-lVLXNX4Ow_aem_YIpv3u5XBMWTjH9R_niVaQ",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    16.0
+   ]
   }
  ],
  "country_city": [
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    69.0,
+    72.0,
     22.0,
-    26.1,
-    185.8
+    25.0,
+    226.1
    ]
   },
   {
@@ -661,10 +679,10 @@
   {
    "name": "Russia / Moscow",
    "v": [
-    16.0,
-    12.0,
-    12.5,
-    34.8
+    17.0,
+    13.0,
+    11.8,
+    43.6
    ]
   },
   {
@@ -679,10 +697,10 @@
   {
    "name": "Ireland / None",
    "v": [
-    9.0,
-    9.0,
+    11.0,
+    11.0,
     0.0,
-    18.1
+    18.4
    ]
   },
   {
@@ -701,6 +719,15 @@
     3.0,
     66.7,
     9.0
+   ]
+  },
+  {
+   "name": "United States / Ashburn",
+   "v": [
+    3.0,
+    3.0,
+    100.0,
+    0.0
    ]
   },
   {
@@ -728,15 +755,6 @@
     2.0,
     50.0,
     58.5
-   ]
-  },
-  {
-   "name": "United States / Ashburn",
-   "v": [
-    2.0,
-    2.0,
-    100.0,
-    0.0
    ]
   },
   {
@@ -861,10 +879,10 @@
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    57.0,
+    60.0,
     17.0,
-    24.6,
-    147.0
+    23.3,
+    197.3
    ]
   },
   {
@@ -897,10 +915,10 @@
   {
    "name": "Direct traffic / Moscow",
    "v": [
-    9.0,
-    5.0,
-    22.2,
-    44.0
+    10.0,
+    6.0,
+    20.0,
+    58.1
    ]
   },
   {
@@ -922,6 +940,15 @@
    ]
   },
   {
+   "name": "Social network traffic / None",
+   "v": [
+    6.0,
+    6.0,
+    0.0,
+    17.8
+   ]
+  },
+  {
    "name": "Recommendation system traffic / Moscow",
    "v": [
     6.0,
@@ -940,21 +967,21 @@
    ]
   },
   {
-   "name": "Social network traffic / None",
+   "name": "Ad traffic / None",
    "v": [
     5.0,
     5.0,
     0.0,
-    18.2
+    19.0
    ]
   },
   {
-   "name": "Ad traffic / None",
+   "name": "Direct traffic / Ashburn",
    "v": [
-    4.0,
-    4.0,
-    0.0,
-    18.0
+    3.0,
+    3.0,
+    100.0,
+    0.0
    ]
   },
   {
@@ -980,15 +1007,6 @@
    "v": [
     3.0,
     3.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Direct traffic / Ashburn",
-   "v": [
-    2.0,
-    2.0,
     100.0,
     0.0
    ]
@@ -1169,10 +1187,10 @@
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    104.0,
-    43.0,
-    25.0,
-    231.0
+    109.0,
+    45.0,
+    23.9,
+    254.1
    ]
   },
   {
@@ -1187,10 +1205,10 @@
   {
    "name": "Smartphones / Chrome Mobile",
    "v": [
+    27.0,
     25.0,
-    23.0,
-    52.0,
-    87.0
+    51.9,
+    81.2
    ]
   },
   {
@@ -1373,6 +1391,15 @@
     3.0,
     16.7,
     82.0
+   ]
+  },
+  {
+   "name": "2026-11-08 / Direct traffic",
+   "v": [
+    6.0,
+    4.0,
+    33.3,
+    607.2
    ]
   },
   {
@@ -1637,12 +1664,21 @@
    ]
   },
   {
-   "name": "2026-11-08 / Direct traffic",
+   "name": "2026-11-08 / Ad traffic",
    "v": [
     1.0,
     1.0,
-    100.0,
-    0.0
+    0.0,
+    23.0
+   ]
+  },
+  {
+   "name": "2026-11-08 / Social network traffic",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    16.0
    ]
   }
  ],
@@ -1650,19 +1686,19 @@
   {
    "name": "New users",
    "v": [
-    144.0,
-    144.0,
-    46.5,
-    62.2
+    148.0,
+    148.0,
+    45.9,
+    62.1
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    74.0,
+    77.0,
     13.0,
-    21.6,
-    308.1
+    20.8,
+    341.0
    ]
   }
  ]
