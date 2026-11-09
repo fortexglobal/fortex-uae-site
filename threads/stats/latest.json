@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T08:19+04:00",
+ "generated": "2026-11-09T08:20+04:00",
  "posts": [
   {
    "slug": "t-1026-stadii",
@@ -829,7 +829,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 1724,
+  "views": 1726,
   "likes": 3,
   "replies": 25,
   "reposts": 0,
@@ -837,7 +837,7 @@
   "followers_count": 4
  },
  "account_7d": {
-  "views": 9486,
+  "views": 9488,
   "likes": 25,
   "replies": 66,
   "reposts": 0,
@@ -875,7 +875,7 @@
   },
   {
    "date": "2026-11-08",
-   "views": 1176
+   "views": 1178
   }
  ],
  "link_clicks_7d": [
@@ -902,7 +902,7 @@
   }
  ],
  "followers_gain_1d": 1,
- "views_1d": 1176,
+ "views_1d": 1178,
  "link_clicks_7d_total": 4,
  "by_kind": {
   "стёб": {
