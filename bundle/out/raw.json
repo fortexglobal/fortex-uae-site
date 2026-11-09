@@ -3,31 +3,31 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/58e45c21-d085-457c-8eac-bf0038bd80a8",
+   "/api/v1/post/1ff8a8b6-af74-495f-8085-97364d9603f4",
    [
     200,
     {
-     "id": "58e45c21-d085-457c-8eac-bf0038bd80a8",
+     "id": "1ff8a8b6-af74-495f-8085-97364d9603f4",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-     "title": "joke 2026-11-08",
+     "title": "joke 2026-11-09",
      "referenceKey": null,
-     "postDate": "2026-11-08T09:30:00.000Z",
+     "postDate": "2026-11-09T09:30:00.000Z",
      "postedDate": null,
      "status": "DELETED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
-       "text": "Счёт в банке ОАЭ заморозили: неприятно.\nОтвет банку с документами: обычно решает.\n\nЗаморозка чаще всего начинается с блокировки онлайн-банка, а причина почти всегда в письме банка без ответа или устаревшем KYC. Поможем найти запрос, собрать документы и правильно ответить банку.\n\nПишите «счёт» в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com\n\n#дубай #оаэ #счётвоаэ #банкиоаэ #жизньвдубае",
+       "text": "Emirates ID в Дубае: главный документ вместо паспорта.\nБез него паспорт ведёт тяжёлую жизнь: банк, офис, охрана в бизнес-центре, и везде «покажите документ».\n\nС Emirates ID показываешь карту, а паспорт спокойно лежит дома. По нему открываешь счёт, снимаешь квартиру на год и берёшь местный номер. Мы с командой делаем его через Virtual Work: резидентская виза на год без компании и зарплаты, от тебя только паспорт и фото, от 6 500 AED. С фастрэком медосмотр и отпечатки за один день, Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #оаэ #emiratesid #virtualwork #жизньвдубае",
        "uploadIds": [
-        "69a92510-9e88-4c7a-8990-e9c4648a5b19"
+        "43c98e0f-de0a-435f-a705-4d73e18491ca"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/5b8e07c8-4aaa-4841-85cc-bbdb498e210f.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/38a38914-74c9-490a-9445-4bd840ab6f99.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "1965709770750991",
-        "musicSoundVolume": 1,
-        "videoOriginalSoundVolume": 100
+        "musicSoundId": "27368718699423502",
+        "musicSoundVolume": 100,
+        "videoOriginalSoundVolume": 1
        }
       }
      },
@@ -36,9 +36,9 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-08T06:24:57.314Z",
-     "updatedAt": "2026-11-08T06:26:16.736Z",
-     "deletedAt": "2026-11-08T06:26:16.736Z"
+     "createdAt": "2026-11-09T06:18:08.788Z",
+     "updatedAt": "2026-11-09T06:30:00.272Z",
+     "deletedAt": "2026-11-09T06:30:00.272Z"
     }
    ]
   ]
