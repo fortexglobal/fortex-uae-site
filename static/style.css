@@ -131,6 +131,10 @@ a.card:hover{border-color:var(--accent)}
 .prose li{margin:6px 0}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--accent)}
+.prose .tbl{overflow-x:auto;margin:0 0 20px;-webkit-overflow-scrolling:touch}
+.prose table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.45}
+.prose th,.prose td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.prose th{color:var(--ink);font-weight:600;background:rgba(255,255,255,.6)}
 .prose blockquote{margin:22px 0;padding:16px 20px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0}
 .cta-box{margin-top:44px;padding:30px;border-radius:var(--r);background:var(--accent-soft)}
 .cta-box h3{margin:0 0 8px;font-size:21px}

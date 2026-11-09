@@ -54,8 +54,24 @@ def md(text):
             out.append(f"<{ltype}>" + "".join(f"<li>{inline(i)}</li>" for i in lst) + f"</{ltype}>")
             lst, ltype = [], None
 
+    tbl = []
+
+    def flush_tbl():
+        nonlocal tbl
+        if tbl:
+            rows = [[c.strip() for c in r.strip().strip("|").split("|")] for r in tbl]
+            rows = [r for r in rows if not all(re.fullmatch(r":?-{2,}:?", c) for c in r)]
+            head, body = rows[0], rows[1:]
+            h = "".join(f"<th>{inline(c)}</th>" for c in head)
+            b = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in body)
+            out.append(f'<div class="tbl"><table><thead><tr>{h}</tr></thead><tbody>{b}</tbody></table></div>')
+            tbl = []
+
     for raw in text.splitlines():
         line = raw.rstrip()
+        if line.lstrip().startswith("|"):
+            flush(); tbl.append(line); continue
+        flush_tbl()
         if not line.strip():
             flush(); continue
         m = re.match(r"^(#{2,4})\s+(.*)", line)
@@ -75,7 +91,7 @@ def md(text):
             flush(); out.append("<blockquote>" + inline(line[2:]) + "</blockquote>"); continue
         if lst: flush()
         para.append(line.strip())
-    flush()
+    flush(); flush_tbl()
     return "\n".join(out)
 
 
