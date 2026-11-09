@@ -16,7 +16,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://yastatic.net https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru https://*.clarity.ms; frame-src https://mc.yandex.ru https://mc.yandex.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://yastatic.net https://www.clarity.ms https://*.clarity.ms https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru https://*.clarity.ms https://www.facebook.com https://connect.facebook.net; frame-src https://mc.yandex.ru https://mc.yandex.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
 
 # Бесплатная консультация: короткие ссылки по источникам (источник виден по первому сообщению в Telegram)
 [[redirects]]

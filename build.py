@@ -151,6 +151,14 @@ k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNo
 ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true}});
 </script>
 <script>(function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window,document,"clarity","script","z6y07ypf5t");</script>
+<script>
+!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2121566038723086');fbq('track','PageView');
+(function(){{var p=location.pathname;if(/^\/(ipoteka|virtual-work|gid)\//.test(p))fbq('track','ViewContent',{{content_name:p.split('/')[1]}});
+document.addEventListener('click',function(e){{var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+if(/^\/c\/|t\.me\//.test(h))fbq('track','Lead',{{content_name:p}});}},true);}})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2121566038723086&ev=PageView&noscript=1"></noscript>
 <noscript><div><img src="https://mc.yandex.ru/watch/113701535" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <meta name="google-site-verification" content="mKwCr9eRkWvZ4j-IzNC5kxXeoQB-ydTXVXMPlgVBLmg">
 <meta name="msvalidate.01" content="E59AF275B841F17C2D1998734F418033">
