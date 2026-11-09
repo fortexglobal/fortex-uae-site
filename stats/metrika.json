@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T04:01Z",
+ "generated": "2026-11-09T17:03Z",
  "period": "последние 7 дней",
  "totals": {
   "визиты": 42.0,
@@ -329,10 +329,10 @@
  "date_yesterday": "2026-11-08",
  "today": {
   "totals": {
-   "визиты": 0.0,
-   "посетители": 0.0,
+   "визиты": 1.0,
+   "посетители": 1.0,
    "отказы_%": 0.0,
-   "время_на_сайте_сек": 0.0
+   "время_на_сайте_сек": 432.0
   },
   "goals": {
    "Заявка с сайта": 0.0,
@@ -342,9 +342,40 @@
    "Автоцель: переход в мессенджер": 0.0,
    "Автоцель: переход в соц.сеть": 0.0
   },
-  "sources": [],
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
   "source_details": [],
   "utm": [],
-  "pages": []
+  "pages": [
+   {
+    "name": "/articles/ipoteka-v-dubae-s-pasportom-rf/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ]
+ },
+ "audience": {
+  "pixel_from": "2026-11-09",
+  "since_pixel": 1,
+  "d30": 148,
+  "d90": 148,
+  "d180": 148,
+  "ipoteka_30d": 4,
+  "ipoteka_since_pixel": 0,
+  "virtual_work_30d": 2,
+  "virtual_work_since_pixel": 0,
+  "gid_30d": 0,
+  "gid_since_pixel": 0,
+  "goal_users_30d:Заявка с сайта": 2,
+  "goal_users_30d:Клик в Telegram": 10
  }
 }

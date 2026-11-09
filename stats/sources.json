@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T04:02Z",
+ "generated": "2026-11-09T17:03Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,10 +10,10 @@
   {
    "name": "Direct traffic",
    "v": [
-    156.0,
+    157.0,
     88.0,
-    41.0,
-    182.6
+    40.8,
+    184.2
    ]
   },
   {
@@ -522,6 +522,15 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/articles/ipoteka-v-dubae-s-pasportom-rf/",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    432.0
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/kak-platit-za-kvartiru-v-dubae/",
    "v": [
     1.0,
@@ -643,10 +652,10 @@
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    72.0,
+    73.0,
     22.0,
-    25.0,
-    226.1
+    24.7,
+    228.9
    ]
   },
   {
@@ -879,10 +888,10 @@
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    60.0,
+    61.0,
     17.0,
-    23.3,
-    197.3
+    23.0,
+    201.1
    ]
   },
   {
@@ -1187,10 +1196,10 @@
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    109.0,
+    110.0,
     45.0,
-    23.9,
-    254.1
+    23.6,
+    255.7
    ]
   },
   {
@@ -1680,6 +1689,15 @@
     0.0,
     16.0
    ]
+  },
+  {
+   "name": "2026-11-09 / Direct traffic",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    432.0
+   ]
   }
  ],
  "new_vs_return": [
@@ -1695,10 +1713,10 @@
   {
    "name": "Returning users",
    "v": [
-    77.0,
+    78.0,
     13.0,
-    20.8,
-    341.0
+    20.5,
+    342.2
    ]
   }
  ]
