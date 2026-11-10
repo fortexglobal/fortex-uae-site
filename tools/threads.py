@@ -259,6 +259,75 @@ def llm(prompt):
 LLM_ERR = []
 
 
+
+# ===== Живая логика ответов (решение Александра 10.11) =====
+# Не отвечать всем и не оставлять последнее слово везде: случайный лимит 1–3 ответа на человека,
+# пропуск «пустых» комментариев и закрывающих реплик, почти без ответов аккаунтам-пустышкам.
+import hashlib as _hl
+CLOSERS = ("ахах", "хаха", "аха", "хах", "лол", "спасибо", "спс", "благодарю", "да", "ага", "точно", "согласен", "согласна",
+           "согласен)", "верно", "именно", "жиза", "факт", "ну да", "это да", "понял", "поняла", "ок", "окей", "+", "++", "плюс", "😂", "🤣", "👍", "🔥", "❤️", "💯")
+_PROF = {"ok": None}
+
+
+def _rnd01(*parts):
+    return int(_hl.md5("|".join(parts).encode()).hexdigest()[:8], 16) / 0xFFFFFFFF
+
+
+def user_cap(user, post):
+    r = _rnd01("cap", user, str(post))
+    return 1 if r < 0.35 else (2 if r < 0.8 else 3)
+
+
+def followers_of(user):
+    """Число подписчиков комментатора (Threads profile_lookup). Если доступа нет, None и больше не пробуем."""
+    up = os.path.join(D, "users.json")
+    cache = json.load(open(up)) if os.path.exists(up) else {}
+    if user in cache:
+        return cache[user]
+    if _PROF["ok"] is False:
+        return None
+    try:
+        r = call("GET", "profile_lookup", username=user)
+        n = r.get("follower_count")
+        _PROF["ok"] = True
+    except Exception as e:
+        print("profile_lookup", user, str(e)[:120])
+        _PROF["ok"] = False
+        return None
+    cache[user] = n
+    json.dump(cache, open(up, "w"), ensure_ascii=False)
+    return n
+
+
+def should_skip(c, user, slug, is_followup, n_ours, hot_q):
+    """Возвращает причину пропуска или ''. Горячие вопросы (виза, ипотека, счёт, цена) не пропускаем."""
+    t = c["text"].strip().lower()
+    words = [w for w in __import__("re").sub(r"[^\w\s+]", " ", t).split() if w]
+    question = "?" in t
+    if hot_q:
+        return ""
+    if n_ours >= user_cap(user, slug):
+        return "cap"
+    r = _rnd01("skip", c["id"])
+    # закрывающая реплика (смех, спасибо, согласие): оставляем последнее слово человеку
+    first = words[0] if words else t
+    if is_followup and (len(words) <= 3 or t in CLOSERS or (first in CLOSERS and len(words) <= 6)) and not question:
+        return "closer" if r < 0.9 else ""
+    # пустышки: мало подписчиков или ник из цифр
+    digits = sum(ch.isdigit() for ch in user)
+    nf = followers_of(user)
+    weak = (nf is not None and nf < 15) or digits >= 5
+    if weak and not question:
+        return "weak" if (is_followup or r < 0.6) else ""
+    # совсем короткий комментарий без вопроса
+    if len(words) <= 2 and not question:
+        return "short" if r < 0.5 else ""
+    # просто случайность, чтобы не отвечать на всё подряд
+    if not question:
+        return "random" if r < (0.35 if is_followup else 0.15) else ""
+    return ""
+
+
 def replies():
     """Ведём диалоги под НАШИМИ постами за последние 10 дней: отвечаем на комментарии и на ответы нам (до 3 наших ответов одному человеку в ветке)."""
     st = json.load(open(os.path.join(D, "status.json"))) if os.path.exists(os.path.join(D, "status.json")) else {}
@@ -300,10 +369,16 @@ def replies():
                 done[c["id"]] = "not-to-us"  # люди спорят между собой, не встреваем
                 continue
             user = c.get("username", "")
-            n_ours = sum(1 for k, v in done.items() if isinstance(v, dict) and v.get("user") == user and v.get("post") == slug)
+            n_ours = sum(1 for k, v in done.items() if isinstance(v, dict) and v.get("user") == user and v.get("post") == slug and v.get("id"))
             if n_ours >= 3:
                 done[c["id"]] = "limit"
                 continue
+            if ALEX and not any(w in c["text"].lower() for w in HOT_WORDS + ("гайд", "ошибк")):
+                why = should_skip(c, user, slug, bool(parent and parent != info["id"]), n_ours, False)
+                if why:
+                    done[c["id"]] = {"skip": c["text"][:120], "user": user, "why": why}
+                    print("skip", why, user, c["text"][:60])
+                    continue
             chain, p = [], parent
             while p and p in by_id and len(chain) < 6:
                 chain.insert(0, f"@{by_id[p].get('username')}: {by_id[p].get('text', '')[:200]}")
