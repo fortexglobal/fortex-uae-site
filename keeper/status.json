@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T19:51+04:00",
+ "at": "2026-11-10T20:07+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -40,11 +40,7 @@
   "limited": true,
   "text": "Hello Alexey!\n\nI’m very sorry that you had to contact me. Unfortunately, some actions can trigger a harsh response from our anti-spam systems. If you think your account was limited by mistake, you can submit a complaint to our moderators.\n\nWhile the account is limited, you will not be able to send messages to people who do not have your number in their phone contacts or add them to groups and channels. Of course, when people contact you first, you can always reply to them."
  },
- "radar_errors": [
-  "2026-11-08T16:04:43+00:00 ubuntu-s-1vcpu-1gb-fra1 python[507154]: 2026-11-08 16:04:43,637 INFO HTTP Request: POST https://zoom.us/oauth/token?grant_type=account_credentials&account_id=Pw8jii_7R1CzAqrRsLR2oQ \"HTTP/1.1 200",
-  "2026-11-08T16:04:43+00:00 ubuntu-s-1vcpu-1gb-fra1 python[507154]: 2026-11-08 16:04:43,822 INFO HTTP Request: GET https://api.zoom.us/v2/users?page_size=1 \"HTTP/1.1 200 OK\"",
-  "2026-11-08T16:04:44+00:00 ubuntu-s-1vcpu-1gb-fra1 python[507154]: 2026-11-08 16:04:44,339 INFO HTTP Request: POST https://api.zoom.us/v2/users/ZCPPhx-qQVGaakieg3N46Q/meetings \"HTTP/1.1 201 Created\""
- ],
+ "radar_errors": [],
  "survival": {
   "checked": "29.10 19:06",
   "by_day": {
@@ -123,7 +119,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 78.92052625,
+  "limit_remaining": 78.91732825,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -131,8 +127,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 21.07947375,
-    "remaining_usd": 78.92052625,
+    "spend_usd": 21.08267175,
+    "remaining_usd": 78.91732825,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -143,16 +139,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 21.07947375,
-   "remaining_usd": 78.92052625,
+   "spend_usd": 21.08267175,
+   "remaining_usd": 78.91732825,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 21.07947375,
-  "usage_daily": 0.1192464,
-  "usage_weekly": 0.3040011,
-  "usage_monthly": 2.8353106,
+  "usage": 21.08267175,
+  "usage_daily": 0.1224444,
+  "usage_weekly": 0.3071991,
+  "usage_monthly": 2.8385086,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -178,7 +174,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 562,
+  "lines": 559,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
