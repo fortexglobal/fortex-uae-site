@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10T09:22Z",
+ "checked": "2026-11-10T10:25Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18116975195332913",
+   "timestamp": "2026-11-10T09:31:22+0000",
+   "permalink": "https://www.instagram.com/reel/DfjluALgDdy/",
+   "media_type": "VIDEO",
+   "caption": "Ипотека в Дубае: квартира уже выбрана.\nЗарплата в ОАЭ для ба"
+  },
   {
    "id": "17925250857223559",
    "timestamp": "2026-11-09T09:31:03+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/De9poBslNXF/",
    "media_type": "VIDEO",
    "caption": "С 1 октября в ОАЭ действуют новые правила проверки поставщик"
-  },
-  {
-   "id": "18156829264521709",
-   "timestamp": "2026-10-26T15:51:31+0000",
-   "permalink": "https://www.instagram.com/p/De9pVnsGmic/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Счёт для крипто-компании в ОАЭ открыть можно, даже после отк"
   }
  ]
 }
