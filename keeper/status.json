@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T19:06+04:00",
+ "at": "2026-11-10T19:21+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -14,7 +14,7 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 296, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 361, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 502: {\n  \"message\": \"Server Error\"\n}\n\n"
   ]
  ],
- "openrouter_left": 13.93,
+ "openrouter_left": 13.91,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11"
@@ -123,7 +123,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 78.92332525,
+  "limit_remaining": 78.92052625,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -131,8 +131,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 21.07667475,
-    "remaining_usd": 78.92332525,
+    "spend_usd": 21.07947375,
+    "remaining_usd": 78.92052625,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -143,16 +143,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 21.07667475,
-   "remaining_usd": 78.92332525,
+   "spend_usd": 21.07947375,
+   "remaining_usd": 78.92052625,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 21.07667475,
-  "usage_daily": 0.1164474,
-  "usage_weekly": 0.3012021,
-  "usage_monthly": 2.8325116,
+  "usage": 21.07947375,
+  "usage_daily": 0.1192464,
+  "usage_weekly": 0.3040011,
+  "usage_monthly": 2.8353106,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -178,7 +178,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 567,
+  "lines": 566,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
