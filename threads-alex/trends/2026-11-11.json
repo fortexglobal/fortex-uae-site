@@ -1,0 +1,15 @@
+{
+ "date": "2026-11-11",
+ "queries": ["аренда Дубай", "ипотека Дубай"],
+ "note": "Apify снова работает (поле keywords). По «ипотека Дубай» за 2 дня русских постов нет, все 20 из «аренда Дубай».",
+ "top": [
+  {"username": "ikurdyumova", "url": "https://www.threads.com/@ikurdyumova/post/DfjYdZaCBDH", "gist": "4-й день в Марине: где поесть вкусно и не разориться", "technique": "новичок просит совет всему Дубаю, юмор про цены, автор 78 подписчиков", "length": 150, "views": 35578, "replies": 60, "small_author_5k": true},
+  {"username": "danbykk_official", "url": "https://www.threads.com/@danbykk_official/post/DfkLzDLiBj8", "gist": "Дубай, кто чем занят сегодня?", "technique": "вопрос в одну строку", "length": 30, "views": 1320, "replies": 38},
+  {"username": "vasilinabelle", "url": "https://www.threads.com/@vasilinabelle/post/DfjuK8oDU8q", "gist": "где в Дубае приюты, чтобы гулять с животными", "technique": "просьба инфы у Дубая", "length": 250, "views": 2840, "replies": 13},
+  {"username": "evgeny_leschcenko", "url": "https://www.threads.com/@evgeny_leschcenko/post/DfkqATCjoCR", "gist": "кто сдаёт студию на зимовку", "technique": "запрос жилья одной строкой, 21 ответ", "length": 45, "views": 402, "replies": 21},
+  {"username": "shaih.irina", "url": "https://www.threads.com/@shaih.irina/post/Dfkf_q7Ap7P", "gist": "ветка экспертов, новых в Threads", "technique": "ветка-знакомство", "length": 100, "views": 481, "replies": 57},
+  {"username": "butspaly", "url": "https://www.threads.com/@butspaly/post/DfkiFWqDdA4", "gist": "освободилось место рядом с метро, 2100 дирхам", "technique": "цена аренды как крючок", "length": 130, "views": 1017, "replies": 4},
+  {"username": "via.vlada", "url": "https://www.threads.com/@via.vlada/post/DfjIHJ4CENZ", "gist": "хочу визу, работаю на удалёнке, кто делал?", "technique": "спрос на визу через вопрос к Дубаю", "length": 120, "views": 785, "replies": 4},
+  {"username": "katerinameeedi", "url": "https://www.threads.com/@katerinameeedi/post/DfkJarYDicc", "gist": "студия в JVT 48 000 AED в год", "technique": "объявление аренды с ценой", "length": 300, "views": 476, "replies": 0}
+ ]
+}
