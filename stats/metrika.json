@@ -1,54 +1,47 @@
 {
- "generated": "2026-11-10T03:57Z",
+ "generated": "2026-11-11T04:00Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 43.0,
-  "посетители": 31.0,
-  "отказы_%": 41.86046512,
-  "время_на_сайте_сек": 153.34883721
+  "визиты": 32.0,
+  "посетители": 23.0,
+  "отказы_%": 43.75,
+  "время_на_сайте_сек": 146.65625
  },
  "goals": {
   "Заявка с сайта": 0.0,
-  "Клик в Telegram": 6.0,
+  "Клик в Telegram": 4.0,
   "Запись на звонок": 0.0,
   "Автоцель: отправка формы": 0.0,
-  "Автоцель: переход в мессенджер": 2.0,
+  "Автоцель: переход в мессенджер": 1.0,
   "Автоцель: переход в соц.сеть": 0.0
  },
  "sources": [
   {
    "name": "Direct traffic",
    "values": [
-    24.0,
-    14.0
+    20.0,
+    11.0
    ]
   },
   {
    "name": "Recommendation system traffic",
    "values": [
-    10.0,
-    10.0
+    7.0,
+    7.0
    ]
   },
   {
    "name": "Social network traffic",
    "values": [
-    5.0,
-    5.0
-   ]
-  },
-  {
-   "name": "Internal traffic",
-   "values": [
-    2.0,
-    1.0
+    4.0,
+    4.0
    ]
   },
   {
    "name": "Ad traffic",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   }
  ],
@@ -56,29 +49,22 @@
   {
    "name": "Yandex Zen",
    "values": [
-    10.0,
-    10.0
+    7.0,
+    7.0
    ]
   },
   {
    "name": "Facebook",
    "values": [
-    3.0,
-    3.0
-   ]
-  },
-  {
-   "name": "fortex-uae.com",
-   "values": [
     2.0,
-    1.0
+    2.0
    ]
   },
   {
    "name": "Instagram",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   },
   {
@@ -100,15 +86,15 @@
   {
    "name": "telegram / channel",
    "values": [
-    10.0,
-    10.0
+    7.0,
+    7.0
    ]
   },
   {
    "name": "instagram / bio",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   },
   {
@@ -123,8 +109,8 @@
   {
    "name": "/",
    "values": [
-    15.0,
-    14.0
+    10.0,
+    9.0
    ]
   },
   {
@@ -142,14 +128,7 @@
    ]
   },
   {
-   "name": "/articles/posle-otkrytiya-kompanii-oae/",
-   "values": [
-    5.0,
-    5.0
-   ]
-  },
-  {
-   "name": "/articles/fns-proveryaet-nedvizhimost-oae/",
+   "name": "/articles/virtual-work-v-dubae-emirates-id/",
    "values": [
     3.0,
     3.0
@@ -161,13 +140,6 @@
     3.0,
     2.0
    ]
-  },
-  {
-   "name": "/articles/rossiyanam-iz-evropy-schet-oae/",
-   "values": [
-    1.0,
-    1.0
-   ]
   }
  ],
  "goals_by_source": [
@@ -175,10 +147,10 @@
    "name": "Direct traffic",
    "values": [
     0.0,
-    5.0,
+    3.0,
     0.0,
     0.0,
-    1.0,
+    0.0,
     0.0
    ]
   },
@@ -203,6 +175,72 @@
   "Автоцель: переход в соц.сеть"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 5.0,
+   "посетители": 4.0,
+   "отказы_%": 80.0,
+   "время_на_сайте_сек": 3.0
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     3.0,
+     2.0
+    ]
+   },
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Yandex Zen",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "telegram / channel",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/articles/virtual-work-v-dubae-emirates-id/",
+    "values": [
+     3.0,
+     3.0
+    ]
+   },
+   {
+    "name": "/",
+    "values": [
+     2.0,
+     1.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 8.0,
    "посетители": 7.0,
@@ -289,94 +327,7 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 8.0,
-   "посетители": 6.0,
-   "отказы_%": 25.0,
-   "время_на_сайте_сек": 460.25
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 2.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     6.0,
-     4.0
-    ]
-   },
-   {
-    "name": "Ad traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Social network traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "Instagram",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Facebook",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "instagram / bio",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     3.0,
-     3.0
-    ]
-   },
-   {
-    "name": "/virtual-work/",
-    "values": [
-     3.0,
-     2.0
-    ]
-   },
-   {
-    "name": "/ipoteka/",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-11-09",
+ "date_yesterday": "2026-11-10",
  "today": {
   "totals": {
    "визиты": 0.0,
@@ -399,10 +350,10 @@
  },
  "audience": {
   "pixel_from": "2026-11-09",
-  "since_pixel": 7,
-  "d30": 154,
-  "d90": 154,
-  "d180": 154,
+  "since_pixel": 10,
+  "d30": 157,
+  "d90": 157,
+  "d180": 157,
   "ipoteka_30d": 5,
   "ipoteka_since_pixel": 1,
   "virtual_work_30d": 2,
