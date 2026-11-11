@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-11T08:40Z",
+ "checked": "2026-11-11T09:40Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18084353186539074",
+   "timestamp": "2026-11-11T09:30:48+0000",
+   "permalink": "https://www.instagram.com/reel/DfmKcDBjqFN/",
+   "media_type": "VIDEO",
+   "caption": "Emirates ID без компании: да, так можно.\nВизаран за визарано"
+  },
   {
    "id": "18116975195332913",
    "timestamp": "2026-11-10T09:31:22+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/DfAIiESCfbO/",
    "media_type": "VIDEO",
    "caption": "С 1 ноября в Дубае меняют ограничения скорости на 5 дорогах."
-  },
-  {
-   "id": "18119972776756388",
-   "timestamp": "2026-10-26T15:54:26+0000",
-   "permalink": "https://www.instagram.com/reel/De9poBslNXF/",
-   "media_type": "VIDEO",
-   "caption": "С 1 октября в ОАЭ действуют новые правила проверки поставщик"
   }
  ]
 }
