@@ -470,6 +470,65 @@ def replies():
     if ALEX:
         json.dump(hidden[-300:], open(hdp, "w"), ensure_ascii=False, indent=1)
     print("replies sent", sent)
+    try:
+        boost()
+    except Exception as e:
+        print("boost failed", e)
+
+
+BOOST_VIEWS = 300   # решение Александра 11.11: пост набрал 300+ просмотров за первые часы
+BOOST_HOURS = 6
+BOOST_PROMPT = """Ты Алексей Ронин, живёшь в Дубае и со своей командой помогаешь получить Emirates ID. Под твоим постом в Threads много людей, и ты оставляешь под ним свой комментарий: связать тему поста с Virtual Work и дать ссылку.
+Пост: «{post}»
+Что такое Virtual Work: резидентская виза ОАЭ на год и Emirates ID без компании, без спонсора и без зарплаты в ОАЭ, от человека только паспорт и фото. Emirates ID главный документ в Дубае: аренда на год, банк, номер телефона, не нужно носить паспорт.
+Напиши ОДИН короткий комментарий от первого лица, 1–2 предложения, до 25 слов, начни с «Кстати,» и с лёгкой иронией свяжи с темой поста, затем ссылка fortex-uae.com/virtual-work/ последней строкой. Без цен, без обещаний, без эмодзи, без хэштегов, без кавычек, без длинных тире, без слова «профиль». Верни только текст комментария."""
+BOOST_FALLBACK = ["Кстати, самое простое в Дубае оказалось получить Emirates ID без компании. Как это устроено:\nfortex-uae.com/virtual-work/",
+                  "Кстати, главный документ в Дубае можно получить без компании и без зарплаты здесь. Рассказал тут:\nfortex-uae.com/virtual-work/"]
+
+
+def boost():
+    """@ronin.dubai: если свежий пост за первые часы набрал 300+ просмотров, оставляем под ним свой комментарий со ссылкой
+    на /virtual-work/. Не чаще 1 раза в день, один раз на пост. Закрепить ответ через API нельзя."""
+    if ALEX:
+        return
+    bp = os.path.join(D, "boosted.json")
+    boosted = json.load(open(bp)) if os.path.exists(bp) else {}
+    today = datetime.now(DUBAI).date().isoformat()
+    if any(v.get("date") == today for v in boosted.values() if isinstance(v, dict)):
+        return
+    for p in recent_posts(10):
+        if not p.get("id") or p["id"] in boosted or not p.get("text"):
+            continue
+        ts = datetime.fromisoformat((p.get("timestamp") or "").replace("+0000", "+00:00"))
+        if datetime.now(DUBAI) - ts > timedelta(hours=BOOST_HOURS):
+            continue
+        if "ВИЗА" in p["text"] or "fortex-uae.com" in p["text"]:
+            continue  # деловой пост уже с призывом
+        try:
+            r = call("GET", f"{p['id']}/insights", metric="views")
+            views = (r.get("data") or [{}])[0].get("values", [{}])[0].get("value", 0)
+        except Exception as e:
+            print("boost insights", e)
+            continue
+        if views < BOOST_VIEWS:
+            continue
+        import random as _rb, re as _rr
+        txt = llm(BOOST_PROMPT.format(post=p["text"][:400])) or _rb.choice(BOOST_FALLBACK)
+        txt = _rr.sub(r"\s*[—–]\s*", ", ", txt).strip().strip("«»\"")
+        txt = _rr.sub(r'[«»"„“”]', "", txt)
+        if "fortex-uae.com/virtual-work" not in txt:
+            txt = txt.rstrip() + "\nfortex-uae.com/virtual-work/"
+        try:
+            cont = call("POST", "me/threads", media_type="TEXT", text=txt[:480], reply_to_id=p["id"])
+            time.sleep(3)
+            rr = call("POST", "me/threads_publish", creation_id=cont["id"])
+            boosted[p["id"]] = {"date": today, "views": views, "reply_id": rr.get("id"), "text": txt, "post": p.get("permalink", "")}
+            print("boosted", p["id"], views, txt)
+        except Exception as e:
+            boosted[p["id"]] = {"error": str(e)[:200]}
+            print("boost error", e)
+        json.dump(boosted, open(bp, "w"), ensure_ascii=False, indent=1)
+        return
 
 
 def insights():
