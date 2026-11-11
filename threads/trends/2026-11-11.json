@@ -1,0 +1,140 @@
+{
+ "date": "2026-11-11",
+ "queries": [
+  "жизнь в Дубае",
+  "Emirates ID"
+ ],
+ "note": "по Emirates ID русских постов нет, только англоязычные; отброшены реклама, трагедии, не про Дубай",
+ "top": [
+  {
+   "username": "tonynaumi1",
+   "followers": 41228,
+   "url": "https://www.threads.com/@tonynaumi1/post/DfjMVhnDTgR",
+   "summary": "Такси в Дубае: посмотрел в телефон, а водитель уже везёт кругами",
+   "technique": "короткое бытовое наблюдение, узнаваемая боль, эмодзи",
+   "format": "наблюдение",
+   "length": "1 строка",
+   "views": 11516,
+   "replies": 45,
+   "likes": 174,
+   "reposts": 1
+  },
+  {
+   "username": "25boats",
+   "followers": 173,
+   "url": "https://www.threads.com/@25boats/post/Dfj-CAqAoQ_",
+   "summary": "Ищем блогеров для сотрудничества (аренда яхт)",
+   "technique": "поиск людей, ответы-заявки",
+   "format": "вопрос",
+   "length": "1 строка",
+   "views": 1057,
+   "replies": 19,
+   "likes": 18,
+   "reposts": 0
+  },
+  {
+   "username": "zara.boltaeva",
+   "followers": 12792,
+   "url": "https://www.threads.com/@zara.boltaeva/post/DfjJujnDHSD",
+   "summary": "Анонс бизнес-завтрака для женщин-предпринимателей",
+   "technique": "приглашение, о себе",
+   "format": "анонс+фото",
+   "length": "длинный",
+   "views": 1275,
+   "replies": 13,
+   "likes": 18,
+   "reposts": 0
+  },
+  {
+   "username": "dimash_architect_dxb",
+   "followers": 153,
+   "url": "https://www.threads.com/@dimash_architect_dxb/post/DfjKb24ABDP",
+   "summary": "Посоветуйте строительную компанию для вилл в Дубае",
+   "technique": "просьба совета у города",
+   "format": "вопрос",
+   "length": "2 строки",
+   "views": 405,
+   "replies": 14,
+   "likes": 6,
+   "reposts": 0
+  },
+  {
+   "username": "_black_pirat_",
+   "followers": 321,
+   "url": "https://www.threads.com/@_black_pirat_/post/DfjmOQwishT",
+   "summary": "Будни актёра в Дубае",
+   "technique": "живые фото, короткая подпись",
+   "format": "карусель",
+   "length": "1 строка",
+   "views": 601,
+   "replies": 6,
+   "likes": 29,
+   "reposts": 0
+  },
+  {
+   "username": "esmiradxb",
+   "followers": 224,
+   "url": "https://www.threads.com/@esmiradxb/post/DfjqBAuDZVP",
+   "summary": "Вопрос девушкам про покупку сумки в Дубае",
+   "technique": "узкий вопрос своей аудитории",
+   "format": "вопрос",
+   "length": "1 строка",
+   "views": 7409,
+   "replies": 9,
+   "likes": 9,
+   "reposts": 0
+  },
+  {
+   "username": "dileyla.d",
+   "followers": 595,
+   "url": "https://www.threads.com/@dileyla.d/post/Dfj4gzXjLkh",
+   "summary": "Ищу попутчика из Downtown в аэропорт (англ.)",
+   "technique": "практичная просьба соседям",
+   "format": "вопрос",
+   "length": "длинный",
+   "views": 1984,
+   "replies": 8,
+   "likes": 9,
+   "reposts": 0
+  },
+  {
+   "username": "nastyasaxnova",
+   "followers": 363,
+   "url": "https://www.threads.com/@nastyasaxnova/post/Dfjq0BGjZnW",
+   "summary": "История с курьером и доставкой в Дубае",
+   "technique": "личная история-жалоба, «верю в силу Threads»",
+   "format": "история",
+   "length": "длинный",
+   "views": 1687,
+   "replies": 8,
+   "likes": 3,
+   "reposts": 0
+  },
+  {
+   "username": "_lesya_novikova_",
+   "followers": 29410,
+   "url": "https://www.threads.com/@_lesya_novikova_/post/Dfj0RGfgFyQ",
+   "summary": "Какие подгузники покупаете в Дубае?",
+   "technique": "бытовой вопрос всем",
+   "format": "вопрос",
+   "length": "1 строка",
+   "views": 1133,
+   "replies": 7,
+   "likes": 1,
+   "reposts": 0
+  },
+  {
+   "username": "shpitsology",
+   "followers": 315,
+   "url": "https://www.threads.com/@shpitsology/post/DfkVxW0mduc",
+   "summary": "Мнение, за которое закидают: скучно в одном месте, скучно везде",
+   "technique": "непопулярное мнение + «согласны?»",
+   "format": "мнение",
+   "length": "3 строки",
+   "views": 241,
+   "replies": 3,
+   "likes": 6,
+   "reposts": 0
+  }
+ ]
+}
