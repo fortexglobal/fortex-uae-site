@@ -21,7 +21,7 @@
    "must": "dubai"
   },
   {
-   "stock": "runner sprint track",
+   "stock": "doctor clinic patient",
    "must": ""
   },
   {
@@ -58,8 +58,10 @@
  "y": 900,
  "sounds": [],
  "sound": {
-  "q": "Darbuka Ritual",
-  "match": "darbuka"
+  "q": "Chubina",
+  "match": "chubina",
+  "id": "632497373099812"
  },
- "caption": "Emirates ID без компании: да, так можно.\nВизаран за визараном, чемодан стоит у двери и не разбирается.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты, ты сам себе спонсор. От тебя только паспорт и фото, цена от 6 500 AED. С фастрэком медосмотр и отпечатки за один день, Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #оаэ #emiratesid #virtualwork #визавдубай"
+ "caption": "Emirates ID без компании: да, так можно.\nВизаран за визараном, чемодан стоит у двери и не разбирается.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты, ты сам себе спонсор. От тебя только паспорт и фото, цена от 6 500 AED. С фастрэком медосмотр и отпечатки за один день, Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #оаэ #emiratesid #virtualwork #визавдубай",
+ "rev": 2
 }
