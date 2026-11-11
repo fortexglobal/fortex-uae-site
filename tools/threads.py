@@ -80,11 +80,48 @@ def dedupe():
     print(json.dumps(out, ensure_ascii=False, indent=1))
 
 
+def continue_threads(st, status_p, now):
+    """Самокомментарии-продолжения (тест Александра 11–13.11): в src поле "continue": [{"text", "after_min"}, ...].
+    Каждая часть выходит ответом на предыдущую (цепочка под постом), через after_min минут после выхода поста. Не больше одной части за запуск."""
+    for f in sorted(glob.glob(os.path.join(D, "src", "*.json"))):
+        slug = os.path.basename(f)[:-5]
+        src = json.load(open(f, encoding="utf-8"))
+        parts = src.get("continue") or []
+        info = st.get(slug, {})
+        if not parts or not info.get("id") or not info.get("at"):
+            continue
+        sent = info.get("cont", [])
+        if len(sent) >= len(parts):
+            continue
+        i = len(sent)
+        if now < datetime.fromisoformat(info["at"]) + timedelta(minutes=int(parts[i].get("after_min", 30))):
+            continue
+        prev = sent[-1] if sent else info["id"]
+        try:
+            c = call("POST", "me/threads", media_type="TEXT", text=parts[i]["text"][:500], reply_to_id=prev)
+            time.sleep(3)
+            r = call("POST", "me/threads_publish", creation_id=c["id"])
+            info.setdefault("cont", []).append(r["id"])
+            print("continued", slug, i + 1)
+        except Exception as e:
+            info.setdefault("cont", []).append(prev)  # не застреваем: пропускаем часть
+            info["cont_error"] = str(e)[:200]
+            print("continue error", slug, e)
+        st[slug] = info
+        json.dump(st, open(status_p, "w"), ensure_ascii=False, indent=1)
+        return
+
+
+
 def publish():
     status_p = os.path.join(D, "status.json")
     st = json.load(open(status_p)) if os.path.exists(status_p) else {}
     now = datetime.now(DUBAI)
     done = 0
+    try:
+        continue_threads(st, status_p, now)
+    except Exception as e:
+        print("continue_threads failed", e)
     for f in sorted(glob.glob(os.path.join(D, "src", "*.json"))):
         slug = os.path.basename(f)[:-5]
         src = json.load(open(f, encoding="utf-8"))
