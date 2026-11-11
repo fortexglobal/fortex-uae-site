@@ -1,0 +1,65 @@
+{
+ "id": "2026-11-11",
+ "publish_at": "2026-11-11T09:30:00.000Z",
+ "topic": "Emirates ID без компании: конец визаранам (Virtual Work)",
+ "style": "A",
+ "clips": [
+  {
+   "stock": "confused woman phone",
+   "must": ""
+  },
+  {
+   "stock": "airport departure board",
+   "must": ""
+  },
+  {
+   "stock": "freelancer home office",
+   "must": ""
+  },
+  {
+   "stock": "dubai metro interior",
+   "must": "dubai"
+  },
+  {
+   "stock": "runner sprint track",
+   "must": ""
+  },
+  {
+   "stock": "dubai beach walk",
+   "must": "dubai"
+  }
+ ],
+ "cards": [
+  [
+   "Emirates ID без компании:",
+   "как получить?"
+  ],
+  [
+   "Визаран за визараном,",
+   "чемодан не разбирается"
+  ],
+  [
+   "Открыть компанию ради ID?",
+   "Не нужно, ты сам спонсор"
+  ],
+  [
+   "Virtual Work: виза на год,",
+   "от тебя паспорт и фото"
+  ],
+  [
+   "Фастрэк: медосмотр за день,",
+   "ID на руках за 3-4 дня"
+  ]
+ ],
+ "end": [
+  "Пиши ВИЗА",
+  "подскажу с чего начать"
+ ],
+ "y": 900,
+ "sounds": [],
+ "sound": {
+  "q": "Darbuka Ritual",
+  "match": "darbuka"
+ },
+ "caption": "Emirates ID без компании: да, так можно.\nВизаран за визараном, чемодан стоит у двери и не разбирается.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты, ты сам себе спонсор. От тебя только паспорт и фото, цена от 6 500 AED. С фастрэком медосмотр и отпечатки за один день, Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #оаэ #emiratesid #virtualwork #визавдубай"
+}
