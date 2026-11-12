@@ -585,8 +585,23 @@ async def _reply_to(cid):
     is_tg = str(cv.get("uid", "")).startswith("tg:")
     u = CTX.get("user")
     typing = None
+    typed_from = None
     if is_tg and u:
-        await wait_quiet(int(cv["uid"][3:]), cid)  # человек допечатывает: не перебиваем
+        peer = int(cv["uid"][3:])
+        if cv.get("fast"):
+            # живая переписка (правило Александра 12.11): прочитал через ~3 с, ещё через ~3 с уже «печатает»,
+            # пока нейросеть думает; изредка пауза подольше (5–8 с), как у человека
+            start = cv.get("last_user_ts", time.time()) + 3 + (random.uniform(2.5, 3.5) if random.random() < 0.85 else random.uniform(5, 8))
+            await asyncio.sleep(max(0, start - time.time()))
+            try:
+                await u.send_read_acknowledge(peer)
+                typing = u.action(peer, "typing")
+                await typing.__aenter__()
+                typed_from = time.time()
+            except Exception as e:
+                log.warning("tg early typing: %s", e)
+                typing = None
+        await wait_quiet(peer, cid)  # человек допечатывает: не перебиваем (если уже «печатаем», просто ждём вместе с ним)
     if is_tg and u:
         try:
             peer = int(cv["uid"][3:])
@@ -639,6 +654,14 @@ async def _reply_to(cid):
         res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
                                        f"Твой вариант «{res['reply']}» только обещает ответ. Дай сам ответ сейчас: {LENGTHS['detail']}.\n"
                                        f"Напиши следующее сообщение клиенту.") or res
+    already = 0.0
+    if typing:  # индикатор «печатает» шёл, пока думали: дальше его ведёт tg_human, а уже «напечатанное» время вычитаем
+        try:
+            await typing.__aexit__(None, None, None)
+        except Exception:
+            pass
+        typing = None
+        already = time.time() - (typed_from or time.time())
     if res and res.get("action") == "ignore":
         if typing:
             await typing.__aexit__(None, None, None)
@@ -673,7 +696,7 @@ async def _reply_to(cid):
             cv["next_at"] = time.time()
             asyncio.get_event_loop().create_task(kick(cid, 1))
             return
-        ok = await tg_human(int(cv["uid"][3:]), text)
+        ok = await tg_human(int(cv["uid"][3:]), text, already)
     else:
         # «печатаем» так, чтобы от начала до ответа прошло 3/5/7 секунд (если нейросеть думала дольше, отвечаем сразу)
         await asyncio.sleep(max(0, target_secs(text) - (time.time() - t0)))
@@ -1229,7 +1252,7 @@ async def http_server():
 
 
 # ===== Telegram: аккаунт радара отвечает тем, кто написал ему в личку =====
-async def tg_human(peer, text):
+async def tg_human(peer, text, already=0.0):
     """Как человек в мессенджере: одно предложение = одно сообщение, без точки в конце и кавычек,
     перед каждым «печатает» 5–10 с (короткое 5, длинное до 10)."""
     u = CTX.get("user")
@@ -1241,6 +1264,8 @@ async def tg_human(peer, text):
         for part in autoreply._parts(text):
             # скорость как у живого человека с телефона (~4 знака в секунду), а не 10 секунд на любое сообщение (08.11)
             secs = max(3.0, min(40.0, 1.5 + len(part) / 4.0)) * random.uniform(0.85, 1.15)
+            if already:  # первое сообщение: часть времени уже «печатали», пока думали
+                secs, already = max(1.0, secs - already), 0.0
             try:
                 if time.time() - TYPING.get(peer, 0) < 6:  # человек печатает: подождём, не перебиваем
                     await wait_quiet(peer, f"tg:{peer}", max_wait=60)
