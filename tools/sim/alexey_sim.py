@@ -164,7 +164,7 @@ async def run_dialog(p, outdir):
             for k in ("name", "summary", "services"):
                 if res.get(k):
                     cv[k] = res[k]
-            if act == "ask_owner":
+            if act in ("ask_owner", "money_check"):
                 cv["pending_q"] = res.get("owner_question")
                 log.append(("Система", f"(вопрос руководителю: {res.get('owner_question')})", ""))
             elif act == "call":
