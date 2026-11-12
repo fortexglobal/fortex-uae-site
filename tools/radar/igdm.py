@@ -29,7 +29,8 @@ def target_secs(text):
     """Сколько секунд «печатаем» в активной переписке: коротко 3, средне 5, длинно 7."""
     n = len(text)
     return 3 if n <= 60 else 5 if n <= 160 else 7
-ACTIVE_WIN = 10 * 60       # переписка «активна», если мы писали меньше 10 минут назад
+ACTIVE_WIN = 7 * 60        # переписка «активна», если мы писали меньше 7 минут назад; иначе «отошёл» и отвечаем через 1–3 минуты (12.11)
+READ_AT = {}               # peer -> когда отметили прочитанным
 WINDOW = 23.5 * 3600       # Instagram разрешает писать только 24 часа после сообщения клиента
 QUIET = (23, 9)            # ночью по Дубаю догоняющие не шлём
 HISTORY = 30
@@ -588,13 +589,24 @@ async def _reply_to(cid):
     typed_from = None
     if is_tg and u:
         peer = int(cv["uid"][3:])
+        # правило Александра 12.11: «прочитано» в разное время (tg_read_soon), а «печатает» через 2–3 с после прочтения,
+        # пока нейросеть думает. Если была пауза (не fast), Алексей «вернулся»: читает сейчас и через 2–3 с печатает.
+        lu = cv.get("last_user_ts", 0)
         if cv.get("fast"):
-            # живая переписка (правило Александра 12.11): прочитал через ~3 с, ещё через ~3 с уже «печатает»,
-            # пока нейросеть думает; изредка пауза подольше (5–8 с), как у человека
-            start = cv.get("last_user_ts", time.time()) + 3 + (random.uniform(2.5, 3.5) if random.random() < 0.85 else random.uniform(5, 8))
-            await asyncio.sleep(max(0, start - time.time()))
+            for _ in range(40):  # ждём, пока сообщение отметится прочитанным
+                if READ_AT.get(peer, 0) >= lu:
+                    break
+                await asyncio.sleep(0.5)
+        if READ_AT.get(peer, 0) < lu:
             try:
                 await u.send_read_acknowledge(peer)
+            except Exception as e:
+                log.warning("tg read: %s", e)
+            READ_AT[peer] = time.time()
+        start = READ_AT[peer] + (random.uniform(2.0, 3.0) if random.random() < 0.85 else random.uniform(4, 6))
+        await asyncio.sleep(max(0, start - time.time()))
+        if True:
+            try:
                 typing = u.action(peer, "typing")
                 await typing.__aenter__()
                 typed_from = time.time()
@@ -1384,14 +1396,24 @@ async def tg_inbound(ev):
         log.exception("tg inbound")
 
 
-async def tg_read_soon(peer, max_id, delay=3.0):
-    """Отметить сообщение прочитанным ровно через ~3 секунды после получения, не дожидаясь ответа."""
+async def tg_read_soon(peer, max_id, delay=None):
+    """В живой переписке отметить прочитанным, не дожидаясь ответа, в разное время, как человек (правило Александра 12.11):
+    иногда сразу (~1 с), чаще через ~3 с, иногда через 4–8 с, изредка через 10–20 с (отвлёкся).
+    Если переписка не активна (была пауза), не читаем сразу: прочитаем, когда Алексей «вернётся» и начнёт отвечать."""
     u = CTX.get("user")
     if not u:
         return
-    await asyncio.sleep(delay + random.uniform(-0.3, 0.3))
+    cv = S.get("convs", {}).get(f"tg:{peer}") or {}
+    if not cv.get("fast"):
+        return
+    if delay is None:
+        r = random.random()
+        delay = (random.uniform(0.7, 1.5) if r < 0.3 else random.uniform(2.5, 3.5) if r < 0.7
+                 else random.uniform(4, 8) if r < 0.95 else random.uniform(10, 20))
+    await asyncio.sleep(delay)
     try:
         await u.send_read_acknowledge(peer, max_id=max_id)
+        READ_AT[peer] = time.time()
     except Exception as e:
         log.warning("tg read soon: %s", e)
 
