@@ -16,10 +16,31 @@ import igdm, autoreply  # noqa: E402
 KEY = os.environ["OPENROUTER_API_KEY"]
 igdm.CTX["openrouter_key"] = KEY
 DXB = timezone(timedelta(hours=4))
-CLIENT_MODEL = "openai/gpt-4.1"
-JUDGE_MODEL = "anthropic/claude-sonnet-4.5"
-MAX_TURNS = 14
+CLIENT_MODEL = "openai/gpt-4.1-mini"
+JUDGE_MODEL = "openai/gpt-4.1"
+MAX_TURNS = int(os.environ.get("SIM_TURNS", "11"))
 SEM = asyncio.Semaphore(5)
+BUDGET = {"start": None, "max": 3.0, "stop": False}
+
+
+async def spent():
+    try:
+        async with httpx.AsyncClient(timeout=20) as c:
+            r = await c.get("https://openrouter.ai/api/v1/key", headers={"Authorization": f"Bearer {KEY}"})
+            return float(r.json()["data"]["usage"])
+    except Exception as e:
+        print("usage err", e)
+        return None
+
+
+async def over_budget():
+    u = await spent()
+    if u is None or BUDGET["start"] is None:
+        return BUDGET["stop"]
+    if u - BUDGET["start"] > BUDGET["max"]:
+        BUDGET["stop"] = True
+        print("BUDGET STOP", round(u - BUDGET["start"], 2))
+    return BUDGET["stop"]
 
 
 async def chat(model, system, user, temp=0.7, max_tokens=1500):
@@ -128,6 +149,9 @@ async def run_dialog(p, outdir):
         user_msgs = [p["opening"]]
         outcome_actions = []
         for turn in range(MAX_TURNS):
+            if await over_budget():
+                log.append(("Система", "(прогон остановлен: лимит бюджета)", ""))
+                break
             now = time.time()
             for m in user_msgs:
                 cv["history"].append({"role": "user", "text": m, "ts": now})
@@ -239,6 +263,8 @@ async def main():
     label = req.get("label") or datetime.now(DXB).strftime("%Y%m%d-%H%M")
     outdir = os.path.join(ROOT, "sim", "out", label)
     os.makedirs(os.path.join(outdir, "dialogs"), exist_ok=True)
+    BUDGET["start"] = await spent()
+    BUDGET["max"] = float(req.get("budget_usd", 3.0))
     results = await asyncio.gather(*[run_dialog(p, outdir) for p in personas], return_exceptions=True)
     ok = [r for r in results if isinstance(r, dict)]
     for r in results:
@@ -256,6 +282,8 @@ async def main():
     open(os.path.join(outdir, "report.md"), "w").write(
         f"# Тест Алексея на {len(ok)} виртуальных клиентах ({label})\n\nСредние: {json.dumps(avg, ensure_ascii=False)}\n\n"
         + (rep.get("report") or "(сводка не собралась)") + "\n\n## Все диалоги\n\n" + table + "\n")
+    end = await spent()
+    open(os.path.join(outdir, "report.md"), "a").write(f"\nПотрачено на прогон: ${(end or 0) - (BUDGET['start'] or 0):.2f}\n")
     print("REPORT READY", outdir, avg)
 
 
