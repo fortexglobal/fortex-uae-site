@@ -197,6 +197,8 @@ def _parts(text):
     cap = 4 if len(out) == 4 and all(len(x) <= 45 for x in out) else 3
     if len(out) > cap:
         out = out[:cap - 1] + out[-1:]
+    # живая небрежность (правило Александра 12.11): изредка сообщение со строчной буквы
+    out = [x[0].lower() + x[1:] if (x and x[0].isupper() and len(x) > 12 and not x.split()[0].isupper() and random.random() < 0.15) else x for x in out]
     return out or ([t] if t else [])
 
 
