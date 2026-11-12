@@ -1,0 +1,49 @@
+{
+ "date": "2026-11-12",
+ "site_yesterday": {
+  "totals": {
+   "визиты": 9.0,
+   "посетители": 8.0,
+   "отказы_%": 66.66666667,
+   "время_на_сайте_сек": 6.0
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  }
+ },
+ "audience": {
+  "pixel_from": "2026-11-09",
+  "since_pixel": 17,
+  "d30": 164,
+  "d90": 164,
+  "d180": 164,
+  "ipoteka_30d": 5,
+  "ipoteka_since_pixel": 1,
+  "virtual_work_30d": 3,
+  "virtual_work_since_pixel": 1,
+  "gid_30d": 0,
+  "gid_since_pixel": 0,
+  "goal_users_30d:Заявка с сайта": 2,
+  "goal_users_30d:Клик в Telegram": 10
+ },
+ "ig_followers": 1,
+ "threads": {
+  "views": 2366,
+  "likes": 2,
+  "replies": 2,
+  "reposts": 0,
+  "quotes": 0,
+  "followers_count": 6
+ },
+ "leadbot": {
+  "started": 2,
+  "finished": 2
+ },
+ "crm_leads": 23,
+ "partners": 14
+}
