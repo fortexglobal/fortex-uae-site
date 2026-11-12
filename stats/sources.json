@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T04:01Z",
+ "generated": "2026-11-12T04:00Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,19 +10,19 @@
   {
    "name": "Direct traffic",
    "v": [
-    161.0,
-    89.0,
-    41.0,
-    179.8
+    164.0,
+    90.0,
+    40.9,
+    176.7
    ]
   },
   {
    "name": "Recommendation system traffic",
    "v": [
+    50.0,
+    50.0,
     44.0,
-    44.0,
-    38.6,
-    29.2
+    26.2
    ]
   },
   {
@@ -75,10 +75,10 @@
   {
    "name": "Yandex Zen",
    "v": [
+    50.0,
+    50.0,
     44.0,
-    44.0,
-    38.6,
-    29.2
+    26.2
    ]
   },
   {
@@ -149,10 +149,10 @@
   {
    "name": "telegram / None / channel",
    "v": [
-    36.0,
-    36.0,
-    33.3,
-    73.0
+    42.0,
+    42.0,
+    40.5,
+    63.1
    ]
   },
   {
@@ -209,6 +209,15 @@
     6.0,
     37.5,
     234.8
+   ]
+  },
+  {
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6af484db8ab6d56177727074",
+   "v": [
+    6.0,
+    6.0,
+    83.3,
+    4.0
    ]
   },
   {
@@ -351,10 +360,10 @@
   {
    "name": "dzen.ru",
    "v": [
+    50.0,
+    50.0,
     44.0,
-    44.0,
-    38.6,
-    29.2
+    26.2
    ]
   },
   {
@@ -459,6 +468,15 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/articles/rabochaya-viza-pod-ipoteku-po-shagam/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6af484db8ab6d56177727074",
+   "v": [
+    6.0,
+    6.0,
+    83.3,
+    4.0
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/ipoteka-v-dubae-s-pasportom-rf/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6af1e2028ab6d56177721764",
    "v": [
     5.0,
@@ -504,12 +522,30 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/virtual-work/",
+   "v": [
+    3.0,
+    2.0,
+    0.0,
+    1152.7
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/ipoteka-v-dubae-s-pasportom-rf/",
    "v": [
     2.0,
     1.0,
     0.0,
     223.5
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/articles/rabochaya-viza-pod-ipoteku-po-shagam/",
+   "v": [
+    2.0,
+    1.0,
+    50.0,
+    7.5
    ]
   },
   {
@@ -528,15 +564,6 @@
     2.0,
     100.0,
     0.0
-   ]
-  },
-  {
-   "name": "https://fortex-uae.com/virtual-work/",
-   "v": [
-    2.0,
-    1.0,
-    0.0,
-    1721.5
    ]
   },
   {
@@ -742,19 +769,19 @@
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    77.0,
+    79.0,
     23.0,
-    26.0,
-    217.4
+    26.6,
+    212.1
    ]
   },
   {
    "name": "Russia / None",
    "v": [
-    40.0,
-    40.0,
-    42.5,
-    13.2
+    46.0,
+    46.0,
+    47.8,
+    12.0
    ]
   },
   {
@@ -787,10 +814,10 @@
   {
    "name": "United Arab Emirates / Abu Dhabi",
    "v": [
-    13.0,
-    7.0,
-    38.5,
-    211.5
+    14.0,
+    8.0,
+    35.7,
+    197.4
    ]
   },
   {
@@ -978,19 +1005,19 @@
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    65.0,
+    67.0,
     18.0,
-    24.6,
-    189.2
+    25.4,
+    183.8
    ]
   },
   {
    "name": "Recommendation system traffic / None",
    "v": [
-    37.0,
-    37.0,
-    45.9,
-    13.0
+    43.0,
+    43.0,
+    51.2,
+    11.7
    ]
   },
   {
@@ -1023,10 +1050,10 @@
   {
    "name": "Direct traffic / Abu Dhabi",
    "v": [
-    7.0,
-    2.0,
-    14.3,
-    157.7
+    8.0,
+    3.0,
+    12.5,
+    139.9
    ]
   },
   {
@@ -1295,19 +1322,19 @@
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    115.0,
-    47.0,
-    24.3,
-    245.0
+    118.0,
+    48.0,
+    24.6,
+    239.0
    ]
   },
   {
    "name": "PC / Google Chrome",
    "v": [
-    87.0,
-    76.0,
-    50.6,
-    63.5
+    93.0,
+    82.0,
+    52.7,
+    59.7
    ]
   },
   {
@@ -1511,6 +1538,15 @@
    ]
   },
   {
+   "name": "2026-11-11 / Recommendation system traffic",
+   "v": [
+    6.0,
+    6.0,
+    83.3,
+    4.0
+   ]
+  },
+  {
    "name": "2026-10-29 / Direct traffic",
    "v": [
     5.0,
@@ -1571,6 +1607,15 @@
     2.0,
     66.7,
     5.0
+   ]
+  },
+  {
+   "name": "2026-11-11 / Direct traffic",
+   "v": [
+    3.0,
+    2.0,
+    33.3,
+    10.0
    ]
   },
   {
@@ -1839,19 +1884,19 @@
   {
    "name": "New users",
    "v": [
-    157.0,
-    157.0,
-    48.4,
-    58.6
+    164.0,
+    164.0,
+    49.4,
+    56.3
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    81.0,
+    83.0,
     14.0,
-    21.0,
-    329.9
+    21.7,
+    322.1
    ]
   }
  ]
