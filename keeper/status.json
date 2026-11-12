@@ -1,5 +1,5 @@
 {
- "at": "2026-11-12T03:50+04:00",
+ "at": "2026-11-12T04:06+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -146,7 +146,7 @@
    "include_byok": false
   },
   "usage": 21.21651455,
-  "usage_daily": 0.1182128,
+  "usage_daily": 0,
   "usage_weekly": 0.4410419,
   "usage_monthly": 2.9723514,
   "byok_usage": 0,
@@ -174,7 +174,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 496,
+  "lines": 497,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
