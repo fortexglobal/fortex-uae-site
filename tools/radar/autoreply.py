@@ -181,7 +181,10 @@ def _parts(text):
     Вопросительный и восклицательный знаки остаются, многоточие тоже."""
     t = re.sub(r'[«»"„“”]', "", text or "").strip()
     out = []
-    for snt in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", t):
+    # перенос строки тоже граница сообщения: иначе фразы без точек склеиваются в одно (тест 12.11)
+    chunks = [c.strip() for c in re.split(r"\s*\n+\s*", t) if c.strip()]
+    sents = [snt for c in chunks for snt in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", c)]
+    for snt in sents:
         snt = snt.strip()
         if not snt:
             continue
