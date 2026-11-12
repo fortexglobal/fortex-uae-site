@@ -183,7 +183,9 @@ def _parts(text):
     out = []
     # перенос строки тоже граница сообщения: иначе фразы без точек склеиваются в одно (тест 12.11)
     chunks = [c.strip() for c in re.split(r"\s*\n+\s*", t) if c.strip()]
-    sents = [snt for c in chunks for snt in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", c)]
+    # точка между цифрами (даты 14.11, суммы 7.200, время 15.00) не конец предложения (тест 12.11)
+    chunks = [re.sub(r"(?<=\d)\.(?=\d)", "\u2024", c) for c in chunks]
+    sents = [snt.replace("\u2024", ".") for c in chunks for snt in re.findall(r"[^.!?…]+(?:\.\.\.|[.!?…]+)?", c)]
     for snt in sents:
         snt = snt.strip()
         if not snt:
