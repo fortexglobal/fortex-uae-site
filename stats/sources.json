@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T04:00Z",
+ "generated": "2026-11-13T04:00Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,19 +10,19 @@
   {
    "name": "Direct traffic",
    "v": [
-    164.0,
+    167.0,
     90.0,
-    40.9,
-    176.7
+    40.7,
+    173.7
    ]
   },
   {
    "name": "Recommendation system traffic",
    "v": [
-    50.0,
-    50.0,
-    44.0,
-    26.2
+    65.0,
+    65.0,
+    53.8,
+    20.9
    ]
   },
   {
@@ -75,10 +75,10 @@
   {
    "name": "Yandex Zen",
    "v": [
-    50.0,
-    50.0,
-    44.0,
-    26.2
+    65.0,
+    65.0,
+    53.8,
+    20.9
    ]
   },
   {
@@ -149,10 +149,10 @@
   {
    "name": "telegram / None / channel",
    "v": [
-    42.0,
-    42.0,
-    40.5,
-    63.1
+    57.0,
+    57.0,
+    52.6,
+    47.4
    ]
   },
   {
@@ -191,6 +191,15 @@
     15.0,
     0.0,
     24.0
+   ]
+  },
+  {
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6af5d6275e7abc68b012a159",
+   "v": [
+    15.0,
+    15.0,
+    86.7,
+    3.3
    ]
   },
   {
@@ -360,10 +369,10 @@
   {
    "name": "dzen.ru",
    "v": [
-    50.0,
-    50.0,
-    44.0,
-    26.2
+    65.0,
+    65.0,
+    53.8,
+    20.9
    ]
   },
   {
@@ -438,6 +447,15 @@
     98.0,
     45.8,
     115.2
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/articles/chto-daet-emirates-id/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6af5d6275e7abc68b012a159",
+   "v": [
+    15.0,
+    15.0,
+    86.7,
+    3.3
    ]
   },
   {
@@ -519,6 +537,15 @@
     4.0,
     0.0,
     24.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/articles/chto-daet-emirates-id/",
+   "v": [
+    3.0,
+    1.0,
+    33.3,
+    10.3
    ]
   },
   {
@@ -765,259 +792,27 @@
    ]
   }
  ],
- "country_city": [
-  {
-   "name": "United Arab Emirates / Dubai",
-   "v": [
-    79.0,
-    23.0,
-    26.6,
-    212.1
-   ]
-  },
-  {
-   "name": "Russia / None",
-   "v": [
-    46.0,
-    46.0,
-    47.8,
-    12.0
-   ]
-  },
-  {
-   "name": "United States / None",
-   "v": [
-    31.0,
-    31.0,
-    96.8,
-    0.4
-   ]
-  },
-  {
-   "name": "United Arab Emirates / Sharjah",
-   "v": [
-    19.0,
-    7.0,
-    21.1,
-    636.2
-   ]
-  },
-  {
-   "name": "Russia / Moscow",
-   "v": [
-    18.0,
-    14.0,
-    11.1,
-    42.0
-   ]
-  },
-  {
-   "name": "United Arab Emirates / Abu Dhabi",
-   "v": [
-    14.0,
-    8.0,
-    35.7,
-    197.4
-   ]
-  },
-  {
-   "name": "Ireland / None",
-   "v": [
-    11.0,
-    11.0,
-    0.0,
-    18.4
-   ]
-  },
-  {
-   "name": "Canada / Vancouver",
-   "v": [
-    3.0,
-    3.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "France / Paris",
-   "v": [
-    3.0,
-    3.0,
-    66.7,
-    9.0
-   ]
-  },
-  {
-   "name": "United States / Ashburn",
-   "v": [
-    3.0,
-    3.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "United States / New York",
-   "v": [
-    3.0,
-    3.0,
-    66.7,
-    42.7
-   ]
-  },
-  {
-   "name": "Portugal / Lisbon",
-   "v": [
-    2.0,
-    2.0,
-    0.0,
-    15.0
-   ]
-  },
-  {
-   "name": "Sweden / Falkenberg",
-   "v": [
-    2.0,
-    2.0,
-    50.0,
-    58.5
-   ]
-  },
-  {
-   "name": "Brazil / Rio Claro",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    15.0
-   ]
-  },
-  {
-   "name": "Germany / Berlin",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    273.0
-   ]
-  },
-  {
-   "name": "Iceland / Reykyavik",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    15.0
-   ]
-  },
-  {
-   "name": "Lithuania / Vilnius",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    45.0
-   ]
-  },
-  {
-   "name": "Morocco / Rabat",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Nigeria / Lagos",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    2.0
-   ]
-  },
-  {
-   "name": "Portugal / Vila Nova de Gaia",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    25.0
-   ]
-  },
-  {
-   "name": "Republic of Korea / Gunpo",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Republic of Korea / Incheon",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Russia / Lubercy",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    2016.0
-   ]
-  },
-  {
-   "name": "Russia / Nizhny Novgorod",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    58.0
-   ]
-  },
-  {
-   "name": "Sweden / Stockholm",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    15.0
-   ]
-  },
-  {
-   "name": "United Arab Emirates / None",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    82.0
-   ]
-  }
- ],
+ "country_city": {
+  "error": "HTTP Error 400: Bad Request",
+  "body": "{\"errors\":[{\"error_type\":\"query_error\",\"message\":\"Query is too complicated. Please reduce the date interval or sampling.\"}],\"code\":400,\"message\":\"Query is too complicated. Please reduce the date inter"
+ },
  "source_city": [
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    67.0,
+    70.0,
     18.0,
-    25.4,
-    183.8
+    25.7,
+    176.4
    ]
   },
   {
    "name": "Recommendation system traffic / None",
    "v": [
-    43.0,
-    43.0,
-    51.2,
-    11.7
+    58.0,
+    58.0,
+    60.3,
+    9.5
    ]
   },
   {
@@ -1322,19 +1117,19 @@
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    118.0,
+    121.0,
     48.0,
-    24.6,
-    239.0
+    24.8,
+    233.3
    ]
   },
   {
    "name": "PC / Google Chrome",
    "v": [
-    93.0,
-    82.0,
-    52.7,
-    59.7
+    108.0,
+    97.0,
+    57.4,
+    51.8
    ]
   },
   {
@@ -1427,6 +1222,15 @@
     15.0,
     0.0,
     24.0
+   ]
+  },
+  {
+   "name": "2026-11-12 / Recommendation system traffic",
+   "v": [
+    15.0,
+    15.0,
+    86.7,
+    3.3
    ]
   },
   {
@@ -1616,6 +1420,15 @@
     2.0,
     33.3,
     10.0
+   ]
+  },
+  {
+   "name": "2026-11-12 / Direct traffic",
+   "v": [
+    3.0,
+    1.0,
+    33.3,
+    10.3
    ]
   },
   {
@@ -1884,19 +1697,19 @@
   {
    "name": "New users",
    "v": [
-    164.0,
-    164.0,
-    49.4,
-    56.3
+    179.0,
+    179.0,
+    52.5,
+    51.9
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    83.0,
+    86.0,
     14.0,
-    21.7,
-    322.1
+    22.1,
+    311.2
    ]
   }
  ]

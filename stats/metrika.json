@@ -1,40 +1,40 @@
 {
- "generated": "2026-11-12T04:00Z",
+ "generated": "2026-11-13T03:59Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 40.0,
-  "посетители": 29.0,
-  "отказы_%": 50.0,
-  "время_на_сайте_сек": 118.025
+  "визиты": 56.0,
+  "посетители": 42.0,
+  "отказы_%": 58.92857143,
+  "время_на_сайте_сек": 85.69642857
  },
  "goals": {
   "Заявка с сайта": 0.0,
-  "Клик в Telegram": 4.0,
+  "Клик в Telegram": 3.0,
   "Запись на звонок": 0.0,
   "Автоцель: отправка формы": 0.0,
-  "Автоцель: переход в мессенджер": 1.0,
+  "Автоцель: переход в мессенджер": 0.0,
   "Автоцель: переход в соц.сеть": 0.0
  },
  "sources": [
   {
-   "name": "Direct traffic",
+   "name": "Recommendation system traffic",
    "values": [
-    22.0,
-    11.0
+    28.0,
+    28.0
    ]
   },
   {
-   "name": "Recommendation system traffic",
+   "name": "Direct traffic",
    "values": [
-    13.0,
-    13.0
+    24.0,
+    10.0
    ]
   },
   {
    "name": "Social network traffic",
    "values": [
-    4.0,
-    4.0
+    3.0,
+    3.0
    ]
   },
   {
@@ -49,8 +49,8 @@
   {
    "name": "Yandex Zen",
    "values": [
-    13.0,
-    13.0
+    28.0,
+    28.0
    ]
   },
   {
@@ -68,13 +68,6 @@
    ]
   },
   {
-   "name": "instagram.com",
-   "values": [
-    1.0,
-    1.0
-   ]
-  },
-  {
    "name": "Other social network: identified by tags",
    "values": [
     1.0,
@@ -86,8 +79,8 @@
   {
    "name": "telegram / channel",
    "values": [
-    13.0,
-    13.0
+    28.0,
+    28.0
    ]
   },
   {
@@ -107,10 +100,10 @@
  ],
  "pages": [
   {
-   "name": "/",
+   "name": "/articles/chto-daet-emirates-id/",
    "values": [
-    9.0,
-    8.0
+    18.0,
+    16.0
    ]
   },
   {
@@ -125,6 +118,13 @@
    "values": [
     8.0,
     7.0
+   ]
+  },
+  {
+   "name": "/",
+   "values": [
+    7.0,
+    6.0
    ]
   },
   {
@@ -160,17 +160,6 @@
     0.0,
     0.0
    ]
-  },
-  {
-   "name": "Social network traffic",
-   "values": [
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0
-   ]
   }
  ],
  "goal_names": [
@@ -182,6 +171,65 @@
   "Автоцель: переход в соц.сеть"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 18.0,
+   "посетители": 16.0,
+   "отказы_%": 77.77777778,
+   "время_на_сайте_сек": 4.44444444
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0
+  },
+  "sources": [
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     15.0,
+     15.0
+    ]
+   },
+   {
+    "name": "Direct traffic",
+    "values": [
+     3.0,
+     1.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Yandex Zen",
+    "values": [
+     15.0,
+     15.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "telegram / channel",
+    "values": [
+     15.0,
+     15.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/articles/chto-daet-emirates-id/",
+    "values": [
+     18.0,
+     16.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 9.0,
    "посетители": 8.0,
@@ -247,73 +295,7 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 5.0,
-   "посетители": 4.0,
-   "отказы_%": 80.0,
-   "время_на_сайте_сек": 3.0
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     3.0,
-     2.0
-    ]
-   },
-   {
-    "name": "Recommendation system traffic",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "Yandex Zen",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "telegram / channel",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/articles/virtual-work-v-dubae-emirates-id/",
-    "values": [
-     3.0,
-     3.0
-    ]
-   },
-   {
-    "name": "/",
-    "values": [
-     2.0,
-     1.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-11-11",
+ "date_yesterday": "2026-11-12",
  "today": {
   "totals": {
    "визиты": 0.0,
@@ -336,10 +318,10 @@
  },
  "audience": {
   "pixel_from": "2026-11-09",
-  "since_pixel": 17,
-  "d30": 164,
-  "d90": 164,
-  "d180": 164,
+  "since_pixel": 32,
+  "d30": 179,
+  "d90": 179,
+  "d180": 179,
   "ipoteka_30d": 5,
   "ipoteka_since_pixel": 1,
   "virtual_work_30d": 3,
