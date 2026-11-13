@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-13T08:53Z",
+ "checked": "2026-11-13T09:53Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "17917706706510895",
+   "timestamp": "2026-11-13T09:31:02+0000",
+   "permalink": "https://www.instagram.com/reel/DfrUBrjAri_/",
+   "media_type": "VIDEO",
+   "caption": "Аренда квартиры в Дубае на год: без Emirates ID разговор с а"
+  },
   {
    "id": "17957455941292062",
    "timestamp": "2026-11-12T09:30:40+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/DfCteoHjLDl/",
    "media_type": "VIDEO",
    "caption": "Счёт для компании в ОАЭ: что банк проверит первым делом.\n\n1."
-  },
-  {
-   "id": "18374391796213873",
-   "timestamp": "2026-10-27T15:07:37+0000",
-   "permalink": "https://www.instagram.com/p/DfAJHRoIHDs/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Счёт в банке ОАЭ с паспортом РФ в 2026 году открыть можно. В"
   }
  ]
 }
