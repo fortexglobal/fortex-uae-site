@@ -1,0 +1,70 @@
+{
+ "date": "2026-11-13",
+ "queries": [
+  "аренда Дубай",
+  "Дубай юмор"
+ ],
+ "note": "Пришли только результаты по «аренда Дубай» (20 постов), по «Дубай юмор» пусто. Нерелевантные (Петербург, Тбилиси, Ереван) отброшены, в топе 6.",
+ "top": [
+  {
+   "username": "lizastike",
+   "url": "https://www.threads.com/@lizastike/post/Dfp6EvlE9Q4",
+   "gist": "поиск моделей для съёмки в Дубае",
+   "technique": "призыв «ставь плюс», лёгкое действие в комментах",
+   "length": 73,
+   "views": 2093,
+   "replies": 42,
+   "small_author_5k": false
+  },
+  {
+   "username": "irina_arkadeva__",
+   "url": "https://www.threads.com/@irina_arkadeva__/post/DfpApToGtIl",
+   "gist": "знакомство экспертов в Дубае",
+   "technique": "ветка-знакомство по нише",
+   "length": 99,
+   "views": 467,
+   "replies": 16,
+   "small_author_5k": false
+  },
+  {
+   "username": "solomia.mlk",
+   "url": "https://www.threads.com/@solomia.mlk/post/Dfoeu7nggaL",
+   "gist": "вакансия администратора SPA в Дубае",
+   "technique": "вакансия с зарплатой",
+   "length": 386,
+   "views": 2169,
+   "replies": 13,
+   "small_author_5k": false
+  },
+  {
+   "username": "eto_aigerim",
+   "url": "https://www.threads.com/@eto_aigerim/post/DfpKPOGiFzW",
+   "gist": "годы аренды в Канаде и США стоили как квартира, поэтому в Дубае решили покупать",
+   "technique": "личная история аренда против покупки, прямо в нашу тему ипотеки",
+   "length": 500,
+   "views": 1367,
+   "replies": 15,
+   "small_author_5k": false
+  },
+  {
+   "username": "by_naie",
+   "url": "https://www.threads.com/@by_naie/post/DfpZQmrjIhs",
+   "gist": "правда ли в Dubai Mall не пускают в коротком",
+   "technique": "вопрос-сомнение всему Дубаю, автор 48 подписчиков, 5k+ просмотров",
+   "length": 93,
+   "views": 5354,
+   "replies": 17,
+   "small_author_5k": true
+  },
+  {
+   "username": "lizastike",
+   "url": "https://www.threads.com/@lizastike/post/Dfp54VtE3Gu",
+   "gist": "поиск моделей для съёмки в Дубае",
+   "technique": "призыв «ставь плюс», лёгкое действие в комментах",
+   "length": 92,
+   "views": 181,
+   "replies": 9,
+   "small_author_5k": false
+  }
+ ]
+}
