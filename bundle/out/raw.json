@@ -3,29 +3,29 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/3cbb8641-0ed9-4110-8364-7416d262c328",
+   "/api/v1/post/edbad63a-209a-4897-af66-5c4db1f8c8f9",
    [
     200,
     {
-     "id": "3cbb8641-0ed9-4110-8364-7416d262c328",
+     "id": "edbad63a-209a-4897-af66-5c4db1f8c8f9",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-     "title": "joke 2026-11-11",
+     "title": "joke 2026-11-13",
      "referenceKey": null,
-     "postDate": "2026-11-11T09:30:00.000Z",
+     "postDate": "2026-11-13T09:30:00.000Z",
      "postedDate": null,
      "status": "DELETED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
-       "text": "Emirates ID без компании: да, так можно.\nВизаран за визараном, чемодан стоит у двери и не разбирается.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты, ты сам себе спонсор. От тебя только паспорт и фото, цена от 6 500 AED. С фастрэком медосмотр и отпечатки за один день, Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #оаэ #emiratesid #virtualwork #визавдубай",
+       "text": "Аренда квартиры в Дубае на год: без Emirates ID разговор с агентом выходит коротким.\nНашёл квартиру мечты, а агент вместо «когда въезжаете?» спрашивает «а Emirates ID есть?».\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты. С ним уже спокойно снимаешь жильё на год, открываешь счёт и берёшь местный номер. Условие простое: заезжать в ОАЭ раз в полгода. Цена от 6 500 AED, с фастрэком Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #арендавдубае #virtualwork #переездвдубай",
        "uploadIds": [
-        "9b64abeb-27e4-4dda-9eee-87c88a7e66cb"
+        "ba62c42e-598a-43d2-b94f-201a8a463d98"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/e943beac-a559-468d-a911-a62687bd47be.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/cc03c2de-48a1-46fc-8a56-91af1b5b7b88.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "856450099859793",
+        "musicSoundId": "579293427383457",
         "musicSoundVolume": 1,
         "videoOriginalSoundVolume": 100
        }
@@ -36,9 +36,372 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-11T06:17:04.575Z",
-     "updatedAt": "2026-11-11T06:18:39.246Z",
-     "deletedAt": "2026-11-11T06:18:39.246Z"
+     "createdAt": "2026-11-13T06:18:43.948Z",
+     "updatedAt": "2026-11-13T06:20:51.688Z",
+     "deletedAt": "2026-11-13T06:20:51.688Z"
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=Darbuka%20Ritual",
+   [
+    200,
+    {
+     "audio": []
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B5%20%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5",
+   [
+    200,
+    {
+     "audio": [
+      {
+       "audio_id": "25296432873347664",
+       "duration_in_ms": 193600,
+       "audio_type": "original_sound",
+       "title": "Ледяное сердце",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQO_ckpILYo2Mx40_HwhZdrXf5lIoiY-clQywbJT-7DXur77jPUKcokVRH63SWHfCLbROf_ON8nZo8HxVf-oyzyr.mp4?strext=1&_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=IqA-N32poKQQ7kNvwHmJ1tn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODc0NDA2MjUxNzA1ODk5LCJhc3NldF9hZ2VfZGF5cyI6MzIzLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTkzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR5g2Nhlh5o6Twmx4Ki9potRE9sgrkKrom18xUQrvuQEw&oe=6AFC9833",
+       "ig_username": "gabriellagaga_official"
+      },
+      {
+       "audio_id": "25877275798638910",
+       "duration_in_ms": 185000,
+       "audio_type": "original_sound",
+       "title": "Ледяное сердце - Оксана Иванова",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNOItYln708UZ--Bbm2Kz1w9HaAoqsqw-2JCq9kxCwxPEe9zQsBvYYMH1Co8u99REa9dGrfM6bg6Fd27vl5XpY.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=ylU9xNewuTwQ7kNvwGuvyO6&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc5MjQzMDk1NTMzMjQ1MjcsImFzc2V0X2FnZV9kYXlzIjoyMjksInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxODUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRqsRp2kpcYMXumtUfS30KLLvOh_QFCOJrvPvyQogMcQw&oe=6AF87687",
+       "ig_username": "mariyasnaya"
+      },
+      {
+       "audio_id": "28457956117240305",
+       "duration_in_ms": 13083,
+       "audio_type": "original_sound",
+       "title": "IRENA BERTI - Ледяное сердце",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m78/AQOoah5yqscY2Hd78HwDTFfFy0oTTkLiKwFbDI6-M875twQbIzVf3qmtql0H1aB7JM3z0Y-P0otNmmmpxrYA_Z3OgE1sE8K8tTPY7-c.mp4?_nc_cat=110&_nc_sid=b66105&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=1Vx86mhbtqgQ7kNvwFhEhwD&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2xuX2hlYWFjX3ZicjNfYXVkaW8iLCJ4cHZfYXNzZXRfaWQiOjI0MTM3NzQ5MzU4MjA1NDgsImFzc2V0X2FnZV9kYXlzIjoyMiwidmlfdXNlY2FzZV9pZCI6MTA4MjcsImR1cmF0aW9uX3MiOjEzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=fde0ba7b1cab273c&_nc_vs=HBkcFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzVCQzVDOTA4NTkyOTQ4OUQ4OTlFMjZBRjAwNkY5NUZGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACaIpPDZmNTJCBUCKAJDMywXQCowIMSbpeMYGGRhc2hfbG5faGVhYWNfdmJyM19hdWRpbxEAdQBllqkBAA&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR5y6BFzy-4q_lmCbxw5errLE1c7Vb-HKMWfqfsxWQnxQ&oe=6AF8944B",
+       "ig_username": "rem.liberti"
+      },
+      {
+       "audio_id": "28596469546690172",
+       "duration_in_ms": 44950,
+       "audio_type": "original_sound",
+       "title": "Ледяное Сердце (Muwin blend)",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOMEU_g2Qnulx-XRVpfiozXCJtHRBtBlr7dhmBsEk1BHEKhLWPz5a0JRumH5HKDQ3p0Ovb_BEGrXG439Wy_X-IelD-IKhXC8AA.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=wC2moSJ7-r4Q7kNvwHuJAep&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjE4ODI5ODk0ODU0Mjk2NSwiYXNzZXRfYWdlX2RheXMiOjE2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQUNH5IXfSu7T0ZFEI0pYUU7rs_Dyh7RHEDgBI-Kc2wQg&oe=6AF89E08",
+       "ig_username": "dj_muwin"
+      },
+      {
+       "audio_id": "28754500980879295",
+       "duration_in_ms": 15000,
+       "audio_type": "original_sound",
+       "title": "TERELYA — Ледяное сердце 23|10",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQN1e651srDVHUMX6QFtHrkIG0E1VFV8rxMfZ4IqqY8TlbNVe52oic1627TZOKveB2MUXT4d16_1f8OtRT4jTya8Vxt_AZdKUQE.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=FiEpLIF2_BwQ7kNvwGXemu4&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTY1MDk3MTg2OTk4MTc5MywiYXNzZXRfYWdlX2RheXMiOjI3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSaWuIvl4HyhaXcnPxULkhVYXQOyUVLlWW_ATw1sqA4jA&oe=6AF88B3A",
+       "ig_username": "terelya"
+      },
+      {
+       "audio_id": "29023874053887808",
+       "duration_in_ms": 25000,
+       "audio_type": "original_sound",
+       "title": "Ледяное сердце (Prezzplay & Audiophil",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNhElz1H320AWOpQm1gNJ0Ex3GNDr4Tf2l1z7jIVRPvp7hRfRIMHmdUx8hSCl4rBS9Vvl7onbjNIngD8T39QVJq0MHL7U3ioQg.mp4?_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=Rn4wbI04k4QQ7kNvwHwnJtg&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE1MTAzNTIyNDAzODU1MSwiYXNzZXRfYWdlX2RheXMiOjQsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR9UtrrlT5yMwNksbELHBl5UhoTu2tvlSl1mWXkxpH7Qg&oe=6AF86EB2",
+       "ig_username": "iamprezzplay"
+      },
+      {
+       "audio_id": "29052817591017529",
+       "duration_in_ms": 5640,
+       "audio_type": "original_sound",
+       "title": "TERELYA — Ледяное сердце (2026)",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQNpKDFdDd4thDxOHmX8ZmjQRA1u2xir4KrFkc2jeAr9HY_CRlJ6IA7vs-ECydYWY-ob4ctGLEnBL23bTdo6FWtesaboRN0Wwa4.mp4?_nc_cat=107&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=CJMlkQV_GeYQ7kNvwFqBbjA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTY2ODExMzk4ODAzNDg5NSwiYXNzZXRfYWdlX2RheXMiOjI0LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTQsqLRwbr4UZcze9sK2dk_VpVMc6pTMKAtMVU-tuGraA&oe=6AF881FD",
+       "ig_username": "terelya"
+      },
+      {
+       "audio_id": "29228167053538206",
+       "duration_in_ms": 19000,
+       "audio_type": "original_sound",
+       "title": "Ледяное сердце (piano cover)",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQMLzm6Nvn_isoPSbs7IWaae1LD2Rv9g8MBlrNPzRJHQKx2qqOhJ3eQbLMEYjc7s0wiuCkw_o7RNsjP0RDgJrU2me4FUjenLRh4.mp4?_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=MhptTTtb7psQ7kNvwGWmWaC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE2Mzc1NDA5MzE4NDc4MSwiYXNzZXRfYWdlX2RheXMiOjIyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQRfHFBl5m0UL5wqWhIcdRLTj8RbaeHTU9cXaKXSkYOcA&oe=6AF88EFB",
+       "ig_username": "meschceryakovaa"
+      },
+      {
+       "audio_id": "29833184652938520",
+       "duration_in_ms": 13291,
+       "audio_type": "original_sound",
+       "title": "IRENA BERTI - Ледяное сердце",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m78/AQNNERdJWux-IoWWMr_OfKKDl7gsNCP-hj7qWBY41QoxGNuXuQQmCMDd9m5JMVpyIFM2hBsv6afY3vPAupNAdJZoLkQa91w2jnnWiLY.mp4?_nc_cat=108&_nc_sid=b66105&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=gziNGruImYQQ7kNvwEvqRXT&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2xuX2hlYWFjX3ZicjNfYXVkaW8iLCJ4cHZfYXNzZXRfaWQiOjEyNDQ4NDM0MDExOTIxMDcsImFzc2V0X2FnZV9kYXlzIjoyMiwidmlfdXNlY2FzZV9pZCI6MTA4MjcsImR1cmF0aW9uX3MiOjEzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=10723b48cd54f532&_nc_vs=HBkcFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzBFRjY0MDI1RkM4QTQ3QUY5MUI3M0MwNjMzODgxOEFDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACbWitWLtou2BBUCKAJDMywXQCqDlYEGJN0YGGRhc2hfbG5faGVhYWNfdmJyM19hdWRpbxEAdQBllqkBAA&_nc_gid=eyIgdU64YZfgZ7sq-eKclA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQLHba7WBfs2hjyIq8ALgHfp-99xfh4KX_jG4uoYlLzHA&oe=6AF889C1",
+       "ig_username": "rem.liberti"
+      }
+     ]
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=How%20Beautiful%20This%20Life%20Is",
+   [
+    200,
+    {
+     "audio": [
+      {
+       "audio_id": "25345032565166118",
+       "duration_in_ms": 137525,
+       "audio_type": "original_sound",
+       "title": "How beautiful this life is",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQNU_Jd7z3b-hetrnmToHI65mL8EmWeAOz_bB8LPE7jruH_mbJa5vr5SD2jjhsSem5GcFuat7HNY08VeAaE6jeJx.mp4?strext=1&_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=ZknXRiMoRs4Q7kNvwEFnge3&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTYxNDI0MjYwNjY4MTI3MSwiYXNzZXRfYWdlX2RheXMiOjMxNSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjEzNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=8rxAAzE9K2ppoNLeNs2UEg&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQRfdmiMVHf3zYsLOC_c_JNE5p6DM1YanLUCbOt9AllCA&oe=6AFC71B8",
+       "ig_username": "latinamericacs"
+      }
+     ]
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=Overprotected",
+   [
+    200,
+    {
+     "audio": [
+      {
+       "audio_id": "487912303353418",
+       "duration_in_ms": 70727,
+       "audio_type": "original_sound",
+       "title": "Overprotected",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQN600Z4DeIDVGOE3vrSJiMrM8FGy6ZV9oY5QPh8jIO-PlEjpTcM0a4P0_DChgji5HdFN7vUJ0Jw1owqUUzL4R6e.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=TwoOv8H5y-QQ7kNvwFmQn0U&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODc1MTEwODUwNTI0NjYyLCJhc3NldF9hZ2VfZGF5cyI6MTQ4NSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjcwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQToMM2E553lpsSIgAlvZgjYBWd88N0eEK_PgtVXBNp6gg&oe=6AF8A2EE",
+       "ig_username": "popbritneyspearsprinces"
+      },
+      {
+       "audio_id": "706261105792313",
+       "duration_in_ms": 76900,
+       "audio_type": "original_sound",
+       "title": "OVERPROTECTED- Giiba intro 4 HIGHCLUB",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPLiflIEA1Wf0-NuEJ9x0i1zQPwtOvqo83a4K6UTNzkd8lnGRgIzwTs8ID2yZWxTLiPrx71jdvm4sJIcZCG74bf.mp4?strext=1&_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=94VWjGDh-vgQ7kNvwGxMfaf&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc4ODc2OTU1MjUyMzcxMCwiYXNzZXRfYWdlX2RheXMiOjQ0MSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjc2LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQScYgWowoHd2phypDUaeq97aqYu9uvgI0sis1bZTfrmmg&oe=6AFC6CC8",
+       "ig_username": "gii.ba"
+      },
+      {
+       "audio_id": "1302298980462068",
+       "duration_in_ms": 203104,
+       "audio_type": "original_sound",
+       "title": "Overprotected @ The Onyx Hotel Tour",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOR1vy-tmESnbEt-WuhI_QAHBp4PepuVSOK3upd9sYgaadGhUfMreWU4v4anHfMApkvGgSFXo0jj0emDEXk30Bk.mp4?_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=R5UlmHPhHKAQ7kNvwEiXSkt&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODM4ODQ4NTU0NzAyMTk2LCJhc3NldF9hZ2VfZGF5cyI6MTA4OSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjIwMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTPRUneNSXCBifMf8imJku3nfzijCiKDFeMCbsO37XC4Q&oe=6AF8A389",
+       "ig_username": "oh.mygodney"
+      },
+      {
+       "audio_id": "1732098347697840",
+       "duration_in_ms": 42830,
+       "audio_type": "original_sound",
+       "title": "Britney Spears - Overprotected",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQO21BT69KiVOh_xsi2naxFFY2rDy5wJQazAdUglyydWEKD25fDXBKWeO_x3dSteCEk8bBcim77PjKs5heirhJJf.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=xg0ku_fNRekQ7kNvwEeRI36&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc3ODQ0MTAyOTQ1MDg4MSwiYXNzZXRfYWdlX2RheXMiOjQ4MSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjQyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQXR9vSd4Rn3JRLjaRPK8RJWEIWoeFIuo_2AkwLv81Hsw&oe=6AF8A470",
+       "ig_username": "dnndbdhdhdueuk"
+      },
+      {
+       "audio_id": "2603422230000397",
+       "duration_in_ms": 26899,
+       "audio_type": "original_sound",
+       "title": "Overprotected • Britney Spears",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQPMfsRfF24DsZBDwEYf-J8s77cjySTREuGzL7fcpI4_XsvqIs9LQR5Dfca6YoZXFvBqmaGTeutTm-c2ESmGbMUH.mp4?strext=1&_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=g7ogppufE2sQ7kNvwHSHzOT&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjQ3Mzk2MTAzNjIzMDYzMTMsImFzc2V0X2FnZV9kYXlzIjo0ODgsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoyNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTSfqYg8UDyt-19M7QDm7EWP3V9A_lJRyI4sCOGTdhJew&oe=6AFC6A89",
+       "ig_username": "centrolgbtqia"
+      },
+      {
+       "audio_id": "26247878711574423",
+       "duration_in_ms": 81617,
+       "audio_type": "original_sound",
+       "title": "Overprotected - SUPANUT Original by Britney Spears",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQM2W5fMtbfV0HgzBTg84NO70o-iUQrwRziG3iHygaZx-cjgWxYRJOMRE3zk6H8DnL1SLdkOBLGuO3ee3ZvYDeSm3Q4xHJaztW0.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=LxAwYbBI_kYQ7kNvwE46tlz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc5NTY1NDQ5ODUxMTU1MDEsImFzc2V0X2FnZV9kYXlzIjoyMDUsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo4MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR5OepqsTvNhjyxGbp9a0baOB7AoazTo8jtnP_-oqcJsw&oe=6AF883D4",
+       "ig_username": "supanut"
+      },
+      {
+       "audio_id": "28239357759027829",
+       "duration_in_ms": 49133,
+       "audio_type": "original_sound",
+       "title": "Overprotected - Britney Spears (The Onyx Hotel)",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPAnz5mibCHHqwg_jGzAApT74o_fUdZ-SM3QH_vKwFmWY--ZXZAzINEQhSsYvf0TfE1JKT0XRTiZ3EwE7ovRYWmiyffvTummcs.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=rNU2ss5PsnoQ7kNvwGkBS_C&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTA4OTExMTkyMDIwNDQ5NSwiYXNzZXRfYWdlX2RheXMiOjgxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRqN7rHEAKawRW8Kf1MGypV-XO_5RWTkgEEaRhZpdiPUA&oe=6AF87A34",
+       "ig_username": "pop.spears"
+      },
+      {
+       "audio_id": "28515922701435956",
+       "duration_in_ms": 33650,
+       "audio_type": "original_sound",
+       "title": "Britney Spears Overprotected",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQNbm8kPx4OZ8teQUzzj8cmRvQoRDW5H5Wg27Ez2wNZ3I3Ltr6mWosVAkMr045RTY3HngierQS1fyHjgJfPPJpU9LvCd-4yD4zc.mp4?_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=rLK3ZeTvrCAQ7kNvwGcRk5B&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTQ2MzkwNzkyNTgwMDIxNywiYXNzZXRfYWdlX2RheXMiOjM3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MzMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQCpTGLJHQhuxkxVM4e76kKYbqqOSEJMEJlynUbyKamPA&oe=6AF88FB3",
+       "ig_username": "divineney_"
+      },
+      {
+       "audio_id": "28697931779860759",
+       "duration_in_ms": 20330,
+       "audio_type": "original_sound",
+       "title": "Overprotected Music Box Britney Spears",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOu2wpVBr7VGLdiR7r4RYdEbqKGfLVHpYxk4Ll1b81O2Kr_ODTuOasyT18vWG-tY3TJqO5nylKQIvoWOj_JymOTboQXMq64lmU.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=CtM_gUpPqScQ7kNvwECR6cz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTQ0MzEyOTc5Nzc3NjY4NCwiYXNzZXRfYWdlX2RheXMiOjQxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQozOsA6ZQty4kD3v48Td8OH1d3Q4Rml1AWjPY-3Hl3Ag&oe=6AF873AC",
+       "ig_username": "divineney_"
+      },
+      {
+       "audio_id": "29370871292546813",
+       "duration_in_ms": 201386,
+       "audio_type": "original_sound",
+       "title": "OVERPROTECTED (SOMEONE ELSE BUT RCHRD MASHUP)",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNCUhQ6SuqIF4y7KrzPEWc3Nkw6N-keX7CM7dXpGr9R9ZAZBPs9ohVDa6gmbRqMEM0xkMo9M9ixwxg2in9Edg4eWwoqcMdPHH0.mp4?_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=JVoeJC4jPyUQ7kNvwGyRlnC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjA1MjQxMTQxODc5NTM2MiwiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoyMDEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=kJGhZ7g3HWRF1LOM0otNLw&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQOUCa390qKBx0eLzlVsNbyko4LmLzrgu-evsQpVXdddQ&oe=6AF879BF",
+       "ig_username": "rchrd_____"
+      }
+     ]
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=I%20Know%20What%20You%20Want",
+   [
+    200,
+    {
+     "audio": [
+      {
+       "audio_id": "249573587749539",
+       "duration_in_ms": 53055,
+       "audio_type": "original_sound",
+       "title": "I know what you want (Remix)",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQMXIvECzcBlqmi85V_AXIUT6HLnGTvGiRiw_hLhCaa1fMHguA84r1wVkpHc5NITAGp1ugT3cg0XyCGoaSpe4w.mp4?_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=dCuyFDz9IXkQ7kNvwENiSPv&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjY2ODg3NTQ5MzI1NDIzMiwiYXNzZXRfYWdlX2RheXMiOjEyNzMsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo1MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRsVT5vPdDzWWfsFofkgTg4jez6gucGezcq8j4au6O9SQ&oe=6AF8767C",
+       "ig_username": "cicizone"
+      },
+      {
+       "audio_id": "298984566452093",
+       "duration_in_ms": 33877,
+       "audio_type": "original_sound",
+       "title": "Sabri Aalil Sherine X I know what you want",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQP4grLgkf0gi_APl85Hui3GF904FoiuTz3ebSrc1oPJKIacnS_Q2YyiTugrMZ4IDvi6DOk48v4K5KmT60oLOGk.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=LxZzTni9zpEQ7kNvwFQ2iUI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODY5MDQzODMxMzI2ODc2LCJhc3NldF9hZ2VfZGF5cyI6MTA4MCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjMzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQV34TCQqTsY623D3B5YMvV154FeBYszZI-sNY1LT-PGw&oe=6AF87C65",
+       "ig_username": "moon.azad"
+      },
+      {
+       "audio_id": "446983371395802",
+       "duration_in_ms": 11239,
+       "audio_type": "original_sound",
+       "title": "Busta Rhymes, Mariah Carey - I Know What You Want",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOeetNsJezVexnEbP_Yr-OTRsSzoDObpRKoYk4t_ntde65Dd1adWdWcmZlTUEmXZex3wNItAmn2fzxsbqilwQc.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=shiVAVnz7BQQ7kNvwFrBSJL&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NzQ0MjAxODUyNTg5MzY3MiwiYXNzZXRfYWdlX2RheXMiOjkyNywidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjExLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQS_rb7D92Od9ngyo0md7E_lgyMjdy_iTxLE_6T0bdfUTA&oe=6AF89191",
+       "ig_username": "mariah_carey_reels"
+      },
+      {
+       "audio_id": "571161021732740",
+       "duration_in_ms": 27050,
+       "audio_type": "original_sound",
+       "title": "Busta Rhymes, Mariah Carey - I Know What You Want",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQMZyWhyK-uybfIteoo57vxYsAQYlDFlxkMaGcpN6mOt1BPBaufETx9hjogqUiG8OqPRQUUCLe5prwgK8Pl7zEM.mp4?_nc_cat=100&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=yw-MHEK2c_AQ7kNvwE2pz4N&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NTk3NzU0OTA1MDQ4NDE1LCJhc3NldF9hZ2VfZGF5cyI6MTM2NiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjI3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSzg7rh_4dMApZ_C_8PUmYdrDwDUZOnfXdyl5PK_EkdTQ&oe=6AF89F54",
+       "ig_username": "ralinaru"
+      },
+      {
+       "audio_id": "584929710618282",
+       "duration_in_ms": 99473,
+       "audio_type": "original_sound",
+       "title": "I know what you want - Busta Rhymes (instrumental)",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQMCriZuDu4JRh1qgXkOEeuVyPvbIo315cE58UY267HLzZBrlxxx6MqvlqfD6JQt-MYcBsnNulZiYvROYsPwyjjw.mp4?strext=1&_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=xVQGycKFob0Q7kNvwFNMrK1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTA3OTc2NzY2MDQ4MDE3MiwiYXNzZXRfYWdlX2RheXMiOjczMCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjk5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSv1UeX4MGMiImXUZrNJnCUL9gMICfjNY4QSybYE--zhg&oe=6AFC68A1",
+       "ig_username": "cristian_info_pc"
+      },
+      {
+       "audio_id": "641553924638461",
+       "duration_in_ms": 34620,
+       "audio_type": "original_sound",
+       "title": "KAWAN x I KNOW WHAT YOU WANT 🔥",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOVjd4JNSnSp1f2yzkUj81HBZXlOiBdXnLFx4s4rUVdVw2pqck8Th46m4ScmhWiGGSrKM9W8qKzWci8O5ZLnJdD.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=BUnvffE6YIkQ7kNvwHTTelh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NjkyNzI5MTkyOTc3MjYyLCJhc3NldF9hZ2VfZGF5cyI6MTA1NywidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjM0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRYWNH4Fy9orrkO3l6bR_C4JcgoE2Q3L5UW_7GmPgizSA&oe=6AF89B01",
+       "ig_username": "djaj_official"
+      },
+      {
+       "audio_id": "706149015834769",
+       "duration_in_ms": 31600,
+       "audio_type": "original_sound",
+       "title": "I know what you want x Madison Calley",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQOLPSiGCn4yguz6zBgwhfy7CXa71kdfyfeuOPrtzSux4Hhr5lXCyuIdj3NbEmcBl6iPhHOx8ExOJLXowAD28udk.mp4?strext=1&_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=FqIi8jw61WcQ7kNvwF_f8kt&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODE1MDU5MDQ4MzYyODU3LCJhc3NldF9hZ2VfZGF5cyI6MzkxLCJ2aV91c2VjYXNlX2lkIjoxMDgyNywiZHVyYXRpb25fcyI6MzEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSwhyt633KETYC9KAWCPSBvS0RIrrvCO9zZrttWhVCK2Q&oe=6AFC6B0B",
+       "ig_username": "goodstores"
+      },
+      {
+       "audio_id": "768405218164837",
+       "duration_in_ms": 53775,
+       "audio_type": "original_sound",
+       "title": "I know what you want - Violin",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNm71_Opm9zrmOyG2M8hzZHWVD9DEvqXvOT20roErnYPk-2D9b18WmKvFZJnkVNYInMxy4c72pNj2EbE5V-j4o.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=cHh3whOhXUIQ7kNvwHe2uqj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTUxMzE2NDI0NTQ2NjYyLCJhc3NldF9hZ2VfZGF5cyI6MTMxMSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjUzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=gc2ryFMvrLt-GEVaRFBw2A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTa-CSLlPn2OUFSPb07zz-QGNw7u4lywDfZkEja7X10qA&oe=6AF87C77",
+       "ig_username": "alejalopezmusic"
+      }
+     ]
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=Frozen%20Sickick",
+   [
+    200,
+    {
+     "audio": [
+      {
+       "audio_id": "179378031529138",
+       "duration_in_ms": 12699,
+       "audio_type": "original_sound",
+       "title": "Madonna vs Sickick - Frozen",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQMvQSo4z-fOxbRBYzWgvRX-uZjIwKfSzuOwmE1p8YXoagyLdTD8i0wr7pR309fGg1UxTtD_wlTef-t99t3aibM.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=ksfMakfaI54Q7kNvwGo6MKH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NzYxNjI0MDcyMTM3NTg2LCJhc3NldF9hZ2VfZGF5cyI6MTMzMywidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjEyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQxLUmKT75bDhJZZdTeB9hhQw5oKQclqz3s9vX1pDpxVA&oe=6AF88F12",
+       "ig_username": "beatapp.pro"
+      },
+      {
+       "audio_id": "334911631645151",
+       "duration_in_ms": 7288,
+       "audio_type": "original_sound",
+       "title": "Frozen - Sickick remix",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQOPD8yMN4TvGEs9GfYO7nAiwhjTpvmRUdvy8BLEFuwJ_Dz71cokrKXLK-XFjN_NXv2gDshKvu3swvapq4UK2UmQ.mp4?strext=1&_nc_cat=102&_nc_sid=b66105&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=02_-EwqefKwQ7kNvwHkuNRe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxIiwieHB2X2Fzc2V0X2lkIjozNDE4MDM2NjA2NTc0MjAsImFzc2V0X2FnZV9kYXlzIjoxOTc2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=802649841ead1d66&_nc_vs=HBkcFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HSXpRN3d0TWZBc1BwQTBEQUVabVlYc3NMQTBDYnFfRUFBQUYVAgLIARIAKAAYABsDiAd1c2Vfb2lsATEScHJvZ3Jlc3NpdmVfcmVjaXBlATESY29weV9zYW1wbGVfZ3JvdXBzATEVAAAmmIy23Mu3mwEVAigCQzMsF0AbwYk3S8aoGBZkYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxEQB1AGXmnQEA&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQ0rN4yIRh8i9uDP3yMv6Aexl7aTdHv-JkYyZzMZFObew&oe=6AFC8C90",
+       "ig_username": "giulia.ristuccia"
+      },
+      {
+       "audio_id": "348086827723863",
+       "duration_in_ms": 21756,
+       "audio_type": "original_sound",
+       "title": "Ranam Prithviraj dialogue ❌ Frozen madonna sickick",
+       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOVBhN09N3Ldpxb5iNyvsFCBzxlpCAvcylkMera9LRLJS5aWIQAbeiaDyvdtXWo1f1PbvMxM8bGjPsdupvtjxM.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=bUI1pJJGV6wQ7kNvwFGg7LG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTI2MzA5MDY0NDY0OTA5NywiYXNzZXRfYWdlX2RheXMiOjk0NiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjIyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR_AFRU_zdDUkp_4EJiVnEyDZXJ_nzhPRJ9-j4LVdyQqA&oe=6AF87D4A",
+       "ig_username": "avinash.manoharan"
+      },
+      {
+       "audio_id": "360274859824972",
+       "duration_in_ms": 25193,
+       "audio_type": "original_sound",
+       "title": "Frozen Remix - Sickick",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQMW6M4HWclyazaRYrGEpb9jDGbSKdVOzXgf3P-F2HUEcTjw7Pys_yc4G9XIIB5jBOUebiZRYHg42AA0mElJ5fHV.mp4?_nc_cat=103&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=HQkuXe0Ptr0Q7kNvwGeXj5-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NzQ4Mjc1MjgzODAxMzI1LCJhc3NldF9hZ2VfZGF5cyI6MTA3NSwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjI1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQcYc7tGWkUYApFbHihxbheLy3GtwL_LmQMJi6UTbKmUg&oe=6AF87F67",
+       "ig_username": "veganer.wandel"
+      },
+      {
+       "audio_id": "479865730466829",
+       "duration_in_ms": 39521,
+       "audio_type": "original_sound",
+       "title": "sickick frozen part 2",
+       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQMMVdwCMfZuHGc5U_-4XR6_994KlAoZBft4Xyw9SrajgNWd_ztZLEJWoEF7pqhqf5CsEeENUY2qggmvOX2_tWmz.mp4?strext=1&_nc_cat=107&_nc_sid=b66105&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=nfSIF9ndQxgQ7kNvwHuP9_q&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxIiwieHB2X2Fzc2V0X2lkIjo1MzgxNjAxNzQ4NTIxMTk3LCJhc3NldF9hZ2VfZGF5cyI6MTc0MywidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjM5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=8e2731575a5bb2cc&_nc_vs=HBkcFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HTmVmUnhBRnRNaWJsMlVBQU5EckVfSmhySVI5YnFfRUFBQUYVAgLIARIAKAAYABsDiAd1c2Vfb2lsATEScHJvZ3Jlc3NpdmVfcmVjaXBlATESY29weV9zYW1wbGVfZ3JvdXBzATEVAAAm2sPYyLmijxMVAigCQzMsF0BDtkWhysCDGBZkYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxEQB1AGXmnQEA&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRnCelBnHngZWJkUqzj7pfsSXha1BQ9WNTSOQXMj4SXPQ&oe=6AFC746F",
+       "ig_username": "sickickmusic"
+      },
+      {
+       "audio_id": "590069115398539",
+       "duration_in_ms": 52427,
+       "audio_type": "original_sound",
+       "title": "Madonna vs Sickick - Frozen",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQMH7TnIvHooGpviNbf_a8fAmAX1ebFPXAvk6L6geLH034CjPqZXsEKrdZUEV1CoDwyhFE3Ta8U7h0IvOV6fIcpQ.mp4?strext=1&_nc_cat=102&_nc_sid=b66105&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=6GavgwA393EQ7kNvwHMA1Ch&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxIiwieHB2X2Fzc2V0X2lkIjo5NzAwMTc5MDM4NjYzNjEsImFzc2V0X2FnZV9kYXlzIjoxODA1LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=bc46657576675947&_nc_vs=HBkcFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HUEFBdlEtUElSM0hhTDBBQURIYnFTcU9OS0ZaYnFfRUFBQUYVAgLIARIAKAAYABsDiAd1c2Vfb2lsATEScHJvZ3Jlc3NpdmVfcmVjaXBlATESY29weV9zYW1wbGVfZ3JvdXBzATEVAAAm8sevybyOuQMVAigCQzMsF0BKGPXCj1wpGBZkYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxEQB1AGXmnQEA&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQlfyvn4taiBh7c5HegMUC1Vodalo5htygPNxTZTece6w&oe=6AFC8248",
+       "ig_username": "sickickmusic"
+      },
+      {
+       "audio_id": "25883456367905203",
+       "duration_in_ms": 180026,
+       "audio_type": "original_sound",
+       "title": "Frozen - Sickick, Madonna",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQPLQOGrQ1Zgjcl3gZ_JoyfjZ23WVku4HmBHAF8qHwE_11mfDz0Key-uKgtfPZt6WnaUUZppkYkEX2ltbJhG9kk-.mp4?_nc_cat=103&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=er0ktShENQ0Q7kNvwG4WeVu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODYxNjI0NzA2Mjc1MTY3LCJhc3NldF9hZ2VfZGF5cyI6MzQwLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTgwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSi_KmFNhnuOA2jV2By0QUf1pI9J-E_tu_s6ZwFqqPFzg&oe=6AF87373",
+       "ig_username": "flicksbyferdi"
+      },
+      {
+       "audio_id": "28295073566830236",
+       "duration_in_ms": 40616,
+       "audio_type": "original_sound",
+       "title": "Sickick x Madonna - Frozen On Fire",
+       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQNs1d8TyP7gKD3QWZKasSt5YUq7accoZ35pAf6n-ihX8wXd5611LfMlH5p9qv7QA1SFfzBOjnlInbz1fqcQbIQkbixsjrXZWGM.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=qeZ_4HnIqHkQ7kNvwFvaT4F&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6Mzc3MTIwMTkwMzAzMjIyMSwiYXNzZXRfYWdlX2RheXMiOjQwLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=wa3shwr-yb_OOQUw_C2Z3A&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQR87HHdklKun_o8gy0J1e-sSTiggsHdAUekFZ9FWcfWOw&oe=6AF88D07",
+       "ig_username": "sickickempire"
+      }
+     ]
+    }
+   ]
+  ],
+  [
+   "GET",
+   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=%D0%B1%D1%83%D0%B9%D0%BA%D0%B8",
+   [
+    200,
+    {
+     "audio": []
     }
    ]
   ]
