@@ -5,11 +5,11 @@
  "style": "A",
  "clips": [
   {
-   "stock": "apartment balcony view",
+   "stock": "dubai apartment balcony",
    "must": "dubai"
   },
   {
-   "stock": "realtor showing apartment",
+   "stock": "real estate agent couple",
    "must": ""
   },
   {
@@ -21,11 +21,11 @@
    "must": ""
   },
   {
-   "stock": "opening front door",
+   "stock": "couple moving boxes",
    "must": ""
   },
   {
-   "stock": "rooftop pool sunset",
+   "stock": "dubai rooftop pool",
    "must": "dubai"
   }
  ],
@@ -58,8 +58,10 @@
  "y": 900,
  "sounds": [],
  "sound": {
-  "q": "За буйки",
-  "match": "буйки"
+  "q": "I Know What You Want",
+  "match": "madison",
+  "id": "706149015834769"
  },
- "caption": "Аренда квартиры в Дубае на год: без Emirates ID разговор с агентом выходит коротким.\nНашёл квартиру мечты, а агент вместо «когда въезжаете?» спрашивает «а Emirates ID есть?».\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты. С ним уже спокойно снимаешь жильё на год, открываешь счёт и берёшь местный номер. Условие простое: заезжать в ОАЭ раз в полгода. Цена от 6 500 AED, с фастрэком Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #арендавдубае #virtualwork #переездвдубай"
+ "caption": "Аренда квартиры в Дубае на год: без Emirates ID разговор с агентом выходит коротким.\nНашёл квартиру мечты, а агент вместо «когда въезжаете?» спрашивает «а Emirates ID есть?».\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты. С ним уже спокойно снимаешь жильё на год, открываешь счёт и берёшь местный номер. Условие простое: заезжать в ОАЭ раз в полгода. Цена от 6 500 AED, с фастрэком Emirates ID на руках через 3-4 дня.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #арендавдубае #virtualwork #переездвдубай",
+ "rev": 2
 }
