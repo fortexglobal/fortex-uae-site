@@ -134,6 +134,49 @@ def deploy_radar():
             tg(f"🔄 Ассистент обновлён: {names}")
 
 
+def patch_radar():
+    """Точечные правки серверного radar.py (его копия в репозитории без секретов и сама не выкладывается).
+    tools/radar/patches/*.json: {"file": "radar.py", "old": "...", "new": "..."}. Применяется один раз:
+    бэкап, замена, проверка синтаксиса, перезапуск; если сервис не поднялся, откат и сообщение."""
+    import glob as _g
+    done = S.setdefault("patches_done", [])
+    for pf in sorted(_g.glob(os.path.join(SITE, "tools", "radar", "patches", "*.json"))):
+        name = os.path.basename(pf)
+        if name in done:
+            continue
+        try:
+            pt = json.load(open(pf, encoding="utf-8"))
+            dst = os.path.join("/opt/radar", pt.get("file", "radar.py"))
+            cur = open(dst, encoding="utf-8").read()
+        except Exception as e:
+            alert("patch-" + name, f"Правка {name} не применена: {e}", 24)
+            continue
+        if pt["new"] in cur:
+            done.append(name)
+            continue
+        if pt["old"] not in cur:
+            alert("patch-" + name, f"Правка {name}: не нашёл исходный текст в {os.path.basename(dst)}, пропускаю.", 24)
+            done.append(name)
+            continue
+        subprocess.run(["cp", "-p", dst, dst + ".prev"])
+        open(dst, "w", encoding="utf-8").write(cur.replace(pt["old"], pt["new"], 1))
+        subprocess.run(["chown", "radar:radar", dst])
+        if subprocess.run(["python3", "-m", "py_compile", dst]).returncode:
+            subprocess.run(["cp", "-p", dst + ".prev", dst])
+            alert("patch-" + name, f"Правка {name}: ошибка синтаксиса, вернул как было.", 24)
+            done.append(name)
+            continue
+        svc = pt.get("service", "radar")
+        subprocess.run(["systemctl", "restart", svc]); time.sleep(12)
+        if subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip() != "active":
+            subprocess.run(["cp", "-p", dst + ".prev", dst])
+            subprocess.run(["systemctl", "restart", svc])
+            alert("patch-" + name, f"Правка {name}: сервис не поднялся, вернул как было.", 24)
+        else:
+            tg(f"🔄 Ассистент обновлён: {pt.get('title') or name}")
+        done.append(name)
+
+
 def export_radar():
     """Копия radar.py с сервера в репозиторий (tools/radar/server/radar.py) без секретов: чтобы правки
     карточек и логики делались по точному коду. Ключи, токены, api_hash, телефоны вырезаются."""
@@ -426,6 +469,7 @@ def main():
             step("pull", pull)
             step("selfupdate", selfupdate)
             step("deploy", deploy_radar)
+            step("patch", patch_radar)
         if every("export", 30):
             step("export", export_radar)
         step("publications", publications)
