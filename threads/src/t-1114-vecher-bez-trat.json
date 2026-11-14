@@ -3,11 +3,10 @@
  "publish_at": "2026-11-14T19:00+04:00",
  "status": "approved",
  "audience": "дубай",
- "kind": "фото",
+ "kind": "вопрос",
  "format": "вопрос",
  "cta": "вопрос",
  "business": false,
  "theme": "цены",
- "inspired_by": "эталон: вопрос всему городу + живое фото",
- "image": "threads/photos/20261101-114629-946.jpg"
+ "inspired_by": "эталон: вопрос всему городу"
 }
