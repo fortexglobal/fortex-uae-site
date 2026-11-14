@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-14T09:17Z",
+ "checked": "2026-11-14T10:04Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18120102134073344",
+   "timestamp": "2026-11-14T09:31:24+0000",
+   "permalink": "https://www.instagram.com/reel/Dft44W0iqyX/",
+   "media_type": "VIDEO",
+   "caption": "Белая зарплата в Дубае, если работаешь онлайн.\nДеньги приход"
+  },
   {
    "id": "17917706706510895",
    "timestamp": "2026-11-13T09:31:02+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/p/DfCt-GGEeSw/",
    "media_type": "CAROUSEL_ALBUM",
    "caption": "Рабочую визу в Дубае и кредитную карту Emirates NBD можно оф"
-  },
-  {
-   "id": "18134785231743307",
-   "timestamp": "2026-10-28T15:04:13+0000",
-   "permalink": "https://www.instagram.com/reel/DfCteoHjLDl/",
-   "media_type": "VIDEO",
-   "caption": "Счёт для компании в ОАЭ: что банк проверит первым делом.\n\n1."
   }
  ]
 }
