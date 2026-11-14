@@ -1,5 +1,5 @@
 {
- "at": "2026-11-14T18:05+04:00",
+ "at": "2026-11-14T18:21+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -14,7 +14,7 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 296, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 361, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 502: {\n  \"message\": \"Server Error\"\n}\n\n"
   ]
  ],
- "openrouter_left": 4.55,
+ "openrouter_left": 4.54,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11",
