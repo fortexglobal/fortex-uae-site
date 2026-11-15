@@ -5,15 +5,15 @@
  "style": "A",
  "clips": [
   {
-   "stock": "dubai tram street",
+   "stock": "dubai souk market",
    "must": "dubai"
   },
   {
-   "stock": "man filling paper form",
+   "stock": "woman writing form clipboard",
    "must": ""
   },
   {
-   "stock": "bored man waiting chair",
+   "stock": "waiting room people",
    "must": ""
   },
   {
@@ -21,11 +21,11 @@
    "must": ""
   },
   {
-   "stock": "nurse taking blood pressure",
+   "stock": "doctor stethoscope",
    "must": ""
   },
   {
-   "stock": "dubai jbr beach sunset",
+   "stock": "dubai jumeirah beach",
    "must": "dubai"
   }
  ],
@@ -58,8 +58,9 @@
  "y": 900,
  "sounds": [],
  "sound": {
-  "q": "Darbuka Ritual",
-  "match": "darbuka"
+  "q": "How Beautiful This Life Is",
+  "match": "beautiful this life"
  },
- "caption": "Emirates ID в Дубае: сколько его ждать, если делать самому.\nПодал документы сам и ждёшь запись на отпечатки: могут дать через 2 дня, а могут через 2 недели. Чемодан пока лучше не разбирать.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты. С фастрэком медосмотр и отпечатки проходишь за один день, и через 3-4 дня Emirates ID уже на руках. Цена от 6 500 AED, фастрэк отдельно.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #virtualwork #визаоаэ #переездвдубай"
+ "caption": "Emirates ID в Дубае: сколько его ждать, если делать самому.\nПодал документы сам и ждёшь запись на отпечатки: могут дать через 2 дня, а могут через 2 недели. Чемодан пока лучше не разбирать.\n\nМы с командой делаем Virtual Work: резидентскую визу на год и Emirates ID без компании и зарплаты. С фастрэком медосмотр и отпечатки проходишь за один день, и через 3-4 дня Emirates ID уже на руках. Цена от 6 500 AED, фастрэк отдельно.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #virtualwork #визаоаэ #переездвдубай",
+ "rev": 2
 }
