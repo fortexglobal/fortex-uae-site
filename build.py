@@ -365,6 +365,25 @@ def build():
             + (f"<div class='row' style='margin:8px 0 24px'><a class='btn' href='{g_cta}'>{g_btn}</a></div>" if g_slug == "virtual-work" else "")
             + f"<div class='prose'>{md(open(g_md, encoding='utf-8').read())}</div>{cta}</div></section></main>", f"/{g_slug}/"))
 
+    # ---- посадочные под рекламу Meta (15.11): коротко, кнопка сразу, noindex ----
+    for l_slug, l_file, l_title, l_h1, l_lead, l_btn, l_cta in (
+        ("ipoteka", "ipoteka.md", "Рабочая виза для ипотеки в Дубае | Fortex UAE", "Рабочая виза для ипотеки в&nbsp;Дубае",
+         "Бесплатная консультация: посчитаем, какая нужна зарплата, сроки и стоимость под вашу квартиру.", "Получить консультацию", "/c/lp-ipoteka"),
+        ("vw", "vw.md", "Резидентство ОАЭ на год без смены работы | Fortex UAE", "Резидентство ОАЭ на&nbsp;год без&nbsp;смены работы",
+         "Виза Virtual Work и Emirates ID для удалёнщиков и фрилансеров. От вас паспорт и фото, остальное делаем мы.", "Узнать, подходит ли мне", "/c/lp-vw")):
+        l_md = os.path.join(ROOT, "content", "lp", l_file)
+        if not os.path.exists(l_md):
+            continue
+        btn = (f"<div class='row' style='margin:22px 0 6px'><a class='btn' href='{l_cta}'>{l_btn}</a></div>"
+               "<p class='muted' style='margin:0'>Бесплатно. Откроется Telegram @Fortex_Dubai</p>")
+        os.makedirs(os.path.join(OUT, "lp", l_slug), exist_ok=True)
+        open(os.path.join(OUT, "lp", l_slug, "index.html"), "w", encoding="utf-8").write(page(l_title, re.sub("<[^>]+>|&nbsp;", " ", l_lead),
+            f"<main><section class='sec'><div class='wrap narrow'><p class='eyebrow'>Fortex UAE · Дубай, с 2022 года</p>"
+            f"<h1 class='h1'>{l_h1}</h1><p class='lead'>{l_lead}</p>{btn}"
+            f"<div class='prose' style='margin-top:34px'>{md(open(l_md, encoding='utf-8').read())}</div>"
+            f"<div class='cta-box'><h3>Разберём ваш случай бесплатно</h3><p>Напишите в Telegram, ответим и посчитаем под вашу ситуацию.</p>"
+            f"<div class='row'><a class='btn' href='{l_cta}'>{l_btn}</a></div></div></div></section></main>", f"/lp/{l_slug}/", noindex=True))
+
     # ---- articles ----
     os.makedirs(os.path.join(OUT, "articles"), exist_ok=True)
     cards = "".join(article_card(a) for a in arts) or "<p class='muted'>Скоро здесь появятся статьи.</p>"
