@@ -1,5 +1,5 @@
 {
- "at": "2026-11-15T23:14+04:00",
+ "at": "2026-11-15T23:29+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -20,7 +20,7 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 395, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 460, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 409: {\"message\":\"is at d2136c631785af591023eb8df9b71fcf086113dd but expected e7b025e5ee40b2f5d0df733a3f8eb8a0831e1035\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#create-or-update-file\n"
   ]
  ],
- "openrouter_left": 4.51,
+ "openrouter_left": 4.5,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11",
@@ -127,7 +127,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 59.51202865,
+  "limit_remaining": 59.50586065,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -135,8 +135,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 40.48797135,
-    "remaining_usd": 59.51202865,
+    "spend_usd": 40.49413935,
+    "remaining_usd": 59.50586065,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -147,16 +147,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 40.48797135,
-   "remaining_usd": 59.51202865,
+   "spend_usd": 40.49413935,
+   "remaining_usd": 59.50586065,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 40.48797135,
-  "usage_daily": 0.02979,
-  "usage_weekly": 19.7124987,
-  "usage_monthly": 22.2438082,
+  "usage": 40.49413935,
+  "usage_daily": 0.035958,
+  "usage_weekly": 19.7186667,
+  "usage_monthly": 22.2499762,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -182,7 +182,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 491,
+  "lines": 486,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
