@@ -201,7 +201,7 @@ if(/^\/c\/|t\.me\//.test(h))fbq('track','Lead',{{content_name:p}});}},true);}})(
     <div>
       <a class="brand" href="/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX <b>UAE</b></span></a>
       <p class="muted">Банковские счета и финансовая инфраструктура в ОАЭ. Направление компании Fortex Global, Дубай.</p>
-      <p class="muted hours"><b>Часы работы:</b> пн–сб, 10:00–20:00 по Дубаю. Воскресенье выходной.</p>
+      <p class="muted hours"><b>Отвечаем:</b> каждый день, пишите в любое время.</p>
     </div>
     <div class="foot-links">
       <a href="{TG}">Telegram @Fortex_Dubai</a>
@@ -223,7 +223,7 @@ if(/^\/c\/|t\.me\//.test(h))fbq('track','Lead',{{content_name:p}});}},true);}})(
 FORM = f"""<section class="sec form-sec" id="form"><div class="wrap form-in">
   <div>
     <h2 class="h2">Расскажите о задаче, ответим в Telegram</h2>
-    <p class="lead">Ответим в Telegram в течение 20 минут в рабочее время (пн–сб, 10:00–20:00 по Дубаю). По договорённости встречаемся лично в Дубае. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
+    <p class="lead">Отвечаем в Telegram каждый день, пишите в любое время. Или сразу напишите нам: <a href="{TG}">@Fortex_Dubai</a>, либо <a href="{CAL}">запишитесь на звонок</a>.</p>
     {SOCIAL}
   </div>
   <form class="lead-form" name="lead" method="POST" data-netlify="true" netlify-honeypot="company_site" action="/spasibo/">
@@ -368,20 +368,19 @@ def build():
     # ---- посадочные под рекламу Meta (15.11): коротко, кнопка сразу, noindex ----
     for l_slug, l_file, l_title, l_h1, l_lead, l_btn, l_cta in (
         ("ipoteka", "ipoteka.md", "Рабочая виза для ипотеки в Дубае | Fortex UAE", "Рабочая виза для ипотеки в&nbsp;Дубае",
-         "Бесплатная консультация: посчитаем, какая нужна зарплата, сроки и стоимость под вашу квартиру.", "Получить консультацию", "/c/lp-ipoteka"),
-        ("vw", "vw.md", "Резидентство ОАЭ на год без смены работы | Fortex UAE", "Резидентство ОАЭ на&nbsp;год без&nbsp;смены работы",
-         "Виза Virtual Work и Emirates ID для удалёнщиков и фрилансеров. От вас паспорт и фото, остальное делаем мы.", "Узнать, подходит ли мне", "/c/lp-vw")):
+         "Бесплатная консультация. Задавайте любые вопросы, разберём вашу ситуацию и всё расскажем.", "Узнать подробнее", "/c/lp-ipoteka"),
+        ("vw", "vw.md", "Резидентство ОАЭ на год | Fortex UAE", "Резидентство ОАЭ на&nbsp;год",
+         "Виза Virtual Work и Emirates ID. Подходит всем: оформляется на фрилансера, удалённого сотрудника или предпринимателя. От вас паспорт и фото, остальное делаем мы.", "Узнать, подходит ли мне", "/c/lp-vw")):
         l_md = os.path.join(ROOT, "content", "lp", l_file)
         if not os.path.exists(l_md):
             continue
-        btn = (f"<div class='row' style='margin:22px 0 6px'><a class='btn' href='{l_cta}'>{l_btn}</a></div>"
-               "<p class='muted' style='margin:0'>Бесплатно. Откроется Telegram @Fortex_Dubai</p>")
+        btn = f"<div class='row' style='margin:22px 0 6px'><a class='btn' href='{l_cta}'>{l_btn}</a></div>"
         os.makedirs(os.path.join(OUT, "lp", l_slug), exist_ok=True)
         open(os.path.join(OUT, "lp", l_slug, "index.html"), "w", encoding="utf-8").write(page(l_title, re.sub("<[^>]+>|&nbsp;", " ", l_lead),
             f"<main><section class='sec'><div class='wrap narrow'><p class='eyebrow'>Fortex UAE · Дубай, с 2022 года</p>"
             f"<h1 class='h1'>{l_h1}</h1><p class='lead'>{l_lead}</p>{btn}"
             f"<div class='prose' style='margin-top:34px'>{md(open(l_md, encoding='utf-8').read())}</div>"
-            f"<div class='cta-box'><h3>Разберём ваш случай бесплатно</h3><p>Напишите в Telegram, ответим и посчитаем под вашу ситуацию.</p>"
+            f"<div class='cta-box'><h3>Разберём ваш случай бесплатно</h3><p>Напишите в Telegram, ответим и разберём вашу ситуацию.</p>"
             f"<div class='row'><a class='btn' href='{l_cta}'>{l_btn}</a></div></div></div></section></main>", f"/lp/{l_slug}/", noindex=True))
 
     # ---- articles ----

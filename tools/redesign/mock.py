@@ -37,7 +37,7 @@ def header():
     contacts = ('<a href="https://t.me/Fortex_Dubai"><b>Telegram @Fortex_Dubai</b><span>Ответим в течение часа</span></a>'
                 '<a href="/c/call"><b>Записаться на звонок</b><span>Zoom или Telegram</span></a>'
                 '<a href="tel:+971558194123"><b>+971 55 819 4123</b><span>Телефон. Удобнее всего писать в Telegram</span></a>'
-                '<a href="mailto:alexey@fortex-uae.com"><b>alexey@fortex-uae.com</b><span>Пн–сб, 10:00–20:00 по Дубаю</span></a>')
+                '<a href="mailto:alexey@fortex-uae.com"><b>alexey@fortex-uae.com</b><span>Пишите в любое время</span></a>')
     dd = lambda name, items, wide="": (f'<div class="nx-dd{wide}"><button type="button" aria-expanded="false">{name}<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>'
                                        f'<div class="nx-menu">{items}</div></div>')
     mob = (f'<details open><summary>Услуги</summary>{svcs}</details>'
@@ -87,7 +87,7 @@ def footer():
     <div class="nx-fcols">
       <div><a class="nx-logo" href="{B}/"><img src="/img/mark.png" alt="" width="30" height="30"><span>FORTEX</span><span class="nx-uae"><em>UAE</em></span></a>
         <p>Банковские счета и финансовая инфраструктура в ОАЭ. Направление компании Fortex Global, Дубай.</p>
-        <p class="nx-dim">Часы работы: пн–сб, 10:00–20:00 по Дубаю. Воскресенье выходной.</p></div>
+        <p class="nx-dim">Отвечаем каждый день, пишите в любое время.</p></div>
       <div><h4>Услуги</h4><a href="{B}/schet-v-banke-oae/">Счёт в банке ОАЭ</a><a href="{B}/rezidentstvo-oae/">Резидентство и ВНЖ</a><a href="{B}/kompaniya-v-dubae/">Компания в Дубае</a><a href="{B}/#cases">Кейсы</a></div>
       <div><h4>Связь</h4><a href="https://t.me/Fortex_Dubai">Telegram @Fortex_Dubai</a><a href="tel:+971558194123">+971 55 819 4123</a><a href="/c/call">Записаться на звонок</a><a href="mailto:alexey@fortex-uae.com">alexey@fortex-uae.com</a></div>
       <div><h4>Читать</h4><a href="{B}/articles/">Статьи</a><a href="{B}/privacy/">Политика конфиденциальности</a></div>
