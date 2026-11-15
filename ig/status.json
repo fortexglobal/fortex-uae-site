@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-15T09:18Z",
+ "checked": "2026-11-15T10:06Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18104004944642823",
+   "timestamp": "2026-11-15T09:30:35+0000",
+   "permalink": "https://www.instagram.com/reel/DfwdmYDDyEN/",
+   "media_type": "VIDEO",
+   "caption": "Emirates ID в Дубае: сколько его ждать, если делать самому.\n"
+  },
   {
    "id": "18120102134073344",
    "timestamp": "2026-11-14T09:31:24+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/DfH2s_-jcc0/",
    "media_type": "VIDEO",
    "caption": "Из пяти городов России запустили новые прямые рейсы «Победы»"
-  },
-  {
-   "id": "18079351760428261",
-   "timestamp": "2026-10-28T15:08:09+0000",
-   "permalink": "https://www.instagram.com/p/DfCt-GGEeSw/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Рабочую визу в Дубае и кредитную карту Emirates NBD можно оф"
   }
  ]
 }
