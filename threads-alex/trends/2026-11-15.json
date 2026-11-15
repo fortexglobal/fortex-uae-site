@@ -1,0 +1,15 @@
+{
+ "date": "2026-11-15",
+ "queries": ["падел Дубай", "жизнь в Дубае"],
+ "note": "Все 20 результатов пришли по «жизнь в Дубае», по «падел Дубай» пусто. Нерелевантные (Казахстан, вакансии в Европе, ТГ) отброшены.",
+ "top": [
+  {"username": "koen_permanent", "url": "https://www.threads.com/@koen_permanent/post/Dfu2zUEDAeK", "gist": "кто хочет неделю пожить в квартире в Creek Harbour, останется кошка", "technique": "короткий бытовой запрос с выгодой, легко ответить", "length": 110, "views": 39371, "replies": 87, "small_author_5k": true},
+  {"username": "dilik_dk", "url": "https://www.threads.com/@dilik_dk/post/Dfr71DmAm40", "gist": "что можете сказать о людях, близких к очень богатым", "technique": "открытый вопрос всем про деньги и людей, одна строка", "length": 80, "views": 238900, "replies": 336, "small_author_5k": false},
+  {"username": "simbad.dubai", "url": "https://www.threads.com/@simbad.dubai/post/DftkgcviHHg", "gist": "давайте знакомиться, комьюнити на JBR", "technique": "ветка-знакомство + самоирония", "length": 140, "views": 3046, "replies": 25, "small_author_5k": false},
+  {"username": "max.kolchanovv", "url": "https://www.threads.com/@max.kolchanovv/post/Dfr8_nOkWrZ", "gist": "в Дубае можно разучиться парковаться, валет везде", "technique": "наблюдение-привычка + вопрос «вы ещё сами?»", "length": 100, "views": 1132, "replies": 11, "small_author_5k": false},
+  {"username": "nergizstan", "url": "https://www.threads.com/@nergizstan/post/DfvAzKUkTQs", "gist": "ищу подруг, 11 месяцев в Дубае, Damac Hills 2", "technique": "знакомство с конкретикой района и срока", "length": 330, "views": 607, "replies": 9, "small_author_5k": false},
+  {"username": "serjcraft", "url": "https://www.threads.com/@serjcraft/post/Dft8Xm6kQky", "gist": "впечатления от спектакля в Дубае", "technique": "личное впечатление + «кто ещё был?»", "length": 520, "views": 2109, "replies": 15, "small_author_5k": false},
+  {"username": "lady_lucckk", "url": "https://www.threads.com/@lady_lucckk/post/DfvXmUdEZa6", "gist": "вопрос про отношения, почему так", "technique": "личная жалоба-вопрос, провоцирует советы", "length": 90, "views": 293, "replies": 23, "small_author_5k": false},
+  {"username": "mnc.off", "url": "https://www.threads.com/@mnc.off/post/DfunE6iEU4X", "gist": "неожиданная находка в крепости", "technique": "фото + одна строка удивления", "length": 70, "views": 700, "replies": 14, "small_author_5k": false}
+ ]
+}
