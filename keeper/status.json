@@ -1,5 +1,5 @@
 {
- "at": "2026-11-16T03:55+04:00",
+ "at": "2026-11-16T04:10+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -154,8 +154,8 @@
    "include_byok": false
   },
   "usage": 40.50320835,
-  "usage_daily": 0.045027,
-  "usage_weekly": 19.7277357,
+  "usage_daily": 0,
+  "usage_weekly": 0,
   "usage_monthly": 22.2590452,
   "byok_usage": 0,
   "byok_usage_daily": 0,
