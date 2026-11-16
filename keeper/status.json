@@ -1,5 +1,5 @@
 {
- "at": "2026-11-16T15:29+04:00",
+ "at": "2026-11-16T15:59+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -18,6 +18,12 @@
    "status",
    "RuntimeError: status push 409: {\"message\":\"is at d2136c631785af591023eb8df9b71fcf086113dd but expected e7b025e5ee40b2f5d0df733a3f8eb8a0831e1035\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#create-or-update-file",
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 395, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 460, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 409: {\"message\":\"is at d2136c631785af591023eb8df9b71fcf086113dd but expected e7b025e5ee40b2f5d0df733a3f8eb8a0831e1035\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#create-or-update-file\n"
+  ],
+  [
+   "16.11 15:44",
+   "status",
+   "RuntimeError: status push 500: ",
+   "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 395, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 460, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 500: \n"
   ]
  ],
  "openrouter_left": 4.44,
@@ -127,7 +133,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 59.44878655,
+  "limit_remaining": 59.44606555,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -135,8 +141,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 40.55121345,
-    "remaining_usd": 59.44878655,
+    "spend_usd": 40.55393445,
+    "remaining_usd": 59.44606555,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -147,16 +153,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 40.55121345,
-   "remaining_usd": 59.44878655,
+   "spend_usd": 40.55393445,
+   "remaining_usd": 59.44606555,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 40.55121345,
-  "usage_daily": 0.0480051,
-  "usage_weekly": 0.0480051,
-  "usage_monthly": 22.3070503,
+  "usage": 40.55393445,
+  "usage_daily": 0.0507261,
+  "usage_weekly": 0.0507261,
+  "usage_monthly": 22.3097713,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -182,7 +188,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 518,
+  "lines": 548,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
