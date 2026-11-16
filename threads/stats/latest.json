@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T08:20+04:00",
+ "generated": "2026-11-16T09:00+04:00",
  "posts": [
   {
    "slug": "t-1102-car-schet-posle-otkaza",
@@ -802,14 +802,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DfxDa0Zm-Tl",
    "kind": "фото",
    "text": "Дубайчане, каким СПОРТОМ вы начали заниматься ТОЛЬКО ПОСЛЕ ПЕРЕЕЗДА?\n\nКажется, тут каждый второй ушёл в ПАДЕЛ 👀",
-   "views": 153,
+   "views": 154,
    "likes": 1,
    "replies": 6,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 6,
-   "actions_per_1k": 39.2
+   "actions_per_1k": 39.0
   },
   {
    "slug": "t-1115-vw-samyi-deshevyi",
@@ -829,7 +829,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 686,
+  "views": 689,
   "likes": 4,
   "replies": 8,
   "reposts": 0,
@@ -837,7 +837,7 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 6007,
+  "views": 6010,
   "likes": 16,
   "replies": 34,
   "reposts": 0,
@@ -875,7 +875,7 @@
   },
   {
    "date": "2026-11-15",
-   "views": 352
+   "views": 355
   }
  ],
  "link_clicks_7d": [
@@ -903,7 +903,7 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 2,
- "views_1d": 352,
+ "views_1d": 355,
  "link_clicks_7d_total": 5,
  "by_kind": {
   "карусель": {
@@ -956,10 +956,10 @@
   },
   "фото": {
    "posts": 4,
-   "views": 543,
+   "views": 544,
    "replies": 11,
    "likes": 3,
-   "avg_views": 135.8,
+   "avg_views": 136.0,
    "avg_replies": 2.75
   },
   "знакомства": {
