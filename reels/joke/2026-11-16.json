@@ -5,27 +5,27 @@
  "style": "V",
  "clips": [
   {
-   "stock": "dubai creek abra boat",
+   "stock": "burj khalifa fountain",
    "must": "dubai"
   },
   {
-   "stock": "man looking window snow",
+   "stock": "snow street winter walking",
    "must": ""
   },
   {
-   "stock": "woman phone call surprised",
+   "stock": "airport departure board",
    "must": ""
   },
   {
-   "stock": "video call laptop home",
+   "stock": "woman typing laptop home",
    "must": ""
   },
   {
-   "stock": "counting dollar bills",
+   "stock": "cash money counting",
    "must": ""
   },
   {
-   "stock": "dubai metro train inside",
+   "stock": "dubai tram",
    "must": "dubai"
   }
  ],
@@ -58,8 +58,9 @@
  "y": 900,
  "sounds": [],
  "sound": {
-  "q": "Darbuka Ritual",
-  "match": "darbuka"
+  "q": "Overprotected",
+  "match": "overprotected"
  },
- "caption": "Счёт в банке ОАЭ без Emirates ID и без прилёта в Дубай.\nДеньги хочется держать в ОАЭ.\nА прилететь пока не получается.\n\nЭто редкая услуга: мы с командой открываем личный счёт нерезиденту в банке ОАЭ, очно в Дубае или полностью онлайн. Цена от 4 000 USD, и сразу скажу: остальные наши услуги заметно дешевле. Пиши мне «СЧЁТ» в директ или в Telegram @Fortex_Dubai, подберу банк под задачу.\n\nfortex-uae.com\n\n#дубай #оаэ #счетвбанке #банкоаэ #деньгивдубае"
+ "caption": "Счёт в банке ОАЭ без Emirates ID и без прилёта в Дубай.\nДеньги хочется держать в ОАЭ.\nА прилететь пока не получается.\n\nЭто редкая услуга: мы с командой открываем личный счёт нерезиденту в банке ОАЭ, очно в Дубае или полностью онлайн. Цена от 4 000 USD, и сразу скажу: остальные наши услуги заметно дешевле. Пиши мне «СЧЁТ» в директ или в Telegram @Fortex_Dubai, подберу банк под задачу.\n\nfortex-uae.com\n\n#дубай #оаэ #счетвбанке #банкоаэ #деньгивдубае",
+ "rev": 1
 }
