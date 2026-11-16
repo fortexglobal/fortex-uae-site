@@ -1,24 +1,27 @@
 {
- "updated": "2026-11-16 17:00",
+ "updated": "2026-11-16 20:00",
  "started": {
   "direct": 1,
   "c5": 3,
   "c3": 5,
   "c1": 1,
-  "c2": 1
+  "c2": 1,
+  "c4": 1
  },
  "finished": {
   "direct": 1,
-  "c3": 1
+  "c3": 1,
+  "c4": 1
  },
  "with_text": {},
  "topics": {
   "kids": 1,
-  "home": 1
+  "home": 1,
+  "meet": 1
  },
  "stay": {
   "m1": 1,
-  "y2": 1
+  "y2": 2
  },
  "texts": []
 }
