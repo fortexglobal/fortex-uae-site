@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T08:21+04:00",
+ "generated": "2026-11-17T08:28+04:00",
  "posts": [
   {
    "slug": "t-1103-car-schet-pasport-rf",
@@ -850,6 +850,7 @@
  ],
  "link_clicks_7d": [
   {
+   "id": "17841423681889725/insights/clicks/day",
    "name": "clicks",
    "period": "day",
    "title": "clicks",
@@ -867,8 +868,7 @@
      "value": 0,
      "link_url": "https://t.me/Fortex_Dubai"
     }
-   ],
-   "id": "17841423681889725/insights/clicks/day"
+   ]
   }
  ],
  "followers_gain_1d": 0,
