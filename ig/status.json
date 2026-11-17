@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-17T08:28Z",
+ "checked": "2026-11-17T09:33Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18120547487008249",
+   "timestamp": "2026-11-17T09:31:04+0000",
+   "permalink": "https://www.instagram.com/reel/Df1nM6FJTMW/",
+   "media_type": "VIDEO",
+   "caption": "Виза в Дубай на год и Emirates ID: какие документы нужны.\nСо"
+  },
   {
    "id": "18112373212933756",
    "timestamp": "2026-11-16T09:30:47+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/reel/DfKbfiZAkvp/",
    "media_type": "VIDEO",
    "caption": "Банк ОАЭ отказал? Почти всегда дело не в паспорте, а в подач"
-  },
-  {
-   "id": "18338247562275554",
-   "timestamp": "2026-10-30T15:07:53+0000",
-   "permalink": "https://www.instagram.com/p/DfH3hhYnPic/",
-   "media_type": "CAROUSEL_ALBUM",
-   "caption": "Минфин ОАЭ смягчил правила электронных счетов (e-invoicing)."
   }
  ]
 }
