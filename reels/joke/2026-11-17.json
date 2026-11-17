@@ -5,27 +5,27 @@
  "style": "A",
  "clips": [
   {
-   "stock": "woman holding passport",
+   "stock": "passport travel hand",
    "must": ""
   },
   {
-   "stock": "stack paper folders office",
+   "stock": "paper documents pile",
    "must": ""
   },
   {
-   "stock": "photocopier making copies",
+   "stock": "graduation diploma",
    "must": ""
   },
   {
-   "stock": "passport photo camera portrait",
+   "stock": "photographer camera studio",
    "must": ""
   },
   {
-   "stock": "dubai rooftop cafe laptop",
-   "must": "dubai"
+   "stock": "man laptop terrace",
+   "must": ""
   },
   {
-   "stock": "dubai metro inside",
+   "stock": "dubai metro",
    "must": "dubai"
   }
  ],
@@ -58,8 +58,10 @@
  "y": 900,
  "sounds": [],
  "sound": {
-  "q": "Darbuka Ritual",
-  "match": "darbuka"
+  "q": "Ледяное сердце",
+  "match": "ледяное сердце",
+  "id": "25296432873347664"
  },
- "caption": "Виза в Дубай на год и Emirates ID: какие документы нужны.\nСобрал папку справок, перевёл, заверил, положил даже школьный аттестат. А пригодились паспорт и фото.\n\nМы с командой делаем Virtual Work: резидентскую визу ОАЭ на год и Emirates ID без компании и без зарплаты, ты сам себе спонсор. Из документов только паспорт и фото, остальное берём на себя. Цена от 6 500 AED, фастрэк отдельно.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #virtualwork #визаоаэ #жизньвдубае"
+ "caption": "Виза в Дубай на год и Emirates ID: какие документы нужны.\nСобрал папку справок, перевёл, заверил, положил даже школьный аттестат. А пригодились паспорт и фото.\n\nМы с командой делаем Virtual Work: резидентскую визу ОАЭ на год и Emirates ID без компании и без зарплаты, ты сам себе спонсор. Из документов только паспорт и фото, остальное берём на себя. Цена от 6 500 AED, фастрэк отдельно.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #virtualwork #визаоаэ #жизньвдубае",
+ "rev": 2
 }
