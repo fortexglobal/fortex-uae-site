@@ -1,0 +1,90 @@
+{
+ "date": "2026-11-17",
+ "queries": [
+  "аренда Дубай",
+  "Дубай юмор"
+ ],
+ "note": "Все 20 результатов пришли по «аренда Дубай». Объявления, Грузия/Казахстан/СПб отброшены.",
+ "top": [
+  {
+   "username": "theonufrienko",
+   "url": "https://www.threads.com/@theonufrienko/post/DfyvQZXjCld",
+   "gist": "хочу на Фуджейру посмотреть светящийся планктон, где и во сколько",
+   "technique": "просьба совета у всего Дубая про поездку за город",
+   "length": 150,
+   "views": 29613,
+   "replies": 31,
+   "small_author_5k": true
+  },
+  {
+   "username": "takirast",
+   "url": "https://www.threads.com/@takirast/post/DfzBj1ECLFn",
+   "gist": "вакансии в турагентстве Дубая с зарплатой и жильём",
+   "technique": "конкретные цифры + слово-триггер «пишите ПУТЕШЕСТВИЕ»",
+   "length": 520,
+   "views": 3878,
+   "replies": 36,
+   "small_author_5k": false
+  },
+  {
+   "username": "laskataya",
+   "url": "https://www.threads.com/@laskataya/post/Dfz2tpHDFPe",
+   "gist": "как мы оказались там, где аренда в Новосибирске 150 тыс.",
+   "technique": "одна строка-возмущение ценой аренды",
+   "length": 80,
+   "views": 3237,
+   "replies": 16,
+   "small_author_5k": false
+  },
+  {
+   "username": "malinovsky_career",
+   "url": "https://www.threads.com/@malinovsky_career/post/Dfyl5FyAlTM",
+   "gist": "как CFO в Дубае получила оффер +75%",
+   "technique": "кейс с цифрой в заголовке",
+   "length": 420,
+   "views": 1261,
+   "replies": 0,
+   "small_author_5k": false
+  },
+  {
+   "username": "nikaako",
+   "url": "https://www.threads.com/@nikaako/post/Dfx3qwkjyjk",
+   "gist": "Дубай, встречай, куда сходить",
+   "technique": "новичок просит совета, легко ответить",
+   "length": 75,
+   "views": 885,
+   "replies": 11,
+   "small_author_5k": false
+  },
+  {
+   "username": "ksenia_mors",
+   "url": "https://www.threads.com/@ksenia_mors/post/DfwISZYiBjv",
+   "gist": "кто реально купил недвижимость со скидкой, сколько просили и за сколько взяли",
+   "technique": "сбор реальных историй про деньги",
+   "length": 250,
+   "views": 900,
+   "replies": 3,
+   "small_author_5k": false
+  },
+  {
+   "username": "_just.place_",
+   "url": "https://www.threads.com/@_just.place_/post/Dfy56IrkdJq",
+   "gist": "ищу любую работу в Дубае",
+   "technique": "самоирония в запросе",
+   "length": 170,
+   "views": 368,
+   "replies": 2,
+   "small_author_5k": false
+  },
+  {
+   "username": "odinets01",
+   "url": "https://www.threads.com/@odinets01/post/DfyrCyOEcHj",
+   "gist": "что выгоднее: доллары или сразу дирхамы",
+   "technique": "практичный вопрос про деньги в одну строку",
+   "length": 120,
+   "views": 319,
+   "replies": 4,
+   "small_author_5k": false
+  }
+ ]
+}
