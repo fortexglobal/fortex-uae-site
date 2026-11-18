@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T04:00Z",
+ "generated": "2026-11-18T04:02Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,37 +10,37 @@
   {
    "name": "Direct traffic",
    "v": [
-    186.0,
-    98.0,
-    40.3,
-    172.1
+    195.0,
+    104.0,
+    42.6,
+    164.2
    ]
   },
   {
    "name": "Recommendation system traffic",
    "v": [
-    114.0,
-    114.0,
-    73.7,
-    11.9
+    127.0,
+    127.0,
+    76.4,
+    10.7
    ]
   },
   {
    "name": "Ad traffic",
    "v": [
-    68.0,
-    66.0,
+    76.0,
+    74.0,
     88.2,
-    2.1
+    2.2
    ]
   },
   {
    "name": "Social network traffic",
    "v": [
-    28.0,
-    28.0,
-    14.3,
-    20.2
+    29.0,
+    29.0,
+    17.2,
+    19.6
    ]
   },
   {
@@ -75,19 +75,19 @@
   {
    "name": "Yandex Zen",
    "v": [
-    114.0,
-    114.0,
-    73.7,
-    11.9
+    127.0,
+    127.0,
+    76.4,
+    10.7
    ]
   },
   {
    "name": "Instagram",
    "v": [
-    68.0,
-    66.0,
+    76.0,
+    74.0,
     88.2,
-    2.1
+    2.2
    ]
   },
   {
@@ -111,10 +111,10 @@
   {
    "name": "instagram.com",
    "v": [
-    2.0,
-    2.0,
-    50.0,
-    8.5
+    3.0,
+    3.0,
+    66.7,
+    5.7
    ]
   },
   {
@@ -149,26 +149,26 @@
   {
    "name": "telegram / None / channel",
    "v": [
-    80.0,
-    80.0,
-    66.2,
-    33.8
+    93.0,
+    93.0,
+    71.0,
+    29.0
    ]
   },
   {
    "name": "ig / paid / 120252594854050776",
    "v": [
-    50.0,
-    49.0,
-    94.0,
-    1.0
+    55.0,
+    54.0,
+    92.7,
+    1.4
    ]
   },
   {
    "name": "ig / paid / 120252594724350776",
    "v": [
-    13.0,
-    12.0,
+    16.0,
+    15.0,
     100.0,
     0.0
    ]
@@ -192,6 +192,15 @@
    ]
   },
   {
+   "name": "ig / social / None",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "instagram / social / bio",
    "v": [
     1.0,
@@ -205,10 +214,10 @@
   {
    "name": "https://instagram.com/",
    "v": [
-    56.0,
-    54.0,
-    94.6,
-    0.9
+    61.0,
+    59.0,
+    93.4,
+    1.2
    ]
   },
   {
@@ -252,6 +261,15 @@
    "v": [
     15.0,
     15.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6afc6dae8273846d47e2f226",
+   "v": [
+    13.0,
+    13.0,
     100.0,
     0.0
    ]
@@ -338,6 +356,15 @@
    ]
   },
   {
+   "name": "https://l.instagram.com/",
+   "v": [
+    3.0,
+    3.0,
+    66.7,
+    5.7
+   ]
+  },
+  {
    "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6af333378ab6d5617772437d",
    "v": [
     2.0,
@@ -362,15 +389,6 @@
     2.0,
     50.0,
     28.0
-   ]
-  },
-  {
-   "name": "https://l.instagram.com/",
-   "v": [
-    2.0,
-    2.0,
-    50.0,
-    8.5
    ]
   },
   {
@@ -432,19 +450,19 @@
   {
    "name": "dzen.ru",
    "v": [
-    114.0,
-    114.0,
-    73.7,
-    11.9
+    127.0,
+    127.0,
+    76.4,
+    10.7
    ]
   },
   {
    "name": "instagram.com",
    "v": [
-    56.0,
-    54.0,
-    94.6,
-    0.9
+    61.0,
+    59.0,
+    93.4,
+    1.2
    ]
   },
   {
@@ -477,10 +495,10 @@
   {
    "name": "l.instagram.com",
    "v": [
-    2.0,
-    2.0,
-    50.0,
-    8.5
+    3.0,
+    3.0,
+    66.7,
+    5.7
    ]
   },
   {
@@ -515,10 +533,10 @@
   {
    "name": "https://fortex-uae.com/",
    "v": [
-    162.0,
-    104.0,
-    46.3,
-    120.4
+    165.0,
+    106.0,
+    46.7,
+    118.2
    ]
   },
   {
@@ -549,12 +567,30 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/articles/skolko-svoih-deneg-nuzhno-na-ipoteku-v-dubae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6afc6dae8273846d47e2f226",
+   "v": [
+    13.0,
+    13.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/kak-platit-za-kvartiru-v-dubae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae76ab6700f2561a07c948c",
    "v": [
     10.0,
     10.0,
     50.0,
     12.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/lp/ipoteka/",
+   "v": [
+    10.0,
+    10.0,
+    80.0,
+    49.1
    ]
   },
   {
@@ -573,6 +609,15 @@
     4.0,
     0.0,
     88.4
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/lp/vw/",
+   "v": [
+    8.0,
+    1.0,
+    37.5,
+    78.4
    ]
   },
   {
@@ -612,15 +657,6 @@
    ]
   },
   {
-   "name": "https://fortex-uae.com/lp/vw/",
-   "v": [
-    6.0,
-    1.0,
-    16.7,
-    104.5
-   ]
-  },
-  {
    "name": "https://fortex-uae.com/virtual-work/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6afb1c2c5e7abc68b0135216",
    "v": [
     6.0,
@@ -645,15 +681,6 @@
     5.0,
     100.0,
     0.0
-   ]
-  },
-  {
-   "name": "https://fortex-uae.com/lp/ipoteka/",
-   "v": [
-    5.0,
-    5.0,
-    60.0,
-    98.2
    ]
   },
   {
@@ -807,6 +834,15 @@
     1.0,
     0.0,
     15.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadqqmzd4mevy56H3Eh7kwj4mL1K-ksYKfQNsRmH4qFcSQqeAM3CL01Na8nj2A_aem_vrWg8qheW82ZF7GLIe9bmA",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
    ]
   },
   {
@@ -1033,51 +1069,33 @@
     100.0,
     0.0
    ]
-  },
-  {
-   "name": "https://fortex-uae.com/lp/ipoteka/?fbclid=PAZXh0bgNhZW0BMABwZG9mAmFkaWQBqzkaY2LtmHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpw8wGAm8Z0qr8R8BaXi75tlt-fGbBKi-wvxtW-qLIJDM1KbFSFcN_BYlY_hi_aem_3og7Sq0chpKMS06PxNUvYw&utm_id=120252594724350776",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "https://fortex-uae.com/lp/ipoteka/?fbclid=PAZXh0bgNhZW0BMABwZG9mAmZkaWQWUSTUStNKT8KU7orO1fi7UFJY7Q8ewmFkaWQBqzkZD4nj-HNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpzUQCoYCmRRbluR9RBrTyUUVE2XTLKmees6Z2J0rDn6PdOyftRSfEGxSM9FR_aem_HL1AaeL_9uyBKlcon4IIxQ&utm_id=120252594724350776",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
   }
  ],
  "country_city": [
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    146.0,
-    80.0,
-    52.1,
-    122.4
+    157.0,
+    91.0,
+    54.8,
+    114.0
    ]
   },
   {
    "name": "Russia / None",
    "v": [
-    110.0,
-    110.0,
-    76.4,
-    5.4
+    123.0,
+    123.0,
+    78.9,
+    4.9
    ]
   },
   {
    "name": "United States / None",
    "v": [
-    33.0,
-    33.0,
-    93.9,
+    34.0,
+    34.0,
+    94.1,
     0.8
    ]
   },
@@ -1093,10 +1111,19 @@
   {
    "name": "United Arab Emirates / Sharjah",
    "v": [
-    23.0,
+    25.0,
     9.0,
-    26.1,
-    609.0
+    32.0,
+    560.3
+   ]
+  },
+  {
+   "name": "United Arab Emirates / Abu Dhabi",
+   "v": [
+    21.0,
+    13.0,
+    42.9,
+    133.8
    ]
   },
   {
@@ -1106,15 +1133,6 @@
     15.0,
     15.0,
     38.5
-   ]
-  },
-  {
-   "name": "United Arab Emirates / Abu Dhabi",
-   "v": [
-    19.0,
-    12.0,
-    42.1,
-    147.7
    ]
   },
   {
@@ -1149,6 +1167,15 @@
    "v": [
     3.0,
     3.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "India / None",
+   "v": [
+    2.0,
+    2.0,
     100.0,
     0.0
    ]
@@ -1190,6 +1217,15 @@
    ]
   },
   {
+   "name": "Australia / Perth",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "Brazil / Rio Claro",
    "v": [
     1.0,
@@ -1223,15 +1259,6 @@
     1.0,
     0.0,
     15.0
-   ]
-  },
-  {
-   "name": "India / None",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
    ]
   },
   {
@@ -1361,6 +1388,15 @@
    ]
   },
   {
+   "name": "Spain / None",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "Sweden / Stockholm",
    "v": [
     1.0,
@@ -1374,37 +1410,37 @@
   {
    "name": "Recommendation system traffic / None",
    "v": [
-    107.0,
-    107.0,
-    78.5,
-    5.2
+    120.0,
+    120.0,
+    80.8,
+    4.6
    ]
   },
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    80.0,
-    23.0,
-    27.5,
-    167.0
+    84.0,
+    27.0,
+    31.0,
+    159.1
    ]
   },
   {
    "name": "Ad traffic / Dubai",
    "v": [
-    52.0,
-    50.0,
-    94.2,
-    1.0
+    59.0,
+    57.0,
+    93.2,
+    1.3
    ]
   },
   {
    "name": "Direct traffic / None",
    "v": [
-    35.0,
-    35.0,
-    85.7,
-    4.0
+    37.0,
+    37.0,
+    86.5,
+    3.8
    ]
   },
   {
@@ -1419,10 +1455,10 @@
   {
    "name": "Direct traffic / Sharjah",
    "v": [
-    20.0,
+    22.0,
     6.0,
-    20.0,
-    699.0
+    27.3,
+    635.4
    ]
   },
   {
@@ -1437,19 +1473,19 @@
   {
    "name": "Direct traffic / Abu Dhabi",
    "v": [
-    10.0,
+    11.0,
     4.0,
-    10.0,
-    116.2
+    9.1,
+    105.8
    ]
   },
   {
    "name": "Ad traffic / None",
    "v": [
-    7.0,
-    7.0,
-    28.6,
-    13.6
+    8.0,
+    8.0,
+    37.5,
+    11.9
    ]
   },
   {
@@ -1736,28 +1772,28 @@
   {
    "name": "PC / Google Chrome",
    "v": [
-    157.0,
-    146.0,
-    70.7,
-    35.7
+    171.0,
+    160.0,
+    73.1,
+    32.7
    ]
   },
   {
    "name": "Smartphones / Mobile Safari",
    "v": [
-    154.0,
-    71.0,
-    30.5,
-    203.3
+    166.0,
+    80.0,
+    34.9,
+    188.6
    ]
   },
   {
    "name": "Smartphones / Android Browser",
    "v": [
-    55.0,
-    53.0,
-    94.5,
-    0.9
+    60.0,
+    58.0,
+    93.3,
+    1.2
    ]
   },
   {
@@ -1799,10 +1835,10 @@
   {
    "name": "PC / Edge",
    "v": [
-    1.0,
-    1.0,
+    2.0,
+    2.0,
     100.0,
-    2.0
+    1.0
    ]
   },
   {
@@ -1907,12 +1943,30 @@
    ]
   },
   {
+   "name": "2026-11-17 / Ad traffic",
+   "v": [
+    14.0,
+    14.0,
+    85.7,
+    2.8
+   ]
+  },
+  {
    "name": "2026-10-31 / Direct traffic",
    "v": [
     13.0,
     6.0,
     30.8,
     920.4
+   ]
+  },
+  {
+   "name": "2026-11-17 / Recommendation system traffic",
+   "v": [
+    13.0,
+    13.0,
+    100.0,
+    0.0
    ]
   },
   {
@@ -1931,6 +1985,15 @@
     11.0,
     45.5,
     71.0
+   ]
+  },
+  {
+   "name": "2026-11-17 / Direct traffic",
+   "v": [
+    11.0,
+    8.0,
+    90.9,
+    0.2
    ]
   },
   {
@@ -2021,15 +2084,6 @@
     6.0,
     83.3,
     4.0
-   ]
-  },
-  {
-   "name": "2026-11-17 / Ad traffic",
-   "v": [
-    6.0,
-    6.0,
-    83.3,
-    2.3
    ]
   },
   {
@@ -2178,15 +2232,6 @@
   },
   {
    "name": "2026-11-16 / None",
-   "v": [
-    2.0,
-    2.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "2026-11-17 / Direct traffic",
    "v": [
     2.0,
     2.0,
@@ -2436,25 +2481,43 @@
     100.0,
     0.0
    ]
+  },
+  {
+   "name": "2026-11-17 / None",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "2026-11-17 / Social network traffic",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
   }
  ],
  "new_vs_return": [
   {
    "name": "New users",
    "v": [
-    318.0,
-    318.0,
-    66.0,
-    31.6
+    347.0,
+    347.0,
+    68.6,
+    29.0
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    99.0,
+    102.0,
     19.0,
-    25.3,
-    296.1
+    26.5,
+    287.4
    ]
   }
  ]
