@@ -2,7 +2,7 @@ name: Telegraph publish
 on:
   workflow_dispatch:
   push:
-    paths: ["telegraph/*.html"]
+    paths: ["telegraph/*.html", "content/articles/*.md"]
 permissions:
   contents: write
 jobs:
