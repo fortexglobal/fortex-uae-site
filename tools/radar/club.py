@@ -1,5 +1,5 @@
 """Бот закрытого клуба (решение Александра 18.11): деловая мужская аудитория, первый вечер сигарный.
-Человек отвечает на 6 вопросов -> владельцу приходит карточка с кнопками 1 / 2 / 3 (кого звать первым).
+Человек отвечает на 7 вопросов, видит свою карточку-интро -> владельцу приходит карточка с кнопками 1 / 2 / 3 (кого звать первым).
 Каждая заявка и уровень пишутся в Google Таблицу (CRM, лист «Клуб: заявки») через веб-хук Apps Script (файл gcal_hook).
 Метка рекламы: https://t.me/<бот>?start=<метка>.  Команды владельца: /club (сводка), /export (файл).
 Конфиг: /opt/radar/club.env (CLUB_TOKEN=..., CLUB_NAME=...)   Запуск: systemd club.service
@@ -27,22 +27,47 @@ ENV = env()
 API = f"https://api.telegram.org/bot{ENV['CLUB_TOKEN']}/"
 NAME = ENV.get("CLUB_NAME") or "DXB Club"
 
-JOB = [("own", "Свой бизнес"), ("inv", "Инвестиции"), ("top", "Топ-менеджмент"), ("oth", "Другое")]
-SPHERE = [("re", "Недвижимость"), ("fin", "Крипта и финансы"), ("it", "IT"), ("trade", "Торговля и ВЭД"), ("oth", "Другое")]
-TEAM = [("s", "До 10 человек"), ("m", "10–50"), ("l", "Больше 50"), ("solo", "Работаю один")]
-SEEK = [("partners", "Партнёров"), ("invest", "Инвестиции"), ("clients", "Клиентов"), ("circle", "Круг общения")]
-LIKES = [("cigar", "Сигары"), ("track", "Автодром"), ("golf", "Гольф"), ("padel", "Падел"), ("yacht", "Яхта")]
-L = {k: v for lst in (JOB, SPHERE, TEAM, SEEK, LIKES) for k, v in lst}
+JOB = [("dxb", "Свой бизнес в Дубае"), ("ru", "Свой бизнес в России и СНГ"), ("world", "Свой бизнес в другой стране"),
+       ("inv", "Инвестирую"), ("top", "Топ-менеджмент"), ("emp_dxb", "Работаю по найму в Дубае"),
+       ("emp", "Работаю по найму в другой стране"), ("cons", "Консалтинг, эксперт"), ("oth", "Другое")]
+SPHERE = [("re", "Недвижимость"), ("build", "Строительство"), ("crypto", "Крипта и финтех"), ("fin", "Финансы"),
+          ("it", "IT"), ("trade", "Торговля и ВЭД"), ("log", "Логистика"), ("prod", "Производство"),
+          ("ecom", "E-commerce"), ("mkt", "Маркетинг и медиа"), ("horeca", "Рестораны, HoReCa"), ("med", "Медицина, бьюти"),
+          ("auto", "Авто"), ("law", "Право, консалтинг"), ("edu", "Образование"), ("oth", "Другое")]
+TEAM = [("solo", "Работаю один"), ("s", "До 10 человек"), ("m", "10–50 человек"), ("l", "Больше 50 человек")]
+SEEK = [("partners", "Партнёров для бизнеса"), ("invest", "Инвестиции в свой проект"), ("capital", "Куда вложить капитал"),
+        ("clients", "Новых клиентов"), ("markets", "Выход на новые рынки"), ("circle", "Сильное окружение в Дубае"),
+        ("exp", "Обмен опытом с предпринимателями"), ("people", "Интересные знакомства")]
+LIKES = [("cigar", "Сигары"), ("track", "Автодром"), ("golf", "Гольф"), ("padel", "Падел"), ("yacht", "Яхты"),
+         ("tennis", "Теннис"), ("run", "Бег, триатлон"), ("fight", "Единоборства"), ("travel", "Путешествия"),
+         ("fish", "Рыбалка"), ("kite", "Кайт, сёрф"), ("chess", "Шахматы")]
+L = {}
+for _lst in (JOB, SPHERE, TEAM, SEEK, LIKES):
+    for _k, _v in _lst:
+        L.setdefault(_k, _v)
+LBL = {"job": dict(JOB), "sphere": dict(SPHERE), "team": dict(TEAM), "seek": dict(SEEK), "likes": dict(LIKES)}
+INTRO_MAX = 300
 
-WELCOME = (f"<b>{NAME}</b>\n\n"
-           "Клуб международных предпринимателей и инвесторов в Дубае.\n\n"
+WELCOME = (f"<b>{NAME}</b>\n"
+           "<i>Клуб международных предпринимателей и инвесторов в Дубае</i>\n\n"
+           "Закрытые встречи в небольшом кругу: сигарные вечера, автодром, гольф, падел.\n\n"
            "Первая встреча: сигарный вечер в лаунже, 12–16 человек. Каждый платит за себя по меню.\n\n"
-           "Вход по заявке. Дату пришлём, когда наберётся группа.")
-STEPS = [("job", "<b>1 из 6.</b> Чем занимаетесь?", JOB), ("sphere", "<b>2 из 6.</b> Сфера?", SPHERE),
-         ("team", "<b>3 из 6.</b> Размер команды?", TEAM), ("seek", "<b>4 из 6.</b> Что сейчас ищете?", SEEK)]
-Q_LIKES = "<b>5 из 6.</b> Что ещё интересно? Можно несколько, потом «Готово»"
-Q_ABOUT = ("<b>6 из 6.</b> Пара слов о себе или ссылка на Instagram, чтобы мы понимали, кого сажаем рядом.\n\n"
-           "<i>Например: девелопмент в Дубае, 8 лет в ОАЭ</i>")
+           "Вход по заявке. Анкета займёт 2 минуты.")
+MULTI = "\n\n<i>Можно выбрать несколько, потом «Готово»</i>"
+# ключ, вопрос, варианты, несколько ответов, кнопок в ряд
+STEPS = [("job", "<b>1 из 7.</b> Чем занимаетесь?" + MULTI, JOB, True, 1),
+         ("sphere", "<b>2 из 7.</b> В каких сферах?" + MULTI, SPHERE, True, 2),
+         ("team", "<b>3 из 7.</b> Размер команды или компании?", TEAM, False, 1),
+         ("seek", "<b>4 из 7.</b> Что сейчас ищете?" + MULTI, SEEK, True, 1),
+         ("likes", "<b>5 из 7.</b> Хобби и интересы. Под них подбираем встречи" + MULTI, LIKES, True, 2)]
+Q_INTRO = ("<b>6 из 7. Ваше интро</b>\n\n"
+           "Несколько строк о себе: чем занимаетесь, чем можете быть полезны, чем увлекаетесь. "
+           f"До {INTRO_MAX} знаков, длиннее обрежется.\n\n"
+           "<i>Например: Вожу промышленное оборудование из Китая в Россию и Казахстан. 6 лет в Дубае, "
+           "вложился в два офисных проекта. Помогу с логистикой и таможней. Играю в падел, люблю автодром.</i>")
+Q_IG = ("<b>7 из 7. Ваш Instagram</b>\n\n"
+        "Так нам проще понять, кого с кем познакомить и на какую встречу позвать. Это видят только организаторы.\n\n"
+        "<i>Пришлите ник, например @ivan.petrov</i>")
 DONE = ("<b>Заявка принята ✅</b>\n\n"
         "Когда наберётся группа, пришлю дату и место. Места получают те, кто подтвердит первым.")
 
@@ -86,26 +111,85 @@ def tg(st, uid):
     return f"@{st['username']}" if st.get("username") else f'<a href="tg://user?id={uid}">{esc(st.get("name") or uid)}</a>'
 
 
+def lst(v):
+    return v if isinstance(v, list) else ([v] if v else [])
+
+
+def names(st, key, low=False):
+    out = [L.get(x, x) for x in lst(st.get(key))]
+    if low:
+        out = [x[:1].lower() + x[1:] if not x[:2].isupper() else x for x in out]
+    return out
+
+
+def about_full(st):
+    parts = [st.get("intro") or st.get("about") or ""]
+    if st.get("ig"):
+        parts.append("Instagram: " + st["ig"])
+    return "\n".join(p for p in parts if p)
+
+
 def row(st, uid):
     return [st.get("level") or "", st.get("at", ""), st.get("name") or "", ("@" + st["username"]) if st.get("username") else "",
-            L.get(st.get("job"), ""), L.get(st.get("sphere"), ""), L.get(st.get("team"), ""), L.get(st.get("seek"), ""),
-            ", ".join(L.get(x, x) for x in st.get("likes", [])), st.get("about", ""), st.get("src", ""), str(uid)]
+            ", ".join(names(st, "job")), ", ".join(names(st, "sphere")), ", ".join(names(st, "team")),
+            ", ".join(names(st, "seek")), ", ".join(names(st, "likes")), about_full(st), st.get("src", ""), str(uid)]
+
+
+LINE = "━━━━━━━━━━━━━━"
+
+
+def member_card(st):
+    out = [LINE, f"<b>{esc(NAME)} · Интро</b>", "", f"<b>{esc(st.get('name') or 'Участник')}</b>"]
+    if names(st, "job"):
+        out.append(esc(" · ".join(names(st, "job"))))
+    if names(st, "sphere"):
+        out.append(esc(" · ".join(names(st, "sphere"))))
+    if st.get("intro"):
+        out += ["", f"<i>{esc(st['intro'])}</i>"]
+    out.append("")
+    if names(st, "seek"):
+        out.append("🤝 Ищу: " + esc(", ".join(names(st, "seek", True))))
+    if names(st, "likes"):
+        out.append("🎯 Интересы: " + esc(", ".join(names(st, "likes", True))))
+    if st.get("ig"):
+        out.append("📷 Instagram: " + esc(st["ig"]))
+    out.append(LINE)
+    return "\n".join(out)
 
 
 def card_text(st, uid):
     lv = {"1": "1️⃣ звать в первую очередь", "2": "2️⃣ во вторую", "3": "3️⃣ в последнюю"}.get(st.get("level"), "не оценён")
-    return (f"🎩 <b>{esc(NAME)}: новая заявка</b>\n\n"
-            f"<b>{esc(st.get('name') or '—')}</b> {tg(st, uid)}\n"
-            f"• Занятие: {esc(L.get(st.get('job'), '—'))}\n• Сфера: {esc(L.get(st.get('sphere'), '—'))}\n"
-            f"• Команда: {esc(L.get(st.get('team'), '—'))}\n• Ищет: {esc(L.get(st.get('seek'), '—'))}\n"
-            f"• Интересы: {esc(', '.join(L.get(x, x) for x in st.get('likes', [])) or '—')}\n"
-            f"• О себе: {esc(st.get('about') or '—')}\n• Источник: {esc(st.get('src') or '—')}\n\n"
+    head = "обновил анкету" if st.get("updated") else "новая заявка"
+    return (f"🎩 <b>{esc(NAME)}: {head}</b>\n{tg(st, uid)}\n\n{member_card(st)}\n\n"
+            f"• Команда: {esc(', '.join(names(st, 'team')) or '—')}\n• Источник: {esc(st.get('src') or '—')}\n\n"
             f"Уровень: <b>{lv}</b>")
 
 
 def card_kb(uid):
     return kb([[{"text": "1", "callback_data": f"lv:{uid}:1"}, {"text": "2", "callback_data": f"lv:{uid}:2"},
                 {"text": "3", "callback_data": f"lv:{uid}:3"}]])
+
+
+PREVIEW_KB = kb([[{"text": "✅ Всё верно, отправить", "callback_data": "ok"}],
+                 [{"text": "✏️ Изменить интро", "callback_data": "edit_intro"}],
+                 [{"text": "↩️ Заполнить заново", "callback_data": "restart"}]])
+
+
+def cut(t, n):
+    t = " ".join(t.split()) if "\n" not in t else "\n".join(" ".join(l.split()) for l in t.splitlines() if l.strip())
+    if len(t) <= n:
+        return t
+    t = t[:n]
+    sp = max(t.rfind(" "), t.rfind("\n"))
+    return (t[:sp] if sp > n * 0.6 else t).rstrip(" ,.;:-") + "…"
+
+
+def norm_ig(t):
+    t = t.strip().split()[0] if t.strip() else ""
+    if "instagram.com/" in t:
+        t = t.split("instagram.com/", 1)[1].split("?")[0].strip("/").split("/")[0]
+    t = t.lstrip("@").strip()
+    return ("@" + t)[:40] if t else ""
 
 
 async def to_sheet(c, st, uid):
@@ -123,21 +207,31 @@ async def to_sheet(c, st, uid):
         log.warning("sheet: %s", e)
 
 
+async def show(c, uid, text, markup, msg_id=None):
+    if msg_id:
+        return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, parse_mode="HTML",
+                          disable_web_page_preview="true", reply_markup=markup)
+    return await call(c, "sendMessage", chat_id=uid, text=text, parse_mode="HTML",
+                      disable_web_page_preview="true", reply_markup=markup)
+
+
 async def ask(c, uid, st, msg_id=None):
     step = st.get("step")
-    for key, q, opts in STEPS:
+    for key, q, opts, multi, cols in STEPS:
         if step == key:
-            m = kb([[{"text": l, "callback_data": f"{key}:{k}"}] for k, l in opts])
-            if msg_id:
-                return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=q, parse_mode="HTML", reply_markup=m)
-            return await call(c, "sendMessage", chat_id=uid, text=q, parse_mode="HTML", reply_markup=m)
-    if step == "likes":
-        rows = [[{"text": ("✅ " if k in st.get("likes", []) else "") + l, "callback_data": f"like:{k}"}] for k, l in LIKES]
-        rows.append([{"text": "Готово", "callback_data": "likes_done"}])
-        return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=Q_LIKES, parse_mode="HTML", reply_markup=kb(rows))
-    if step == "about":
-        return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=Q_ABOUT, parse_mode="HTML",
-                          reply_markup=kb([[{"text": "Пропустить", "callback_data": "skip"}]]))
+            chosen = lst(st.get(key))
+            btns = [{"text": ("✅ " if k in chosen else "") + l, "callback_data": f"{'t' if multi else 'o'}:{key}:{k}"}
+                    for k, l in opts]
+            rows = [btns[i:i + cols] for i in range(0, len(btns), cols)]
+            if multi:
+                rows.append([{"text": "Готово →", "callback_data": f"d:{key}"}])
+            return await show(c, uid, q, kb(rows), msg_id)
+    if step == "intro":
+        return await show(c, uid, Q_INTRO, kb([]), msg_id)
+    if step == "ig":
+        return await show(c, uid, Q_IG, kb([[{"text": "Пропустить", "callback_data": "skip"}]]), msg_id)
+    if step == "preview":
+        return await show(c, uid, "Так выглядит ваша карточка участника:\n\n" + member_card(st), PREVIEW_KB, msg_id)
 
 
 async def finish(c, uid):
@@ -146,7 +240,7 @@ async def finish(c, uid):
     st["at"] = time.strftime("%Y-%m-%d %H:%M", time.gmtime(time.time() + 4 * 3600))
     save()
     await call(c, "sendMessage", chat_id=uid, text=DONE, parse_mode="HTML")
-    if not st.get("sent"):
+    if not st.get("sent") or st.get("updated"):
         st["sent"] = True
         j = await call(c, "sendMessage", chat_id=OWNER_ID, text=card_text(st, uid), parse_mode="HTML",
                        disable_web_page_preview="true", reply_markup=card_kb(uid))
@@ -163,7 +257,9 @@ def stats_text():
     out.append(f"• Не оценены: {sum(1 for s in done if not s.get('level'))}")
     out += ["", "<b>Интересы</b>"]
     for k, l in LIKES:
-        out.append(f"• {l}: {sum(1 for s in done if k in s.get('likes', []))}")
+        n = sum(1 for s in done if k in lst(s.get('likes')))
+        if n:
+            out.append(f"• {l}: {n}")
     srcs = {}
     for s in done:
         srcs[s.get("src") or "direct"] = srcs.get(s.get("src") or "direct", 0) + 1
@@ -193,10 +289,13 @@ async def on_message(c, m):
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
     if text.startswith("/start"):
-        src = text.split(" ", 1)[1].strip()[:30] if " " in text else "direct"
-        if S.get(uid, {}).get("sent"):
-            return await call(c, "sendMessage", chat_id=uid, text="Ваша заявка уже у нас ✅ Пришлю дату, когда наберётся группа.")
-        S[uid] = {"src": src, "t0": time.time(), "step": "job", "likes": [], "username": u.get("username"),
+        src_tag = text.split(" ", 1)[1].strip()[:30] if " " in text else "direct"
+        old = S.get(uid, {})
+        if old.get("sent"):
+            return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", disable_web_page_preview="true",
+                              text="Ваша заявка уже у нас ✅ Пришлю дату, когда наберётся группа.\n\n" + member_card(old),
+                              reply_markup=kb([[{"text": "↩️ Обновить анкету", "callback_data": "restart"}]]))
+        S[uid] = {"src": src_tag, "t0": time.time(), "step": "job", "username": u.get("username"),
                   "name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)}
         save()
         await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML")
@@ -204,9 +303,16 @@ async def on_message(c, m):
     st = S.get(uid)
     if not st:
         return await call(c, "sendMessage", chat_id=uid, text="Нажмите /start, чтобы оставить заявку")
-    if st.get("step") == "about" and text:
-        st["about"] = text[:500]
-        return await finish(c, uid)
+    if st.get("step") == "intro" and text:
+        st["intro"] = cut(text, INTRO_MAX)
+        st["step"] = "preview" if st.pop("back", None) else "ig"
+        save()
+        return await ask(c, uid, st)
+    if st.get("step") == "ig" and text:
+        st["ig"] = norm_ig(text)
+        st["step"] = "preview"
+        save()
+        return await ask(c, uid, st)
     if text:
         st.setdefault("extra", []).append(text[:500])
         save()
@@ -218,7 +324,8 @@ async def on_callback(c, q):
     uid = q["from"]["id"]
     data = q.get("data", "")
     msg_id = q["message"]["message_id"]
-    await call(c, "answerCallbackQuery", callback_query_id=q["id"])
+    if not data.startswith("d:") or S.get(uid, {}).get("step") != data[2:]:
+        await call(c, "answerCallbackQuery", callback_query_id=q["id"])
     if data.startswith("lv:") and uid == OWNER_ID:
         _, who, lv = data.split(":")
         st = S.get(int(who))
@@ -232,24 +339,47 @@ async def on_callback(c, q):
     st = S.get(uid)
     if not st:
         return
-    key, _, val = data.partition(":")
+    kind, _, rest = data.partition(":")
+    key, _, val = rest.partition(":")
     order = [s[0] for s in STEPS]
-    if key in order and st.get("step") == key:
+    nxt = lambda k: order[order.index(k) + 1] if order.index(k) + 1 < len(order) else "intro"
+    if kind == "o" and st.get("step") == key:
         st[key] = val
-        i = order.index(key)
-        st["step"] = order[i + 1] if i + 1 < len(order) else "likes"
+        st["step"] = nxt(key)
         save()
         return await ask(c, uid, st, msg_id)
-    if key == "like" and st.get("step") == "likes":
-        lk = st.setdefault("likes", [])
-        lk.remove(val) if val in lk else lk.append(val)
+    if kind == "t" and st.get("step") == key:
+        ch = lst(st.get(key))
+        ch.remove(val) if val in ch else ch.append(val)
+        st[key] = ch
         save()
         return await ask(c, uid, st, msg_id)
-    if data == "likes_done" and st.get("step") == "likes":
-        st["step"] = "about"
+    if kind == "d" and st.get("step") == key:
+        if not lst(st.get(key)):
+            return await call(c, "answerCallbackQuery", callback_query_id=q["id"], text="Выберите хотя бы один вариант")
+        await call(c, "answerCallbackQuery", callback_query_id=q["id"])
+        st["step"] = nxt(key)
         save()
         return await ask(c, uid, st, msg_id)
-    if data == "skip" and st.get("step") == "about":
+    if data == "skip" and st.get("step") == "ig":
+        st["ig"] = ""
+        st["step"] = "preview"
+        save()
+        return await ask(c, uid, st, msg_id)
+    if data == "edit_intro" and st.get("step") == "preview":
+        st["step"], st["back"] = "intro", True
+        save()
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        return await ask(c, uid, st)
+    if data == "restart":
+        keep = {k: st[k] for k in ("src", "t0", "username", "name", "level", "sent", "card") if k in st}
+        if st.get("sent"):
+            keep["updated"] = True
+        S[uid] = st = dict(keep, step="job")
+        save()
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        return await ask(c, uid, st)
+    if data == "ok" and st.get("step") == "preview":
         await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
         return await finish(c, uid)
 
