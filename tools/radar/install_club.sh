@@ -2,7 +2,7 @@
 # Бот клуба. Токен и название передаются аргументами и хранятся только на сервере.
 # curl -s https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/main/tools/radar/install_club.sh | bash -s <ТОКЕН_БОТА> "<Название клуба>"
 set -e
-T="$1"; N="${2:-Клуб 971}"
+T="$1"; N="${2:-DXB Club}"
 [ -n "$T" ] || { echo "Нужен токен бота: ... | bash -s <ТОКЕН> \"Название\""; exit 1; }
 R=https://raw.githubusercontent.com/fortexglobal/fortex-uae-site/main/tools/radar
 curl -fsSL "$R/club.py?$(date +%s)" -o /opt/radar/club.py
