@@ -48,7 +48,7 @@ for _lst in (JOB, SPHERE, TEAM, SEEK, LIKES):
 LBL = {"job": dict(JOB), "sphere": dict(SPHERE), "team": dict(TEAM), "seek": dict(SEEK), "likes": dict(LIKES)}
 INTRO_MAX = 300
 
-COVER_URL = "https://res-prod.buzzy.now/file-service/9f6ca681-1d48-4b93-981b-faff2b7cc114.png"  # картинка над приветствием (ссылка на jpg), пусто = без картинки
+COVER_URL = "https://res-prod.buzzy.now/file-service/023aab67-60d0-481f-9c82-37d385f6997d.jpg"  # картинка над приветствием (ссылка на jpg), пусто = без картинки
 TOTAL = 7
 
 
