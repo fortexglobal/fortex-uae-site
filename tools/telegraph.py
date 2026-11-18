@@ -1,7 +1,7 @@
 """Публикация статей в Telegraph (внешние площадки со ссылкой на сайт, решение Александра 18.11).
 Каждый telegraph/<slug>.html, которого нет в telegraph/published.json, публикуется один раз.
 Первая строка файла: заголовок. Дальше простой HTML: <p>, <h3>, <h4>, <ul>/<ol>/<li>, <b>, <i>, <a href>, <blockquote>."""
-import glob, json, os, re, urllib.parse, urllib.request
+import glob, json, os, re, time, urllib.parse, urllib.request
 from html.parser import HTMLParser
 
 API = "https://api.telegra.ph/"
@@ -11,7 +11,12 @@ OK_TAGS = {"p", "h3", "h4", "ul", "ol", "li", "b", "strong", "i", "em", "a", "bl
 
 def call(method, **data):
     body = urllib.parse.urlencode({k: (json.dumps(v, ensure_ascii=False) if isinstance(v, (list, dict)) else v) for k, v in data.items()}).encode()
-    r = json.load(urllib.request.urlopen(urllib.request.Request(API + method, data=body), timeout=60))
+    for _ in range(5):
+        r = json.load(urllib.request.urlopen(urllib.request.Request(API + method, data=body), timeout=60))
+        m = re.match(r"FLOOD_WAIT_(\d+)", str(r.get("error", "")))
+        if not m:
+            break
+        time.sleep(int(m.group(1)) + 2)
     if not r.get("ok"):
         raise RuntimeError(f"{method}: {r}")
     return r["result"]
@@ -106,6 +111,7 @@ def main():
         pub["a:" + os.path.basename(f)[:-3]] = {"url": page["url"], "title": title}
         print("article", f, page["url"])
         json.dump(pub, open(PUB, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        time.sleep(3)
     for f in todo:
         slug = os.path.basename(f)[:-5]
         raw = open(f, encoding="utf-8").read().strip()
