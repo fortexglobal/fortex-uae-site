@@ -85,6 +85,9 @@ Q_IG = (head(7, "📷", "Ваш Instagram") + "\n\n"
         "Так нам проще понять, кого с кем познакомить и на какую встречу позвать.\n"
         "<i>Видят только организаторы</i>\n\n"
         "Пришлите ник, например <b>@ivan.petrov</b>")
+DONE_CARD = ("✅ <b>Заявка принята</b>\n\n"
+             "Это ваша карта участника DXB Club.\n"
+             "Пришлю приглашение на следующую встречу клуба: дата, место и формат.")
 DONE = ("✅ <b>Заявка принята</b>\n\n"
         "Пришлю приглашение на следующую встречу клуба: дата, место и формат.\n"
         "Мест немного, их получают те, кто подтвердит первым.")
@@ -293,7 +296,9 @@ async def finish(c, uid):
     st["step"] = "done"
     st["at"] = time.strftime("%Y-%m-%d %H:%M", time.gmtime(time.time() + 4 * 3600))
     save()
-    await call(c, "sendMessage", chat_id=uid, text=DONE, parse_mode="HTML")
+    await call(c, "sendChatAction", chat_id=uid, action="upload_photo")
+    if not await send_card(c, uid, st, uid, DONE_CARD):
+        await call(c, "sendMessage", chat_id=uid, text=DONE, parse_mode="HTML")
     if not st.get("sent") or st.get("updated"):
         st["sent"] = True
         j = await call(c, "sendMessage", chat_id=OWNER_ID, text=card_text(st, uid), parse_mode="HTML",
@@ -301,6 +306,107 @@ async def finish(c, uid):
         st["card"] = (j.get("result") or {}).get("message_id")
         save()
     await to_sheet(c, st, uid)
+
+
+# ---------- Карта участника (картинка) ----------
+FONT_URL = "https://raw.githubusercontent.com/google/fonts/main/ofl/"
+FONTS = {"cin": "cinzel/Cinzel%5Bwght%5D.ttf", "cor": "cormorantgaramond/CormorantGaramond%5Bwght%5D.ttf",
+         "mon": "montserrat/Montserrat%5Bwght%5D.ttf"}
+FONT_DIR = os.path.join(BASE, "club_fonts")
+
+
+def ensure_card_deps():
+    import subprocess, sys, urllib.request
+    try:
+        import PIL  # noqa
+    except ImportError:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "pillow"], timeout=300)
+    os.makedirs(FONT_DIR, exist_ok=True)
+    for k, p in FONTS.items():
+        fp = os.path.join(FONT_DIR, k + ".ttf")
+        if not os.path.exists(fp) or os.path.getsize(fp) < 10000:
+            urllib.request.urlretrieve(FONT_URL + p, fp)
+
+
+def member_code(uid):
+    import hashlib
+    h = hashlib.sha1(f"dxb{uid}".encode()).hexdigest().upper()
+    alpha = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"
+    return "".join(alpha[int(h[i:i + 2], 16) % len(alpha)] for i in range(0, 8, 2))
+
+
+def render_card(st, uid):
+    ensure_card_deps()
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+    def F(k, size, w):
+        f = ImageFont.truetype(os.path.join(FONT_DIR, k + ".ttf"), size)
+        try:
+            f.set_variation_by_axes([w])
+        except Exception:
+            pass
+        return f
+
+    W, H = 1600, 1000
+    g = ImageOps.invert(Image.radial_gradient("L")).resize((W * 2, W * 2))
+    g = g.crop((int(W * 0.2), int(W * 0.85), int(W * 0.2) + W, int(W * 0.85) + H))
+    img = ImageOps.colorize(g, black=(10, 8, 6), white=(52, 44, 30)).convert("RGBA")
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    od = ImageDraw.Draw(ov)
+    for i in range(-H, W, 14):
+        od.line([(i, 0), (i + H, H)], fill=(212, 175, 105, 9), width=1)
+    for k in range(9):
+        r = 260 + k * 55
+        od.ellipse([W * 0.8 - r, H * 0.12 - r, W * 0.8 + r, H * 0.12 + r], outline=(212, 175, 105, 14), width=2)
+    img = Image.alpha_composite(img, ov)
+    d = ImageDraw.Draw(img)
+    gold, soft, white = (214, 178, 108), (170, 142, 92), (236, 228, 214)
+    d.rounded_rectangle([28, 28, W - 28, H - 28], radius=46, outline=(150, 122, 72), width=3)
+    d.rounded_rectangle([44, 44, W - 44, H - 44], radius=36, outline=(90, 74, 46), width=1)
+    d.text((110, 100), "DXB", font=F("cin", 120, 700), fill=gold)
+    lw = d.textlength("DXB", font=F("cin", 120, 700))
+    d.text((110 + lw + 24, 148), "CLUB", font=F("cin", 54, 500), fill=gold)
+    d.text((W - 110, 118), "MEMBER", font=F("mon", 30, 500), fill=soft, anchor="ra")
+    d.text((W - 110, 160), "Участник клуба", font=F("cor", 38, 500), fill=soft, anchor="ra")
+    cx, cy = 118, 330
+    d.rounded_rectangle([cx, cy, cx + 130, cy + 100], radius=16, fill=(186, 150, 88))
+    for yy in (cy + 33, cy + 66):
+        d.line([(cx, yy), (cx + 130, yy)], fill=(140, 110, 62), width=3)
+    d.line([(cx + 65, cy), (cx + 65, cy + 100)], fill=(140, 110, 62), width=3)
+
+    def fit(text, k, size, w, maxw):
+        while size > 20 and d.textlength(text, font=F(k, size, w)) > maxw:
+            size -= 2
+        return F(k, size, w)
+
+    name = st.get("name") or "Участник"
+    d.text((110, 520), name, font=fit(name, "cor", 120, 600, W - 220), fill=white)
+    l1 = " · ".join(names(st, "sphere")[:3]) or " · ".join(names(st, "job")[:2])
+    seek = ["Ищу " + x for x in names(st, "seek", True)[:1]]
+    likes = names(st, "likes", True)[:3]
+    l2 = " · ".join(x for x in [seek[0] if seek else "", ", ".join(likes).capitalize() if likes else ""] if x)
+    if l1:
+        d.text((112, 665), l1, font=fit(l1, "mon", 36, 400, W - 220), fill=gold)
+    if l2:
+        d.text((112, 718), l2, font=fit(l2, "mon", 30, 300, W - 220), fill=soft)
+    d.line([(110, 820), (W - 110, 820)], fill=(90, 74, 46), width=1)
+    d.text((110, 850), "DXB · " + member_code(uid), font=F("mon", 34, 500), fill=gold)
+    d.text((W - 110, 850), "DUBAI · " + time.strftime("%Y"), font=F("mon", 34, 500), fill=gold, anchor="ra")
+    buf = io.BytesIO()
+    img.convert("RGB").save(buf, "JPEG", quality=92)
+    return buf.getvalue()
+
+
+async def send_card(c, chat_id, st, uid, caption):
+    try:
+        jpg = await asyncio.to_thread(render_card, st, uid)
+    except Exception as e:
+        log.warning("card: %s", e)
+        return False
+    cap = premium(caption) if EMO else caption
+    r = await c.post(API + "sendPhoto", data={"chat_id": chat_id, "caption": cap, "parse_mode": "HTML"},
+                     files={"photo": ("card.jpg", jpg, "image/jpeg")})
+    return r.json().get("ok", False)
 
 
 def stats_text():
@@ -355,6 +461,12 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and text.startswith("/card"):
+        mine = S.get(uid) or {"name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)}
+        await call(c, "sendChatAction", chat_id=uid, action="upload_photo")
+        if not await send_card(c, uid, mine, uid, DONE_CARD):
+            await call(c, "sendMessage", chat_id=uid, text="Не получилось нарисовать карту, проверяю")
+        return
     if uid == OWNER_ID and text.startswith("/emoji") and not text.startswith("/emoji_reset"):
         EMO_Q[:] = [e for e, _ in EMO_LIST]
         return await ask_emoji(c, uid)
