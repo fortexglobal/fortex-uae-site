@@ -64,7 +64,7 @@ WELCOME = (f"🎩 <b>{NAME}</b>\n"
            "<b>Форматы клуба</b>\n"
            "Сигары · автодром · гольф · падел\n\n"
            "🔐 Вход по заявке · анкета за 2 минуты")
-GO_KB = {"inline_keyboard": [[{"text": "Заполнить анкету →", "callback_data": "go"}]]}
+GO_KB = {"inline_keyboard": [[{"text": "Заполнить анкету →", "callback_data": "go", "style": "primary"}]]}
 MULTI = "\n\n<i>Можно выбрать несколько, потом «Готово»</i>"
 # ключ, вопрос, варианты, несколько ответов, кнопок в ряд
 STEPS = [("job", head(1, "💼", "Чем занимаетесь?") + MULTI, JOB, True, 2),
@@ -189,11 +189,12 @@ def card_text(st, uid):
 
 
 def card_kb(uid):
-    return kb([[{"text": "1", "callback_data": f"lv:{uid}:1"}, {"text": "2", "callback_data": f"lv:{uid}:2"},
-                {"text": "3", "callback_data": f"lv:{uid}:3"}]])
+    return kb([[{"text": "1", "callback_data": f"lv:{uid}:1", "style": "success"},
+                {"text": "2", "callback_data": f"lv:{uid}:2", "style": "primary"},
+                {"text": "3", "callback_data": f"lv:{uid}:3", "style": "danger"}]])
 
 
-PREVIEW_KB = kb([[{"text": "✅ Всё верно, отправить", "callback_data": "ok"}],
+PREVIEW_KB = kb([[{"text": "Всё верно, отправить", "callback_data": "ok", "style": "success"}],
                  [{"text": "✏️ Изменить интро", "callback_data": "edit_intro"}],
                  [{"text": "↩️ Заполнить заново", "callback_data": "restart"}]])
 
@@ -232,6 +233,9 @@ async def to_sheet(c, st, uid):
 
 async def show(c, uid, text, markup, msg_id=None):
     markup = markup or kb([])
+    if not msg_id:
+        await call(c, "sendChatAction", chat_id=uid, action="typing")
+        await asyncio.sleep(0.7)
     if msg_id:
         return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, parse_mode="HTML",
                           disable_web_page_preview="true", reply_markup=markup)
@@ -244,11 +248,11 @@ async def ask(c, uid, st, msg_id=None):
     for key, q, opts, multi, cols in STEPS:
         if step == key:
             chosen = lst(st.get(key))
-            btns = [{"text": ("✅ " if k in chosen else "") + l, "callback_data": f"{'t' if multi else 'o'}:{key}:{k}"}
-                    for k, l in opts]
+            btns = [dict({"text": ("✓ " if k in chosen else "") + l, "callback_data": f"{'t' if multi else 'o'}:{key}:{k}"},
+                         **({"style": "success"} if k in chosen else {})) for k, l in opts]
             rows = [btns[i:i + cols] for i in range(0, len(btns), cols)]
             if multi:
-                rows.append([{"text": "Готово →", "callback_data": f"d:{key}"}])
+                rows.append([{"text": "Готово →", "callback_data": f"d:{key}", "style": "primary"}])
             return await show(c, uid, q, kb(rows), msg_id)
     if step == "name":
         return await show(c, uid, Q_NAME, None, msg_id)
