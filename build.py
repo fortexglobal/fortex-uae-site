@@ -154,7 +154,7 @@ ym(113701535,'init',{{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:t
 <script>
 !function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','2121566038723086');fbq('track','PageView');
-(function(){{var p=location.pathname;if(/^\/(ipoteka|virtual-work|gid)\//.test(p))fbq('track','ViewContent',{{content_name:p.split('/')[1]}});
+(function(){{var p=location.pathname;if(/^\/(ipoteka|virtual-work|gid|lp)\//.test(p))fbq('track','ViewContent',{{content_name:p.replace(/\//g,' ').trim()}});
 document.addEventListener('click',function(e){{var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
 if(/^\/c\/|t\.me\//.test(h))fbq('track','Lead',{{content_name:p}});}},true);}})();
 </script>
@@ -375,6 +375,13 @@ def build():
         if not os.path.exists(l_md):
             continue
         btn = f"<div class='row' style='margin:22px 0 6px'><a class='btn' href='{l_cta}'>{l_btn}</a></div>"
+        trust_items = {"ipoteka": ("8 человек обратились по ипотеке за последние 2 недели", "Работодатель на 100% принадлежит гражданину ОАЭ, на его сотрудников банки дают ипотеки", "Команда в Дубае с 2022 года"),
+                       "vw": ("Без компании и без спонсора: вы сами себе спонсор", "С фастрэком Emirates ID через 3–4 дня", "Команда в Дубае с 2022 года")}[l_slug]
+        steps = ("Пишете в Telegram, кнопка выше", "Отвечаем в тот же день и задаём 2–3 вопроса", "Разбираем ваш случай и говорим честно, подходит или нет", "Решаете сами, без обязательств")
+        btn += ("<ul style='list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px'>" + "".join(
+            f"<li style='display:flex;gap:10px;align-items:flex-start'><span style='color:var(--accent);font-weight:700'>✓</span><span>{t}</span></li>" for t in trust_items) + "</ul>"
+            "<div style='margin-top:26px;padding:18px 20px;border:1px solid rgba(127,127,127,.25);border-radius:14px'><p style='margin:0 0 10px;font-weight:700'>Как проходит консультация</p><ol style='margin:0;padding-left:20px;display:grid;gap:6px'>"
+            + "".join(f"<li>{t}</li>" for t in steps) + "</ol></div>")
         os.makedirs(os.path.join(OUT, "lp", l_slug), exist_ok=True)
         open(os.path.join(OUT, "lp", l_slug, "index.html"), "w", encoding="utf-8").write(page(l_title, re.sub("<[^>]+>|&nbsp;", " ", l_lead),
             f"<main><section class='sec'><div class='wrap narrow'><p class='eyebrow'>Fortex UAE · Дубай, с 2022 года</p>"
