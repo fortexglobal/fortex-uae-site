@@ -27,9 +27,9 @@ ENV = env()
 API = f"https://api.telegram.org/bot{ENV['CLUB_TOKEN']}/"
 NAME = ENV.get("CLUB_NAME") or "DXB Club"
 
-JOB = [("dxb", "Свой бизнес в Дубае"), ("ru", "Свой бизнес в России и СНГ"), ("world", "Свой бизнес в другой стране"),
-       ("inv", "Инвестирую"), ("top", "Топ-менеджмент"), ("emp_dxb", "Работаю по найму в Дубае"),
-       ("emp", "Работаю по найму в другой стране"), ("cons", "Консалтинг, эксперт"), ("oth", "Другое")]
+JOB = [("dxb", "Бизнес в Дубае"), ("ru", "Бизнес в РФ и СНГ"), ("world", "Бизнес в другой стране"),
+       ("inv", "Инвестирую"), ("top", "Топ-менеджмент"), ("emp_dxb", "Найм в Дубае"),
+       ("emp", "Найм в другой стране"), ("cons", "Консалтинг, эксперт"), ("oth", "Другое")]
 SPHERE = [("re", "Недвижимость"), ("build", "Строительство"), ("crypto", "Крипта и финтех"), ("fin", "Финансы"),
           ("it", "IT"), ("trade", "Торговля и ВЭД"), ("log", "Логистика"), ("prod", "Производство"),
           ("ecom", "E-commerce"), ("mkt", "Маркетинг и медиа"), ("horeca", "Рестораны, HoReCa"), ("med", "Медицина, бьюти"),
@@ -48,28 +48,51 @@ for _lst in (JOB, SPHERE, TEAM, SEEK, LIKES):
 LBL = {"job": dict(JOB), "sphere": dict(SPHERE), "team": dict(TEAM), "seek": dict(SEEK), "likes": dict(LIKES)}
 INTRO_MAX = 300
 
-WELCOME = (f"<b>{NAME}</b>\n"
+COVER_URL = ""  # картинка над приветствием (ссылка на jpg), пусто = без картинки
+TOTAL = 7
+
+
+def head(n, emoji, title):
+    return f"{emoji} <b>{n}/{TOTAL} · {title}</b>\n" + "▰" * n + "▱" * (TOTAL - n)
+
+
+WELCOME = (f"🎩 <b>{NAME}</b>\n"
            "<i>Клуб международных предпринимателей и инвесторов в Дубае</i>\n\n"
-           "Закрытые встречи в небольшом кругу: сигарные вечера, автодром, гольф, падел.\n\n"
-           "Первая встреча: сигарный вечер в лаунже, 12–16 человек. Каждый платит за себя по меню.\n\n"
-           "Вход по заявке. Анкета займёт 2 минуты.")
+           "<b>Ближайшая встреча</b>\n"
+           "Сигарный вечер в лаунже · 12–16 человек\n"
+           "Каждый платит за себя по меню\n\n"
+           "<b>Форматы клуба</b>\n"
+           "Сигары · автодром · гольф · падел\n\n"
+           "🔐 Вход по заявке · анкета за 2 минуты")
+GO_KB = {"inline_keyboard": [[{"text": "Заполнить анкету →", "callback_data": "go"}]]}
 MULTI = "\n\n<i>Можно выбрать несколько, потом «Готово»</i>"
 # ключ, вопрос, варианты, несколько ответов, кнопок в ряд
-STEPS = [("job", "<b>1 из 7.</b> Чем занимаетесь?" + MULTI, JOB, True, 1),
-         ("sphere", "<b>2 из 7.</b> В каких сферах?" + MULTI, SPHERE, True, 2),
-         ("team", "<b>3 из 7.</b> Размер команды или компании?", TEAM, False, 1),
-         ("seek", "<b>4 из 7.</b> Что сейчас ищете?" + MULTI, SEEK, True, 1),
-         ("likes", "<b>5 из 7.</b> Хобби и интересы. Под них подбираем встречи" + MULTI, LIKES, True, 2)]
-Q_INTRO = ("<b>6 из 7. Ваше интро</b>\n\n"
-           "Несколько строк о себе: чем занимаетесь, чем можете быть полезны, чем увлекаетесь. "
-           f"До {INTRO_MAX} знаков, длиннее обрежется.\n\n"
-           "<i>Например: Вожу промышленное оборудование из Китая в Россию и Казахстан. 6 лет в Дубае, "
-           "вложился в два офисных проекта. Помогу с логистикой и таможней. Играю в падел, люблю автодром.</i>")
-Q_IG = ("<b>7 из 7. Ваш Instagram</b>\n\n"
-        "Так нам проще понять, кого с кем познакомить и на какую встречу позвать. Это видят только организаторы.\n\n"
-        "<i>Пришлите ник, например @ivan.petrov</i>")
-DONE = ("<b>Заявка принята ✅</b>\n\n"
-        "Когда наберётся группа, пришлю дату и место. Места получают те, кто подтвердит первым.")
+STEPS = [("job", head(1, "💼", "Чем занимаетесь?") + MULTI, JOB, True, 2),
+         ("sphere", head(2, "🧭", "В каких сферах?") + MULTI, SPHERE, True, 2),
+         ("team", head(3, "👥", "Размер команды или компании"), TEAM, False, 2),
+         ("seek", head(4, "🤝", "Что сейчас ищете?") + MULTI, SEEK, True, 1),
+         ("likes", head(5, "🎯", "Хобби и интересы") + "\n\nПод них подбираем встречи" + MULTI, LIKES, True, 2)]
+Q_NAME = "👋 <b>Как к вам обращаться?</b>\n\n<i>Напишите имя и фамилию, например: Иван Петров</i>"
+Q_INTRO = (head(6, "✍️", "Ваше интро") + "\n\n"
+           "Пара строк о себе:\n"
+           "• чем занимаетесь\n"
+           "• чем можете быть полезны\n"
+           "• чем увлекаетесь\n\n"
+           f"<i>До {INTRO_MAX} знаков. Пример:</i>\n"
+           "<blockquote>Вожу промышленное оборудование из Китая в Россию и Казахстан. 6 лет в Дубае, "
+           "вложился в два офисных проекта. Помогу с логистикой и таможней. Играю в падел, люблю автодром.</blockquote>")
+Q_IG = (head(7, "📷", "Ваш Instagram") + "\n\n"
+        "Так нам проще понять, кого с кем познакомить и на какую встречу позвать.\n"
+        "<i>Видят только организаторы</i>\n\n"
+        "Пришлите ник, например <b>@ivan.petrov</b>")
+DONE = ("✅ <b>Заявка принята</b>\n\n"
+        "Когда соберётся группа, пришлю дату и место.\n"
+        "Места получают те, кто подтвердит первым.")
+
+
+def good_name(n):
+    return sum(ch.isalpha() for ch in (n or "")) >= 2
+
 
 S = {}
 
@@ -145,7 +168,7 @@ def member_card(st):
     if names(st, "sphere"):
         out.append(esc(" · ".join(names(st, "sphere"))))
     if st.get("intro"):
-        out += ["", f"<i>{esc(st['intro'])}</i>"]
+        out += ["", f"<blockquote>{esc(st['intro'])}</blockquote>"]
     out.append("")
     if names(st, "seek"):
         out.append("🤝 Ищу: " + esc(", ".join(names(st, "seek", True))))
@@ -208,6 +231,7 @@ async def to_sheet(c, st, uid):
 
 
 async def show(c, uid, text, markup, msg_id=None):
+    markup = markup or kb([])
     if msg_id:
         return await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=text, parse_mode="HTML",
                           disable_web_page_preview="true", reply_markup=markup)
@@ -226,12 +250,14 @@ async def ask(c, uid, st, msg_id=None):
             if multi:
                 rows.append([{"text": "Готово →", "callback_data": f"d:{key}"}])
             return await show(c, uid, q, kb(rows), msg_id)
+    if step == "name":
+        return await show(c, uid, Q_NAME, None, msg_id)
     if step == "intro":
-        return await show(c, uid, Q_INTRO, kb([]), msg_id)
+        return await show(c, uid, Q_INTRO, None, msg_id)
     if step == "ig":
         return await show(c, uid, Q_IG, kb([[{"text": "Пропустить", "callback_data": "skip"}]]), msg_id)
     if step == "preview":
-        return await show(c, uid, "Так выглядит ваша карточка участника:\n\n" + member_card(st), PREVIEW_KB, msg_id)
+        return await show(c, uid, "👇 <b>Ваша карточка участника</b>\n<i>Проверьте, всё ли верно</i>\n\n" + member_card(st), PREVIEW_KB, msg_id)
 
 
 async def finish(c, uid):
@@ -295,14 +321,20 @@ async def on_message(c, m):
             return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", disable_web_page_preview="true",
                               text="Ваша заявка уже у нас ✅ Пришлю дату, когда наберётся группа.\n\n" + member_card(old),
                               reply_markup=kb([[{"text": "↩️ Обновить анкету", "callback_data": "restart"}]]))
-        S[uid] = {"src": src_tag, "t0": time.time(), "step": "job", "username": u.get("username"),
-                  "name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)}
+        nm = " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)
+        S[uid] = {"src": src_tag, "t0": time.time(), "step": "welcome", "username": u.get("username"), "name": nm}
         save()
-        await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML")
-        return await ask(c, uid, S[uid])
+        if COVER_URL:
+            return await call(c, "sendPhoto", chat_id=uid, photo=COVER_URL, caption=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
+        return await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
     st = S.get(uid)
     if not st:
         return await call(c, "sendMessage", chat_id=uid, text="Нажмите /start, чтобы оставить заявку")
+    if st.get("step") == "name" and text:
+        st["name"] = cut(text, 40)
+        st["step"] = "job"
+        save()
+        return await ask(c, uid, st)
     if st.get("step") == "intro" and text:
         st["intro"] = cut(text, INTRO_MAX)
         st["step"] = "preview" if st.pop("back", None) else "ig"
@@ -361,6 +393,11 @@ async def on_callback(c, q):
         st["step"] = nxt(key)
         save()
         return await ask(c, uid, st, msg_id)
+    if data == "go" and st.get("step") == "welcome":
+        st["step"] = "job" if good_name(st.get("name")) else "name"
+        save()
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        return await ask(c, uid, st)
     if data == "skip" and st.get("step") == "ig":
         st["ig"] = ""
         st["step"] = "preview"
@@ -375,7 +412,7 @@ async def on_callback(c, q):
         keep = {k: st[k] for k in ("src", "t0", "username", "name", "level", "sent", "card") if k in st}
         if st.get("sent"):
             keep["updated"] = True
-        S[uid] = st = dict(keep, step="job")
+        S[uid] = st = dict(keep, step="job" if good_name(keep.get("name")) else "name")
         save()
         await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
         return await ask(c, uid, st)
