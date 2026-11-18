@@ -34,12 +34,37 @@ TL = dict(TOPICS)
 SL = dict(STAY)
 
 WELCOME = ("Привет! Я Хабиби 🐪\n\n"
-           "Помогаю с жизнью в Дубае: проверенные садики, врачи, мастера, жильё и встречи, с оценками русскоязычного комьюнити.\n\n"
-           "<b>Мы открываемся через 2 недели.</b> Вы в списке первых, и при запуске получите <b>20 кредитов</b> в подарок.\n\n"
-           "Ответьте на 3 коротких вопроса, чтобы к открытию я подготовил то, что нужно именно вам.")
+           "Проверенные русскоязычные контакты в Дубае: жильё, садики, врачи, мастера. С оценками комьюнити.\n\n"
+           "Полностью открываемся через 2 недели, вам уже закреплено <b>20 кредитов</b>.\n\n"
+           "<b>Что сейчас актуально?</b> Сразу подскажу полезное 👇")
+TIPS = {
+    "home": "<b>🏠 3 вещи до аренды в Дубае</b>\n\n"
+            "1. Договор регистрируют в Ejari. Без него не подключат свет и воду (DEWA)\n"
+            "2. Депозит обычно 5% от годовой аренды, его возвращают при выезде\n"
+            "3. Чем меньше чеков, тем ниже цена. Торгуйтесь\n\n"
+            "К открытию подберу проверенных русскоязычных агентов под ваш бюджет.",
+    "kids": "<b>👶 Перед выбором садика или школы</b>\n\n"
+            "1. Проверьте рейтинг KHDA на khda.gov.ae\n"
+            "2. В популярные места бронируют заранее, иногда за полгода\n"
+            "3. Уточните, что входит в цену: форма, транспорт, питание\n\n"
+            "К открытию соберу садики с оценками русскоязычных родителей.",
+    "doc": "<b>🩺 Врачи в Дубае</b>\n\n"
+           "1. До записи уточните, принимает ли клиника вашу страховку\n"
+           "2. Во многих клиниках есть русскоязычные врачи, спрашивайте при записи\n\n"
+           "К открытию соберу врачей с оценками комьюнити.",
+    "visa": "<b>📄 Документы и виза</b>\n\nЗдесь можно не ждать открытия: наши коллеги из Fortex уже консультируют. "
+            f"Напишите @{CONTACT}.",
+    "beauty": "<b>💅 Мастера в Дубае</b>\n\n"
+              "Хорошие мастера часто работают на дому или выезжают. Смотрите портфолио и цену заранее.\n\n"
+              "К открытию соберу мастеров с оценками комьюнити.",
+    "meet": "<b>☕ Свои люди в Дубае</b>\n\n"
+            "Собираем русскоязычных, кто хочет знакомиться и делиться проверенными контактами. "
+            "Расскажу о встречах, как только откроемся.",
+}
+SRC_TOPIC = {"c1": "kids", "c3": "home", "c5": "meet"}
 Q1 = "<b>Вопрос 1 из 3</b>\n\nЧто для вас сейчас важнее всего?"
-Q2 = "<b>Вопрос 2 из 3</b>\n\nСколько вы уже в Дубае?"
-Q3 = ("<b>Вопрос 3 из 3</b>\n\nНапишите своими словами, что сейчас ищете.\n\n"
+Q2 = "<b>Ещё 2 коротких вопроса</b>, чтобы к открытию подготовить нужное именно вам.\n\nСколько вы уже в Дубае?"
+Q3 = ("<b>Последний вопрос</b>\n\nНапишите своими словами, что сейчас ищете.\n\n"
       "<i>Например: садик в JLT для ребёнка 4 лет, до 4 000 AED в месяц</i>")
 DONE = ("<b>Спасибо! Вы в списке первых ✅</b>\n\n"
         "Напишу, как только откроемся. 20 кредитов уже закреплены за вами.\n\n"
@@ -87,7 +112,7 @@ def who(st, uid):
 async def finish(c, uid):
     st = S[uid]
     st["step"] = "done"
-    text = DONE + (VISA_TIP if st.get("topic") == "visa" else "")
+    text = DONE
     await call(c, "sendMessage", chat_id=uid, text=text, parse_mode="HTML")
     if not st.get("sent"):
         st["sent"] = True
@@ -120,8 +145,20 @@ async def on_message(c, m):
         S[uid] = {"src": src, "t0": time.time(), "step": "welcome", "extra": [],
                   "name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x), "username": u.get("username")}
         save()
+        t = SRC_TOPIC.get(src)
+        if t:  # пришёл с креатива на конкретную тему: сразу польза по теме и следующий вопрос
+            S[uid]["topic"] = t
+            S[uid]["step"] = "q2"
+            save()
+            await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", disable_web_page_preview="true",
+                       text="Привет! Я Хабиби 🐪 Вам уже закреплено <b>20 кредитов</b>.\n\n" + TIPS[t])
+            await call(c, "sendMessage", chat_id=uid, text=Q2, parse_mode="HTML",
+                       reply_markup=kb([[{"text": l, "callback_data": f"s:{k}"}] for k, l in STAY]))
+            return
+        S[uid]["step"] = "q1"
+        save()
         await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML",
-                   reply_markup=kb([[{"text": "Ответить на 3 вопроса", "callback_data": "go"}]]))
+                   reply_markup=kb([[{"text": l, "callback_data": f"t:{k}"}] for k, l in TOPICS]))
         return
     if uid == OWNER_ID and text.startswith("/stats"):
         await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
@@ -162,7 +199,10 @@ async def on_callback(c, q):
         st["topic"] = data[2:]
         st["step"] = "q2"
         rows = [[{"text": l, "callback_data": f"s:{k}"}] for k, l in STAY]
-        await call(c, "editMessageText", chat_id=uid, message_id=msg_id, text=Q2, parse_mode="HTML", reply_markup=kb(rows))
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", disable_web_page_preview="true",
+                   text=TIPS.get(st["topic"], ""))
+        await call(c, "sendMessage", chat_id=uid, text=Q2, parse_mode="HTML", reply_markup=kb(rows))
     elif data.startswith("s:"):
         st["stay"] = data[2:]
         st["step"] = "q3"
