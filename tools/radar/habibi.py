@@ -121,7 +121,8 @@ async def finish(c, uid):
                "src": st.get("src"), "topic": st.get("topic"), "stay": st.get("stay"), "text": st.get("text", "")}
         open(LOG, "a").write(json.dumps(rec, ensure_ascii=False) + "\n")
         mark = "🔴 " if st.get("topic") == "visa" else "🧲 "
-        await call(c, "sendMessage", chat_id=OWNER_ID, parse_mode="HTML", disable_web_page_preview="true",
+        if st.get("topic") == "visa":  # 18.11 Александр: сводки и карточки Хабиби больше не присылать, только запросы про визу
+          await call(c, "sendMessage", chat_id=OWNER_ID, parse_mode="HTML", disable_web_page_preview="true",
                    text=f"{mark}<b>Хабиби: новый человек</b>\n{who(st, uid)}\n"
                         f"Креатив: {CREATIVE.get(st.get('src'), st.get('src') or 'без метки')}\n"
                         f"Важно: {TL.get(st.get('topic'), '—')}\nВ Дубае: {SL.get(st.get('stay'), '—')}\n"
@@ -295,7 +296,7 @@ async def background(c):
                 log.exception("stats")
         day = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 4 * 3600))
         hour = time.gmtime(time.time() + 4 * 3600).tm_hour
-        if hour >= 21 and day != last_day and S:
+        if False and hour >= 21 and day != last_day and S:  # ежедневная сводка выключена 18.11 по просьбе Александра
             last_day = day
             try:
                 await call(c, "sendMessage", chat_id=OWNER_ID, text=stats_text(), parse_mode="HTML")
