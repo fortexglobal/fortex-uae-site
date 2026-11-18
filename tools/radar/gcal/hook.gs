@@ -10,6 +10,7 @@ var KEEP = 12; // сколько последних архивов хранит�
 function doPost(e) {
   var d = JSON.parse(e.postData.contents);
   if (d.action === 'backup') return backup_(d);
+  if (d.action === 'club') return club_(d);
   return calendar_(d);
 }
 
@@ -48,6 +49,22 @@ function backup_(d) {
     for (var i = KEEP; i < files.length; i++) files[i].setTrashed(true);
   }
   return out_({ok: true, id: f.getId(), url: f.getUrl()});
+}
+
+// Клуб: заявки из бота клуба -> лист «Клуб: заявки» в CRM (строка по uid обновляется), сортировка по уровню 1, 2, 3
+var CRM_ID = '1qg8dezB2VU6yuKryCYLVzcmLw_OpFqD3VkINSzIY-j4', CLUB_SHEET = 'Клуб: заявки';
+function club_(d) {
+  var sh = SpreadsheetApp.openById(CRM_ID).getSheetByName(CLUB_SHEET);
+  var row = d.row;  // [уровень, дата, имя, telegram, занятие, сфера, команда, ищет, интересы, о себе, источник, uid]
+  var last = sh.getLastRow(), at = 0;
+  if (last > 1) {
+    var ids = sh.getRange(2, 12, last - 1, 1).getValues();
+    for (var i = 0; i < ids.length; i++) if (String(ids[i][0]) === String(row[11])) { at = i + 2; break; }
+  }
+  if (at) sh.getRange(at, 1, 1, row.length).setValues([row]); else sh.appendRow(row);
+  last = sh.getLastRow();
+  if (last > 2) sh.getRange(2, 1, last - 1, 12).sort([{column: 1, ascending: true}, {column: 2, ascending: false}]);
+  return out_({ok: true});
 }
 
 function out_(o) {

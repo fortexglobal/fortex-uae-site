@@ -99,7 +99,7 @@ def selfupdate():
 
 RADAR_FILES = {"radar": ["autoreply.py", "starters.py", "content.py", "igdm.py", "reactions.py", "newsfeed.py", "kb.md", "server/radar.py"],
                "leadbot": ["leadbot.py"],
-               "habibi": ["habibi.py"]}
+               "habibi": ["habibi.py"], "club": ["club.py"]}
 
 
 def deploy_radar():
@@ -361,7 +361,9 @@ def health():
             S["site_fail"] = 0
             ok("site", "Сайт снова открывается.")
     if every("services", 3):
-        for svc, what in (("radar", "Ассистент в Telegram-чатах (radar)"), ("leadbot", "Бот-проверка @FortexCheck_Bot"), ("habibi", "Бот Хабиби")):
+        for svc, what in (("radar", "Ассистент в Telegram-чатах (radar)"), ("leadbot", "Бот-проверка @FortexCheck_Bot"), ("habibi", "Бот Хабиби"), ("club", "Бот клуба")):
+            if svc == "club" and not os.path.exists("/etc/systemd/system/club.service"):
+                continue  # бот клуба ещё не установлен
             r = subprocess.run(["systemctl", "is-active", svc], capture_output=True, text=True).stdout.strip()
             if r != "active":
                 subprocess.run(["systemctl", "restart", svc])
