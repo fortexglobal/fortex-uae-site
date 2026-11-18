@@ -88,12 +88,19 @@ Q_IG = (head(7, "📷", "Ваш Instagram") + "\n\n"
         "<i>Видят только организаторы</i>\n\n"
         "Пришлите ник, например <b>@ivan.petrov</b>")
 DONE_CARD = ("✅ <b>Заявка принята</b>\n\n"
-             "Это ваша карта участника DXB Club.\n"
-             "Пришлю приглашение на следующую встречу клуба: дата, место и формат.\n"
-             "Места ограничены, их получают те, кто подтвердит первым.")
+             "Это ваша карта участника <b>DXB Club</b>\n"
+             "Личный код: <b>DXB · {code}</b>\n\n"
+             "<b>Что дальше</b>\n"
+             "<blockquote>📩 Пришлём приглашение на следующую встречу клуба\n"
+             "📍 В нём будут дата, место и формат\n"
+             "⏳ Места ограничены, их получают те, кто подтвердит первым</blockquote>\n\n"
+             "<i>Приглашение придёт в этот чат</i>")
 DONE = ("✅ <b>Заявка принята</b>\n\n"
-        "Пришлю приглашение на следующую встречу клуба: дата, место и формат.\n"
-        "Места ограничены, их получают те, кто подтвердит первым.")
+        "<b>Что дальше</b>\n"
+        "<blockquote>📩 Пришлём приглашение на следующую встречу клуба\n"
+        "📍 В нём будут дата, место и формат\n"
+        "⏳ Места ограничены, их получают те, кто подтвердит первым</blockquote>\n\n"
+        "<i>Приглашение придёт в этот чат</i>")
 
 
 def good_name(n):
@@ -306,7 +313,7 @@ async def finish(c, uid):
     st["at"] = time.strftime("%Y-%m-%d %H:%M", time.gmtime(time.time() + 4 * 3600))
     save()
     await call(c, "sendChatAction", chat_id=uid, action="upload_photo")
-    if not await send_card(c, uid, st, uid, DONE_CARD):
+    if not await send_card(c, uid, st, uid, DONE_CARD.format(code=member_code(uid))):
         await call(c, "sendMessage", chat_id=uid, text=DONE, parse_mode="HTML")
     if not st.get("sent") or st.get("updated"):
         st["sent"] = True
@@ -523,7 +530,7 @@ async def on_message(c, m):
     if uid == OWNER_ID and text.startswith("/card"):
         mine = S.get(uid) or {"name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)}
         await call(c, "sendChatAction", chat_id=uid, action="upload_photo")
-        if not await send_card(c, uid, mine, uid, DONE_CARD):
+        if not await send_card(c, uid, mine, uid, DONE_CARD.format(code=member_code(uid))):
             await call(c, "sendMessage", chat_id=uid, text="Не получилось нарисовать карту, проверяю")
         return
     if uid == OWNER_ID and text.startswith("/emoji") and not text.startswith("/emoji_reset"):
