@@ -48,7 +48,7 @@ for _lst in (JOB, SPHERE, TEAM, SEEK, LIKES):
 LBL = {"job": dict(JOB), "sphere": dict(SPHERE), "team": dict(TEAM), "seek": dict(SEEK), "likes": dict(LIKES)}
 INTRO_MAX = 300
 
-COVER_URL = ""  # картинка над приветствием (ссылка на jpg), пусто = без картинки
+COVER_URL = "https://res-prod.buzzy.now/file-service/9f6ca681-1d48-4b93-981b-faff2b7cc114.png"  # картинка над приветствием (ссылка на jpg), пусто = без картинки
 TOTAL = 7
 
 
@@ -325,7 +325,19 @@ async def on_message(c, m):
         S[uid] = {"src": src_tag, "t0": time.time(), "step": "welcome", "username": u.get("username"), "name": nm}
         save()
         if COVER_URL:
-            return await call(c, "sendPhoto", chat_id=uid, photo=COVER_URL, caption=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
+            fid_p = os.path.join(BASE, "club_cover_id.json")
+            try:
+                fid = json.load(open(fid_p)).get(COVER_URL)
+            except Exception:
+                fid = None
+            j = await call(c, "sendPhoto", chat_id=uid, photo=fid or COVER_URL, caption=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
+            if j.get("ok"):
+                if not fid:
+                    try:
+                        json.dump({COVER_URL: j["result"]["photo"][-1]["file_id"]}, open(fid_p, "w"))
+                    except Exception:
+                        pass
+                return j
         return await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
     st = S.get(uid)
     if not st:
