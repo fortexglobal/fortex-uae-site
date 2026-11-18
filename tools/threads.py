@@ -384,9 +384,14 @@ def replies():
             srcs[p["id"]] = {"text": p.get("text") or ""}
     hdp = os.path.join(D, "hidden.json")
     hidden = json.load(open(hdp)) if os.path.exists(hdp) else []
+    mp = os.path.join(D, "muted.json")  # посты без автоответов: id поста или кусок текста (без регистра)
+    muted = [str(m).lower() for m in (json.load(open(mp, encoding="utf-8")) if os.path.exists(mp) else [])]
     sent = 0
     for slug, info in st.items():
         if not info.get("id") or sent >= 8:
+            continue
+        ptxt = (srcs.get(slug, {}).get("text") or "").lower()
+        if any(m == str(info["id"]).lower() or m == slug.lower() or (len(m) >= 4 and m in ptxt) for m in muted):
             continue
         if datetime.now(DUBAI) - datetime.fromisoformat(info["at"]) > timedelta(days=10):
             continue
