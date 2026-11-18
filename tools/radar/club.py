@@ -86,8 +86,8 @@ Q_IG = (head(7, "📷", "Ваш Instagram") + "\n\n"
         "<i>Видят только организаторы</i>\n\n"
         "Пришлите ник, например <b>@ivan.petrov</b>")
 DONE = ("✅ <b>Заявка принята</b>\n\n"
-        "Когда соберётся группа, пришлю дату и место.\n"
-        "Места получают те, кто подтвердит первым.")
+        "Пришлю приглашение на следующую встречу клуба: дата, место и формат.\n"
+        "Мест немного, их получают те, кто подтвердит первым.")
 
 
 def good_name(n):
@@ -409,7 +409,7 @@ async def on_message(c, m):
         old = S.get(uid, {})
         if old.get("sent"):
             return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", disable_web_page_preview="true",
-                              text="Ваша заявка уже у нас ✅ Пришлю дату, когда наберётся группа.\n\n" + member_card(old),
+                              text="Ваша заявка уже у нас ✅ Пришлю приглашение на следующую встречу клуба.\n\n" + member_card(old),
                               reply_markup=kb([[{"text": "↩️ Обновить анкету", "callback_data": "restart"}]]))
         nm = " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)
         S[uid] = {"src": src_tag, "t0": time.time(), "step": "welcome", "username": u.get("username"), "name": nm}
