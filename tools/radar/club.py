@@ -380,15 +380,44 @@ def render_card(st, uid):
         return F(k, size, w)
 
     name = st.get("name") or "Участник"
-    d.text((100, 440), name, font=fit(name, "cor", 168, 700, W - 200), fill=white)
-    l1 = " · ".join(names(st, "sphere")[:3]) or " · ".join(names(st, "job")[:2])
+    maxw = W - 200
+    one = 168
+    while one > 140 and d.textlength(name, font=F("cor", one, 700)) > maxw:
+        one -= 4
+    nf = F("cor", one, 700)
+    if d.textlength(name, font=nf) <= maxw:
+        d.text((100, 612), name, font=nf, fill=white, anchor="ls")
+    else:
+        parts = name.split()
+        if len(parts) > 1:
+            best = min(range(1, len(parts)), key=lambda i: abs(len(" ".join(parts[:i])) - len(" ".join(parts[i:]))))
+            a, b = " ".join(parts[:best]), " ".join(parts[best:])
+            sz = 120
+            while sz > 60 and max(d.textlength(a, font=F("cor", sz, 700)), d.textlength(b, font=F("cor", sz, 700))) > maxw:
+                sz -= 4
+            nf = F("cor", sz, 700)
+            d.text((100, 612 - int(sz * 0.95)), a, font=nf, fill=white, anchor="ls")
+            d.text((100, 612), b, font=nf, fill=white, anchor="ls")
+        else:
+            d.text((100, 612), name, font=fit(name, "cor", 168, 700, maxw), fill=white, anchor="ls")
+    sph = names(st, "sphere") or names(st, "job")
+    l1 = ""
+    for n in range(min(3, len(sph)), 0, -1):
+        l1 = " · ".join(sph[:n])
+        if d.textlength(l1, font=F("mon", 52, 600)) <= maxw:
+            break
     seek = ["Ищу " + x for x in names(st, "seek", True)[:1]]
-    likes = names(st, "likes", True)[:3]
-    l2 = " · ".join(x for x in [seek[0] if seek else "", ", ".join(likes).capitalize() if likes else ""] if x)
+    likes = names(st, "likes", True)
+    l2 = ""
+    for n in range(min(3, len(likes)), -1, -1):
+        cand = " · ".join(x for x in [seek[0] if seek else "", ", ".join(likes[:n]).capitalize() if n else ""] if x)
+        l2 = cand
+        if d.textlength(cand, font=F("mon", 42, 500)) <= maxw:
+            break
     if l1:
-        d.text((104, 640), l1, font=fit(l1, "mon", 56, 600, W - 200), fill=gold)
+        d.text((104, 650), l1, font=fit(l1, "mon", 52, 600, maxw), fill=gold)
     if l2:
-        d.text((104, 722), l2, font=fit(l2, "mon", 44, 500, W - 200), fill=soft)
+        d.text((104, 728), l2, font=fit(l2, "mon", 42, 500, maxw), fill=soft)
     d.line([(100, 820), (W - 100, 820)], fill=(120, 98, 60), width=2)
     d.text((100, 848), "DXB · " + member_code(uid), font=F("mon", 50, 700), fill=gold)
     d.text((W - 100, 848), "DUBAI · " + time.strftime("%Y"), font=F("mon", 50, 700), fill=gold, anchor="ra")
