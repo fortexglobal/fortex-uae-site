@@ -360,38 +360,38 @@ def render_card(st, uid):
         od.ellipse([W * 0.8 - r, H * 0.12 - r, W * 0.8 + r, H * 0.12 + r], outline=(212, 175, 105, 14), width=2)
     img = Image.alpha_composite(img, ov)
     d = ImageDraw.Draw(img)
-    gold, soft, white = (214, 178, 108), (170, 142, 92), (236, 228, 214)
-    d.rounded_rectangle([28, 28, W - 28, H - 28], radius=46, outline=(150, 122, 72), width=3)
-    d.rounded_rectangle([44, 44, W - 44, H - 44], radius=36, outline=(90, 74, 46), width=1)
-    d.text((110, 100), "DXB", font=F("cin", 120, 700), fill=gold)
-    lw = d.textlength("DXB", font=F("cin", 120, 700))
-    d.text((110 + lw + 24, 148), "CLUB", font=F("cin", 54, 500), fill=gold)
-    d.text((W - 110, 118), "MEMBER", font=F("mon", 30, 500), fill=soft, anchor="ra")
-    d.text((W - 110, 160), "Участник клуба", font=F("cor", 38, 500), fill=soft, anchor="ra")
-    cx, cy = 118, 330
-    d.rounded_rectangle([cx, cy, cx + 130, cy + 100], radius=16, fill=(186, 150, 88))
-    for yy in (cy + 33, cy + 66):
-        d.line([(cx, yy), (cx + 130, yy)], fill=(140, 110, 62), width=3)
-    d.line([(cx + 65, cy), (cx + 65, cy + 100)], fill=(140, 110, 62), width=3)
+    gold, soft, white = (232, 196, 122), (214, 190, 146), (248, 242, 230)
+    d.rounded_rectangle([28, 28, W - 28, H - 28], radius=46, outline=(176, 144, 86), width=4)
+    d.rounded_rectangle([46, 46, W - 46, H - 46], radius=36, outline=(100, 82, 50), width=2)
+    d.text((100, 84), "DXB", font=F("cin", 150, 800), fill=gold)
+    lw = d.textlength("DXB", font=F("cin", 150, 800))
+    d.text((100 + lw + 26, 146), "CLUB", font=F("cin", 66, 700), fill=gold)
+    d.text((W - 100, 104), "MEMBER", font=F("mon", 40, 700), fill=gold, anchor="ra")
+    d.text((W - 100, 156), "Участник клуба", font=F("cor", 48, 700), fill=soft, anchor="ra")
+    cx, cy = 104, 300
+    d.rounded_rectangle([cx, cy, cx + 120, cy + 92], radius=16, fill=(196, 160, 96))
+    for yy in (cy + 30, cy + 61):
+        d.line([(cx, yy), (cx + 120, yy)], fill=(140, 110, 62), width=3)
+    d.line([(cx + 60, cy), (cx + 60, cy + 92)], fill=(140, 110, 62), width=3)
 
     def fit(text, k, size, w, maxw):
-        while size > 20 and d.textlength(text, font=F(k, size, w)) > maxw:
+        while size > 24 and d.textlength(text, font=F(k, size, w)) > maxw:
             size -= 2
         return F(k, size, w)
 
     name = st.get("name") or "Участник"
-    d.text((110, 520), name, font=fit(name, "cor", 120, 600, W - 220), fill=white)
+    d.text((100, 440), name, font=fit(name, "cor", 168, 700, W - 200), fill=white)
     l1 = " · ".join(names(st, "sphere")[:3]) or " · ".join(names(st, "job")[:2])
     seek = ["Ищу " + x for x in names(st, "seek", True)[:1]]
     likes = names(st, "likes", True)[:3]
     l2 = " · ".join(x for x in [seek[0] if seek else "", ", ".join(likes).capitalize() if likes else ""] if x)
     if l1:
-        d.text((112, 665), l1, font=fit(l1, "mon", 36, 400, W - 220), fill=gold)
+        d.text((104, 640), l1, font=fit(l1, "mon", 56, 600, W - 200), fill=gold)
     if l2:
-        d.text((112, 718), l2, font=fit(l2, "mon", 30, 300, W - 220), fill=soft)
-    d.line([(110, 820), (W - 110, 820)], fill=(90, 74, 46), width=1)
-    d.text((110, 850), "DXB · " + member_code(uid), font=F("mon", 34, 500), fill=gold)
-    d.text((W - 110, 850), "DUBAI · " + time.strftime("%Y"), font=F("mon", 34, 500), fill=gold, anchor="ra")
+        d.text((104, 722), l2, font=fit(l2, "mon", 44, 500, W - 200), fill=soft)
+    d.line([(100, 820), (W - 100, 820)], fill=(120, 98, 60), width=2)
+    d.text((100, 848), "DXB · " + member_code(uid), font=F("mon", 50, 700), fill=gold)
+    d.text((W - 100, 848), "DUBAI · " + time.strftime("%Y"), font=F("mon", 50, 700), fill=gold, anchor="ra")
     buf = io.BytesIO()
     img.convert("RGB").save(buf, "JPEG", quality=92)
     return buf.getvalue()
