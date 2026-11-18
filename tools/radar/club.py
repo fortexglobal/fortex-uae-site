@@ -72,7 +72,7 @@ STEPS = [("job", head(1, "💼", "Чем занимаетесь?") + MULTI, JOB,
          ("team", head(3, "👥", "Размер команды или компании"), TEAM, False, 2),
          ("seek", head(4, "🤝", "Что сейчас ищете?") + MULTI, SEEK, True, 1),
          ("likes", head(5, "🎯", "Хобби и интересы") + "\n\nПод них подбираем встречи" + MULTI, LIKES, True, 2)]
-Q_NAME = "👋 <b>Как к вам обращаться?</b>\n\n<i>Напишите имя и фамилию, например: Иван Петров</i>"
+Q_NAME = "👋 <b>Как к вам обращаться?</b>\n\nТак вас увидят другие участники клуба.\n<i>Напишите имя и фамилию, например: Иван Петров</i>"
 Q_INTRO = (head(6, "✍️", "Ваше интро") + "\n\n"
            "Пара строк о себе:\n"
            "• чем занимаетесь\n"
@@ -100,6 +100,12 @@ try:
     EMO = json.load(open(EMO_P))  # обычный эмодзи -> id премиум-эмодзи из пака владельца
 except Exception:
     EMO = {}
+
+
+EMO_LIST = [("🎩", "название клуба"), ("🔐", "вход по заявке"), ("👋", "вопрос про имя"), ("💼", "чем занимаетесь"),
+            ("🧭", "сферы"), ("👥", "команда"), ("🤝", "что ищете"), ("🎯", "хобби и интересы"), ("✍️", "интро"),
+            ("📷", "Instagram"), ("👇", "карточка участника"), ("✅", "заявка принята")]
+EMO_Q = []
 
 
 def premium(t):
@@ -271,7 +277,9 @@ async def ask(c, uid, st, msg_id=None):
                 rows.append([{"text": "Готово →", "callback_data": f"d:{key}", "style": "primary"}])
             return await show(c, uid, q, kb(rows), msg_id)
     if step == "name":
-        return await show(c, uid, Q_NAME, None, msg_id)
+        nm = st.get("tg_name") or ""
+        m = kb([[{"text": f"Оставить: {nm[:30]}", "callback_data": "keep_name"}]]) if good_name(nm) else None
+        return await show(c, uid, Q_NAME, m, msg_id)
     if step == "intro":
         return await show(c, uid, Q_INTRO, None, msg_id)
     if step == "ig":
@@ -324,6 +332,19 @@ async def export(c):
                  files={"document": ("club.csv", buf.getvalue().encode("utf-8-sig"), "text/csv")})
 
 
+async def ask_emoji(c, uid):
+    if not EMO_Q:
+        return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML",
+                          text="✅ <b>Эмодзи настроены</b>\n\nНажми /start, чтобы посмотреть анкету. Заново: /emoji")
+    e = EMO_Q[0]
+    n = len(EMO_LIST) - len(EMO_Q) + 1
+    what = dict(EMO_LIST)[e]
+    now = e
+    return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML",
+                      text=f"<b>{n}/{len(EMO_LIST)} · {what}</b>\nСейчас: {now}\n\nОтправь одно эмодзи из своего пака на замену",
+                      reply_markup=kb([[{"text": "Пропустить", "callback_data": "emo_skip"}]]))
+
+
 async def on_message(c, m):
     if m["chat"].get("type") != "private":
         return
@@ -334,6 +355,19 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and text.startswith("/emoji") and not text.startswith("/emoji_reset"):
+        EMO_Q[:] = [e for e, _ in EMO_LIST]
+        return await ask_emoji(c, uid)
+    if uid == OWNER_ID and EMO_Q:
+        ids = [e["custom_emoji_id"] for e in m.get("entities", []) if e.get("type") == "custom_emoji"]
+        if ids:
+            EMO[EMO_Q[0]] = ids[0]
+            json.dump(EMO, open(EMO_P, "w"), ensure_ascii=False)
+            EMO_Q.pop(0)
+            return await ask_emoji(c, uid)
+        if text in ("-", "пропустить", "Пропустить"):
+            EMO_Q.pop(0)
+            return await ask_emoji(c, uid)
     if uid == OWNER_ID and ("addemoji/" in text or "addstickers/" in text):
         name = text.split("/add", 1)[1].split("/", 1)[1].split()[0].split("?")[0].strip()
         j = await call(c, "getStickerSet", name=name)
@@ -426,6 +460,10 @@ async def on_callback(c, q):
     msg_id = q["message"]["message_id"]
     if not data.startswith("d:") or S.get(uid, {}).get("step") != data[2:]:
         await call(c, "answerCallbackQuery", callback_query_id=q["id"])
+    if data == "emo_skip" and uid == OWNER_ID and EMO_Q:
+        EMO_Q.pop(0)
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        return await ask_emoji(c, uid)
     if data.startswith("lv:") and uid == OWNER_ID:
         _, who, lv = data.split(":")
         st = S.get(int(who))
@@ -462,10 +500,16 @@ async def on_callback(c, q):
         save()
         return await ask(c, uid, st, msg_id)
     if data == "go" and st.get("step") == "welcome":
-        st["step"] = "job" if good_name(st.get("name")) else "name"
+        st["tg_name"] = st.get("tg_name") or st.get("name")
+        st["step"] = "name"
         save()
         await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
         return await ask(c, uid, st)
+    if data == "keep_name" and st.get("step") == "name":
+        st["name"] = st.get("tg_name") or st.get("name")
+        st["step"] = "job"
+        save()
+        return await ask(c, uid, st, msg_id)
     if data == "skip" and st.get("step") == "ig":
         st["ig"] = ""
         st["step"] = "preview"
@@ -480,7 +524,7 @@ async def on_callback(c, q):
         keep = {k: st[k] for k in ("src", "t0", "username", "name", "level", "sent", "card") if k in st}
         if st.get("sent"):
             keep["updated"] = True
-        S[uid] = st = dict(keep, step="job" if good_name(keep.get("name")) else "name")
+        S[uid] = st = dict(keep, step="name", tg_name=keep.get("name"))
         save()
         await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
         return await ask(c, uid, st)
