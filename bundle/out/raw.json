@@ -3,29 +3,29 @@
  "r": [
   [
    "DELETE",
-   "/api/v1/post/c5cce22b-9b3d-4ce5-99e7-b5e023135d84",
+   "/api/v1/post/bee66a04-6a4a-48df-98c8-5235450b1404",
    [
     200,
     {
-     "id": "c5cce22b-9b3d-4ce5-99e7-b5e023135d84",
+     "id": "bee66a04-6a4a-48df-98c8-5235450b1404",
      "teamId": "34938f1a-9cb5-4a85-be16-15addc7b8989",
      "organizationId": "bee2c21a-174c-443c-b7ee-b9462507ab29",
-     "title": "joke 2026-11-17",
+     "title": "joke 2026-11-18",
      "referenceKey": null,
-     "postDate": "2026-11-17T09:30:00.000Z",
+     "postDate": "2026-11-18T09:30:00.000Z",
      "postedDate": null,
      "status": "DELETED",
      "data": {
       "INSTAGRAM": {
        "type": "REEL",
-       "text": "Виза в Дубай на год и Emirates ID: какие документы нужны.\nСобрал папку справок, перевёл, заверил, положил даже школьный аттестат. А пригодились паспорт и фото.\n\nМы с командой делаем Virtual Work: резидентскую визу ОАЭ на год и Emirates ID без компании и без зарплаты, ты сам себе спонсор. Из документов только паспорт и фото, остальное берём на себя. Цена от 6 500 AED, фастрэк отдельно.\n\nПиши «ВИЗА» мне в директ или в Telegram @Fortex_Dubai.\n\nfortex-uae.com/virtual-work/\n\n#дубай #emiratesid #virtualwork #визаоаэ #жизньвдубае",
+       "text": "Рабочая виза в Дубае: что она даёт.\nДумал: офис с 9 до 6. На деле: Emirates ID, официальная зарплата и нормальный банк.\n\nМы с командой оформляем рабочую визу в компании, которая на 100% принадлежит гражданину ОАЭ: трудовой договор, зарплата через WPS, счёт и кредитка, через 6 месяцев можно подаваться на ипотеку, а на Шенген подаёшь прямо из Дубая. От 20 000 AED, 7-10 рабочих дней.\n\nПиши «РАБОТА» мне в директ или в Telegram @Fortex_Dubai, подскажу.\n\nfortex-uae.com\n\n#дубай #рабочаявиза #emiratesid #визаоаэ #жизньвдубае",
        "uploadIds": [
-        "009f0c54-914a-4720-b8db-78f48f214ab3"
+        "f6cf9620-4681-4210-a06b-8c888be4585e"
        ],
-       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/306472af-1626-41ec-87a7-42ba698e721d.jpeg",
+       "thumbnail": "https://private-storage.bundle.social/34938f1a-9cb5-4a85-be16-15addc7b8989/0d9fda5d-50b9-4e5b-bc6f-b7bace133d4f.jpeg",
        "shareToFeed": false,
        "musicSoundInfo": {
-        "musicSoundId": "461815816103136",
+        "musicSoundId": "1721492795026670",
         "musicSoundVolume": 1,
         "videoOriginalSoundVolume": 100
        }
@@ -36,284 +36,9 @@
      "errorsVerbose": {},
      "externalData": {},
      "retryCount": 0,
-     "createdAt": "2026-11-17T06:47:15.923Z",
-     "updatedAt": "2026-11-17T06:49:03.435Z",
-     "deletedAt": "2026-11-17T06:49:03.435Z"
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=%D0%97%D0%B0%20%D0%B1%D1%83%D0%B9%D0%BA%D0%B8",
-   [
-    200,
-    {
-     "audio": []
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=Pray%20For%20Me",
-   [
-    200,
-    {
-     "audio": [
-      {
-       "audio_id": "130347256406499",
-       "duration_in_ms": 44278,
-       "audio_type": "original_sound",
-       "title": "RICCO BARRINO “PRAY FOR ME”",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQOVpOn6g-1k6L3v35-RLhqiGHhQOAv5wZPo8N7p7MHWdOh3PKMj6v9RikX3LEbSI6gDUlW_DbKZ9bvCZI0V308.mp4?_nc_cat=103&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=4vVDOrSH8qsQ7kNvwER5BLp&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE2MTM0Njc5MTIyNjM2MCwiYXNzZXRfYWdlX2RheXMiOjEzNTUsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo0NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSbEVIUA-1DP32TF-5nqpH0Jo8plUQvemiksyjOJBsE3A&oe=6AFDF23D",
-       "ig_username": "riccobarrino"
-      },
-      {
-       "audio_id": "217978987724740",
-       "duration_in_ms": 15022,
-       "audio_type": "original_sound",
-       "title": "Pray For Me by Forrest Frank",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQPRA1eldPEXynPPiPShdmds--e-jY6Iwb5oJufu7ZOkmXNpTHFRvNSGA0OVL9adKajXOVkpC4OXUssf-D08RVjB.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=vmMAJ370ntYQ7kNvwGKy0M0&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjIyNDIwNjMwNjY1NDUzLCJhc3NldF9hZ2VfZGF5cyI6MTI0OCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjE1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQS5olYFDMilVQO1oPbfUOLU3qP85JotTg6_WYdbvC0j2A&oe=6AFDC57E",
-       "ig_username": "hiforrest"
-      },
-      {
-       "audio_id": "278626874548997",
-       "duration_in_ms": 67267,
-       "audio_type": "original_sound",
-       "title": "Pray For Me - BOSE",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPNsdWk9QEhzWjqwa4wwKfevFKQbRwl_TzNrVhX_WfvnqkOPiyDlgRvd3jcCtg9FiR6X15kfGt36XWIJ3Dlq6I.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=EJuXemhNoWgQ7kNvwFe37_S&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc4MTM4MjU3MjMwMzU2MiwiYXNzZXRfYWdlX2RheXMiOjExMTQsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo2NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTh22JEAT0JARJD4mPxft0O0FEP8gm6R6zOGInLjJIT2g&oe=6AFDC208",
-       "ig_username": "audicyvisuals"
-      },
-      {
-       "audio_id": "314707754997082",
-       "duration_in_ms": 59490,
-       "audio_type": "original_sound",
-       "title": "Pray for me x Manuja",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPGRYrDn9XT2Z1sQFr-W9H5NXvO8Sb8tVEBUnAQJgffJdIdnD3h0q5QTytEfxgxElbxbHdnj2zM9EZQpGRG2sDo.mp4?_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=sKKJg-gBcsMQ7kNvwHGldNQ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6OTYyNTUwMzA1MTc2NzE1LCJhc3NldF9hZ2VfZGF5cyI6OTE5LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NTksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRN4Gn80NFEnulLUP9hdaTx_LR2zgIR2Gcy4_4R7mAr6Q&oe=6AFDD499",
-       "ig_username": "bobbydhuth"
-      },
-      {
-       "audio_id": "344206545343792",
-       "duration_in_ms": 38428,
-       "audio_type": "original_sound",
-       "title": "The Weeknd - Pray For Me",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPRVPtVY5h2POUGsWY_IN_KF_1ff92f-R44m1BVW53zrXbnQHbczX9zuhvZPYWcWEWWZNdia4HoUn0msyAxKjdT.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=7bNUShLTBScQ7kNvwFcBI_1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTA4NDU0MzQ3MjYwODA1NywiYXNzZXRfYWdlX2RheXMiOjkxNiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjM4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQgq7fSRvGijtc9dfRY4uOcaMp0dRR5FPEcSff7cLf2JQ&oe=6AFDDCCC",
-       "ig_username": "jasbrox24"
-      },
-      {
-       "audio_id": "375479804573426",
-       "duration_in_ms": 35385,
-       "audio_type": "original_sound",
-       "title": "Say A Little Prayer For Me",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOxkrlfhDY0VnjYRlTQ3pKaIEnaq1kk5Q1dy2gkHGAdMDbtZqDbufP_67gKQSmE3j3xwgKvAyNDDxub-GrAGyIS.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=4YzB3nLVWP4Q7kNvwGLo_qK&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjIxODgzMDg3MTYxMTY0OSwiYXNzZXRfYWdlX2RheXMiOjE1OTMsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQX2hRSumYK8zt8YJte0kW5jk_8MtHnPPAYNk7W0b4uGA&oe=6AFDE45A",
-       "ig_username": "dennyelizabethwalker"
-      },
-      {
-       "audio_id": "380484478145904",
-       "duration_in_ms": 43583,
-       "audio_type": "original_sound",
-       "title": "Pray For Me, Tedashii feat DKG Kie",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQMh1dgk8wnDCPsNPzu7A3gmBhEUyrhqnv1nt9ei-MapZ45XXg5tWq4ZvXxvao4lHksWpbm90UKbnqV926QGUYZf.mp4?_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=4CsErTFJq_8Q7kNvwGgOV4h&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6Nzc0MzgzODEyMjI5NDEzNSwiYXNzZXRfYWdlX2RheXMiOjk2MiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjQzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRNHeyEHWMy5_segfEMiy7o_W7RxtsJsQKauR1GgSxE5g&oe=6AFDD2F5",
-       "ig_username": "ohtrapgospel"
-      },
-      {
-       "audio_id": "451047047295859",
-       "duration_in_ms": 95873,
-       "audio_type": "original_sound",
-       "title": "Pray for Me - Chris Brown ft. Moneybagg Yo",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQOGAeHZW8CaP5NQ_qkZ_ataYmO91BjvALAOoV0hkH_jPT6rni4rDIFVNvjvmyGwixR6w55lU6ngxGcl39OohFlt.mp4?strext=1&_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=jGDGRB3Y-BMQ7kNvwGnnXZL&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjA0OTE0MTM5MjE1NTE5MywiYXNzZXRfYWdlX2RheXMiOjc4NCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjk1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTMQxSEGUBB1_aRwAmZlGS6N1yqPQ8-w7F7t9WLsGJkHw&oe=6B01D781",
-       "ig_username": "aronalcantara"
-      },
-      {
-       "audio_id": "456277930847369",
-       "duration_in_ms": 77206,
-       "audio_type": "original_sound",
-       "title": "Pray for me • reprise  feat. Echoes",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQOTZDRuO_FVJakwhVXEeCGhLdx4zV9OZ9cDBaV6GLJDz_otmCXci_qGatxdGBru7QxBn--jDaA2ek4KnxGVRT5G.mp4?strext=1&_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=iporgciARrkQ7kNvwEvEgzM&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NjAwMjQwNDE1NzU3NDY3LCJhc3NldF9hZ2VfZGF5cyI6NzA2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NzcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQT4MV-cfUh1JCm6w3_hKNN0kKlw0ZZm6M3Tb910tRi6vA&oe=6B01B06B",
-       "ig_username": "awesomeofficiall"
-      },
-      {
-       "audio_id": "658075754011488",
-       "duration_in_ms": 40766,
-       "audio_type": "original_sound",
-       "title": "Pray for me",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQPnXU96p2ZDKn3uF7eRqaET9_hYaK28KZswJH8GB9voqo92UKRBhs0QaJwQLMGsgfSFUi0TKhwcxOcG2ZiEJoWs.mp4?strext=1&_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=bmhar6YU_r4Q7kNvwGVfT8s&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODE4NjUxNDk3MzMwNTU5LCJhc3NldF9hZ2VfZGF5cyI6NDIxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=uK3RJdSIi8h9vYnuiOqPVA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQu7xz47IqQXtxCxjtntaQJN9aNCvrAM-FR4Bug9Gpong&oe=6B01DF58",
-       "ig_username": "supastarc"
-      }
-     ]
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B5%20%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5",
-   [
-    200,
-    {
-     "audio": [
-      {
-       "audio_id": "25296432873347664",
-       "duration_in_ms": 193600,
-       "audio_type": "original_sound",
-       "title": "Ледяное сердце",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m69/AQO_ckpILYo2Mx40_HwhZdrXf5lIoiY-clQywbJT-7DXur77jPUKcokVRH63SWHfCLbROf_ON8nZo8HxVf-oyzyr.mp4?strext=1&_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=MZmmAfRpunAQ7kNvwHYpL1q&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODc0NDA2MjUxNzA1ODk5LCJhc3NldF9hZ2VfZGF5cyI6MzI3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTkzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQrKpSgh5U9w4IBpofbSpOOZh6qBg2wx4fUMefC_PhpIg&oe=6B01DE33",
-       "ig_username": "gabriellagaga_official"
-      },
-      {
-       "audio_id": "25877275798638910",
-       "duration_in_ms": 185000,
-       "audio_type": "original_sound",
-       "title": "Ледяное сердце - Оксана Иванова",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNOItYln708UZ--Bbm2Kz1w9HaAoqsqw-2JCq9kxCwxPEe9zQsBvYYMH1Co8u99REa9dGrfM6bg6Fd27vl5XpY.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=zzuM9HoY9wkQ7kNvwGF0M1W&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTc5MjQzMDk1NTMzMjQ1MjcsImFzc2V0X2FnZV9kYXlzIjoyMzMsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxODUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRDHiJLPBdX5nbNCiNTEx-6TTcDHfP6b1PW5GQSVgk9bw&oe=6AFDBC87",
-       "ig_username": "mariyasnaya"
-      },
-      {
-       "audio_id": "28457956117240305",
-       "duration_in_ms": 13083,
-       "audio_type": "original_sound",
-       "title": "IRENA BERTI - Ледяное сердце",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m78/AQOoah5yqscY2Hd78HwDTFfFy0oTTkLiKwFbDI6-M875twQbIzVf3qmtql0H1aB7JM3z0Y-P0otNmmmpxrYA_Z3OgE1sE8K8tTPY7-c.mp4?_nc_cat=110&_nc_sid=b66105&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=FUSioeYc89cQ7kNvwFMDHZN&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2xuX2hlYWFjX3ZicjNfYXVkaW8iLCJ4cHZfYXNzZXRfaWQiOjI0MTM3NzQ5MzU4MjA1NDgsImFzc2V0X2FnZV9kYXlzIjoyNiwidmlfdXNlY2FzZV9pZCI6MTA4MjcsImR1cmF0aW9uX3MiOjEzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=fde0ba7b1cab273c&_nc_vs=HBkcFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzVCQzVDOTA4NTkyOTQ4OUQ4OTlFMjZBRjAwNkY5NUZGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACaIpPDZmNTJCBUCKAJDMywXQCowIMSbpeMYGGRhc2hfbG5faGVhYWNfdmJyM19hdWRpbxEAdQBllqkBAA&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRULUQ-CbapACf6hJuswJ11klJOPokZZxf8KJ0zY40ogA&oe=6AFDDA4B",
-       "ig_username": "rem.liberti"
-      },
-      {
-       "audio_id": "28596469546690172",
-       "duration_in_ms": 44950,
-       "audio_type": "original_sound",
-       "title": "Ледяное Сердце (Muwin blend)",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOMEU_g2Qnulx-XRVpfiozXCJtHRBtBlr7dhmBsEk1BHEKhLWPz5a0JRumH5HKDQ3p0Ovb_BEGrXG439Wy_X-IelD-IKhXC8AA.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=VqZm2PCVni4Q7kNvwFaA9HV&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MjE4ODI5ODk0ODU0Mjk2NSwiYXNzZXRfYWdlX2RheXMiOjIwLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQS6NvUGaRcKArpP8LoB91ZIgTUmUjjV5vggN92VjVOpIQ&oe=6AFDE408",
-       "ig_username": "dj_muwin"
-      },
-      {
-       "audio_id": "28754500980879295",
-       "duration_in_ms": 15000,
-       "audio_type": "original_sound",
-       "title": "TERELYA — Ледяное сердце 23|10",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQN1e651srDVHUMX6QFtHrkIG0E1VFV8rxMfZ4IqqY8TlbNVe52oic1627TZOKveB2MUXT4d16_1f8OtRT4jTya8Vxt_AZdKUQE.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=I6zEjDDZxyIQ7kNvwE7ymZd&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTY1MDk3MTg2OTk4MTc5MywiYXNzZXRfYWdlX2RheXMiOjMxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTZX44baajwxr5aLlmyqkae4vzJAc3acQLoeVZE7-_Pqw&oe=6AFDD13A",
-       "ig_username": "terelya"
-      },
-      {
-       "audio_id": "29023874053887808",
-       "duration_in_ms": 25000,
-       "audio_type": "original_sound",
-       "title": "Ледяное сердце (Prezzplay & Audiophil",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNhElz1H320AWOpQm1gNJ0Ex3GNDr4Tf2l1z7jIVRPvp7hRfRIMHmdUx8hSCl4rBS9Vvl7onbjNIngD8T39QVJq0MHL7U3ioQg.mp4?_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=jnPAkAF2cQsQ7kNvwFcZwde&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE1MTAzNTIyNDAzODU1MSwiYXNzZXRfYWdlX2RheXMiOjgsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSZuW8QAAQCwuW3omHjGE5q7LxNGH6vdNinBqBFfCL0Pg&oe=6AFDECF2",
-       "ig_username": "iamprezzplay"
-      },
-      {
-       "audio_id": "29052817591017529",
-       "duration_in_ms": 5640,
-       "audio_type": "original_sound",
-       "title": "TERELYA — Ледяное сердце (2026)",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQNpKDFdDd4thDxOHmX8ZmjQRA1u2xir4KrFkc2jeAr9HY_CRlJ6IA7vs-ECydYWY-ob4ctGLEnBL23bTdo6FWtesaboRN0Wwa4.mp4?_nc_cat=107&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=TIrFpS6SxZ8Q7kNvwGPyMD2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTY2ODExMzk4ODAzNDg5NSwiYXNzZXRfYWdlX2RheXMiOjI4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQdIZ_gK1AD7-amuNR87_r_Qe1nj3CbYdWBPHIwq_SvQg&oe=6AFDC7FD",
-       "ig_username": "terelya"
-      },
-      {
-       "audio_id": "29228167053538206",
-       "duration_in_ms": 19000,
-       "audio_type": "original_sound",
-       "title": "Ледяное сердце (piano cover)",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m86/AQMLzm6Nvn_isoPSbs7IWaae1LD2Rv9g8MBlrNPzRJHQKx2qqOhJ3eQbLMEYjc7s0wiuCkw_o7RNsjP0RDgJrU2me4FUjenLRh4.mp4?_nc_cat=101&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=Pu9AgolBnewQ7kNvwE5ooAd&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTE2Mzc1NDA5MzE4NDc4MSwiYXNzZXRfYWdlX2RheXMiOjI2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSaqmI6cpwDZSQY8AdndiGJhMmHf5EeThMHgCo8R3TrDg&oe=6AFDD4FB",
-       "ig_username": "meschceryakovaa"
-      },
-      {
-       "audio_id": "29833184652938520",
-       "duration_in_ms": 13291,
-       "audio_type": "original_sound",
-       "title": "IRENA BERTI - Ледяное сердце",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m78/AQNNERdJWux-IoWWMr_OfKKDl7gsNCP-hj7qWBY41QoxGNuXuQQmCMDd9m5JMVpyIFM2hBsv6afY3vPAupNAdJZoLkQa91w2jnnWiLY.mp4?_nc_cat=108&_nc_sid=b66105&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=FecQ8lGvpi4Q7kNvwFdowd0&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2xuX2hlYWFjX3ZicjNfYXVkaW8iLCJ4cHZfYXNzZXRfaWQiOjEyNDQ4NDM0MDExOTIxMDcsImFzc2V0X2FnZV9kYXlzIjoyNiwidmlfdXNlY2FzZV9pZCI6MTA4MjcsImR1cmF0aW9uX3MiOjEzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=10723b48cd54f532&_nc_vs=HBkcFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzBFRjY0MDI1RkM4QTQ3QUY5MUI3M0MwNjMzODgxOEFDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACbWitWLtou2BBUCKAJDMywXQCqDlYEGJN0YGGRhc2hfbG5faGVhYWNfdmJyM19hdWRpbxEAdQBllqkBAA&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSRBN-8SSWcMoxnZSbACTLetdklN1oeCDQRyjx3dd5eYw&oe=6AFDCFC1",
-       "ig_username": "rem.liberti"
-      },
-      {
-       "audio_id": "30268627209403673",
-       "duration_in_ms": 43420,
-       "audio_type": "original_sound",
-       "title": "Ледяное сердце",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQN7dcJduuE1NRluJAKHP1KstCG8kLcJI3brAXUmkyv2u-SEBVjZ2EfI_SaRL5tFZXPAr41Qg5hAIjNQ-aygv9bWMPkGSNQE3_g.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=aXjoi5My-04Q7kNvwGADi0Z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTU0NTUwMzkzMDkyNjgxNSwiYXNzZXRfYWdlX2RheXMiOjYsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo0MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=NgI2LfFyiO8jRkeB-IenSA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQRv7QTxT-LirHQI4hHaTQFxNSSRqp2FBoFIMqtR-4dEDA&oe=6AFDC2D5",
-       "ig_username": "spivakovski"
-      }
-     ]
-    }
-   ]
-  ],
-  [
-   "GET",
-   "/api/v1/misc/instagram/audio?teamId=34938f1a-9cb5-4a85-be16-15addc7b8989&audioType=original_sound&searchQuery=Darbuka",
-   [
-    200,
-    {
-     "audio": [
-      {
-       "audio_id": "171800082596120",
-       "duration_in_ms": 51431,
-       "audio_type": "original_sound",
-       "title": "Improviso Darbuka",
-       "download_url": "https://scontent-fra3-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQN6rZ11wxlQZUHzLbHIPLYLLiag9bSBCV8xbsyd1OImLDhUUmokiV88H_qB6sbXGsxVjhdKUMjYq5_N2-ZAzKDw.mp4?strext=1&_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-2.xx.fbcdn.net&_nc_ohc=W7H9yY7aS1UQ7kNvwE1_WoR&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6Mjg3OTgxMTIzNTgxMzg3LCJhc3NldF9hZ2VfZGF5cyI6MTE4NiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjUxLCJ3YXRjaF90aW1lX3MiOjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSrtb9XgcE1cRL3nzf6CTo9q7reVEhrG_NDs6J1D2XGfw&oe=6B01B21C",
-       "ig_username": "pedrofrancolin"
-      },
-      {
-       "audio_id": "185284431321084",
-       "duration_in_ms": 11493,
-       "audio_type": "original_sound",
-       "title": "Eih Eih X Hotline Bling (Darbuka version)",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOi0rAhWWcTwArXC3DKuQBYv_HpFuIPMu8oowk3Mz-y1OboiVmY_ww28A9Yg7rnQ7lt5BEeOoREivUFTvpnbQ.mp4?_nc_cat=105&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=Cp8aJE9HTbAQ7kNvwHOXIZr&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTAxNjY3OTQ4OTU5MjEwNCwiYXNzZXRfYWdlX2RheXMiOjEwODcsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxMSwid2F0Y2hfdGltZV9zIjozNTYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQS0ygZtTuvUiPB-ry2iy0adVPEr6Y-vEljYw6MIS8QpDg&oe=6AFDDB40",
-       "ig_username": "_anthonysaade_"
-      },
-      {
-       "audio_id": "228622389385265",
-       "duration_in_ms": 17853,
-       "audio_type": "original_sound",
-       "title": "BELLY DANCER DARBUKA REMIX",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNbnUhy9JyplP0Y335WapcIoM4We9Tguprx9U4so-nL1aBUEbdQkrO2itHIM4us2WPMkG_F1FhNA-CPeIPLi8Q.mp4?_nc_cat=100&_nc_sid=b66105&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=HtR7sgXTnyYQ7kNvwEFeU0K&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5kYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxIiwieHB2X2Fzc2V0X2lkIjo0MjIxMjM3Njk2NDYyMDgsImFzc2V0X2FnZV9kYXlzIjoxODEwLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTcsIndhdGNoX3RpbWVfcyI6MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=1dc9b8bc1c557a52&_nc_vs=HBkcFQIYRmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC80ODYxMzg0NzYwNTgxMzFfOTA5MTM0MjUxMDgyNjcwNzAyNS5tcDQVAgLIARIAKAAYABsDiAd1c2Vfb2lsATEScHJvZ3Jlc3NpdmVfcmVjaXBlATESY29weV9zYW1wbGVfZ3JvdXBzATEVAAAmgLK6lev6vwEVAigCQzMsF0AxgQYk3S8bGBZkYXNoX2Jhc2VsaW5lX2F1ZGlvX3YxEQB1AGXmnQEA&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQSdlEEgEWj5oVQKWke85k0m5WTtPZSjsks04UeoKFN-tA&oe=6AFDE6A8",
-       "ig_username": "markkrossmusic"
-      },
-      {
-       "audio_id": "230208186482917",
-       "duration_in_ms": 56516,
-       "audio_type": "original_sound",
-       "title": "Animals | Darbuka + Tabla Edit",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPi2p4F6CWs2z_QGB2vGPkOTibuF6zV3t_XV_Es0wr0roqIE1Ccc2x4IoBzKeJ0ufbOv9F-SigkauD1ltSFvn8z.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=APRhMapiROsQ7kNvwEKDb_X&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTg1NDMwMTU0MjA2NDQzLCJhc3NldF9hZ2VfZGF5cyI6MTIzOCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjU2LCJ3YXRjaF90aW1lX3MiOjI4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQQMYUdAJIwVssf7h4BNufOGQJQEyrnZf9cAVR5yKv2bNg&oe=6AFDEF98",
-       "ig_username": "thetablaguyy"
-      },
-      {
-       "audio_id": "276550162195658",
-       "duration_in_ms": 22360,
-       "audio_type": "original_sound",
-       "title": "Illuminati x Darbuka",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQNiY0vLhqaxEOdk0t-GDQIZMy-kJdXg9_v4-JXPFwvD5cQG9zx_cskrgWPv_fhibCea2Rqp6bqE_KrYwvFocwLH.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=BB08sYs5O7gQ7kNvwEN8US3&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTM5ODYyMDcxNzY4MjIzNCwiYXNzZXRfYWdlX2RheXMiOjkzNCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjIyLCJ3YXRjaF90aW1lX3MiOjI0NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTtWBTgVz-AhXwlahCUKr9TKhHblpSo1tnhhpzmIfzkWw&oe=6AFDC70A",
-       "ig_username": "druminem"
-      },
-      {
-       "audio_id": "295604486713584",
-       "duration_in_ms": 88676,
-       "audio_type": "original_sound",
-       "title": "Darbukagod - drum solo",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQPA0KHP6pAu2bYch7cmEDDkQlGqmSCdtS6Zj_sS_nKFG8Nc6-H11o8Xg78Pgc4pNnDWzWyP9j7Rjt8ZkProTi8.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=d6Ioqyhws7EQ7kNvwHjirTh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6ODUxNjc4MTE5NzQ3Nzg3LCJhc3NldF9hZ2VfZGF5cyI6MTExNiwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjg4LCJ3YXRjaF90aW1lX3MiOjkwOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTY8mpLR0hFMl2TcEO03J9gUdzUvISThtm7-nQywsD0BA&oe=6AFDBC49",
-       "ig_username": "bellygoddess_"
-      },
-      {
-       "audio_id": "344054154887523",
-       "duration_in_ms": 56122,
-       "audio_type": "original_sound",
-       "title": "Yodgora Goipova Darbuka solo😇",
-       "download_url": "https://scontent-fra3-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQMA_qUXPi0JzO6VH6k_Pe8Ed8jN1_M8wj-niAJjOW2XJC3rMctvavhYffXeqWdr_zJVwZMlhutipCmogl2amqF1.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=scontent-fra3-1.xx.fbcdn.net&_nc_ohc=ptSElgH9lmcQ7kNvwE-UpW4&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTY2MDUwNjgyMTAyNTg4MiwiYXNzZXRfYWdlX2RheXMiOjEwODUsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo1Niwid2F0Y2hfdGltZV9zIjo1MzcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQS86GDchW_4cF4dE4AvlmqJUTfbys1BsuLikKRAzFI1lA&oe=6AFDE986",
-       "ig_username": "yodgoragoipova"
-      },
-      {
-       "audio_id": "375290258605960",
-       "duration_in_ms": 20292,
-       "audio_type": "original_sound",
-       "title": "dilan yeşilyaprak darbuka",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQOaY6z8E3VRPgA4x9vDJWYLR_vjiGLh-lWr3o97WwmP0NZsGpCyHkmVWcPdx-trVAmf8oTMNVq3vPKnWyb2kAU2.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=4RbiPB8tIlkQ7kNvwFWlSL1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6MTExOTYzODk4MjM5NzMxMywiYXNzZXRfYWdlX2RheXMiOjk4MCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjIwLCJ3YXRjaF90aW1lX3MiOjEzMDEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&oh=00_AQTjjOuA9Z2ghSy4nK3EAndN_2VTCZX2vhR-9Ez4lLnwGg&oe=6AFDD80B",
-       "ig_username": "yesilyaprakdilan"
-      },
-      {
-       "audio_id": "387797580822235",
-       "duration_in_ms": 36523,
-       "audio_type": "original_sound",
-       "title": "Otha Sollala x Darbuka",
-       "download_url": "https://scontent-fra5-1.xx.fbcdn.net/o1/v/t2/f2/m86/AQM_pIKuDh6t67ew3qjcsfZatESf2hPh0G4LlN3cq_EubuKufyK6Wd3AKRxMVRWuZwHUnNvAfN7JTfEBefReGYZL.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=scontent-fra5-1.xx.fbcdn.net&_nc_ohc=lp9S3tobkBcQ7kNvwEyd3XE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMC5wcm9ncmVzc2l2ZV9hdWRpbyIsInhwdl9hc3NldF9pZCI6NDM1NzcwNTc1Njc2NjQ5LCJhc3NldF9hZ2VfZGF5cyI6OTYwLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MzYsIndhdGNoX3RpbWVfcyI6MjA2MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=a4CIjlMXP8cQFqhps88taA&edm=AOP_XFkEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_enc=Uh074AJ9VgFMsHI2QkeoVIlLRQ3di2VGiLG2_uBeqPpUQL3XGzo4ubB-ItNfWS90iwyvFcK4D7mOdvKs_CcFnQgmBr41ayK4Tfo5MJDgmuHp-H-2v4guZkZz1qpD8aOL0ipL&oh=00_AQSVTaD7Ed28OWnRRjo3YwyzpQZPKmW77tTndiRrBUbvrQ&oe=6AFDDCFB",
-       "ig_username": "druminem"
-      }
-     ]
+     "createdAt": "2026-11-18T06:43:23.315Z",
+     "updatedAt": "2026-11-18T06:44:49.339Z",
+     "deletedAt": "2026-11-18T06:44:49.338Z"
     }
    ]
   ]
