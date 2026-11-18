@@ -4,7 +4,7 @@
 Метка рекламы: https://t.me/<бот>?start=<метка>.  Команды владельца: /club (сводка), /export (файл).
 Конфиг: /opt/radar/club.env (CLUB_TOKEN=..., CLUB_NAME=...)   Запуск: systemd club.service
 """
-import asyncio, csv, html, io, json, logging, os, time
+import asyncio, csv, html, io, json, logging, os, re, time
 import httpx
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -72,6 +72,8 @@ STEPS = [("job", head(1, "💼", "Чем занимаетесь?") + MULTI, JOB,
          ("team", head(3, "👥", "Размер команды или компании"), TEAM, False, 2),
          ("seek", head(4, "🤝", "Что сейчас ищете?") + MULTI, SEEK, True, 1),
          ("likes", head(5, "🎯", "Хобби и интересы") + "\n\nПод них подбираем встречи" + MULTI, LIKES, True, 2)]
+Q_OTHER = {"job": "💼 <b>Чем именно занимаетесь?</b>\n\n<i>Коротко, в паре слов. Например: управляю семейным офисом</i>",
+           "sphere": "🧭 <b>Какая именно сфера?</b>\n\n<i>Коротко, в паре слов. Например: судоходство</i>"}
 Q_NAME = "👋 <b>Как к вам обращаться?</b>\n\nТак вас увидят другие участники клуба.\n<i>Напишите имя и фамилию, например: Иван Петров</i>"
 Q_INTRO = (head(6, "✍️", "Ваше интро") + "\n\n"
            "Пара строк о себе:\n"
@@ -165,7 +167,7 @@ def lst(v):
 
 
 def names(st, key, low=False):
-    out = [L.get(x, x) for x in lst(st.get(key))]
+    out = [(st.get(key + "_other") if x == "oth" and st.get(key + "_other") else L.get(x, x)) for x in lst(st.get(key))]
     if low:
         out = [x[:1].lower() + x[1:] if not x[:2].isupper() else x for x in out]
     return out
@@ -187,7 +189,7 @@ def row(st, uid):
 LINE = "━━━━━━━━━━━━━━"
 
 
-def member_card(st):
+def member_card(st, owner=False):
     out = [LINE, f"<b>{esc(NAME)} · Интро</b>", "", f"<b>{esc(st.get('name') or 'Участник')}</b>"]
     if names(st, "job"):
         out.append(esc(" · ".join(names(st, "job"))))
@@ -201,7 +203,8 @@ def member_card(st):
     if names(st, "likes"):
         out.append("🎯 Интересы: " + esc(", ".join(names(st, "likes", True))))
     if st.get("ig"):
-        out.append("📷 Instagram: " + esc(st["ig"]))
+        ig = esc(st["ig"])
+        out.append("📷 Instagram: " + (f'<a href="https://instagram.com/{ig[1:]}">{ig}</a>' if owner else ig))
     out.append(LINE)
     return "\n".join(out)
 
@@ -209,7 +212,7 @@ def member_card(st):
 def card_text(st, uid):
     lv = {"1": "1️⃣ звать в первую очередь", "2": "2️⃣ во вторую", "3": "3️⃣ в последнюю"}.get(st.get("level"), "не оценён")
     head = "обновил анкету" if st.get("updated") else "новая заявка"
-    return (f"🎩 <b>{esc(NAME)}: {head}</b>\n{tg(st, uid)}\n\n{member_card(st)}\n\n"
+    return (f"🎩 <b>{esc(NAME)}: {head}</b>\n{tg(st, uid)}\n\n{member_card(st, owner=True)}\n\n"
             f"• Команда: {esc(', '.join(names(st, 'team')) or '—')}\n• Источник: {esc(st.get('src') or '—')}\n\n"
             f"Уровень: <b>{lv}</b>")
 
@@ -232,6 +235,9 @@ def cut(t, n):
     t = t[:n]
     sp = max(t.rfind(" "), t.rfind("\n"))
     return (t[:sp] if sp > n * 0.6 else t).rstrip(" ,.;:-") + "…"
+
+
+IG_SKIP = {"нет", "не веду", "нету", "no", "none", "-", "—", "пропустить", "не", "нет инстаграма", "нет инсты", "skip"}
 
 
 def norm_ig(t):
@@ -280,6 +286,8 @@ async def ask(c, uid, st, msg_id=None):
             if multi:
                 rows.append([{"text": "Готово →", "callback_data": f"d:{key}", "style": "primary"}])
             return await show(c, uid, q, kb(rows), msg_id)
+    if step and step.endswith("_other"):
+        return await show(c, uid, Q_OTHER[step[:-6]], None, msg_id)
     if step == "name":
         nm = st.get("tg_name") or ""
         m = kb([[{"text": f"Оставить: {nm[:30]}", "callback_data": "keep_name"}]]) if good_name(nm) else None
@@ -445,6 +453,20 @@ def stats_text():
     for lv in ("1", "2", "3"):
         out.append(f"• Уровень {lv}: {sum(1 for s in done if s.get('level') == lv)}")
     out.append(f"• Не оценены: {sum(1 for s in done if not s.get('level'))}")
+    STEP_RU = {"welcome": "приветствие", "name": "имя", "job": "чем занимается", "job_other": "чем занимается (другое)",
+               "sphere": "сфера", "sphere_other": "сфера (другое)", "team": "команда", "seek": "что ищет",
+               "likes": "хобби", "intro": "интро", "ig": "Instagram", "preview": "карточка, не нажал отправить"}
+    stuck = {}
+    for s_ in S.values():
+        if not s_.get("sent") and s_.get("step") in STEP_RU:
+            stuck[s_["step"]] = stuck.get(s_["step"], 0) + 1
+    if stuck:
+        out += ["", "<b>Где бросили анкету</b>"]
+        for k in STEP_RU:
+            if stuck.get(k):
+                out.append(f"• {STEP_RU[k]}: {stuck[k]}")
+        out.append(f"• напоминание получили: {sum(1 for s_ in S.values() if s_.get('reminded') and not s_.get('sent'))}, "
+                   f"вернулись и дошли до конца: {sum(1 for s_ in S.values() if s_.get('reminded') and s_.get('sent'))}")
     out += ["", "<b>Интересы</b>"]
     for k, l in LIKES:
         n = sum(1 for s in done if k in lst(s.get('likes')))
@@ -491,6 +513,13 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    rep = m.get("reply_to_message") or {}
+    mt = re.search(r"#u(\d+)", rep.get("text") or "")
+    if uid == OWNER_ID and mt and text:
+        to = int(mt.group(1))
+        j = await call(c, "sendMessage", chat_id=to, parse_mode="HTML",
+                       text=f"💬 <b>{esc(NAME)}</b>\n\n{esc(text)}")
+        return await call(c, "sendMessage", chat_id=uid, text="Отправил ✅" if j.get("ok") else "Не дошло: человек заблокировал бота")
     if uid == OWNER_ID and text.startswith("/card"):
         mine = S.get(uid) or {"name": " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)}
         await call(c, "sendChatAction", chat_id=uid, action="upload_photo")
@@ -530,7 +559,7 @@ async def on_message(c, m):
                                f"Всего в паке: {esc(allb)}\n\n"
                                "Можно добавить вручную: просто отправь мне нужные эмодзи из пака. Сброс: /emoji_reset")
     ids = [e["custom_emoji_id"] for e in m.get("entities", []) if e.get("type") == "custom_emoji"]
-    if uid == OWNER_ID and ids:
+    if uid == OWNER_ID and ids and (S.get(uid, {}).get("step") or "done") in ("done", "welcome"):
         j = await call(c, "getCustomEmojiStickers", custom_emoji_ids=ids)
         got = []
         for st_ in j.get("result", []):
@@ -574,6 +603,14 @@ async def on_message(c, m):
     st = S.get(uid)
     if not st:
         return await call(c, "sendMessage", chat_id=uid, text="Нажмите /start, чтобы оставить заявку")
+    st["ts"] = time.time()
+    if (st.get("step") or "").endswith("_other") and text:
+        key = st["step"][:-6]
+        st[key + "_other"] = cut(text, 40)
+        order = [x[0] for x in STEPS]
+        st["step"] = order[order.index(key) + 1]
+        save()
+        return await ask(c, uid, st)
     if st.get("step") == "name" and text:
         st["name"] = cut(text, 40)
         st["step"] = "job"
@@ -585,15 +622,29 @@ async def on_message(c, m):
         save()
         return await ask(c, uid, st)
     if st.get("step") == "ig" and text:
-        st["ig"] = norm_ig(text)
+        if text.strip().lower().strip(".!") in IG_SKIP:
+            st["ig"] = ""
+        else:
+            ig = norm_ig(text)
+            if not re.fullmatch(r"@[A-Za-z0-9._]{1,30}", ig or ""):
+                return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML",
+                                  text="Не похоже на ник Instagram 🤔\n\nПришлите ник латиницей, например <b>@ivan.petrov</b>, или нажмите «Пропустить»",
+                                  reply_markup=kb([[{"text": "Пропустить", "callback_data": "skip"}]]))
+            st["ig"] = ig
         st["step"] = "preview"
         save()
         return await ask(c, uid, st)
-    if text:
-        st.setdefault("extra", []).append(text[:500])
-        save()
-        await call(c, "sendMessage", chat_id=OWNER_ID, parse_mode="HTML",
-                   text=f"✉️ <b>{esc(NAME)}: сообщение</b> от {tg(st, uid)}\n{esc(text[:1000])}")
+    step = st.get("step") or ""
+    if step in ("name", "intro", "ig") or step.endswith("_other"):
+        return await call(c, "sendMessage", chat_id=uid, text="Пришлите, пожалуйста, ответ текстом 🙏")
+    if step in [x[0] for x in STEPS] + ["welcome", "preview"]:
+        return await call(c, "sendMessage", chat_id=uid, text="Выберите вариант кнопками в сообщении выше 👆")
+    body = text or m.get("caption") or "[вложение]"
+    st.setdefault("extra", []).append(body[:500])
+    save()
+    await call(c, "sendMessage", chat_id=OWNER_ID, parse_mode="HTML",
+               text=f"✉️ <b>{esc(NAME)}: сообщение</b> от {tg(st, uid)} #u{uid}\n{esc(body[:1000])}\n\n<i>Ответь реплаем на это сообщение, и ответ уйдёт человеку</i>")
+    await call(c, "sendMessage", chat_id=uid, text="Передал организатору, ответим здесь 🤝")
 
 
 async def on_callback(c, q):
@@ -619,6 +670,14 @@ async def on_callback(c, q):
     st = S.get(uid)
     if not st:
         return
+    st["ts"] = time.time()
+    if data == "resume" and st.get("step") not in ("done", None):
+        await call(c, "editMessageReplyMarkup", chat_id=uid, message_id=msg_id, reply_markup=kb([]))
+        if st["step"] == "welcome":
+            st["tg_name"] = st.get("tg_name") or st.get("name")
+            st["step"] = "name"
+        save()
+        return await ask(c, uid, st)
     kind, _, rest = data.partition(":")
     key, _, val = rest.partition(":")
     order = [s[0] for s in STEPS]
@@ -638,7 +697,7 @@ async def on_callback(c, q):
         if not lst(st.get(key)):
             return await call(c, "answerCallbackQuery", callback_query_id=q["id"], text="Выберите хотя бы один вариант")
         await call(c, "answerCallbackQuery", callback_query_id=q["id"])
-        st["step"] = nxt(key)
+        st["step"] = f"{key}_other" if key in ("job", "sphere") and "oth" in lst(st.get(key)) else nxt(key)
         save()
         return await ask(c, uid, st, msg_id)
     if data == "go" and st.get("step") == "welcome":
@@ -675,11 +734,38 @@ async def on_callback(c, q):
         return await finish(c, uid)
 
 
+REMIND = ("👋 <b>Вы не закончили анкету в {name}</b>\n\n"
+          "Осталась пара вопросов. После неё пришлём приглашение на следующую встречу клуба.\n"
+          "Места ограничены.")
+
+
+async def reminders(c):
+    while True:
+        await asyncio.sleep(300)
+        try:
+            hour = time.gmtime(time.time() + 4 * 3600).tm_hour
+            if not 10 <= hour < 22:
+                continue
+            for uid, st in list(S.items()):
+                if st.get("sent") or st.get("reminded") or st.get("step") in ("done", None):
+                    continue
+                last = st.get("ts") or st.get("t0") or 0
+                if time.time() - last < 2 * 3600 or time.time() - last > 3 * 86400:
+                    continue
+                st["reminded"] = time.time()
+                save()
+                await call(c, "sendMessage", chat_id=uid, parse_mode="HTML", text=REMIND.format(name=esc(NAME)),
+                           reply_markup=kb([[{"text": "Продолжить анкету →", "callback_data": "resume", "style": "primary"}]]))
+        except Exception:
+            log.exception("reminders")
+
+
 async def main():
     load()
     off = 0
     async with httpx.AsyncClient(timeout=70) as c:
         await call(c, "setMyCommands", commands=[{"command": "start", "description": "Оставить заявку"}])
+        asyncio.create_task(reminders(c))
         while True:
             try:
                 r = await c.get(API + "getUpdates", params={"offset": off, "timeout": 50,
