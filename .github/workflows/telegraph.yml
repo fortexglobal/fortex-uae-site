@@ -1,0 +1,20 @@
+name: Telegraph publish
+on:
+  workflow_dispatch:
+  push:
+    paths: ["telegraph/*.html"]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish new pages
+        run: python3 tools/telegraph.py
+      - name: Commit
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add telegraph
+          git diff --cached --quiet || (git commit -m "Telegraph: опубликованы страницы" && git pull --rebase && git push)
