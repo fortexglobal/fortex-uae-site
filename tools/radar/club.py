@@ -334,6 +334,25 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and ("addemoji/" in text or "addstickers/" in text):
+        name = text.split("/add", 1)[1].split("/", 1)[1].split()[0].split("?")[0].strip()
+        j = await call(c, "getStickerSet", name=name)
+        if not j.get("ok"):
+            return await call(c, "sendMessage", chat_id=uid, text=f"Не нашёл пак {name}. Проверь ссылку")
+        used = WELCOME + Q_NAME + Q_INTRO + Q_IG + DONE + "".join(q for _, q, *_ in STEPS) + "🤝🎯📷👇🎩✅"
+        got = []
+        for st_ in j["result"].get("stickers", []):
+            base, cid = st_.get("emoji"), st_.get("custom_emoji_id")
+            if base and cid and base not in EMO and (base in used or base.rstrip("\ufe0f") in used):
+                EMO[base] = cid
+                got.append(base)
+        json.dump(EMO, open(EMO_P, "w"), ensure_ascii=False)
+        allb = " ".join(sorted({s_.get("emoji", "") for s_ in j["result"].get("stickers", [])}))
+        return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML",
+                          text=f"Пак <b>{esc(j['result'].get('title') or name)}</b>\n\n"
+                               f"Подставил в тексты бота: {' '.join(got) or 'ничего не совпало'}\n\n"
+                               f"Всего в паке: {esc(allb)}\n\n"
+                               "Можно добавить вручную: просто отправь мне нужные эмодзи из пака. Сброс: /emoji_reset")
     ids = [e["custom_emoji_id"] for e in m.get("entities", []) if e.get("type") == "custom_emoji"]
     if uid == OWNER_ID and ids:
         j = await call(c, "getCustomEmojiStickers", custom_emoji_ids=ids)
