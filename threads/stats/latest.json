@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T08:21+04:00",
+ "generated": "2026-11-18T08:30+04:00",
  "posts": [
   {
    "slug": "t-1104-car-viza-ili-virtual-work",
@@ -742,14 +742,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df2NAU6EZSz",
    "kind": "вопрос",
    "text": "Дубайчане, если бы переезжали ЗАНОВО, в какой РАЙОН поехали бы СРАЗУ?\n\nОтвет одним словом 👀",
-   "views": 239,
+   "views": 240,
    "likes": 0,
    "replies": 9,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 9,
-   "actions_per_1k": 37.7
+   "actions_per_1k": 37.5
   },
   {
    "slug": "t-1117-vw-fastrek",
@@ -820,6 +820,7 @@
  ],
  "link_clicks_7d": [
   {
+   "id": "17841423681889725/insights/clicks/day",
    "name": "clicks",
    "period": "day",
    "title": "clicks",
@@ -837,8 +838,7 @@
      "value": 0,
      "link_url": "https://t.me/Fortex_Dubai"
     }
-   ],
-   "id": "17841423681889725/insights/clicks/day"
+   ]
   }
  ],
  "followers_gain_1d": 0,
@@ -864,10 +864,10 @@
   },
   "вопрос": {
    "posts": 11,
-   "views": 3937,
+   "views": 3938,
    "replies": 31,
    "likes": 5,
-   "avg_views": 357.9,
+   "avg_views": 358.0,
    "avg_replies": 2.82
   },
   "консультация": {
