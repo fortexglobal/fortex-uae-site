@@ -95,6 +95,18 @@ def good_name(n):
 
 
 S = {}
+EMO_P = os.path.join(BASE, "club_emoji.json")
+try:
+    EMO = json.load(open(EMO_P))  # обычный эмодзи -> id премиум-эмодзи из пака владельца
+except Exception:
+    EMO = {}
+
+
+def premium(t):
+    for e, cid in EMO.items():
+        if e in t:
+            t = t.replace(e, f'<tg-emoji emoji-id="{cid}">{e}</tg-emoji>')
+    return t
 
 
 def save():
@@ -113,6 +125,10 @@ def load():
 
 
 async def call(c, method, **data):
+    if EMO and data.get("parse_mode") == "HTML":
+        for f in ("text", "caption"):
+            if f in data:
+                data[f] = premium(data[f])
     for k, v in list(data.items()):
         if isinstance(v, (dict, list)):
             data[k] = json.dumps(v, ensure_ascii=False)
@@ -318,6 +334,23 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    ids = [e["custom_emoji_id"] for e in m.get("entities", []) if e.get("type") == "custom_emoji"]
+    if uid == OWNER_ID and ids:
+        j = await call(c, "getCustomEmojiStickers", custom_emoji_ids=ids)
+        got = []
+        for st_ in j.get("result", []):
+            base = st_.get("emoji")
+            if base:
+                EMO[base] = st_["custom_emoji_id"]
+                got.append(base)
+        json.dump(EMO, open(EMO_P, "w"), ensure_ascii=False)
+        return await call(c, "sendMessage", chat_id=uid, parse_mode="HTML",
+                          text=f"Сохранил эмодзи: {' '.join(got) or 'ничего'}\nТеперь они заменяют обычные в текстах бота.\n"
+                               "Чтобы сбросить: /emoji_reset")
+    if uid == OWNER_ID and text.startswith("/emoji_reset"):
+        EMO.clear()
+        json.dump(EMO, open(EMO_P, "w"))
+        return await call(c, "sendMessage", chat_id=uid, text="Премиум-эмодзи сброшены")
     if text.startswith("/start"):
         src_tag = text.split(" ", 1)[1].strip()[:30] if " " in text else "direct"
         old = S.get(uid, {})
