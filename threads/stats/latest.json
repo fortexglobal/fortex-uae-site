@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T08:22+04:00",
+ "generated": "2026-11-19T08:31+04:00",
  "posts": [
   {
    "slug": "t-1105-car-schet-kripto-kompanii",
@@ -697,7 +697,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df2eKKwlvUq",
    "kind": "консультация",
    "text": "Меня часто спрашивают, СКОЛЬКО ЖДАТЬ Emirates ID. С фастрэком так:\n\n1. От тебя только паспорт и фото\n2. Медосмотр и отпе",
-   "views": 50,
+   "views": 51,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -742,19 +742,19 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df5DAC5lAf4",
    "kind": "консультация",
    "text": "Меня часто спрашивают: а С МОИМ ПАСПОРТОМ получится сделать EMIRATES ID?\n\nVirtual Work подходит для паспортов: Россия, У",
-   "views": 72,
+   "views": 73,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 2,
-   "actions_per_1k": 27.8
+   "actions_per_1k": 27.4
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 860,
+  "views": 861,
   "likes": 2,
   "replies": 4,
   "reposts": 0,
@@ -762,7 +762,7 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 3682,
+  "views": 3683,
   "likes": 16,
   "replies": 57,
   "reposts": 0,
@@ -800,7 +800,7 @@
   },
   {
    "date": "2026-11-18",
-   "views": 409
+   "views": 410
   }
  ],
  "link_clicks_7d": [
@@ -828,7 +828,7 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 409,
+ "views_1d": 410,
  "link_clicks_7d_total": 3,
  "by_kind": {
   "карусель": {
@@ -889,10 +889,10 @@
   },
   "консультация": {
    "posts": 10,
-   "views": 946,
+   "views": 948,
    "replies": 2,
    "likes": 2,
-   "avg_views": 94.6,
+   "avg_views": 94.8,
    "avg_replies": 0.2
   }
  }
