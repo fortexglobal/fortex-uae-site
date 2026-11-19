@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T07:59+04:00",
+ "generated": "2026-11-19T08:00+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "ronin.dubai",
@@ -9,8 +9,8 @@
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 293,
-  "views": 326,
+  "reach": 248,
+  "views": 282,
   "accounts_engaged": 2,
   "total_interactions": 2,
   "profile_links_taps": 0,
@@ -19,11 +19,6 @@
   }
  },
  "followers_history": [
-  {
-   "date": "2026-11-10",
-   "followers": 1,
-   "media": 22
-  },
   {
    "date": "2026-11-11",
    "followers": 1,
@@ -58,6 +53,11 @@
    "date": "2026-11-18",
    "followers": 1,
    "media": 22
+  },
+  {
+   "date": "2026-11-19",
+   "followers": 1,
+   "media": 22
   }
  ],
  "media": [
@@ -71,15 +71,15 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 9,
-    "views": 10,
+    "reach": 11,
+    "views": 13,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 4514,
-    "ig_reels_video_view_total_time": 40634
+    "ig_reels_avg_watch_time": 3832,
+    "ig_reels_video_view_total_time": 42159
    },
    "unavailable": [
     "profile_visits",
@@ -97,15 +97,15 @@
    "likes": 1,
    "comments": 0,
    "ins": {
-    "reach": 109,
-    "views": 126,
+    "reach": 110,
+    "views": 127,
     "saved": 1,
     "shares": 0,
     "likes": 1,
     "comments": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 6471,
-    "ig_reels_video_view_total_time": 718284
+    "ig_reels_avg_watch_time": 6426,
+    "ig_reels_video_view_total_time": 719812
    },
    "unavailable": [
     "profile_visits",
@@ -123,15 +123,15 @@
    "likes": 0,
    "comments": 0,
    "ins": {
-    "reach": 62,
-    "views": 63,
+    "reach": 63,
+    "views": 64,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 4466,
-    "ig_reels_video_view_total_time": 272432
+    "ig_reels_avg_watch_time": 4446,
+    "ig_reels_video_view_total_time": 275676
    },
    "unavailable": [
     "profile_visits",
