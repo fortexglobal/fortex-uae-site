@@ -1,1 +1,1 @@
-{"cmd": "raw", "n": 54, "calls": [["DELETE", "/api/v1/post/1b1ce64b-49a4-4292-8b14-44147027e068", null]]}
+{"cmd": "raw", "n": 55, "calls": [["GET", "/api/v1/post/f892a57c-d338-4082-be0c-9cde4610ecaa", null]]}
