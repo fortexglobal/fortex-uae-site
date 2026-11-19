@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-19T09:01Z",
+ "checked": "2026-11-19T10:02Z",
  "me": {
   "user_id": "17841434625185251",
   "username": "ronin.dubai",
@@ -9,6 +9,13 @@
  },
  "published": [],
  "media": [
+  {
+   "id": "18043623506839162",
+   "timestamp": "2026-11-19T09:30:44+0000",
+   "permalink": "https://www.instagram.com/reel/Df6wydgj3uK/",
+   "media_type": "VIDEO",
+   "caption": "Виза в Дубай на год: сколько там надо жить?\nМногие думают, ч"
+  },
   {
    "id": "18120547487008249",
    "timestamp": "2026-11-17T09:31:04+0000",
@@ -176,13 +183,6 @@
    "permalink": "https://www.instagram.com/p/DfKcSs3lH_F/",
    "media_type": "CAROUSEL_ALBUM",
    "caption": "Российская налоговая начала проверять сделки с недвижимостью"
-  },
-  {
-   "id": "17998149810083302",
-   "timestamp": "2026-10-31T15:01:00+0000",
-   "permalink": "https://www.instagram.com/reel/DfKbfiZAkvp/",
-   "media_type": "VIDEO",
-   "caption": "Банк ОАЭ отказал? Почти всегда дело не в паспорте, а в подач"
   }
  ]
 }
