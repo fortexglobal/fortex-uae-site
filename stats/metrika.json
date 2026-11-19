@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-18T04:02Z",
+ "generated": "2026-11-19T04:04Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 211.0,
-  "посетители": 192.0,
-  "отказы_%": 81.51658768,
-  "время_на_сайте_сек": 16.37914692
+  "визиты": 235.0,
+  "посетители": 215.0,
+  "отказы_%": 78.72340426,
+  "время_на_сайте_сек": 17.6893617
  },
  "goals": {
   "Заявка с сайта": 0.0,
@@ -18,54 +18,61 @@
  },
  "sources": [
   {
-   "name": "Recommendation system traffic",
+   "name": "Ad traffic",
    "values": [
-    83.0,
-    83.0
+    92.0,
+    90.0
    ]
   },
   {
-   "name": "Ad traffic",
+   "name": "Recommendation system traffic",
    "values": [
-    71.0,
-    69.0
+    79.0,
+    79.0
    ]
   },
   {
    "name": "Direct traffic",
    "values": [
-    34.0,
-    17.0
+    37.0,
+    19.0
    ]
   },
   {
    "name": "Social network traffic",
    "values": [
-    19.0,
-    19.0
+    23.0,
+    23.0
    ]
   }
  ],
  "source_details": [
   {
-   "name": "Yandex Zen",
+   "name": "Instagram",
    "values": [
-    83.0,
-    83.0
+    92.0,
+    90.0
    ]
   },
   {
-   "name": "Instagram",
+   "name": "Yandex Zen",
    "values": [
-    71.0,
-    69.0
+    79.0,
+    79.0
    ]
   },
   {
    "name": "Facebook",
    "values": [
-    17.0,
-    17.0
+    20.0,
+    20.0
+   ]
+  },
+  {
+   "name": "Other social network: identified by tags",
+   "values": [
+    2.0,
+    2.0
    ]
   },
   {
@@ -74,46 +81,39 @@
     1.0,
     1.0
    ]
-  },
-  {
-   "name": "Other social network: identified by tags",
-   "values": [
-    1.0,
-    1.0
-   ]
   }
  ],
  "utm": [
   {
-   "name": "telegram / channel",
+   "name": "ig / 120252594854050776",
    "values": [
-    57.0,
-    57.0
+    66.0,
+    65.0
    ]
   },
   {
-   "name": "ig / 120252594854050776",
+   "name": "telegram / channel",
    "values": [
-    55.0,
-    54.0
+    53.0,
+    53.0
    ]
   },
   {
    "name": "ig / 120252594724350776",
    "values": [
-    16.0,
-    15.0
-   ]
-  },
-  {
-   "name": "ig / None",
-   "values": [
-    1.0,
-    1.0
+    26.0,
+    25.0
    ]
   },
   {
    "name": "threads / None",
+   "values": [
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "name": "ig / None",
    "values": [
     1.0,
     1.0
@@ -124,15 +124,15 @@
   {
    "name": "/lp/vw/",
    "values": [
-    74.0,
-    66.0
+    88.0,
+    77.0
    ]
   },
   {
    "name": "/lp/ipoteka/",
    "values": [
-    32.0,
-    31.0
+    42.0,
+    41.0
    ]
   },
   {
@@ -143,17 +143,17 @@
    ]
   },
   {
+   "name": "/",
+   "values": [
+    17.0,
+    14.0
+   ]
+  },
+  {
    "name": "/articles/skolko-nuzhno-zarabatyvat-dlya-ipoteki-v-oae/",
    "values": [
     16.0,
     16.0
-   ]
-  },
-  {
-   "name": "/",
-   "values": [
-    13.0,
-    10.0
    ]
   },
   {
@@ -164,10 +164,10 @@
    ]
   },
   {
-   "name": "/articles/rabochaya-viza-pod-ipoteku-po-shagam/",
+   "name": "/virtual-work/",
    "values": [
-    8.0,
-    7.0
+    9.0,
+    9.0
    ]
   },
   {
@@ -199,10 +199,10 @@
    ]
   },
   {
-   "name": "/virtual-work/",
+   "name": "/articles/samyj-prostoj-sposob-poluchit-emirates-id/",
    "values": [
-    7.0,
-    7.0
+    2.0,
+    2.0
    ]
   }
  ],
@@ -230,6 +230,150 @@
   "Автоцель: отправка формы заявки"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 33.0,
+   "посетители": 31.0,
+   "отказы_%": 57.57575758,
+   "время_на_сайте_сек": 22.87878788
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0,
+   "Автоцель: отправка формы заявки": 0.0
+  },
+  "sources": [
+   {
+    "name": "Ad traffic",
+    "values": [
+     21.0,
+     21.0
+    ]
+   },
+   {
+    "name": "Direct traffic",
+    "values": [
+     6.0,
+     4.0
+    ]
+   },
+   {
+    "name": "Social network traffic",
+    "values": [
+     4.0,
+     4.0
+    ]
+   },
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Instagram",
+    "values": [
+     21.0,
+     21.0
+    ]
+   },
+   {
+    "name": "Facebook",
+    "values": [
+     3.0,
+     3.0
+    ]
+   },
+   {
+    "name": "Yandex Zen",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "Other social network: identified by tags",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "ig / 120252594854050776",
+    "values": [
+     11.0,
+     11.0
+    ]
+   },
+   {
+    "name": "ig / 120252594724350776",
+    "values": [
+     10.0,
+     10.0
+    ]
+   },
+   {
+    "name": "telegram / channel",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "threads / None",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/lp/vw/",
+    "values": [
+     14.0,
+     12.0
+    ]
+   },
+   {
+    "name": "/lp/ipoteka/",
+    "values": [
+     10.0,
+     10.0
+    ]
+   },
+   {
+    "name": "/",
+    "values": [
+     4.0,
+     4.0
+    ]
+   },
+   {
+    "name": "/virtual-work/",
+    "values": [
+     3.0,
+     3.0
+    ]
+   },
+   {
+    "name": "/articles/samyj-prostoj-sposob-poluchit-emirates-id/",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 40.0,
    "посетители": 37.0,
@@ -359,144 +503,7 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 100.0,
-   "посетители": 96.0,
-   "отказы_%": 92.0,
-   "время_на_сайте_сек": 6.64
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0,
-   "Автоцель: отправка формы заявки": 0.0
-  },
-  "sources": [
-   {
-    "name": "Ad traffic",
-    "values": [
-     55.0,
-     54.0
-    ]
-   },
-   {
-    "name": "Recommendation system traffic",
-    "values": [
-     34.0,
-     34.0
-    ]
-   },
-   {
-    "name": "Direct traffic",
-    "values": [
-     9.0,
-     6.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "Instagram",
-    "values": [
-     55.0,
-     54.0
-    ]
-   },
-   {
-    "name": "Yandex Zen",
-    "values": [
-     34.0,
-     34.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "ig / 120252594854050776",
-    "values": [
-     44.0,
-     43.0
-    ]
-   },
-   {
-    "name": "ig / 120252594724350776",
-    "values": [
-     11.0,
-     11.0
-    ]
-   },
-   {
-    "name": "telegram / channel",
-    "values": [
-     8.0,
-     8.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/lp/vw/",
-    "values": [
-     48.0,
-     44.0
-    ]
-   },
-   {
-    "name": "/lp/ipoteka/",
-    "values": [
-     14.0,
-     14.0
-    ]
-   },
-   {
-    "name": "/articles/virtual-work-ili-rabochaya-viza/",
-    "values": [
-     8.0,
-     8.0
-    ]
-   },
-   {
-    "name": "/articles/",
-    "values": [
-     7.0,
-     7.0
-    ]
-   },
-   {
-    "name": "/gid/",
-    "values": [
-     7.0,
-     7.0
-    ]
-   },
-   {
-    "name": "/ipoteka/",
-    "values": [
-     7.0,
-     7.0
-    ]
-   },
-   {
-    "name": "/virtual-work/",
-    "values": [
-     6.0,
-     6.0
-    ]
-   },
-   {
-    "name": "/",
-    "values": [
-     3.0,
-     3.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-11-17",
+ "date_yesterday": "2026-11-18",
  "today": {
   "totals": {
    "визиты": 0.0,
@@ -520,14 +527,14 @@
  },
  "audience": {
   "pixel_from": "2026-11-09",
-  "since_pixel": 201,
-  "d30": 347,
-  "d90": 347,
-  "d180": 347,
-  "ipoteka_30d": 44,
-  "ipoteka_since_pixel": 40,
-  "virtual_work_30d": 9,
-  "virtual_work_since_pixel": 7,
+  "since_pixel": 231,
+  "d30": 377,
+  "d90": 377,
+  "d180": 377,
+  "ipoteka_30d": null,
+  "ipoteka_since_pixel": 50,
+  "virtual_work_30d": null,
+  "virtual_work_since_pixel": 10,
   "gid_30d": 7,
   "gid_since_pixel": 7,
   "goal_users_30d:Заявка с сайта": 2,
