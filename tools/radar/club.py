@@ -183,7 +183,7 @@ def names(st, key, low=False):
 def about_full(st):
     parts = [st.get("intro") or st.get("about") or ""]
     if st.get("ig"):
-        parts.append("Instagram: " + st["ig"])
+        parts.append("Instagram: https://instagram.com/" + st["ig"].lstrip("@"))
     return "\n".join(p for p in parts if p)
 
 
@@ -211,7 +211,7 @@ def member_card(st, owner=False):
         out.append("🎯 Интересы: " + esc(", ".join(names(st, "likes", True))))
     if st.get("ig"):
         ig = esc(st["ig"])
-        out.append("📷 Instagram: " + (f'<a href="https://instagram.com/{ig[1:]}">{ig}</a>' if owner else ig))
+        out.append("📷 Instagram: " + (f'<a href="https://instagram.com/{ig[1:]}">instagram.com/{ig[1:]}</a>' if owner else ig))
     out.append(LINE)
     return "\n".join(out)
 
