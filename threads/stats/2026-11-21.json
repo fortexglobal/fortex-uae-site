@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-21T08:23+04:00",
+ "generated": "2026-11-21T15:37+04:00",
  "posts": [
-  {
-   "slug": "t-1107-car-korp-schet-komplaens",
-   "at": "2026-11-07T10:30+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfbiuofHK8J",
-   "kind": "карусель",
-   "text": "Что на самом деле ПРОВЕРЯЕТ КОМПЛАЕНС банка, когда вы открываете корпоративный счёт в ОАЭ?\n\nСохраните, пригодится",
-   "views": 111,
-   "likes": 0,
-   "replies": 2,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 1,
-   "actions": 3,
-   "actions_per_1k": 27.0
-  },
-  {
-   "slug": "t-1107-kvartira",
-   "at": "2026-11-07T12:30+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfbwaHBFgAI",
-   "kind": "юмор",
-   "text": "СТАДИИ ПОИСКА КВАРТИРЫ в Дубае:\n\n1. «Хочу вид на море и чтобы ВСЁ ПЕШКОМ»\n2. Вид на море есть. Пешком только до лифта\n3.",
-   "views": 53,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1107-zakat",
    "at": "2026-11-07T19:00+04:00",
@@ -667,7 +637,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df7nyj1CSVH",
    "kind": "консультация",
    "text": "Меня часто спрашивают: надо ли ЖИТЬ В ДУБАЕ ПОСТОЯННО, чтобы не потерять визу?\n\nС Virtual Work условие одно: заехать в О",
-   "views": 65,
+   "views": 66,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -697,14 +667,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df97bGGEU6V",
    "kind": "вопрос",
    "text": "Дубайчане, СКОЛЬКО В МЕСЯЦ одному человеку нужно на НОРМАЛЬНУЮ ЖИЗНЬ в Дубае, без экономии и без роскоши?\n\nОтвет цифрой ",
-   "views": 84,
+   "views": 85,
    "likes": 0,
    "replies": 10,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 10,
-   "actions_per_1k": 119.0
+   "actions_per_1k": 117.6
   },
   {
    "slug": "t-1120-znakomstva",
@@ -712,7 +682,22 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df-MmGlFLJ2",
    "kind": "знакомства",
    "text": "Дубай, пятница, давайте ЗНАКОМИТЬСЯ: кто чем занимается и СКОЛЬКО ЛЕТ уже здесь?\n\nЯ начну: Алексей, с командой помогаю п",
-   "views": 18,
+   "views": 19,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1121-tipy-prilet",
+   "at": "2026-11-21T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/Df_zlWTliis",
+   "kind": "юмор",
+   "text": "ТИПЫ ЛЮДЕЙ на прилёте в Дубай:\n\n1. Турист: стоит в ДЛИННОЙ ОЧЕРЕДИ и снимает табло\n2. Новичок: проверяет, точно ли в тел",
+   "views": 13,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -724,15 +709,15 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 655,
-  "likes": 2,
-  "replies": 30,
+  "views": 212,
+  "likes": 0,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 3203,
+  "views": 2802,
   "likes": 17,
   "replies": 77,
   "reposts": 0,
@@ -740,10 +725,6 @@
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-13",
-   "views": 425
-  },
   {
    "date": "2026-11-14",
    "views": 334
@@ -770,7 +751,11 @@
   },
   {
    "date": "2026-11-20",
-   "views": 188
+   "views": 196
+  },
+  {
+   "date": "2026-11-21",
+   "views": 16
   }
  ],
  "link_clicks_7d": [
@@ -798,25 +783,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 188,
+ "views_1d": 16,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "карусель": {
-   "posts": 5,
-   "views": 263,
-   "replies": 2,
-   "likes": 0,
-   "avg_views": 52.6,
-   "avg_replies": 0.4
-  },
-  "юмор": {
-   "posts": 14,
-   "views": 1296,
-   "replies": 12,
-   "likes": 3,
-   "avg_views": 92.6,
-   "avg_replies": 0.86
-  },
   "фото": {
    "posts": 4,
    "views": 649,
@@ -833,28 +802,44 @@
    "avg_views": 242.0,
    "avg_replies": 0.0
   },
+  "карусель": {
+   "posts": 4,
+   "views": 152,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 38.0,
+   "avg_replies": 0.0
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 1256,
+   "replies": 12,
+   "likes": 3,
+   "avg_views": 89.7,
+   "avg_replies": 0.86
+  },
   "вопрос": {
    "posts": 11,
-   "views": 4051,
+   "views": 4052,
    "replies": 43,
    "likes": 4,
-   "avg_views": 368.3,
+   "avg_views": 368.4,
    "avg_replies": 3.91
   },
   "консультация": {
    "posts": 11,
-   "views": 1046,
+   "views": 1047,
    "replies": 2,
    "likes": 2,
-   "avg_views": 95.1,
+   "avg_views": 95.2,
    "avg_replies": 0.18
   },
   "знакомства": {
    "posts": 2,
-   "views": 191,
+   "views": 192,
    "replies": 10,
    "likes": 2,
-   "avg_views": 95.5,
+   "avg_views": 96.0,
    "avg_replies": 5.0
   }
  }
