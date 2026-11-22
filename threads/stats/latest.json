@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-21T15:37+04:00",
+ "generated": "2026-11-22T08:20+04:00",
  "posts": [
-  {
-   "slug": "t-1107-zakat",
-   "at": "2026-11-07T19:00+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfcdCWnFZlB",
-   "kind": "фото",
-   "text": "Дубай, СКИДЫВАЙТЕ В ОТВЕТЫ свой ЛУЧШИЙ ЗАКАТ в городе 🌅\n\nНачну: вот этот, С ЯХТЫ",
-   "views": 222,
-   "likes": 0,
-   "replies": 3,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 3,
-   "actions_per_1k": 13.5
-  },
-  {
-   "slug": "t-1107-zamorozka",
-   "at": "2026-11-07T21:30+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfcuMuilGWs",
-   "kind": "эксперт",
-   "text": "А вы знали: ЗАМОРОЗКА СЧЁТА в ОАЭ почти всегда начинается с ПИСЬМА БАНКА БЕЗ ОТВЕТА или устаревшего KYC.\n\nКогда вы после",
-   "views": 242,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1108-car-e-invoicing-2027",
    "at": "2026-11-08T10:30+04:00",
@@ -202,7 +172,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DfkLcS3kRLn",
    "kind": "вопрос",
    "text": "Дубайчане, какая ЦЕНА здесь до сих пор вас УДИВЛЯЕТ?\n\nОтвет ОДНИМ СЛОВОМ. Начну: ВОДА В РЕСТОРАНЕ 👀",
-   "views": 1524,
+   "views": 1525,
    "likes": 3,
    "replies": 4,
    "reposts": 0,
@@ -667,14 +637,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df97bGGEU6V",
    "kind": "вопрос",
    "text": "Дубайчане, СКОЛЬКО В МЕСЯЦ одному человеку нужно на НОРМАЛЬНУЮ ЖИЗНЬ в Дубае, без экономии и без роскоши?\n\nОтвет цифрой ",
-   "views": 85,
+   "views": 86,
    "likes": 0,
    "replies": 10,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 10,
-   "actions_per_1k": 117.6
+   "actions_per_1k": 116.3
   },
   {
    "slug": "t-1120-znakomstva",
@@ -682,7 +652,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df-MmGlFLJ2",
    "kind": "знакомства",
    "text": "Дубай, пятница, давайте ЗНАКОМИТЬСЯ: кто чем занимается и СКОЛЬКО ЛЕТ уже здесь?\n\nЯ начну: Алексей, с командой помогаю п",
-   "views": 19,
+   "views": 23,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -697,7 +667,37 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df_zlWTliis",
    "kind": "юмор",
    "text": "ТИПЫ ЛЮДЕЙ на прилёте в Дубай:\n\n1. Турист: стоит в ДЛИННОЙ ОЧЕРЕДИ и снимает табло\n2. Новичок: проверяет, точно ли в тел",
-   "views": 13,
+   "views": 15,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1121-udivilo",
+   "at": "2026-11-21T19:00+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgAgPLfGtpM",
+   "kind": "вопрос",
+   "text": "Дубайчане, что вас больше всего УДИВИЛО в ПЕРВУЮ НЕДЕЛЮ в Дубае?\n\nОтвет ОДНИМ СЛОВОМ 👀",
+   "views": 48,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1121-vw-glavnyi-dokument",
+   "at": "2026-11-21T21:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgAxYo1kZd3",
+   "kind": "консультация",
+   "text": "Меня часто спрашивают: а МНЕ вообще нужен EMIRATES ID, если есть паспорт?\n\nВ Дубае это главный документ. Паспорт лежит д",
+   "views": 41,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -709,7 +709,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 212,
+  "views": 342,
   "likes": 0,
   "replies": 0,
   "reposts": 0,
@@ -717,7 +717,7 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 2802,
+  "views": 2932,
   "likes": 17,
   "replies": 77,
   "reposts": 0,
@@ -755,7 +755,7 @@
   },
   {
    "date": "2026-11-21",
-   "views": 16
+   "views": 146
   }
  ],
  "link_clicks_7d": [
@@ -783,25 +783,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 16,
+ "views_1d": 146,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "фото": {
-   "posts": 4,
-   "views": 649,
-   "replies": 17,
-   "likes": 6,
-   "avg_views": 162.2,
-   "avg_replies": 4.25
-  },
-  "эксперт": {
-   "posts": 1,
-   "views": 242,
-   "replies": 0,
-   "likes": 0,
-   "avg_views": 242.0,
-   "avg_replies": 0.0
-  },
   "карусель": {
    "posts": 4,
    "views": 152,
@@ -812,34 +796,42 @@
   },
   "юмор": {
    "posts": 14,
-   "views": 1256,
+   "views": 1258,
    "replies": 12,
    "likes": 3,
-   "avg_views": 89.7,
+   "avg_views": 89.9,
    "avg_replies": 0.86
   },
   "вопрос": {
-   "posts": 11,
-   "views": 4052,
+   "posts": 12,
+   "views": 4102,
    "replies": 43,
    "likes": 4,
-   "avg_views": 368.4,
-   "avg_replies": 3.91
+   "avg_views": 341.8,
+   "avg_replies": 3.58
   },
   "консультация": {
-   "posts": 11,
-   "views": 1047,
+   "posts": 12,
+   "views": 1088,
    "replies": 2,
    "likes": 2,
-   "avg_views": 95.2,
-   "avg_replies": 0.18
+   "avg_views": 90.7,
+   "avg_replies": 0.17
+  },
+  "фото": {
+   "posts": 3,
+   "views": 427,
+   "replies": 14,
+   "likes": 6,
+   "avg_views": 142.3,
+   "avg_replies": 4.67
   },
   "знакомства": {
    "posts": 2,
-   "views": 192,
+   "views": 196,
    "replies": 10,
    "likes": 2,
-   "avg_views": 96.0,
+   "avg_views": 98.0,
    "avg_replies": 5.0
   }
  }
