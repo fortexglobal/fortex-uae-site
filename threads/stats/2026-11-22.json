@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-22T08:22+04:00",
+ "generated": "2026-11-22T15:51+04:00",
  "posts": [
-  {
-   "slug": "t-1108-car-e-invoicing-2027",
-   "at": "2026-11-08T10:30+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfeHhXVgB4t",
-   "kind": "карусель",
-   "text": "ЭЛЕКТРОННЫЕ СЧЕТА-ФАКТУРЫ в ОАЭ с 2027 года.\n\nКого коснётся и что поменялось В ОКТЯБРЕ. Листайте",
-   "views": 18,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
-  {
-   "slug": "t-1108-dostavka",
-   "at": "2026-11-08T12:30+04:00",
-   "url": "https://www.threads.com/@fortex__uae/post/DfeVNbSlbU0",
-   "kind": "юмор",
-   "text": "СТАДИИ ДОСТАВКИ в Дубае:\n\n1. «Закажу разок, лень готовить»\n2. Курьер уже знает код от шлагбаума\n3. Привозят воду, кофе, ",
-   "views": 116,
-   "likes": 1,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1108-otgovorite",
    "at": "2026-11-08T19:00+04:00",
@@ -637,14 +607,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/Df97bGGEU6V",
    "kind": "вопрос",
    "text": "Дубайчане, СКОЛЬКО В МЕСЯЦ одному человеку нужно на НОРМАЛЬНУЮ ЖИЗНЬ в Дубае, без экономии и без роскоши?\n\nОтвет цифрой ",
-   "views": 86,
+   "views": 88,
    "likes": 0,
    "replies": 10,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 10,
-   "actions_per_1k": 116.3
+   "actions_per_1k": 113.6
   },
   {
    "slug": "t-1120-znakomstva",
@@ -697,7 +667,22 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgAxYo1kZd3",
    "kind": "консультация",
    "text": "Меня часто спрашивают: а МНЕ вообще нужен EMIRATES ID, если есть паспорт?\n\nВ Дубае это главный документ. Паспорт лежит д",
-   "views": 41,
+   "views": 42,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1122-kak-ponyat-davno",
+   "at": "2026-11-22T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgCYYiqkWfb",
+   "kind": "юмор",
+   "text": "Как понять, что ты живёшь в Дубае ДАВНО:\n\n1. +24 называешь «свежо» и достаёшь КОФТУ\n2. «Пять минут пешком» для тебя уже ",
+   "views": 35,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -709,7 +694,7 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 342,
+  "views": 189,
   "likes": 0,
   "replies": 0,
   "reposts": 0,
@@ -717,18 +702,14 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 2932,
-  "likes": 17,
-  "replies": 77,
+  "views": 2641,
+  "likes": 13,
+  "replies": 69,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-14",
-   "views": 334
-  },
   {
    "date": "2026-11-15",
    "views": 371
@@ -755,7 +736,11 @@
   },
   {
    "date": "2026-11-21",
-   "views": 146
+   "views": 148
+  },
+  {
+   "date": "2026-11-22",
+   "views": 41
   }
  ],
  "link_clicks_7d": [
@@ -783,40 +768,40 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 146,
+ "views_1d": 41,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "карусель": {
-   "posts": 4,
-   "views": 152,
-   "replies": 0,
-   "likes": 0,
-   "avg_views": 38.0,
-   "avg_replies": 0.0
-  },
-  "юмор": {
-   "posts": 14,
-   "views": 1258,
-   "replies": 12,
-   "likes": 3,
-   "avg_views": 89.9,
-   "avg_replies": 0.86
-  },
   "вопрос": {
    "posts": 12,
-   "views": 4102,
+   "views": 4104,
    "replies": 43,
    "likes": 4,
-   "avg_views": 341.8,
+   "avg_views": 342.0,
    "avg_replies": 3.58
   },
   "консультация": {
    "posts": 12,
-   "views": 1088,
+   "views": 1089,
    "replies": 2,
    "likes": 2,
-   "avg_views": 90.7,
+   "avg_views": 90.8,
    "avg_replies": 0.17
+  },
+  "карусель": {
+   "posts": 3,
+   "views": 134,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 44.7,
+   "avg_replies": 0.0
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 1177,
+   "replies": 12,
+   "likes": 2,
+   "avg_views": 84.1,
+   "avg_replies": 0.86
   },
   "фото": {
    "posts": 3,
