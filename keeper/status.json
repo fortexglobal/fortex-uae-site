@@ -1,5 +1,5 @@
 {
- "at": "2026-11-23T15:04+04:00",
+ "at": "2026-11-23T15:20+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -137,7 +137,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 58.91020915,
+  "limit_remaining": 58.90684315,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -145,8 +145,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 41.08979085,
-    "remaining_usd": 58.91020915,
+    "spend_usd": 41.09315685,
+    "remaining_usd": 58.90684315,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -157,16 +157,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 41.08979085,
-   "remaining_usd": 58.91020915,
+   "spend_usd": 41.09315685,
+   "remaining_usd": 58.90684315,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 41.08979085,
-  "usage_daily": 0,
-  "usage_weekly": 0,
-  "usage_monthly": 22.8456277,
+  "usage": 41.09315685,
+  "usage_daily": 0.003366,
+  "usage_weekly": 0.003366,
+  "usage_monthly": 22.8489937,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -192,7 +192,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 503,
+  "lines": 502,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
