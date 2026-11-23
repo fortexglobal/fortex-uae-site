@@ -83,10 +83,54 @@ async def collect():
     return len(items)
 
 
+async def resolve_to(u, to, name=""):
+    """Кому отправить: id, @username или ссылка; если не нашли, ищем в диалогах по имени."""
+    try:
+        return await u.get_entity(int(to) if str(to).lstrip("-").isdigit() else to)
+    except Exception:
+        pass
+    async for d in u.iter_dialogs(limit=300):
+        if (to and str(getattr(d.entity, "id", "")) == str(to).lstrip("-")) or \
+           (name and name.lower() in (d.name or "").lower()):
+            return d.entity
+    return None
+
+
+async def outbox():
+    """Очередь сообщений от имени Алексея: radar/outbox.json в репозитории.
+    Запись: {"id", "to" (id, @username или ссылка на чат), "to_name" (запасной поиск по имени диалога), "html", "status": "new"}.
+    Отправляем записи со status new, ставим sent/error и пишем владельцу."""
+    import content
+    raw, sha = await content.gh_get("radar/outbox.json")
+    if not raw:
+        return
+    items = json.loads(raw)
+    todo = [it for it in items if it.get("status") == "new"]
+    if not todo:
+        return
+    u = CTX["user"]
+    for it in todo:
+        try:
+            ent = await resolve_to(u, it.get("to", ""), it.get("to_name", ""))
+            if not ent:
+                raise RuntimeError("получатель не найден")
+            m = await u.send_message(ent, it["html"], parse_mode="html", link_preview=False)
+            it["status"], it["sent_at"], it["msg_id"] = "sent", datetime.now(DUBAI).isoformat(timespec="minutes"), m.id
+            await CTX["notify"](f"✉️ Алексей отправил сообщение «{it['id']}»")
+        except Exception as e:
+            it["status"], it["error"] = "error", str(e)[:200]
+            await CTX["notify"](f"🔴 Алексей не смог отправить «{it['id']}»: {str(e)[:150]}")
+    await content.gh_put("radar/outbox.json", json.dumps(items, ensure_ascii=False, indent=1), sha, "Алексей: очередь отправлена")
+
+
 async def loop():
     load()
     await asyncio.sleep(90)
     while True:
+        try:
+            await outbox()
+        except Exception:
+            log.exception("outbox")
         try:
             now = datetime.now(DUBAI)
             day = now.date().isoformat()
@@ -96,7 +140,7 @@ async def loop():
                 log.info("news collected: %s", n)
         except Exception:
             log.exception("newsfeed")
-        await asyncio.sleep(120)
+        await asyncio.sleep(60)
 
 
 async def command(ev):
