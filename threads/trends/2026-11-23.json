@@ -1,0 +1,118 @@
+{
+ "date": "2026-11-23",
+ "queries": [
+  "цены Дубай",
+  "жизнь в Дубае"
+ ],
+ "note": "«цены Дубай»: 0 постов. «жизнь в Дубае»: 20, релевантных про Дубай 9 (остальное эзотерика и не про ОАЭ). Лучше всего заходят короткие вопросы-наблюдения городу.",
+ "top": [
+  {
+   "username": "shlomik_",
+   "followers": 1346,
+   "url": "https://www.threads.com/@shlomik_/post/DgDZ8J_iLHY",
+   "summary": "В Дубае почти нет экспатов старше 50: город молодой или не для пенсии?",
+   "technique": "вопрос-наблюдение городу",
+   "format": "вопрос",
+   "length": 130,
+   "views": 3141,
+   "replies": 25,
+   "score": 81
+  },
+  {
+   "username": "horoshayas",
+   "followers": 6330,
+   "url": "https://www.threads.com/@horoshayas/post/DgCH3IZDGR7",
+   "summary": "Кому нужна виза в Дубае? Места на трудоустройство (реклама, но показывает спрос на визу)",
+   "technique": "прямой вопрос о визе, капс",
+   "format": "вопрос+оффер",
+   "length": 150,
+   "views": 7002,
+   "replies": 19,
+   "score": 80
+  },
+  {
+   "username": "ikuzakhmetova",
+   "followers": 196,
+   "url": "https://www.threads.com/@ikuzakhmetova/post/DgDMB3vE9Nl",
+   "summary": "Собрали жизнь в Москве по коробкам и начали новую у моря",
+   "technique": "эмоция переезда",
+   "format": "одна строка",
+   "length": 90,
+   "views": 624,
+   "replies": 7,
+   "score": 65
+  },
+  {
+   "username": "sabiinariz",
+   "followers": 1797,
+   "url": "https://www.threads.com/@sabiinariz/post/DgCSoLcjc9r",
+   "summary": "Местные тоже фотографируют Бурдж-Халифу каждый раз?",
+   "technique": "шуточный вопрос",
+   "format": "вопрос",
+   "length": 110,
+   "views": 1048,
+   "replies": 12,
+   "score": 44
+  },
+  {
+   "username": "julia.chilltrip",
+   "followers": 203,
+   "url": "https://www.threads.com/@julia.chilltrip/post/DgCV28BjkZ9",
+   "summary": "Семейный отель в Дубае с аквапарком",
+   "technique": "фото+восторг",
+   "format": "фото",
+   "length": 110,
+   "views": 2706,
+   "replies": 8,
+   "score": 37
+  },
+  {
+   "username": "dara.brand.uae",
+   "followers": 5128,
+   "url": "https://www.threads.com/@dara.brand.uae/post/DgCtfDckSfd",
+   "summary": "Ищем квартиру с рассрочкой от собственника",
+   "technique": "запрос",
+   "format": "список",
+   "length": 500,
+   "views": 1134,
+   "replies": 6,
+   "score": 20
+  },
+  {
+   "username": "arylbayeva.ae",
+   "followers": 50,
+   "url": "https://www.threads.com/@arylbayeva.ae/post/DgEaqR5iEOq",
+   "summary": "Ищем студию без комиссии и 12 чеков",
+   "technique": "запрос городу",
+   "format": "вопрос",
+   "length": 110,
+   "views": 173,
+   "replies": 2,
+   "score": 6
+  },
+  {
+   "username": "dr.shustova_dubai",
+   "followers": 256,
+   "url": "https://www.threads.com/@dr.shustova_dubai/post/DgDSqFXGtdD",
+   "summary": "Что помогло почувствовать себя дома в Дубае?",
+   "technique": "вопрос в конце",
+   "format": "текст+вопрос",
+   "length": 330,
+   "views": 162,
+   "replies": 1,
+   "score": 5
+  },
+  {
+   "username": "svetmiratolan",
+   "followers": 5840,
+   "url": "https://www.threads.com/@svetmiratolan/post/DgDeUTijP06",
+   "summary": "Как дела в Дубае, космонавты?",
+   "technique": "короткое обращение",
+   "format": "одна строка",
+   "length": 30,
+   "views": 755,
+   "replies": 0,
+   "score": 1
+  }
+ ]
+}
