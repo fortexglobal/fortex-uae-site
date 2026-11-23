@@ -522,6 +522,23 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and text.startswith("/users"):
+        STEP_RU = {"welcome": "приветствие", "name": "имя", "job": "чем занимается", "job_other": "чем занимается",
+                   "sphere": "сфера", "sphere_other": "сфера", "team": "команда", "seek": "что ищет", "likes": "хобби",
+                   "intro": "интро", "ig": "Instagram", "preview": "карточка", "done": "заполнил"}
+        items = sorted(S.items(), key=lambda x: -(x[1].get("t0") or 0))
+        lines = [f"👥 <b>Кто заходил в бота: {len(items)}</b>"]
+        for k, v in items:
+            when = time.strftime("%d.%m %H:%M", time.gmtime((v.get("t0") or 0) + 4 * 3600))
+            status = "✅ заполнил" if v.get("sent") else "⏸ остановился: " + STEP_RU.get(v.get("step"), v.get("step") or "?")
+            lines.append(f"{tg(v, k)} · {esc(v.get('name') or '')}\n{when} · {esc(v.get('src') or 'direct')} · {status}")
+        chunk = ""
+        for ln in lines:
+            if len(chunk) + len(ln) > 3800:
+                await call(c, "sendMessage", chat_id=uid, text=chunk, parse_mode="HTML", disable_web_page_preview="true")
+                chunk = ""
+            chunk += ln + "\n\n"
+        return await call(c, "sendMessage", chat_id=uid, text=chunk, parse_mode="HTML", disable_web_page_preview="true")
     if uid == OWNER_ID and text.startswith("/preview"):
         golf = "golf" in text.lower()
         cover_url, welcome = (COVER_GOLF_URL, WELCOME_GOLF) if golf else (COVER_URL, WELCOME)
