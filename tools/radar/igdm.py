@@ -399,10 +399,15 @@ def transcript_html(cv, n=14, limit=3000):
     return t
 
 
-async def tell(cid, text, is_html=False):
-    """Сообщение владельцу про диалог. Реплай на него уйдёт клиенту этого диалога."""
+async def tell(cid, text, is_html=False, resume_btn=False):
+    """Сообщение владельцу про диалог. Реплай на него уйдёт клиенту этого диалога.
+    resume_btn: кнопка «Вернуть Алексея» (23.11, Александр: одна кнопка вместо команды)."""
     body = text if is_html else html.escape(text)
-    m = await CTX["notify"](body + "\n\n<i>↩️ Ответь реплаем (голосом или текстом), перешлю клиенту.</i>", parse_mode="html")
+    kw = {}
+    if resume_btn:
+        from telethon import Button
+        kw["buttons"] = [[Button.inline("▶️ Вернуть Алексея в этот диалог", f"igr:{cid}"[:64].encode())]]
+    m = await CTX["notify"](body + "\n\n<i>↩️ Ответь реплаем (голосом или текстом), перешлю клиенту.</i>", parse_mode="html", **kw)
     if m:
         S["ask"][str(m.id)] = cid
         S["ask"] = dict(list(S["ask"].items())[-300:])
@@ -835,8 +840,7 @@ async def poll():
                     cv["history"].append({"role": "owner", "text": text, "ts": time.time()})
                     if not cv.get("human"):
                         cv["human"] = True
-                        await tell(cid, f"Ты ответил вручную в директе @{cv.get('username')}. Ассистент в этом диалоге замолчал.\n"
-                                            f"Вернуть его: /igdm resume {cv.get('username')}")
+                        await tell(cid, f"Ты ответил вручную в директе @{cv.get('username')}. Алексей в этом диалоге замолчал.", resume_btn=True)
                 elif first_time:
                     cv["history"].append({"role": "bot", "text": text, "ts": time.time()})
                 continue
@@ -1434,10 +1438,22 @@ async def tg_outgoing(ev):
         cv["history"].append({"role": "owner", "text": ev.raw_text or "", "ts": time.time()})
         if not cv.get("human"):
             cv["human"], cv["next_at"], cv["fu_at"] = True, 0, 0
-            await tell(cid, f"С аккаунта радара вручную ответили @{cv.get('username')}. Ассистент в этом диалоге замолчал.\nВернуть: /igdm resume {cv.get('username')}")
+            await tell(cid, f"Ты ответил вручную {('@' + cv['username']) if cv.get('username') else (cv.get('name') or 'клиенту')} в Telegram. Алексей в этом диалоге замолчал.", resume_btn=True)
         save()
     except Exception:
         log.exception("tg outgoing")
+
+
+async def resume_cid(cid):
+    """Кнопка «Вернуть Алексея»: ассистент снова отвечает в этом диалоге."""
+    load_if_needed()
+    cv = S["convs"].get(cid)
+    if not cv:
+        return "Диалог не найден"
+    cv["human"] = False
+    cv["lead_sent"] = False
+    save()
+    return "Алексей снова отвечает в этом диалоге"
 
 
 async def send_dialogs(ev, text):

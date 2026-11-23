@@ -557,6 +557,16 @@ async def on_button(ev):
         return await mail_button(ev)
     if ev.data.startswith(b"c"):
         return await content.on_button(ev)
+    if ev.data.startswith(b"igr:"):  # 23.11: вернуть Алексея в диалог одной кнопкой
+        res = await igdm.resume_cid(ev.data.decode()[4:])
+        await ev.answer(res)
+        try:
+            await ev.edit(buttons=[[Button.inline("✅ Алексей снова отвечает", b"noop:0")]])
+        except Exception:
+            pass
+        return
+    if ev.data.startswith(b"noop:"):
+        return await ev.answer()
     if ev.data.startswith(b"adel:"):
         _, ch, mid = ev.data.decode().split(":")
         res = await autoreply.delete_message(user, int(ch), int(mid))
