@@ -522,6 +522,15 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and text.startswith("/preview"):
+        golf = "golf" in text.lower()
+        cover_url, welcome = (COVER_GOLF_URL, WELCOME_GOLF) if golf else (COVER_URL, WELCOME)
+        await call(c, "sendMessage", chat_id=uid, text="👀 Так видит бота новый человек" + (" с гольф-рекламы" if golf else "") + ":")
+        j = await call(c, "sendPhoto", chat_id=uid, photo=cover_url, caption=welcome, parse_mode="HTML") if cover_url else {}
+        if not j.get("ok"):
+            await call(c, "sendMessage", chat_id=uid, text=welcome, parse_mode="HTML")
+        return await call(c, "sendMessage", chat_id=uid, text=Q_NAME, parse_mode="HTML",
+                          reply_markup=kb([[{"text": "Оставить: Иван Петров", "callback_data": "noop"}]]))
     if uid == OWNER_ID and text.startswith("/resync"):
         done = [(k, v) for k, v in S.items() if v.get("sent")]
         for k, v in done:
