@@ -85,10 +85,23 @@ async def collect():
 
 async def resolve_to(u, to, name=""):
     """Кому отправить: id, @username или ссылка; если не нашли, ищем в диалогах по имени."""
-    try:
-        return await u.get_entity(int(to) if str(to).lstrip("-").isdigit() else to)
-    except Exception:
-        pass
+    if "/+" in str(to) or "joinchat/" in str(to):  # закрытый чат по ссылке-приглашению
+        from telethon.tl.functions.messages import CheckChatInviteRequest, ImportChatInviteRequest
+        from telethon.tl.types import ChatInviteAlready
+        h = str(to).rstrip("/").split("/")[-1].lstrip("+")
+        try:
+            r = await u(CheckChatInviteRequest(h))
+            if isinstance(r, ChatInviteAlready):
+                return r.chat
+            r = await u(ImportChatInviteRequest(h))
+            return r.chats[0]
+        except Exception as e:
+            log.info("invite %s: %s", h, e)
+    else:
+        try:
+            return await u.get_entity(int(to) if str(to).lstrip("-").isdigit() else to)
+        except Exception:
+            pass
     async for d in u.iter_dialogs(limit=300):
         if (to and str(getattr(d.entity, "id", "")) == str(to).lstrip("-")) or \
            (name and name.lower() in (d.name or "").lower()):
