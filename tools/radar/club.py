@@ -60,6 +60,12 @@ WELCOME = (f"🎩 <b>{NAME}</b>\n"
            "<i>Клуб международных предпринимателей и инвесторов в Дубае</i>\n\n"
            "Закрытые встречи в небольшом кругу: сигарные вечера в DIFC, автодром, гольф, падел.\n\n"
            "🔐 Вход по заявке. Анкета займёт 2 минуты 👇")
+COVER_GOLF_URL = "https://images.unsplash.com/photo-1629673120178-53a664eec9e8?fm=jpg&q=85&w=1600"
+WELCOME_GOLF = (f"⛳️ <b>{NAME} · Гольф</b>\n"
+                "<i>Клуб международных предпринимателей и инвесторов в Дубае</i>\n\n"
+                "Собираем небольшую группу на гольф с тренером. Подойдёт и новичкам, и тем, кто уже играет. "
+                "После игры общение в лаунже клуба.\n\n"
+                "🔐 Вход по заявке. Анкета займёт 2 минуты 👇")
 GO_KB = {"inline_keyboard": [[{"text": "Заполнить анкету →", "callback_data": "go", "style": "primary"}]]}
 MULTI = "\n\n<i>Можно выбрать несколько, потом «Готово»</i>"
 # ключ, вопрос, варианты, несколько ответов, кнопок в ряд
@@ -595,22 +601,26 @@ async def on_message(c, m):
                   "name": nm, "tg_name": nm}
         save()
         sent_cover = False
-        if COVER_URL:
+        golf = src_tag.lower().startswith("golf")
+        cover_url, welcome = (COVER_GOLF_URL, WELCOME_GOLF) if golf else (COVER_URL, WELCOME)
+        if cover_url:
             fid_p = os.path.join(BASE, "club_cover_id.json")
             try:
-                fid = json.load(open(fid_p)).get(COVER_URL)
+                fids = json.load(open(fid_p))
             except Exception:
-                fid = None
-            j = await call(c, "sendPhoto", chat_id=uid, photo=fid or COVER_URL, caption=WELCOME, parse_mode="HTML")
+                fids = {}
+            fid = fids.get(cover_url)
+            j = await call(c, "sendPhoto", chat_id=uid, photo=fid or cover_url, caption=welcome, parse_mode="HTML")
             if j.get("ok"):
                 sent_cover = True
                 if not fid:
                     try:
-                        json.dump({COVER_URL: j["result"]["photo"][-1]["file_id"]}, open(fid_p, "w"))
+                        fids[cover_url] = j["result"]["photo"][-1]["file_id"]
+                        json.dump(fids, open(fid_p, "w"))
                     except Exception:
                         pass
         if not sent_cover:
-            await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML")
+            await call(c, "sendMessage", chat_id=uid, text=welcome, parse_mode="HTML")
         return await ask(c, uid, S[uid])
     st = S.get(uid)
     if not st:
