@@ -516,6 +516,11 @@ async def on_message(c, m):
         return await call(c, "sendMessage", chat_id=uid, text=stats_text(), parse_mode="HTML")
     if uid == OWNER_ID and text.startswith("/export"):
         return await export(c)
+    if uid == OWNER_ID and text.startswith("/resync"):
+        done = [(k, v) for k, v in S.items() if v.get("sent")]
+        for k, v in done:
+            await to_sheet(c, v, k)
+        return await call(c, "sendMessage", chat_id=uid, text=f"Отправил в таблицу анкет: {len(done)}")
     rep = m.get("reply_to_message") or {}
     mt = re.search(r"#u(\d+)", rep.get("text") or "")
     if uid == OWNER_ID and mt and text:
