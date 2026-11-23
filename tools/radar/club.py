@@ -58,12 +58,8 @@ def head(n, emoji, title):
 
 WELCOME = (f"🎩 <b>{NAME}</b>\n"
            "<i>Клуб международных предпринимателей и инвесторов в Дубае</i>\n\n"
-           "<b>Ближайшая встреча</b>\n"
-           "Сигарный вечер в лаунже DIFC · в небольшом кругу\n"
-           "Каждый платит за себя по меню\n\n"
-           "<b>Форматы клуба</b>\n"
-           "Сигары · автодром · гольф · падел\n\n"
-           "🔐 Вход по заявке · анкета за 2 минуты")
+           "Закрытые встречи в небольшом кругу: сигарные вечера в DIFC, автодром, гольф, падел.\n\n"
+           "🔐 Вход по заявке. Анкета займёт 2 минуты 👇")
 GO_KB = {"inline_keyboard": [[{"text": "Заполнить анкету →", "callback_data": "go", "style": "primary"}]]}
 MULTI = "\n\n<i>Можно выбрать несколько, потом «Готово»</i>"
 # ключ, вопрос, варианты, несколько ответов, кнопок в ряд
@@ -590,23 +586,27 @@ async def on_message(c, m):
                               text="Ваша заявка уже у нас ✅ Пришлю приглашение на следующую встречу клуба.\n\n" + member_card(old),
                               reply_markup=kb([[{"text": "↩️ Обновить анкету", "callback_data": "restart"}]]))
         nm = " ".join(x for x in [u.get("first_name"), u.get("last_name")] if x)
-        S[uid] = {"src": src_tag, "t0": time.time(), "step": "welcome", "username": u.get("username"), "name": nm}
+        S[uid] = {"src": src_tag, "t0": time.time(), "ts": time.time(), "step": "name", "username": u.get("username"),
+                  "name": nm, "tg_name": nm}
         save()
+        sent_cover = False
         if COVER_URL:
             fid_p = os.path.join(BASE, "club_cover_id.json")
             try:
                 fid = json.load(open(fid_p)).get(COVER_URL)
             except Exception:
                 fid = None
-            j = await call(c, "sendPhoto", chat_id=uid, photo=fid or COVER_URL, caption=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
+            j = await call(c, "sendPhoto", chat_id=uid, photo=fid or COVER_URL, caption=WELCOME, parse_mode="HTML")
             if j.get("ok"):
+                sent_cover = True
                 if not fid:
                     try:
                         json.dump({COVER_URL: j["result"]["photo"][-1]["file_id"]}, open(fid_p, "w"))
                     except Exception:
                         pass
-                return j
-        return await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML", reply_markup=GO_KB)
+        if not sent_cover:
+            await call(c, "sendMessage", chat_id=uid, text=WELCOME, parse_mode="HTML")
+        return await ask(c, uid, S[uid])
     st = S.get(uid)
     if not st:
         return await call(c, "sendMessage", chat_id=uid, text="Нажмите /start, чтобы оставить заявку")
