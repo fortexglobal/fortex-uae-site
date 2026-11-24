@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-24T08:21+04:00",
+ "generated": "2026-11-24T18:09+04:00",
  "posts": [
-  {
-   "slug": "t-1110-car-fns-nedvizhimost-oae",
-   "at": "2026-11-10T10:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfjRJH_nBDq",
-   "kind": "карусель",
-   "text": "Налоговая РФ ПРОВЕРЯЕТ СДЕЛКИ с недвижимостью в ОАЭ.\n\nЧто спрашивают и чем грозит, коротко в карточках",
-   "views": 66,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
-  {
-   "slug": "t-1110-metro",
-   "at": "2026-11-10T12:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/Dfjez6Pkf1J",
-   "kind": "юмор",
-   "text": "ТИПЫ ЛЮДЕЙ в дубайском метро:\n\n1. Турист: фоткает пустой вагон, «как в будущем»\n2. Новичок: случайно зашёл в GOLD CLASS ",
-   "views": 115,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1110-ceny-slovo",
    "at": "2026-11-10T19:00+04:00",
@@ -562,7 +532,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgAxYo1kZd3",
    "kind": "консультация",
    "text": "Меня часто спрашивают: а МНЕ вообще нужен EMIRATES ID, если есть паспорт?\n\nВ Дубае это главный документ. Паспорт лежит д",
-   "views": 45,
+   "views": 50,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -592,14 +562,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgDFBA3FMYD",
    "kind": "фото",
    "text": "Дубайчане, что вы ПЕРВЫМ ДЕЛОМ проверяете, когда смотрите квартиру?\n\nНачну: куда выходят окна. Летом ЗАПАДНАЯ СТОРОНА ре",
-   "views": 85,
+   "views": 86,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 2,
-   "actions_per_1k": 23.5
+   "actions_per_1k": 23.3
   },
   {
    "slug": "t-1122-vw-bank",
@@ -607,7 +577,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgDWLyPiZve",
    "kind": "консультация",
    "text": "А мне откроют СЧЁТ В БАНКЕ ОАЭ без своей компании?\n\n• Без Emirates ID личный счёт для нерезидента РЕДКАЯ И СЛОЖНАЯ истор",
-   "views": 14,
+   "views": 17,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -622,7 +592,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgE9Ns5mwi1",
    "kind": "юмор",
    "text": "СТАДИИ ОТНОШЕНИЙ с Бурдж-Халифой:\n\n1. Первая неделя: 300 ФОТО с каждого ракурса\n2. Месяц: фоткаешь, только когда ПРИЛЕТЕ",
-   "views": 26,
+   "views": 28,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -652,7 +622,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgF6-tUiRJL",
    "kind": "консультация",
    "text": "Меня часто спрашивают, почему с КВАРТИРОЙ В ДУБАЕ всё сложнее, пока ты на туристической визе.\n\n• Без Emirates ID арендод",
-   "views": 5,
+   "views": 8,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -660,30 +630,41 @@
    "shares": 0,
    "actions": 0,
    "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1124-tipy-zal",
+   "at": "2026-11-24T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgHh-WNm5lF",
+   "kind": "юмор",
+   "text": "ТИПЫ ЛЮДЕЙ в спортзале дубайского дома:\n\n1. Новичок: пришёл в 7 утра, а там уже ТРИ СТАРОЖИЛА\n2. Сосед: сначала селфи у ",
+   "views": 32,
+   "likes": 0,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 2,
+   "actions_per_1k": 62.5
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 308,
-  "likes": 1,
-  "replies": 12,
+  "views": 178,
+  "likes": 0,
+  "replies": 2,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 2537,
+  "views": 2052,
   "likes": 10,
-  "replies": 75,
+  "replies": 58,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-16",
-   "views": 541
-  },
   {
    "date": "2026-11-17",
    "views": 451
@@ -710,7 +691,11 @@
   },
   {
    "date": "2026-11-23",
-   "views": 122
+   "views": 132
+  },
+  {
+   "date": "2026-11-24",
+   "views": 46
   }
  ],
  "link_clicks_7d": [
@@ -738,25 +723,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 122,
+ "views_1d": 46,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "карусель": {
-   "posts": 2,
-   "views": 90,
-   "replies": 0,
-   "likes": 0,
-   "avg_views": 45.0,
-   "avg_replies": 0.0
-  },
-  "юмор": {
-   "posts": 14,
-   "views": 1056,
-   "replies": 12,
-   "likes": 2,
-   "avg_views": 75.4,
-   "avg_replies": 0.86
-  },
   "вопрос": {
    "posts": 10,
    "views": 2805,
@@ -767,18 +736,34 @@
   },
   "консультация": {
    "posts": 12,
-   "views": 817,
+   "views": 828,
    "replies": 2,
    "likes": 1,
-   "avg_views": 68.1,
+   "avg_views": 69.0,
    "avg_replies": 0.17
+  },
+  "карусель": {
+   "posts": 1,
+   "views": 24,
+   "replies": 0,
+   "likes": 0,
+   "avg_views": 24.0,
+   "avg_replies": 0.0
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 975,
+   "replies": 14,
+   "likes": 2,
+   "avg_views": 69.6,
+   "avg_replies": 1.0
   },
   "фото": {
    "posts": 4,
-   "views": 512,
+   "views": 513,
    "replies": 16,
    "likes": 6,
-   "avg_views": 128.0,
+   "avg_views": 128.2,
    "avg_replies": 4.0
   },
   "знакомства": {
