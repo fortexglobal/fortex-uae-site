@@ -7,5 +7,6 @@
  "business": true,
  "inspired_by": "https://www.threads.com/@mv.ibragim/post/DgDuJqAEd_Y",
  "image": "threads/photos/20261101-114645-950.jpg",
- "status": "approved"
+ "status": "hold",
+ "hold_why": "не вышел 23.11 (публикатор не успел), снят 24.11, чтобы не выйти пятым постом поверх плана; можно вернуть approved с новой датой"
 }
