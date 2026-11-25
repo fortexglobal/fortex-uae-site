@@ -1,5 +1,5 @@
 {
- "at": "2026-11-25T23:30+04:00",
+ "at": "2026-11-25T23:45+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -32,11 +32,11 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 397, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 462, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 500: \n"
   ]
  ],
- "openrouter_left": 2.96,
+ "openrouter_left": 2.88,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11",
-  "bal-openrouter": "25.11 11:34"
+  "bal-openrouter": "25.11 23:39"
  },
  "services": {
   "radar": "active",
@@ -209,7 +209,7 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 2011,
+  "lines": 2009,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
