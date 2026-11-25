@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-24T18:09+04:00",
+ "generated": "2026-11-25T08:20+04:00",
  "posts": [
-  {
-   "slug": "t-1110-ceny-slovo",
-   "at": "2026-11-10T19:00+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfkLcS3kRLn",
-   "kind": "вопрос",
-   "text": "Дубайчане, какая ЦЕНА здесь до сих пор вас УДИВЛЯЕТ?\n\nОтвет ОДНИМ СЛОВОМ. Начну: ВОДА В РЕСТОРАНЕ 👀",
-   "views": 1525,
-   "likes": 3,
-   "replies": 4,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 1,
-   "actions": 5,
-   "actions_per_1k": 3.3
-  },
-  {
-   "slug": "t-1110-vw-telefon",
-   "at": "2026-11-10T21:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/Dfkcmr9HAIY",
-   "kind": "консультация",
-   "text": "Меня часто спрашивают: зачем EMIRATES ID, если можно жить по туристической визе?\n\nМестный номер на своё имя, UAE PASS, г",
-   "views": 140,
-   "likes": 1,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1111-car-lgota-malyi-biznes-2029",
    "at": "2026-11-11T10:30+04:00",
@@ -637,19 +607,49 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgHh-WNm5lF",
    "kind": "юмор",
    "text": "ТИПЫ ЛЮДЕЙ в спортзале дубайского дома:\n\n1. Новичок: пришёл в 7 утра, а там уже ТРИ СТАРОЖИЛА\n2. Сосед: сначала селфи у ",
-   "views": 32,
+   "views": 35,
    "likes": 0,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 2,
-   "actions_per_1k": 62.5
+   "actions_per_1k": 57.1
+  },
+  {
+   "slug": "t-1124-deshevle",
+   "at": "2026-11-24T19:00+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgIOnViFnWO",
+   "kind": "вопрос",
+   "text": "Дубайчане, что в Дубае оказалось ДЕШЕВЛЕ, чем вы думали ДО ПЕРЕЕЗДА?\n\nНачну: БЕНЗИН 👀",
+   "views": 54,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1124-vw-telefon",
+   "at": "2026-11-24T21:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgIfxmWlkSF",
+   "kind": "консультация",
+   "text": "А мне правда нужен EMIRATES ID, если можно жить на ТУРИСТИЧЕСКОЙ СИМКЕ?\n\n• Без него приложения то и дело просят ДОКУМЕНТ",
+   "views": 32,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 178,
+  "views": 283,
   "likes": 0,
   "replies": 2,
   "reposts": 0,
@@ -657,7 +657,7 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 2052,
+  "views": 2157,
   "likes": 10,
   "replies": 58,
   "reposts": 0,
@@ -695,7 +695,7 @@
   },
   {
    "date": "2026-11-24",
-   "views": 46
+   "views": 151
   }
  ],
  "link_clicks_7d": [
@@ -723,25 +723,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 46,
+ "views_1d": 151,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "вопрос": {
-   "posts": 10,
-   "views": 2805,
-   "replies": 33,
-   "likes": 5,
-   "avg_views": 280.5,
-   "avg_replies": 3.3
-  },
-  "консультация": {
-   "posts": 12,
-   "views": 828,
-   "replies": 2,
-   "likes": 1,
-   "avg_views": 69.0,
-   "avg_replies": 0.17
-  },
   "карусель": {
    "posts": 1,
    "views": 24,
@@ -752,11 +736,27 @@
   },
   "юмор": {
    "posts": 14,
-   "views": 975,
+   "views": 978,
    "replies": 14,
    "likes": 2,
-   "avg_views": 69.6,
+   "avg_views": 69.9,
    "avg_replies": 1.0
+  },
+  "вопрос": {
+   "posts": 10,
+   "views": 1334,
+   "replies": 29,
+   "likes": 2,
+   "avg_views": 133.4,
+   "avg_replies": 2.9
+  },
+  "консультация": {
+   "posts": 12,
+   "views": 720,
+   "replies": 2,
+   "likes": 0,
+   "avg_views": 60.0,
+   "avg_replies": 0.17
   },
   "фото": {
    "posts": 4,
