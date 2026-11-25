@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-25T08:21+04:00",
+ "generated": "2026-11-25T17:22+04:00",
  "posts": [
-  {
-   "slug": "t-1111-car-lgota-malyi-biznes-2029",
-   "at": "2026-11-11T10:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/Dfl169vnGqy",
-   "kind": "карусель",
-   "text": "Льготу для МАЛОГО БИЗНЕСА в ОАЭ продлили ДО 2029 года.\n\nКому она положена, в карточках 👉",
-   "views": 24,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
-  {
-   "slug": "t-1111-otpusk-stadii",
-   "at": "2026-11-11T12:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfmDmnPHN2n",
-   "kind": "юмор",
-   "text": "СТАДИИ ОТПУСКА из Дубая:\n\n1. «Наконец-то ХОЛОД и свежий воздух»\n2. День третий: скучаешь по +28 и кондиционеру одновреме",
-   "views": 77,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1111-pereezdy",
    "at": "2026-11-11T19:00+04:00",
@@ -622,7 +592,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgIOnViFnWO",
    "kind": "вопрос",
    "text": "Дубайчане, что в Дубае оказалось ДЕШЕВЛЕ, чем вы думали ДО ПЕРЕЕЗДА?\n\nНачну: БЕНЗИН 👀",
-   "views": 54,
+   "views": 57,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -637,7 +607,22 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgIfxmWlkSF",
    "kind": "консультация",
    "text": "А мне правда нужен EMIRATES ID, если можно жить на ТУРИСТИЧЕСКОЙ СИМКЕ?\n\n• Без него приложения то и дело просят ДОКУМЕНТ",
-   "views": 32,
+   "views": 33,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1125-stadii-rasstoyaniya",
+   "at": "2026-11-25T12:31+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgKGyXOm12z",
+   "kind": "юмор",
+   "text": "Стадии отношений с расстояниями в Дубае:\n\n1. «Пройдусь пешком, тут всего 800 МЕТРОВ»\n2. Через пять минут вызываешь такси",
+   "views": 29,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -649,26 +634,22 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 283,
+  "views": 191,
   "likes": 0,
-  "replies": 2,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 2157,
-  "likes": 10,
-  "replies": 58,
+  "views": 1746,
+  "likes": 8,
+  "replies": 54,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-17",
-   "views": 451
-  },
   {
    "date": "2026-11-18",
    "views": 426
@@ -695,11 +676,16 @@
   },
   {
    "date": "2026-11-24",
-   "views": 151
+   "views": 155
+  },
+  {
+   "date": "2026-11-25",
+   "views": 36
   }
  ],
  "link_clicks_7d": [
   {
+   "id": "17841423681889725/insights/clicks/day",
    "name": "clicks",
    "period": "day",
    "title": "clicks",
@@ -717,46 +703,37 @@
      "value": 0,
      "link_url": "https://t.me/Fortex_Dubai"
     }
-   ],
-   "id": "17841423681889725/insights/clicks/day"
+   ]
   }
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 151,
+ "views_1d": 36,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "карусель": {
-   "posts": 1,
-   "views": 24,
-   "replies": 0,
-   "likes": 0,
-   "avg_views": 24.0,
-   "avg_replies": 0.0
-  },
-  "юмор": {
-   "posts": 14,
-   "views": 978,
-   "replies": 14,
-   "likes": 2,
-   "avg_views": 69.9,
-   "avg_replies": 1.0
-  },
   "вопрос": {
    "posts": 10,
-   "views": 1334,
+   "views": 1337,
    "replies": 29,
    "likes": 2,
-   "avg_views": 133.4,
+   "avg_views": 133.7,
    "avg_replies": 2.9
   },
   "консультация": {
    "posts": 12,
-   "views": 720,
+   "views": 721,
    "replies": 2,
    "likes": 0,
-   "avg_views": 60.0,
+   "avg_views": 60.1,
    "avg_replies": 0.17
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 930,
+   "replies": 14,
+   "likes": 2,
+   "avg_views": 66.4,
+   "avg_replies": 1.0
   },
   "фото": {
    "posts": 4,
