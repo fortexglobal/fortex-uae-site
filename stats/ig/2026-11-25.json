@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T08:40+04:00",
+ "generated": "2026-11-25T16:43+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "ronin.dubai",
@@ -9,8 +9,8 @@
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 7,
-  "views": 9,
+  "reach": 3,
+  "views": 5,
   "accounts_engaged": 0,
   "total_interactions": 0,
   "profile_links_taps": 0,
@@ -19,11 +19,6 @@
   }
  },
  "followers_history": [
-  {
-   "date": "2026-11-20",
-   "followers": 1,
-   "media": 22
-  },
   {
    "date": "2026-11-21",
    "followers": 1,
@@ -51,6 +46,11 @@
   },
   {
    "date": "2026-11-24",
+   "followers": 1,
+   "media": 22
+  },
+  {
+   "date": "2026-11-25",
    "followers": 1,
    "media": 22
   },
