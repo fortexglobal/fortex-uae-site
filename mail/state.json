@@ -1,0 +1,194 @@
+{
+ "updated": "2026-11-26T17:30+04:00",
+ "leads": {
+  "fortexglobal.otc@gmail.com": {
+   "step": 1,
+   "last_at": 1795680466.3016186,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a216e571a0869d4",
+   "status": "active",
+   "id": "TEST",
+   "next_at": 1796026066.3016253
+  },
+  "info@playkot.com": {
+   "step": 1,
+   "last_at": 1795681517.5503683,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a216f57d4b8865f",
+   "status": "active",
+   "id": "I0001",
+   "next_at": 1796027117.550377
+  },
+  "partner@selzy.com": {
+   "step": 1,
+   "last_at": 1795682133.6990058,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a216fee4f93179f",
+   "status": "active",
+   "id": "I0002",
+   "next_at": 1796027733.6990104
+  },
+  "support@elephant-games.com": {
+   "step": 1,
+   "last_at": 1795682991.8272207,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a2170bfae7e9f82",
+   "status": "active",
+   "id": "I0004",
+   "next_at": 1796028591.8272283
+  },
+  "marketing@alteg.io": {
+   "step": 1,
+   "last_at": 1795683795.4194236,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a217183eae7b38e",
+   "status": "active",
+   "id": "I0005",
+   "next_at": 1796029395.4194317
+  },
+  "info@albato.com": {
+   "step": 1,
+   "last_at": 1795684411.3014126,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21721a555ad88a",
+   "status": "active",
+   "id": "I0006",
+   "next_at": 1796030011.3014183
+  },
+  "hello@sibers.com": {
+   "step": 1,
+   "last_at": 1795685275.9616172,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a2172ed5aa99fb0",
+   "status": "active",
+   "id": "I0007",
+   "next_at": 1796030875.961621
+  },
+  "oleg@evrone.com": {
+   "step": 1,
+   "last_at": 1795686151.0812626,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a2173c30933d249",
+   "status": "active",
+   "id": "I0008",
+   "next_at": 1796031751.0812685
+  },
+  "eager2develop@forasoft.com": {
+   "step": 1,
+   "last_at": 1795687197.292171,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a2174c26e710fe7",
+   "status": "active",
+   "id": "I0009",
+   "next_at": 1796032797.2921772
+  },
+  "hello@bidease.com": {
+   "step": 1,
+   "last_at": 1795687761.5028741,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21754c11776afe",
+   "status": "active",
+   "id": "I0011",
+   "next_at": 1796033361.502881
+  },
+  "sales@ishosting.com": {
+   "step": 1,
+   "last_at": 1795688380.2434583,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a2175e325c3a340",
+   "status": "active",
+   "id": "I0012",
+   "next_at": 1796033980.2434642
+  },
+  "leonmfo@leonmfo.com": {
+   "step": 1,
+   "last_at": 1795689426.6937819,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a2176e2b983ea93",
+   "status": "active",
+   "id": "I0015",
+   "next_at": 1796035026.6937878
+  },
+  "svakula@sergan.biz": {
+   "step": 1,
+   "last_at": 1795690476.9944654,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a2177e33dd5f70d",
+   "status": "active",
+   "id": "I0016",
+   "next_at": 1796036076.994471
+  },
+  "office@antaras-group.ch": {
+   "step": 1,
+   "last_at": 1795691213.3747482,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a217896f789c8c7",
+   "status": "active",
+   "id": "I0017",
+   "next_at": 1796036813.3747542
+  },
+  "smartgen@smartgenisrael.com": {
+   "step": 1,
+   "last_at": 1795691950.596572,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21794af1dff1b6",
+   "status": "active",
+   "id": "I0018",
+   "next_at": 1796037550.5965788
+  },
+  "tomas.zvonicek@aklegato.cz": {
+   "step": 1,
+   "last_at": 1795693034.155668,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a217a53611c78c5",
+   "status": "active",
+   "id": "I0019",
+   "next_at": 1796038634.155673
+  },
+  "valdisulmanis@inbox.lv": {
+   "step": 1,
+   "last_at": 1795693897.766095,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a217b265cb2aba2",
+   "status": "active",
+   "id": "I0020",
+   "next_at": 1796039497.766101
+  },
+  "info@strik-law.nl": {
+   "step": 1,
+   "last_at": 1795694697.5953465,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a217be98fc1728f",
+   "status": "active",
+   "id": "I0021",
+   "next_at": 1796040297.595351
+  },
+  "info@nalog.nl": {
+   "step": 1,
+   "last_at": 1795695685.323955,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a217cdab955faba",
+   "status": "active",
+   "id": "I0022",
+   "next_at": 1796041285.3239589
+  },
+  "support@unfrozen.studio": {
+   "step": 1,
+   "last_at": 1795696607.8976185,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a217dbbeef8edc0",
+   "status": "active",
+   "id": "I0023",
+   "next_at": 1796042207.897624
+  },
+  "info@volka.com": {
+   "step": 1,
+   "last_at": 1795697410.6540942,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a217e7ff3b5659e",
+   "status": "active",
+   "id": "I0024",
+   "next_at": 1796043010.6541016
+  }
+ }
+}
