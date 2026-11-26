@@ -307,6 +307,9 @@ def kb_ref(text, extra_titles=(), limit=14000):
         if any(title.startswith(k) for k in KB_CORE + KB_NEVER):
             continue
         keys = next((v for k, v in sorted(KB_KEYS.items(), key=lambda kv: -len(kv[0])) if title.startswith(k)), None)
+        if title.startswith("Справка"):  # разделы, которые пишет еженедельное обучение: слова в строке «Ключи: а, б, в»
+            m = re.search(r"^Ключи:\s*(.+)$", x, re.M)
+            keys = tuple(w.strip().lower() for w in m.group(1).split(",") if w.strip()) if m else ()
         hit = any(title.startswith(k) for k in extra_titles) or (keys is None) or any(w in t for w in keys)
         if hit and size + len(x) <= limit:
             out.append(x); size += len(x)
