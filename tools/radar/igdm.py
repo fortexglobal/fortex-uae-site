@@ -252,11 +252,69 @@ async def send(uid, text):
     return mid
 
 
-def kb():
+# 26.11, решение Александра: база делится на основную (всегда, кэшируется) и справочную (подставляется по теме разговора).
+# Ответ стоил до 0,11 $ из-за ~30 тыс. токенов на каждый ответ; теперь в системе только основное.
+KB_CORE = ("Главная задача", "Как вести переписку", "Техника продаж", "Допродажа", "Наша скорость", "Кто мы",
+           "Цены и сроки", "Банки", "Рабочая виза (", "Рабочая виза под ипотеку (", "Гарантии и доверие", "Virtual Work",
+           "Почему банки отказывают", "Чего нельзя обещать", "Кейсы", "Что нужно от клиента", "Как начать")
+KB_NEVER = ("Подпись в письмах",)
+KB_KEYS = {  # начало заголовка справочного раздела: слова, по которым он нужен
+    "Люди с рекламы Meta": ("бесплатную консультацию", "подходит ли мне virtual", "реклам"),
+    "Люди из чата Крипто Дубай": ("крипто дубай", "crypto dubai", "криптодубай", "из чата алекс"),
+    "Люди из Threads Александра": ("threads", "тредс", "ипотека", "прикинуть вариант", "разбор"),
+    "Люди из Threads Fortex": ("threads", "тредс", "у меня есть вопрос по virtual", "виза"),
+    "Дожим": (),
+    "Как отвечать на «сколько стоят": ("ипотек", "6 месяц", "полгода", "сколько сто"),
+    "Ипотека": ("ипотек", "mortgage", "квартир", "handover", "хендовер", "хэндовер", "брокер", "недвиж", "off-plan", "офф-план",
+                "взнос", "застройщ", "купить жиль", "ставк", "кредит на"),
+    "Рабочая виза под ипотеку: как идёт": ("ипотек", "как проходит", "по шагам", "этап", "процесс", "зарплат", "wps", "трудоустр"),
+    "Под ключ": ("ипотек", "под ключ", "квартир"),
+    "Кредитная карта": ("карт", "кредитк", "skywards", "credit", "лимит"),
+    "Готовые комплексы": ("комплекс", "пакет", "под ключ", "всё вместе", "все вместе"),
+    "Практика: корпоративный счёт": ("корпорат", "счёт компании", "счет компании", "бизнес-сч", "компани", "оборот", "поставщ", "клиентам плат"),
+    "Практика: работа со счётом": ("заморо", "заблок", "блокир", "закрыли счёт", "закрыли счет", "compliance", "комплаенс", "источник"),
+    "Практика: открытие компании": ("компани", "фризон", "free zone", "freezone", "лиценз", "учред", "mainland", "мейнленд", "ifza", "meydan", "dmcc", "rakez"),
+    "Практика: виза владельца": ("компани", "владел", "инвестор", "партнёр", "партнер", "учред"),
+    "Практика: налоги": ("налог", "vat", "ндс", "отчёт", "отчет", "аудит", "corporate tax", "бухгалт", "esr", "ubo"),
+    "Рынок и конкуренты": ("конкурент", "дешевле", "у других", "другие предлагают", "нашёл за", "нашел за"),
+    "Жизнь в Дубае": ("аренд", "школ", "садик", "детский сад", "район", "переезд", "страхов", "машин", "права", "жить", "медицин"),
+}
+
+
+def kb_sections():
     try:
-        return open(KB_F, encoding="utf-8").read()
+        s = open(KB_F, encoding="utf-8").read()
     except Exception:
-        return ""
+        return "", []
+    parts = re.split(r"\n(?=## )", s)
+    return parts[0], parts[1:]
+
+
+def kb():
+    """Основная база: всегда в системном сообщении (одинаковая, поэтому кэшируется)."""
+    head, secs = kb_sections()
+    core = [x for x in secs if any(x[3:].startswith(k) for k in KB_CORE)]
+    return "\n".join([head] + core)
+
+
+def kb_ref(text, extra_titles=(), limit=14000):
+    """Справочные разделы базы, которые относятся к разговору (по словам в последних сообщениях)."""
+    _, secs = kb_sections()
+    t = (text or "").lower()
+    out, size = [], 0
+    for x in secs:
+        title = x[3:]
+        if any(title.startswith(k) for k in KB_CORE + KB_NEVER):
+            continue
+        keys = next((v for k, v in sorted(KB_KEYS.items(), key=lambda kv: -len(kv[0])) if title.startswith(k)), None)
+        hit = any(title.startswith(k) for k in extra_titles) or (keys is None) or any(w in t for w in keys)
+        if hit and size + len(x) <= limit:
+            out.append(x); size += len(x)
+    return ("\n\nСПРАВКА ИЗ БАЗЫ ЗНАНИЙ ПО ТЕМЕ РАЗГОВОРА (те же правила, что и для основной базы):\n" + "\n".join(out)) if out else ""
+
+
+def recent_text(cv, n=10):
+    return " ".join(h.get("text", "") for h in cv.get("history", [])[-n:])
 
 
 SYSTEM = """Ты сотрудник отдела работы с клиентами Fortex UAE (Дубай). Ты Алексей Ронин. Отвечаешь в директе Instagram @ronin.dubai (бывший @fortex__uae, с 08.11 аккаунт от лица Алексея, с его фото) от первого лица («я», «у нас с командой»), как в Telegram.
@@ -341,7 +399,7 @@ async def llm(system, user):
                                  json={"model": m, "temperature": 0.4, "max_tokens": 1200,
                                        "response_format": {"type": "json_object"},
                                        # system (правила + база знаний) одинаковый: кэшируем, повторно стоит ~в 10 раз дешевле
-                                       "messages": [{"role": "system", "content": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]},
+                                       "messages": [{"role": "system", "content": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral", "ttl": "1h"}}]},
                                                     {"role": "user", "content": user}]})
                 if r.status_code != 200:
                     log.warning("llm %s -> %s", m, r.status_code); continue
@@ -530,11 +588,11 @@ async def followup(cid):
     last_ts = max([h.get("ts") or 0 for h in cv.get("history", [])] or [0])
     hrs = (time.time() - last_ts) / 3600 if last_ts else 99
     res = await llm(FOLLOWUP.format(n=stage + 1) + "\n\nБАЗА ЗНАНИЙ:\n" + kb(),
-                    f"Переписка:\n{transcript(cv)}\n\nС последнего сообщения прошло {hrs:.1f} ч"
+                    f"Переписка:\n{transcript(cv)}{kb_ref(recent_text(cv), ('Дожим',))}\n\nС последнего сообщения прошло {hrs:.1f} ч"
                     + (" (меньше 12 ч: не здоровайся)." if hrs < 12 else ".") + "\nНапиши догоняющее сообщение.")
     if res and res.get("reply") and DEFER_RE.search(res["reply"]):
         res = await llm(FOLLOWUP.format(n=stage + 1) + "\n\nБАЗА ЗНАНИЙ:\n" + kb(),
-                        f"Переписка:\n{transcript(cv)}\n\nТвой вариант «{res['reply']}» опять обещает написать позже. Дай сам ответ сейчас, по делу, без приветствия.") or res
+                        f"Переписка:\n{transcript(cv)}{kb_ref(recent_text(cv), ('Дожим',))}\n\nТвой вариант «{res['reply']}» опять обещает написать позже. Дай сам ответ сейчас, по делу, без приветствия.") or res
     if not res or res.get("skip") or not res.get("reply"):
         save(); return
     block = bool(res.get("block")) or stage >= 1
@@ -663,12 +721,12 @@ async def _reply_to(cid):
                   f"по имени{(' (' + nm + ')') if nm else ''}, например «О, {nm or 'привет'}! Как ваши дела?» или «Рад снова слышать», "
                   "можно одной фразой вспомнить, о чём говорили в прошлый раз. Потом коротко по делу. Не пересказывай всю прошлую переписку.")
     t_ask = time.time()
-    res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
+    res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{kb_ref(recent_text(cv))}{extra}\n\n"
                                    f"Длина этого ответа: {LENGTHS[size]}. Не делай его похожим по длине и построению на наши прошлые сообщения.\n"
                                    f"Напиши следующее сообщение клиенту.")
     if res and res.get("reply") and not res.get("then") and DEFER_RE.search(res["reply"]) and len(res["reply"]) < 120:
         # «сейчас распишу» без самого ответа: просим ответить сразу (правило Александра 07.11)
-        res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{extra}\n\n"
+        res = await llm(SYSTEM + kb(), f"Клиент: @{cv.get('username')}\nПереписка:\n{transcript(cv)}{kb_ref(recent_text(cv))}{extra}\n\n"
                                        f"Твой вариант «{res['reply']}» только обещает ответ. Дай сам ответ сейчас: {LENGTHS['detail']}.\n"
                                        f"Напиши следующее сообщение клиенту.") or res
     already = 0.0
