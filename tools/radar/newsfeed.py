@@ -147,6 +147,21 @@ MS = {}
 STOP_WORDS = ("не интерес", "неинтерес", "не актуал", "неактуал", "не пишите", "отпишите", "unsubscribe", "remove me", "not interested", "stop")
 
 
+async def mail_diag(text):
+    """Проблема рассылки: в репозиторий mail/diag.json (для разбора) не чаще раза в 20 минут на одну и ту же ошибку."""
+    key = text[:60]
+    if MS.get("diag_key") == key and time.time() - MS.get("diag_at", 0) < 1200:
+        return
+    MS["diag_key"], MS["diag_at"] = key, time.time()
+    try:
+        import content
+        raw, sha = await content.gh_get("mail/diag.json")
+        await content.gh_put("mail/diag.json", json.dumps({"at": datetime.now(DUBAI).isoformat(timespec="minutes"), "error": text},
+                             ensure_ascii=False, indent=1), sha, "Рассылка: диагностика")
+    except Exception as e:
+        log.warning("mail diag: %s", e)
+
+
 def mail_pass():
     try:
         return open(os.path.join(BASE, "mail_pass")).read().strip().replace(" ", "")
@@ -211,7 +226,10 @@ async def mail_queue():
 
 async def mail_send_tick():
     q = await mail_queue()
-    if not q.get("enabled") or not mail_pass():
+    if not q.get("enabled"):
+        return
+    if not mail_pass():
+        await mail_diag("нет пароля приложения (файл mail_pass пуст): команда /igdm mail <пароль> не дошла")
         return
     now = datetime.now(DUBAI)
     day = now.date().isoformat()
@@ -250,6 +268,7 @@ async def mail_send_tick():
         mid = await asyncio.get_event_loop().run_in_executor(None, smtp_send, ld["email"], subj, _render(tpl["body"], ld), st.get("mid"))
     except Exception as e:
         log.warning("mail send %s: %s", ld["email"], e)
+        await mail_diag(f"ошибка отправки {ld['email']}: {str(e)[:300]}")
         MS["last_send"] = time.time(); MS["gap"] = 1800
         if "Username and Password not accepted" in str(e) or "535" in str(e):
             q["enabled"] = False
@@ -307,7 +326,7 @@ async def mail_imap_tick():
     try:
         msgs = await asyncio.get_event_loop().run_in_executor(None, _imap_fetch, list(MS["seen_uids"]))
     except Exception as e:
-        log.warning("imap: %s", e); ms_save(); return
+        log.warning("imap: %s", e); await mail_diag(f"IMAP: {str(e)[:300]}"); ms_save(); return
     import html as _h
     q = MS.get("queue") or {}
     by_mail = {ld["email"].lower(): ld for ld in q.get("leads", [])}
