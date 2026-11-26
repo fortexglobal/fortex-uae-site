@@ -1,36 +1,6 @@
 {
- "generated": "2026-11-25T17:22+04:00",
+ "generated": "2026-11-26T10:36+04:00",
  "posts": [
-  {
-   "slug": "t-1111-pereezdy",
-   "at": "2026-11-11T19:00+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfmwPiFETIy",
-   "kind": "вопрос",
-   "text": "Дубайчане, СКОЛЬКО РАЗ вы уже переезжали ВНУТРИ ДУБАЯ?\n\nОтвет цифрой. И признавайтесь, каждый раз был «ЭТО ТОЧНО ПОСЛЕДН",
-   "views": 138,
-   "likes": 0,
-   "replies": 2,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 2,
-   "actions_per_1k": 14.5
-  },
-  {
-   "slug": "t-1111-vw-prava",
-   "at": "2026-11-11T21:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfnBZxxietM",
-   "kind": "консультация",
-   "text": "Меня часто спрашивают: что даёт EMIRATES ID, если я просто хочу ЕЗДИТЬ НА МАШИНЕ в Дубае?\n\nС ним ты резидент и можешь по",
-   "views": 132,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1112-stadii-probok",
    "at": "2026-11-12T12:30+04:00",
@@ -630,11 +600,41 @@
    "shares": 0,
    "actions": 0,
    "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1125-udalenka-vremya",
+   "at": "2026-11-25T19:00+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgKzaAUFrWv",
+   "kind": "фото",
+   "text": "Дубайчане на удалёнке, вы живёте ПО ДУБАЙСКОМУ ВРЕМЕНИ или по времени своей команды?\n\nНачну: кофе по Дубаю, а в календар",
+   "views": 13,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1125-vw-prava",
+   "at": "2026-11-25T21:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgLEkf6HYn3",
+   "kind": "консультация",
+   "text": "Что меняется в Дубае, когда у тебя есть EMIRATES ID:\n\n• Без него: паспорт с собой на каждом шагу. С ним показываешь ОДНУ",
+   "views": 43,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 191,
+  "views": 251,
   "likes": 0,
   "replies": 0,
   "reposts": 0,
@@ -642,7 +642,7 @@
   "followers_count": 6
  },
  "account_7d": {
-  "views": 1746,
+  "views": 1806,
   "likes": 8,
   "replies": 54,
   "reposts": 0,
@@ -680,7 +680,7 @@
   },
   {
    "date": "2026-11-25",
-   "views": 36
+   "views": 96
   }
  ],
  "link_clicks_7d": [
@@ -708,25 +708,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 36,
+ "views_1d": 96,
  "link_clicks_7d_total": 2,
  "by_kind": {
-  "вопрос": {
-   "posts": 10,
-   "views": 1337,
-   "replies": 29,
-   "likes": 2,
-   "avg_views": 133.7,
-   "avg_replies": 2.9
-  },
-  "консультация": {
-   "posts": 12,
-   "views": 721,
-   "replies": 2,
-   "likes": 0,
-   "avg_views": 60.1,
-   "avg_replies": 0.17
-  },
   "юмор": {
    "posts": 14,
    "views": 930,
@@ -736,12 +720,28 @@
    "avg_replies": 1.0
   },
   "фото": {
-   "posts": 4,
-   "views": 513,
+   "posts": 5,
+   "views": 526,
    "replies": 16,
    "likes": 6,
-   "avg_views": 128.2,
-   "avg_replies": 4.0
+   "avg_views": 105.2,
+   "avg_replies": 3.2
+  },
+  "консультация": {
+   "posts": 12,
+   "views": 632,
+   "replies": 2,
+   "likes": 0,
+   "avg_views": 52.7,
+   "avg_replies": 0.17
+  },
+  "вопрос": {
+   "posts": 9,
+   "views": 1199,
+   "replies": 27,
+   "likes": 2,
+   "avg_views": 133.2,
+   "avg_replies": 3.0
   },
   "знакомства": {
    "posts": 2,
