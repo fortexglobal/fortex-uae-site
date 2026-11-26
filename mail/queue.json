@@ -1,5 +1,5 @@
 {
- "enabled": false,
+ "enabled": true,
  "daily_limit": 25,
  "window": [
   10,
@@ -60,6 +60,15 @@
   ]
  },
  "leads": [
+  {
+   "id": "TEST",
+   "email": "fortexglobal.otc@gmail.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "Fortex",
+   "personal": "Это тестовое письмо: проверка, что рассылка работает.",
+   "type": "тест"
+  },
   {
    "id": "I0001",
    "email": "info@playkot.com",
