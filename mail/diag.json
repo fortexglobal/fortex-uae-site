@@ -1,4 +1,4 @@
 {
- "at": "2026-11-26T11:37+04:00",
- "error": "ошибка отправки fortexglobal.otc@gmail.com: [Errno 101] Network is unreachable"
+ "at": "2026-11-26T11:39+04:00",
+ "error": "нет ссылки веб-хука почты (файл mail_hook пуст): нужна команда /igdm mailhook <ссылка>"
 }
