@@ -1,5 +1,5 @@
 {
- "at": "2026-11-26T14:06+04:00",
+ "at": "2026-11-26T14:22+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -145,6 +145,9 @@
   "2026-11-25": {
    "напрямую": 0,
    "рекомендация": 1
+  },
+  "2026-11-26": {
+   "напрямую": 1
   }
  },
  "openrouter_key": {
@@ -208,10 +211,10 @@
  },
  "openrouter_activity": "403 {\"error\":{\"message\":\"Only management keys can fetch activity for an account\",\"code\":403}}",
  "radar_log_24h": {
-  "lines": 2063,
+  "lines": 2061,
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 18
+  "openrouter_http": 19
  }
 }
