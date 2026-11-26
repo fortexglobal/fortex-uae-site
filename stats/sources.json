@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T12:50Z",
+ "generated": "2026-11-26T06:36Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,19 +10,19 @@
   {
    "name": "Direct traffic",
    "v": [
-    160.0,
-    83.0,
-    39.4,
-    182.0
+    155.0,
+    77.0,
+    37.4,
+    198.6
    ]
   },
   {
    "name": "Recommendation system traffic",
    "v": [
-    132.0,
-    132.0,
-    78.0,
-    10.1
+    133.0,
+    133.0,
+    78.2,
+    10.0
    ]
   },
   {
@@ -75,10 +75,10 @@
   {
    "name": "Yandex Zen",
    "v": [
-    132.0,
-    132.0,
-    78.0,
-    10.1
+    133.0,
+    133.0,
+    78.2,
+    10.0
    ]
   },
   {
@@ -149,10 +149,10 @@
   {
    "name": "telegram / None / channel",
    "v": [
+    99.0,
     98.0,
-    97.0,
-    74.5,
-    13.7
+    74.7,
+    13.6
    ]
   },
   {
@@ -473,6 +473,15 @@
    ]
   },
   {
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6b06f99b8ab6d56177746f0e",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "https://web.telegram.org/",
    "v": [
     1.0,
@@ -486,10 +495,10 @@
   {
    "name": "dzen.ru",
    "v": [
-    132.0,
-    132.0,
-    78.0,
-    10.1
+    133.0,
+    133.0,
+    78.2,
+    10.0
    ]
   },
   {
@@ -569,10 +578,10 @@
   {
    "name": "https://fortex-uae.com/",
    "v": [
-    112.0,
-    77.0,
-    44.6,
-    125.5
+    106.0,
+    70.0,
+    41.5,
+    148.3
    ]
   },
   {
@@ -882,6 +891,15 @@
    ]
   },
   {
+   "name": "https://fortex-uae.com/articles/chto-mozhno-kupit-v-ipoteku-v-dubae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6b06f99b8ab6d56177746f0e",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "https://fortex-uae.com/articles/ipoteka-ili-arenda-v-dubae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6aff10d28273846d47e35657",
    "v": [
     1.0,
@@ -1096,15 +1114,6 @@
     0.0,
     14.0
    ]
-  },
-  {
-   "name": "https://fortex-uae.com/lp/ipoteka/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR_oi0_0G5Z6XXHYuYTiwDB2yBuj5qhISPHcdKmxnwijk-yl17l-H-ml3S_Zbw_aem_U9HMpg8S1jpHLR9rcuW5FQ",
-   "v": [
-    1.0,
-    1.0,
-    0.0,
-    16.0
-   ]
   }
  ],
  "country_city": [
@@ -1113,17 +1122,17 @@
    "v": [
     158.0,
     107.0,
-    58.2,
-    93.5
+    58.9,
+    88.4
    ]
   },
   {
    "name": "Russia / None",
    "v": [
-    127.0,
-    127.0,
-    81.1,
-    4.5
+    128.0,
+    128.0,
+    81.2,
+    4.4
    ]
   },
   {
@@ -1154,21 +1163,21 @@
    ]
   },
   {
-   "name": "United States / None",
-   "v": [
-    19.0,
-    19.0,
-    89.5,
-    1.4
-   ]
-  },
-  {
    "name": "United Arab Emirates / Abu Dhabi",
    "v": [
     18.0,
-    9.0,
-    44.4,
-    65.3
+    8.0,
+    38.9,
+    202.1
+   ]
+  },
+  {
+   "name": "United States / None",
+   "v": [
+    14.0,
+    14.0,
+    85.7,
+    1.9
    ]
   },
   {
@@ -1187,15 +1196,6 @@
     3.0,
     66.7,
     5.0
-   ]
-  },
-  {
-   "name": "Canada / Vancouver",
-   "v": [
-    2.0,
-    2.0,
-    100.0,
-    0.0
    ]
   },
   {
@@ -1254,6 +1254,15 @@
   },
   {
    "name": "Canada / Montreal",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Canada / Vancouver",
    "v": [
     1.0,
     1.0,
@@ -1473,9 +1482,9 @@
   {
    "name": "Recommendation system traffic / None",
    "v": [
-    126.0,
-    126.0,
-    81.7,
+    127.0,
+    127.0,
+    81.9,
     4.4
    ]
   },
@@ -1493,8 +1502,8 @@
    "v": [
     71.0,
     27.0,
-    31.0,
-    145.0
+    32.4,
+    133.7
    ]
   },
   {
@@ -1507,15 +1516,6 @@
    ]
   },
   {
-   "name": "Direct traffic / None",
-   "v": [
-    23.0,
-    23.0,
-    82.6,
-    2.5
-   ]
-  },
-  {
    "name": "Direct traffic / Sharjah",
    "v": [
     19.0,
@@ -1525,21 +1525,30 @@
    ]
   },
   {
+   "name": "Direct traffic / None",
+   "v": [
+    18.0,
+    18.0,
+    77.8,
+    3.2
+   ]
+  },
+  {
+   "name": "Direct traffic / Abu Dhabi",
+   "v": [
+    13.0,
+    4.0,
+    15.4,
+    279.8
+   ]
+  },
+  {
    "name": "Direct traffic / Moscow",
    "v": [
     13.0,
     8.0,
     23.1,
     49.4
-   ]
-  },
-  {
-   "name": "Direct traffic / Abu Dhabi",
-   "v": [
-    12.0,
-    4.0,
-    16.7,
-    98.0
    ]
   },
   {
@@ -1603,15 +1612,6 @@
     2.0,
     50.0,
     58.5
-   ]
-  },
-  {
-   "name": "Direct traffic / Vancouver",
-   "v": [
-    2.0,
-    2.0,
-    100.0,
-    0.0
    ]
   },
   {
@@ -1750,6 +1750,15 @@
    ]
   },
   {
+   "name": "Direct traffic / Vancouver",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
    "name": "Direct traffic / Yerevan",
    "v": [
     1.0,
@@ -1836,18 +1845,18 @@
    "name": "Smartphones / Mobile Safari",
    "v": [
     161.0,
-    82.0,
+    81.0,
     37.9,
-    168.9
+    179.2
    ]
   },
   {
    "name": "PC / Google Chrome",
    "v": [
-    157.0,
-    154.0,
-    77.1,
-    31.4
+    155.0,
+    152.0,
+    76.8,
+    31.8
    ]
   },
   {
@@ -1862,10 +1871,10 @@
   {
    "name": "Smartphones / Chrome Mobile",
    "v": [
-    33.0,
-    32.0,
-    36.4,
-    70.4
+    31.0,
+    30.0,
+    32.3,
+    74.9
    ]
   },
   {
@@ -1887,15 +1896,6 @@
    ]
   },
   {
-   "name": "PC / HeadlessChrome",
-   "v": [
-    2.0,
-    2.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
    "name": "PC / None",
    "v": [
     1.0,
@@ -1906,6 +1906,15 @@
   },
   {
    "name": "PC / Safari",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "PC / HeadlessChrome",
    "v": [
     1.0,
     1.0,
@@ -2057,15 +2066,6 @@
     6.0,
     33.3,
     69.8
-   ]
-  },
-  {
-   "name": "2026-10-26 / Direct traffic",
-   "v": [
-    8.0,
-    7.0,
-    75.0,
-    103.8
    ]
   },
   {
@@ -2321,12 +2321,21 @@
    ]
   },
   {
-   "name": "2026-10-26 / None",
+   "name": "2026-11-25 / Direct traffic",
    "v": [
-    1.0,
-    1.0,
+    2.0,
+    2.0,
     100.0,
     0.0
+   ]
+  },
+  {
+   "name": "2026-11-26 / Direct traffic",
+   "v": [
+    2.0,
+    1.0,
+    0.0,
+    1245.5
    ]
   },
   {
@@ -2636,7 +2645,7 @@
    ]
   },
   {
-   "name": "2026-11-25 / Direct traffic",
+   "name": "2026-11-25 / Recommendation system traffic",
    "v": [
     1.0,
     1.0,
@@ -2649,19 +2658,19 @@
   {
    "name": "New users",
    "v": [
-    344.0,
-    344.0,
-    70.1,
-    19.7
+    338.0,
+    338.0,
+    69.5,
+    20.1
    ]
   },
   {
    "name": "Returning users",
    "v": [
-    91.0,
+    92.0,
     16.0,
-    25.3,
-    307.6
+    26.1,
+    322.3
    ]
   }
  ]

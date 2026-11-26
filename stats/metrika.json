@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-25T12:49Z",
+ "generated": "2026-11-26T06:36Z",
  "period": "последние 7 дней",
  "totals": {
-  "визиты": 56.0,
-  "посетители": 49.0,
-  "отказы_%": 57.14285714,
-  "время_на_сайте_сек": 19.125
+  "визиты": 26.0,
+  "посетители": 21.0,
+  "отказы_%": 61.53846154,
+  "время_на_сайте_сек": 12.15384615
  },
  "goals": {
   "Заявка с сайта": 0.0,
@@ -20,29 +20,15 @@
   {
    "name": "Direct traffic",
    "values": [
-    21.0,
-    14.0
-   ]
-  },
-  {
-   "name": "Ad traffic",
-   "values": [
-    21.0,
-    21.0
-   ]
-  },
-  {
-   "name": "Social network traffic",
-   "values": [
-    6.0,
-    6.0
+    17.0,
+    12.0
    ]
   },
   {
    "name": "Recommendation system traffic",
    "values": [
-    6.0,
-    6.0
+    5.0,
+    5.0
    ]
   },
   {
@@ -51,39 +37,25 @@
     2.0,
     2.0
    ]
-  }
- ],
- "source_details": [
-  {
-   "name": "Instagram",
-   "values": [
-    21.0,
-    21.0
-   ]
   },
   {
-   "name": "Yandex Zen",
-   "values": [
-    6.0,
-    6.0
-   ]
-  },
-  {
-   "name": "Facebook",
-   "values": [
-    3.0,
-    3.0
-   ]
-  },
-  {
-   "name": "fortex-uae.com",
+   "name": "Social network traffic",
    "values": [
     2.0,
     2.0
    ]
+  }
+ ],
+ "source_details": [
+  {
+   "name": "Yandex Zen",
+   "values": [
+    5.0,
+    5.0
+   ]
   },
   {
-   "name": "Other social network: identified by tags",
+   "name": "fortex-uae.com",
    "values": [
     2.0,
     2.0
@@ -95,28 +67,21 @@
     1.0,
     1.0
    ]
+  },
+  {
+   "name": "Other social network: identified by tags",
+   "values": [
+    1.0,
+    1.0
+   ]
   }
  ],
  "utm": [
   {
-   "name": "ig / 120252594854050776",
-   "values": [
-    11.0,
-    11.0
-   ]
-  },
-  {
-   "name": "ig / 120252594724350776",
-   "values": [
-    10.0,
-    10.0
-   ]
-  },
-  {
    "name": "telegram / channel",
    "values": [
-    7.0,
-    7.0
+    6.0,
+    6.0
    ]
   },
   {
@@ -129,38 +94,31 @@
   {
    "name": "threads / None",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   }
  ],
  "pages": [
   {
-   "name": "/lp/vw/",
-   "values": [
-    17.0,
-    12.0
-   ]
-  },
-  {
    "name": "/",
    "values": [
-    13.0,
-    13.0
+    11.0,
+    10.0
    ]
   },
   {
-   "name": "/lp/ipoteka/",
+   "name": "/lp/vw/",
    "values": [
-    11.0,
-    11.0
+    3.0,
+    1.0
    ]
   },
   {
    "name": "/virtual-work/",
    "values": [
-    6.0,
-    6.0
+    3.0,
+    3.0
    ]
   },
   {
@@ -178,10 +136,10 @@
    ]
   },
   {
-   "name": "/articles/samyj-prostoj-sposob-poluchit-emirates-id/",
+   "name": "/articles/chto-mozhno-kupit-v-ipoteku-v-dubae/",
    "values": [
-    2.0,
-    2.0
+    1.0,
+    1.0
    ]
   },
   {
@@ -193,6 +151,13 @@
   },
   {
    "name": "/articles/medosmotr-i-otpechatki-dlya-emirates-id/",
+   "values": [
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "name": "/lp/ipoteka/",
    "values": [
     1.0,
     1.0
@@ -230,6 +195,73 @@
   "Автоцель: отправка формы заявки"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 3.0,
+   "посетители": 3.0,
+   "отказы_%": 100.0,
+   "время_на_сайте_сек": 0.0
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0,
+   "Автоцель: отправка формы заявки": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "Recommendation system traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Yandex Zen",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "telegram / channel",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/",
+    "values": [
+     2.0,
+     2.0
+    ]
+   },
+   {
+    "name": "/articles/chto-mozhno-kupit-v-ipoteku-v-dubae/",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 2.0,
    "посетители": 2.0,
@@ -289,122 +321,13 @@
    }
   ]
  },
- "day_before": {
-  "totals": {
-   "визиты": 7.0,
-   "посетители": 7.0,
-   "отказы_%": 42.85714286,
-   "время_на_сайте_сек": 12.85714286
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0,
-   "Автоцель: отправка формы заявки": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     4.0,
-     4.0
-    ]
-   },
-   {
-    "name": "Internal traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Social network traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Recommendation system traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "fortex-uae.com",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "instagram.com",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Yandex Zen",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "telegram / channel",
-    "values": [
-     2.0,
-     2.0
-    ]
-   },
-   {
-    "name": "telegram / crypto_dubai",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     4.0,
-     4.0
-    ]
-   },
-   {
-    "name": "/articles/pochemu-bank-oae-otkazhet-v-ipoteke/",
-    "values": [
-     2.0,
-     2.0
-    ]
-   },
-   {
-    "name": "/schet-v-banke-oae/",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-11-24",
+ "date_yesterday": "2026-11-25",
  "today": {
   "totals": {
-   "визиты": 1.0,
+   "визиты": 2.0,
    "посетители": 1.0,
-   "отказы_%": 100.0,
-   "время_на_сайте_сек": 0.0
+   "отказы_%": 0.0,
+   "время_на_сайте_сек": 1245.5
   },
   "goals": {
    "Заявка с сайта": 0.0,
@@ -419,7 +342,7 @@
    {
     "name": "Direct traffic",
     "values": [
-     1.0,
+     2.0,
      1.0
     ]
    }
@@ -430,7 +353,7 @@
    {
     "name": "/",
     "values": [
-     1.0,
+     2.0,
      1.0
     ]
    }
@@ -438,10 +361,10 @@
  },
  "audience": {
   "pixel_from": "2026-11-09",
-  "since_pixel": 249,
-  "d30": 350,
-  "d90": 395,
-  "d180": 395,
+  "since_pixel": 250,
+  "d30": 344,
+  "d90": 396,
+  "d180": 396,
   "ipoteka_30d": 55,
   "ipoteka_since_pixel": 51,
   "virtual_work_30d": 15,
