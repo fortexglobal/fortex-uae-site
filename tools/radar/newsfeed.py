@@ -321,7 +321,7 @@ async def mail_imap_tick():
             continue
         if frm in by_mail or frm in MS["leads"]:
             st = MS["leads"].setdefault(frm, {})
-            stop = any(w in m["text"].lower() for w in STOP_WORDS)
+            stop = any(w in m["text"].lower() for w in STOP_WORDS) or m["text"].strip().lower().strip(".!") in ("нет", "no")
             st["status"] = "stopped" if stop else "replied"
             st["reply_at"] = time.time()
             ld = by_mail.get(frm, {})
