@@ -1,0 +1,1369 @@
+{
+ "enabled": false,
+ "daily_limit": 25,
+ "window": [
+  10,
+  17
+ ],
+ "note": "Рассылка с alexey@fortex-uae.com напрямую через Google (решение Александра 26.11). enabled включается после одобрения текстов и пароля приложения.",
+ "steps": {
+  "IT": [
+   {
+    "after_days": 0,
+    "subject": "Приём платежей от зарубежных клиентов через Дубай",
+    "body": "{hello}\n\n{personal}\n\nЯ Алексей, Fortex UAE. Помогаем IT-компаниям с русскоязычными основателями выстроить приём платежей через ОАЭ: компания в Дубае, корпоративный счёт и платёжный шлюз с эквайрингом, в том числе когда у владельца российский паспорт.\n\nАктуально ли это для {company}? Если да, расскажу за 15 минут, как это выглядит под вашу модель.\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 4,
+    "subject": "",
+    "body": "{hello}\n\nКоротко дополню. Чаще всего к нам приходят, когда банк в Европе или Азии начинает задавать вопросы из-за паспорта владельца или клиент не может заплатить с карты. Решаем это структурой в ОАЭ, без серых схем: всё через нормальные банки и проверку.\n\nСтоит ли созвониться на 15 минут?\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 6,
+    "subject": "",
+    "body": "{hello}\n\nНе буду больше отвлекать. Если вопрос с платежами или счётом станет актуальным, просто ответьте на это письмо или напишите в Telegram @Fortex_Dubai.\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   }
+  ],
+  "MFO": [
+   {
+    "after_days": 0,
+    "subject": "Счета в ОАЭ для ваших клиентов",
+    "body": "{hello}\n\n{personal}\n\nЯ Алексей, Fortex UAE, наша команда в Дубае. Открываем личные и корпоративные счета в банках ОАЭ для клиентов с российским паспортом, в том числе удалённо, и сопровождаем до получения карт.\n\nИщем партнёров среди family office и wealth-менеджеров, чьим клиентам это нужно. Интересно обсудить формат работы?\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 4,
+    "subject": "",
+    "body": "{hello}\n\nДополню: берём на себя подготовку документов и общение с банком, клиент участвует минимально. Работаем только с прозрачными клиентами и понятным источником средств.\n\nЕсли удобно, созвонимся на 15 минут и расскажу условия для партнёров.\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 6,
+    "subject": "",
+    "body": "{hello}\n\nНе буду больше отвлекать. Если появится клиент, которому нужен счёт в ОАЭ, просто ответьте на это письмо или напишите в Telegram @Fortex_Dubai.\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   }
+  ],
+  "EU-юристы": [
+   {
+    "after_days": 0,
+    "subject": "Клиентам с российским паспортом закрывают счета?",
+    "body": "{hello}\n\n{personal}\n\nЯ Алексей, Fortex UAE, наша команда в Дубае. Помогаем клиентам с российским паспортом открыть удалённо личный счёт в банке ОАЭ (Emirates NBD) и перевести туда деньги в евро, когда в Европе счета закрывают или не открывают.\n\nЕсли среди ваших клиентов такие есть, предлагаю партнёрство. Интересно обсудить?\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 4,
+    "subject": "",
+    "body": "{hello}\n\nКоротко дополню: клиенту не нужно лететь в Дубай, документы готовим мы, работаем только с прозрачным источником средств. Для партнёров есть понятные условия.\n\nУдобно созвониться на 15 минут?\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   },
+   {
+    "after_days": 6,
+    "subject": "",
+    "body": "{hello}\n\nНе буду больше отвлекать. Если у клиента возникнет вопрос со счётом, просто ответьте на это письмо или напишите в Telegram @Fortex_Dubai.\n\nАлексей Ронин\nFortex UAE, Дубай\nfortex-uae.com · Telegram @Fortex_Dubai\n\nЕсли тема неактуальна, просто ответьте «нет», больше не напишу."
+   }
+  ]
+ },
+ "leads": [
+  {
+   "id": "I0001",
+   "email": "info@playkot.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "Playkot",
+   "personal": "Увидел, что Spring Valley перевалила за 11 млн установок, а основная аудитория SuperCity в США.",
+   "type": "общий"
+  },
+  {
+   "id": "I0002",
+   "email": "partner@selzy.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Selzy (ECOMZ Holding Limited)",
+   "personal": "Увидел, что Selzy работает с клиентами из США, Бразилии и Казахстана и держит поддержку в каждой стране.",
+   "type": "общий"
+  },
+  {
+   "id": "I0004",
+   "email": "support@elephant-games.com",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "Elephant Games",
+   "personal": "Увидел, что вы с 2003 года делаете hidden object игры и команда уже больше 150 человек.",
+   "type": "общий"
+  },
+  {
+   "id": "I0005",
+   "email": "marketing@alteg.io",
+   "segment": "IT",
+   "name": "Юрий",
+   "company": "Altegio",
+   "personal": "Увидел, что Altegio уже работает с 12 тысячами бизнесов в 90 странах.",
+   "type": "общий"
+  },
+  {
+   "id": "I0006",
+   "email": "info@albato.com",
+   "segment": "IT",
+   "name": "Михаил",
+   "company": "Albato (Albato Limited)",
+   "personal": "Увидел, что вы развиваете Albato Embedded для SaaS-компаний на международном рынке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0007",
+   "email": "hello@sibers.com",
+   "segment": "IT",
+   "name": "Юрий",
+   "company": "Sibers",
+   "personal": "Увидел, что Sibers с 1998 года делает заказную разработку для клиентов из США, Австралии и Германии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0008",
+   "email": "oleg@evrone.com",
+   "segment": "IT",
+   "name": "Олег",
+   "company": "Evrone",
+   "personal": "Увидел, что Evrone с 2008 года ведёт высоконагруженные проекты для клиентов из США и Европы.",
+   "type": "личный"
+  },
+  {
+   "id": "I0009",
+   "email": "eager2develop@forasoft.com",
+   "segment": "IT",
+   "name": "Николай",
+   "company": "Fora Soft",
+   "personal": "Увидел, что вы с 2005 года делаете видеосервисы и WebRTC-решения для зарубежных клиентов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0011",
+   "email": "hello@bidease.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "Bidease",
+   "personal": "Увидел, что Bidease с 2016 года работает как DSP для продвижения мобильных приложений.",
+   "type": "общий"
+  },
+  {
+   "id": "I0012",
+   "email": "sales@ishosting.com",
+   "segment": "IT",
+   "name": "",
+   "company": "ishosting (WEBRAIN OÜ)",
+   "personal": "Увидел, что вы с 2005 года даёте VPS и выделенные серверы с локациями по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0015",
+   "email": "leonmfo@leonmfo.com",
+   "segment": "MFO",
+   "name": "Андрей",
+   "company": "LEON MFO Investments Ltd (LEON Family Office)",
+   "personal": "Увидел, что LEON MFO в Лимассоле ведёт портфели и семейное планирование частных клиентов под лицензией CySEC.",
+   "type": "общий"
+  },
+  {
+   "id": "I0016",
+   "email": "svakula@sergan.biz",
+   "segment": "MFO",
+   "name": "Сергей",
+   "company": "Sergan Management Sàrl",
+   "personal": "Увидел, что Sergan Management в Женеве сопровождает русскоязычных предпринимателей в вопросах бизнеса и управления капиталом.",
+   "type": "личный"
+  },
+  {
+   "id": "I0017",
+   "email": "office@antaras-group.ch",
+   "segment": "MFO",
+   "name": "Анна",
+   "company": "Antaras Group AG",
+   "personal": "Увидел, что Antaras Group в Цуге помогает семьям с международными интересами выстроить преемственность и передачу бизнеса.",
+   "type": "общий"
+  },
+  {
+   "id": "I0018",
+   "email": "smartgen@smartgenisrael.com",
+   "segment": "MFO",
+   "name": "Марк",
+   "company": "SmartGen Ltd (SmartGen Family Office)",
+   "personal": "Прочитал ваш разбор для РБК о том, в каких юрисдикциях сегодня ещё открывают счета россиянам.",
+   "type": "общий"
+  },
+  {
+   "id": "I0019",
+   "email": "tomas.zvonicek@aklegato.cz",
+   "segment": "EU-юристы",
+   "name": "Томаш",
+   "company": "Tomáš Zvoníček, Attorney at Law (AK LEGATO)",
+   "personal": "Увидел, что вы в Праге ведёте ВНЖ, открытие бизнеса и гражданские дела иностранцев, в том числе на русском.",
+   "type": "личный"
+  },
+  {
+   "id": "I0020",
+   "email": "valdisulmanis@inbox.lv",
+   "segment": "EU-юристы",
+   "name": "Валдис",
+   "company": "Centrs, Law Office",
+   "personal": "Увидел, что ваше бюро в Риге ведёт в том числе банковское право и работает с клиентами на русском.",
+   "type": "личный"
+  },
+  {
+   "id": "I0021",
+   "email": "info@strik-law.nl",
+   "segment": "EU-юристы",
+   "name": "Никита",
+   "company": "Strik Tax | Legal",
+   "personal": "Увидел, что у вас в Амстердаме есть CIS Desk и вы консультируете клиентов по налогам и праву на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0022",
+   "email": "info@nalog.nl",
+   "segment": "EU-юристы",
+   "name": "Светлана",
+   "company": "Nalog.nl B.V.",
+   "personal": "Увидел, что вы ведёте налоговую отчётность русскоязычных ZZP и BV в Нидерландах и пишете про санкционные ограничения для россиян.",
+   "type": "общий"
+  },
+  {
+   "id": "I0023",
+   "email": "support@unfrozen.studio",
+   "segment": "IT",
+   "name": "Денис",
+   "company": "Unfrozen (Unfrozen Ltd)",
+   "personal": "Увидел, что Olden Era вышла в ранний доступ, а команда работает из Лимассола, Ташкента и Белграда.",
+   "type": "общий"
+  },
+  {
+   "id": "I0024",
+   "email": "info@volka.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Volka Games",
+   "personal": "Увидел, что вы почти десять лет развиваете Taonga и сейчас делаете её веб-версию из Лимассола.",
+   "type": "общий"
+  },
+  {
+   "id": "I0025",
+   "email": "hello@ronasit.com",
+   "segment": "IT",
+   "name": "Роман",
+   "company": "Ronas IT",
+   "personal": "Увидел, что Ronas IT почти 20 лет делает продукты для зарубежных клиентов и выросла до 60+ специалистов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0027",
+   "email": "support@clickio.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "Clickio (Clickio Ltd, ALZ Software Ltd)",
+   "personal": "Увидел, что с 2015 года вы помогаете издателям монетизировать трафик, а команда работает из Лондона и Италии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0031",
+   "email": "team@maddevs.io",
+   "segment": "IT",
+   "name": "Олег",
+   "company": "Mad Devs (MAD DEVS GROUP LTD)",
+   "personal": "Увидел, что Mad Devs из Бишкека и Лондона делает проекты в основном для клиентов из США и Юго-Восточной Азии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0032",
+   "email": "hello@rocketech.it",
+   "segment": "IT",
+   "name": "Алексей",
+   "company": "Rocketech",
+   "personal": "Увидел, что с 2016 года вы запускаете MVP для фаундеров из Сингапура, Лондона и Сан-Франциско.",
+   "type": "общий"
+  },
+  {
+   "id": "I0034",
+   "email": "bizdev@alawar.com",
+   "segment": "IT",
+   "name": "Сергей",
+   "company": "Alawar (Alawar Entertainment Inc.)",
+   "personal": "Увидел, что Alawar больше 25 лет издаёт игры и развивает серию Beholder на PC и консолях.",
+   "type": "общий"
+  },
+  {
+   "id": "I0035",
+   "email": "sales@simtechdev.org",
+   "segment": "IT",
+   "name": "",
+   "company": "Simtech Development (CS-Cart)",
+   "personal": "Увидел, что Simtech развивает CS-Cart с 2005 года и сейчас расширяет команду в Ташкенте.",
+   "type": "общий"
+  },
+  {
+   "id": "I0036",
+   "email": "info@asterofalcon.com",
+   "segment": "MFO",
+   "name": "Илья",
+   "company": "Astero Falcon (DIFC) Limited",
+   "personal": "Увидел, что вы запустили управляющую компанию в DIFC под лицензией DFSA с командой из Тройки и швейцарских банков.",
+   "type": "общий"
+  },
+  {
+   "id": "I0038",
+   "email": "info@quantumwealth.swiss",
+   "segment": "MFO",
+   "name": "Юрий",
+   "company": "Quantum Wealth SA",
+   "personal": "Видел ваш вебинар с ALPINE Tax о том, оставаться ли российским клиентам в Швейцарии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0040",
+   "email": "office@steuerberater.ru",
+   "segment": "EU-юристы",
+   "name": "Татьяна",
+   "company": "Steuerbüro Kühne-Khrissanfova",
+   "personal": "Увидел, что вы много работаете с соглашениями об избежании двойного налогообложения и с иностранными инвесторами в Германии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0041",
+   "email": "elena.kruth@yahoo.com",
+   "segment": "EU-юристы",
+   "name": "Елена",
+   "company": "Steuerberatung Elena Kruth",
+   "personal": "Увидел, что вы помимо текущей бухгалтерии занимаетесь международным налоговым планированием для русскоязычных клиентов в Дюссельдорфе.",
+   "type": "личный"
+  },
+  {
+   "id": "I0042",
+   "email": "info@rechtsanwalt-mamedow.de",
+   "segment": "EU-юристы",
+   "name": "Александр",
+   "company": "Rechtsanwalt Mamedow",
+   "personal": "Увидел, что вы ведёте миграционные дела в Дюссельдорфе и принимаете клиентов на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0043",
+   "email": "info@fenk-tax.com",
+   "segment": "EU-юристы",
+   "name": "Даниэль",
+   "company": "Fenk Steuerberatung",
+   "personal": "Увидел, что вы ведёте русско- и украиноязычных клиентов онлайн, не только в Вайблингене.",
+   "type": "общий"
+  },
+  {
+   "id": "I0044",
+   "email": "support@fornex.com",
+   "segment": "IT",
+   "name": "Сергей",
+   "company": "Fornex Hosting S.L.",
+   "personal": "Увидел, что Fornex с 2007 года держит хостинг на испанском юрлице и обслуживает клиентов из разных стран.",
+   "type": "общий"
+  },
+  {
+   "id": "I0045",
+   "email": "info@magora.co.uk",
+   "segment": "IT",
+   "name": "Павел",
+   "company": "Magora (Thinking Fish Ltd, UK 03637036)",
+   "personal": "Увидел, что Magora с 2010 года делает софт и мобильные приложения из Лондона для клиентов в UK, ЕС и США.",
+   "type": "общий"
+  },
+  {
+   "id": "I0046",
+   "email": "info@hypeauditor.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "HypeAuditor",
+   "personal": "Увидел, что HypeAuditor с 2017 года строит аналитику инфлюенсеров с офисами в Индианаполисе и Лимассоле.",
+   "type": "общий"
+  },
+  {
+   "id": "I0047",
+   "email": "info@alconost.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "Alconost Inc.",
+   "personal": "Увидел, что Alconost с 2004 года локализует приложения и игры для тысяч клиентов по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0048",
+   "email": "hello@rocketbrush.com",
+   "segment": "IT",
+   "name": "",
+   "company": "RocketBrush Studio Ltd (HE401050)",
+   "personal": "Увидел, что RocketBrush с 2016 года делает арт для Paradox Interactive, Supercell и других зарубежных студий.",
+   "type": "общий"
+  },
+  {
+   "id": "I0050",
+   "email": "support@readymag.com",
+   "segment": "IT",
+   "name": "Диана",
+   "company": "Readymag",
+   "personal": "Увидел, что Readymag с 2013 года развивает конструктор для дизайнеров и проводит митапы в Нью-Йорке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0052",
+   "email": "hello@asodesk.com",
+   "segment": "IT",
+   "name": "Сергей",
+   "company": "Asodesk",
+   "personal": "Увидел, что Asodesk с 2015 года делает инструменты ASO для App Store и Google Play и работает с Кипра.",
+   "type": "общий"
+  },
+  {
+   "id": "I0053",
+   "email": "info@sumatosoft.com",
+   "segment": "IT",
+   "name": "Юрий",
+   "company": "SumatoSoft LLC",
+   "personal": "Увидел, что SumatoSoft с 2012 года делает разработку для клиентов в США и ЕС, а в 2020 году открыл центр в Варшаве.",
+   "type": "общий"
+  },
+  {
+   "id": "I0054",
+   "email": "bizdev@moonmana.com",
+   "segment": "IT",
+   "name": "Артём",
+   "company": "Moonmana",
+   "personal": "Увидел, что Moonmana делает игры полного цикла для зарубежных паблишеров, с управлением на Тенерифе и разработкой в Гданьске.",
+   "type": "общий"
+  },
+  {
+   "id": "I0055",
+   "email": "pitteloud@spi-management.ch",
+   "segment": "MFO",
+   "name": "Стефан",
+   "company": "SPI Management SA",
+   "personal": "Увидел, что вы в Сьоне управляете капиталом семей и ведёте клиентов на русском языке.",
+   "type": "личный"
+  },
+  {
+   "id": "I0056",
+   "email": "info@premium-helvetic.ch",
+   "segment": "MFO",
+   "name": "Мишель",
+   "company": "Premium Helvetic Consulting AG",
+   "personal": "Увидел, что вы из Базеля ведёте капитал семей с авторизацией FINMA и работаете с клиентами на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0057",
+   "email": "info@custodiawm.ch",
+   "segment": "MFO",
+   "name": "Эрика",
+   "company": "Custodia Wealth Management SA",
+   "personal": "Увидел, что вы в Лугано ведёте капитал семей и сделали для русскоязычных клиентов отдельную версию сайта и брошюру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0058",
+   "email": "info@tauro-investments.ch",
+   "segment": "MFO",
+   "name": "Марат",
+   "company": "Tauro Investments GmbH",
+   "personal": "Увидел, что вы в Цюрихе ведёте частный капитал и работаете с клиентами на русском после многих лет в швейцарском банке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0060",
+   "email": "info@kplex.es",
+   "segment": "EU-юристы",
+   "name": "Эльмира",
+   "company": "KPLEX Boutique Legal",
+   "personal": "Увидел, что вы в Барселоне ведёте миграционные дела, недвижимость и наследство иностранцев, в том числе на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0061",
+   "email": "nikolai.tyukhay@tyukhay.legal",
+   "segment": "EU-юристы",
+   "name": "Николай",
+   "company": "Частная практика",
+   "personal": "Увидел, что вы в Барселоне ведёте дела русскоязычных клиентов по недвижимости и наследству, в том числе между Испанией и Россией.",
+   "type": "личный"
+  },
+  {
+   "id": "I0062",
+   "email": "office@gilkarov.at",
+   "segment": "EU-юристы",
+   "name": "Рафаэль",
+   "company": "Rechtsanwalt Rafael Gilkarov",
+   "personal": "Увидел, что вы в Вене ведёте корпоративные дела и сделки с недвижимостью и консультируете на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0063",
+   "email": "avocat@lesyabel.com",
+   "segment": "EU-юристы",
+   "name": "Леся",
+   "company": "Cabinet Lesya Belyaletdinova",
+   "personal": "Увидел, что вы в Париже ведёте дела русскоязычных клиентов по праву иностранцев и видам на жительство.",
+   "type": "общий"
+  },
+  {
+   "id": "I0065",
+   "email": "support@apptica.com",
+   "segment": "IT",
+   "name": "Дайана",
+   "company": "APPTICA LIMITED (Apptica)",
+   "personal": "Увидел, что Apptica с 2017 года продаёт аналитику рекламных креативов мобильным издателям и агентствам в разных странах.",
+   "type": "общий"
+  },
+  {
+   "id": "I0066",
+   "email": "info@yourserver.se",
+   "segment": "IT",
+   "name": "Константин",
+   "company": "SIA \"Nano IT\" (YOURSERVER)",
+   "personal": "Увидел, что ваша компания с 2006 года держит хостинг в Риге и выходит на оборот около миллиона евро в год.",
+   "type": "общий"
+  },
+  {
+   "id": "I0067",
+   "email": "sales@host4.biz",
+   "segment": "IT",
+   "name": "Павел",
+   "company": "Host4Biz sp. z o.o.",
+   "personal": "Прочитал, что вы в 2015 году перевезли Host4Biz из Украины в Варшаву, чтобы быть ближе к европейским клиентам.",
+   "type": "общий"
+  },
+  {
+   "id": "I0068",
+   "email": "sales@melbicom.net",
+   "segment": "IT",
+   "name": "",
+   "company": "Melbikomas UAB (Melbicom)",
+   "personal": "Увидел, что Melbicom из Вильнюса сдаёт серверы в Европе, США и уже в Латинской Америке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0069",
+   "email": "hi@apphud.com",
+   "segment": "IT",
+   "name": "Ренат",
+   "company": "Apphud, Inc.",
+   "personal": "Увидел, что Apphud с 2019 года ведёт подписки мобильных приложений и через него прошло больше полутора миллиардов долларов выручки.",
+   "type": "общий"
+  },
+  {
+   "id": "I0072",
+   "email": "site@allcorrectgames.com",
+   "segment": "IT",
+   "name": "Денис",
+   "company": "Allcorrect Group",
+   "personal": "Прочитал ваше интервью об итогах 2025 года, где выручка с арт-аутсорса выросла на 25%.",
+   "type": "общий"
+  },
+  {
+   "id": "I0073",
+   "email": "dakolsnkv@herocraft.com",
+   "segment": "IT",
+   "name": "Даниил",
+   "company": "HeroCraft",
+   "personal": "Увидел, что в 2025 году вы побили рекорд выручки 2021 года и готовите PC-версию Pirate Ships.",
+   "type": "личный"
+  },
+  {
+   "id": "I0078",
+   "email": "consulting@kf-finance.me",
+   "segment": "MFO",
+   "name": "Кирилл",
+   "company": "KF-FINANCE Private Wealth",
+   "personal": "Прочитал вашу статью про то, как устроен family office, и увидел, что вы закрываете и PPLI, и трасты, и координацию банков для одной семьи.",
+   "type": "общий"
+  },
+  {
+   "id": "I0080",
+   "email": "information@almanovalaw.cy",
+   "segment": "EU-юристы",
+   "name": "Элина",
+   "company": "Almanova Law (Elina Almanova Law Office)",
+   "personal": "Прочитал вашу статью о блокировке счетов на Кипре и увидел, что за последние два года вы разблокировали больше двадцати счетов клиентов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0081",
+   "email": "jannafachiridou@cytanet.com.cy",
+   "segment": "EU-юристы",
+   "name": "Жанна",
+   "company": "J Fachiridou LLC",
+   "personal": "Увидел, что у вас два офиса, в Пафосе и в Лимассоле, и вы ведёте недвижимость и иммиграционные дела для русскоязычных клиентов.",
+   "type": "личный"
+  },
+  {
+   "id": "I0082",
+   "email": "office@churcev.cz",
+   "segment": "EU-юристы",
+   "name": "Владимир",
+   "company": "Advokátní kancelář Churcev (Mgr. Vladimir Churcev, Tereza Churceva LL.M.)",
+   "personal": "Увидел, что вы ведёте клиентов в Карловых Варах и среди прочего занимаетесь финансовым правом и лицензированием в ЧНБ.",
+   "type": "общий"
+  },
+  {
+   "id": "I0083",
+   "email": "mail@finlabconsult.com",
+   "segment": "EU-юристы",
+   "name": "",
+   "company": "FinLab Consult",
+   "personal": "Увидел, что вы ведёте бухгалтерию и IP-Box для компаний, которые релоцировали бизнес на Кипр.",
+   "type": "общий"
+  },
+  {
+   "id": "I0084",
+   "email": "sales@icons8.com",
+   "segment": "IT",
+   "name": "Иван",
+   "company": "Icons8 LLC",
+   "personal": "Увидел, что вы много лет делаете продукты для дизайнеров по всему миру, от иконок до редактора Lunacy.",
+   "type": "общий"
+  },
+  {
+   "id": "I0085",
+   "email": "partners@nekki.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Nekki",
+   "personal": "Увидел, что вы развиваете Shadow Fight на PC, консолях и мобильных и сейчас активно нанимаете людей.",
+   "type": "общий"
+  },
+  {
+   "id": "I0086",
+   "email": "support@planner5d.com",
+   "segment": "IT",
+   "name": "Алексей",
+   "company": "Planner5D UAB",
+   "personal": "Увидел, что Planner 5D больше десяти лет развивается как сервис по подписке для пользователей из разных стран.",
+   "type": "общий"
+  },
+  {
+   "id": "I0087",
+   "email": "contact@msp360.com",
+   "segment": "IT",
+   "name": "",
+   "company": "MSPBytes Corp. (MSP360, бывшая CloudBerry Lab)",
+   "personal": "Увидел, что вы продаёте MSP360 провайдерам в США и Европе и расширяете офис на Кипре.",
+   "type": "общий"
+  },
+  {
+   "id": "I0090",
+   "email": "kontakt@rexus-recht.de",
+   "segment": "EU-юристы",
+   "name": "Анна",
+   "company": "REXUS Rechtsanwaltsgesellschaft mbH",
+   "personal": "Увидел, что вы специализируетесь на банковском праве и консультируете на русском, а с закрытием счетов к вам, вероятно, приходят и клиенты с российским паспортом.",
+   "type": "общий"
+  },
+  {
+   "id": "I0093",
+   "email": "partnerships@zimad.com",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "ZiMAD (XIMAD INC.)",
+   "personal": "Увидел, что вы больше десяти лет развиваете Magic Jigsaw Puzzles и в 2022 открыли офис в Нише.",
+   "type": "общий"
+  },
+  {
+   "id": "I0094",
+   "email": "nick@valiotti.com",
+   "segment": "IT",
+   "name": "Николай",
+   "company": "Valiotti Analytics Ltd (EU) / Valiotti Data, Inc. (US)",
+   "personal": "Увидел, что после переезда на Кипр вы ведёте data-проекты для компаний в Европе и теперь выходите на рынок США.",
+   "type": "личный"
+  },
+  {
+   "id": "I0095",
+   "email": "sales@dbeaver.com",
+   "segment": "IT",
+   "name": "Татьяна",
+   "company": "DBeaver Corporation",
+   "personal": "Увидел, что DBeaver вырос из open source проекта в продукт с тысячами платящих корпоративных клиентов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0096",
+   "email": "dmitrii@dashly.io",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "Carrrot, Inc. d/b/a Dashly",
+   "personal": "Увидел, что Dashly работает с B2B-клиентами из США и держит команду в Ереване.",
+   "type": "личный"
+  },
+  {
+   "id": "I0097",
+   "email": "info@ivelum.com",
+   "segment": "IT",
+   "name": "Полина",
+   "company": "ivelum (UAB \"FuryBit\")",
+   "personal": "Увидел, что вы с 2003 года делаете разработку для стартапов и параллельно развиваете свой продукт Teamplify.",
+   "type": "общий"
+  },
+  {
+   "id": "I0099",
+   "email": "info@paragon-software.com",
+   "segment": "IT",
+   "name": "Константин",
+   "company": "Paragon Technologie GmbH (Paragon Software Group)",
+   "personal": "Увидел, что Paragon уже 30 лет продаёт системное ПО и OEM-решения клиентам в США, Европе и Японии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0100",
+   "email": "hello@qameta.io",
+   "segment": "IT",
+   "name": "",
+   "company": "Qameta Software Inc.",
+   "personal": "Увидел, что Allure TestOps используют Deutsche Bank, JetBrains и Miro.",
+   "type": "общий"
+  },
+  {
+   "id": "I0101",
+   "email": "sb@beyer-petrow.at",
+   "segment": "MFO",
+   "name": "Стив",
+   "company": "Beyer & Petrow Family Office",
+   "personal": "Увидел, что ваш семейный офис в Вене работает в основном с русскоязычными клиентами.",
+   "type": "личный"
+  },
+  {
+   "id": "I0102",
+   "email": "info@br-finance.co.il",
+   "segment": "MFO",
+   "name": "Белла",
+   "company": "BR Finance",
+   "personal": "Увидел, что вы ведёте инвестиционное и пенсионное консультирование и до своей практики много лет работали в банках.",
+   "type": "общий"
+  },
+  {
+   "id": "I0103",
+   "email": "info@womens-wealth.co.uk",
+   "segment": "MFO",
+   "name": "Юлия",
+   "company": "Women's Wealth Ltd",
+   "personal": "Прочитал вашу статью о том, как русскоязычным экспатам разобраться в финансовой системе Великобритании.",
+   "type": "общий"
+  },
+  {
+   "id": "I0104",
+   "email": "andrei.babiy@winstontaylor.com",
+   "segment": "EU-юристы",
+   "name": "Андрей",
+   "company": "Winston Taylor (русскоязычная практика andreibabiy.nl)",
+   "personal": "Увидел, что вы сопровождаете русскоязычных предпринимателей в Нидерландах по договорам и финансированию.",
+   "type": "личный"
+  },
+  {
+   "id": "I0105",
+   "email": "dp@studiolap.it",
+   "segment": "EU-юристы",
+   "name": "Давиде",
+   "company": "Studio LAP",
+   "personal": "Увидел, что вы ведёте русскоязычных клиентов в Милане по налогам и регистрации бизнеса в Италии.",
+   "type": "личный"
+  },
+  {
+   "id": "I0106",
+   "email": "vyarmolyuk@icali.es",
+   "segment": "EU-юристы",
+   "name": "Виктория",
+   "company": "Victoria Lawyers",
+   "personal": "Увидел, что вы в Аликанте помогаете русскоязычным клиентам с налогами, бизнесом и документами на проживание.",
+   "type": "личный"
+  },
+  {
+   "id": "I0107",
+   "email": "info@yurist-spain.com",
+   "segment": "EU-юристы",
+   "name": "Хосе",
+   "company": "Yurist Spain",
+   "personal": "Увидел, что вы сопровождаете русскоязычных клиентов в Барселоне по недвижимости и резидентству в Испании.",
+   "type": "общий"
+  },
+  {
+   "id": "I0108",
+   "email": "info@elgos.lv",
+   "segment": "EU-юристы",
+   "name": "",
+   "company": "Elgos Finanses SIA",
+   "personal": "Увидел, что вы в Риге ведёте бухгалтерию и представляете клиентов в налоговой.",
+   "type": "общий"
+  },
+  {
+   "id": "I0109",
+   "email": "support@kiwitaxi.com",
+   "segment": "IT",
+   "name": "Мария",
+   "company": "Kiwitaxi (IT Travel LP)",
+   "personal": "Увидел, что Kiwitaxi больше десяти лет возит путешественников в сотне стран и недавно запустил аренду машин с водителем.",
+   "type": "общий"
+  },
+  {
+   "id": "I0110",
+   "email": "support@fishisfast.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Fishisfast LLC",
+   "personal": "Увидел, что Fishisfast давно помогает покупателям из разных стран заказывать товары в американских магазинах и сам ведёт склад в Делавэре.",
+   "type": "общий"
+  },
+  {
+   "id": "I0111",
+   "email": "info@devtodev.com",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "Devtodev Ltd",
+   "personal": "Увидел, что devtodev много лет делает аналитику для игровых студий и недавно прошёл сертификацию SOC 2 Type II.",
+   "type": "общий"
+  },
+  {
+   "id": "I0112",
+   "email": "kirill@localrent.com",
+   "segment": "IT",
+   "name": "Кирилл",
+   "company": "Localrent.com (Renot Software OÜ)",
+   "personal": "Увидел, что Localrent с 2011 года собирает небольшие местные прокаты в одну площадку и работает уже в десятках стран.",
+   "type": "личный"
+  },
+  {
+   "id": "I0113",
+   "email": "support@growave.io",
+   "segment": "IT",
+   "name": "Эльдар",
+   "company": "Growave",
+   "personal": "Увидел, что Growave двенадцать лет растёт на Shopify без инвесторов и получил статус Built for Shopify.",
+   "type": "общий"
+  },
+  {
+   "id": "I0114",
+   "email": "support@alidropship.com",
+   "segment": "IT",
+   "name": "Ярослав",
+   "company": "AliDropship LLC",
+   "personal": "Увидел, что AliDropship перешёл от плагина для WooCommerce к магазинам под ключ, которые собирает AI.",
+   "type": "общий"
+  },
+  {
+   "id": "I0115",
+   "email": "sales@mirhosting.com",
+   "segment": "IT",
+   "name": "",
+   "company": "MIRhosting B.V. (KVK 63945630)",
+   "personal": "Увидел, что MIRhosting за двадцать лет вырос до десятка дата-центров и помогает клиентам переходить из облака на собственное железо.",
+   "type": "общий"
+  },
+  {
+   "id": "I0118",
+   "email": "info@dprginvestment.com",
+   "segment": "MFO",
+   "name": "",
+   "company": "DPRG IM Ltd (DPRG Investment Management)",
+   "personal": "Увидел, что вы работаете с частными клиентами из Европы и стран Залива и подбираете структуру под налоговое резидентство каждого.",
+   "type": "общий"
+  },
+  {
+   "id": "I0119",
+   "email": "clientcare@cislondon.com",
+   "segment": "MFO",
+   "name": "Светлана",
+   "company": "CIS London & Partners LLP",
+   "personal": "Увидел, что вы защищаете капитал частных клиентов с российскими активами, для которых вопрос рабочего счёта за рубежом сейчас особенно острый.",
+   "type": "общий"
+  },
+  {
+   "id": "I0120",
+   "email": "office@fandeos.com",
+   "segment": "EU-юристы",
+   "name": "Мариос",
+   "company": "M.C. Fandeos Co Ltd",
+   "personal": "Увидел, что вы ведёте налоги и отчётность клиентов в Лимассоле, в том числе русскоязычных.",
+   "type": "общий"
+  },
+  {
+   "id": "I0121",
+   "email": "support@cleantalk.org",
+   "segment": "IT",
+   "name": "Денис",
+   "company": "CleanTalk Inc.",
+   "personal": "Увидел, что CleanTalk защищает от спама больше миллиона сайтов и продаёт подписки клиентам по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0122",
+   "email": "support@cvat.ai",
+   "segment": "IT",
+   "name": "Никита",
+   "company": "CVAT.ai Corporation",
+   "personal": "Увидел, что CVAT вырос из внутреннего инструмента Intel в отдельную компанию и продаёт облачную разметку командам по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0123",
+   "email": "info@cuberto.com",
+   "segment": "IT",
+   "name": "Роман",
+   "company": "Cuberto",
+   "personal": "Увидел, что Cuberto с 2010 года делает дизайн и разработку для продуктов вроде TradingView.",
+   "type": "общий"
+  },
+  {
+   "id": "I0124",
+   "email": "marketing@animatron.com",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "Animatron Inc. (Wave.video)",
+   "personal": "Увидел, что Animatron вырос в Wave.video, платформу для видеомаркетинга и стриминга по подписке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0125",
+   "email": "support@onlypult.com",
+   "segment": "IT",
+   "name": "Евгений",
+   "company": "Onlypult Ltd",
+   "personal": "Увидел, что Onlypult даёт агентствам инструмент для планирования постинга в соцсетях на шести языках.",
+   "type": "общий"
+  },
+  {
+   "id": "I0126",
+   "email": "hello@pro-data.tech",
+   "segment": "IT",
+   "name": "Евгений",
+   "company": "Pro-Data Tech LLC (Pro-Data)",
+   "personal": "Увидел, что Pro-Data развернули GPU-серверы и managed Kubernetes в пяти ЦОД Казахстана и Узбекистана.",
+   "type": "общий"
+  },
+  {
+   "id": "I0127",
+   "email": "hello@mobirate.com",
+   "segment": "IT",
+   "name": "",
+   "company": "ABE Entertainment Limited (Mobirate)",
+   "personal": "Увидел, что у Dead Ahead уже несколько частей, от Zombie Warfare до Enforcers.",
+   "type": "общий"
+  },
+  {
+   "id": "I0129",
+   "email": "vicktoria@livschitz-consult.ch",
+   "segment": "MFO",
+   "name": "Виктория",
+   "company": "Vicktoria Livschitz LTD (Livschitz Consult)",
+   "personal": "Увидел, что вы ведёте семейный офис в Цюрихе по принципу одного окна и сами координируете юристов и налоговиков клиента.",
+   "type": "личный"
+  },
+  {
+   "id": "I0130",
+   "email": "info@ncap.ch",
+   "segment": "MFO",
+   "name": "",
+   "company": "NeoCapital SA",
+   "personal": "Увидел, что вы в Женеве совмещаете дискреционное управление с надзором за портфелями клиентов в нескольких банках.",
+   "type": "общий"
+  },
+  {
+   "id": "I0132",
+   "email": "info@stb-orazbayeva.com",
+   "segment": "EU-юристы",
+   "name": "Айнагуль",
+   "company": "Steuerberatung Orazbayeva",
+   "personal": "Увидел, что вы консультируете по-русски по немецким налогам, в том числе иностранные компании с деятельностью в Германии.",
+   "type": "общий"
+  },
+  {
+   "id": "I0133",
+   "email": "avanza@grupoavanzaconsultores.es",
+   "segment": "EU-юристы",
+   "name": "",
+   "company": "Grupo Avanza Consultores",
+   "personal": "Увидел, что вы ведёте налоги нерезидентов, включая модель 210 и наследственные дела, и делаете это на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0134",
+   "email": "office@ra-nagler.at",
+   "segment": "EU-юристы",
+   "name": "",
+   "company": "Nagler Law Firm",
+   "personal": "Увидел, что ваше венское бюро ведёт наследственные дела и сделки с недвижимостью, в том числе на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0135",
+   "email": "sales@zabbix.com",
+   "segment": "IT",
+   "name": "Алексей",
+   "company": "SIA \"ZABBIX\"",
+   "personal": "Увидел, что Zabbix много лет продаёт поддержку и обучение клиентам по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0136",
+   "email": "hi@serokell.io",
+   "segment": "IT",
+   "name": "Арсений",
+   "company": "Serokell OÜ",
+   "personal": "Увидел, что Serokell делает разработку на Haskell и Rust для зарубежных финтех и блокчейн-клиентов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0137",
+   "email": "contact@dataegret.com",
+   "segment": "IT",
+   "name": "Илья",
+   "company": "Data Egret GmbH",
+   "personal": "Увидел, что Data Egret с 2012 года поддерживает PostgreSQL для клиентов в Европе и мире.",
+   "type": "общий"
+  },
+  {
+   "id": "I0138",
+   "email": "contact@manticoresearch.com",
+   "segment": "IT",
+   "name": "Сергей",
+   "company": "Manticore Software Ltd (10772872)",
+   "personal": "Увидел, что Manticore развивает поисковую базу и продаёт поддержку зарубежным клиентам.",
+   "type": "общий"
+  },
+  {
+   "id": "I0139",
+   "email": "hello@tms-outsource.com",
+   "segment": "IT",
+   "name": "Александр",
+   "company": "TMS Outsource",
+   "personal": "Увидел, что TMS Outsource с 2014 года делает разработку для клиентов из США и Европы.",
+   "type": "общий"
+  },
+  {
+   "id": "I0140",
+   "email": "support@prequelapp.com",
+   "segment": "IT",
+   "name": "Тимур",
+   "company": "Prequel, Inc.",
+   "personal": "Увидел, что ваши приложения Prequel зарабатывают на подписках по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0141",
+   "email": "business@mubert.com",
+   "segment": "IT",
+   "name": "Алексей",
+   "company": "Mubert Inc.",
+   "personal": "Увидел, что Mubert продаёт AI-музыку и API креаторам и компаниям по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0143",
+   "email": "hello@directual.com",
+   "segment": "IT",
+   "name": "Павел",
+   "company": "Directual",
+   "personal": "Увидел, что Directual развивает no-code платформу для клиентов в разных странах.",
+   "type": "общий"
+  },
+  {
+   "id": "I0144",
+   "email": "buemlein@buemlein.com",
+   "segment": "EU-юристы",
+   "name": "Надежда",
+   "company": "Rechtsanwaltskanzlei Bümlein",
+   "personal": "Увидел, что вы ведёте дела русскоязычных клиентов в Германии по международному частному праву.",
+   "type": "личный"
+  },
+  {
+   "id": "I0145",
+   "email": "info@advokat-engelmann.de",
+   "segment": "EU-юристы",
+   "name": "Иоганнес",
+   "company": "Rechtsanwaltskanzlei Engelmann",
+   "personal": "Увидел, что ваша команда в Берлине работает с русскоязычными клиентами по семейным и корпоративным вопросам.",
+   "type": "общий"
+  },
+  {
+   "id": "I0146",
+   "email": "kazakova@seznam.cz",
+   "segment": "EU-юристы",
+   "name": "Светлана",
+   "company": "Advokátní kancelář JUDr. Světlana Kazaková",
+   "personal": "Увидел, что вы в Праге специализируетесь на клиентах, которым нужен адвокат с русским языком.",
+   "type": "личный"
+  },
+  {
+   "id": "I0147",
+   "email": "info@akrul.cz",
+   "segment": "EU-юристы",
+   "name": "Виктор",
+   "company": "Rytikov & Utěšený Legal s.r.o.",
+   "personal": "Увидел, что вы в Праге ведёте коммерческие и гражданские дела клиентов на русском языке.",
+   "type": "общий"
+  },
+  {
+   "id": "I0148",
+   "email": "D.Krasovskyj@Krasovskyj-advokat.cz",
+   "segment": "EU-юристы",
+   "name": "Дмитрий",
+   "company": "Advokátní kancelář Krasovskyj",
+   "personal": "Увидел, что вы в Праге помогаете русскоязычным клиентам с правовыми вопросами и ВНЖ.",
+   "type": "личный"
+  },
+  {
+   "id": "I0149",
+   "email": "info@chatra.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Chatra (Roger Wilco LLC)",
+   "personal": "Увидел, что вы развиваете онлайн-чат для интернет-магазинов с клиентами по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0155",
+   "email": "Alexander.Schiemenz@lindemannlaw.ch",
+   "segment": "MFO",
+   "name": "Александр",
+   "company": "Lindemann Law",
+   "personal": "Увидел, что вы в Швейцарии помогаете семьям с управлением и защитой капитала и ведёте сайт на русском.",
+   "type": "личный"
+  },
+  {
+   "id": "I0156",
+   "email": "anod@ruspravo.de",
+   "segment": "EU-юристы",
+   "name": "Андрей",
+   "company": "Адвокатское бюро Андрея Нодь",
+   "personal": "Увидел, что вы в Берлине ведёте наследственные дела русскоязычных клиентов, от Erbschein до споров о разделе наследства.",
+   "type": "личный"
+  },
+  {
+   "id": "I0157",
+   "email": "ko-legal@pm.me",
+   "segment": "EU-юристы",
+   "name": "Бамшад",
+   "company": "K&O Rechtsanwälte",
+   "personal": "Увидел, что вы в Ростоке и Берлине консультируете русскоязычных клиентов по семейным, трудовым и наследственным вопросам.",
+   "type": "общий"
+  },
+  {
+   "id": "I0158",
+   "email": "contact@faceapp.com",
+   "segment": "IT",
+   "name": "Ярослав",
+   "company": "FaceApp (FaceApp Technology Limited)",
+   "personal": "Увидел, что FaceApp уже много лет среди самых известных фоторедакторов в мире и нанимает команду на Кипр.",
+   "type": "общий"
+  },
+  {
+   "id": "I0159",
+   "email": "hello@supervisely.com",
+   "segment": "IT",
+   "name": "Денис",
+   "company": "Supervisely (Supervisely OÜ)",
+   "personal": "Увидел, что платформой Supervisely для разметки данных пользуются BMW Group и Renault Group.",
+   "type": "общий"
+  },
+  {
+   "id": "I0160",
+   "email": "support@sellerboard.com",
+   "segment": "IT",
+   "name": "",
+   "company": "sellerboard",
+   "personal": "Увидел, что sellerboard с 2017 года считает прибыль для продавцов на Amazon и переведён на десяток языков.",
+   "type": "общий"
+  },
+  {
+   "id": "I0161",
+   "email": "info@rask.ai",
+   "segment": "IT",
+   "name": "Мария",
+   "company": "Rask AI (Brask Inc)",
+   "personal": "Увидел, что Rask AI помогает креаторам переводить и озвучивать видео на другие языки.",
+   "type": "общий"
+  },
+  {
+   "id": "I0162",
+   "email": "bizdev@joyway.games",
+   "segment": "IT",
+   "name": "Антон",
+   "company": "Joy Way (Joy Way LTD)",
+   "personal": "Увидел, что Joy Way выпускает VR-игры для Quest и PSVR и вышла на китайский рынок.",
+   "type": "общий"
+  },
+  {
+   "id": "I0164",
+   "email": "alla.fedorova@wealthweeks.com",
+   "segment": "MFO",
+   "name": "Алла",
+   "company": "Larena Consulting Limited / Larena Private Office",
+   "personal": "Увидел, что вы председательствуете на The Wealth Week Cyprus и через Larena Private Office выстраиваете семейные офисы для частных клиентов.",
+   "type": "личный"
+  },
+  {
+   "id": "I0165",
+   "email": "info@digitalekanzlei-steuer.de",
+   "segment": "EU-юристы",
+   "name": "Татьяна",
+   "company": "Garder Steuerberatung",
+   "personal": "Увидел, что вы консультируете клиентов по немецким налогам на русском языке, а документы и переписку ведёте на немецком.",
+   "type": "общий"
+  },
+  {
+   "id": "I0166",
+   "email": "kanzleiwernerundko@t-online.de",
+   "segment": "EU-юристы",
+   "name": "Аксель",
+   "company": "Kanzlei Werner & Ko.",
+   "personal": "Увидел, что вы в Касселе совмещаете налоговое право с бухгалтерией и отчётностью и принимаете клиентов на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0167",
+   "email": "info@stimulsoft.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Stimulsoft (CloudReports sp. z o.o.)",
+   "personal": "Увидел, что вы с 2004 года продаёте свои генераторы отчётов разработчикам по всему миру, а поддержку держите даже в Telegram и WhatsApp.",
+   "type": "общий"
+  },
+  {
+   "id": "I0168",
+   "email": "contacts@artvostok.com",
+   "segment": "IT",
+   "name": "",
+   "company": "Artvostok Studio (Лимассол, Кипр; юрлицо не указано)",
+   "personal": "Увидел, что вы делаете арт для Blizzard, Gearbox и NetEase и держите команду из 130+ художников, работающих из разных стран.",
+   "type": "общий"
+  },
+  {
+   "id": "I0170",
+   "email": "info@gs-rechtsanwaelte.de",
+   "segment": "EU-юристы",
+   "name": "Леонид",
+   "company": "Ginter Schiering Rechtsanwälte Partnerschaft mbB",
+   "personal": "Увидел, что вы ведёте дела по банковскому праву, включая вопросы счетов, онлайн-банкинга и Geldwäsche, и работаете с клиентами на русском.",
+   "type": "общий"
+  },
+  {
+   "id": "I0171",
+   "email": "irina@islegalcounsel.com",
+   "segment": "EU-юристы",
+   "name": "Ирина",
+   "company": "IS Legal Counsel",
+   "personal": "Увидел, что вы ведёте частную практику в Марбелье по налоговому, коммерческому и наследственному праву.",
+   "type": "личный"
+  },
+  {
+   "id": "I0172",
+   "email": "info@lingvanex.com",
+   "segment": "IT",
+   "name": "Алексей",
+   "company": "Lingvanex (Nordicwise Limited, HE 367059)",
+   "personal": "Увидел, что Lingvanex продаёт on-prem перевод крупным компаниям вроде Rolls-Royce и Liebherr, а не только приложение-переводчик.",
+   "type": "общий"
+  },
+  {
+   "id": "I0173",
+   "email": "info@itexus.com",
+   "segment": "IT",
+   "name": "Юрий",
+   "company": "Itexus",
+   "personal": "Увидел, что вы развиваете направление разработки e-wallet и банковских продуктов для финтех-клиентов.",
+   "type": "общий"
+  },
+  {
+   "id": "I0174",
+   "email": "cy@iptp.net",
+   "segment": "IT",
+   "name": "Владимир",
+   "company": "IPTP Networks",
+   "personal": "Увидел, что IPTP с 1996 года вырос из кипрского интегратора в Tier-1 сеть с собственным дата-центром в Амстердаме.",
+   "type": "общий"
+  },
+  {
+   "id": "I0175",
+   "email": "ask@everhour.com",
+   "segment": "IT",
+   "name": "Михаил",
+   "company": "Everhour",
+   "personal": "Увидел, что Everhour вырос без инвесторов из небольшой минской студии в сервис учёта времени для тысяч команд.",
+   "type": "общий"
+  },
+  {
+   "id": "I0176",
+   "email": "contact@intexsoft.com",
+   "segment": "IT",
+   "name": "Павел",
+   "company": "IntexSoft / Rubyroid Labs",
+   "personal": "Увидел, что IntexSoft объединил силы с Rubyroid Labs и ведёт Rails-направление отдельным брендом.",
+   "type": "общий"
+  },
+  {
+   "id": "I0178",
+   "email": "support@uxpressia.com",
+   "segment": "IT",
+   "name": "Юрий",
+   "company": "UXPressia",
+   "personal": "Увидел, что UXPressia используют CX-команды по всему миру для карт клиентского пути.",
+   "type": "общий"
+  },
+  {
+   "id": "I0179",
+   "email": "contact@hypefox.net",
+   "segment": "IT",
+   "name": "Иван",
+   "company": "PlayDucky (Ducky) / Hypefox Ltd",
+   "personal": "Увидел, что Melon Sandbox вырос до миллионов игроков в день на пользовательском контенте.",
+   "type": "общий"
+  },
+  {
+   "id": "I0181",
+   "email": "info@bimiboo.net",
+   "segment": "IT",
+   "name": "Дмитрий",
+   "company": "Bimi Boo Kids Learning Games for Toddlers FZ-LLC",
+   "personal": "Увидел, что вы делаете обучающие приложения для малышей по подписке и без рекламы.",
+   "type": "общий"
+  },
+  {
+   "id": "I0182",
+   "email": "info@bebi.family",
+   "segment": "IT",
+   "name": "",
+   "company": "Bebi Family",
+   "personal": "Увидел, что Bebi выпускает развивающие игры для дошкольников по всему миру.",
+   "type": "общий"
+  },
+  {
+   "id": "I0183",
+   "email": "contact@spur-i-t.com",
+   "segment": "IT",
+   "name": "Евгений",
+   "company": "SpurIT",
+   "personal": "Увидел, что вы с 2011 года делаете приложения для магазинов на Shopify.",
+   "type": "общий"
+  },
+  {
+   "id": "I0184",
+   "email": "support@mageworx.com",
+   "segment": "IT",
+   "name": "Виталий",
+   "company": "Mageworx, LLC",
+   "personal": "Увидел, что вы с 2008 года делаете расширения для магазинов на Magento.",
+   "type": "общий"
+  },
+  {
+   "id": "I0185",
+   "email": "e.moser@cite-gestion.com",
+   "segment": "MFO",
+   "name": "Елена",
+   "company": "Cité Gestion SA",
+   "personal": "Увидел, что вы много лет ведёте private banking в Женеве и начинали карьеру в России.",
+   "type": "личный"
+  },
+  {
+   "id": "I0187",
+   "email": "info@barandt.de",
+   "segment": "EU-юристы",
+   "name": "Александра",
+   "company": "Kanzlei Barandt (A B Kanzlei)",
+   "personal": "Увидел, что вы помогаете русскоязычным клиентам во Франкфурте, когда банк блокирует счёт.",
+   "type": "общий"
+  }
+ ]
+}
