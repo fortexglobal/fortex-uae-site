@@ -1171,6 +1171,14 @@ async def command(ev):
             if (cv.get("username") or "").lower() == u:
                 cv["human"] = True
                 cv["next_at"] = 0
+    elif a == "mailhook" and len(parts) > 2:  # 26.11: веб-хук Apps Script под alexey@fortex-uae.com для рассылки
+        open(os.path.join(BASE, "mail_hook"), "w").write(parts[2].strip())
+        try:
+            await ev.delete()
+        except Exception:
+            pass
+        await ev.respond("Почтовый веб-хук подключён, сообщение со ссылкой удалил. Рассылка пойдёт в рабочее время")
+        return
     elif a == "mail" and len(parts) > 2:  # 26.11: пароль приложения Google для alexey@fortex-uae.com (рассылка без Instantly)
         val = "".join(parts[2:]).replace(" ", "")
         open(os.path.join(BASE, "mail_pass"), "w").write(val)

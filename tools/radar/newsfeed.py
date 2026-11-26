@@ -162,6 +162,24 @@ async def mail_diag(text):
         log.warning("mail diag: %s", e)
 
 
+def mail_hook():
+    try:
+        return open(os.path.join(BASE, "mail_hook")).read().strip()
+    except Exception:
+        return ""
+
+
+def hook_call(payload):
+    """Веб-хук Apps Script под alexey@fortex-uae.com (сервер DigitalOcean не пускает почтовые порты)."""
+    import urllib.request
+    req = urllib.request.Request(mail_hook(), data=json.dumps(payload).encode(), headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        j = json.loads(r.read().decode())
+    if not j.get("ok"):
+        raise RuntimeError(j.get("error") or "hook error")
+    return j
+
+
 def mail_pass():
     try:
         return open(os.path.join(BASE, "mail_pass")).read().strip().replace(" ", "")
@@ -228,8 +246,8 @@ async def mail_send_tick():
     q = await mail_queue()
     if not q.get("enabled"):
         return
-    if not mail_pass():
-        await mail_diag("нет пароля приложения (файл mail_pass пуст): команда /igdm mail <пароль> не дошла")
+    if not mail_hook():
+        await mail_diag("нет ссылки веб-хука почты (файл mail_hook пуст): нужна команда /igdm mailhook <ссылка>")
         return
     now = datetime.now(DUBAI)
     day = now.date().isoformat()
@@ -265,14 +283,15 @@ async def mail_send_tick():
     if k > 0:
         subj = subj if subj.lower().startswith("re:") else "Re: " + subj
     try:
-        mid = await asyncio.get_event_loop().run_in_executor(None, smtp_send, ld["email"], subj, _render(tpl["body"], ld), st.get("mid"))
+        j = await asyncio.get_event_loop().run_in_executor(None, hook_call, {"action": "send", "to": ld["email"], "subject": subj,
+                                                                             "body": _render(tpl["body"], ld), "thread_id": st.get("mid")})
+        mid = j.get("thread_id")
     except Exception as e:
         log.warning("mail send %s: %s", ld["email"], e)
         await mail_diag(f"ошибка отправки {ld['email']}: {str(e)[:300]}")
         MS["last_send"] = time.time(); MS["gap"] = 1800
-        if "Username and Password not accepted" in str(e) or "535" in str(e):
-            q["enabled"] = False
-            await CTX["notify"]("🔴 Рассылка остановлена: Google не принял пароль приложения для alexey@fortex-uae.com. Пришли новый: /igdm mail <пароль>")
+        if "401" in str(e) or "403" in str(e) or "404" in str(e):
+            await CTX["notify"]("🔴 Рассылка не может отправить письмо: веб-хук почты не отвечает. Проверь развёртывание скрипта под alexey@fortex-uae.com")
         ms_save()
         return
     st.update({"step": k + 1, "last_at": time.time(), "subject": st.get("subject") or subj, "mid": st.get("mid") or mid,
@@ -320,11 +339,14 @@ def _imap_fetch(since_uid_list):
 
 
 async def mail_imap_tick():
-    if not mail_pass() or time.time() - MS["last_imap"] < 300:
+    if not mail_hook() or time.time() - MS["last_imap"] < 300:
         return
     MS["last_imap"] = time.time()
     try:
-        msgs = await asyncio.get_event_loop().run_in_executor(None, _imap_fetch, list(MS["seen_uids"]))
+        j = await asyncio.get_event_loop().run_in_executor(None, hook_call, {"action": "inbox", "days": 3})
+        seen = set(MS["seen_uids"])
+        msgs = [dict(m, uid=m["id"], raw=m["text"], text="\n".join(l for l in m["text"].splitlines() if not l.startswith(">"))[:1500])
+                for m in j.get("messages", []) if m["id"] not in seen]
     except Exception as e:
         log.warning("imap: %s", e); await mail_diag(f"IMAP: {str(e)[:300]}"); ms_save(); return
     import html as _h
