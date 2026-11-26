@@ -1,21 +1,6 @@
 {
- "generated": "2026-11-26T10:37+04:00",
+ "generated": "2026-11-26T17:01+04:00",
  "posts": [
-  {
-   "slug": "t-1112-stadii-probok",
-   "at": "2026-11-12T12:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfooZiRlqLT",
-   "kind": "юмор",
-   "text": "СТАДИИ ПРОБОК в Дубае:\n\n1. «Тут восемь полос, какие пробки?»\n2. Через месяц выезжаешь на 40 минут раньше\n3. Через год ме",
-   "views": 82,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1112-noutbuk",
    "at": "2026-11-12T19:00+04:00",
@@ -622,8 +607,23 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgLEkf6HYn3",
    "kind": "консультация",
    "text": "Что меняется в Дубае, когда у тебя есть EMIRATES ID:\n\n• Без него: паспорт с собой на каждом шагу. С ним показываешь ОДНУ",
-   "views": 43,
+   "views": 44,
    "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1126-tipy-lift",
+   "at": "2026-11-26T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgMrjcHG7yS",
+   "kind": "юмор",
+   "text": "ТИПЫ ЛЮДЕЙ в лифте дубайской башни:\n\n1. Турист: снимает ВИД ИЗ ЛИФТА и проезжает свой этаж\n2. Новичок: на ресепшене дост",
+   "views": 19,
+   "likes": 1,
    "replies": 0,
    "reposts": 0,
    "quotes": 0,
@@ -634,26 +634,22 @@
  ],
  "errors": [],
  "account_1d": {
-  "views": 251,
-  "likes": 0,
+  "views": 118,
+  "likes": 1,
   "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 1806,
-  "likes": 8,
-  "replies": 54,
+  "views": 1402,
+  "likes": 4,
+  "replies": 46,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-18",
-   "views": 426
-  },
   {
    "date": "2026-11-19",
    "views": 467
@@ -680,7 +676,11 @@
   },
   {
    "date": "2026-11-25",
-   "views": 96
+   "views": 98
+  },
+  {
+   "date": "2026-11-26",
+   "views": 20
   }
  ],
  "link_clicks_7d": [
@@ -692,7 +692,7 @@
    "description": "The number of times users clicked on a link",
    "link_total_values": [
     {
-     "value": 2,
+     "value": 0,
      "link_url": "http://fortex-uae.com/virtual-work"
     },
     {
@@ -708,17 +708,9 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 96,
- "link_clicks_7d_total": 2,
+ "views_1d": 20,
+ "link_clicks_7d_total": 0,
  "by_kind": {
-  "юмор": {
-   "posts": 14,
-   "views": 930,
-   "replies": 14,
-   "likes": 2,
-   "avg_views": 66.4,
-   "avg_replies": 1.0
-  },
   "фото": {
    "posts": 5,
    "views": 526,
@@ -729,11 +721,19 @@
   },
   "консультация": {
    "posts": 12,
-   "views": 632,
+   "views": 633,
    "replies": 2,
    "likes": 0,
-   "avg_views": 52.7,
+   "avg_views": 52.8,
    "avg_replies": 0.17
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 867,
+   "replies": 14,
+   "likes": 3,
+   "avg_views": 61.9,
+   "avg_replies": 1.0
   },
   "вопрос": {
    "posts": 9,
