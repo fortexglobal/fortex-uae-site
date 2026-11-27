@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T17:30+04:00",
+ "updated": "2026-11-27T17:30+04:00",
  "leads": {
   "fortexglobal.otc@gmail.com": {
    "step": 1,
@@ -189,6 +189,231 @@
    "status": "active",
    "id": "I0024",
    "next_at": 1796043010.6541016
+  },
+  "hello@ronasit.com": {
+   "step": 1,
+   "last_at": 1795759255.3035326,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21b97aaea34936",
+   "status": "active",
+   "id": "I0025",
+   "next_at": 1796104855.303539
+  },
+  "support@clickio.com": {
+   "step": 1,
+   "last_at": 1795759810.7541664,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21ba0259591e43",
+   "status": "active",
+   "id": "I0027",
+   "next_at": 1796105410.7541738
+  },
+  "team@maddevs.io": {
+   "step": 1,
+   "last_at": 1795760802.613674,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21baf47531a47b",
+   "status": "active",
+   "id": "I0031",
+   "next_at": 1796106402.613678
+  },
+  "hello@rocketech.it": {
+   "step": 1,
+   "last_at": 1795761908.6068304,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21bc02629fb98c",
+   "status": "active",
+   "id": "I0032",
+   "next_at": 1796107508.606837
+  },
+  "bizdev@alawar.com": {
+   "step": 1,
+   "last_at": 1795762960.5826805,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21bd035a77ab07",
+   "status": "active",
+   "id": "I0034",
+   "next_at": 1796108560.5826855
+  },
+  "sales@simtechdev.org": {
+   "step": 1,
+   "last_at": 1795763828.411208,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21bdd72556ae79",
+   "status": "active",
+   "id": "I0035",
+   "next_at": 1796109428.4112153
+  },
+  "info@asterofalcon.com": {
+   "step": 1,
+   "last_at": 1795764816.0849154,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21bec84a70f434",
+   "status": "active",
+   "id": "I0036",
+   "next_at": 1796110416.0849218
+  },
+  "info@quantumwealth.swiss": {
+   "step": 1,
+   "last_at": 1795765800.5832112,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21bfb8b7d862d7",
+   "status": "active",
+   "id": "I0038",
+   "next_at": 1796111400.583218
+  },
+  "office@steuerberater.ru": {
+   "step": 1,
+   "last_at": 1795766730.8303535,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a21c09bd82b3a3d",
+   "status": "active",
+   "id": "I0040",
+   "next_at": 1796112330.830359
+  },
+  "elena.kruth@yahoo.com": {
+   "step": 1,
+   "last_at": 1795767840.4185681,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a21c1aab70f31f0",
+   "status": "active",
+   "id": "I0041",
+   "next_at": 1796113440.418578
+  },
+  "info@rechtsanwalt-mamedow.de": {
+   "step": 1,
+   "last_at": 1795768824.9943907,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a21c29b03465a0c",
+   "status": "active",
+   "id": "I0042",
+   "next_at": 1796114424.9943967
+  },
+  "info@fenk-tax.com": {
+   "step": 1,
+   "last_at": 1795769811.6384017,
+   "subject": "Клиентам с российским паспортом закрывают счета?\n",
+   "mid": "1a21c38bfee62c7c",
+   "status": "active",
+   "id": "I0043",
+   "next_at": 1796115411.6384077
+  },
+  "support@fornex.com": {
+   "step": 1,
+   "last_at": 1795770934.3997135,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c49e00477dfe",
+   "status": "active",
+   "id": "I0044",
+   "next_at": 1796116534.399722
+  },
+  "info@magora.co.uk": {
+   "step": 1,
+   "last_at": 1795771674.0128996,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c552a50ace27",
+   "status": "active",
+   "id": "I0045",
+   "next_at": 1796117274.0129044
+  },
+  "info@hypeauditor.com": {
+   "step": 1,
+   "last_at": 1795772290.8516552,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c5e93228f428",
+   "status": "active",
+   "id": "I0046",
+   "next_at": 1796117890.8516617
+  },
+  "info@alconost.com": {
+   "step": 1,
+   "last_at": 1795772968.4362867,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c68ebee775f9",
+   "status": "active",
+   "id": "I0047",
+   "next_at": 1796118568.4362924
+  },
+  "hello@rocketbrush.com": {
+   "step": 1,
+   "last_at": 1795773771.1144829,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c7529d983bbd",
+   "status": "active",
+   "id": "I0048",
+   "next_at": 1796119371.1144888
+  },
+  "support@readymag.com": {
+   "step": 1,
+   "last_at": 1795774569.6976082,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c81582920429",
+   "status": "active",
+   "id": "I0050",
+   "next_at": 1796120169.697615
+  },
+  "hello@asodesk.com": {
+   "step": 1,
+   "last_at": 1795775124.9363055,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c89d335e29ca",
+   "status": "active",
+   "id": "I0052",
+   "next_at": 1796120724.9363108
+  },
+  "info@sumatosoft.com": {
+   "step": 1,
+   "last_at": 1795776184.1388931,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21c99fd6cf84ab",
+   "status": "active",
+   "id": "I0053",
+   "next_at": 1796121784.1389
+  },
+  "bizdev@moonmana.com": {
+   "step": 1,
+   "last_at": 1795777290.0289204,
+   "subject": "Приём платежей от зарубежных клиентов через Дубай\n",
+   "mid": "1a21caadb260327d",
+   "status": "active",
+   "id": "I0054",
+   "next_at": 1796122890.0289273
+  },
+  "pitteloud@spi-management.ch": {
+   "step": 1,
+   "last_at": 1795777844.5220034,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21cb35096d8c54",
+   "status": "active",
+   "id": "I0055",
+   "next_at": 1796123444.5220098
+  },
+  "info@premium-helvetic.ch": {
+   "step": 1,
+   "last_at": 1795778400.9908938,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21cbbce0826988",
+   "status": "active",
+   "id": "I0056",
+   "next_at": 1796124000.9909015
+  },
+  "info@custodiawm.ch": {
+   "step": 1,
+   "last_at": 1795779199.3444285,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21cc7fdb0eaaa9",
+   "status": "active",
+   "id": "I0057",
+   "next_at": 1796124799.3444347
+  },
+  "info@tauro-investments.ch": {
+   "step": 1,
+   "last_at": 1795779754.8936582,
+   "subject": "Счета в ОАЭ для ваших клиентов\n",
+   "mid": "1a21cd078cafa360",
+   "status": "active",
+   "id": "I0058",
+   "next_at": 1796125354.893665
   }
  }
 }
