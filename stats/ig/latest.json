@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T08:40+04:00",
+ "generated": "2026-11-27T16:06+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "ronin.dubai",
@@ -20,11 +20,6 @@
  },
  "followers_history": [
   {
-   "date": "2026-11-23",
-   "followers": 1,
-   "media": 22
-  },
-  {
    "date": "2026-11-24",
    "followers": 1,
    "media": 22
@@ -51,6 +46,11 @@
   },
   {
    "date": "2026-11-26",
+   "followers": 1,
+   "media": 22
+  },
+  {
+   "date": "2026-11-27",
    "followers": 1,
    "media": 22
   },
