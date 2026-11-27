@@ -1,34 +1,34 @@
 {
- "generated": "2026-11-26T12:27Z",
+ "generated": "2026-11-27T04:40Z",
  "period": "последние 7 дней",
  "totals": {
   "визиты": 26.0,
-  "посетители": 21.0,
-  "отказы_%": 61.53846154,
-  "время_на_сайте_сек": 12.15384615
+  "посетители": 20.0,
+  "отказы_%": 57.69230769,
+  "время_на_сайте_сек": 104.42307692
  },
  "goals": {
   "Заявка с сайта": 0.0,
-  "Клик в Telegram": 1.0,
+  "Клик в Telegram": 0.0,
   "Запись на звонок": 0.0,
   "Автоцель: отправка формы": 0.0,
   "Автоцель: переход в мессенджер": 0.0,
   "Автоцель: переход в соц.сеть": 0.0,
-  "Автоцель: отправка формы заявки": 1.0
+  "Автоцель: отправка формы заявки": 0.0
  },
  "sources": [
   {
    "name": "Direct traffic",
    "values": [
     17.0,
-    12.0
+    11.0
    ]
   },
   {
    "name": "Recommendation system traffic",
    "values": [
-    5.0,
-    5.0
+    4.0,
+    4.0
    ]
   },
   {
@@ -50,8 +50,8 @@
   {
    "name": "Yandex Zen",
    "values": [
-    5.0,
-    5.0
+    4.0,
+    4.0
    ]
   },
   {
@@ -80,8 +80,8 @@
   {
    "name": "telegram / channel",
    "values": [
-    6.0,
-    6.0
+    5.0,
+    5.0
    ]
   },
   {
@@ -103,22 +103,8 @@
   {
    "name": "/",
    "values": [
-    11.0,
+    15.0,
     10.0
-   ]
-  },
-  {
-   "name": "/lp/vw/",
-   "values": [
-    3.0,
-    1.0
-   ]
-  },
-  {
-   "name": "/virtual-work/",
-   "values": [
-    3.0,
-    3.0
    ]
   },
   {
@@ -136,14 +122,21 @@
    ]
   },
   {
-   "name": "/articles/chto-mozhno-kupit-v-ipoteku-v-dubae/",
+   "name": "/ipoteka/",
    "values": [
-    1.0,
-    1.0
+    2.0,
+    2.0
    ]
   },
   {
-   "name": "/articles/ipoteka-ili-arenda-v-dubae/",
+   "name": "/virtual-work/",
+   "values": [
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "name": "/articles/chto-mozhno-kupit-v-ipoteku-v-dubae/",
    "values": [
     1.0,
     1.0
@@ -157,13 +150,6 @@
    ]
   },
   {
-   "name": "/lp/ipoteka/",
-   "values": [
-    1.0,
-    1.0
-   ]
-  },
-  {
    "name": "/schet-v-banke-oae/",
    "values": [
     1.0,
@@ -171,20 +157,7 @@
    ]
   }
  ],
- "goals_by_source": [
-  {
-   "name": "Direct traffic",
-   "values": [
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ]
-  }
- ],
+ "goals_by_source": [],
  "goal_names": [
   "Заявка с сайта",
   "Клик в Telegram",
@@ -195,6 +168,73 @@
   "Автоцель: отправка формы заявки"
  ],
  "yesterday": {
+  "totals": {
+   "визиты": 7.0,
+   "посетители": 4.0,
+   "отказы_%": 28.57142857,
+   "время_на_сайте_сек": 363.57142857
+  },
+  "goals": {
+   "Заявка с сайта": 0.0,
+   "Клик в Telegram": 0.0,
+   "Запись на звонок": 0.0,
+   "Автоцель: отправка формы": 0.0,
+   "Автоцель: переход в мессенджер": 0.0,
+   "Автоцель: переход в соц.сеть": 0.0,
+   "Автоцель: отправка формы заявки": 0.0
+  },
+  "sources": [
+   {
+    "name": "Direct traffic",
+    "values": [
+     5.0,
+     2.0
+    ]
+   },
+   {
+    "name": "Social network traffic",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "source_details": [
+   {
+    "name": "Other social network: identified by tags",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "utm": [
+   {
+    "name": "threads / None",
+    "values": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "pages": [
+   {
+    "name": "/",
+    "values": [
+     5.0,
+     2.0
+    ]
+   },
+   {
+    "name": "/ipoteka/",
+    "values": [
+     2.0,
+     2.0
+    ]
+   }
+  ]
+ },
+ "day_before": {
   "totals": {
    "визиты": 3.0,
    "посетители": 3.0,
@@ -261,11 +301,12 @@
    }
   ]
  },
- "day_before": {
+ "date_yesterday": "2026-11-26",
+ "today": {
   "totals": {
-   "визиты": 2.0,
-   "посетители": 2.0,
-   "отказы_%": 100.0,
+   "визиты": 0.0,
+   "посетители": 0.0,
+   "отказы_%": 0.0,
    "время_на_сайте_сек": 0.0
   },
   "goals": {
@@ -277,109 +318,25 @@
    "Автоцель: переход в соц.сеть": 0.0,
    "Автоцель: отправка формы заявки": 0.0
   },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   },
-   {
-    "name": "Recommendation system traffic",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "source_details": [
-   {
-    "name": "Yandex Zen",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "utm": [
-   {
-    "name": "telegram / channel",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ],
-  "pages": [
-   {
-    "name": "/articles/pravilo-6-mesyacev-virtual-work/",
-    "values": [
-     2.0,
-     2.0
-    ]
-   }
-  ]
- },
- "date_yesterday": "2026-11-25",
- "today": {
-  "totals": {
-   "визиты": 6.0,
-   "посетители": 3.0,
-   "отказы_%": 33.33333333,
-   "время_на_сайте_сек": 421.5
-  },
-  "goals": {
-   "Заявка с сайта": 0.0,
-   "Клик в Telegram": 0.0,
-   "Запись на звонок": 0.0,
-   "Автоцель: отправка формы": 0.0,
-   "Автоцель: переход в мессенджер": 0.0,
-   "Автоцель: переход в соц.сеть": 0.0,
-   "Автоцель: отправка формы заявки": 0.0
-  },
-  "sources": [
-   {
-    "name": "Direct traffic",
-    "values": [
-     5.0,
-     2.0
-    ]
-   }
-  ],
+  "sources": [],
   "source_details": [],
   "utm": [],
-  "pages": [
-   {
-    "name": "/",
-    "values": [
-     5.0,
-     2.0
-    ]
-   },
-   {
-    "name": "/ipoteka/",
-    "values": [
-     1.0,
-     1.0
-    ]
-   }
-  ]
+  "pages": []
  },
  "audience": {
   "pixel_from": "2026-11-09",
-  "since_pixel": 252,
-  "d30": 346,
-  "d90": 398,
-  "d180": 398,
-  "ipoteka_30d": 56,
-  "ipoteka_since_pixel": 52,
+  "since_pixel": 253,
+  "d30": 331,
+  "d90": 399,
+  "d180": 399,
+  "ipoteka_30d": 57,
+  "ipoteka_since_pixel": 53,
   "virtual_work_30d": 15,
   "virtual_work_since_pixel": 13,
   "gid_30d": 7,
   "gid_since_pixel": 7,
   "goal_users_30d:Заявка с сайта": 1,
-  "goal_users_30d:Клик в Telegram": 10,
+  "goal_users_30d:Клик в Telegram": 8,
   "goal_users_30d:Автоцель: отправка формы заявки": 1
  }
 }
