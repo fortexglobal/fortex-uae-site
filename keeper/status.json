@@ -1,5 +1,5 @@
 {
- "at": "2026-11-27T16:55+04:00",
+ "at": "2026-11-27T17:10+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -32,7 +32,7 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 397, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 462, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 500: \n"
   ]
  ],
- "openrouter_left": 11.86,
+ "openrouter_left": 11.58,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11"
@@ -160,7 +160,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 56.67615225,
+  "limit_remaining": 56.58603225,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -168,8 +168,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 43.32384775,
-    "remaining_usd": 56.67615225,
+    "spend_usd": 43.41396775,
+    "remaining_usd": 56.58603225,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -180,16 +180,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 43.32384775,
-   "remaining_usd": 56.67615225,
+   "spend_usd": 43.41396775,
+   "remaining_usd": 56.58603225,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 43.32384775,
-  "usage_daily": 0.456225,
-  "usage_weekly": 2.2340569,
-  "usage_monthly": 25.0796846,
+  "usage": 43.41396775,
+  "usage_daily": 0.546345,
+  "usage_weekly": 2.3241769,
+  "usage_monthly": 25.1698046,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
@@ -219,6 +219,6 @@
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 8
+  "openrouter_http": 9
  }
 }
