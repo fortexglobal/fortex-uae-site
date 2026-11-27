@@ -1,5 +1,5 @@
 {
- "at": "2026-11-28T00:15+04:00",
+ "at": "2026-11-28T00:31+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -160,7 +160,7 @@
   "is_provisioning_key": false,
   "limit": 100,
   "limit_reset": null,
-  "limit_remaining": 56.40097725,
+  "limit_remaining": 56.39176425,
   "include_byok_in_limit": false,
   "budgets": [
    {
@@ -168,8 +168,8 @@
     "guardrail_id": null,
     "budget_id": null,
     "limit_usd": 100,
-    "spend_usd": 43.59902275,
-    "remaining_usd": 56.40097725,
+    "spend_usd": 43.60823575,
+    "remaining_usd": 56.39176425,
     "reset_interval": null,
     "resets_at": null,
     "include_byok": false
@@ -180,16 +180,16 @@
    "guardrail_id": null,
    "budget_id": null,
    "limit_usd": 100,
-   "spend_usd": 43.59902275,
-   "remaining_usd": 56.40097725,
+   "spend_usd": 43.60823575,
+   "remaining_usd": 56.39176425,
    "reset_interval": null,
    "resets_at": null,
    "include_byok": false
   },
-  "usage": 43.59902275,
-  "usage_daily": 0.7314,
-  "usage_weekly": 2.5092319,
-  "usage_monthly": 25.3548596,
+  "usage": 43.60823575,
+  "usage_daily": 0.740613,
+  "usage_weekly": 2.5184449,
+  "usage_monthly": 25.3640726,
   "byok_usage": 0,
   "byok_usage_daily": 0,
   "byok_usage_weekly": 0,
