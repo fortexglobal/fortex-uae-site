@@ -1,21 +1,6 @@
 {
- "generated": "2026-11-27T08:21+04:00",
+ "generated": "2026-11-27T16:59+04:00",
  "posts": [
-  {
-   "slug": "t-1113-stadii-pereezda",
-   "at": "2026-11-13T12:30+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DfrNOsWFWhx",
-   "kind": "юмор",
-   "text": "СТАДИИ ПЕРЕЕЗДА в Дубай:\n\n1. «Поживу пару месяцев, ПОСМОТРЮ»\n2. Нашёл квартиру мечты, а арендодатель просит EMIRATES ID\n",
-   "views": 97,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1113-chemodan",
    "at": "2026-11-13T19:01+04:00",
@@ -607,7 +592,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgNYM30GzRU",
    "kind": "вопрос",
    "text": "Дубайчане, вы видите себя здесь НА ПЕНСИИ или Дубай для вас ТОЛЬКО ПОКА РАБОТАЕТЕ?\n\nОтвет одним словом: ОСТАЮСЬ или УЕДУ",
-   "views": 8,
+   "views": 9,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -622,7 +607,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgNpWd8iaTE",
    "kind": "консультация",
    "text": "Меня часто спрашивают: а СЕМЬЮ потом можно перевезти, если у меня Virtual Work?\n\n• С Emirates ID ты РЕЗИДЕНТ ОАЭ, и чере",
-   "views": 22,
+   "views": 25,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -630,30 +615,41 @@
    "shares": 0,
    "actions": 0,
    "actions_per_1k": 0.0
+  },
+  {
+   "slug": "t-1127-tipy-metro",
+   "at": "2026-11-27T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgPQWcEkWp1",
+   "kind": "юмор",
+   "text": "ТИПЫ ЛЮДЕЙ в дубайском метро:\n\n1. Турист: снимает видео ИЗ ПЕРВОГО ВАГОНА, где нет машиниста\n2. Новичок: случайно сел в ",
+   "views": 11,
+   "likes": 0,
+   "replies": 2,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 2,
+   "actions_per_1k": 181.8
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 182,
-  "likes": 2,
-  "replies": 0,
+  "views": 108,
+  "likes": 0,
+  "replies": 2,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 1466,
-  "likes": 5,
-  "replies": 46,
+  "views": 1023,
+  "likes": 3,
+  "replies": 18,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-19",
-   "views": 467
-  },
   {
    "date": "2026-11-20",
    "views": 196
@@ -680,7 +676,11 @@
   },
   {
    "date": "2026-11-26",
-   "views": 84
+   "views": 88
+  },
+  {
+   "date": "2026-11-27",
+   "views": 20
   }
  ],
  "link_clicks_7d": [
@@ -708,23 +708,15 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 84,
+ "views_1d": 20,
  "link_clicks_7d_total": 0,
  "by_kind": {
-  "юмор": {
-   "posts": 14,
-   "views": 873,
-   "replies": 14,
-   "likes": 3,
-   "avg_views": 62.4,
-   "avg_replies": 1.0
-  },
   "вопрос": {
    "posts": 10,
-   "views": 1207,
+   "views": 1208,
    "replies": 27,
    "likes": 1,
-   "avg_views": 120.7,
+   "avg_views": 120.8,
    "avg_replies": 2.7
   },
   "знакомства": {
@@ -735,12 +727,20 @@
    "avg_views": 98.0,
    "avg_replies": 5.0
   },
+  "юмор": {
+   "posts": 14,
+   "views": 787,
+   "replies": 16,
+   "likes": 3,
+   "avg_views": 56.2,
+   "avg_replies": 1.14
+  },
   "консультация": {
    "posts": 12,
-   "views": 520,
+   "views": 523,
    "replies": 2,
    "likes": 0,
-   "avg_views": 43.3,
+   "avg_views": 43.6,
    "avg_replies": 0.17
   },
   "фото": {
