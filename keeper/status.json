@@ -1,5 +1,5 @@
 {
- "at": "2026-11-27T09:53+04:00",
+ "at": "2026-11-27T10:09+04:00",
  "errors": [
   [
    "05.11 20:12",
@@ -32,7 +32,7 @@
    "Traceback (most recent call last):\n  File \"/opt/keeper/keeper.py\", line 397, in step\n    fn()\n  File \"/opt/keeper/keeper.py\", line 462, in push_status\n    raise RuntimeError(f\"status push {code}: {str(r)[:200]}\")\nRuntimeError: status push 500: \n"
   ]
  ],
- "openrouter_left": 12.12,
+ "openrouter_left": 12.03,
  "apify_left": null,
  "alerts": {
   "llm": "26.10 21:11"
@@ -216,6 +216,6 @@
   "llm_warn": 0,
   "wealth": 0,
   "scan_model": 0,
-  "openrouter_http": 16
+  "openrouter_http": 15
  }
 }
