@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T12:13Z",
+ "generated": "2026-11-28T11:41Z",
  "cols": [
   "визиты",
   "посетители",
@@ -10,19 +10,19 @@
   {
    "name": "Direct traffic",
    "v": [
-    142.0,
-    65.0,
-    35.9,
-    213.9
+    140.0,
+    63.0,
+    35.7,
+    216.8
    ]
   },
   {
    "name": "Recommendation system traffic",
    "v": [
-    132.0,
-    132.0,
-    78.8,
-    9.9
+    128.0,
+    128.0,
+    81.2,
+    9.5
    ]
   },
   {
@@ -75,10 +75,10 @@
   {
    "name": "Yandex Zen",
    "v": [
-    132.0,
-    132.0,
-    78.8,
-    9.9
+    128.0,
+    128.0,
+    81.2,
+    9.5
    ]
   },
   {
@@ -149,10 +149,10 @@
   {
    "name": "telegram / None / channel",
    "v": [
-    98.0,
-    97.0,
-    75.5,
-    13.5
+    94.0,
+    93.0,
+    78.7,
+    13.0
    ]
   },
   {
@@ -329,15 +329,6 @@
    ]
   },
   {
-   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ada26c2a5fe1b4c0fa0e59c",
-   "v": [
-    4.0,
-    4.0,
-    0.0,
-    183.2
-   ]
-  },
-  {
    "name": "https://m.facebook.com/",
    "v": [
     4.0,
@@ -419,12 +410,12 @@
    ]
   },
   {
-   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ae20fae8273846d47e013d6",
+   "name": "https://dzen.ru/media/id/6ad91fc01796c105c296d0fd/6ada26c2a5fe1b4c0fa0e59c",
    "v": [
     1.0,
     1.0,
     0.0,
-    24.0
+    661.0
    ]
   },
   {
@@ -486,10 +477,10 @@
   {
    "name": "dzen.ru",
    "v": [
-    132.0,
-    132.0,
-    78.8,
-    9.9
+    128.0,
+    128.0,
+    81.2,
+    9.5
    ]
   },
   {
@@ -570,9 +561,9 @@
    "name": "https://fortex-uae.com/",
    "v": [
     94.0,
-    58.0,
+    57.0,
     39.4,
-    163.1
+    163.0
    ]
   },
   {
@@ -756,15 +747,6 @@
    ]
   },
   {
-   "name": "https://fortex-uae.com/articles/mexc-ushla-iz-rossii/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ada26c2a5fe1b4c0fa0e59c",
-   "v": [
-    3.0,
-    3.0,
-    0.0,
-    24.0
-   ]
-  },
-  {
    "name": "https://fortex-uae.com/articles/ipoteka-v-dubae-s-pasportom-rf/",
    "v": [
     2.0,
@@ -778,15 +760,6 @@
    "v": [
     2.0,
     1.0,
-    50.0,
-    7.5
-   ]
-  },
-  {
-   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/",
-   "v": [
-    2.0,
-    2.0,
     50.0,
     7.5
    ]
@@ -963,12 +936,12 @@
    ]
   },
   {
-   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/?utm_referrer=https:%2F%2Fdzen.ru%2Fmedia%2Fid%2F6ad91fc01796c105c296d0fd%2F6ae20fae8273846d47e013d6",
+   "name": "https://fortex-uae.com/articles/rossiyanam-iz-evropy-schet-oae/",
    "v": [
     1.0,
     1.0,
-    0.0,
-    24.0
+    100.0,
+    0.0
    ]
   },
   {
@@ -1105,24 +1078,42 @@
     100.0,
     0.0
    ]
+  },
+  {
+   "name": "https://fortex-uae.com/lp/ipoteka/?fbclid=PAZXh0bgNhZW0BMABwZG9mAmFkaWQBqzkZD4nj-HNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp1YxSFY2u7T7SrkNk_DFovkypGNE2vheJ4TRSAeohk09aST6KDxyKsT6XiSR_aem_f3cFgW339mZ1Ysjws_01Tg&utm_id=120252594724350776",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
+  },
+  {
+   "name": "https://fortex-uae.com/lp/ipoteka/?fbclid=PAZXh0bgNhZW0BMABwZG9mAmFkaWQBqzkZD4x8CHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp1ngjdWV0Jew7zv7udc-nPrLrT3Ai2Aei1uRgrg7k-EbKEqo9of_s5o5ryTE_aem_t_RrBj51rVdQ-u5cEtWZ2A&utm_id=120252594724350776",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
   }
  ],
  "country_city": [
   {
    "name": "United Arab Emirates / Dubai",
    "v": [
-    152.0,
-    106.0,
-    59.9,
-    88.9
+    151.0,
+    107.0,
+    60.9,
+    89.3
    ]
   },
   {
    "name": "Russia / None",
    "v": [
-    128.0,
-    128.0,
-    81.2,
+    127.0,
+    127.0,
+    81.9,
     4.4
    ]
   },
@@ -1138,28 +1129,28 @@
   {
    "name": "United Arab Emirates / Sharjah",
    "v": [
-    24.0,
+    25.0,
     8.0,
-    33.3,
-    600.2
+    32.0,
+    576.6
    ]
   },
   {
    "name": "United Arab Emirates / Abu Dhabi",
    "v": [
-    20.0,
+    21.0,
     9.0,
-    40.0,
-    183.1
+    38.1,
+    174.9
    ]
   },
   {
    "name": "Russia / Moscow",
    "v": [
-    18.0,
-    13.0,
-    16.7,
-    41.6
+    14.0,
+    9.0,
+    21.4,
+    46.6
    ]
   },
   {
@@ -1254,15 +1245,6 @@
   },
   {
    "name": "Canada / Montreal",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Canada / Vancouver",
    "v": [
     1.0,
     1.0,
@@ -1482,10 +1464,10 @@
   {
    "name": "Direct traffic / Dubai",
    "v": [
-    65.0,
+    63.0,
     24.0,
-    32.3,
-    144.9
+    33.3,
+    149.0
    ]
   },
   {
@@ -1500,28 +1482,28 @@
   {
    "name": "Direct traffic / Sharjah",
    "v": [
-    20.0,
+    21.0,
     4.0,
-    20.0,
-    720.2
-   ]
-  },
-  {
-   "name": "Direct traffic / None",
-   "v": [
-    15.0,
-    15.0,
-    66.7,
-    4.8
+    19.0,
+    686.4
    ]
   },
   {
    "name": "Direct traffic / Abu Dhabi",
    "v": [
-    14.0,
+    15.0,
     4.0,
-    14.3,
-    261.6
+    13.3,
+    244.8
+   ]
+  },
+  {
+   "name": "Direct traffic / None",
+   "v": [
+    14.0,
+    14.0,
+    71.4,
+    4.1
    ]
   },
   {
@@ -1549,15 +1531,6 @@
     5.0,
     0.0,
     57.6
-   ]
-  },
-  {
-   "name": "Recommendation system traffic / Moscow",
-   "v": [
-    4.0,
-    4.0,
-    0.0,
-    24.0
    ]
   },
   {
@@ -1679,15 +1652,6 @@
   },
   {
    "name": "Direct traffic / Rabat",
-   "v": [
-    1.0,
-    1.0,
-    100.0,
-    0.0
-   ]
-  },
-  {
-   "name": "Direct traffic / Vancouver",
    "v": [
     1.0,
     1.0,
@@ -1820,6 +1784,24 @@
     100.0,
     2.0
    ]
+  },
+  {
+   "name": "Social network traffic / Moscow",
+   "v": [
+    1.0,
+    1.0,
+    0.0,
+    15.0
+   ]
+  },
+  {
+   "name": "Social network traffic / Perth",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
   }
  ],
  "device": [
@@ -1828,17 +1810,17 @@
    "v": [
     158.0,
     79.0,
-    38.6,
-    180.4
+    39.2,
+    180.3
    ]
   },
   {
    "name": "PC / Google Chrome",
    "v": [
-    147.0,
-    146.0,
-    78.2,
-    30.4
+    142.0,
+    141.0,
+    80.3,
+    30.8
    ]
   },
   {
@@ -2141,24 +2123,6 @@
    ]
   },
   {
-   "name": "2026-10-28 / Direct traffic",
-   "v": [
-    4.0,
-    3.0,
-    25.0,
-    11.2
-   ]
-  },
-  {
-   "name": "2026-10-28 / Recommendation system traffic",
-   "v": [
-    4.0,
-    4.0,
-    0.0,
-    24.0
-   ]
-  },
-  {
    "name": "2026-11-15 / Direct traffic",
    "v": [
     4.0,
@@ -2183,6 +2147,15 @@
     4.0,
     50.0,
     7.8
+   ]
+  },
+  {
+   "name": "2026-11-27 / Direct traffic",
+   "v": [
+    4.0,
+    3.0,
+    25.0,
+    8.5
    ]
   },
   {
@@ -2309,15 +2282,6 @@
     2.0,
     100.0,
     0.0
-   ]
-  },
-  {
-   "name": "2026-11-27 / Direct traffic",
-   "v": [
-    2.0,
-    2.0,
-    50.0,
-    7.5
    ]
   },
   {
@@ -2625,15 +2589,24 @@
     0.0,
     16.0
    ]
+  },
+  {
+   "name": "2026-11-28 / None",
+   "v": [
+    1.0,
+    1.0,
+    100.0,
+    0.0
+   ]
   }
  ],
  "new_vs_return": [
   {
    "name": "New users",
    "v": [
-    328.0,
-    328.0,
-    70.4,
+    323.0,
+    323.0,
+    71.5,
     19.4
    ]
   },
@@ -2643,7 +2616,7 @@
     88.0,
     15.0,
     25.0,
-    332.2
+    332.1
    ]
   }
  ]
