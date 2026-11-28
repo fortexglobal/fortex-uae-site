@@ -1,21 +1,6 @@
 {
- "generated": "2026-11-28T08:22+04:00",
+ "generated": "2026-11-28T16:11+04:00",
  "posts": [
-  {
-   "slug": "t-1114-subbota",
-   "at": "2026-11-14T12:31+04:00",
-   "url": "https://www.threads.com/@ronin.dubai/post/DftyHh2nOE2",
-   "kind": "юмор",
-   "text": "СТАДИИ СУББОТЫ в Дубае:\n\n1. «Высплюсь до обеда»\n2. В 8 утра уже на пляже, потому что ПОТОМ ЖАРКО\n3. Бранч плавно переход",
-   "views": 96,
-   "likes": 0,
-   "replies": 0,
-   "reposts": 0,
-   "quotes": 0,
-   "shares": 0,
-   "actions": 0,
-   "actions_per_1k": 0.0
-  },
   {
    "slug": "t-1114-vecher-bez-trat",
    "at": "2026-11-14T19:00+04:00",
@@ -562,7 +547,7 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgNYM30GzRU",
    "kind": "вопрос",
    "text": "Дубайчане, вы видите себя здесь НА ПЕНСИИ или Дубай для вас ТОЛЬКО ПОКА РАБОТАЕТЕ?\n\nОтвет одним словом: ОСТАЮСЬ или УЕДУ",
-   "views": 16,
+   "views": 17,
    "likes": 0,
    "replies": 0,
    "reposts": 0,
@@ -607,14 +592,14 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgP8_R1EWBM",
    "kind": "вопрос",
    "text": "Дубайчане, сколько ЧЕКОВ за аренду вы платили В ПЕРВЫЙ ГОД и сколько СЕЙЧАС?\n\nОтвет двумя цифрами 👀",
-   "views": 74,
+   "views": 76,
    "likes": 1,
    "replies": 2,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 2,
-   "actions_per_1k": 27.0
+   "actions_per_1k": 26.3
   },
   {
    "slug": "t-1127-znakomstva",
@@ -622,27 +607,42 @@
    "url": "https://www.threads.com/@ronin.dubai/post/DgQOJsYib-W",
    "kind": "знакомства",
    "text": "Дубай, пятница, давайте ЗНАКОМИТЬСЯ: чем занимаетесь и в КАКОМ РАЙОНЕ живёте?\n\nЯ начну: Алексей, с командой помогаю полу",
-   "views": 33,
+   "views": 38,
    "likes": 1,
    "replies": 6,
    "reposts": 0,
    "quotes": 0,
    "shares": 0,
    "actions": 6,
-   "actions_per_1k": 181.8
+   "actions_per_1k": 157.9
+  },
+  {
+   "slug": "t-1128-tipy-plyazh",
+   "at": "2026-11-28T12:30+04:00",
+   "url": "https://www.threads.com/@ronin.dubai/post/DgR1Ih3lsbB",
+   "kind": "юмор",
+   "text": "ТИПЫ ЛЮДЕЙ на пляже в Дубае зимой:\n\n1. Турист: плавает и кричит «ВОДА КАК ПАРНОЕ МОЛОКО»\n2. Новичок: загорает в полдень ",
+   "views": 15,
+   "likes": 0,
+   "replies": 0,
+   "reposts": 0,
+   "quotes": 0,
+   "shares": 0,
+   "actions": 0,
+   "actions_per_1k": 0.0
   }
  ],
  "errors": [],
  "account_1d": {
-  "views": 579,
-  "likes": 5,
-  "replies": 12,
+  "views": 515,
+  "likes": 0,
+  "replies": 0,
   "reposts": 0,
   "quotes": 0,
   "followers_count": 6
  },
  "account_7d": {
-  "views": 1494,
+  "views": 1322,
   "likes": 8,
   "replies": 28,
   "reposts": 0,
@@ -650,10 +650,6 @@
   "followers_count": 6
  },
  "views_by_day": [
-  {
-   "date": "2026-11-20",
-   "views": 196
-  },
   {
    "date": "2026-11-21",
    "views": 148
@@ -680,7 +676,11 @@
   },
   {
    "date": "2026-11-27",
-   "views": 491
+   "views": 497
+  },
+  {
+   "date": "2026-11-28",
+   "views": 18
   }
  ],
  "link_clicks_7d": [
@@ -708,23 +708,15 @@
  ],
  "followers_gain_1d": 0,
  "followers_gain_7d": 0,
- "views_1d": 491,
+ "views_1d": 18,
  "link_clicks_7d_total": 0,
  "by_kind": {
-  "юмор": {
-   "posts": 14,
-   "views": 854,
-   "replies": 16,
-   "likes": 3,
-   "avg_views": 61.0,
-   "avg_replies": 1.14
-  },
   "вопрос": {
    "posts": 10,
-   "views": 1292,
+   "views": 1295,
    "replies": 29,
    "likes": 2,
-   "avg_views": 129.2,
+   "avg_views": 129.5,
    "avg_replies": 2.9
   },
   "консультация": {
@@ -734,6 +726,14 @@
    "likes": 0,
    "avg_views": 48.4,
    "avg_replies": 0.17
+  },
+  "юмор": {
+   "posts": 14,
+   "views": 773,
+   "replies": 16,
+   "likes": 3,
+   "avg_views": 55.2,
+   "avg_replies": 1.14
   },
   "фото": {
    "posts": 4,
@@ -745,10 +745,10 @@
   },
   "знакомства": {
    "posts": 2,
-   "views": 62,
+   "views": 67,
    "replies": 6,
    "likes": 1,
-   "avg_views": 31.0,
+   "avg_views": 33.5,
    "avg_replies": 3.0
   }
  }
