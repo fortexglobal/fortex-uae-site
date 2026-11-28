@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T16:06+04:00",
+ "generated": "2026-11-28T15:38+04:00",
  "period": "последние 7 дней",
  "account": {
   "username": "ronin.dubai",
@@ -9,8 +9,8 @@
   "id": "28276626788683589"
  },
  "account_7d": {
-  "reach": 0,
-  "views": 0,
+  "reach": 1,
+  "views": 2,
   "accounts_engaged": 0,
   "total_interactions": 0,
   "profile_links_taps": 0,
@@ -25,11 +25,6 @@
    "media": 22
   },
   {
-   "date": "2026-11-24",
-   "followers": 1,
-   "media": 22
-  },
-  {
    "date": "2026-11-25",
    "followers": 1,
    "media": 22
@@ -56,6 +51,11 @@
   },
   {
    "date": "2026-11-27",
+   "followers": 1,
+   "media": 22
+  },
+  {
+   "date": "2026-11-28",
    "followers": 1,
    "media": 22
   }
@@ -462,14 +462,14 @@
    "comments": 0,
    "ins": {
     "reach": 2,
-    "views": 6,
+    "views": 7,
     "saved": 0,
     "shares": 0,
     "likes": 0,
     "comments": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 8328,
-    "ig_reels_video_view_total_time": 66624
+    "ig_reels_avg_watch_time": 7877,
+    "ig_reels_video_view_total_time": 70894
    },
    "unavailable": [
     "profile_visits",
@@ -572,7 +572,7 @@
    "comments": 0,
    "ins": {
     "reach": 2,
-    "views": 11,
+    "views": 12,
     "saved": 0,
     "shares": 0,
     "likes": 0,
